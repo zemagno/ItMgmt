@@ -1,0 +1,23 @@
+<h1>Criticidades</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @criticidades.each do |criticidade| %>
+  <tr>
+    <td><%= criticidade.name %></td>
+    <td><%= link_to 'Vizualizar', criticidade %></td>
+    <td><%= link_to 'Editar', edit_criticidade_path(criticidade) %></td>
+    <td><%= link_to 'Apagar', criticidade, :confirm => 'Tem Certeza ?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nova Criticidade', new_criticidade_path %>

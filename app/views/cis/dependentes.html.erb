@@ -1,0 +1,23 @@
+
+<%= render :partial => "menu_ci"%>
+
+</br></br>
+<div id="stylized" class="myform">
+	<%= render :partial => "form" %>
+	<%= render :partial => "menu_dependentes_ci"%>
+</div>
+</br>
+<div id="stylized" class="myform">
+
+<% @fila_resultado.each do |ci| %>
+  <% if ci[0]==:ci then %>
+     </br>
+     <h1><%= "#{ci[1].tipoci.tipo} "%><%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao}" %></h1>
+  <% end %>
+  <% if ci[0]==:subci then %>
+     
+     &nbsp;&nbsp;&nbsp;Depende do<%= " #{ci[1].tipoci.tipo} " %>&nbsp;<%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao}" %></br>
+  <% end %>
+
+<% end %>
+</div>

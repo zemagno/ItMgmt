@@ -1,0 +1,44 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/CMDBstyle.css" media="all" />
+</br>
+
+<%= link_to("[Anterior]", @ci.anterior,  :id => "SetaEsquerda") if @ci.anterior %>  
+<%= link_to("[Proximo]", @ci.proximo, :id => "SetaDireita") if @ci.proximo %>
+<%= link_to '[Retrocede Navegacao]', cis_sobe_path, :id => "SetaCima" %>
+<%= link_to '[Avanca Navegacao]', cis_desce_path, :id => "SetaBaixo"%>
+
+<%= render :partial => "menu_ci"%>
+
+</br>
+</br>
+
+<% [:info, :error].each do |key| %>
+   <% if flash[key] %>
+   <div class="flash <%= key %>" id="flash">
+     <%= flash[key] %>
+   </div>
+   <% end %>
+ <% end %>
+
+<%= render :partial => 'edges', :locals => {:title => "Impactados", :cis => @ci.impactados } %>
+
+</br>
+<div id="stylized" class="myform">
+	<%= render :partial => "form" %>
+	<%= render :partial => "menu_dependentes_ci"%>
+</div>
+
+</br>
+<%= render :partial => "edges", :locals => {:title => "Dependentes",  :cis => @ci.dependentes } %>
+</br>
+
+
+<%= form_tag(cis_search_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search) %>
+  <%= hidden_field_tag 'oldci', @ci.id%>
+  <%= submit_tag("Procurar CI") %>
+<% end %>
+</br>
+
+
+

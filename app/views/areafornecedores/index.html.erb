@@ -1,0 +1,21 @@
+<h1>Area dos Fornecedores</h1>
+
+<table>
+  <tr>
+    <th>Area</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @areafornecedores.each do |areafornecedores| %>
+  <tr>
+    <td><%= link_to areafornecedores.area, areafornecedores %></td>
+    <td><%= link_to 'Editar', edit_areafornecedore_path(areafornecedores) %></td>
+    <td><%= link_to 'Apagar', areafornecedores, :confirm => 'Tem certeza?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nova Area de Fornecedor', new_areafornecedore_path %>

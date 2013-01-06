@@ -1,0 +1,17 @@
+<%= link_to("[Impactados]", impactados_path(@ci))%>
+<%= link_to("[Dependentes]", dependentes_path(@ci))%>
+
+
+<% if @imagem_dependentes then %> 
+    <a href="<%= "/imagens/"+@ci.chave_sanitizada+'-dependentes.png' %>" onclick="window.open(this.href,'new_window_name','height=600,width=900');return false";>[Grafico Dependentes]</a>
+<% end %>
+
+<% if @imagem_impactados then %> 
+    <a href="<%= "/imagens/"+@ci.chave_sanitizada+'-impactados.png' %>" onclick="window.open(this.href,'new_window_name','height=600,width=900');return false";>[Grafico Impactados]</a>
+<% end %>
+
+
+</br><%= link_to "[Adiciona Dependente]", novo_dependente_path(@ci), :remote => true, :id => "novo_dependente" %>
+<%= link_to "[Adiciona Impactado]", novo_impactado_path(@ci), :remote => true, :id => "novo_impactado" %>
+<%= link_to "[Elimina dependente]" , elimina_dependente_path(@ci), :remote => true, :id => "elimina_dependente"%>
+<%= link_to "[Elimina impactado]" , elimina_impactado_path(@ci), :remote => true, :id => "elimina_impactado"%>

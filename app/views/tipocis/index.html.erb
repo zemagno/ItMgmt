@@ -1,0 +1,26 @@
+<h1>Tipos CI</h1>
+
+<table>
+  <tr>
+    <th>Tipo</th>
+    <th>Descricao</th>
+    <th>Owner</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipocis.each do |tipoci| %>
+  <tr>
+    <td><%= link_to tipoci.tipo, tipoci %></td>
+    <td><%= tipoci.Descricao %></td>
+    <td><%= tipoci.Owner%></td>
+    <td><%= link_to 'Editar', edit_tipoci_path(tipoci) %></td>
+    <td><%= link_to 'Apagar', tipoci, method: :delete, data: { confirm: 'Voce tem certeza ?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Tipo', new_tipoci_path %>

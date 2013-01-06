@@ -1,0 +1,78 @@
+<%= form_for(@contrato) do |f| %>
+  <% if @contrato.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contrato.errors.count, "error") %> prohibited this contrato from being saved:</h2>
+
+      <ul>
+      <% @contrato.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Contrato: " %>
+    <%= f.text_field :codcontrato %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Valor mensal" %>
+    <%= f.text_field :valormensal %>
+  </div>
+  <div class="spacer"></div>
+  <div class="field">
+    <%= f.label "Descricao" %>
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="spacer"></div>
+  <div class="field">
+    <%= f.label "Tipo Contrato" %>
+    <%= f.select :tipocontrato_id, @tiposcontrato.collect { |c| [ c.descricao, c.id ] } %>
+  </div>
+  <div class="field">
+    <%= f.label "Fornecedor" %>
+    <%= f.select :fornecedor_id, @fornecedores.collect { |c| [ c.nome, c.id ] } %>
+  </div>
+  <div class="spacer"></div>
+  <div class="field">
+    <%= f.label "Data de Inicio" %>
+    <%= f.text_field :datainicio, :id => "datepicker1" %>
+  </div>
+  <div class="field">
+    <%= f.label "Data Fim" %>
+    <%= f.text_field :datafim, :id => "datepicker2" %>
+  </div>
+  <div class="spacer"></div>
+  <div class="field">
+    <%= f.label "Data Renovacao" %>
+    <%= f.text_field :datarenovacao, :id => "datepicker3" %>
+  </div>
+  <div class="spacer"></div>
+  <div class="field">
+    <%= f.label "Indice Reajuste" %>
+   <%= f.select :indicador_financeiro_id, @IndicadoresFinanceiros.collect { |c| [ c.nome, c.id ] } %>
+  </div><div class="spacer"></div>
+  <div class="field">
+    <%= f.label "Projeto/CC TI" %>
+    <%= f.text_field :projetoCCTI %>
+  <div class="field">
+    <%= f.label "Projeto/CC Area" %>
+    <%= f.text_field :projetoCCArea %>
+  </div><div class="spacer"></div>
+  <div class="field">
+    <%= f.label "Classificacao" %>
+    <%= f.text_field :classificacao %>
+  </div>
+<div class="spacer"></div>
+<label>URL
+<span class="small">URL para o google docs</span>
+</label>
+<%= f.text_field :url, :class => "URL"%>
+
+<div class="spacer10"></div>
+
+<button type="submit" id="Salvar Contrato">Salvar Contrato</button>
+
+
+<% end %>

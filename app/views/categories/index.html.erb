@@ -1,0 +1,21 @@
+<h1>Cientes</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.name %></td>
+    <td><%= link_to 'Vizualizar', category %></td>
+    <td><%= link_to 'Editar', edit_category_path(category) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Cliente', new_category_path %>

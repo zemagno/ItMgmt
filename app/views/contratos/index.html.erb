@@ -1,0 +1,52 @@
+
+<h1>Contratos</h1>
+<%= link_to '[Novo Contrato]', new_contrato_path %>
+<%= will_paginate @contratos %>
+<%= form_tag(contratos_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search, @search, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Contrato</th>
+    <th>Descricao</th>
+    <th>Valor Mensal</th>
+    <th>Tipo</th>
+    <th>Fornecedor</th>
+    <th>Doc</th>
+    <th>Projeto/CC TI</th>
+    <th>Projeto/CC Area</th>
+    <th></th>
+    <th></th>
+	<th></th>
+	
+  </tr>
+
+<% @contratos.each do |contrato| %>
+  <tr>
+    <td><%= link_to contrato.codcontrato, contrato %></td>
+    <td><%= contrato.descricao[0,30] %></td>
+    <td><%= number_to_currency(contrato.valormensal, :separator => '.', :delimiter => ',')%></td>
+    <td><%= contrato.tipocontrato.descricao %></td>
+    <td><%= contrato.fornecedor.nome if contrato.fornecedor %></td>
+    <td>
+<%= "<a href=\"javascript: void(0)\" onclick=\"window.open('','_new').location.href='#{contrato.url}'\">Doc.</a>".html_safe unless contrato.url.to_s==''%>
+    </td>
+    <td><%= contrato.projetoCCTI %></td>
+    <td><%= contrato.projetoCCArea %></td>
+
+    <td><%= link_to 'Editar', edit_contrato_path(contrato) %></td>
+    <td><%= link_to 'Apagar', contrato, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+		<%= render :partial => 'email', :locals => { :contrato => contrato } %>
+	</td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @contratos %>
+
+<br />
+
+<%= link_to 'Novo Contrato', new_contrato_path %>

@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Evento:</b>
+  <%= @notificacao.evento %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @notificacao.email %>
+</p>
+
+
+<%= link_to 'Edit', edit_notificacao_path(@notificacao) %> |
+<%= link_to 'Back', notificacaos_path %>

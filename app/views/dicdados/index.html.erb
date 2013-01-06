@@ -1,0 +1,37 @@
+<h1>Campos dos CIs</h1>
+
+<% [:info, :error].each do |key| %>
+   <% if flash[key] %>
+   <div class="flash <%= key %>" id="flash">
+     <%= flash[key] %>
+   </div>
+   <% end %>
+ <% end %>
+
+<%= will_paginate(@dicdados) %>
+
+<table>
+  <tr>
+    <th>Tipo CI</th>
+    <th>Campo</th>
+    <th>Ordem</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dicdados.each do |dicdado| %>
+  <tr>
+    <td><%= link_to dicdado.tipoci.tipo, dicdado %></td>
+    <td><%= link_to dicdado.nome, dicdado %></td>
+    <td><%= dicdado.ordem %></td>
+    <td><%= link_to 'Editar', edit_dicdado_path(dicdado) %></td>
+    <td><%= link_to 'Apagar', dicdado, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= will_paginate(@dicdados) %>
+
+<%= link_to 'Novo Campo', new_dicdado_path %>

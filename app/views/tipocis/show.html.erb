@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @tipoci.tipo %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @tipoci.Descricao %>
+</p>
+
+<p>
+  <b>Owner:</b>
+  <%= @tipoci.Owner %>
+</p>
+
+
+<%= link_to 'Editar', edit_tipoci_path(@tipoci) %> |
+<%= link_to 'Voltar', tipocis_path %>
+

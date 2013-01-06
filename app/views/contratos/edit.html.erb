@@ -1,0 +1,20 @@
+<div id="stylized" class="myform">
+<h1>Alterando Contrato</h1>
+
+<script type="text/javascript">
+$(function() {
+    $("#datepicker1" ).datepicker({ dateFormat: "yy-mm-dd" });
+	$("#datepicker2" ).datepicker({ dateFormat: "yy-mm-dd" });
+	$("#datepicker3" ).datepicker({ dateFormat: "yy-mm-dd" });
+    $("#datepicker1").datepicker(); 
+    $("#datepicker2").datepicker(); 
+    $("#datepicker3").datepicker(); 
+});
+
+</script>
+
+
+<%= render 'form' %>
+
+<%= link_to 'Cancelar', @contrato %>
+</div>

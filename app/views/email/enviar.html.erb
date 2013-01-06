@@ -1,0 +1,2 @@
+<%= "location.href = \"mailto:#{@resposta[:to]}?cc=#{@resposta[:cc]}&subject=#{@resposta[:subject]}&body=#{URI.encode(@resposta[:body])}\"".html_safe %>
+

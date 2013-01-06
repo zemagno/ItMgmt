@@ -1,0 +1,19 @@
+<h1>Tipos Contratos</h1>
+
+<table>
+  <tr>
+    <th>Descricao</th>
+    <th></th>
+  </tr>
+
+<% @tipocontratos.each do |tipocontrato| %>
+  <tr>
+    <td><%= link_to tipocontrato.descricao, tipocontrato %></td>
+    <td><%= link_to 'Editar', edit_tipocontrato_path(tipocontrato) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Tipo Contrato', new_tipocontrato_path %>

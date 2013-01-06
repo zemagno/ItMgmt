@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Tipo CI:</b>
+  <%= @dicdado.tipoci.tipo %>
+</p>
+
+<p>
+  <b>Campo:</b>
+  <%= @dicdado.nome %>
+</p>
+
+<p>
+  <b>Ordem:</b>
+  <%= @dicdado.ordem %>
+</p>
+
+<p>
+  <b>URL:</b>
+  <%= @dicdado.url %>
+</p>
+
+<%= link_to 'Editar', edit_dicdado_path(@dicdado) %> |
+<%= link_to 'Listagem', dicdados_path %>

@@ -1,0 +1,38 @@
+<h1>Pedidos</h1>
+<%= link_to 'Novo Pedido', new_pedido_path %>
+
+
+<table>
+  <tr>
+    <th>Requisicao</th>
+    <th>Solicitante</th>
+    <th>Email Usuario</th>
+    <th>Data Pedido</th>
+    <th>Site</th>
+    <th>Custo Estimado</th>
+    <th>Resumo Pedido</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pedidos.each do |pedido| %>
+  <tr>
+	
+	<td><%= link_to pedido.requisicao, pedido_path(pedido), {:style=>'color:#000000;', :class => "css_class"} %></td>
+    <td><%= pedido.solicitante %></td>
+    <td><%= pedido.loginUsuario %></td>
+    <td><%= pedido.dataPedido %></td> 
+    <td><%= pedido.site.nome %></td>
+    <td><%= pedido.custoEstimado %></td>
+    <td><%= pedido.pedidoResumido %></td>
+    <td><%= pedido.status_pedido.status %></td> 
+    <td><%= link_to 'Editar', edit_pedido_path(pedido) %></td>
+    <td><%= link_to 'Apagar', pedido, :confirm => 'Tem Certeza ?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+

@@ -1,0 +1,8 @@
+<div id="stylized" class="myform">
+<h1><%= title %></h1>
+<% cis.each do |ci| %>
+  </br>
+  <%= link_to ci.chave, ci %> <%= " - #{ci.descricao} - #{ci.tipoci.tipo} " %>
+<% end %>
+</div>
+

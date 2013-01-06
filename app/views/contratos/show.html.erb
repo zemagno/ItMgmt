@@ -1,0 +1,71 @@
+<div id="stylized" class="myform">
+  <p id="notice"><%= notice %></p>
+
+<h1>
+  <b>Codigo Contrato:</b>
+  <%= @contrato.codcontrato %>
+</h1>
+
+<h1>
+  <b>Descricao:</b>
+  <%= @contrato.descricao %>
+</h1>
+
+<h1>
+  <b>Valor Mensal:</b>
+  <%= number_to_currency(@contrato.valormensal, :separator => '.', :delimiter => ',') %>
+</h1>
+
+<h1>
+  <b>Tipo Contrato:</b>
+  <%= @contrato.tipocontrato.descricao if @contrato.tipocontrato %>
+</h1>
+
+<h1>
+  <b>Fornecedor:</b>
+  <%= @contrato.fornecedor.nome if @contrato.fornecedor %>
+</h1>
+
+<h1>
+  <b>Data Inicio:</b>
+  <%= @contrato.datainicio %>
+</h1>
+
+<h1>
+  <b>Data Fim:</b>
+  <%= @contrato.datafim %>
+</h1>
+
+<h1>
+  <b>Data Renovacao:</b>
+  <%= @contrato.datarenovacao %>
+</h1>
+
+<h1>
+  <b>Indicador Financeiro:</b>
+  <%= @contrato.indicador_financeiro.nome if @contrato.indicador_financeiro %>
+</h1>
+
+<h1>
+  <b>Projeto/CC TI :</b>
+  <%= @contrato.projetoCCTI %>
+</h1>
+
+<h1>
+  <b>Projeto/CC Area:</b>
+  <%= @contrato.projetoCCArea %>
+</h1>
+
+<h1>
+  <b>Classificacao:</b>
+  <%= @contrato.classificacao %>
+</h1>
+
+<%= "<a href=\"javascript: void(0)\" onclick=\"window.open('','_new').location.href='#{@contrato.url}'\">[Documentacao]</a>".html_safe unless @contrato.url.to_s==''%>
+
+
+<%= render :partial => 'email', :locals => { :contrato => @contrato } %>  |
+
+<%= link_to '[Editar]', edit_contrato_path(@contrato) %> 
+<%= link_to '[Voltar]', contratos_path %>
+</div>

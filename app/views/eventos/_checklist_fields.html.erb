@@ -1,0 +1,9 @@
+<p>
+  <%= f.label :nome, "Checklist" %><br />
+  <%= f.text_field :nome  %><br />
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "Remove Question" %> 
+</p>
+<%= f.fields_for :itens_checklists do |builder| %>
+  <%= render 'itens_checklist_fields', :f => builder %>
+<% end %>

@@ -1,0 +1,23 @@
+<h1>Listing indicadores_financeiros</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @indicadores_financeiros.each do |indicadores_financeiros| %>
+  <tr>
+    <td><%= indicadores_financeiros.nome %></td>
+    <td><%= link_to 'Show', indicadores_financeiros %></td>
+    <td><%= link_to 'Edit', edit_indicadores_financeiro_path(indicadores_financeiros) %></td>
+    <td><%= link_to 'Destroy', indicadores_financeiros, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Indicador financeiro', new_indicadores_financeiro_path %>

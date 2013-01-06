@@ -1,0 +1,98 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Requisicao:</b>
+  <%= @pedido.requisicao %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @pedido.status_pedido.status %>
+</p>
+
+<p>
+  <b>Email Solicitante:</b>
+  <%= @pedido.solicitante %>@brq.com
+</p>
+
+<p>
+  <b>Email Usuario:</b>
+  <%= @pedido.loginUsuario %>@brq.com
+</p>
+
+<p>
+  <b>Data do Pedido:</b>
+  <%= @pedido.dataPedido %>
+</p>
+
+<p>
+  <b>Data Autorizacao:</b>
+  <%= @pedido.dataAutorizacao %>
+</p>
+
+<p>
+  <b>Data Solicitacao Compras:</b>
+  <%= @pedido.dataSolicitacaoCompras %>
+</p>
+
+<p>
+  <b>Data Prevista para Entrega:</b>
+  <%= @pedido.dataEntrega %>
+</p>
+
+<p>
+  <b>Comprador:</b>
+  <%= @pedido.comprador %>@brq.com
+</p>
+
+<p>
+  <b>Site:</b>
+  <%= @pedido.site.nome %>
+</p>
+
+<p>
+  <b>Ativo:</b>
+  <%= @pedido.ativo %>
+</p>
+
+<p>
+  <b>Custo Estimado:</b>
+  <%= @pedido.custoEstimado %>
+</p>
+
+<p>
+  <b>Resumo do Pedido:</b>
+  <%= @pedido.pedidoResumido %>
+</p>
+
+<p>
+  <b>Observacao:</b>
+  <%= @pedido.observacao %>
+</p>
+
+<p>
+  <b>CC UN:</b>
+  <%= @pedido.CCUN %>
+</p>
+
+<p>
+  <b>Projeto UN:</b>
+  <%= @pedido.projetoUN %>
+</p>
+
+<p>
+  <b>CC TI:</b>
+  <%= @pedido.ccTI %>
+</p>
+
+<p>
+  <b>Projeto TI:</b>
+  <%= @pedido.projetoTI %>
+</p>
+
+
+
+
+
+<%= link_to 'Edit', edit_pedido_path(@pedido) %> |
+<%= link_to 'Back', pedidos_path %>

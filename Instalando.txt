@@ -1,0 +1,29 @@
+=========== novo jquery do rails========
+https://github.com/rails/jquery-ujs
+
+============search========
+http://pat.github.com/ts/en/installing_sphinx.html
+1) download
+http://sphinxsearch.com/downloads/
+2) install
+./configure
+make
+sudo make install
+
+3) GEM
+gem install thinking-sphinx
+
+4) 
+rake thinking_sphinx:index
+ou 
+rake thinking_sphinx:rebuild
+
+5) 
+rake thinking_sphinx:start
+rake ts:start
+rake thinking_sphinx:stop
+rake ts:stop
+
+===== Graphiz ======================
+instale o graphviz pelo padrao no destino (apt-get, etc,etc)
+

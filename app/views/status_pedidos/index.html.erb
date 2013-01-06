@@ -1,0 +1,23 @@
+<h1>Listing status_pedidos</h1>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @status_pedidos.each do |status_pedido| %>
+  <tr>
+    <td><%= status_pedido.status %></td>
+    <td><%= link_to 'Show', status_pedido %></td>
+    <td><%= link_to 'Edit', edit_status_pedido_path(status_pedido) %></td>
+    <td><%= link_to 'Destroy', status_pedido, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Status pedido', new_status_pedido_path %>

@@ -1,0 +1,52 @@
+<h1>CMDB</h1>
+<% [:info, :error].each do |key| %>
+   <% if flash[key] %>
+   <div class="flash <%= key %>" id="flash">
+     <%= flash[key] %>
+   </div>
+   <% end %>
+ <% end %>
+
+
+<%= link_to '[Novo CI]', new_ci_path, :id => "zNovo" %>
+<%= will_paginate @cis %>
+
+<%= form_tag(cis_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search, @search, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
+
+
+
+<table>
+  <tr>
+    <th>Chave CI</th>
+    <th>Descricao</th>
+    <th>Tipo</th>
+    <th>Site</th>
+    <th>Owner</th>
+    <th>Ult ChgMgmt</th>
+  </tr>
+
+<% @cis.each do |ci| %>
+  <tr>
+    <td><%= link_to ci.chave, ci %></td>
+    <td><%= ci.descricao %></td>
+    <td><%= ci.tipoci.tipo %></td>
+    <td><%= ci.site.nome %></td>
+    <td><%= ci.Owner %></td>
+    <% if ci.DocChange.blank?  %>
+      <td><%= ci.dataChange %></td>
+    <% else %>
+      <td><a href="javascript: void(0)" onclick="window.open('','_new').location.href='<%= ci.DocChange %>'"><%=ci.dataChange%></a></td>
+    </h1>
+<% end %>
+
+  </tr>
+<% end %>
+</table>
+
+<%= will_paginate @cis %>
+
+<br />

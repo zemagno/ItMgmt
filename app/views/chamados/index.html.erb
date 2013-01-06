@@ -1,0 +1,31 @@
+<h1>Listing chamados</h1>
+
+<table>
+  <tr>
+    <th>Subtipochamado</th>
+    <th>Statuschamado</th>
+    <th>Solicitante</th>
+    <th>Userid</th>
+    <th>Descricao</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @chamados.each do |chamado| %>
+  <tr>
+    <td><%= chamado.SubTipoChamado %></td>
+    <td><%= chamado.StatusChamado %></td>
+    <td><%= chamado.Solicitante %></td>
+    <td><%= chamado.Userid %></td>
+    <td><%= chamado.descricao %></td>
+    <td><%= link_to 'Show', chamado %></td>
+    <td><%= link_to 'Edit', edit_chamado_path(chamado) %></td>
+    <td><%= link_to 'Destroy', chamado, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Chamado', new_chamado_path %>

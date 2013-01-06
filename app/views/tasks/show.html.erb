@@ -1,0 +1,38 @@
+<meta http-equiv="refresh" coment="30" >
+<h1>Detalhe</h1>
+ 
+<p id="notice"><%= notice %></p>
+ 
+<p>
+  <%= @task.description %>
+</p>
+ 
+<p>
+  <b>Status:</b>
+  <%= @task.status %>
+  em <%= @task.criado_em %>
+  registrado por <%= @task.author.name %>
+</p>
+ 
+<p>
+  <b>Criticidade:</b>
+  <%= @task.criticidade.name %>
+</p>
+
+
+<p>
+  <b>Cliente:</b>
+  <%= @task.category.name %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%= @task.site.nome %>
+</p> 
+<p>
+ 
+
+</p>
+ 
+<%= link_to 'Editar', edit_task_path(@task) %> 
+<%= link_to 'Voltar', tasks_path %>

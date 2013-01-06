@@ -1,0 +1,38 @@
+<%= form_for(@dicdado) do |f| %>
+  <% if @dicdado.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dicdado.errors.count, "error") %> prohibited this dicdado from being saved:</h2>
+
+      <ul>
+      <% @dicdado.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ 
+  <div class="field">
+    <%= f.label "Tipo CI: " %>
+ <%= f.select :tipoci_id, @tipocis.collect { |c| [ c.tipo, c.id ] } %>
+  </div>
+
+ <div class="field">
+    <%= f.label "Nome do Campo: " %>
+    <%= f.text_field :nome %>
+  </div> 
+
+<div class="field">
+    <%= f.label "Ordem de Apresentacao: " %>
+    <%= f.text_field :ordem %>
+  </div>
+
+<div class="field">
+    <%= f.label "URL: " %>
+    <%= f.text_field :url, :size=>100 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

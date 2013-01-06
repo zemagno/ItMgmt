@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @parametro.tipo %>
+</p>
+
+<p>
+  <b>Subtipo:</b>
+  <%= @parametro.subtipo %>
+</p>
+
+<p>
+  <b>Valor:</b>
+  <%= @parametro.valor %>
+</p>
+
+
+<%= link_to 'Edit', edit_parametro_path(@parametro) %> |
+<%= link_to 'Back', parametros_path %>

@@ -1,0 +1,150 @@
+require "jiraable"
+class Ci < ActiveRecord::Base
+  include Jiraable
+
+  attr_accessible :chave, :Owner, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira
+
+  belongs_to :site
+  belongs_to :tipoci
+  has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
+  
+  # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
+  has_many :relacao_dependencia, :class_name => "Relacionamento", :foreign_key => "impactado_id", :dependent => :delete_all
+  has_many :dependentes, :through => :relacao_dependencia
+  has_many :relacao_impacto, :class_name => "Relacionamento", :foreign_key => "dependente_id",  :dependent => :delete_all
+  has_many :impactados, :through => :relacao_impacto
+
+  validates :Owner, :format => { :with => /[a-zA-Z]*/,
+      :message => "Somente Caracter Alfanumerico" }
+  validates :chave, :presence => { :message => " eh mandatorio" }
+  validates :chave,  :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB" }
+  
+  validates :descricao, :presence => { :message => " eh mandatorio" }
+  
+  # default_scope order('chave ASC') # ERRO ta dando erro na hora de navegar com <-- -->
+
+  def to_s
+      "#{id}:#{chave} : #{descricao} : #{tipoci.tipo}"  
+  end
+
+  def chave_sanitizada
+    chave.gsub(/\ /,"_")
+  end
+
+  
+
+  def atributos
+    # pegar todos os atributos possiveis (tipoci.dicdado)
+    # dicdados.id => [Label,valor]
+    #{ 5=>["Contrato", "Link Citi"], 
+    #  3=>["Designacao", "001a-98/97"], 
+    #  2=>["Endereco", "Av Boa Vista"], 
+    #  1=>["Capacidade", "4mb"]} 
+    attr_existentes = Hash.new
+    
+    # monto um hash com todos atributos que esse CI deve ter
+    tipoci.dicdados.map {|x| attr_existentes[x.id] = [x.nome,nil,x.url]} 
+    
+    # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
+    atributo.map do |x| 
+       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
+       # entao eu crio esse atributo no hash
+       if ! attr_existentes[x.dicdado.id] then
+          attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url]
+       end
+      attr_existentes[x.dicdado.id][1] = x.valor 
+     end 
+    attr_existentes
+  end
+  
+  
+
+  # def jira_to_url
+  #   @URLs = []
+  #   if jira != nil then 
+  #     jira.split(',').each do |c|
+  #       @URLs << [c,"http://jira.brq.com/browse/#{c}"]
+  #     end
+  #   end
+  #   @URLs
+  # end
+
+  def limpa_atributos_outros_tipo
+    atributo.each do |attr|
+      if attr.dicdado.tipoci_id != tipoci_id
+        attr.delete 
+        attr.save
+      end
+    end
+
+    # ERRO atributos ainda esta apontando para atributos antigos...como limpar cache
+
+  end
+
+
+  def atributos=(novos_atributos = {})
+    # Descriptions.find_or_create_by_my_id(data["my_id"]).update_attributes(data)
+    # Atributo (ci_id, dicdado_id, valor)
+    # c.atributo[1].dicdado.nome =  "Contrato"
+    # atributos : dicdados.id => [Label do dicdados,valor]
+    #{ 5=>["Contrato", "Link Citi"], 
+    #  3=>["Designacao", "001a-98/97"], 
+    #  2=>["Endereco", "Av Boa Vista"], 
+    #  1=>["Capacidade", "4mb"]} 
+
+    attr_default = atributos
+    
+
+    attr_default.each do |attr|
+     
+      atr = Atributo.find_or_create_by_ci_id_and_dicdado_id(id,attr[0])
+        
+        begin  #posso nao ter recebido parametro nenhum
+           atr.valor = novos_atributos[attr[1][0]]
+           atr.save
+        rescue
+        end
+    end
+
+   
+    limpa_atributos_outros_tipo
+
+  end
+
+  def anterior
+    Ci.where("id < ?", id).last
+  end
+  
+  def proximo
+    Ci.where("id > ?", id).first
+  end
+  
+  def self.find_gen(param)
+    begin 
+       Ci.find(param)
+    rescue ActiveRecord::RecordNotFound
+      Ci.find_by_chave(param)
+    end
+  end
+
+  def self.find_com_atributos(id)
+    @c = Ci.find_gen(id)
+    [@c, @c.atributos] 
+  end
+
+  define_index do
+      indexes chave
+      indexes descricao
+      indexes :Owner
+      indexes site(:nome), :as => :localidade
+      indexes tipoci(:tipo), :as => :tipotipo
+      indexes tipoci(:Descricao), :as => :descricaotipo
+
+      #has site_id  # se eu quiser quiser filtrar..
+      #has tipoci_id
+  end
+  
+end
+
+# http://freelancing-god.github.com/ts/en/installing_sphinx.html
+# select * from sites

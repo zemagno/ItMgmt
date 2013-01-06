@@ -1,0 +1,21 @@
+<%= form_for(@areafornecedores) do |f| %>
+  <% if @areafornecedores.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@areafornecedores.errors.count, "error") %> prohibited this areafornecedore from being saved:</h2>
+
+      <ul>
+      <% @areafornecedores.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Area' %><br />
+    <%= f.text_field :area %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

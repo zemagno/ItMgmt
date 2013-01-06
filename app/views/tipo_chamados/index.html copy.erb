@@ -1,0 +1,23 @@
+<h1>Listing tipo_chamados</h1>
+
+<table>
+  <tr>
+    <th>Descricao</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_chamados.each do |tipo_chamado| %>
+  <tr>
+    <td><%= tipo_chamado.descricao %></td>
+    <td><%= link_to 'Show', tipo_chamado %></td>
+    <td><%= link_to 'Edit', edit_tipo_chamado_path(tipo_chamado) %></td>
+    <td><%= link_to 'Destroy', tipo_chamado, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo chamado', new_tipo_chamado_path %>

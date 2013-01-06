@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipochamado:</b>
+  <%= @sub_tipo_chamado.TipoChamado %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @sub_tipo_chamado.descricao %>
+</p>
+
+
+<%= link_to 'Edit', edit_sub_tipo_chamado_path(@sub_tipo_chamado) %> |
+<%= link_to 'Back', sub_tipo_chamados_path %>

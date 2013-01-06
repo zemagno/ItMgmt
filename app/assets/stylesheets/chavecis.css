@@ -1,0 +1,18 @@
+
+
+
+#register { width: 100px; }
+
+#chave_ci { 
+  background: #fff url('/images/stsatus.gif') 150px 0 no-repeat; background-size: 20px 90px; 
+  padding: 0 20px 0 2px; 
+  width: 185px; 
+}
+
+#chave_ci.thinking { background-position: 150px -19px; background-size: 20px 90px; }
+#chave_ci.approved { background-position: 150px -35px; background-size: 20px 90px;}
+#chave_ci.denied { 
+  background-color: #FF8282; 
+  background-position: 150px -52px; 
+  background-size: 20px 80px;
+}

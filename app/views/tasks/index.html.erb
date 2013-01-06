@@ -1,0 +1,42 @@
+<h1>Alertas e Mudancas</h1>
+ <p>
+   <%= link_to '[Novo Alerta]', new_task_path %> 
+</p>
+<table>
+  <tr>
+	<th>Cliente</th>
+	<th>Evento</th>
+	<th>Status</th>
+	<th>Criticidade</th>
+	<th>Autor</th>
+	<th>Site</th>
+	<th>Criado em</th>
+	<th></th>
+	<th></th>
+  </tr>
+<% @tasks.each do |task| %>
+  <tr>
+	<td><%= link_to task.category.name, task_path(task)%></td>
+	<td> <%= link_to task.description[0,100], task_path(task), {:style=>'color:#000000', :class => "css_class"} %></td>
+	<td><%= task.status %></td>
+	
+	<% 	if task.criticidade.critico? %>
+        <td style="background-color:#ff0000"> 
+	<%  else %>
+	    <td>
+	<%  end %>		
+	<%= task.criticidade.name %></td>
+	
+	<td><%= task.author.name %></td>
+	<td><%= task.site.nome %></td>
+	<td><%= task.criado_em %></td>
+	
+	<td><%= link_to 'Editar', edit_task_path(task) %></td>
+	<td><%= link_to 'Apagar', task, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+ 
+<br />
+ 
+

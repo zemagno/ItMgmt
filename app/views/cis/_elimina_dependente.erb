@@ -1,0 +1,14 @@
+<%=  form_for :exclusao, :remote => true, :html => {:id => "elimina_dependente"} do |f|  %>
+<h1>Elimina Dependente</h1>
+<label>Dependente
+<span class="small">Entre com a Chave </span>
+</label>
+<%= %>
+<%= hidden_field_tag 'idci', @idci%>
+<%= f.text_field :dependente %>
+<div class="buttons">
+    <%= f.submit "Eliminar" %>
+</div>
+</br>
+
+<% end %>

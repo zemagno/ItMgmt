@@ -1,0 +1,14 @@
+<%=  form_for :inclusao, :remote => true, :html => {:id => "novo_dependente"} do |f|  %>
+<h1>Novo Dependente</h1>
+<label>Dependente
+<span class="small">Entre com a Chave </span>
+</label>
+<%= %>
+<%= hidden_field_tag 'idci', @idci%>
+<%= f.text_field :dependente %>
+<div class="buttons">
+    <%= f.submit "Criar" %>
+</div>
+</br>
+
+<% end %>

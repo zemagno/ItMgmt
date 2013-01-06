@@ -1,0 +1,104 @@
+<%= form_for(@ci) do |f| %>
+  <% if @ci.errors.any? %>
+    <div id="error_explanation">
+      <h1><%= "#{@ci.errors.count} Erro(s) ao tentar registrar esse idtem:" %></h1>
+
+      <ul>
+      <% @ci.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<p></p>
+
+<label>CI
+<span class="small">Defina uma chave única</span>
+</label>
+<%= f.text_field :chave , :size => 20, :id => "chave_ci"%>
+
+<label>Owner
+<span class="small">Login de rede do Owner </span>
+</label>
+<%= f.text_field :Owner %>
+
+<div class="spacer"></div>
+<label>Descrição
+<span class="small">Descriçao desse CI</span>
+</label>
+<%= f.text_field :descricao %>
+
+<label>Change Mgmt
+<span class="small">Data Ultima Mudança</span>
+</label>
+<%= f.text_field :dataChange, :id => "datepicker" %>
+
+<div class="spacer"></div>
+
+<label>Doc Change Mgmt
+<span class="small">URL para Doc da Ultima Mudança</span>
+</label>
+<%= f.text_field :DocChange, :size => 70 %>
+
+<div class="spacer"></div>
+
+
+<label>Site
+<span class="small">É global ou de um site</span>
+</label>
+<%= f.select :site_id, @sites.collect { |c| [ c.nome, c.id ] } %>
+
+
+<label>Tipo de CI
+<span class="small">Defina o tipo para este CI </span>
+</label>
+<%= f.select :tipoci_id, @tiposci.collect { |c| [ c.tipo, c.id ] } %>
+
+<div class="spacer"></div>
+<p></p>
+
+
+
+<div class="spacer"></div>
+<label>Documentacao
+<span class="small">URL para o google docs</span>
+</label>
+<%= f.text_field :url , :size => 70%>
+
+<div class="spacer"></div>
+<label>Jira	
+<span class="small">Lista de chamados no Jira</span>
+</label>
+<%= f.text_field :jira, :size => 70 %>
+
+<% @atributos ||= [] %>
+<% @atributos.map do |dicdado,attr| %>
+  <!-- attr[0] nome e attr[1] - valor -->
+    <div class="spacer"></div>
+    <label><%= attr[0] %> 
+    </label>
+    <input name="atributos[<%= attr[0]%>]" size="30" type="text" value="<%=attr[1]%>" />
+    <!--%= text_field :atributos %-->
+<% end %>
+
+
+<% if @oldci.to_s != "" then %>
+<div class="spacer1"></div>
+						
+<%= select_tag(:dependencia,options_for_select( [
+	                    ["Nenhuma correlacao com  #{@oldci.chave} - #{@oldci.descricao}", 1], 
+					    ["Depende de #{@oldci.chave} - #{@oldci.descricao}", 2], 								       		
+						["Impacta #{@oldci.chave} - #{@oldci.descricao}", 3]],1)) %>
+<% end %>
+
+<div class="spacer10"></div>  
+
+<button type="submit" id="SalvarCI">Salvar Item</button>
+<div class="spacer"></div>
+
+<!--div class="spacer"></div>	
+<div class="actions">
+    <%= f.submit %>
+</div-->
+<% end %>
