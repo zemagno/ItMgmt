@@ -2,7 +2,6 @@ ItMgmt::Application.routes.draw do
 
   resources :view_templates
 
-
   resources :padrao_checklists
 
   resources :eventos
@@ -69,18 +68,9 @@ ItMgmt::Application.routes.draw do
   
   resources :cis
   
-  
   resources :pedidos
 
   resources :status_pedidos
-
-  resources :chamados
-
-  resources :sub_tipo_chamados
-
-  resources :status_chamados
-
-  resources :tipo_chamados
 
   resources :notificacaos
 

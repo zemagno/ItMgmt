@@ -1,16 +1,28 @@
 Urgente
 [ ] - colocar seguranca e autenticacao no AD
 [ ] - colocar em producao
-[ ] - colocar link nos contratos para fornecedor e nao caixa de edicao
+[ ] - colocar link nos contratos para fornecedor e texto puro
+[ ] - area fornecedor
+      (?? isso nao pode cair em conflito com area contrato ???)
+      cadastro ta ok,
+      falta: 
+         [ ] - colocar campo no fornecedores
+         [ ] - sphinx com area, nome, nome completo, contatos
 
 
 [ ] - verificar se rafa usa seta <-- --> cima e baixo...(fica pesquisando no tabela)
 
-[ ] - area fornecedor
+[ ] - pedidos --> ELIMINAR - pode virar um checklist ou abertura no JIRA
 
 [ ] - sphinx
       fornecedor (com area)
       o que mais ??
+
+[ ] - colocar colchetes em volta de todos os links nas paginas de listagem e edicao
+
+[ ] - eliminar lixos: chamados, tipo_chamados, sub_tipo_chamados, pedidos
+
+[ ] - sites --> colcocar CNPJ, Endereco, etc, como esta no google docs
 
 [ ] - fazer um scan com regex nos campos do JIRA para permitir espaco ponto virgula virgula, etc
 
@@ -19,8 +31,6 @@ Urgente
       servicoxyz:abc,xyz,aaa
 
 [ ] - permitir incluir varios dependentes ou impactados separado por virgula ou ; (regex)
-  
-[ ] - sphinx para fornecedores (depois que colocar a area) 
 
 [ ] - refatorar views do ci, colocando helper, por exemplo, para URL
       tirar pancada de IF END
