@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227164801) do
+ActiveRecord::Schema.define(:version => 20130121134200) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -38,16 +38,6 @@ ActiveRecord::Schema.define(:version => 20121227164801) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "chamados", :force => true do |t|
-    t.integer  "SubTipoChamado_id"
-    t.integer  "StatusChamado_id"
-    t.string   "Solicitante"
-    t.string   "Userid"
-    t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -214,21 +204,8 @@ ActiveRecord::Schema.define(:version => 20121227164801) do
     t.datetime "updated_at"
   end
 
-  create_table "status_chamados", :force => true do |t|
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "status_pedidos", :force => true do |t|
     t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "sub_tipo_chamados", :force => true do |t|
-    t.integer  "TipoChamado_id"
-    t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -244,12 +221,9 @@ ActiveRecord::Schema.define(:version => 20121227164801) do
     t.datetime "updated_at"
     t.boolean  "Ativo"
     t.datetime "Expiracao"
-  end
-
-  create_table "tipo_chamados", :force => true do |t|
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.boolean  "sucesso"
+    t.string   "DocChange"
+    t.string   "nome"
   end
 
   create_table "tipocis", :force => true do |t|

@@ -11,31 +11,64 @@
 	</div>
   <% end %>
  
-  <div class="field">
-	<%= f.label :Evento %><br />
-	<%= f.text_area :description %>
-  </div>
-  <div class="field">
-	<%= f.label :Status %><br />
-	<%= f.select :status, (["Mudança", "Incidente", "Info"]) %>
-  </div>
-  <div class="field">
-	<%= f.label :Critidade %><br />
-	<%= f.select :criticidade_id, @criticidades.collect { |a| [ a.name, a.id ] }  %>
-  </div>
-  <div class="field">
-	<%= f.label :Executor %><br />
-	<%= f.select :author_id, @authors.collect { |a| [ a.name, a.id ] }  %>
-  </div>
-  <div class="field">
-	<%= f.label :Cliente %><br />
-	<%= f.select :category_id, @categories.collect { |c| [ c.name, c.id ] } %>
-  </div>
-  <div class="field">
-	<%= f.label :Site %><br />
-	<%= f.select :site_id, @sites.collect { |c| [ c.nome, c.id ] } %>
-  </div>
-  <div class="actions">
-	<%= f.submit %>
-  </div>
+
+<div class="spacer"></div>
+<label>Nome
+<span class="small"></span>
+</label>
+<%= f.text_field :nome, :size => 70 %>
+
+<div class="spacer"></div>
+
+<label>Evento
+<span class="small">Descricao do Evento</span>
+</label>
+<%= f.text_area :description , :cols => 60, :rows => 10 %>
+<div class="spacer"></div>
+
+<label>Doc Change Mgmt
+<span class="small">URL para Doc dessa mudança</span>
+</label>
+<%= f.text_field :DocChange, :size => 70 %>
+<div class="spacer"></div>
+
+<label>Sucesso ?
+<span class="small">Mudança realizada com sucesso</span>
+</label>
+<div class="field">
+    <%= f.check_box :sucesso %>
+
+</div>
+<div class="spacer"></div>
+
+
+
+<label>Status
+<span class="small">Qual o tipo de alerta ?</span>
+</label>
+<%= f.select :status, (["Mudança", "Incidente", "Info"]) %>
+<div class="spacer"></div>
+
+<label>Criticidade
+<span class="small">Qual a criticidade desse alerta ?</span-->
+</label>
+<%= f.select :criticidade_id, @criticidades.collect { |a| [ a.name, a.id ] }  %>
+<div class="spacer"></div>
+
+<label>Executor</label>
+<%= f.select :author_id, @authors.collect { |a| [ a.name, a.id ] }  %>
+<div class="spacer"></div>
+
+
+<label>Cliente</label>
+<%= f.select :category_id, @categories.collect { |c| [ c.name, c.id ] } %>
+<div class="spacer"></div>
+
+<label>Site BRQ</label>
+<%= f.select :site_id, @sites.collect { |c| [ c.nome, c.id ] } %>
+<div class="spacer"></div>
+
+<button type="submit">Salvar Alerta</button>
+
+<div class="spacer"></div>
 <% end %>

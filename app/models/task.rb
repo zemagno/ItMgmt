@@ -11,6 +11,8 @@ class Task < ActiveRecord::Base
    validates_presence_of :site
    validates_presence_of :criticidade
    
+   # validates_presence_of :nome
+   
    def criado_em
         created_at.in_time_zone("Brasilia").strftime("%d/%m-%H:%M")
    end
@@ -23,5 +25,21 @@ class Task < ActiveRecord::Base
    def self.todos
      Task.find(:all, :order => "criticidade_id, created_at DESC")
    end
+
+   def nome_autor
+    author.name
+  end
+
+  def nome_cliente
+    category.name
+  end
+
+  def nome_criticidade
+    criticidade.name
+  end
+
+  def nome_site
+    site.nome
+  end
      
 end

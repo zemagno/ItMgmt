@@ -30,7 +30,9 @@
     <td><%= contrato.descricao[0,30] %></td>
     <td><%= number_to_currency(contrato.valormensal, :separator => '.', :delimiter => ',')%></td>
     <td><%= contrato.tipocontrato.descricao %></td>
-    <td><%= contrato.fornecedor.nome if contrato.fornecedor %></td>
+    <td> <% if ! contrato.fornecedor.blank?  %>
+             <%= link_to contrato.fornecedor.nome, contrato.fornecedor, :target => "_blank" %>
+         <% end %></td>
     <td>
 <%= "<a href=\"javascript: void(0)\" onclick=\"window.open('','_new').location.href='#{contrato.url}'\">Doc.</a>".html_safe unless contrato.url.to_s==''%>
     </td>

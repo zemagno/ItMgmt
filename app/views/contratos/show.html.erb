@@ -23,8 +23,10 @@
 
 <h1>
   <b>Fornecedor:</b>
-  <%= @contrato.fornecedor.nome if @contrato.fornecedor %>
-</h1>
+  <% if ! @contrato.fornecedor.blank?  %>
+    <%= link_to @contrato.fornecedor.nome, @contrato.fornecedor, :target => "_blank" %>
+    
+<% end %>
 
 <h1>
   <b>Data Inicio:</b>

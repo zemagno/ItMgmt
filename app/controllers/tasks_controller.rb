@@ -13,10 +13,11 @@ class TasksController < ApplicationController
   end
 
   def todos
+    puts "pesquisa por: #{params[:status]}"
     @tasks = Task.todos
     respond_to do |format|
         format.html { render :index}
-        format.xml  { render :xml => @tasks }
+        format.xml  { render :xml => @tasks.to_xml(:methods => [:nome_autor, :nome_cliente, :nome_criticidade, :nome_site ]) }
     end
   end
 
@@ -25,6 +26,7 @@ class TasksController < ApplicationController
   end
 
   def new
+    puts "controller: NEW"
     @task = Task.new
     @authors = Author.all
     @categories = Category.all
@@ -55,6 +57,14 @@ class TasksController < ApplicationController
         distribui("Alerta: #{@task.status}",@task)
         format.html { redirect_to(@task, :notice => 'Tarefa criada com sucesso.') }
       else
+        puts "deu merda..."
+        flash[:error] = "<ul>" + @task.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
+        
+        @authors = Author.all
+        @categories = Category.all
+        @sites = Site.all
+        @criticidades = Criticidade.all
+        @task = Task.new(params[:task])
         format.html { render :action => "new" }
       end
     end
@@ -67,6 +77,11 @@ class TasksController < ApplicationController
         distribui("Alerta: #{@task.status} - Alteracao",@task) 
         format.html { redirect_to(@task, :notice => 'Tarefa alterada com sucesso.') }
       else
+        flash[:error] = "<ul>" + @task.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
+        @authors = Author.all
+        @categories = Category.all
+        @sites = Site.all
+        @criticidades = Criticidade.all
         format.html { render :action => "edit" }
       end
     end

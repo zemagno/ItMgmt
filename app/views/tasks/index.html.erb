@@ -17,7 +17,7 @@
 <% @tasks.each do |task| %>
   <tr>
 	<td><%= link_to task.category.name, task_path(task)%></td>
-	<td> <%= link_to task.description[0,100], task_path(task), {:style=>'color:#000000', :class => "css_class"} %></td>
+	<td> <%= link_to "#{task.nome}:#{task.description}"[0,100], task_path(task), {:style=>'color:#000000', :class => "css_class"} %></td>
 	<td><%= task.status %></td>
 	
 	<% 	if task.criticidade.critico? %>

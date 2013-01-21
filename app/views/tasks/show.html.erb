@@ -1,38 +1,57 @@
 <meta http-equiv="refresh" coment="30" >
-<h1>Detalhe</h1>
+<div id="stylized" class="myform">
  
-<p id="notice"><%= notice %></p>
+<h1 id="notice"><%= notice %></h1>
+
+
+<h1>
+  <b>Nome do Evento:</b>
+  <%= @task.nome %>
+</h1>
+<p> </p>
+<h1>
+  <b>Descricao:</b>
+ </h1>
+  <%= content_tag('pre',@task.description) %>
+
+ <p></p>
+
  
-<p>
-  <%= @task.description %>
-</p>
- 
-<p>
+<% if ! @task.DocChange.blank?  %>
+    <h1><a href="javascript: void(0)" onclick="window.open('','_new').location.href='<%= @task.DocChange %>'">[Doc. Ultima Mudanca]</a>
+    </h1>
+<% end %>
+
+<h1>
+  <b>Maudança Executada com Sucesso ?</b>
+  <%= @task.sucesso ? 'Sim' : 'Nao' %>
+</h1>
+
+
+<h1>
   <b>Status:</b>
   <%= @task.status %>
   em <%= @task.criado_em %>
   registrado por <%= @task.author.name %>
-</p>
- 
-<p>
+</h1>
+
+<h1>
   <b>Criticidade:</b>
   <%= @task.criticidade.name %>
-</p>
+</h1>
 
 
-<p>
+<h1>
   <b>Cliente:</b>
   <%= @task.category.name %>
-</p>
+</h1>
 
-<p>
+<h1>
   <b>Site:</b>
-  <%= @task.site.nome %>
-</p> 
-<p>
+  <%= @task.site.nome %> 
+</h1>
  
 
-</p>
- 
 <%= link_to 'Editar', edit_task_path(@task) %> 
 <%= link_to 'Voltar', tasks_path %>
+ </div>
