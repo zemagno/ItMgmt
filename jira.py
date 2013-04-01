@@ -28,7 +28,7 @@ soap = SOAPpy.WSDL.Proxy('http://jira.atlassian.com/rpc/soap/jirasoapservice-v2?
 #passwd="fredspassword"
  
 jirauser='magno'
-passwd='nc1702'
+passwd='xxxxxx'
  
 # This prints available methods, but the WSDL doesn't include argument
 # names so its fairly useless. Refer to the Javadoc URL above instead

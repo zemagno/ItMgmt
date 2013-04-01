@@ -326,9 +326,9 @@ controller email
 
 
    10157
-curl -D- -u magno:nc1702 -X POST -d '{"fields": {"project":{ "id": "10157"},"summary": "No REST for the Wicked.","description": "Creating of an issue using ids for projects and issue types using the REST API","reporter" :"magno","issuetype": {"name": "Tarefa"}}}'- -H "Content-Type: application/json" http://jira.brq.com:8090/rest/api/2/issue/
+curl -D- -u magno:xxxxxx -X POST -d '{"fields": {"project":{ "id": "10157"},"summary": "No REST for the Wicked.","description": "Creating of an issue using ids for projects and issue types using the REST API","reporter" :"magno","issuetype": {"name": "Tarefa"}}}'- -H "Content-Type: application/json" http://jira.brq.com:8090/rest/api/2/issue/
 
-curl -D- -u magno:nc1702 -X POST --data {
+curl -D- -u magno:xxxxxx -X POST --data {
     "fields": {
        "project":
        { 
