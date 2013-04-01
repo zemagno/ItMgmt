@@ -1,4 +1,7 @@
 Urgente
+[ ] - colocar .include em varios lugares
+      view cis.show chama @cis.dependentes e esse fica navegando em tiposcis.
+      tem que mudar do atributo .dependentes para um metodo da classe e essa pegar os dependentes com os tipocis. 
 [ ] - colocar seguranca e autenticacao no AD
 [ ] - colocar em producao
 [ ] - colocar link nos contratos para fornecedor e texto puro

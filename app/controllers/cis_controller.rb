@@ -88,14 +88,14 @@ class CisController < ApplicationController
       flash[:error] = "Error[DB0001] - Search Engine desligado"
       @cis = Ci.paginate(:page => params[:page])
     end 
-    if @cis.length==1 then 
-      @ci = @cis[0]
-      session[:oldCI] = @ci.id
-      session[:search] = nil # senao nao volta para tela de listagem, pois ao voltar 
-                             # ele vai entrar novamente no i'm lucky
-      render :show
-      return
-    end
+    #if @cis.length==1 then 
+    #  @ci = @cis[0]
+    #  session[:oldCI] = @ci.id
+    #  session[:search] = nil # senao nao volta para tela de listagem, pois ao voltar 
+    #                         # ele vai entrar novamente no i'm lucky
+    #  render :show
+    #  return
+    #end
     
     respond_to do |format|
         format.html
@@ -180,7 +180,7 @@ class CisController < ApplicationController
         if @i.dataChange and @i.dataChange.to_time >= 5.days.ago then
            nodes[@i.chave] = g.add_nodes(@i.chave, { :label => "#{@i.chave}\n#{@i.dataChange}", :color => "red"})
         else 
-           nodes[@i.chave] = g.add_nodes(@i.chave)
+           nodes[@i.chave] = g.add_nodes(@i.chave , { :label => "#{@i.chave}\n#{@i.tipoci.tipo}"})
         end
 
         if nivel <= nivel_max then
@@ -346,6 +346,14 @@ class CisController < ApplicationController
      @fila_dependentes = gera_relaciomentos(:dependentes)
      gera_grafico_relacionamento(params[:id],:dependentes)
      @imagem_dependentes = true
+
+  end
+
+  def dependentes_all
+     @fila_dependentes = gera_relaciomentos(:dependentes_all)
+     gera_grafico_relacionamento(params[:id],:dependentes_all)
+     @imagem_dependentes_all = true
+     render :dependentes
   end
   
 end

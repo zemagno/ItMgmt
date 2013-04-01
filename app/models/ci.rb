@@ -9,10 +9,33 @@ class Ci < ActiveRecord::Base
   has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
   
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
-  has_many :relacao_dependencia, :class_name => "Relacionamento", :foreign_key => "impactado_id", :dependent => :delete_all
-  has_many :dependentes, :through => :relacao_dependencia
-  has_many :relacao_impacto, :class_name => "Relacionamento", :foreign_key => "dependente_id",  :dependent => :delete_all
-  has_many :impactados, :through => :relacao_impacto
+  has_many  :relacao_dependencia, 
+            :class_name => "Relacionamento",  
+            :foreign_key => "impactado_id", 
+            :dependent => :delete_all, 
+            :conditions => "tipo = 0"
+
+  has_many  :dependentes, 
+            :through => :relacao_dependencia, 
+            :include => "tipoci"
+  
+  has_many :relacao_dependencia_all, 
+           :class_name => "Relacionamento", 
+           :foreign_key => "impactado_id", 
+           :dependent => :delete_all
+  
+  has_many  :dependentes_all, 
+            :through => :relacao_dependencia_all,
+            :include => "tipoci"
+  
+  has_many  :relacao_impacto, 
+            :class_name => "Relacionamento", 
+            :foreign_key => "dependente_id",  
+            :dependent => :delete_all
+  
+  has_many  :impactados, 
+            :through => :relacao_impacto,
+            :include => "tipoci"
 
   validates :Owner, :format => { :with => /[a-zA-Z]*/,
       :message => "Somente Caracter Alfanumerico" }
@@ -23,6 +46,7 @@ class Ci < ActiveRecord::Base
   
   # default_scope order('chave ASC') # ERRO ta dando erro na hora de navegar com <-- -->
 
+  
   def to_s
       "#{id}:#{chave} : #{descricao} : #{tipoci.tipo}"  
   end
@@ -121,9 +145,9 @@ class Ci < ActiveRecord::Base
   
   def self.find_gen(param)
     begin 
-       Ci.find(param)
+       Ci.includes(:atributo => :dicdado).find(param)
     rescue ActiveRecord::RecordNotFound
-      Ci.find_by_chave(param)
+      Ci.includes(:atributo => :dicdado).find_by_chave(param)
     end
   end
 
