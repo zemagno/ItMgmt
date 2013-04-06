@@ -41,6 +41,7 @@ ItMgmt::Application.routes.draw do
   
   match 'cis/:id/impactados', to: "cis#impactados",  :as => :impactados
   match 'cis/:id/dependentes', to: "cis#dependentes",  :as => :dependentes
+  match 'cis/:id/dependentes_all', to: "cis#dependentes_all",  :as => :dependentes_all
   match 'cis/:id/grafico_impactados', to: "cis#grafico_impactados",  :as => :grafico_impactados
   match 'cis/:id/impactados_h', to: "cis#impactados_h", :as => :impactados_h
   match 'cis/:id/dependentes_h', to: "cis#dependentes_h", :as => :dependentes_h

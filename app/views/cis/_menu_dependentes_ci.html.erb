@@ -1,9 +1,13 @@
 <%= link_to("[Impactados]", impactados_path(@ci))%>
 <%= link_to("[Dependentes]", dependentes_path(@ci))%>
-
+<%= link_to("[Dependentes/Composto de]", dependentes_all_path(@ci))%>
 
 <% if @imagem_dependentes then %> 
     <a href="<%= "/imagens/"+@ci.chave_sanitizada+'-dependentes.png' %>" onclick="window.open(this.href,'new_window_name','height=600,width=900');return false";>[Grafico Dependentes]</a>
+<% end %>
+
+<% if @imagem_dependentes_all then %> 
+    <a href="<%= "/imagens/"+@ci.chave_sanitizada+'-dependentes_all.png' %>" onclick="window.open(this.href,'new_window_name','height=600,width=900');return false";>[Grafico Dependentes/Composto de]</a>
 <% end %>
 
 <% if @imagem_impactados then %> 

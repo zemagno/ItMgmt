@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121134200) do
+ActiveRecord::Schema.define(:version => 20130328002000) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(:version => 20130121134200) do
     t.integer  "dependente_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tipo"
   end
 
   add_index "relacionamentos", ["dependente_id"], :name => "index_relacionamentos_on_dependente_id"
