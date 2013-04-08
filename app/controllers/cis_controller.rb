@@ -2,6 +2,8 @@ require "queueable"
 class CisController < ApplicationController
   include Queueable
 
+  #layout 'application_novolyaout' 
+
   # Variaveis geradas por esse controller
   # @fila_impactados
   # @fila_dependentes

@@ -1,36 +1,36 @@
 
-<h1><%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.tipoci.tipo}) "%></h1>
+<%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.tipoci.tipo}) "%>
 
-<h1>Site: <%= @ci.site.nome%></h1>
-<h1>Owner: <%= @ci.Owner%></h1>
-<h1>Data Ultimo Change: <%= @ci.dataChange%></h1>
+</br>Site: <%= @ci.site.nome%>
+</br>Owner: <%= @ci.Owner%>
+</br>Data Ultimo Change: <%= @ci.dataChange%>
 <% if ! @ci.DocChange.blank?  %>
-    <h1><a href="javascript: void(0)" onclick="window.open('','_new').location.href='<%= @ci.DocChange %>'">[Doc. Ultima Mudanca]</a>
-    </h1>
+    </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= @ci.DocChange %>'">[Doc. Ultima Mudanca]</a>
+    
 <% end %>
 
 
 
 <% if ! @ci.url.blank?	%>
-    <h1><a href="javascript: void(0)" onclick="window.open('','_new').location.href='<%= @ci.url %>'">[Documentacao]</a>
-    </h1>
+    </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= @ci.url %>'">[Documentacao]</a>
 <% end %>
 
 
-<h1>Jira:<% @ci.jira_to_url.each do|url| %>
+</br>Jira:<% @ci.jira_to_url.each do|url| %>
      <% if ! url[0].blank? %>
-         <a href="javascript: void(0)" onclick="window.open('','_new').location.href='<%=url[1]%>'">[<%=url[0]%>]</a>
+         <a href="javascript: void(0)" onclick="window.open('','').location.href='<%=url[1]%>'">[<%=url[0]%>]</a>
      <% end %>
 <% end %> 
-</h1>
+
 
 <% @atributos ||= [] %>
 <% @atributos.map do |dicdado,attr| %>
      <!--  se campo URL nao conter nada ou se valor do atributo nao conter nada, so imprimo nome do atributo -->
      <% if attr[2].blank? || attr[1].blank? %>
-        <h1><%="#{attr[0]} : #{attr[1]}"%></h1>
+        </br><%="#{attr[0]} : #{attr[1]}"%>
      <% else %>
-        <h1><a href="javascript: void(0)" onclick="window.open('','_new').location.href='<%=attr[2] % attr[1] %>'">
-            <%="[#{attr[0]}]" %></a></h1>
+        </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%=attr[2] % attr[1] %>'">
+            <%="[#{attr[0]}]" %></a>
      <% end %>
 <% end %>
+</br>

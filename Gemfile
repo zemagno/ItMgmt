@@ -27,7 +27,8 @@ gem 'ruby-graphviz'
 gem 'jquery-rails'
 
 gem 'rake' #, '0.9.2.2'
-
+gem "therubyracer"
+gem "less-rails"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -37,4 +38,5 @@ group :assets do
   #gem 'therubyracer', :platform => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'twitter-bootstrap-rails'
 end
