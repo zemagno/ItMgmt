@@ -1,0 +1,23 @@
+<h1>Listing statuscis</h1>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @statuscis.each do |statusci| %>
+  <tr>
+    <td><%= statusci.status %></td>
+    <td><%= link_to 'Show', statusci %></td>
+    <td><%= link_to 'Edit', edit_statusci_path(statusci) %></td>
+    <td><%= link_to 'Destroy', statusci, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Statusci', new_statusci_path %>

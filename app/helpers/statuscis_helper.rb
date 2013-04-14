@@ -1,0 +1,2 @@
+module StatuscisHelper
+end

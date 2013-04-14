@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>BRQ IT Services - Gestão de TI</title>
+<%= stylesheet_link_tag "jquery-ui.css" %>
+<%= stylesheet_link_tag "jquery-ui-timepicker-addon.css" %>
+<%= javascript_include_tag "jquery", "jquery-ujs", "application" %>
+<%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
+<%= javascript_include_tag "utils.js" %>
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= csrf_meta_tag %>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand">CMDB</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "CI", cis_path %></li>
+            <li><%= link_to "Contratos", contratos_path %></li>
+            <li><%= link_to "Fornecedores", fornecedores_path %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+	<div class="row">
+		<div class="span12"><%= yield %></div>
+	</div>
+  </div>
+
+</body>
+</html>
