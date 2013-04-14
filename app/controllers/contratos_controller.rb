@@ -1,7 +1,7 @@
 class ContratosController < ApplicationController
   # GET /contratos
   # GET /contratos.xml
-    layout 'application_novolyaout' 
+  #  layout 'application_novolyaout' 
   def index
     @search = params[:search] || session[:search]
     session[:search] = @search

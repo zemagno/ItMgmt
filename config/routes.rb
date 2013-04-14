@@ -1,5 +1,8 @@
 ItMgmt::Application.routes.draw do
 
+  resources :statuscis
+
+
   resources :view_templates
 
   resources :padrao_checklists

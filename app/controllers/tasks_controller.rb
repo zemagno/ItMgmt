@@ -32,6 +32,7 @@ class TasksController < ApplicationController
     @categories = Category.all
     @sites = Site.all
     @criticidades = Criticidade.all
+    @fornecedores = Fornecedor.all
   end
 
   def edit
@@ -40,12 +41,13 @@ class TasksController < ApplicationController
     @categories = Category.all
     @sites = Site.all
     @criticidades = Criticidade.all
+    @fornecedores = Fornecedor.all
   end
   
   def distribui(subject,task)
-    message = UserMailer.email_alerta("josecarlosmagno@me.com",subject,task)
-    puts message
-    message.deliver
+    #message = UserMailer.email_alerta("josecarlosmagno@me.com",subject,task)
+    #puts message
+    #message.deliver
     
   end    
 

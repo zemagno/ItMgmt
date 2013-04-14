@@ -14,6 +14,12 @@ class CisController < ApplicationController
   # @sites
   # @tiposci
 
+  def carrega_agregadas
+    @sites = Site.all
+    @tiposci = Tipoci.all
+    @statusci = Statusci.all
+  end
+
   
   def cache(ci)
     session[:oldCI] = ci.id 
@@ -34,9 +40,13 @@ class CisController < ApplicationController
     # @ci = Ci.find(params[:id])
     # @atributos = @ci.atributos
     @ci, @atributos = Ci.find_com_atributos(params[:id])
-    @sites = Site.all
-    @tiposci = Tipoci.all
+    #@sites = Site.all
+    #@tiposci = Tipoci.all
+    #@statusci = Statusci.all
+    carrega_agregadas
   end
+
+
   
   def check_chave
     @ci = Ci.find_by_chave(params[:search]) 
@@ -59,9 +69,12 @@ class CisController < ApplicationController
         format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
         format.json { head :no_content }
       else
-         @sites = Site.all
-         @tiposci = Tipoci.all
+         #@sites = Site.all
+         #@tiposci = Tipoci.all
+         #@statusci = Statusci.all
          @atributos = @ci.atributos
+         
+         carrega_agregadas
         format.html { render action: "edit" }
         format.json { render json: @ci.errors, status: :unprocessable_entity }
       end
@@ -120,8 +133,10 @@ class CisController < ApplicationController
   
   def new
     @ci = Ci.new
-    @sites = Site.all
-    @tiposci = Tipoci.all
+    #@sites = Site.all
+    #@tiposci = Tipoci.all
+    #@statusci = Statusci.all
+    carrega_agregadas
     @oldci = session[:oldCI]==nil ? nil : Ci.find(session[:oldCI])
   end
   
@@ -138,8 +153,10 @@ class CisController < ApplicationController
         if @ci.save          
           format.html { redirect_to(@ci, :notice => 'CI criada com sucesso.') }
         else
-          @sites = Site.all
-          @tiposci = Tipoci.all
+          #@sites = Site.all
+          #@tiposci = Tipoci.all
+          #@statusci = Statusci.all
+          carrega_agregadas
           @oldci = Ci.find(session[:oldCI])
           format.html { render :action => "new" }
         end
@@ -227,7 +244,7 @@ class CisController < ApplicationController
               edges_visitado[i.chave] = true
               @fila_resultado << [:ci,i] unless i.send(direcao).empty?
               i.send(direcao).each do |ii|
-                  @fila_resultado << [:subci,ii]
+                  @fila_resultado << [:subci,ii, "Depende de"]
               end
           end    
 
@@ -236,6 +253,46 @@ class CisController < ApplicationController
         # concatena essas tuplas de impactados no final da fila
 
         i.send(direcao).map { |x| enqueue([x,nivel+1])}
+      end
+    end
+    @fila_resultado
+  end
+
+def gera_relaciomentos_com_composto_de
+    
+    @ci = Ci.find(params[:id])
+    init_queue
+    
+    enqueue([@ci,0])
+    edges_visitado = Hash.new
+
+    nivel_max = 8
+
+    @fila_resultado = []
+
+    while not queue_empty?
+      #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
+      i,nivel = dequeue
+      if nivel <= nivel_max then
+          if not edges_visitado[i.chave] then        
+              edges_visitado[i.chave] = true
+              @fila_resultado << [:ci,i] unless i.dependentes.empty?
+              i.dependentes.each do |ii|
+                  @fila_resultado << [:subci,ii,"Depende de"]
+              end
+              i.composto_de.each do |ii|
+                  @fila_resultado << [:subci,ii,"Composto por"]
+              end
+
+          end    
+
+        # retorna uma matrix com varios elementos (.map)
+        # transforma cada elemento impactado numa tupla com [impactado, nivel + 1]
+        # concatena essas tuplas de impactados no final da fila
+
+        i.dependentes.map { |x| enqueue([x,nivel+1])}
+        i.composto_de.map { |x| enqueue([x,nivel+1])}
+        
       end
     end
     @fila_resultado
@@ -284,10 +341,10 @@ class CisController < ApplicationController
     # @customer.orders.delete(@order1)
      ci = Ci.find(params[:idci])
      dep = Ci.find_by_chave(params[:exclusao][:dependente]) 
-     if dep == nil || ! ci.dependentes.include?(dep) then
+     if dep == nil || ! ci.dependentes_all.include?(dep) then
         flash[:error] = "CI: \"#{params[:exclusao][:dependente]}\" nao encontrado ou nao dependente de \"#{ci.chave}\""
      else 
-        ci.dependentes.delete(dep)
+        ci.dependentes_all.delete(dep)
         ci.save
      end
      respond_to :js
@@ -352,7 +409,7 @@ class CisController < ApplicationController
   end
 
   def dependentes_all
-     @fila_dependentes = gera_relaciomentos(:dependentes_all)
+     @fila_dependentes = gera_relaciomentos_com_composto_de
      gera_grafico_relacionamento(params[:id],:dependentes_all)
      @imagem_dependentes_all = true
      render :dependentes

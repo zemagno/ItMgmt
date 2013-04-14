@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
    belongs_to :category
    belongs_to :site
    belongs_to :criticidade
+   belongs_to :fornecedor
  
    validates_presence_of :description
    validates_presence_of :status

@@ -16,7 +16,7 @@
   <% end %>
   <% if ci[0]==:subci then %>
      
-     &nbsp;&nbsp;&nbsp;Depende do<%= " #{ci[1].tipoci.tipo} " %>&nbsp;<%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao}" %></br>
+     &nbsp;&nbsp;&nbsp<%= "#{ci[2]} #{ci[1].tipoci.tipo} " %>&nbsp;<%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao} - #{ci[1].Owner}" %></br>
   <% end %>
 
 <% end %>

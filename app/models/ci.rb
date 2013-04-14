@@ -2,11 +2,13 @@ require "jiraable"
 class Ci < ActiveRecord::Base
   include Jiraable
 
-  attr_accessible :chave, :Owner, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira
+  attr_accessible :chave, :Owner, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id
 
   belongs_to :site
   belongs_to :tipoci
+  belongs_to :statusci
   has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
+ 
   
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
   has_many  :relacao_dependencia, 
@@ -17,6 +19,16 @@ class Ci < ActiveRecord::Base
 
   has_many  :dependentes, 
             :through => :relacao_dependencia, 
+            :include => "tipoci"
+
+  has_many  :relacao_composto_de, 
+            :class_name => "Relacionamento",  
+            :foreign_key => "impactado_id", 
+            :dependent => :delete_all, 
+            :conditions => "tipo = 1"
+
+  has_many  :composto_de, 
+            :through => :relacao_composto_de, 
             :include => "tipoci"
   
   has_many :relacao_dependencia_all, 
@@ -161,8 +173,11 @@ class Ci < ActiveRecord::Base
       indexes descricao
       indexes :Owner
       indexes site(:nome), :as => :localidade
+      indexes statusci(:status), as => :statusciativo
       indexes tipoci(:tipo), :as => :tipotipo
       indexes tipoci(:Descricao), :as => :descricaotipo
+      indexes atributo(:valor), :as => :valoratributo
+   
 
       #has site_id  # se eu quiser quiser filtrar..
       #has tipoci_id

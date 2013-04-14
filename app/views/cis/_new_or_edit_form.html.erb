@@ -55,6 +55,11 @@
 </label>
 <%= f.select :tipoci_id, @tiposci.collect { |c| [ c.tipo, c.id ] } %>
 
+<label>Status
+<span class="small">Status desse CI </span>
+</label>
+<%= f.select :statusci_id, @statusci.collect { |c| [ c.status, c.id ] } %>
+
 <div class="spacer"></div>
 <p></p>
 

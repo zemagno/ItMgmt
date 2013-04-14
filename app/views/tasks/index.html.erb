@@ -8,6 +8,8 @@
 	<th>Evento</th>
 	<th>Status</th>
 	<th>Criticidade</th>
+	<th>Fornecedor</th>
+	<th>Chamado</th>
 	<th>Autor</th>
 	<th>Site</th>
 	<th>Criado em</th>
@@ -26,10 +28,13 @@
 	    <td>
 	<%  end %>		
 	<%= task.criticidade.name %></td>
+	<td><%= task.fornecedor.nome %></td>
+	<td><%= task.chamado %></td>
 	
 	<td><%= task.author.name %></td>
 	<td><%= task.site.nome %></td>
 	<td><%= task.criado_em %></td>
+
 	
 	<td><%= link_to 'Editar', edit_task_path(task) %></td>
 	<td><%= link_to 'Apagar', task, :confirm => 'Are you sure?', :method => :delete %></td>
