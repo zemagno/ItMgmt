@@ -1,0 +1,25 @@
+<%= form_for(@cadrelatorio) do |f| %>
+  <% if @cadrelatorio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cadrelatorio.errors.count, "error") %> prohibited this cadrelatorio from being saved:</h2>
+
+      <ul>
+      <% @cadrelatorio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :consulta %><br />
+    <%= f.text_area :consulta %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

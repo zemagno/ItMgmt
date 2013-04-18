@@ -1,5 +1,8 @@
 ItMgmt::Application.routes.draw do
 
+  resources :cadrelatorios
+
+
   resources :statuscis
 
 
@@ -12,6 +15,11 @@ ItMgmt::Application.routes.draw do
   resources :areafornecedores
 
   # para todos nao ser confundido com ID
+
+
+  match 'relatorio/:id', to: "relatorio#index"
+  match 'email/:acao/:id', to: "email#enviar"
+
   match '/contratos/todos', to: 'contratos#todos'
   match '/fornecedores/todos', to: 'fornecedores#todos'
   match '/tasks/todos', to: 'tasks#todos'  
@@ -67,8 +75,6 @@ ItMgmt::Application.routes.draw do
   match 'cis/sobe', to: "cis#sobe"
   match 'cis/desce', to: "cis#desce"
   match 'CMDB', to: "cis#index"
-  
-  match 'email/:acao/:id', to: "email#enviar"
   
   resources :cis
   

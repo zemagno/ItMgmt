@@ -1,0 +1,21 @@
+<h1>Listing cadrelatorios</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @cadrelatorios.each do |cadrelatorio| %>
+  <tr>
+    <td><%= cadrelatorio.nome %></td>
+    <td><%= link_to 'Edit', edit_cadrelatorio_path(cadrelatorio) %></td>
+    <td><%= link_to 'Destroy', cadrelatorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Cadrelatorio', new_cadrelatorio_path %>
