@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130417232554) do
+ActiveRecord::Schema.define(:version => 20130419010428) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "atributos", ["ci_id"], :name => "index_atributos_on_ci_id"
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -49,11 +47,21 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
     t.datetime "updated_at"
   end
 
+  create_table "chamados", :force => true do |t|
+    t.integer  "SubTipoChamado_id"
+    t.integer  "StatusChamado_id"
+    t.string   "Solicitante"
+    t.string   "Userid"
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "checklists", :force => true do |t|
     t.integer  "evento_id"
     t.string   "nome"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "cis", :force => true do |t|
@@ -83,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
   create_table "contratos", :force => true do |t|
     t.string   "codcontrato"
     t.string   "descricao"
-    t.decimal  "valormensal",             :precision => 12, :scale => 2
+    t.decimal  "valormensal",             :precision => 10, :scale => 2
     t.integer  "tipocontrato_id"
     t.integer  "fornecedor_id"
     t.date     "datainicio"
@@ -121,19 +129,20 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
     t.string   "nome"
     t.date     "dataInicio"
     t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "fornecedores", :force => true do |t|
     t.string   "nome"
     t.string   "nomecompleto"
     t.string   "cnpj"
+    t.string   "endereco"
+    t.string   "contatos"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "anotacoes"
     t.integer  "areafornecedor_id"
-    t.text     "contatos"
     t.text     "enderecos"
   end
 
@@ -146,8 +155,8 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
   create_table "itens_checklists", :force => true do |t|
     t.integer  "checklist_id"
     t.string   "item"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "notificacaos", :force => true do |t|
@@ -161,8 +170,8 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
   create_table "padrao_checklists", :force => true do |t|
     t.string   "nome"
     t.text     "itens"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "parametros", :force => true do |t|
@@ -207,14 +216,14 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
   add_index "relacionamentos", ["dependente_id"], :name => "index_relacionamentos_on_dependente_id"
   add_index "relacionamentos", ["impactado_id"], :name => "index_relacionamentos_on_impactado_id"
 
-  create_table "relatorios", :force => true do |t|
-    t.text     "consulta"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "sites", :force => true do |t|
     t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "status_chamados", :force => true do |t|
+    t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -231,6 +240,13 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "sub_tipo_chamados", :force => true do |t|
+    t.integer  "TipoChamado_id"
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tasks", :force => true do |t|
     t.text     "description"
     t.string   "status"
@@ -241,12 +257,18 @@ ActiveRecord::Schema.define(:version => 20130417232554) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "Ativo"
-    t.datetime "Expiracao"
     t.boolean  "sucesso"
     t.string   "DocChange"
     t.string   "nome"
     t.integer  "fornecedor_id"
     t.string   "chamado"
+    t.boolean  "publica"
+  end
+
+  create_table "tipo_chamados", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tipocis", :force => true do |t|

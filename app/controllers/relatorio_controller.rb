@@ -1,4 +1,5 @@
 class RelatorioController < ApplicationController
+   layout 'relatorio' 
   def index
     sql = Cadrelatorio.find_by_nome(params[:id]).consulta
     puts sql
