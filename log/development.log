@@ -23488,3 +23488,407 @@ Served asset /jquery-ui.min.js - 304 Not Modified (0ms)
 
 Started GET "/assets/utils.js?body=1" for 127.0.0.1 at 2013-05-27 08:45:38 -0300
 Served asset /utils.js - 304 Not Modified (0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Processing by TasksController#index as HTML
+  [1m[35mTask Load (0.5ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (Ativo=1) ORDER BY criticidade_id, created_at DESC
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.1ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 1 LIMIT 1
+  [1m[36mFornecedor Load (0.2ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 5 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCriticidade Load (0.2ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 3 LIMIT 1[0m
+  [1m[35mFornecedor Load (0.2ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 47 ORDER BY nome ASC LIMIT 1
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 30 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 12 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.1ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1
+  [1m[36mFornecedor Load (0.2ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 4 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 12 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1[0m
+  [1m[35mFornecedor Load (0.2ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 11 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 47 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 7 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 3 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 4 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1[0m
+  [1m[35mSite Load (0.2ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 4 ORDER BY nome ASC LIMIT 1
+  Rendered tasks/index.html.erb within layouts/application (99.4ms)
+Completed 200 OK in 125ms (Views: 95.6ms | ActiveRecord: 11.8ms | Sphinx: 0.0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/chavecis.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /chavecis.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/CMDBstyle.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /CMDBstyle.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /jquery-ui-timepicker-addon.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ujs.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /jquery-ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.min.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /jquery.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /jquery-ui.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/utils.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:42 -0300
+Served asset /utils.js - 304 Not Modified (0ms)
+
+
+Started GET "/tasks" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Processing by TasksController#index as HTML
+  [1m[36mTask Load (0.6ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (Ativo=1) ORDER BY criticidade_id, created_at DESC[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCriticidade Load (0.2ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 1 LIMIT 1[0m
+  [1m[35mFornecedor Load (0.2ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 5 ORDER BY nome ASC LIMIT 1
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1[0m
+  [1m[35mSite Load (0.2ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.2ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 3 LIMIT 1
+  [1m[36mFornecedor Load (0.2ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 47 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 30 LIMIT 1
+  [1m[36mSite Load (0.2ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 12 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCriticidade Load (0.2ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1[0m
+  [1m[35mFornecedor Load (0.2ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 4 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 12 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1
+  [1m[36mFornecedor Load (0.2ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 11 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 47 ORDER BY nome ASC LIMIT 1
+  [1m[36mAuthor Load (0.2ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 7 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 3 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 4 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mSite Load (0.2ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 4 ORDER BY nome ASC LIMIT 1[0m
+  Rendered tasks/index.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 27ms (Views: 22.3ms | ActiveRecord: 3.5ms | Sphinx: 0.0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/chavecis.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /chavecis.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/CMDBstyle.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /CMDBstyle.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /jquery-ui-timepicker-addon.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /jquery.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ujs.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /jquery-ujs.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /application.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery.min.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /jquery.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui.min.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /jquery-ui.min.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/utils.js?body=1" for 127.0.0.1 at 2013-05-27 09:05:48 -0300
+Served asset /utils.js - 304 Not Modified (0ms)
+
+
+Started GET "/console" for 127.0.0.1 at 2013-05-27 09:05:53 -0300
+Processing by ConsoleController#index as HTML
+  [1m[35mTask Load (0.6ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (Ativo=1 and publica=1) ORDER BY criticidade_id, created_at DESC
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.1ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 1 LIMIT 1
+  [1m[36mFornecedor Load (0.1ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 5 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1[0m
+  Rendered console/index.html.erb within layouts/console (4.9ms)
+Completed 200 OK in 11ms (Views: 8.2ms | ActiveRecord: 1.3ms | Sphinx: 0.0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:53 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/chavecis.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:53 -0300
+Served asset /chavecis.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/CMDBstyle.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:53 -0300
+Served asset /CMDBstyle.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:53 -0300
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.css?body=1" for 127.0.0.1 at 2013-05-27 09:05:53 -0300
+Served asset /jquery-ui-timepicker-addon.css - 304 Not Modified (0ms)
+
+
+Started GET "/console" for 127.0.0.1 at 2013-05-27 09:06:03 -0300
+Processing by ConsoleController#index as HTML
+  [1m[35mTask Load (0.7ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (Ativo=1 and publica=1) ORDER BY criticidade_id, created_at DESC
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.1ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 1 LIMIT 1
+  [1m[36mFornecedor Load (0.1ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 5 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mSite Load (0.2ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1[0m
+  Rendered console/index.html.erb within layouts/console (4.6ms)
+Completed 200 OK in 10ms (Views: 7.9ms | ActiveRecord: 1.5ms | Sphinx: 0.0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:03 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/chavecis.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:03 -0300
+Served asset /chavecis.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/CMDBstyle.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:03 -0300
+Served asset /CMDBstyle.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:03 -0300
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:03 -0300
+Served asset /jquery-ui-timepicker-addon.css - 304 Not Modified (0ms)
+
+
+Started GET "/console" for 127.0.0.1 at 2013-05-27 09:06:13 -0300
+Processing by ConsoleController#index as HTML
+  [1m[35mTask Load (0.7ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (Ativo=1 and publica=1) ORDER BY criticidade_id, created_at DESC
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.2ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 1 LIMIT 1
+  [1m[36mFornecedor Load (0.2ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 5 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mSite Load (0.2ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1[0m
+  Rendered console/index.html.erb within layouts/console (4.9ms)
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 1.7ms | Sphinx: 0.0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:13 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/chavecis.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:13 -0300
+Served asset /chavecis.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/CMDBstyle.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:13 -0300
+Served asset /CMDBstyle.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:13 -0300
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:13 -0300
+Served asset /jquery-ui-timepicker-addon.css - 304 Not Modified (0ms)
+
+
+Started GET "/console" for 127.0.0.1 at 2013-05-27 09:06:23 -0300
+Processing by ConsoleController#index as HTML
+  [1m[35mTask Load (0.7ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (Ativo=1 and publica=1) ORDER BY criticidade_id, created_at DESC
+  [1m[36mCategory Load (0.2ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.2ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 1 LIMIT 1
+  [1m[36mFornecedor Load (0.1ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 5 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.1ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1[0m
+  Rendered console/index.html.erb within layouts/console (5.1ms)
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 1.5ms | Sphinx: 0.0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:23 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/chavecis.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:23 -0300
+Served asset /chavecis.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/CMDBstyle.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:23 -0300
+Served asset /CMDBstyle.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:23 -0300
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:23 -0300
+Served asset /jquery-ui-timepicker-addon.css - 304 Not Modified (0ms)
+
+
+Started GET "/console" for 127.0.0.1 at 2013-05-27 09:06:34 -0300
+Processing by ConsoleController#index as HTML
+  [1m[35mTask Load (0.4ms)[0m  SELECT `tasks`.* FROM `tasks` WHERE (Ativo=1) ORDER BY criticidade_id, created_at DESC
+  [1m[36mCategory Load (0.1ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.1ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 1 LIMIT 1
+  [1m[36mFornecedor Load (0.2ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 5 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mSite Load (0.2ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCriticidade Load (0.3ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 3 LIMIT 1[0m
+  [1m[35mFornecedor Load (0.1ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 47 ORDER BY nome ASC LIMIT 1
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 30 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 12 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.2ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1
+  [1m[36mFornecedor Load (0.2ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 4 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 12 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1[0m
+  [1m[35mFornecedor Load (0.2ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 11 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 47 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 7 LIMIT 1
+  [1m[36mSite Load (0.2ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 3 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 4 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1[0m
+  [1m[35mSite Load (0.2ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 4 ORDER BY nome ASC LIMIT 1
+  Rendered console/index.html.erb within layouts/console (67.2ms)
+Completed 200 OK in 122ms (Views: 62.5ms | ActiveRecord: 12.2ms | Sphinx: 0.0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:34 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/chavecis.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:34 -0300
+Served asset /chavecis.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/CMDBstyle.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:34 -0300
+Served asset /CMDBstyle.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:34 -0300
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:34 -0300
+Served asset /jquery-ui-timepicker-addon.css - 304 Not Modified (0ms)
+
+
+Started GET "/console" for 127.0.0.1 at 2013-05-27 09:06:37 -0300
+Processing by ConsoleController#index as HTML
+  [1m[36mTask Load (0.6ms)[0m  [1mSELECT `tasks`.* FROM `tasks` WHERE (Ativo=1) ORDER BY criticidade_id, created_at DESC[0m
+  [1m[35mCategory Load (0.2ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCriticidade Load (0.2ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 1 LIMIT 1[0m
+  [1m[35mFornecedor Load (0.1ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 5 ORDER BY nome ASC LIMIT 1
+  [1m[36mAuthor Load (0.1ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCriticidade Load (0.1ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 3 LIMIT 1
+  [1m[36mFornecedor Load (0.3ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 47 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mAuthor Load (0.2ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 30 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 12 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCriticidade Load (0.2ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1[0m
+  [1m[35mFornecedor Load (0.1ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 4 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 12 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1
+  [1m[36mFornecedor Load (0.2ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 11 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 6 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 47 ORDER BY nome ASC LIMIT 1
+  [1m[36mAuthor Load (0.3ms)[0m  [1mSELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 7 LIMIT 1[0m
+  [1m[35mSite Load (0.1ms)[0m  SELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 3 ORDER BY nome ASC LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` = 1 LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `criticidades`.* FROM `criticidades` WHERE `criticidades`.`id` = 5 LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `fornecedores`.* FROM `fornecedores` WHERE `fornecedores`.`id` = 4 ORDER BY nome ASC LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `authors`.* FROM `authors` WHERE `authors`.`id` = 23 LIMIT 1
+  [1m[36mSite Load (0.1ms)[0m  [1mSELECT `sites`.* FROM `sites` WHERE `sites`.`id` = 4 ORDER BY nome ASC LIMIT 1[0m
+  Rendered console/index.html.erb within layouts/console (49.2ms)
+Completed 200 OK in 55ms (Views: 50.6ms | ActiveRecord: 3.0ms | Sphinx: 0.0ms)
+
+
+Started GET "/assets/jquery-ui.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:37 -0300
+Served asset /jquery-ui.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/chavecis.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:37 -0300
+Served asset /chavecis.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/CMDBstyle.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:37 -0300
+Served asset /CMDBstyle.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/scaffold.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:37 -0300
+Served asset /scaffold.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/jquery-ui-timepicker-addon.css?body=1" for 127.0.0.1 at 2013-05-27 09:06:37 -0300
+Served asset /jquery-ui-timepicker-addon.css - 304 Not Modified (0ms)
