@@ -2,6 +2,7 @@ class SitesController < ApplicationController
   before_filter :autenticacao, :except => [:index, :show] # linha adicionada
   # GET /sites
   # GET /sites.xml
+  authorize_resource 
   def index
     @sites = Site.all
 

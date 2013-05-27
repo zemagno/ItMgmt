@@ -1,6 +1,7 @@
 class StatusPedidosController < ApplicationController
   # GET /status_pedidos
   # GET /status_pedidos.xml
+  authorize_resource 
   def index
     @status_pedidos = StatusPedido.all
 

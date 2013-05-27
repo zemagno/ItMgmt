@@ -1,6 +1,7 @@
-require "queueable"
+  require "queueable"
 class CisController < ApplicationController
   include Queueable
+  authorize_resource 
 
   #layout 'application_novolyaout' 
 

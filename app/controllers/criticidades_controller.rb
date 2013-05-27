@@ -1,6 +1,7 @@
 class CriticidadesController < ApplicationController
   # GET /criticidades
   # GET /criticidades.xml
+  authorize_resource 
   def index
     @criticidades = Criticidade.all
 

@@ -2,6 +2,8 @@ class AuthorsController < ApplicationController
    before_filter :autenticacao, :except => [:index, :show] # linha adicionada
   # GET /authors
   # GET /authors.xml
+  authorize_resource 
+  
   def index
     @authors = Author.all
 

@@ -1,6 +1,7 @@
 class CadrelatoriosController < ApplicationController
-  # GET /cadrelatorios
-  # GET /cadrelatorios.json
+  
+  authorize_resource
+  
   def index
     @cadrelatorios = Cadrelatorio.all
 

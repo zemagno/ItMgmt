@@ -1,10 +1,19 @@
 class TasksController < ApplicationController
-  before_filter :autenticacao, :except => [:index, :show] # linha adicionada
+  #:autenticacao, :except => [:index, :show] # linha adicionada
+  authorize_resource :except => [:index]
   
-  layout 'application', :except => :consol 
+  layout 'application', :except => :console
     
   def index
-    @tasks = Task.ativos
+
+    #if can? :manage, @task
+         @tasks = Task.ativos
+    #else
+    #     @tasks = Task.publicas
+    #end
+
+    #@tasks = ( can? :manage, @task ? Task.ativos : Task.publicas )
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
@@ -13,7 +22,6 @@ class TasksController < ApplicationController
   end
 
   def todos
-    puts "pesquisa por: #{params[:status]}"
     @tasks = Task.todos
     respond_to do |format|
         format.html { render :index}
@@ -22,11 +30,10 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find(params[:id])
+        @task = Task.find(params[:id])
   end
 
   def new
-    puts "controller: NEW"
     @task = Task.new
     @authors = Author.all
     @categories = Category.all
@@ -59,7 +66,6 @@ class TasksController < ApplicationController
         distribui("Alerta: #{@task.status}",@task)
         format.html { redirect_to(@task, :notice => 'Tarefa criada com sucesso.') }
       else
-        puts "deu merda..."
         flash[:error] = "<ul>" + @task.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
         
         @authors = Author.all

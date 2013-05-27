@@ -29,6 +29,14 @@
 			<div id="logo">
 				<h1><%= link_to 'BRQ Operacao', tasks_path %></h1>
 			</div>
+			<div id="user_nav">
+        		<% if current_user %>
+        		  	Logado como <%= current_user.name %>!
+          			<%= link_to "Deslogar", signout_path %>
+        		<% else %>
+          			<%= link_to "Se logar com Google", "/auth/google_apps" %>
+        		<% end %>
+      </div>
 			<div id="menu">
 				<ul>
 					<li class="current_page_item"><%= link_to 'Alertas', tasks_path %></li>
@@ -40,9 +48,15 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- end #header -->
 	<div id="page">
 			<div id="page-bgtop">
+				<div >
+				<% flash.each do |name, msg| %>
+                        <%= content_tag :div, msg, id: "flash_#{name}" %>
+                <% end %>
+				</div>	
 				<div id="page-bgbtm">
 					
 					<%= yield %>

@@ -1,6 +1,7 @@
 class TipocisController < ApplicationController
   # GET /tipocis
   # GET /tipocis.json
+  authorize_resource 
   def index
     @tipocis = Tipoci.all( :order => "tipo ASC")
 

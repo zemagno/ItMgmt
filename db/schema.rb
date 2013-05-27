@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130419010428) do
+ActiveRecord::Schema.define(:version => 20130524214242) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -287,6 +287,15 @@ ActiveRecord::Schema.define(:version => 20130419010428) do
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "roles"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "view_templates", :force => true do |t|

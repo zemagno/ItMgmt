@@ -1,6 +1,7 @@
 class ViewTemplatesController < ApplicationController
   # GET /view_templates
   # GET /view_templates.json
+  authorize_resource 
   def index
     @view_templates = ViewTemplate.all
 

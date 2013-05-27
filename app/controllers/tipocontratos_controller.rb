@@ -1,6 +1,7 @@
 class TipocontratosController < ApplicationController
   # GET /tipocontratos
   # GET /tipocontratos.xml
+  authorize_resource 
   def index
     @tipocontratos = Tipocontrato.all
 

@@ -1,6 +1,7 @@
 class PedidosController < ApplicationController
   # GET /pedidos
   # GET /pedidos.xml
+  authorize_resource 
   def index
     @pedidos = Pedido.all
 

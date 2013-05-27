@@ -1,6 +1,8 @@
 class AreafornecedoresController < ApplicationController
   # GET /areafornecedores
   # GET /areafornecedores.xml
+  authorize_resource 
+  
   def index
     @areafornecedores = Areafornecedor.all
 

@@ -1,6 +1,7 @@
 class PadraoChecklistsController < ApplicationController
   # GET /padrao_checklists
   # GET /padrao_checklists.xml
+  authorize_resource 
   def index
     @padrao_checklists = PadraoChecklist.all
 

@@ -67,6 +67,6 @@
 </h1>
  
 
-<%= link_to 'Editar', edit_task_path(@task) %> 
+<%= link_to 'Editar', edit_task_path(@task) unless cannot? :manager, @alerta %> 
 <%= link_to 'Voltar', tasks_path %>
  </div>

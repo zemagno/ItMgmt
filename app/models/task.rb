@@ -27,6 +27,10 @@ class Task < ActiveRecord::Base
      Task.find(:all, :order => "criticidade_id, created_at DESC")
    end
 
+   def self.publicas
+    Task.find(:all, :order => "criticidade_id, created_at DESC", :conditions => "Ativo=1 and publica=1")
+  end
+
    def nome_autor
     author.name
   end

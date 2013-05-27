@@ -1,6 +1,9 @@
 class DicdadosController < ApplicationController
   # GET /dicdados
   # GET /dicdados.xml
+  authorize_resource
+  
+
   def index
     @dicdados = Dicdado.paginate(:page => params[:page])
     @tipocis = Tipoci.all

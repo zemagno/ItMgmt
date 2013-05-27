@@ -1,6 +1,7 @@
 class ParametrosController < ApplicationController
   # GET /parametros
   # GET /parametros.xml
+  authorize_resource 
   def index
     @parametros = Parametro.all
 

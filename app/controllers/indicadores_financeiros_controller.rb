@@ -1,6 +1,7 @@
 class IndicadoresFinanceirosController < ApplicationController
   # GET /indicadores_financeiros
   # GET /indicadores_financeiros.xml
+  authorize_resource 
   def index
     @indicadores_financeiros = IndicadorFinanceiro.all
 

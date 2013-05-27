@@ -1,6 +1,7 @@
 class StatuscisController < ApplicationController
   # GET /statuscis
   # GET /statuscis.json
+  authorize_resource 
   def index
     @statuscis = Statusci.all
 

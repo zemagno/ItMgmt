@@ -1,6 +1,7 @@
 class NotificacaosController < ApplicationController
   # GET /notificacaos
   # GET /notificacaos.xml
+  authorize_resource 
   def index
     @notificacaos = Notificacao.all
 

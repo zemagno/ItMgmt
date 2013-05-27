@@ -2,7 +2,13 @@ class ConsoleController < ApplicationController
  
    layout 'console' 
     def index
-      @tasks = Task.ativos
+      if can? :manage, @alertas
+         puts "pode manage"
+         @tasks = Task.ativos
+    else
+         puts "nao pode manage"
+         @tasks = Task.publicas
+    end
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @tasks }
