@@ -29,4 +29,5 @@ group :assets do
 end
 
 gem 'omniauth-google-apps'
-gem 'cancan'
+gem 'cancan' 
+
