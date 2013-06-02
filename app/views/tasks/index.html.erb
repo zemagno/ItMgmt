@@ -6,6 +6,7 @@
   <tr>
 	<th>Cliente</th>
 	<th>Evento</th>
+	<th>Tipo</th>
 	<th>Status</th>
 	<th>Criticidade</th>
 	<th>Fornecedor</th>
@@ -20,6 +21,7 @@
   <tr>
 	<td><%= link_to task.category.name, task_path(task)%></td>
 	<td> <%= link_to "#{task.nome}:#{task.description}"[0,100], task_path(task), {:style=>'color:#000000', :class => "css_class"} %></td>
+	<td><%= task.tipotask %></td>
 	<td><%= task.status %></td>
 	
 	<% 	if task.criticidade.critico? %>

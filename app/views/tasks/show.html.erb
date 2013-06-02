@@ -22,14 +22,26 @@
     </h1>
 <% end %>
 
-<h1>
-  <b>Maudança Executada com Sucesso ?</b>
-  <%= @task.sucesso ? 'Sim' : 'Nao' %>
-</h1>
 
 <h1>
   <b>Alerta Publico ?</b>
   <%= @task.publica ? 'Sim' : 'Nao' %>
+</h1>
+
+<h1>
+  <b>Tipo de Alerta:</b>
+  <%= @task.tipotask %>
+</h1>
+
+
+<h1>
+  <b>Status do Alerta:</b>
+  <%= @task.status %>
+</h1>
+
+<h1>
+  <b>Criticidade:</b>
+  <%= @task.criticidade.name %>
 </h1>
 
 
@@ -39,10 +51,7 @@
   em <%= @task.criado_em %>
   registrado por <%= @task.author.name %>
 </h1>
-<h1>
-  <b>Criticidade:</b>
-  <%= @task.criticidade.name %>
-</h1>
+
 
 
 <h1>
@@ -53,6 +62,11 @@
 <h1>
   <b>Chamado:</b>
   <%= @task.chamado %>
+</h1>
+
+<h1>
+  <b>Executor:</b>
+  <%= @task.author.name %>
 </h1>
 
 

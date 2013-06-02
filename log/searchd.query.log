@@ -1,0 +1,3 @@
+[Sun Jun  2 19:32:56.297 2013] 0.008 sec [bool/2/rel 18 (0,20)] [ci_core] HSBC
+[Sun Jun  2 19:33:06.462 2013] 0.001 sec [bool/2/rel 0 (0,20)] [ci_core] servidor virtual s.o.
+[Sun Jun  2 19:33:09.432 2013] 0.000 sec [bool/2/rel 345 (0,20)] [ci_core] servidor virtual

@@ -4,15 +4,13 @@ class ContratosController < ApplicationController
   #  layout 'application_novolyaout' 
   authorize_resource 
   def index
-    @search = params[:search] || session[:search]
-    session[:search] = @search
+    @search = params[:search] || session[:search_contratos]
+    session[:search_contratos] = @search
 
     begin
       @contratos = Contrato.search params[:search], :match_mode => :boolean, :per_page => 15 , :page => params[:page]
       @contratos.compact!
-      puts "search ok"
     rescue 
-      puts "search com problema"
       flash[:error] = "Error[DB0001] - Search Engine desligado"
       @contratos = Contrato.paginate(:page => params[:page])
     end

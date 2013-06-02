@@ -31,19 +31,12 @@ class CisController < ApplicationController
   end
  
   def show
-    #@ci = Ci.find(params[:id])
-    #@atributos = @ci.atributos
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     cache(@ci)
   end
   
   def edit
-    # @ci = Ci.find(params[:id])
-    # @atributos = @ci.atributos
     @ci, @atributos = Ci.find_com_atributos(params[:id])
-    #@sites = Site.all
-    #@tiposci = Tipoci.all
-    #@statusci = Statusci.all
     carrega_agregadas
   end
 
@@ -92,8 +85,8 @@ class CisController < ApplicationController
 
   def index
 
-    @search = params[:search] || session[:search]
-    session[:search] = @search
+    @search = params[:search] || session[:search_cis]
+    session[:search_cis] = @search
     session[:oldCI] = nil
     
     begin
@@ -104,14 +97,6 @@ class CisController < ApplicationController
       flash[:error] = "Error[DB0001] - Search Engine desligado"
       @cis = Ci.paginate(:page => params[:page])
     end 
-    #if @cis.length==1 then 
-    #  @ci = @cis[0]
-    #  session[:oldCI] = @ci.id
-    #  session[:search] = nil # senao nao volta para tela de listagem, pois ao voltar 
-    #                         # ele vai entrar novamente no i'm lucky
-    #  render :show
-    #  return
-    #end
     
     respond_to do |format|
         format.html
@@ -193,6 +178,7 @@ class CisController < ApplicationController
     enqueue([@ci,0])
 
 
+
     while not queue.empty?
         #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
         @i,nivel = dequeue
@@ -228,8 +214,10 @@ class CisController < ApplicationController
   def gera_relaciomentos (direcao)
     
     @ci = Ci.find(params[:id])
+    @email_impactados = ""
     init_queue
-    
+    @email_impactados << @ci.Owner unless @ci.Owner == ""
+
     enqueue([@ci,0])
     edges_visitado = Hash.new
 
@@ -243,6 +231,7 @@ class CisController < ApplicationController
       if nivel <= nivel_max then
           if not edges_visitado[i.chave] then        
               edges_visitado[i.chave] = true
+              @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == ""
               @fila_resultado << [:ci,i] unless i.send(direcao).empty?
               i.send(direcao).each do |ii|
                   @fila_resultado << [:subci,ii, "Depende de"]
@@ -256,6 +245,7 @@ class CisController < ApplicationController
         i.send(direcao).map { |x| enqueue([x,nivel+1])}
       end
     end
+    @email_impactados = @email_impactados.gsub(/\s+/, "").split(",").uniq.join(",")
     @fila_resultado
   end
 

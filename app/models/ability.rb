@@ -64,11 +64,11 @@ class Ability
     #   can [:show, :index] , Task
     #   can [:index], Cadrelatorio
     # end
-    if user
+    #if user
        can :manage, :all
-    else 
-       can [:show, :index], @task
-       can [:show, :index], Task
-    end
+    #else 
+    ##   can [:show, :index], @task
+    #   can [:show, :index], Task
+    #end
   end
 end

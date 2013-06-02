@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130524214242) do
+ActiveRecord::Schema.define(:version => 20130528101551) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -121,6 +121,8 @@ ActiveRecord::Schema.define(:version => 20130524214242) do
     t.datetime "updated_at"
     t.integer  "ordem"
     t.string   "url"
+    t.string   "descricao"
+    t.string   "valores"
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
@@ -263,6 +265,8 @@ ActiveRecord::Schema.define(:version => 20130524214242) do
     t.integer  "fornecedor_id"
     t.string   "chamado"
     t.boolean  "publica"
+    t.string   "tipotask"
+    t.text     "Descricaorestrita"
   end
 
   create_table "tipo_chamados", :force => true do |t|
@@ -287,6 +291,12 @@ ActiveRecord::Schema.define(:version => 20130524214242) do
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tipotasks", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

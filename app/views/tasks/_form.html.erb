@@ -32,11 +32,6 @@
 <%= f.text_field :DocChange, :size => 70 %>
 <div class="spacer"></div>
 
-<label>Sucesso ?
-<span class="small">Mudança realizada com sucesso</span>
-</label>
-<div class="field">
-    <%= f.check_box :sucesso %>
 
 <label>Publica ?
 <span class="small">Esse alerta pode ser mostrado para os gestores? </span>
@@ -47,12 +42,16 @@
 </div>
 <div class="spacer"></div>
 
-
-
-<label>Status
+<label>Tipo
 <span class="small">Qual o tipo de alerta ?</span>
 </label>
-<%= f.select :status, (["Mudança", "Incidente", "Info"]) %>
+<%= f.select :tipotask, (["Mudança", "Incidente", "Info"]) %>
+<div class="spacer"></div>
+
+<label>Status
+<span class="small">Qual o status de alerta ?</span>
+</label>
+<%= f.select :status, (["Aberto", "Normalizado" , "Resolvido", "Executado com Sucesso", "Cancelado","Rollback"]) %>
 <div class="spacer"></div>
 
 <label>Criticidade

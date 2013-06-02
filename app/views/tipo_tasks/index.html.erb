@@ -1,0 +1,23 @@
+<h1>Listing tipo_tasks</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tipo_tasks.each do |tipo_task| %>
+  <tr>
+    <td><%= tipo_task.nome %></td>
+    <td><%= link_to 'Show', tipo_task %></td>
+    <td><%= link_to 'Edit', edit_tipo_task_path(tipo_task) %></td>
+    <td><%= link_to 'Destroy', tipo_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tipo task', new_tipo_task_path %>

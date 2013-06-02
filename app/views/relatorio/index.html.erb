@@ -6,15 +6,10 @@
  <% end %> 
   </tr>
 
-<% @resultado.each do |parametro| %>
+<% @resultado.each do |fields| %>
   <tr>
-
-    <% parametro.each_with_index do |valor,i| %>
-       <% if i==0 then %>
-           <td><a href="/cis/<%= valor %>"/a><%= valor %></a></td>
-       <% else %>       
-          <td><%= valor %></td>
-       <% end %>     
+    <% fields.each_with_index do |valor,i| %>
+       <td><%= genField(valor,@campos[i],0,fields).html_safe %></td>       
   <% end %> 
   </tr>
 <% end %>

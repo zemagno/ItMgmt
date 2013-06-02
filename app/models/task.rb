@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
    belongs_to :site
    belongs_to :criticidade
    belongs_to :fornecedor
+   #belongs_to :tipotask
  
    validates_presence_of :description
    validates_presence_of :status
@@ -11,6 +12,7 @@ class Task < ActiveRecord::Base
    validates_presence_of :category
    validates_presence_of :site
    validates_presence_of :criticidade
+   #validates_presence_of :tipotask   
    
    # validates_presence_of :nome
    

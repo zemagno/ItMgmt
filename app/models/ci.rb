@@ -79,14 +79,14 @@ class Ci < ActiveRecord::Base
     attr_existentes = Hash.new
     
     # monto um hash com todos atributos que esse CI deve ter
-    tipoci.dicdados.map {|x| attr_existentes[x.id] = [x.nome,nil,x.url]} 
+    tipoci.dicdados.map {|x| attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao]} 
     
     # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
     atributo.map do |x| 
        # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
        # entao eu crio esse atributo no hash
        if ! attr_existentes[x.dicdado.id] then
-          attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url]
+          attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.descricao]
        end
       attr_existentes[x.dicdado.id][1] = x.valor 
      end 
@@ -156,15 +156,18 @@ class Ci < ActiveRecord::Base
   end
   
   def self.find_gen(param)
+    puts "Vou procurar por #{param}"
     begin 
        Ci.includes(:atributo => :dicdado).find(param)
     rescue ActiveRecord::RecordNotFound
+      puts "nao achei. Vou procurar pela chave"
       Ci.includes(:atributo => :dicdado).find_by_chave(param)
     end
   end
 
   def self.find_com_atributos(id)
     @c = Ci.find_gen(id)
+    puts @c
     [@c, @c.atributos] 
   end
 

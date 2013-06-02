@@ -30,4 +30,5 @@ end
 
 gem 'omniauth-google-apps'
 gem 'cancan' 
+#gem 'dalli'
 

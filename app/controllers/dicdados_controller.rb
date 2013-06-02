@@ -5,7 +5,19 @@ class DicdadosController < ApplicationController
   
 
   def index
-    @dicdados = Dicdado.paginate(:page => params[:page])
+
+    @search = params[:search] || session[:search_dicdados]
+    session[:search_dicdados] = @search
+
+    
+    begin
+      @dicdados = Dicdado.search params[:search], :match_mode => :boolean, :per_page => 15 , :page => params[:page]
+      @dicdados.compact!
+    rescue 
+      flash[:error] = "Error[DB0001] - Search Engine desligado"
+      @dicdados = Dicdado.paginate(:page => params[:page])
+ end
+
     @tipocis = Tipoci.all
 
     respond_to do |format|

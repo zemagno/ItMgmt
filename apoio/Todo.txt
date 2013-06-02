@@ -1,6 +1,21 @@
+Mover navegacao para dentro do Ci
+Armazenar no memcached por 10 min
+email pega do memcached.
+chave (impactados_ci)
+? posso usar isso para todo mundo, porem tenho que limpar o cache quando alterem qq ci ou relacionamento com esse ci..
+
+[ ] - capistrano
+
+
+[ ] - cadeia de impactador no memcache por x min. Email para impactados procura nesse memcached. Se estiver expirado, vai no bd..
+[ ] - cancan se perde com plural de fornecedores
+[ ] - tirar html hardcoded do _new_or_edit_form.html.erb do CIS e colocar f.select
+[ ] - estudar helper
+[ ] = sphinx no dicdados
+
 Urgente
 
-Mover o geradependente para fora, para poder ser chamado por todos.
+Mover o geradependente para fora (model CI ?) para poder ser chamado por todos.
 Colocar as tuplas nos dependentes/impactados, para nao ter que ficar indo no modelo de dentro da view.
 Essas tuplas serão usadas por outras acoes, tais como Email de distribuicao, sites impactados (e registrar no tasks - copiados, sites impactados, etc )
 alerta ter campo de ASerInformado, SitesImpactados 
@@ -20,22 +35,19 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 - varios checklist podem ser iniciados quando criar um tipo de CI
 - cada atributo tem um boolean (o checklist) e uma string de obs
 
+[ ] - procurar que tabelas de cadastros mais vao no DB e colocar no memcached Rails.cache.fetch 
+
 [ ] - criar treelist para mostrar dependencias� ir abrindo arvore	
 
-[ ] - data da instalação do CI e data do ultimo boot (para servidores)
+[ ] - data da instalacao do CI e data do ultimo boot (para servidores)
 
 [ ] - tirar a porta 3000 - rvmsudo rails s -p 80 - colocar um servidor http na frente
 
-[ ] - gestao de ramal no ItMgmt
-
 [ ] - painel de alertas (com relatorio, status do pedido de link, etc)
-
-[ ] - tirar os gera relacionamentos e graficos de dentro do controler..
 
 [ ] - colocar .include em varios lugares
       view cis.show chama @cis.dependentes e esse fica navegando em tiposcis.
       tem que mudar do atributo .dependentes para um metodo da classe e essa pegar os dependentes com os tipocis. 
-[ ] - colocar seguranca e autenticacao no AD
 [ ] - colocar em producao
 [ ] - colocar link nos contratos para fornecedor e texto puro
 [ ] - area fornecedor
@@ -50,6 +62,9 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 
 [ ] - sphinx
       fornecedor (com area)
+      dicdados
+
+
       o que mais ??
 
 [ ] - colocar colchetes em volta de todos os links nas paginas de listagem e edicao
@@ -400,3 +415,4 @@ Posso implementar os metodos
 dep[i]==> relacao_dependencia[i].dependente
 imp
 e_composto_de[1] ==> igual ao dep, porem filtrando por somente é composto de
+

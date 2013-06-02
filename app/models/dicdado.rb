@@ -8,4 +8,9 @@ class Dicdado < ActiveRecord::Base
   
   self.per_page = 20  
 
+  define_index do
+      indexes nome
+      indexes tipoci(:tipo), :as => :tipoci
+  end
+
 end

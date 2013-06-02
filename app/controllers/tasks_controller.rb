@@ -40,6 +40,7 @@ class TasksController < ApplicationController
     @sites = Site.all
     @criticidades = Criticidade.all
     @fornecedores = Fornecedor.all
+    #@tipotasks = Tipotask.all
   end
 
   def edit
@@ -49,7 +50,8 @@ class TasksController < ApplicationController
     @sites = Site.all
     @criticidades = Criticidade.all
     @fornecedores = Fornecedor.all
-  end
+    #@tipotasks = Tipotask.all
+end
   
   def distribui(subject,task)
     #message = UserMailer.email_alerta("josecarlosmagno@me.com",subject,task)
@@ -64,7 +66,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       if @task.save
         distribui("Alerta: #{@task.status}",@task)
-        format.html { redirect_to(@task, :notice => 'Tarefa criada com sucesso.') }
+        format.html { redirect_to(@task, :notice => 'Alerta criado com sucesso.') }
       else
         flash[:error] = "<ul>" + @task.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
         
@@ -72,6 +74,8 @@ class TasksController < ApplicationController
         @categories = Category.all
         @sites = Site.all
         @criticidades = Criticidade.all
+        #@tipotasks = Tipotask.all
+        @fornecedores = Fornecedor.all
         @task = Task.new(params[:task])
         format.html { render :action => "new" }
       end
@@ -90,6 +94,7 @@ class TasksController < ApplicationController
         @categories = Category.all
         @sites = Site.all
         @criticidades = Criticidade.all
+        @fornecedores = Fornecedor.all
         format.html { render :action => "edit" }
       end
     end

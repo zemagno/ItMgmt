@@ -2,7 +2,7 @@ class FornecedoresController < ApplicationController
   # GET /fornecedores
   # GET /fornecedores.xml
   # layout 'application_novolyaout'
-  authorize_resource  
+  #authorize_resource  
   def index
     @fornecedores = Fornecedor.paginate(:page => params[:page])
 
