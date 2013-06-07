@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528101551) do
+ActiveRecord::Schema.define(:version => 20130605010614) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -267,6 +267,7 @@ ActiveRecord::Schema.define(:version => 20130528101551) do
     t.boolean  "publica"
     t.string   "tipotask"
     t.text     "Descricaorestrita"
+    t.text     "comentario"
   end
 
   create_table "tipo_chamados", :force => true do |t|

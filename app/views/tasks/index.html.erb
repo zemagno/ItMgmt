@@ -1,6 +1,6 @@
 <h1>Alertas e Mudancas</h1>
  <p>
-   <%= link_to '[Novo Alerta]', new_task_path unless cannot? :manager, @alerta %> 
+   <%= link_to '[Novo Alerta]', new_task_path unless cannot? :manage, "tasks" %> 
 </p>
 <table>
   <tr>
@@ -37,7 +37,7 @@
 	<td><%= task.site.nome %></td>
 	<td><%= task.criado_em %></td>
 
-	<% if can? :manager, @alerta %>
+	<% if can? :manager, "tasks" %>
 	<td><%= link_to 'Editar', edit_task_path(task) %></td>
 	<td><%= link_to 'Apagar', task, :confirm => 'Are you sure?', :method => :delete %></td>
 	<% end %>

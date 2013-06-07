@@ -37,38 +37,33 @@ class Ability
     # usuario - ver alerta, relatorios [ talvez CMDB]
     #
     #
-    # if user
-    #   if user.is_a :admin
-    #       puts "======> can manage all"
-    #     can :manage, :all
-    #   elsif user.is_a :suporte
-    #     puts "======> can manage alertas"
-    #     can :manage, :all
-    #     cannot :manage, Dicdado
-    #     cannot :manage, @Dicdado
-    #     cannot :manage, Cadrelatorio
-    #     cannot :manage, @Cadrelatorio
-    #     cannot :manage, Tipoci
-    #     cannot :manage, @Tipoci
-    #   else
-    #     puts "======> can read all"
-    #     can [:show, :index] , @task
-    #     can [:show, :index] , Task
-    #     #can [:index], relatorio
-    #     can [:index], Cadrelatorio
+    if user
+      if user.is_a :admin
+          puts "======> can manage all"
+        can :manage, :all
+      elsif user.is_a :suporte
+        puts "======> can manage alertas"
+        can :manage, :all
+        cannot :manage, Dicdado
+        cannot :manage, @Dicdado
+        cannot :manage, Cadrelatorio
+        cannot :manage, @Cadrelatorio
+        cannot :manage, Tipoci
+        cannot :manage, @Tipoci
+      else
+        puts "======> can read all"
+        can [:show, :index] , "tasks"
+        can [:index], "relatorio"
         
-    #   end
-    # else 
-    #   puts "======> can read all - publico"
-    #   can [:show, :index] , @task
-    #   can [:show, :index] , Task
-    #   can [:index], Cadrelatorio
-    # end
+      end
+    else 
+      puts "======> can read all - publico"
+      can [:show, :index] , "tasks"
+      can [:index], "relatorio"
+      
+    end
     #if user
-       can :manage, :all
-    #else 
-    ##   can [:show, :index], @task
-    #   can [:show, :index], Task
+    #   can :manage, :all
     #end
   end
 end

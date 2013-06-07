@@ -16,6 +16,14 @@
 
  <p></p>
 
+ <% if can? :manager, "tasks" %>
+ <h1>
+  <b>Info Interna:</b>
+ </h1>
+  <%= content_tag('pre',@task.comentario) %>
+
+ <p></p>
+<%end%> 
  
 <% if ! @task.DocChange.blank?  %>
     <h1><a href="javascript: void(0)" onclick="window.open('','_new').location.href='<%= @task.DocChange %>'">[Doc. Ultima Mudanca]</a>
@@ -81,6 +89,6 @@
 </h1>
  
 
-<%= link_to 'Editar', edit_task_path(@task) unless cannot? :manager, @alerta %> 
+<%= link_to 'Editar', edit_task_path(@task) unless cannot? :manage, "tasks" %> 
 <%= link_to 'Voltar', tasks_path %>
  </div>

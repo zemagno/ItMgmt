@@ -6,11 +6,11 @@ class TasksController < ApplicationController
     
   def index
 
-    #if can? :manage, @task
+    if can? :manage, "tasks"
          @tasks = Task.ativos
-    #else
-    #     @tasks = Task.publicas
-    #end
+    else
+         @tasks = Task.publicas
+    end
 
     #@tasks = ( can? :manage, @task ? Task.ativos : Task.publicas )
 

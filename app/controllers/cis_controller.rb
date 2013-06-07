@@ -222,6 +222,7 @@ class CisController < ApplicationController
     edges_visitado = Hash.new
 
     nivel_max = 8
+    nivel_max_email = 8
 
     @fila_resultado = []
 
@@ -231,7 +232,7 @@ class CisController < ApplicationController
       if nivel <= nivel_max then
           if not edges_visitado[i.chave] then        
               edges_visitado[i.chave] = true
-              @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == ""
+              @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
               @fila_resultado << [:ci,i] unless i.send(direcao).empty?
               i.send(direcao).each do |ii|
                   @fila_resultado << [:subci,ii, "Depende de"]
@@ -245,7 +246,7 @@ class CisController < ApplicationController
         i.send(direcao).map { |x| enqueue([x,nivel+1])}
       end
     end
-    @email_impactados = @email_impactados.gsub(/\s+/, "").split(",").uniq.join(",")
+    @email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
     @fila_resultado
   end
 

@@ -1,3 +1,8 @@
 [Sun Jun  2 19:32:56.297 2013] 0.008 sec [bool/2/rel 18 (0,20)] [ci_core] HSBC
 [Sun Jun  2 19:33:06.462 2013] 0.001 sec [bool/2/rel 0 (0,20)] [ci_core] servidor virtual s.o.
 [Sun Jun  2 19:33:09.432 2013] 0.000 sec [bool/2/rel 345 (0,20)] [ci_core] servidor virtual
+[Tue Jun  4 22:12:25.873 2013] 0.000 sec [bool/2/rel 682 (0,20)] [ci_core]
+[Tue Jun  4 22:15:53.820 2013] 0.000 sec [bool/2/rel 682 (0,20)] [ci_core]
+[Tue Jun  4 22:22:43.898 2013] 0.000 sec [bool/2/rel 682 (0,20)] [ci_core]
+[Thu Jun  6 00:00:05.257 2013] 0.000 sec [bool/2/rel 682 (0,20)] [ci_core]
+[Thu Jun  6 00:00:09.070 2013] 0.000 sec [bool/2/rel 14 (0,20)] [ci_core] jira

@@ -15,7 +15,7 @@
 <% end %>
 
 <% if @email_impactados then %>
-   <a href="mailto:<%=@email_impactados%>?subject=Alerta - <%=@ci.chave%>"\>[Email Impactados/Dependentes]</a> 
+   <a href="mailto:?bcc=<%=@email_impactados%>&subject=Alerta - <%=@ci.chave%>"\>[Email Impactados/Dependentes]</a> 
 <% end %>
 
 

@@ -1,8 +1,9 @@
 class RelatorioController < ApplicationController
-   layout 'relatorio' 
-   
+  layout 'relatorio' 
+   #authorize_resource
+
   def index
-    authorize!(:index, Cadrelatorio)   
+    authorize!(:index, "relatorio")   
     sql = Cadrelatorio.find_by_nome(params[:id]).consulta
     puts sql
     mysql_res = ActiveRecord::Base.connection.execute(sql)

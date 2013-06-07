@@ -1,4 +1,4 @@
-Mover navegacao para dentro do Ci
+Mover navegacao para dentro do model Ci
 Armazenar no memcached por 10 min
 email pega do memcached.
 chave (impactados_ci)
@@ -11,16 +11,15 @@ chave (impactados_ci)
 [ ] - cancan se perde com plural de fornecedores
 [ ] - tirar html hardcoded do _new_or_edit_form.html.erb do CIS e colocar f.select
 [ ] - estudar helper
-[ ] = sphinx no dicdados
 
 Urgente
 
 Mover o geradependente para fora (model CI ?) para poder ser chamado por todos.
 Colocar as tuplas nos dependentes/impactados, para nao ter que ficar indo no modelo de dentro da view.
-Essas tuplas serão usadas por outras acoes, tais como Email de distribuicao, sites impactados (e registrar no tasks - copiados, sites impactados, etc )
+Essas tuplas serao usadas por outras acoes, tais como Email de distribuicao, sites impactados (e registrar no tasks - copiados, sites impactados, etc )
 alerta ter campo de ASerInformado, SitesImpactados 
 Abrir alerta de dentro do CIS, sempre - para ele poder gerar todas as info da tasks
-Colocar hora do incidente
+[ ] - Colocar hora do incidente - para relatorio de indisponibilidade
 botao para email de status dentro da tasks.
 Nome de quem abriu chamado para colocar no ASerInformado
 
