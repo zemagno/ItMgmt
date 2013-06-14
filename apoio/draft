@@ -1,3 +1,54 @@
 Rails.cache.fetch([:category, 10, :name], expires_in: 5.minutes) do
     "nome"
   end  
+
+
+--- mandar email a partir do relatorio ----
+recupero do memcached ou busco e coloco resultado no memcached 
+ao clicar, metodo recupera dados do memcached (chave - relatorio/nomerelatorio/chave )
+a chave é sempre o primeiro campo do relatorio (ci, contrato, etc)
+template (chave - relatorio/nomerelatorio - contrato/cobranca)
+
+
+
+  select         
+    	cis.chave as CI,        
+    	cis.owner as Email,        
+    	cis.descricao as Descricao,                
+    	MAX(IF(atributos.dicdado_id = 16 , atributos.valor, NULL)) as CC          
+    from         
+        cis,         
+        atributos,        
+        sites,        
+        tipocis  
+     where         
+        cis.tipoci_id=32 and                
+        atributos.ci_id = cis.id and         
+        cis.site_id = sites.id and         
+        cis.tipoci_id = tipocis.id  
+      group by  
+        cis.chave 
+      order by 
+        cis.chave;
+
+
+    select         
+    	cis.chave as CI,        
+    	cis.owner as Email,        
+    	cis.descricao as Descricao,                
+    	MAX(IF(atributos.dicdado_id = 16 , atributos.valor, NULL)) as CC ,
+    	MAX(IF(atributos.dicdado_id = 26 , atributos.valor, NULL)) as SO          
+    from         
+        cis,         
+        atributos,        
+        sites,        
+        tipocis  
+     where         
+        cis.tipoci_id=32 and                
+        atributos.ci_id = cis.id and         
+        cis.site_id = sites.id and         
+        cis.tipoci_id = tipocis.id  
+      group by  
+        cis.chave 
+      order by 
+        cis.chave;

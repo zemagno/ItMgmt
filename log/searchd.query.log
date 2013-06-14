@@ -6,3 +6,4 @@
 [Tue Jun  4 22:22:43.898 2013] 0.000 sec [bool/2/rel 682 (0,20)] [ci_core]
 [Thu Jun  6 00:00:05.257 2013] 0.000 sec [bool/2/rel 682 (0,20)] [ci_core]
 [Thu Jun  6 00:00:09.070 2013] 0.000 sec [bool/2/rel 14 (0,20)] [ci_core] jira
+[Thu Jun 13 20:04:42.338 2013] 0.001 sec [bool/2/rel 345 (0,20)] [ci_core] servidor virtual
