@@ -1,4 +1,5 @@
-  require "queueable"
+require "queueable"
+include ApplicationHelper
 class CisController < ApplicationController
   include Queueable
   authorize_resource 
@@ -246,7 +247,8 @@ class CisController < ApplicationController
         i.send(direcao).map { |x| enqueue([x,nivel+1])}
       end
     end
-    @email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
+    #@email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
+    @email_impactados = acerta_lista_email(@email_impactados,"@brq.com")
     @fila_resultado
   end
 

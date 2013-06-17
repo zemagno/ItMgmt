@@ -2,11 +2,11 @@ module RelatoriosHelper
 	def genField(valor,field,i,fields) 
         case field
 		when "CI" 
-            res = "<a href=\"/cis/"+valor+"\"/a>"+valor+"</a>"
+            res = link_to valor, ci_path(valor) 
         when "Email"
             res = valor
             #criar um template de email...colocar em banco de dados em memoria
-            res  = "<a href=\"mailto:"+valor+"?subject=Atencao&body="+URI.encode(fields.join("\n"))+"\">"+valor+"</a>"
+            res  = "<a href=\"mailto:"+acerta_lista_email(valor,"@brq.com")+"?subject=Atencao&body="+URI.encode(fields.join("\n"))+"\">"+valor+"</a>"
             puts fields.join("\n")
 
         else 

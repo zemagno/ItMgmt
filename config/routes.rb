@@ -27,7 +27,7 @@ ItMgmt::Application.routes.draw do
   # para todos nao ser confundido com ID
 
 
-  match 'relatorio/:id', to: "relatorio#index"
+  match 'relatorio/:id', to: "relatorio#index", as: "relatorio"
   match 'email/:acao/:id', to: "email#enviar"
 
   match '/contratos/todos', to: 'contratos#todos'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605010614) do
+ActiveRecord::Schema.define(:version => 20130617001259) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(:version => 20130605010614) do
     t.text     "consulta"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "descricao"
   end
 
   create_table "categories", :force => true do |t|
@@ -72,10 +73,6 @@ ActiveRecord::Schema.define(:version => 20130605010614) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "CustoMensal"
-    t.string   "Campo1"
-    t.string   "Campo2"
-    t.string   "Campo3"
-    t.string   "Campo4"
     t.string   "Owner"
     t.string   "CC"
     t.string   "url"
@@ -281,10 +278,6 @@ ActiveRecord::Schema.define(:version => 20130605010614) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "Descricao"
-    t.string   "defCampo1"
-    t.string   "defCampo2"
-    t.string   "defCampo3"
-    t.string   "defCampo4"
     t.string   "Owner"
   end
 

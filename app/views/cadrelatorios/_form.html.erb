@@ -15,9 +15,16 @@
     <%= f.label :nome %><br />
     <%= f.text_field :nome %>
   </div>
+
+
+  <div class="field">
+    <%= f.label :Descricao %><br />
+    <%= f.text_field :descricao %>
+  </div>
+
   <div class="field">
     <%= f.label :consulta %><br />
-    <%= f.text_area :consulta %>
+    <%= f.text_area :consulta, :size => "150x30" %>
   </div>
   <div class="actions">
     <%= f.submit %>

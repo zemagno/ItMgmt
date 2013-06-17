@@ -48,6 +48,8 @@ class Ability
         cannot :manage, @Dicdado
         cannot :manage, Cadrelatorio
         cannot :manage, @Cadrelatorio
+        can :index, Cadrelatorio
+        can :index, @Cadrelatorio
         cannot :manage, Tipoci
         cannot :manage, @Tipoci
       else
