@@ -31,7 +31,7 @@ class Ability
 
 
 
-    # admin - criar relatorio, campos, [toda customizacao]
+    # admin - criar relato
     # financeiro - cobranca, alterar valor
     # suporte - criar qq coisa
     # usuario - ver alerta, relatorios [ talvez CMDB]
@@ -56,12 +56,16 @@ class Ability
         puts "======> can read all"
         can [:show, :index] , "tasks"
         can [:index], "relatorio"
+        can [:index,:show], "cis"
+        can [:index,:show], "ci"
         
       end
     else 
       puts "======> can read all - publico"
       can [:show, :index] , "tasks"
       can [:index], "relatorio"
+      can [:index,:show], "cis"
+      can [:index,:show], "ci"
       
     end
     #if user

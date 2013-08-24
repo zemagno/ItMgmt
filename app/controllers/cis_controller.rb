@@ -16,15 +16,14 @@ class CisController < ApplicationController
   # @sites
   # @tiposci
 
-  def carrega_agregadas
+  def carrega_agregadas 
     @sites = Site.all
     @tiposci = Tipoci.all
     @statusci = Statusci.all
   end
 
-  
-  def cache(ci)
-    session[:oldCI] = ci.id 
+  def cache(ci
+    session[:oldCI] = ci.id
     @filaNavegacao = session[:filaNavegacao]
     @filaNavegacao ||= Fila.new
     @filaNavegacao.enfilera(ci.id)
@@ -164,6 +163,9 @@ class CisController < ApplicationController
     cache(@ci)
     render :show
   end
+
+  # olhar dicas em http://www.omninerd.com/articles/Automating_Data_Visualization_with_Ruby_and_Graphviz
+  # 
 
   def gera_grafico_relacionamento(id,direcao)
     apath =  File.expand_path('../../../public', __FILE__)
@@ -361,6 +363,7 @@ def gera_relaciomentos_com_composto_de
      @impactado = ""
      @idci = params[:id]
      respond_to :js
+     
   end
 
   def gera_novo_dependente
