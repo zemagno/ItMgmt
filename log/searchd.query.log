@@ -36,3 +36,5 @@
 [Sun Aug 25 12:34:36.400 2013] 0.037 sec [bool/2/rel 51 (0,15)] [fornecedor_core]
 [Sun Aug 25 12:34:37.421 2013] 0.000 sec [bool/2/rel 51 (0,15)] [fornecedor_core]
 [Sun Aug 25 12:34:46.115 2013] 0.000 sec [bool/2/rel 51 (30,15)] [fornecedor_core]
+[Sun Aug 25 13:56:09.091 2013] 0.082 sec [bool/2/rel 10 (0,20)] [ci_core] link marechal |kennedy
+[Sun Aug 25 13:56:13.972 2013] 0.001 sec [bool/2/rel 387 (0,20)] [ci_core] servidor virtual
