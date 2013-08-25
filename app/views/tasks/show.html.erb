@@ -4,6 +4,12 @@
 <h1 id="notice"><%= notice %></h1>
 
 
+<% if @task.ci %>
+  <h1> CI:
+  <%= link_to @task.ci.chave, ci_path(@task.ci), :target => "_blank" if @task.ci %></td>
+  </h1>
+<% end %>
+
 <h1>
   <b>Nome do Evento:</b>
   <%= @task.nome %>
@@ -58,7 +64,7 @@
   <b>Status:</b>
   <%= @task.status %>
   em <%= @task.criado_em %>
-  registrado por <%= @task.author.name %>
+   por <%= @task.author.name %>
 </h1>
 
 

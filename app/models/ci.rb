@@ -2,12 +2,14 @@ require "jiraable"
 class Ci < ActiveRecord::Base
   include Jiraable
 
-  attr_accessible :chave, :Owner, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id
+  attr_accessible :chave, :Owner, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal
 
   belongs_to :site
   belongs_to :tipoci
   belongs_to :statusci
+  belongs_to :contrato
   has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
+  has_many :task
  
   
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
@@ -156,11 +158,9 @@ class Ci < ActiveRecord::Base
   end
   
   def self.find_gen(param)
-    puts "Vou procurar por #{param}"
     begin 
        Ci.includes(:atributo => :dicdado).find(param)
     rescue ActiveRecord::RecordNotFound
-      puts "nao achei. Vou procurar pela chave"
       Ci.includes(:atributo => :dicdado).find_by_chave(param)
     end
   end

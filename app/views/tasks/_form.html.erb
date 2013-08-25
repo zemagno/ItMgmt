@@ -10,6 +10,16 @@
 	  </ul>
 	</div>
   <% end %>
+
+<% if @task.ci %>
+<div class="spacer"></div>
+<label>CI - 
+<span class="small"></span>
+</label>
+<%= @task.ci.chave %>
+<%= f.hidden_field :ci_id %>
+
+<% end %>
  
 
 <div class="spacer"></div>

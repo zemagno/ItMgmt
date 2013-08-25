@@ -4,7 +4,18 @@ class FornecedoresController < ApplicationController
   # layout 'application_novolyaout'
   #authorize_resource  
   def index
-    @fornecedores = Fornecedor.paginate(:page => params[:page])
+    # @fornecedores = Fornecedor.paginate(:page => params[:page])
+
+    @search = params[:search] || session[:search_fornecedores]
+    session[:search_fornecedores] = @search
+
+    begin
+      @fornecedores = Fornecedor.search params[:search], :match_mode => :boolean, :per_page => 15 , :page => params[:page]
+      @fornecedores.compact!
+    rescue 
+      flash[:error] = "Error[DB0001] - Search Engine desligado"
+      @fornecedores = Fornecedor.paginate(:page => params[:page])
+    end
 
     respond_to do |format|
       format.html # index.html.erb

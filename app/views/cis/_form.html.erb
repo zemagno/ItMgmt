@@ -10,7 +10,19 @@
     
 <% end %>
 
+<% if @ci.contrato  %>
+    </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= contrato_path(@ci.contrato) %>'">[Contrato
+    ]</a>
+<% end %>
 
+</br>Fornecedor: 
+<% if @ci.contrato %>
+<%= link_to @ci.contrato.fornecedor.nome, fornecedore_path(@ci.contrato.fornecedor) , :target => "_blank" if@ci.contrato.fornecedor   %>
+<% end %>
+
+
+
+</br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
 
 <% if ! @ci.url.blank?	%>
     </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= @ci.url %>'">[Documentacao]</a>
@@ -34,4 +46,13 @@
             <%="[#{attr[0]}]" %></a>
      <% end %>
 <% end %>
+
+<% bloco = "d2 = DateTime.strptime(@atributos[62][1],\"%m/%d/%Y\");d21 = d2.year * 12 + d2.month + @atributos[57][1].to_i;d1 = Time.now;d11 = d1.year * 12 + d1.month;@ci.CustoMensal * (d21-d11+1)*@atributos[67][1].to_i/100.0;"
+   begin
+      puts "********************"
+      puts eval(bloco)
+   end
+   %>
+
+
 </br>

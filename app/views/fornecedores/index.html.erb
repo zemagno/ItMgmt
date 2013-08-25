@@ -1,5 +1,11 @@
 <h1>Fornecedores</h1>
 <%= link_to '[Novo Fornecedor]', new_fornecedore_path %>
+<%= will_paginate @fornecedor %>
+<%= form_tag(fornecedores_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search, @search, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
 
 <table>
   <tr>

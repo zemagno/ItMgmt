@@ -34,6 +34,7 @@ ItMgmt::Application.routes.draw do
   match '/fornecedores/todos', to: 'fornecedores#todos'
   match '/tasks/todos', to: 'tasks#todos'  
   match '/cis/todos', to: 'cis#todos'  
+  match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci"
 
   resources :parametros, :only => [:index,:edit,:update]
 
@@ -66,6 +67,7 @@ ItMgmt::Application.routes.draw do
   match 'cis/:id/grafico_impactados', to: "cis#grafico_impactados",  :as => :grafico_impactados
   match 'cis/:id/impactados_h', to: "cis#impactados_h", :as => :impactados_h
   match 'cis/:id/dependentes_h', to: "cis#dependentes_h", :as => :dependentes_h
+  match 'cis/:id/abrir_alerta', to: "cis#abrir_alerta", :as => :abrir_alerta
  
   post 'cis/:id/novo_dependente', to: "cis#gera_novo_dependente", :as => :gera_novo_dependente
   match 'cis/:id/novo_dependente', to: "cis#novo_dependente", :as => :novo_dependente
@@ -80,6 +82,7 @@ ItMgmt::Application.routes.draw do
   match 'cis/:id/confirmar_eliminacao', to: "cis#confirmar_eliminacao", :as => :confirmar_eliminacao
   post 'cis/:id/cis_eliminar', to: "cis#eliminar", :as => :eliminar_ci
   match 'cis/checkChave', to: "cis#check_chave"
+
   
   match 'cis/search', to: "cis#search"
   match 'cis/sobe', to: "cis#sobe"

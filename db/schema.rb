@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617001259) do
+ActiveRecord::Schema.define(:version => 20130825113621) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -72,7 +72,6 @@ ActiveRecord::Schema.define(:version => 20130617001259) do
     t.integer  "tipoci_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "CustoMensal"
     t.string   "Owner"
     t.string   "CC"
     t.string   "url"
@@ -81,6 +80,8 @@ ActiveRecord::Schema.define(:version => 20130617001259) do
     t.string   "obs"
     t.string   "DocChange"
     t.integer  "statusci_id"
+    t.integer  "contrato_id"
+    t.decimal  "CustoMensal", :precision => 10, :scale => 2
   end
 
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
@@ -265,6 +266,7 @@ ActiveRecord::Schema.define(:version => 20130617001259) do
     t.string   "tipotask"
     t.text     "Descricaorestrita"
     t.text     "comentario"
+    t.integer  "ci_id"
   end
 
   create_table "tipo_chamados", :force => true do |t|

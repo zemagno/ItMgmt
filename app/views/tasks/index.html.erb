@@ -5,6 +5,7 @@
 <table>
   <tr>
 	<th>Cliente</th>
+	<th>CI</th>
 	<th>Evento</th>
 	<th>Tipo</th>
 	<th>Status</th>
@@ -20,6 +21,8 @@
 <% @tasks.each do |task| %>
   <tr>
 	<td><%= link_to task.category.name, task_path(task)%></td>
+	
+	<td><%= link_to task.ci.chave, ci_path(task.ci), :target => "_blank" if task.ci %></td>
 	<td> <%= link_to "#{task.nome}:#{task.description}"[0,100], task_path(task), {:style=>'color:#000000', :class => "css_class"} %></td>
 	<td><%= task.tipotask %></td>
 	<td><%= task.status %></td>

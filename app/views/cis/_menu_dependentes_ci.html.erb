@@ -18,6 +18,7 @@
    <a href="mailto:?bcc=<%=@email_impactados%>&subject=Alerta - <%=@ci.chave%>"\>[Email Impactados/Dependentes]</a> 
 <% end %>
 
+<%= link_to("[Abrir Alerta]", tasks_new_from_ci_path(@ci))%>
 
 </br><%= link_to "[Adiciona Dependente]", novo_dependente_path(@ci), :remote => true, :id => "novo_dependente" %>
 <%= link_to "[Adiciona Impactado]", novo_impactado_path(@ci), :remote => true, :id => "novo_impactado" %>

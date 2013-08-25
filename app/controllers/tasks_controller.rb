@@ -18,7 +18,7 @@ class TasksController < ApplicationController
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
     end
-    
+  
   end
 
   def todos
@@ -31,6 +31,24 @@ class TasksController < ApplicationController
 
   def show
         @task = Task.find(params[:id])
+  end
+
+  def new_from_ci
+    @ci = Ci.find(params[:id])
+    puts @ci
+    @task = Task.new
+    @authors = Author.all
+    @categories = Category.all
+    @sites = Site.all
+    @criticidades = Criticidade.all
+    @fornecedores = Fornecedor.all
+    # new
+    @task.site_id = @ci.site_id
+    @task.ci_id = @ci.id
+    @task.nome = @ci.descricao
+    @task.tipotask = "Incidente"
+    @task.fornecedor_id = @ci.contrato.fornecedor_id
+    render :new
   end
 
   def new
@@ -51,7 +69,7 @@ class TasksController < ApplicationController
     @criticidades = Criticidade.all
     @fornecedores = Fornecedor.all
     #@tipotasks = Tipotask.all
-end
+  end
   
   def distribui(subject,task)
     #message = UserMailer.email_alerta("josecarlosmagno@me.com",subject,task)

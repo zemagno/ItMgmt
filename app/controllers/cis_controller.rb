@@ -22,7 +22,7 @@ class CisController < ApplicationController
     @statusci = Statusci.all
   end
 
-  def cache(ci
+  def cache(ci)
     session[:oldCI] = ci.id
     @filaNavegacao = session[:filaNavegacao]
     @filaNavegacao ||= Fila.new
@@ -377,7 +377,7 @@ def gera_relaciomentos_com_composto_de
     end
     respond_to :js
     #redirect_to :controller => 'cis', :action => 'show', :id => params[:id],  
-   end
+  end
 
   def gera_novo_impactado
     ci = Ci.find(params[:idci])
@@ -410,6 +410,13 @@ def gera_relaciomentos_com_composto_de
      gera_grafico_relacionamento(params[:id],:dependentes_all)
      @imagem_dependentes_all = true
      render :dependentes
+  end
+
+  def abrir_alerta
+    puts params
+    #@ci = Ci.find(params[:id])
+    #puts @ci
+    redirect_to tasks_new_from_ci_path(57)
   end
   
 end

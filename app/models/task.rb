@@ -4,6 +4,7 @@ class Task < ActiveRecord::Base
    belongs_to :site
    belongs_to :criticidade
    belongs_to :fornecedor
+   belongs_to :ci
    #belongs_to :tipotask
  
    validates_presence_of :description
@@ -31,11 +32,11 @@ class Task < ActiveRecord::Base
 
    def self.publicas
     Task.find(:all, :order => "criticidade_id, created_at DESC", :conditions => "Ativo=1 and publica=1")
-  end
+   end
 
    def nome_autor
     author.name
-  end
+   end
 
   def nome_cliente
     category.name
