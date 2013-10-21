@@ -8,7 +8,7 @@
 <!--%= stylesheet_link_tag :all %-->
 <%= stylesheet_link_tag "jquery-ui.css" %>
 <%= stylesheet_link_tag "chavecis.css" %>
-<%= stylesheet_link_tag "CMDBstyle.css" %>
+<!--%= stylesheet_link_tag "CMDBstyle.css" %-->
 <%= stylesheet_link_tag "scaffold.css" %>
 <%= stylesheet_link_tag "jquery-ui-timepicker-addon.css" %>
 
@@ -27,7 +27,7 @@
 	<div id="header-wrapper">
 		<div id="header">
 			<div id="logo">
-				<h3><%= link_to 'BRQ Operacao', tasks_path %></h3>
+				<h1><%= link_to 'BRQ Operacao', tasks_path %></h1>
 			</div>
 			<div id="user_nav">
         		<% if current_user %>
@@ -55,7 +55,7 @@
     	<br>
 	<!-- end #header -->
 	<div id="page">
-			<div id="page-bgtop">
+			<div id="page-bgtodp">
 				<div >
 				<% flash.each do |name, msg| %>
                         <%= content_tag :div, msg, id: "flash_#{name}" %>
