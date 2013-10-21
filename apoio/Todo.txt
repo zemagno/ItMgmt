@@ -1,4 +1,28 @@
-Mover navegacao para dentro do model Ci
+http://railscasts.com/episodes/287-presenters-from-scratch?view=asciicast
+ver o episodio acima para gerar email padrao (.erb gerando texto ou html para embutir no email)
+
+[ ] - ao abrir alerta de dentro do CI, ele marca num campo [data de prob] e grafico mostra vermelho. Inclusive na listagem (com marcados: [INDISPONIBILIDADE])
+
+
+http://www.geekq.net/workflow/
+
+Memcached email impactados CI:488 - duração de 4 dias.
+memcached/redis - ao clicar num CI
+   criar um sidekiq com CI
+   sidekiq - se tiver no memcached/redis, ok, senao nevegar pelos impactados e colocar no redir/memcached
+   ao abrir um ticket, verificar se esta no memcached/redis. se estiver, popular alerta com dados
+    
+memcached impactos - serializar 
+Ao incluir qq impactado, limpa todo memcached.
+
+[ ] - abrir JIRA e registrar automaticamente no cmdb
+[ ] - colocar uma alias no jira (o que foi, INFR-1231)
+
+
+[ ] - estudar como desacoplar formatacao das views. o angularjs_scaffold pode ser a solução, mas tem que escrever muito ou herdar de scaffold
+
+
+Mover navegacao para dentro do model Ci - nao!!! nao poluie ci
 Armazenar no memcached por 10 min
 email pega do memcached.
 chave (impactados_ci)
@@ -36,7 +60,7 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 
 [ ] - procurar que tabelas de cadastros mais vao no DB e colocar no memcached Rails.cache.fetch 
 
-[ ] - criar treelist para mostrar dependencias� ir abrindo arvore	
+[ ] - criar treelist para mostrar dependenciasÉ ir abrindo arvore	
 
 [ ] - data da instalacao do CI e data do ultimo boot (para servidores)
 
@@ -101,7 +125,7 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 
 [ ] - refatorar de inserir dependente/impactado - tenho htmls identicos
 
-[ ] - colocar validate presence of em tudo quanto é lugar
+[ ] - colocar validate presence of em tudo quanto Ã© lugar
 
 [ ] - verificar se estou usando muito <%= no lugar erro (ex de javascript do curso RR75
  
@@ -144,7 +168,7 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
  
 [ ] -tirar logica de controller e view e colocar no model
      
-[ ] - ver se é melhor ter ci--> contrato atraves de url (%S) ou injetar algo polimorfico nas duas classes
+[ ] - ver se Ã© melhor ter ci--> contrato atraves de url (%S) ou injetar algo polimorfico nas duas classes
       com url, eu so consigo chegar atraves de browser ou colocando hardcoded (if campo = contrato)
       posso tentar injetar algo polimorfico 
       ci.contrato ==> 
@@ -220,9 +244,9 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 [ ] - profundidade dos dependentes/impactados no grafico (ta fixo em 4)
        colocar como parametro.
 
-[ ] - colocar configurações para gerar owner no grafico, ou qq outro atributo etc.
-      [ ] - configuração para forma do grafico diferente (ex: se tiver clientes, colocar dupla bolota)
-      [ ] - caminho critico em vermelho (podendo ter alteração)
+[ ] - colocar configuraÃ§Ãµes para gerar owner no grafico, ou qq outro atributo etc.
+      [ ] - configuraÃ§Ã£o para forma do grafico diferente (ex: se tiver clientes, colocar dupla bolota)
+      [ ] - caminho critico em vermelho (podendo ter alteraÃ§Ã£o)
       [ ] - marcar em vermelho data da ultima alteracao.
 
 [ ] - alterar layout do _form_ci, que mostra
@@ -270,10 +294,10 @@ Tamanho do texto (do campo e permitido para digitar, nao ficar hardcoded no _for
 
 
 ==Pedidos em suspenso=============POR QUE NAO JIRA ????????============
-1) Data da proxima alteração de status - pede dias, e atualiza a data automaticamente
+1) Data da proxima alteraÃ§Ã£o de status - pede dias, e atualiza a data automaticamente
 2) log dos emails enviados com status para acompanhar no pedido.
 3) log de mudanca de status no pedido
-4) sempre copiar gestão da demanda e gestaoTI
+4) sempre copiar gestÃ£o da demanda e gestaoTI
 ------------------------------------------------------------
 
 
@@ -300,7 +324,7 @@ http://www.headfirstlabs.com/books/hfajax/ch02.php
 = 
 = CMDB
 = Alertas - (SOBRE UM CI) - Possivelmente abrindo um item no noc (ou vice versa)
-= Contratos (servicoext) com cobrança via email, itens nao cobrados.. 
+= Contratos (servicoext) com cobranÃ§a via email, itens nao cobrados.. 
 = NOC - SLA (SOBRE UM CI)
 = controle de link (integrado como servicoext contratos..) (polimorfico ou um search?relatorio dos ci ?)
 = gestao de pedidos - jira?? , transformar em CI, cliente, tipo,
@@ -413,5 +437,5 @@ curl -D- -u magno:xxxxxx -X POST --data {
 Posso implementar os metodos
 dep[i]==> relacao_dependencia[i].dependente
 imp
-e_composto_de[1] ==> igual ao dep, porem filtrando por somente é composto de
+e_composto_de[1] ==> igual ao dep, porem filtrando por somente Ã© composto de
 

@@ -70,7 +70,7 @@ class Ci < ActiveRecord::Base
   end
 
   
-
+  # TODO colocar todo servicos de atributos numa services. Nao deixar no model do CI.
   def atributos
     # pegar todos os atributos possiveis (tipoci.dicdado)
     # dicdados.id => [Label,valor]

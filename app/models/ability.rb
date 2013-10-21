@@ -68,8 +68,8 @@ class Ability
       can [:index,:show], "ci"
       
     end
-    #if user
-    #   can :manage, :all
-    #end
+    
+    # can :manage, :all
+    
   end
 end

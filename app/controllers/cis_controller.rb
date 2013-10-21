@@ -1,3 +1,4 @@
+
 require "queueable"
 include ApplicationHelper
 class CisController < ApplicationController
@@ -250,7 +251,7 @@ class CisController < ApplicationController
       end
     end
     #@email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
-    @email_impactados = acerta_lista_email(@email_impactados,"@brq.com")
+    @email_impactados = ListaEmail.acerta(@email_impactados,"@brq.com")
     @fila_resultado
   end
 

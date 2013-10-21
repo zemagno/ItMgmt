@@ -92,7 +92,11 @@
 <%= f.select :author_id, @authors.collect { |a| [ a.name, a.id ] }  %>
 <div class="spacer"></div>
 
-
+<label>Solicitante
+<span class="small">id do Solicitante</span>
+</label>
+<%= f.text_field :solicitante , :size => 40 %>
+<div class="spacer"></div>
 
 
 <label>Cliente</label>
