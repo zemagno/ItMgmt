@@ -6,8 +6,18 @@ class Atributo < ActiveRecord::Base
     self.where(:dicdado_id => iddic).exists?
   end
 
+  # def com_valores
+  #   Atributo.where("valor is not null and valor <> ''")
+  # end
+
   def to_s
       "#{id} : #{ci_id}/#{ci.chave} : #{dicdado.nome} : #{valor} : #{ci.tipoci.tipo}<>#{dicdado.tipoci.tipo}"  
+  end
+
+  define_index do
+      indexes valor as :valor
+      indexes dicdado(:nome)
+      
   end
   
 end

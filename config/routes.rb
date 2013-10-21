@@ -1,9 +1,8 @@
 ItMgmt::Application.routes.draw do
 
   resources :tipotasks
-
-
   resources :tipo_tasks
+  resources :atributos
 
 
   match 'auth/:provider/callback', to: 'sessions#create'
@@ -11,17 +10,8 @@ ItMgmt::Application.routes.draw do
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
   resources :cadrelatorios
-
-
   resources :statuscis
-
-
-  resources :view_templates
-
-  resources :padrao_checklists
-
-  resources :eventos
-
+   
   resources :areafornecedores
 
   # para todos nao ser confundido com ID
@@ -46,7 +36,7 @@ ItMgmt::Application.routes.draw do
        end
   end
 
-  resources :indicadores_financeiros
+  #resources :indicadores_financeiros
 
   resources :fornecedores
 
@@ -90,10 +80,7 @@ ItMgmt::Application.routes.draw do
   match 'CMDB', to: "cis#index"
   
   resources :cis
-  
-  resources :pedidos
-
-  resources :status_pedidos
+    resources :status_pedidos
 
   resources :notificacaos
 

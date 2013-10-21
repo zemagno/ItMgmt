@@ -2,6 +2,7 @@ class Contrato < ActiveRecord::Base
   belongs_to :tipocontrato
   belongs_to :fornecedor
   belongs_to :indicador_financeiro
+  has_many :ci
 
   default_scope order('codcontrato ASC')
   

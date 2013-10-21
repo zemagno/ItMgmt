@@ -11,6 +11,8 @@ class Dicdado < ActiveRecord::Base
   define_index do
       indexes nome
       indexes tipoci(:tipo), :as => :tipoci
+      indexes tipoci_id, :as => :tipoci_id, :sortable => true
+      indexes ordem , :as => :ordem, :sortable => true
   end
 
 end

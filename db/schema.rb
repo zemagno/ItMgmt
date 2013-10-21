@@ -15,22 +15,22 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "atributos", :force => true do |t|
     t.integer  "ci_id"
     t.integer  "dicdado_id"
     t.string   "valor"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "authors", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "Logon"
   end
 
@@ -44,23 +44,6 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "chamados", :force => true do |t|
-    t.integer  "SubTipoChamado_id"
-    t.integer  "StatusChamado_id"
-    t.string   "Solicitante"
-    t.string   "Userid"
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "checklists", :force => true do |t|
-    t.integer  "evento_id"
-    t.string   "nome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -70,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.string   "descricao"
     t.integer  "site_id"
     t.integer  "tipoci_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "Owner"
     t.string   "CC"
     t.string   "url"
@@ -98,8 +81,8 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.integer  "indicador_financeiro_id"
     t.string   "projetoCCTI"
     t.string   "projetoCCArea"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                             :null => false
+    t.datetime "updated_at",                                             :null => false
     t.string   "classificacao"
     t.string   "url"
   end
@@ -108,15 +91,15 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   create_table "criticidades", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "dicdados", :force => true do |t|
     t.string   "nome"
     t.integer  "tipoci_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "ordem"
     t.string   "url"
     t.string   "descricao"
@@ -125,22 +108,13 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
-  create_table "eventos", :force => true do |t|
-    t.string   "nome"
-    t.date     "dataInicio"
-    t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "fornecedores", :force => true do |t|
     t.string   "nome"
     t.string   "nomecompleto"
     t.string   "cnpj"
-    t.string   "endereco"
-    t.string   "contatos"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.text     "contatos"
     t.text     "anotacoes"
     t.integer  "areafornecedor_id"
     t.text     "enderecos"
@@ -148,28 +122,6 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   create_table "indicadores_financeiros", :force => true do |t|
     t.string   "nome"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "itens_checklists", :force => true do |t|
-    t.integer  "checklist_id"
-    t.string   "item"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "notificacaos", :force => true do |t|
-    t.string   "evento"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "status"
-  end
-
-  create_table "padrao_checklists", :force => true do |t|
-    t.string   "nome"
-    t.text     "itens"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -178,38 +130,15 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.string   "tipo"
     t.string   "subtipo"
     t.string   "valor"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "pedidos", :force => true do |t|
-    t.string   "requisicao",             :limit => 20
-    t.string   "solicitante",            :limit => 40
-    t.string   "loginUsuario",           :limit => 20
-    t.date     "dataPedido"
-    t.date     "dataAutorizacao"
-    t.date     "dataSolicitacaoCompras"
-    t.date     "dataEntrega"
-    t.string   "comprador",              :limit => 20
-    t.integer  "site_id"
-    t.string   "ativo"
-    t.integer  "custoEstimado"
-    t.string   "pedidoResumido",         :limit => 40
-    t.string   "observacao"
-    t.string   "CCUN",                   :limit => 6
-    t.string   "projetoUN",              :limit => 30
-    t.string   "ccTI",                   :limit => 6
-    t.string   "projetoTI",              :limit => 30
-    t.integer  "status_pedido_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "relacionamentos", :force => true do |t|
     t.integer  "impactado_id"
     t.integer  "dependente_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.integer  "tipo"
   end
 
@@ -218,33 +147,14 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   create_table "sites", :force => true do |t|
     t.string   "nome"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "status_chamados", :force => true do |t|
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "status_pedidos", :force => true do |t|
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "statuscis", :force => true do |t|
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "sub_tipo_chamados", :force => true do |t|
-    t.integer  "TipoChamado_id"
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tasks", :force => true do |t|
@@ -254,9 +164,10 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.integer  "category_id"
     t.integer  "criticidade_id"
     t.integer  "site_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.boolean  "Ativo"
+    t.datetime "Expiracao"
     t.boolean  "sucesso"
     t.string   "DocChange"
     t.string   "nome"
@@ -270,28 +181,16 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.string   "solicitante"
   end
 
-  create_table "tipo_chamados", :force => true do |t|
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tipocis", :force => true do |t|
     t.string   "tipo"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "Descricao"
     t.string   "Owner"
   end
 
   create_table "tipocontratos", :force => true do |t|
     t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tipotasks", :force => true do |t|
-    t.string   "nome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -301,18 +200,6 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.string   "uid"
     t.string   "name"
     t.string   "roles"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "view_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "prefix"
-    t.boolean  "partial"
-    t.text     "source"
-    t.string   "locale"
-    t.string   "formats"
-    t.string   "handlers"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

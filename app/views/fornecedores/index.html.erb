@@ -10,6 +10,7 @@
 <table>
   <tr>
     <th>Nome</th>
+    <th>Contratos</th>
     <th></th>
     <th></th>
   </tr>
@@ -17,6 +18,7 @@
 <% @fornecedores.each do |fornecedor| %>
   <tr>
     <td><%= link_to  fornecedor.nome , fornecedor %></td>
+    <td><a href="<%='/contratos?search='+fornecedor.nome%>" >Contratos</a>
     <td><%= link_to 'Editar', edit_fornecedore_path(fornecedor) %></td>
     <td><%= link_to 'Apagar', fornecedor, :confirm => 'Tem certeza?', :method => :delete %></td>
   </tr>

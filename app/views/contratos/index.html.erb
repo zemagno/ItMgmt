@@ -17,6 +17,7 @@
     <th>Doc</th>
     <th>Projeto/CC TI</th>
     <th>Projeto/CC Area</th>
+    <th>CIs</th>
     <th></th>
     <th></th>
 	<th></th>
@@ -37,7 +38,7 @@
     </td>
     <td><%= contrato.projetoCCTI %></td>
     <td><%= contrato.projetoCCArea %></td>
-
+    <td><a href="<%='/cis?&search=@contrato='+contrato.id.to_s%>" >CIs</a></td>
     <td><%= link_to 'Editar', edit_contrato_path(contrato) %></td>
     <td><%= link_to 'Apagar', contrato, :confirm => 'Are you sure?', :method => :delete %></td>
     <td>

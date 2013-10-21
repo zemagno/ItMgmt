@@ -7,7 +7,6 @@ module RelatoriosHelper
             res = valor
             #criar um template de email...colocar em banco de dados em memoria
             res  = "<a href=\"mailto:"+ListaEmail.acerta(valor,"@brq.com")+"?subject=Atencao&body="+URI.encode(fields.join("\n"))+"\">"+valor+"</a>"
-            puts fields.join("\n")
         when "Descricao" 
             res  = content_tag('pre',valor)
         else 

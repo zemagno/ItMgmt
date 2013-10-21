@@ -32,4 +32,5 @@
 
 
 <%= link_to 'Editar', edit_fornecedore_path(@fornecedor) %> |
-<%= link_to 'Listagem', fornecedores_path %>
+<%= link_to 'Listagem', fornecedores_path %> |
+<a href="<%='/contratos?search='+@fornecedor.nome%>" >Contratos desse fornecedor</a>

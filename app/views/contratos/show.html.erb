@@ -66,8 +66,10 @@
 <%= "<a href=\"javascript: void(0)\" onclick=\"window.open('','_new').location.href='#{@contrato.url}'\">[Documentacao]</a>".html_safe unless @contrato.url.to_s==''%>
 
 
-<%= render :partial => 'email', :locals => { :contrato => @contrato } %>  |
+<%= render :partial => 'email', :locals => { :contrato => @contrato } %>
 
 <%= link_to '[Editar]', edit_contrato_path(@contrato) %> 
 <%= link_to '[Voltar]', contratos_path %>
+<a href="<%='/cis?&search=@contrato='+@contrato.id.to_s%>" >[CIs desse contrato]</a>
+
 </div>

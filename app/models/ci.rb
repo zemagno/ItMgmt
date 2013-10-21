@@ -178,8 +178,10 @@ class Ci < ActiveRecord::Base
       indexes site(:nome), :as => :localidade
       indexes statusci(:status), as => :statusciativo
       indexes tipoci(:tipo), :as => :tipotipo
-      indexes tipoci(:Descricao), :as => :descricaotipo
       indexes atributo(:valor), :as => :valoratributo
+      indexes contrato_id, :as => :contrato
+      #indexes contrato.fornecedor.nome :as => :nomefornecedor
+      
    
 
       #has site_id  # se eu quiser quiser filtrar..

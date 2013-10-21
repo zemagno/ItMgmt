@@ -1,0 +1,27 @@
+<h1>Atributos</h1>
+<%= will_paginate @atributos %>
+<%= form_tag(atributos_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search_atributo, @search_atributo, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Atributo</th>
+    <th>Tipo</th>
+    <th>CI</th>
+  
+  </tr>
+
+<% @atributos.each do |atributo| %>
+  <tr>
+    <td><%= atributo.valor[0,30] %></td>
+    <td><%= atributo.dicdado.nome %></td>
+    <td><%= link_to atributo.ci.chave, atributo.ci %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @atributos %>
+
+<br />

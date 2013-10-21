@@ -80,8 +80,7 @@ a:hover {
 }
 /* Menu */
 #menu {
-	float: right;
-	width: 450px;
+	float: left;
 	height: 90px;
 	margin: 0 auto;
 	padding: 0;
@@ -115,9 +114,9 @@ a:hover {
 }
 /* Page */
 #page {
-	width: 980px;
+	
 	margin: 0 auto;
-	padding: 0px 0px 0px 0px;
+	padding: 0px 10px 10px 10px;
 }
 #page-bgtop {
 	padding: 20px 0px;

@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-   before_filter :autenticacao, :except => [:index, :show] # linha adicionada
   # GET /categories
   # GET /categories.xml
   authorize_resource 
