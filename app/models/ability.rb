@@ -69,7 +69,7 @@ class Ability
       
     end
     
-    # can :manage, :all
+    #can :manage, :all
     
   end
 end
