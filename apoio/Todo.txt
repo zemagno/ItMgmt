@@ -6,10 +6,10 @@ ver o episodio acima para gerar email padrao (.erb gerando texto ou html para em
 
 http://www.geekq.net/workflow/
 
-Memcached email impactados CI:488 - duração de 4 dias.
+Memcached email impactados CI:488 - persistencia de 4 dias ou botao para limpar e regerar.
 memcached/redis - ao clicar num CI
    criar um sidekiq com CI
-   sidekiq - se tiver no memcached/redis, ok, senao nevegar pelos impactados e colocar no redir/memcached
+   sidekiq - se tiver no memcached/redis, ok, senao navegar pelos impactados e colocar no redis/memcached
    ao abrir um ticket, verificar se esta no memcached/redis. se estiver, popular alerta com dados
     
 memcached impactos - serializar 

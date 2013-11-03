@@ -30,9 +30,11 @@ end
 
 gem 'omniauth-google-apps'
 gem 'cancan' 
-#gem 'dalli'
+gem 'dalli'
 #
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+
+gem 'quiet_assets'
 
