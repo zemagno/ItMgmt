@@ -1,0 +1,14 @@
+<%=  form_for :duplicar, :remote => true, :html => {:id => "duplicar_ci"} do |f|  %>
+<h1>Duplicar CI</h1>
+<label>Novo CI
+<span class="small">Entre com uma nova Chave </span>
+</label>
+<%= %>
+<%= hidden_field_tag 'idci', @idci%>
+<%= f.text_field :nova_chave %>
+<div class="buttons">
+    <%= f.submit "Duplicar" %>
+</div>
+</br>
+
+<% end %>

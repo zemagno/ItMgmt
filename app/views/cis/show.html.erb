@@ -32,11 +32,11 @@
 </br>
 
 
-<%= form_tag(cis_search_path, :method => "get") do %>
+<%= form_tag(cis_path, :method => "get") do %>
  
   <%= text_field_tag(:search) %>
   <%= hidden_field_tag 'oldci', @ci.id%>
-  <%= submit_tag("Procurar CI") %>
+  <%= submit_tag("Filtrar") %>
 <% end %>
 </br>
 

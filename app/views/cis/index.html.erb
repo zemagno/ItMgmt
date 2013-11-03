@@ -21,6 +21,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Chave CI</th>
     <th>Descricao</th>
     <th>Tipo</th>
@@ -31,6 +32,7 @@
 
 <% @cis.each do |ci| %>
   <tr>
+    <td><img src="/icons/<%=ci.statusci.icon%>" alt=" " height="16" width="16"></td>
     <td><%= link_to ci.chave, ci %></td>
     <td><%= ci.descricao %></td>
     <td><%= ci.tipoci.tipo %></td>

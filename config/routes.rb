@@ -69,6 +69,10 @@ ItMgmt::Application.routes.draw do
   post 'cis/:id/elimina_impactado', to: "cis#elimina_impactado", :as => :elimina_impactado
   match 'cis/:id/elimina_impactado', to: "cis#ask_elimina_impactado", :as => :ask_elimina_impactado
  
+  post 'cis/:id/duplicar_ci', to: "cis#duplicar_ci", :as => :duplicar_ci
+  match 'cis/:id/duplicar_ci', to: "cis#ask_duplicar_ci", :as => :ask_duplicar_ci
+  
+
   match 'cis/:id/confirmar_eliminacao', to: "cis#confirmar_eliminacao", :as => :confirmar_eliminacao
   post 'cis/:id/cis_eliminar', to: "cis#eliminar", :as => :eliminar_ci
   match 'cis/checkChave', to: "cis#check_chave"

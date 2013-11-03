@@ -57,12 +57,13 @@ class CisController < ApplicationController
   def update
     @ci = Ci.find(params[:id])
 
-
+    
     respond_to do |format|
       if @ci.update_attributes(params[:ci])
          @ci.atributos = params[:atributos]
-        format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
-        format.json { head :no_content }
+         @ci.limpa_atributos_outros_tipo
+         format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
+         format.json { head :no_content }
       else
          #@sites = Site.all
          #@tiposci = Tipoci.all
@@ -354,6 +355,22 @@ def gera_relaciomentos_com_composto_de
     @idci = params[:id]
     respond_to :js
    end
+
+   def ask_duplicar_ci
+    @dependente = ""
+    @idci = params[:id]
+    logger.debug "Ops....estou no caminho certo..."
+    respond_to :js
+   end
+
+  def duplicar_ci
+    ci = Ci.find(params[:idci])
+    @newci = ci.duplicar(params[:duplicar][:nova_chave])
+
+    respond_to :js if @newci.persisted?
+    logger.debug "Ops....estou no caminho certo...vou duplicar.. #{params[:idci]} - #{params[:duplicar][:nova_chave]}"
+  end
+
 
   def elimina_dependente
     # @customer.orders.delete(@order1)

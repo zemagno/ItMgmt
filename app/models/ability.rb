@@ -52,6 +52,8 @@ class Ability
         can :index, @Cadrelatorio
         cannot :manage, Tipoci
         cannot :manage, @Tipoci
+        cannot :manage, Statusci
+        cannot :manage, @Statusci
       else
         puts "======> can read all"
         can [:show, :index] , "tasks"

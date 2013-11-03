@@ -69,6 +69,13 @@ class Ci < ActiveRecord::Base
     chave.gsub(/\ /,"_")
   end
 
+  def duplicar(nova_chave)
+    newci = dup :include => :atributo
+    newci.chave = nova_chave
+    newci.save
+    newci
+  end
+
   
   # TODO colocar todo servicos de atributos numa services. Nao deixar no model do CI.
   def atributos
@@ -88,7 +95,7 @@ class Ci < ActiveRecord::Base
        # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
        # entao eu crio esse atributo no hash
        if ! attr_existentes[x.dicdado.id] then
-          attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.descricao]
+          attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao]
        end
       attr_existentes[x.dicdado.id][1] = x.valor 
      end 
@@ -108,6 +115,7 @@ class Ci < ActiveRecord::Base
   # end
 
   def limpa_atributos_outros_tipo
+    logger.debug "vou limpar atributos"
     atributo.each do |attr|
       if attr.dicdado.tipoci_id != tipoci_id
         attr.delete 

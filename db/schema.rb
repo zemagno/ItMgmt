@@ -11,26 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130904004957) do
+ActiveRecord::Schema.define(:version => 20131103152027) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "atributos", :force => true do |t|
     t.integer  "ci_id"
     t.integer  "dicdado_id"
     t.string   "valor"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "authors", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "Logon"
   end
 
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "cis", :force => true do |t|
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.string   "descricao"
     t.integer  "site_id"
     t.integer  "tipoci_id"
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "Owner"
     t.string   "CC"
     t.string   "url"
@@ -81,25 +81,26 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.integer  "indicador_financeiro_id"
     t.string   "projetoCCTI"
     t.string   "projetoCCArea"
-    t.datetime "created_at",                                             :null => false
-    t.datetime "updated_at",                                             :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "classificacao"
     t.string   "url"
+    t.string   "contrato"
   end
 
   add_index "contratos", ["codcontrato"], :name => "index_contratos_on_codcontrato"
 
   create_table "criticidades", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "dicdados", :force => true do |t|
     t.string   "nome"
     t.integer  "tipoci_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "ordem"
     t.string   "url"
     t.string   "descricao"
@@ -112,9 +113,10 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.string   "nome"
     t.string   "nomecompleto"
     t.string   "cnpj"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.text     "contatos"
+    t.string   "endereco"
+    t.string   "contatos"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.text     "anotacoes"
     t.integer  "areafornecedor_id"
     t.text     "enderecos"
@@ -122,23 +124,31 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   create_table "indicadores_financeiros", :force => true do |t|
     t.string   "nome"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notificacaos", :force => true do |t|
+    t.string   "evento"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "parametros", :force => true do |t|
     t.string   "tipo"
     t.string   "subtipo"
     t.string   "valor"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "relacionamentos", :force => true do |t|
     t.integer  "impactado_id"
     t.integer  "dependente_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "tipo"
   end
 
@@ -147,14 +157,15 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
 
   create_table "sites", :force => true do |t|
     t.string   "nome"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "statuscis", :force => true do |t|
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "icon"
   end
 
   create_table "tasks", :force => true do |t|
@@ -164,10 +175,9 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.integer  "category_id"
     t.integer  "criticidade_id"
     t.integer  "site_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "Ativo"
-    t.datetime "Expiracao"
     t.boolean  "sucesso"
     t.string   "DocChange"
     t.string   "nome"
@@ -181,18 +191,24 @@ ActiveRecord::Schema.define(:version => 20130904004957) do
     t.string   "solicitante"
   end
 
+  create_table "tipo_chamados", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tipocis", :force => true do |t|
     t.string   "tipo"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "Descricao"
     t.string   "Owner"
   end
 
   create_table "tipocontratos", :force => true do |t|
     t.string   "descricao"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

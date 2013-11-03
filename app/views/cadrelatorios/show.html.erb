@@ -11,5 +11,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_cadrelatorio_path(@cadrelatorio) %> |
-<%= link_to 'Back', cadrelatorios_path %>
+<%= link_to 'Alterar	', edit_cadrelatorio_path(@cadrelatorio) %> |
+<%= link_to 'Listagem', cadrelatorios_path %> |
+<%= link_to 'Relatorio', relatorio_path(@cadrelatorio.nome) %>

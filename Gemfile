@@ -38,3 +38,5 @@ gem 'slim'
 
 gem 'quiet_assets'
 
+gem 'deep_cloneable', '~> 1.5.5'
+
