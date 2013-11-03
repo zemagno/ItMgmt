@@ -169,89 +169,108 @@ class CisController < ApplicationController
   # 
 
   def gera_grafico_relacionamento(id,direcao)
-    apath =  File.expand_path('../../../public', __FILE__)
+    
+    if Rails.cache.exist?("#{direcao}-#{@ci.id}-grafico")
+       logger.debug  "Ops... grafico esta no cache"
+    else
+      apath =  File.expand_path('../../../public', __FILE__)
+      g = GraphViz::new( "G" )
 
-    g = GraphViz::new( "G" )
+      nodes = Hash.new
+      edges_visitado = Hash.new
+      nivel_max = 4
 
-    nodes = Hash.new
-    edges_visitado = Hash.new
-    nivel_max = 4
+      @ci = Ci.find(id)
+      init_queue
+      enqueue([@ci,0])
 
-    @ci = Ci.find(id)
-    init_queue
-    enqueue([@ci,0])
+      # essa navegacao so termina por conta do nivel maximo, pois ele nao checa se ja visitou um CI antes
+      # A--> B --> A --> B --> A
+      # Isso existe para fazer a seta poder apontar "para cima"
+  
 
+      while not queue.empty?
+          #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
+          @i,nivel = dequeue
+          
+          if @i.dataChange and @i.dataChange.to_time >= 5.days.ago then
+             nodes[@i.chave] = g.add_nodes(@i.chave, { :label => "#{@i.chave}\n#{@i.dataChange}", :color => "red"})
+          else 
+             nodes[@i.chave] = g.add_nodes(@i.chave , { :label => "#{@i.chave}\n#{@i.tipoci.tipo}"})
+          end
 
+          if nivel <= nivel_max then
+            @i.send(direcao).each do |ii|
+                #erro ??!?!?! nao testo a data de mudanca ???s\          
+                nodes[ii.chave] = g.add_nodes(ii.chave) 
+               
+                if not edges_visitado[@i.chave+"#"+ii.chave] then   
+                  g.add_edges(nodes[@i.chave], nodes[ii.chave])
+                  edges_visitado[@i.chave+"#"+ii.chave] = true
+                end
+            end    
 
-    while not queue.empty?
-        #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
-        @i,nivel = dequeue
-        
-        if @i.dataChange and @i.dataChange.to_time >= 5.days.ago then
-           nodes[@i.chave] = g.add_nodes(@i.chave, { :label => "#{@i.chave}\n#{@i.dataChange}", :color => "red"})
-        else 
-           nodes[@i.chave] = g.add_nodes(@i.chave , { :label => "#{@i.chave}\n#{@i.tipoci.tipo}"})
-        end
+            # retorna uma matrix com varios elementos (.map)
+            # transforma cada elemento impactado num array com [impactado, nivel + 1]
+            # concatena essas tuplas de impactados no final da fila
 
-        if nivel <= nivel_max then
-          @i.send(direcao).each do |ii|
-              #erro ??!?!?! nao testo a data de mudanca ???s\          
-              nodes[ii.chave] = g.add_nodes(ii.chave) 
-             
-              if not edges_visitado[@i.chave+"#"+ii.chave] then   
-                g.add_edges(nodes[@i.chave], nodes[ii.chave])
-                edges_visitado[@i.chave+"#"+ii.chave] = true
-              end
-          end    
-
-          # retorna uma matrix com varios elementos (.map)
-          # transforma cada elemento impactado num array com [impactado, nivel + 1]
-          # concatena essas tuplas de impactados no final da fila
-
-          @i.send(direcao).map { |x| enqueue([x,nivel+1])}
-        end
+            @i.send(direcao).map { |x| enqueue([x,nivel+1])}
+          end
+      end
+      g.output( :png => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.png" )
+      logger.debug "gravei grafico no cache"
+      #Rails.cache.write("#{direcao}-#{@ci.id}-grafico", "Existe",   expires_in: 5.minute)
     end
 
-    g.output( :png => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.png" )
+    
   end
 
   def gera_relaciomentos (direcao)
-    
-    @ci = Ci.find(params[:id])
-    @email_impactados = ""
-    init_queue
-    @email_impactados << @ci.Owner unless @ci.Owner == ""
+    @ci = Ci.find(params[:id])    
+    if Rails.cache.exist?("#{direcao}-#{@ci.id}")
+       @fila_resultado = Rails.cache.read("#{direcao}-#{@ci.id}")
+       @email_impactados = Rails.cache.read("#{direcao}-#{@ci.id}-email")
+       logger.debug  "Ops... li do cache"
+    else
+      logger.debug "vou ler do db"
+      @email_impactados = ""
+      init_queue
+      @email_impactados << @ci.Owner unless @ci.Owner.nil? or @ci.Owner == ""
 
-    enqueue([@ci,0])
-    edges_visitado = Hash.new
+      enqueue([@ci,0])
+      edges_visitado = Hash.new
 
-    nivel_max = 8
-    nivel_max_email = 8
+      nivel_max = 8
+      nivel_max_email = 8
 
-    @fila_resultado = []
+      @fila_resultado = []
 
-    while not queue_empty?
-      #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
-      i,nivel = dequeue
-      if nivel <= nivel_max then
-          if not edges_visitado[i.chave] then        
-              edges_visitado[i.chave] = true
-              @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
-              @fila_resultado << [:ci,i] unless i.send(direcao).empty?
-              i.send(direcao).each do |ii|
-                  @fila_resultado << [:subci,ii, "Depende de"]
-              end
-          end    
+      while not queue_empty?
+        #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
+        i,nivel = dequeue
+        if nivel <= nivel_max then
+            if not edges_visitado[i.chave] then        
+                edges_visitado[i.chave] = true
+                @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
+                @fila_resultado << [:ci,i] unless i.send(direcao).empty?
+                i.send(direcao).each do |ii|
+                    @fila_resultado << [:subci,ii, "Depende de"]
+                end
+            end    
 
-        # retorna uma matrix com varios elementos (.map)
-        # transforma cada elemento impactado numa tupla com [impactado, nivel + 1]
-        # concatena essas tuplas de impactados no final da fila
+          # retorna uma matrix com varios elementos (.map)
+          # transforma cada elemento impactado numa tupla com [impactado, nivel + 1]
+          # concatena essas tuplas de impactados no final da fila
 
-        i.send(direcao).map { |x| enqueue([x,nivel+1])}
+          i.send(direcao).map { |x| enqueue([x,nivel+1])}
+        end
       end
+      #@email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
+      @email_impactados = ListaEmail.acerta(@email_impactados,"@brq.com")
+      #Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado, expires_in: 5.minute)
+      #Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
+      #logger.debug  "escrevi no cache"
     end
-    #@email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
-    @email_impactados = ListaEmail.acerta(@email_impactados,"@brq.com")
     @fila_resultado
   end
 
@@ -262,6 +281,8 @@ def gera_relaciomentos_com_composto_de
     
     enqueue([@ci,0])
     edges_visitado = Hash.new
+
+    # TODO nao tem email impactado ?
 
     nivel_max = 8
 
@@ -414,9 +435,9 @@ def gera_relaciomentos_com_composto_de
   end
 
   def abrir_alerta
-    puts params
+    logger.debug params
     #@ci = Ci.find(params[:id])
-    #puts @ci
+    #logger.debug @ci
     redirect_to tasks_new_from_ci_path(57)
   end
   

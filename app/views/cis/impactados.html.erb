@@ -12,7 +12,7 @@
 <% @fila_resultado.each do |ci| %>
   <% if ci[0]==:ci then %>
      </br>
-     <h1><%= "#{ci[1].tipoci.tipo} "%><%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao}" %></h1>
+     <h1><%= "#{ci[1].tipoci.tipo} "%><%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao} - #{ci[1].Owner}" %></h1>
   <% end %>
   <% if ci[0]==:subci then %>
      
