@@ -1,0 +1,24 @@
+<%  puts @ramal %>
+
+<%  puts @ramal.NumRamal %>
+
+<%= form_for(@ramal) do |f| %>
+  
+ 
+<div class="spacer"></div>
+<label>Ramal 
+</label>
+<%= f.text_field :NumRamal, :size => 6 %>
+
+<div class="spacer"></div>
+<label>Ramal 
+</label>
+<%= f.text_field :IdtLogin, :size => 25 %>
+
+<div class="spacer"></div>
+<label>Localidade 
+</label>
+<%= f.text_field :IdtLocalidade, :size => 4 %>
+
+
+<% end %>

@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/CMDBstyle.css" media="all" />
+</br>
+
+
+<div id="stylized" class="myform">
+
+
+<%= form_tag('/ramais', :method => "get") do %>
+ 
+  <%= text_field_tag(:search) %>
+  
+  <%= submit_tag("Procurar") %>
+<% end %>
+
+<%= render :partial => "form"%>
+
+</br>
+</div>
+</br></br>
+<%= link_to("[Gerar Novo Usuario]", ramais_new_path) %>

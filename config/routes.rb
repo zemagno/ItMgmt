@@ -1,5 +1,10 @@
 ItMgmt::Application.routes.draw do
 
+  match "ramais", to: "ramal_login#index"
+  match "ramais/new", to: "ramal_login#new"
+  match "tel_ramal_login", to: "ramal_login#index"
+  match "tel_ramal_logins", to: "ramal_login#index" #TODO limpar esse lixo..
+  
   resources :tipotasks
   resources :tipo_tasks
   resources :atributos

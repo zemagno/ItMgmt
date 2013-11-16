@@ -1,0 +1,2 @@
+module RamalLoginHelper
+end
