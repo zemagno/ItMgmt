@@ -6,14 +6,28 @@ class TasksController < ApplicationController
     
   def index
 
+    @search_tasks = params[:search] || session[:search_tasks] 
+    session[:search_tasks] = @search
+
+    puts "param: <#{@search_tasks}>"
+    #puts "@search_tasks.to_json"
+
     if can? :manage, "tasks"
+      if not (@search_tasks == "" or @search_tasks.nil? ) then
+        puts "search: <#{@search_tasks}>"
+        @tasks = Task.search @search_tasks, :match_mode => :boolean #, :per_page => 20, :page => params[:page]
+        @tasks.length
+        @tasks.compact!
+      else 
+         puts "ativos"
          @tasks = Task.ativos
+      end
     else
+         puts "publicas"
          @tasks = Task.publicas
     end
 
-    #@tasks = ( can? :manage, @task ? Task.ativos : Task.publicas )
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }

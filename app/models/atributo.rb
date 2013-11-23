@@ -14,6 +14,8 @@ class Atributo < ActiveRecord::Base
       "#{id} : #{ci_id}/#{ci.chave} : #{dicdado.nome} : #{valor} : #{ci.tipoci.tipo}<>#{dicdado.tipoci.tipo}"  
   end
 
+  
+
   define_index do
       indexes valor as :valor
       indexes dicdado(:nome)

@@ -71,8 +71,8 @@ class CisController < ApplicationController
          @atributos = @ci.atributos
          
          carrega_agregadas
-        format.html { render action: "edit" }
-        format.json { render json: @ci.errors, status: :unprocessable_entity }
+         format.html { render action: "edit" }
+         format.json { render json: @ci.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -237,6 +237,8 @@ class CisController < ApplicationController
       @email_impactados = ""
       init_queue
       @email_impactados << @ci.Owner unless @ci.Owner.nil? or @ci.Owner == ""
+      @email_impactados << @ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == ""
+
 
       enqueue([@ci,0])
       edges_visitado = Hash.new
@@ -253,6 +255,8 @@ class CisController < ApplicationController
             if not edges_visitado[i.chave] then        
                 edges_visitado[i.chave] = true
                 @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
+                @email_impactados << @ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == "" or nivel>nivel_max_email
+
                 @fila_resultado << [:ci,i] unless i.send(direcao).empty?
                 i.send(direcao).each do |ii|
                     @fila_resultado << [:subci,ii, "Depende de"]

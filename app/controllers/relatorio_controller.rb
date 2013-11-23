@@ -6,11 +6,11 @@ class RelatorioController < ApplicationController
     authorize!(:index, "relatorio")   
     relatorio = Cadrelatorio.find_by_nome(params[:id])
     sql = relatorio.consulta
-    if sql.match(/(delete|insert|update)/)
-      flash[:notice] = "SQL Invalido"
-      redirect_to tasks_url and return
-      
-    end 
+    #if sql.match(/(delete|insert|update)/)
+    #  flash[:notice] = "SQL Invalido"
+    #  redirect_to tasks_url and return
+    #  
+    #end 
     @NomeRelatorio = relatorio.descricao
    
     mysql_res = ActiveRecord::Base.connection.execute(sql)

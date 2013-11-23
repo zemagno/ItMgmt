@@ -8,7 +8,7 @@ class ContratosController < ApplicationController
     session[:search_contratos] = @search
 
     begin
-      @contratos = Contrato.search params[:search], :match_mode => :boolean, :per_page => 15 , :page => params[:page]
+      @contratos = Contrato.search @search, :match_mode => :boolean, :per_page => 15 , :page => params[:page]
       @contratos.compact!
     rescue 
       flash[:error] = "Error[DB0001] - Search Engine desligado"

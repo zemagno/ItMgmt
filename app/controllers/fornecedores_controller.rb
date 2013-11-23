@@ -10,7 +10,7 @@ class FornecedoresController < ApplicationController
     session[:search_fornecedores] = @search
 
     begin
-      @fornecedores = Fornecedor.search params[:search], :match_mode => :boolean, :per_page => 15 , :page => params[:page]
+      @fornecedores = Fornecedor.search @search, :match_mode => :boolean, :per_page => 15 , :page => params[:page]
       @fornecedores.compact!
     rescue 
       flash[:error] = "Error[DB0001] - Search Engine desligado"
