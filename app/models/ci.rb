@@ -1,8 +1,11 @@
 require "jiraable"
 class Ci < ActiveRecord::Base
+  audited
+
+  # has_paper_trail
   include Jiraable
 
-  attr_accessible :chave, :Owner, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal
 
   belongs_to :site
   belongs_to :tipoci
@@ -53,6 +56,7 @@ class Ci < ActiveRecord::Base
 
   validates :Owner, :format => { :with => /[a-zA-Z]*/,
       :message => "Somente Caracter Alfanumerico" }
+  validates :Owner, :presence => { :message => " eh mandatorio" }
   validates :chave, :presence => { :message => " eh mandatorio" }
   validates :chave,  :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB" }
   
@@ -183,12 +187,13 @@ class Ci < ActiveRecord::Base
       indexes chave
       indexes descricao
       indexes :Owner
+      indexes jira
       indexes site(:nome), :as => :localidade
       indexes statusci(:status), as => :statusciativo
       indexes tipoci(:tipo), :as => :tipotipo
       indexes atributo(:valor), :as => :valoratributo
       indexes contrato_id, :as => :contrato
-      #indexes contrato.fornecedor.nome :as => :nomefornecedor
+      #indexes contrato.fornecedor.nome :as => :nomefornecedor :as => :nomefornecedor
       
    
 

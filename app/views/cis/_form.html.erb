@@ -4,6 +4,7 @@
 
 </br>Site: <%= @ci.site.nome%>
 </br>Owner: <%= @ci.Owner%>
+</br>Notificacao: <%= @ci.notificacao%>
 </br>Data Ultimo Change: <%= @ci.dataChange%>
 <% if ! @ci.DocChange.blank?  %>
     </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= @ci.DocChange %>'">[Doc. Ultima Mudanca]</a>

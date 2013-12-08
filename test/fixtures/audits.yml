@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  auditable_id: 1
+  auditable_type: MyString
+  user: 
+  user_type: MyString
+  username: MyString
+  action: MyText
+  version: 
+  comment: MyString
+  remote_address: MyString
+
+two:
+  auditable_id: 1
+  auditable_type: MyString
+  user: 
+  user_type: MyString
+  username: MyString
+  action: MyText
+  version: 
+  comment: MyString
+  remote_address: MyString

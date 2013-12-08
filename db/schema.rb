@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131103152027) do
+ActiveRecord::Schema.define(:version => 20131207161627) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -26,6 +26,30 @@ ActiveRecord::Schema.define(:version => 20131103152027) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "atributos", ["dicdado_id"], :name => "dicdado_atributo"
+  add_index "atributos", ["valor"], :name => "valor_atributo"
+
+  create_table "audits", :force => true do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "associated_id"
+    t.string   "associated_type"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "username"
+    t.string   "action"
+    t.text     "audited_changes"
+    t.integer  "version",         :default => 0
+    t.string   "comment"
+    t.string   "remote_address"
+    t.datetime "created_at"
+  end
+
+  add_index "audits", ["associated_id", "associated_type"], :name => "associated_index"
+  add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
+  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
+  add_index "audits", ["user_id", "user_type"], :name => "user_index"
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -48,6 +72,16 @@ ActiveRecord::Schema.define(:version => 20131103152027) do
     t.datetime "updated_at"
   end
 
+  create_table "chamados", :force => true do |t|
+    t.integer  "SubTipoChamado_id"
+    t.integer  "StatusChamado_id"
+    t.string   "Solicitante"
+    t.string   "Userid"
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "cis", :force => true do |t|
     t.string   "chave"
     t.string   "descricao"
@@ -65,6 +99,8 @@ ActiveRecord::Schema.define(:version => 20131103152027) do
     t.integer  "statusci_id"
     t.integer  "contrato_id"
     t.decimal  "CustoMensal", :precision => 10, :scale => 2
+    t.string   "notificacai"
+    t.string   "notificacao"
   end
 
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
@@ -109,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20131103152027) do
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
+
   create_table "fornecedores", :force => true do |t|
     t.string   "nome"
     t.string   "nomecompleto"
@@ -136,10 +173,34 @@ ActiveRecord::Schema.define(:version => 20131103152027) do
     t.string   "status"
   end
 
+
   create_table "parametros", :force => true do |t|
     t.string   "tipo"
     t.string   "subtipo"
     t.string   "valor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pedidos", :force => true do |t|
+    t.string   "requisicao",             :limit => 20
+    t.string   "solicitante",            :limit => 40
+    t.string   "loginUsuario",           :limit => 20
+    t.date     "dataPedido"
+    t.date     "dataAutorizacao"
+    t.date     "dataSolicitacaoCompras"
+    t.date     "dataEntrega"
+    t.string   "comprador",              :limit => 20
+    t.integer  "site_id"
+    t.string   "ativo"
+    t.integer  "custoEstimado"
+    t.string   "pedidoResumido",         :limit => 40
+    t.string   "observacao"
+    t.string   "CCUN",                   :limit => 6
+    t.string   "projetoUN",              :limit => 30
+    t.string   "ccTI",                   :limit => 6
+    t.string   "projetoTI",              :limit => 30
+    t.integer  "status_pedido_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -161,11 +222,30 @@ ActiveRecord::Schema.define(:version => 20131103152027) do
     t.datetime "updated_at"
   end
 
+  create_table "status_chamados", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "status_pedidos", :force => true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "statuscis", :force => true do |t|
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "icon"
+  end
+
+  create_table "sub_tipo_chamados", :force => true do |t|
+    t.integer  "TipoChamado_id"
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tasks", :force => true do |t|
@@ -211,11 +291,40 @@ ActiveRecord::Schema.define(:version => 20131103152027) do
     t.datetime "updated_at"
   end
 
+  create_table "tipotasks", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "roles"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  create_table "view_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "prefix"
+    t.boolean  "partial"
+    t.text     "source"
+    t.string   "locale"
+    t.string   "formats"
+    t.string   "handlers"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

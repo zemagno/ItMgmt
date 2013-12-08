@@ -2,6 +2,11 @@
  <p>
    <%= link_to '[Novo Alerta]', new_task_path unless cannot? :manage, "tasks" %> 
 </p>
+<%= form_tag(tasks_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search, @search_tasks, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
 <table>
   <tr>
 	<th>Cliente</th>

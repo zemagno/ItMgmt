@@ -16,6 +16,8 @@ gem 'ruby-graphviz'
 
 gem 'jquery-rails'
 
+gem "audited-activerecord", "~> 3.0"
+
 gem 'rake' #, '0.9.2.2'
 # gem "therubyracer"
 #gem "less-rails"
@@ -39,4 +41,6 @@ gem 'slim'
 gem 'quiet_assets'
 
 gem 'deep_cloneable', '~> 1.5.5'
+
+#gem 'paper_trail', '>= 3.0.0.rc2'
 

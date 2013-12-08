@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Tipo:</b>
+  <%= @audit.auditable_type %>
+</p>
+
+<p>
+  <b>Item:</b>
+  <%= formatAudit(@audit).html_safe  %>
+</p>
+
+<p>
+  <b>Quem:</b>
+  <%= @audit.user.name %>
+</p>
+
+
+<p>
+  <b>Remote address:</b>
+  <%= @audit.remote_address %>
+</p>
+
+<p>
+  <b>Quando:</b>
+  <%= @audit.created_at %>
+</p>
+
+<p>
+  <b>O que foi feito:
+  <%= @audit.action %></b>
+  <%= content_tag('pre',@audit.audited_changes) %>
+</p>
+
+
+
+<%= link_to 'Listagem', audits_path %>

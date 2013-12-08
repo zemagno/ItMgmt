@@ -16,6 +16,7 @@ class CiImpactado
 	    email_impactados = ""
 	    init_queue
 	    email_impactados << ci.Owner unless ci.Owner == ""
+	    email_impactados << ci.notificacao unless ci.notificacao.nil? or ci.notificacao == ""
 
 	    enqueue([ci,0])
 	    edges_visitado = Hash.new
@@ -32,6 +33,8 @@ class CiImpactado
 	          if not edges_visitado[i.chave] then        
 	              edges_visitado[i.chave] = true
 	              email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
+	              email_impactados << ","+i.notificacao unless i.notificacao.nil? or i.notificacao == "" or nivel>nivel_max_email
+	              
 	              fila_resultado << [:ci,i] unless i.send(direcao).empty?
 	              i.send(direcao).each do |ii|
 	                  fila_resultado << [:subci,ii, "Depende de"]
@@ -64,6 +67,7 @@ class CiImpactado
 	        enqueue([ci,0])
 	        puts ci
 	     	email_impactados << ci.Owner unless ci.Owner.nil? or ci.Owner == ""	
+	     	email_impactados << ","+ci.notificacao unless ci.notificacao.nil? or ci.notificacao
 	    end        
 	    # por ora, nao esta gerando a lista inicial de email TODO
 
@@ -84,6 +88,7 @@ class CiImpactado
 	          if not edges_visitado[i.chave] then        
 	              edges_visitado[i.chave] = true
 	              email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
+	              email_impactados << ","+i.notificacao unless i.notificacao.nil? or i.notificacao or nivel>nivel_max_email
 	              fila_resultado << [:ci,i] unless i.send(direcao).empty?
 	              i.send(direcao).each do |ii|
 	                  fila_resultado << [:subci,ii, "Depende de"]

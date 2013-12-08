@@ -27,7 +27,7 @@ class Task < ActiveRecord::Base
    end
    
    def self.todos
-     Task.find(:all, :order => "criticidade_id, created_at DESC")
+     Task.find(:all, :order => "created_at DESC")
    end
 
    def self.publicas
@@ -48,6 +48,16 @@ class Task < ActiveRecord::Base
 
   def nome_site
     site.nome
+  end
+
+  define_index do
+      indexes nome
+      indexes description
+      indexes chamado
+      indexes tipotask
+      indexes ci(:chave), :as => :CI
+      indexes ci_id
+      indexes :Ativo
   end
      
 end
