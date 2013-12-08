@@ -1,10 +1,6 @@
+require 'sidekiq/web'
 ItMgmt::Application.routes.draw do
-
-  resources :audits
-
-  #match "audits", to: "audits#index"
-  #match "/audits/:id", to: "audits#show"
-
+  mount Sidekiq::Web, at: '/sidekiq'
   match "ramais", to: "ramal_login#index"
   match "ramais/new", to: "ramal_login#new"
   match "tel_ramal_login", to: "ramal_login#index"
@@ -60,7 +56,6 @@ ItMgmt::Application.routes.draw do
   # gera uma entrada no rake routes
   # ci        /CMDB/:id(.:format)                   {:controller=>"ci", :action=>"show"}
   
-  match 'cis/:id/email_alerta', to: "cis#email_alerta",  :as => :email_alerta
   
   match 'cis/:id/impactados', to: "cis#impactados",  :as => :impactados
   match 'cis/:id/dependentes', to: "cis#dependentes",  :as => :dependentes

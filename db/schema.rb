@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131116184439) do
+ActiveRecord::Schema.define(:version => 20131207161627) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -29,6 +29,27 @@ ActiveRecord::Schema.define(:version => 20131116184439) do
 
   add_index "atributos", ["dicdado_id"], :name => "dicdado_atributo"
   add_index "atributos", ["valor"], :name => "valor_atributo"
+
+  create_table "audits", :force => true do |t|
+    t.integer  "auditable_id"
+    t.string   "auditable_type"
+    t.integer  "associated_id"
+    t.string   "associated_type"
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "username"
+    t.string   "action"
+    t.text     "audited_changes"
+    t.integer  "version",         :default => 0
+    t.string   "comment"
+    t.string   "remote_address"
+    t.datetime "created_at"
+  end
+
+  add_index "audits", ["associated_id", "associated_type"], :name => "associated_index"
+  add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
+  add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
+  add_index "audits", ["user_id", "user_type"], :name => "user_index"
 
   create_table "authors", :force => true do |t|
     t.string   "name"
@@ -61,13 +82,6 @@ ActiveRecord::Schema.define(:version => 20131116184439) do
     t.datetime "updated_at"
   end
 
-  create_table "checklists", :force => true do |t|
-    t.integer  "evento_id"
-    t.string   "nome"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "cis", :force => true do |t|
     t.string   "chave"
     t.string   "descricao"
@@ -85,6 +99,7 @@ ActiveRecord::Schema.define(:version => 20131116184439) do
     t.integer  "statusci_id"
     t.integer  "contrato_id"
     t.decimal  "CustoMensal", :precision => 10, :scale => 2
+    t.string   "notificacai"
     t.string   "notificacao"
   end
 
@@ -130,13 +145,6 @@ ActiveRecord::Schema.define(:version => 20131116184439) do
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
-  create_table "eventos", :force => true do |t|
-    t.string   "nome"
-    t.date     "dataInicio"
-    t.string   "status"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "fornecedores", :force => true do |t|
     t.string   "nome"
@@ -157,13 +165,6 @@ ActiveRecord::Schema.define(:version => 20131116184439) do
     t.datetime "updated_at"
   end
 
-  create_table "itens_checklists", :force => true do |t|
-    t.integer  "checklist_id"
-    t.string   "item"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
   create_table "notificacaos", :force => true do |t|
     t.string   "evento"
     t.string   "email"
@@ -172,12 +173,6 @@ ActiveRecord::Schema.define(:version => 20131116184439) do
     t.string   "status"
   end
 
-  create_table "padrao_checklists", :force => true do |t|
-    t.string   "nome"
-    t.text     "itens"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "parametros", :force => true do |t|
     t.string   "tipo"
@@ -310,6 +305,17 @@ ActiveRecord::Schema.define(:version => 20131116184439) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "versions", :force => true do |t|
+    t.string   "item_type",  :null => false
+    t.integer  "item_id",    :null => false
+    t.string   "event",      :null => false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
   create_table "view_templates", :force => true do |t|
     t.string   "name"

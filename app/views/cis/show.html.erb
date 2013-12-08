@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/stylesheets/CMDBstyle.css" media="all" />
+<!--link rel="stylesheet" type="text/css" href="/stylesheets/CMDBstyle.css" media="all" /-->
 </br>
 
 <%= link_to("[Anterior]", @ci.anterior,  :id => "SetaEsquerda") if @ci.anterior %>  
@@ -26,6 +26,7 @@
 	<%= render :partial => "form" %>
 	<%= render :partial => "menu_dependentes_ci"%>
   <%= render :partial => "menu_alertas_ci"%>
+  <%= render :partial => "menu_audit_ci"%>
 </div>
 
 </br>

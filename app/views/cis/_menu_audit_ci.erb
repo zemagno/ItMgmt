@@ -1,0 +1,4 @@
+<% if can? :manage, Audit %>
+   <a href="<%='/audits?&search=@auditable_type=ci @auditable_id='+@ci.id.to_s%>" >[Auditoria deste CI]</a>
+<% end %>
+ 

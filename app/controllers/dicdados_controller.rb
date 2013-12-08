@@ -19,6 +19,7 @@ class DicdadosController < ApplicationController
  end
 
     @tipocis = Tipoci.all
+    session[:search_dicdados_tipoci] = @dicdados[0].tipoci_id unless @dicdados[0].nil?
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,7 +43,9 @@ class DicdadosController < ApplicationController
   # GET /dicdados/new.xml
   def new
     @dicdado = Dicdado.new
+    @dicdado.tipoci_id = session[:search_dicdados_tipoci] unless session[:search_dicdados_tipoci].nil?
     @tipocis = Tipoci.all
+
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,12 +1,24 @@
 http://railscasts.com/episodes/287-presenters-from-scratch?view=asciicast
 ver o episodio acima para gerar email padrao (.erb gerando texto ou html para embutir no email)
 
+[ ] - email 
+
 [ ] - ao abrir alerta de dentro do CI, ele marca num campo [data de prob] e grafico mostra vermelho. Inclusive na listagem (com marcados: [INDISPONIBILIDADE])
+    colocar no sidekiq para atualizar data mudanca CI...
+    criar data de indisponibilidade
 
+[ ] - tirar cliente do tasks e colocar string
+      com isso posso ter varios clientes impactados
 
+[ ] - www.pusher.com
+[ ] - colocar em producao na BRQ
+      tirar de dev
+      automacao do repositorio
+      instalacao do que tem que fazer (rake db:migrate, etc) - puppet+capistrano
 http://www.geekq.net/workflow/
 
-Memcached email impactados CI:488 - persistencia de 4 dias ou botao para limpar e regerar.
+(usar redis pois é o que o sidekiq usa)
+Memcached  email impactados CI:488 - persistencia de 4 dias ou botao para limpar e regerar.
 memcached/redis - ao clicar num CI
    criar um sidekiq com CI
    sidekiq - se tiver no memcached/redis, ok, senao navegar pelos impactados e colocar no redis/memcached
@@ -58,21 +70,20 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 - varios checklist podem ser iniciados quando criar um tipo de CI
 - cada atributo tem um boolean (o checklist) e uma string de obs
 
-[ ] - procurar que tabelas de cadastros mais vao no DB e colocar no memcached Rails.cache.fetch 
+[ ] - procurar que tabelas de cadastros mais utilizadas e colocar no memcached Rails.cache.fetch 
 
-[ ] - criar treelist para mostrar dependenciasÉ ir abrindo arvore	
+[ ] - criar treelist para mostrar dependencias e ir abrindo arvore	
 
 [ ] - data da instalacao do CI e data do ultimo boot (para servidores)
 
-[ ] - tirar a porta 3000 - rvmsudo rails s -p 80 - colocar um servidor http na frente
+[x] - tirar a porta 3000 - rvmsudo rails s -p 80 - colocar um servidor http na frente
 
 [ ] - painel de alertas (com relatorio, status do pedido de link, etc)
 
 [ ] - colocar .include em varios lugares
       view cis.show chama @cis.dependentes e esse fica navegando em tiposcis.
       tem que mudar do atributo .dependentes para um metodo da classe e essa pegar os dependentes com os tipocis. 
-[ ] - colocar em producao
-[ ] - colocar link nos contratos para fornecedor e texto puro
+
 [ ] - area fornecedor
       (?? isso nao pode cair em conflito com area contrato ???)
       cadastro ta ok,
@@ -138,11 +149,28 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
       [ ] formato de formulario
  
 
-[ ] - checklist
-      - itensChecklist
+[ ] - checklist 
+      - itensChecklist 
+          checklist:references descricao:string user:references ci:references
+          CI opcional
+
       - Checklist
-      - ExecChecklist
-      URL do CI para Checklist
+           descricao:string gmud:string user:references tipoci:references 
+          gmud --> aponta para jira ou sequencial (GMUD-xxxx ou INFRA-xxxx)
+          (colecao de itens,  [acao dentro do CMDB,tipoci] (opcional) ) - ex: criacao servidor, mudar senha core, instalacao de novo link 
+      - ExecChecklist 
+           descricao:string user:references ci:references inicioexec:date fimexec:date tipoci:references
+           tipoci para facilitar pesquisa..
+
+      - ExecItensChecklist 
+          gmud:string descricao:string user:references, ci:references ExecChecklist:references
+         (checklist:reference, descricao:text, , user:references, jira(sera o nome da gmud. ate estar pronto, podera ser um sequencia), quando:date, status (references), ci:references(opcional))
+         URL do CI para Checklist
+      - [rodar tal checklist no dia tal - ex: revisar servidor] - deixar num schedule. sidekiq instancia toda noite..
+
+      - Criar um jira PAI(lider) e jiras filhos (itens)
+      sidekiq (abrir jira, pegar status jira, instanciar um checklist )
+      PROBLEMA: multiplos CIs. ()
      
 [ ] - ChgMgmt
       - CI

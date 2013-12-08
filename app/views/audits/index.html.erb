@@ -1,0 +1,41 @@
+<h1>Auditoria</h1>
+
+<%= will_paginate @audits %>
+
+<%= form_tag(audits_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search, @search, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th></th>
+    <th></th>
+    <th>Quem</th>
+    <th>O que</th>
+    <th>IP</th>
+    <th>Quando</th>
+    <th></th>
+    <th></th>
+   
+  </tr>
+
+<% @audits.each do |audit| %>
+  <tr>
+
+    <td><%= audit.auditable_type %></td>
+    <td><%= formatAudit(audit).html_safe %>
+    <td><%= link_to 'Detalhe', audit %></td>
+    <td><%= audit.user.name %></td>
+    <td><%= audit.action %></td>
+    <td><%= audit.remote_address %></td>
+    <td><%= audit.created_at %></td>
+    
+
+  </tr>
+<% end %>
+</table>
+
+<br />

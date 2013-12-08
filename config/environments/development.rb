@@ -16,7 +16,7 @@ ItMgmt::Application.configure do
   #config.cache_store = :dalli_store
 
   # Don't care if the mailer can't send
-   config.action_mailer.raise_delivery_errors = false
+\
   #config.action_mailer.raise_delivery_errors = true
   #config.action_mailer.delivery_method = :smtp
   #config.action_mailer.perform_deliveries = true
@@ -31,16 +31,21 @@ ItMgmt::Application.configure do
 
    # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict
-  
+
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-     :address              => "smtp.gmail.com",
-     :port                 => 587,
-     :user_name            => "zemagno@gmail.com",
-     :password             => "mmp1bk!!",
-     :authentication       => "plain",
-     :enable_starttls_auto => true  }
+    address: "smtp.gmail.com",
+    port: 587,
+    #domain: "railscasts.com",
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "zemagno@gmail.com",
+    password: "Esqesf!!1"
+  }
 
+  # specify what domain to use for mailer URLs
+  config.action_mailer.default_url_options = {host: "localhost:3000"}
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)

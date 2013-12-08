@@ -1,5 +1,8 @@
 require "jiraable"
 class Ci < ActiveRecord::Base
+  audited
+
+  # has_paper_trail
   include Jiraable
 
   attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal

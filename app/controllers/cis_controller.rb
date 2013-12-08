@@ -32,6 +32,7 @@ class CisController < ApplicationController
   end
  
   def show
+    puts "Usuario corrente: #{current_user} "
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     cache(@ci)
   end
@@ -41,7 +42,11 @@ class CisController < ApplicationController
     carrega_agregadas
   end
 
-
+  def email_alerta
+    @ci = Ci.find(params[:id])
+    CiMailer.revalidar_servidor(@ci,"Revalidacao de servidor").deliver
+    redirect_to(@ci)
+  end
   
   def check_chave
     @ci = Ci.find_by_chave(params[:search]) 
@@ -237,7 +242,7 @@ class CisController < ApplicationController
       @email_impactados = ""
       init_queue
       @email_impactados << @ci.Owner unless @ci.Owner.nil? or @ci.Owner == ""
-      @email_impactados << @ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == ""
+      @email_impactados << ","+@ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == ""
 
 
       enqueue([@ci,0])
@@ -255,7 +260,7 @@ class CisController < ApplicationController
             if not edges_visitado[i.chave] then        
                 edges_visitado[i.chave] = true
                 @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
-                @email_impactados << @ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == "" or nivel>nivel_max_email
+                @email_impactados << ","+@ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == "" or nivel>nivel_max_email
 
                 @fila_resultado << [:ci,i] unless i.send(direcao).empty?
                 i.send(direcao).each do |ii|
