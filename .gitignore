@@ -5,6 +5,8 @@ log/*
 tmp/**/*
 public/imagens/*
 apoio/*
+apoio/**
+apoio
 id_rsa/*
 db/sphinx/**
 tmp/**
