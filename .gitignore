@@ -9,3 +9,5 @@ id_rsa/*
 db/sphinx/**
 tmp/**
 tmp/
+.*
+!/.gitignore
