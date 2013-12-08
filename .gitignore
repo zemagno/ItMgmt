@@ -13,3 +13,4 @@ tmp/**
 tmp/
 .*
 !/.gitignore
+apoio/Todo.txt
