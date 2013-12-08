@@ -1,0 +1,41 @@
+<%= form_for(@exec_itens_checklist) do |f| %>
+  <% if @exec_itens_checklist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@exec_itens_checklist.errors.count, "error") %> prohibited this exec_itens_checklist from being saved:</h2>
+
+      <ul>
+      <% @exec_itens_checklist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :gmud %><br />
+    <%= f.text_field :gmud %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :ci %><br />
+    <%= f.text_field :ci %>
+  </div>
+  <div class="field">
+    <%= f.label :ExecChecklist %><br />
+    <%= f.text_field :ExecChecklist %>
+  </div>
+  <div class="field">
+    <%= f.label :StatusChecklist %><br />
+    <%= f.text_field :StatusChecklist %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

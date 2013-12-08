@@ -1,0 +1,29 @@
+<h1>Listing itens_checklists</h1>
+
+<table>
+  <tr>
+    <th>Checklist</th>
+    <th>Descricao</th>
+    <th>User</th>
+    <th>Ci</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @itens_checklists.each do |itens_checklist| %>
+  <tr>
+    <td><%= itens_checklist.Checklist %></td>
+    <td><%= itens_checklist.descricao %></td>
+    <td><%= itens_checklist.user %></td>
+    <td><%= itens_checklist.ci %></td>
+    <td><%= link_to 'Show', itens_checklist %></td>
+    <td><%= link_to 'Edit', edit_itens_checklist_path(itens_checklist) %></td>
+    <td><%= link_to 'Destroy', itens_checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Itens checklist', new_itens_checklist_path %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gmud: MyString
+  descricao: MyString
+  user: MyString
+  ci: 
+  ExecChecklist: 
+  StatusChecklist: 
+
+two:
+  gmud: MyString
+  descricao: MyString
+  user: MyString
+  ci: 
+  ExecChecklist: 
+  StatusChecklist: 

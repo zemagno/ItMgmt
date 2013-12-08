@@ -1,0 +1,35 @@
+<h1>Listing exec_checklists</h1>
+
+<table>
+  <tr>
+    <th>Gmud</th>
+    <th>Descricao</th>
+    <th>Ci</th>
+    <th>User</th>
+    <th>Inicioexec</th>
+    <th>Fimexec</th>
+    <th>Tipoci</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @exec_checklists.each do |exec_checklist| %>
+  <tr>
+    <td><%= exec_checklist.gmud %></td>
+    <td><%= exec_checklist.descricao %></td>
+    <td><%= exec_checklist.ci %></td>
+    <td><%= exec_checklist.user %></td>
+    <td><%= exec_checklist.inicioexec %></td>
+    <td><%= exec_checklist.fimexec %></td>
+    <td><%= exec_checklist.tipoci %></td>
+    <td><%= link_to 'Show', exec_checklist %></td>
+    <td><%= link_to 'Edit', edit_exec_checklist_path(exec_checklist) %></td>
+    <td><%= link_to 'Destroy', exec_checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Exec checklist', new_exec_checklist_path %>

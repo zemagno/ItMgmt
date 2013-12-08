@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131207161627) do
+ActiveRecord::Schema.define(:version => 20131208205305) do
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -82,6 +82,16 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.datetime "updated_at"
   end
 
+  create_table "checklists", :force => true do |t|
+    t.string   "descricao"
+    t.string   "user"
+    t.integer  "tipoci_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "checklists", ["tipoci_id"], :name => "index_checklists_on_tipoci_id"
+
   create_table "cis", :force => true do |t|
     t.string   "chave"
     t.string   "descricao"
@@ -145,6 +155,35 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
+  create_table "exec_checklists", :force => true do |t|
+    t.string   "gmud"
+    t.string   "descricao"
+    t.integer  "ci_id"
+    t.string   "user"
+    t.date     "inicioexec"
+    t.date     "fimexec"
+    t.integer  "tipoci_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "exec_checklists", ["ci_id"], :name => "index_exec_checklists_on_ci_id"
+  add_index "exec_checklists", ["tipoci_id"], :name => "index_exec_checklists_on_tipoci_id"
+
+  create_table "exec_itens_checklists", :force => true do |t|
+    t.string   "gmud"
+    t.string   "descricao"
+    t.string   "user"
+    t.integer  "ci_id"
+    t.integer  "ExecChecklist_id"
+    t.integer  "StatusChecklist_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  add_index "exec_itens_checklists", ["ExecChecklist_id"], :name => "index_exec_itens_checklists_on_ExecChecklist_id"
+  add_index "exec_itens_checklists", ["StatusChecklist_id"], :name => "index_exec_itens_checklists_on_StatusChecklist_id"
+  add_index "exec_itens_checklists", ["ci_id"], :name => "index_exec_itens_checklists_on_ci_id"
 
   create_table "fornecedores", :force => true do |t|
     t.string   "nome"
@@ -165,6 +204,19 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.datetime "updated_at"
   end
 
+  create_table "itens_checklists", :force => true do |t|
+    t.integer  "Checklist_id"
+    t.string   "descricao"
+    t.integer  "user_id"
+    t.integer  "ci_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "itens_checklists", ["Checklist_id"], :name => "index_itens_checklists_on_Checklist_id"
+  add_index "itens_checklists", ["ci_id"], :name => "index_itens_checklists_on_ci_id"
+  add_index "itens_checklists", ["user_id"], :name => "index_itens_checklists_on_user_id"
+
   create_table "notificacaos", :force => true do |t|
     t.string   "evento"
     t.string   "email"
@@ -173,6 +225,12 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.string   "status"
   end
 
+  create_table "padrao_checklists", :force => true do |t|
+    t.string   "nome"
+    t.text     "itens"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "parametros", :force => true do |t|
     t.string   "tipo"
@@ -226,6 +284,13 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "status_checklists", :force => true do |t|
+    t.string   "status"
+    t.string   "icon"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "status_pedidos", :force => true do |t|

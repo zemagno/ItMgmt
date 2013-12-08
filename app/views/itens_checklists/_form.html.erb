@@ -1,0 +1,33 @@
+<%= form_for(@itens_checklist) do |f| %>
+  <% if @itens_checklist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@itens_checklist.errors.count, "error") %> prohibited this itens_checklist from being saved:</h2>
+
+      <ul>
+      <% @itens_checklist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Checklist %><br />
+    <%= f.text_field :Checklist %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br />
+    <%= f.text_field :descricao %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.text_field :user %>
+  </div>
+  <div class="field">
+    <%= f.label :ci %><br />
+    <%= f.text_field :ci %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

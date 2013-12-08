@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @checklist.descricao %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @checklist.user %>
+</p>
+
+<p>
+  <b>Tipoci:</b>
+  <%= @checklist.tipoci.tipo %>
+</p>
+
+
+<%= link_to 'Edit', edit_checklist_path(@checklist) %> |
+<%= link_to 'Back', checklists_path %>

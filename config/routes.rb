@@ -1,5 +1,20 @@
 ItMgmt::Application.routes.draw do
 
+  resources :exec_itens_checklists
+
+
+  resources :exec_checklists
+
+
+  resources :checklists
+
+
+  resources :itens_checklists
+
+
+  resources :status_checklists
+
+
   resources :audits
 
   #match "audits", to: "audits#index"

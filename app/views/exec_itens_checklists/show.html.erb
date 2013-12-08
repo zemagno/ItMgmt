@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Gmud:</b>
+  <%= @exec_itens_checklist.gmud %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @exec_itens_checklist.descricao %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @exec_itens_checklist.user %>
+</p>
+
+<p>
+  <b>Ci:</b>
+  <%= @exec_itens_checklist.ci %>
+</p>
+
+<p>
+  <b>Execchecklist:</b>
+  <%= @exec_itens_checklist.ExecChecklist %>
+</p>
+
+<p>
+  <b>Statuschecklist:</b>
+  <%= @exec_itens_checklist.StatusChecklist %>
+</p>
+
+
+<%= link_to 'Edit', edit_exec_itens_checklist_path(@exec_itens_checklist) %> |
+<%= link_to 'Back', exec_itens_checklists_path %>

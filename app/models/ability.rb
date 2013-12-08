@@ -112,7 +112,7 @@ class Ability
     cannot :manage, @Audit
     cannot :manage, Audit
     
-    if user.is_a :audit
+    if user and user.is_a :audit
         puts "======> can audit"
         can :manage, @Audit
         can :manage, Audit

@@ -1,0 +1,33 @@
+<h1>Listing exec_itens_checklists</h1>
+
+<table>
+  <tr>
+    <th>Gmud</th>
+    <th>Descricao</th>
+    <th>User</th>
+    <th>Ci</th>
+    <th>Execchecklist</th>
+    <th>Statuschecklist</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @exec_itens_checklists.each do |exec_itens_checklist| %>
+  <tr>
+    <td><%= exec_itens_checklist.gmud %></td>
+    <td><%= exec_itens_checklist.descricao %></td>
+    <td><%= exec_itens_checklist.user %></td>
+    <td><%= exec_itens_checklist.ci %></td>
+    <td><%= exec_itens_checklist.ExecChecklist %></td>
+    <td><%= exec_itens_checklist.StatusChecklist %></td>
+    <td><%= link_to 'Show', exec_itens_checklist %></td>
+    <td><%= link_to 'Edit', edit_exec_itens_checklist_path(exec_itens_checklist) %></td>
+    <td><%= link_to 'Destroy', exec_itens_checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Exec itens checklist', new_exec_itens_checklist_path %>
