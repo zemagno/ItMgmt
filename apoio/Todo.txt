@@ -72,7 +72,7 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 
 [ ] - procurar que tabelas de cadastros mais utilizadas e colocar no memcached Rails.cache.fetch 
 
-[ ] - criar treelist para mostrar dependencias e ir abrindo arvore	
+[ ] - criar treelist para mostrar dependencias e ir abrindo arvore  
 
 [ ] - data da instalacao do CI e data do ultimo boot (para servidores)
 
@@ -151,7 +151,7 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 
 [ ] - checklist 
       - itensChecklist 
-          checklist:references descricao:string user:references ci:references
+          checklist:reference descricao:string user:references, ci:string
           CI opcional
 
       - Checklist
@@ -159,18 +159,15 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
           gmud --> aponta para jira ou sequencial (GMUD-xxxx ou INFRA-xxxx)
           (colecao de itens,  [acao dentro do CMDB,tipoci] (opcional) ) - ex: criacao servidor, mudar senha core, instalacao de novo link 
       - ExecChecklist 
-           descricao:string user:references ci:references inicioexec:date fimexec:date tipoci:references
-           tipoci para facilitar pesquisa..
+           descricao:string gmud:string user:references ci:references inicioexec:date fimexec:date
 
-      - ExecItensChecklist 
-          gmud:string descricao:string user:references, ci:references ExecChecklist:references
-         (checklist:reference, descricao:text, , user:references, jira(sera o nome da gmud. ate estar pronto, podera ser um sequencia), quando:date, status (references), ci:references(opcional))
-         URL do CI para Checklist
+      - ExecItensChecklist (checklist:reference, descricao:text, , user:references, jira(sera o nome da gmud. ate estar pronto, podera ser um sequencia), quando:date, status (references), ci:references(opcional))
+      URL do CI para Checklist
       - [rodar tal checklist no dia tal - ex: revisar servidor] - deixar num schedule. sidekiq instancia toda noite..
 
       - Criar um jira PAI(lider) e jiras filhos (itens)
       sidekiq (abrir jira, pegar status jira, instanciar um checklist )
-      PROBLEMA: multiplos CIs. ()
+      PROBLEMA: multiplos CIs.
      
 [ ] - ChgMgmt
       - CI
@@ -216,14 +213,14 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 
 [ ]- helper 
     [ ] email cobranca - codigo repetido..
-	  [ ] - corpo do email de cobranca num helper dp model de contrato e nao no controller. Controller nao tem q saber montar corpo. so email a partir do body,cc,to
-	
+    [ ] - corpo do email de cobranca num helper dp model de contrato e nao no controller. Controller nao tem q saber montar corpo. so email a partir do body,cc,to
+  
 [ ] - pode ter um erro ao adicionar no do grafico.
       1) eu so teste data de mudanca num ponto. no outro, adiciono sem testarx 
-	  2) eu adiciono cada node 2x. uma como o dependente/impactado. outra depois de tirar da fila..
-	      se ele nao duplica, ta mascarado.
-[ ]	- passar logica de navegacao p fora do controler, talvez dentro do model.
-	
+    2) eu adiciono cada node 2x. uma como o dependente/impactado. outra depois de tirar da fila..
+        se ele nao duplica, ta mascarado.
+[ ] - passar logica de navegacao p fora do controler, talvez dentro do model.
+  
 
 [ ] - paginando ou limitando resultado do search 
       railscast 240
@@ -266,7 +263,7 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 
 [ ] - limpeza de codigo
       http://simplesideias.com.br/usando-presenters-no-rails
-	  http://simplesideias.com.br/usando-responders-no-rails
+    http://simplesideias.com.br/usando-responders-no-rails
       acabar com div ou refazer.
 
 [ ] - profundidade dos dependentes/impactados no grafico (ta fixo em 4)
@@ -286,7 +283,7 @@ CI - checklist - tem um tipo (como tipoci) e uma colecao de atributos preenchido
 [ ]- agenda de pendencias, baseado numa data - ex: cobrar desligamento de servidor
      workflow ? 
 
-[ ] - pedidos - fazer com ajax puro, mostrando detalhes.	
+[ ] - pedidos - fazer com ajax puro, mostrando detalhes.  
       expiracao. alertas. 
 
 [ ] - passar rotinas de dependentes p dentro do model
@@ -404,7 +401,7 @@ cliente campo2
 capacidade campo3
 --> contrato:campo1 (operadora, valor, renovacao, etc)
 dados do link:
-   endereco,designacao,etc..	
+   endereco,designacao,etc..  
 
 
 id_ci, id_campo, valor
@@ -466,4 +463,3 @@ Posso implementar os metodos
 dep[i]==> relacao_dependencia[i].dependente
 imp
 e_composto_de[1] ==> igual ao dep, porem filtrando por somente Ã© composto de
-
