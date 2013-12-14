@@ -3,17 +3,17 @@
 one:
   gmud: MyString
   descricao: MyString
-  ci: 
-  user: MyString
-  inicioexec: 2013-12-08
-  fimexec: 2013-12-08
+  cis: MyString
+  users: MyString
+  inicioexec: 2013-12-10
+  fimexec: 2013-12-10
   tipoci: 
 
 two:
   gmud: MyString
   descricao: MyString
-  ci: 
-  user: MyString
-  inicioexec: 2013-12-08
-  fimexec: 2013-12-08
+  cis: MyString
+  users: MyString
+  inicioexec: 2013-12-10
+  fimexec: 2013-12-10
   tipoci: 

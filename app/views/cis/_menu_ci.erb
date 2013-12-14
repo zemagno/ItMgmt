@@ -15,14 +15,24 @@
 <% end %>
 
 <% if @email_impactados then %>
-   <a href="mailto:?bcc=<%=@email_impactados%>&subject=Alerta - <%=@ci.chave%>"\>[Email Impactados/Dependentes]</a> 
+   <a href="mailto:?bcc=<%=@email_impactados%>&subject=Alerta - <%=@ci.chave%>" onclick="window.open(this.href,'');return false";\>[Email Impactados/Dependentes]</a> 
 <% end %>
-
-<%= link_to("[Abrir Alerta]", tasks_new_from_ci_path(@ci))%>
-
-</br><%= link_to "[Adiciona Dependente]", novo_dependente_path(@ci), :remote => true, :id => "novo_dependente" %>
+</br>
+<%= link_to "[Adiciona Dependente]", novo_dependente_path(@ci), :remote => true, :id => "novo_dependente" %>
 <%= link_to "[Adiciona Impactado]", novo_impactado_path(@ci), :remote => true, :id => "novo_impactado" %>
 <%= link_to "[Elimina dependente]" , elimina_dependente_path(@ci), :remote => true, :id => "elimina_dependente"%>
 <%= link_to "[Elimina impactado]" , elimina_impactado_path(@ci), :remote => true, :id => "elimina_impactado"%>
-</br>
 <%= link_to "[Duplicar esse CI]" , duplicar_ci_path(@ci), :remote => true, :id => "duplicar_ci"%>
+</br>
+<%= link_to("[Email Notificacao]", email_alerta_path(@ci), :target => '_blank')%>
+<%= link_to("[Enviar email]", email_path(@ci), :remote => true, :id => "enviar_email_ci" )%>
+
+
+<%= link_to("[Abrir Alerta]", tasks_new_from_ci_path(@ci))%>
+<a href="<%='/tasks?&search=@CI='+@ci.chave%>" >[Alertas deste CI]</a>
+<a href="<%='/tasks?&search='+@ci.chave%>" >[Alertas com este CI]</a>
+
+<% if can? :manage, Audit %>
+   <a href="<%='/audits?&search=@auditable_type=ci @auditable_id='+@ci.id.to_s%>" >[Auditoria deste CI]</a>
+<% end %>
+ 

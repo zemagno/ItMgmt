@@ -12,20 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Checklist %><br />
-    <%= f.text_field :Checklist %>
+    <%= f.label "Checklist" %><br />
+    
+    <%= f.select :checklist_id, @checklists.collect { |c| [ c.descricao, c.id ] } %>
   </div>
   <div class="field">
-    <%= f.label :descricao %><br />
+    <%= f.label :Descricao %><br />
     <%= f.text_field :descricao %>
   </div>
   <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <%= f.label :Executores %><br />
+    <%= f.text_field :users %>
   </div>
   <div class="field">
-    <%= f.label :ci %><br />
-    <%= f.text_field :ci %>
+    <%= f.label :CIs %><br />
+    <%= f.text_field :cis %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,6 +1,4 @@
 class ItensChecklist < ActiveRecord::Base
-  belongs_to :Checklist
-  belongs_to :user
-  belongs_to :ci
-  attr_accessible :descricao
+  belongs_to :checklist
+  attr_accessible :cis, :descricao, :users, :checklist_id
 end

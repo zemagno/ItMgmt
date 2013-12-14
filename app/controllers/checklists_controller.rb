@@ -17,10 +17,13 @@ class ChecklistsController < ApplicationController
     end
   end
 
+
   # GET /checklists/1
   # GET /checklists/1.json
   def show
     @checklist = Checklist.find(params[:id])
+    @itens = @checklist.itens_checklists
+    @pais = @checklist.pais
 
     respond_to do |format|
       format.html # show.html.erb

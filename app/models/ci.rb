@@ -1,6 +1,7 @@
 require "jiraable"
 class Ci < ActiveRecord::Base
   audited
+  #has_associated_audits
 
   # has_paper_trail
   include Jiraable

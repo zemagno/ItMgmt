@@ -39,7 +39,6 @@
 
 <% @atributos ||= [] %>
 <% @atributos.map do |dicdado,attr| %>
-     <!--  se campo URL nao conter nada ou se valor do atributo nao conter nada, so imprimo nome do atributo -->
      <% if attr[2].blank? || attr[1].blank? %>
         </br><%="#{attr[0]} : #{attr[1]}"%>
      <% else %>

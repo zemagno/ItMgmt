@@ -1,0 +1,12 @@
+<%=  form_for :enviar_email, :remote => true, :html => {:id => "email"} do |f|  %>
+<label>Selecione o Template
+</label>
+<%= %>
+<%= hidden_field_tag 'idci', @idci%>
+<%= f.select :template_id, @templates_email.collect { |c| [ c.nome, c.id ] } %>
+<div class="buttons">
+    <%= f.submit "Enviar" %>
+</div>
+</br>
+
+<% end %>

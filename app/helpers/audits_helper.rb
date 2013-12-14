@@ -5,6 +5,8 @@ module AuditsHelper
 		when "Ci" 
             res = link_to audit.auditable_id, ci_path(audit.auditable_id) 
         end
+        #when "Relacionamento"
+        #end 
         # colocar tempplate de email
         # contrato
         # 

@@ -18,7 +18,7 @@ class ExecChecklistsControllerTest < ActionController::TestCase
 
   test "should create exec_checklist" do
     assert_difference('ExecChecklist.count') do
-      post :create, exec_checklist: { descricao: @exec_checklist.descricao, fimexec: @exec_checklist.fimexec, gmud: @exec_checklist.gmud, inicioexec: @exec_checklist.inicioexec, user: @exec_checklist.user }
+      post :create, exec_checklist: { cis: @exec_checklist.cis, descricao: @exec_checklist.descricao, fimexec: @exec_checklist.fimexec, gmud: @exec_checklist.gmud, inicioexec: @exec_checklist.inicioexec, users: @exec_checklist.users }
     end
 
     assert_redirected_to exec_checklist_path(assigns(:exec_checklist))
@@ -35,7 +35,7 @@ class ExecChecklistsControllerTest < ActionController::TestCase
   end
 
   test "should update exec_checklist" do
-    put :update, id: @exec_checklist, exec_checklist: { descricao: @exec_checklist.descricao, fimexec: @exec_checklist.fimexec, gmud: @exec_checklist.gmud, inicioexec: @exec_checklist.inicioexec, user: @exec_checklist.user }
+    put :update, id: @exec_checklist, exec_checklist: { cis: @exec_checklist.cis, descricao: @exec_checklist.descricao, fimexec: @exec_checklist.fimexec, gmud: @exec_checklist.gmud, inicioexec: @exec_checklist.inicioexec, users: @exec_checklist.users }
     assert_redirected_to exec_checklist_path(assigns(:exec_checklist))
   end
 

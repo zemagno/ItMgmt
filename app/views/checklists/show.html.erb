@@ -1,20 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Descricao:</b>
-  <%= @checklist.descricao %>
-</p>
 
-<p>
-  <b>User:</b>
-  <%= @checklist.user %>
+  <h1><%= @checklist.descricao %></h1>
+  
 </p>
-
 <p>
-  <b>Tipoci:</b>
+  <b>Tipo Ci:</b>
   <%= @checklist.tipoci.tipo %>
 </p>
+<br>
+
+<p>
+  <b>Executores:</b>
+  <%= @checklist.users %>
+</p>
 
 
-<%= link_to 'Edit', edit_checklist_path(@checklist) %> |
-<%= link_to 'Back', checklists_path %>
+
+<%= render :partial => "pais" unless @pais.empty? %>
+<%= render :partial => "itens" %>
+
+
+
+<%= link_to 'Editar', edit_checklist_path(@checklist) %> |
+<%= link_to 'Listagem', checklists_path %> |
+

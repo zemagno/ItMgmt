@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  Checklist: 
+  checklist: 
   descricao: MyString
-  user: 
-  ci: 
+  users: MyString
+  cis: MyString
 
 two:
-  Checklist: 
+  checklist: 
   descricao: MyString
-  user: 
-  ci: 
+  users: MyString
+  cis: MyString

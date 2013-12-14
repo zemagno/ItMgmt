@@ -1,5 +1,7 @@
 ItMgmt::Application.routes.draw do
 
+  #match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
+
   resources :exec_itens_checklists
 
 
@@ -17,8 +19,12 @@ ItMgmt::Application.routes.draw do
 
   resources :audits
 
+
+
   #match "audits", to: "audits#index"
   #match "/audits/:id", to: "audits#show"
+
+  #mount Sidekiq::Web, at: '/sidekiq'
 
   match "ramais", to: "ramal_login#index"
   match "ramais/new", to: "ramal_login#new"
@@ -76,6 +82,9 @@ ItMgmt::Application.routes.draw do
   # ci        /CMDB/:id(.:format)                   {:controller=>"ci", :action=>"show"}
   
   match 'cis/:id/email_alerta', to: "cis#email_alerta",  :as => :email_alerta
+  get 'cis/:id/email', to: "cis#email",  :as => :email
+  post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email
+  
   
   match 'cis/:id/impactados', to: "cis#impactados",  :as => :impactados
   match 'cis/:id/dependentes', to: "cis#dependentes",  :as => :dependentes

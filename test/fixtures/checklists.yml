@@ -2,10 +2,10 @@
 
 one:
   descricao: MyString
-  user: MyString
+  users: MyString
   tipoci: 
 
 two:
   descricao: MyString
-  user: MyString
+  users: MyString
   tipoci: 

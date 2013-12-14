@@ -1,25 +1,24 @@
-<h1>Listing status_checklists</h1>
+<h1>Status Checklists</h1>
 
 <table>
   <tr>
-    <th>Status</th>
-    <th>Icon</th>
     <th></th>
+    <th>Status</th><th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @status_checklists.each do |status_checklist| %>
   <tr>
+    <td><img src="/icons/<%=status_checklist.icon%>" alt=" " height="16" width="16"></td>
     <td><%= status_checklist.status %></td>
-    <td><%= status_checklist.icon %></td>
-    <td><%= link_to 'Show', status_checklist %></td>
-    <td><%= link_to 'Edit', edit_status_checklist_path(status_checklist) %></td>
-    <td><%= link_to 'Destroy', status_checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+   
+    <td><%= link_to 'Mostrar', status_checklist %></td>
+    <td><%= link_to 'Editar', edit_status_checklist_path(status_checklist) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Status checklist', new_status_checklist_path %>
+<%= link_to 'Novo Status', new_status_checklist_path %>

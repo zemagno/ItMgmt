@@ -1,7 +1,15 @@
 class ItensChecklistsController < ApplicationController
   # GET /itens_checklists
   # GET /itens_checklists.json
+  
+
+  def carrega_agregadas 
+    @checklists = Checklist.all
+    #@statusci = Statusci.all
+  end
+
   def index
+    carrega_agregadas
     @itens_checklists = ItensChecklist.all
 
     respond_to do |format|
@@ -24,6 +32,8 @@ class ItensChecklistsController < ApplicationController
   # GET /itens_checklists/new
   # GET /itens_checklists/new.json
   def new
+
+    carrega_agregadas
     @itens_checklist = ItensChecklist.new
 
     respond_to do |format|
@@ -34,6 +44,7 @@ class ItensChecklistsController < ApplicationController
 
   # GET /itens_checklists/1/edit
   def edit
+    carrega_agregadas
     @itens_checklist = ItensChecklist.find(params[:id])
   end
 

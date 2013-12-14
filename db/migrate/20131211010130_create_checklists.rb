@@ -2,7 +2,7 @@ class CreateChecklists < ActiveRecord::Migration
   def change
     create_table :checklists do |t|
       t.string :descricao
-      t.string :user
+      t.string :users
       t.references :tipoci
 
       t.timestamps

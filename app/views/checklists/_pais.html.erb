@@ -1,0 +1,10 @@
+
+  <table>
+   <tr><th>Checklist master<th></tr>
+
+<% @pais.each do |i| %>
+  <tr>
+    <td><%= link_to i.descricao[0..50], i %></td>
+  </tr>
+<% end %>
+</table>

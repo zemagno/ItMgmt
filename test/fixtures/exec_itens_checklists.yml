@@ -3,15 +3,15 @@
 one:
   gmud: MyString
   descricao: MyString
-  user: MyString
-  ci: 
-  ExecChecklist: 
-  StatusChecklist: 
+  users: MyString
+  cis: MyString
+  exechecklist: 
+  statuschecklist: 
 
 two:
   gmud: MyString
   descricao: MyString
-  user: MyString
-  ci: 
-  ExecChecklist: 
-  StatusChecklist: 
+  users: MyString
+  cis: MyString
+  exechecklist: 
+  statuschecklist: 

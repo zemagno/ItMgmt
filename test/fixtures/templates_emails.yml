@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tipo: MyString
+  template: MyString
+  nome: MyString
+
+two:
+  tipo: MyString
+  template: MyString
+  nome: MyString

@@ -6,7 +6,7 @@
 <%= link_to '[Retrocede Navegacao]', cis_sobe_path, :id => "SetaCima" %>
 <%= link_to '[Avanca Navegacao]', cis_desce_path, :id => "SetaBaixo"%>
 
-<%= render :partial => "menu_ci"%>
+<%= render :partial => "menu_top"%>
 
 </br>
 </br>
@@ -24,9 +24,7 @@
 </br>
 <div id="stylized" class="myform">
 	<%= render :partial => "form" %>
-	<%= render :partial => "menu_dependentes_ci"%>
-  <%= render :partial => "menu_alertas_ci"%>
-  <%= render :partial => "menu_audit_ci"%>
+  <%= render :partial => "menu_ci"%>
 </div>
 
 </br>

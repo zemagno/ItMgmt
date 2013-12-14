@@ -42,10 +42,39 @@ class CisController < ApplicationController
     carrega_agregadas
   end
 
+  def email
+    @idci = params[:id]
+    @templates_email = TemplatesEmail.all
+    respond_to :js
+  end
+
+  def enviar_email
+    puts "ops...esta comecando a funcionar..."
+    puts "parametro #{params[:enviar_email][:template_id]}"
+    template_email = TemplatesEmail.find(params[:enviar_email][:template_id])
+    puts template_email.to_yaml
+    @ci = Ci.find(361)
+    @template =  "ci_mailer/#{template_email.template}.html"
+    @template = "/cis/361/email_alerta"
+
+    # render nao funciona aqui pois esta sendo chamado async pelo ajax
+    #render :file => 'ci_mailer/revalidar_servidor.html.erb', :layout => 'application'
+
+    respond_to :js
+    #redirect_to :controller => 'cis', :action => 'show', :id => params[:id],  
+  end
+
   def email_alerta
+    # http://stackoverflow.com/questions/7165064/how-do-i-preview-emails-in-rails
     @ci = Ci.find(params[:id])
-    CiMailer.revalidar_servidor(@ci,"Revalidacao de servidor").deliver
-    redirect_to(@ci)
+    destinatario = "zecarlosmagno@gmail.com"
+    render :file => 'ci_mailer/revalidar_servidor.html.erb', :layout => 'application'
+    #CiMailer.revalidar_servidor(@ci,"Revalidacao de servidor",destinatario).deliver
+    #flash[:info] = "INFO: Email enviado para "+destinatario
+    # colocar no sidekiq
+    #redirect_to(@ci)
+    # def preview_welcome()
+    #render :file => 'mailer/welcome.html.erb', :layout => 'mailer'
   end
   
   def check_chave
@@ -55,7 +84,7 @@ class CisController < ApplicationController
         format.json { render :json => "inexistente"}
       else
        format.json { render :json => "existente"}
-     end
+    end
    end    
   end
   
@@ -324,7 +353,7 @@ def gera_relaciomentos_com_composto_de
       end
     end
     @fila_resultado
-  end
+end
 
   def eliminar
     @ci = Ci.find(params[:idci])

@@ -6,9 +6,9 @@ class CiMailer < ActionMailer::Base
   #
   #   en.ci_mailer.revalidar_servidor.subject
   #
-  def revalidar_servidor(ci,subject)
+  def revalidar_servidor(ci,subject,destinatario)
     @ci = ci
 
-    mail to: "zecarlosmagno@gmail.com"
+    mail to: destinatario
   end
 end

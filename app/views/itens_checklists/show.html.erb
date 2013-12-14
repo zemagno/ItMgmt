@@ -2,7 +2,7 @@
 
 <p>
   <b>Checklist:</b>
-  <%= @itens_checklist.Checklist %>
+  <%= @itens_checklist.checklist.descricao %>
 </p>
 
 <p>
@@ -11,15 +11,15 @@
 </p>
 
 <p>
-  <b>User:</b>
-  <%= @itens_checklist.user %>
+  <b>Executor:</b>
+  <%= @itens_checklist.users %>
 </p>
 
 <p>
   <b>Ci:</b>
-  <%= @itens_checklist.ci %>
+  <%= @itens_checklist.cis %>
 </p>
 
 
-<%= link_to 'Edit', edit_itens_checklist_path(@itens_checklist) %> |
-<%= link_to 'Back', itens_checklists_path %>
+<%= link_to 'Editar', edit_itens_checklist_path(@itens_checklist) %> |
+<%= link_to 'Listagem', itens_checklists_path %>
