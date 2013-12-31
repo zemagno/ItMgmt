@@ -13,6 +13,14 @@ gem 'thin'
 
 gem 'log4r'
 
+gem 'hirb'
+
+gem 'activeadmin'
+ gem 'sass-rails',   '~> 3.2.3'	
+gem "meta_search",    '>= 1.1.0.pre'
+
+# colocar tag de desenvolvimento TODO
+
 gem 'thinking-sphinx', '2.0.13'
 
 gem 'ruby-graphviz'
@@ -24,6 +32,8 @@ gem "audited-activerecord", "~> 3.0"
 gem 'rake' #, '0.9.2.2'
 # gem "therubyracer"
 #gem "less-rails"
+#
+gem 'redis-rails'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

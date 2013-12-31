@@ -1,0 +1,13 @@
+<h1>Problema com servidor</h1>
+
+Bom dia, 
+
+O seguinte servidor esta com problema. Favor entrar em contato com o NOC no ramal (21xxxz):
+
+<p><%= "#{@ci.tipoci.tipo}:#{@ci.chave}" %>,</p>
+<p>Descricao: <%= @ci.descricao %>,</p>
+<p>Responsavel: <%= @ci.Owner %>,</p>
+<p>IP: <%= @ci.atributos[6][1] %></p>
+<p>Servicos existente nesse servidor: <%= @ci.atributos[9][1] %></p>
+
+Obrigado

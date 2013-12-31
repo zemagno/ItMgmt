@@ -1,0 +1,25 @@
+Alerta aberto pelo NOC, 
+
+<p>
+
+<!--%= link_to "Alerta", task_path(@task)%-->  
+
+<% if @task.ci %>
+  <p><%= "CI: #{@task.ci.chave}" =%>
+  
+<% end %>
+
+<p><b>Evento:</b><%= @task.nome %>
+<p><b>Descricao:</b><%= content_tag('pre',@task.description) %>
+
+<p><b>Alerta Publico ?</b><%= @task.publica ? 'Sim' : 'Nao' %>
+<p><b>Tipo de Alerta:</b><%= @task.tipotask %>
+<p><b>Status do Alerta:</b><%= @task.status %>
+<p><b>Criticidade:</b><%= @task.criticidade.name %>
+<p><b>Status:</b><%= "#{@task.status} em #{@task.criado_em} por #{@task.author.name}" %>
+<p><b>Fornecedor:</b><%= @task.fornecedor.nome %>
+<p><b>Chamado:</b><%= @task.chamado %>
+<p><b>Executor:</b><%= @task.author.name %>
+<p><b>Solicitante:</b><%= @task.solicitante %>
+<p><b>Cliente:</b><%= @task.category.name %>
+<p><b>Site:</b><%= @task.site.nome %> 

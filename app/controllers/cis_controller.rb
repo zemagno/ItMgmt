@@ -32,7 +32,6 @@ class CisController < ApplicationController
   end
  
   def show
-    puts "Usuario corrente: #{current_user} "
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     cache(@ci)
   end
@@ -44,39 +43,22 @@ class CisController < ApplicationController
 
   def email
     @idci = params[:id]
-    @templates_email = TemplatesEmail.all
+    t = Ci.find(@idci).tipoci.tipo
+    @templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI",t)
     respond_to :js
   end
 
   def enviar_email
-    puts "ops...esta comecando a funcionar..."
-    puts "parametro #{params[:enviar_email][:template_id]}"
-    template_email = TemplatesEmail.find(params[:enviar_email][:template_id])
-    puts template_email.to_yaml
-    @ci = Ci.find(361)
-    @template =  "ci_mailer/#{template_email.template}.html"
-    @template = "/cis/361/email_alerta"
-
-    # render nao funciona aqui pois esta sendo chamado async pelo ajax
-    #render :file => 'ci_mailer/revalidar_servidor.html.erb', :layout => 'application'
-
+    p = Hash[:ci => params[:id], :to => "zecarlosmagno@gmail.com"]
+    job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
+    EnviaEmailWorker.perform_async(job.id)
+    #EnviaEmailWorker.perform_in(1.hour,job.id)
+    flash[:info] = "INFO: Email enfileirado para #{p[:to]}"
     respond_to :js
-    #redirect_to :controller => 'cis', :action => 'show', :id => params[:id],  
   end
+  # http://stackoverflow.com/questions/7165064/how-do-i-preview-emails-in-rails
 
-  def email_alerta
-    # http://stackoverflow.com/questions/7165064/how-do-i-preview-emails-in-rails
-    @ci = Ci.find(params[:id])
-    destinatario = "zecarlosmagno@gmail.com"
-    render :file => 'ci_mailer/revalidar_servidor.html.erb', :layout => 'application'
-    #CiMailer.revalidar_servidor(@ci,"Revalidacao de servidor",destinatario).deliver
-    #flash[:info] = "INFO: Email enviado para "+destinatario
-    # colocar no sidekiq
-    #redirect_to(@ci)
-    # def preview_welcome()
-    #render :file => 'mailer/welcome.html.erb', :layout => 'mailer'
-  end
-  
+   
   def check_chave
     @ci = Ci.find_by_chave(params[:search]) 
     respond_to do |format|
@@ -254,7 +236,7 @@ class CisController < ApplicationController
       end
       g.output( :png => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.png" )
       logger.debug "gravei grafico no cache"
-      #Rails.cache.write("#{direcao}-#{@ci.id}-grafico", "Existe",   expires_in: 5.minute)
+      Rails.cache.write("#{direcao}-#{@ci.id}-grafico", "Existe",   expires_in: 5.minute)
     end
 
     
@@ -306,9 +288,9 @@ class CisController < ApplicationController
       end
       #@email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
       @email_impactados = ListaEmail.acerta(@email_impactados,"@brq.com")
-      #Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado, expires_in: 5.minute)
-      #Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
-      #logger.debug  "escrevi no cache"
+      Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado, expires_in: 5.minute)
+      Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
+      logger.debug  "escrevi no cache"
     end
     @fila_resultado
   end
@@ -489,11 +471,5 @@ end
      render :dependentes
   end
 
-  def abrir_alerta
-    logger.debug params
-    #@ci = Ci.find(params[:id])
-    #logger.debug @ci
-    redirect_to tasks_new_from_ci_path(57)
-  end
-  
+   
 end

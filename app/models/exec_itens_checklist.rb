@@ -1,5 +1,5 @@
 class ExecItensChecklist < ActiveRecord::Base
-  belongs_to :exechecklist
-  belongs_to :statuschecklist
-  attr_accessible :cis, :descricao, :gmud, :users
+  belongs_to :exec_checklist
+  belongs_to :status_checklist
+  attr_accessible :cis, :descricao, :users
 end

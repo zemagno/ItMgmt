@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descricao: MyString
+  users: MyString
+  agrupar: 
+  cis: MyString
+  inicioexe: 2013-12-29 10:32:55
+  fimexec: 2013-12-29 10:32:55
+  checklist_id: 1
+
+two:
+  descricao: MyString
+  users: MyString
+  agrupar: 
+  cis: MyString
+  inicioexe: 2013-12-29 10:32:55
+  fimexec: 2013-12-29 10:32:55
+  checklist_id: 1

@@ -1,3 +1,14 @@
+
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
 <%= form_for(@itens_checklist) do |f| %>
   <% if @itens_checklist.errors.any? %>
     <div id="error_explanation">
@@ -20,6 +31,21 @@
     <%= f.label :Descricao %><br />
     <%= f.text_field :descricao %>
   </div>
+
+  <div class="field">
+    <%= f.label "Tipo de Checklist" %><br />
+    
+    <%= f.select :tipo_checklist_id, @tiposchecklist.collect { |c| [ c.tipo, c.id ] } %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Tipo de Abertuda de Ticket" %><br />
+    
+    <%= f.select :TipoAberturaTicket, (["Novo Ticket", "Comentario"]) %>
+  </div>
+
+
+
   <div class="field">
     <%= f.label :Executores %><br />
     <%= f.text_field :users %>

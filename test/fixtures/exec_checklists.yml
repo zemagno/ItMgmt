@@ -1,7 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  gmud: MyString
   descricao: MyString
   cis: MyString
   users: MyString
@@ -10,7 +9,6 @@ one:
   tipoci: 
 
 two:
-  gmud: MyString
   descricao: MyString
   cis: MyString
   users: MyString

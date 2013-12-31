@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  private
-  def autenticacao
-	authenticate_or_request_with_http_basic do |usuario, senha|
-	  usuario == 'admin' && senha == 'admin'
-	end
+  
+  def access_denied(exception)
+    redirect_to admin_organizations_path, :alert => exception.message
   end
 
 

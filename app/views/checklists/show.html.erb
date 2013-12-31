@@ -1,28 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-
-  <h1><%= @checklist.descricao %></h1>
-  
-</p>
-<p>
-  <b>Tipo Ci:</b>
-  <%= @checklist.tipoci.tipo %>
-</p>
-<br>
-
-<p>
-  <b>Executores:</b>
-  <%= @checklist.users %>
-</p>
-
-
-
+<%= render :partial => "checklist" %>
 <%= render :partial => "pais" unless @pais.empty? %>
-<%= render :partial => "itens" %>
+<%= render :partial => "itens", :locals => {:action => :edit } %>
 
 
 
 <%= link_to 'Editar', edit_checklist_path(@checklist) %> |
 <%= link_to 'Listagem', checklists_path %> |
+<%= link_to 'Iniciar Checklist', new_checklist_init_checklist_path(@checklist) %>
+
 

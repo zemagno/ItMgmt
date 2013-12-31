@@ -19,6 +19,12 @@ class EmailController < ApplicationController
       @resposta[:body] +="Valor    :"+valor+"\n" 
       @resposta[:body] +="CC       :#{contrato.projetoCCTI}\n"
       @resposta[:body] +="Classif. :#{contrato.classificacao}\n\n"
+  when "alertaci" 
+      ci = Ci.find(params[:id])
+      @resposta = Hash.new   
+      @resposta[:to] =  ListaEmail.acerta("#{ci.Owner},#{ci.notificacao}","@brq.com")
+      @resposta[:subject] = "ALERTA: #{ci.chave}"
+      @resposta[:body] = "Bom dia,\n\nChave: #{ci.chave}\n\nServico: #{ci.tipoci.tipo}\n\nDescricao: #{ci.descricao}"
     end
     
     

@@ -61,10 +61,8 @@
 
 
 <h1>
-  <b>Status:</b>
-  <%= @task.status %>
-  em <%= @task.criado_em %>
-   por <%= @task.author.name %>
+  <b>Status: </b><%= "#{@task.status} em #{@task.criado_em} por #{@task.author.name}" %>
+
 </h1>
 
 

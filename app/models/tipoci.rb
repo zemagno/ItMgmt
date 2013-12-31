@@ -7,9 +7,9 @@ class Tipoci < ActiveRecord::Base
 	OWNER_SCREEN_SIZE = 20
 	OWNER_MAX_LENGTH = 20
 
-	def to_s
-		puts "#{tipo}:#{Owner}"
+	#def to_s
+    #		puts "#{tipo}:#{Owner}"
 		
-	end
+	#end
    
 end

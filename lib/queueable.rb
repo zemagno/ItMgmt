@@ -8,6 +8,8 @@ module Queueable
     @queue ||= []
   end
   
+
+  # os metodos abaixo vao chamar o metodo que devolve a fila e nao a fila em si.
   def enqueue(obj)
     queue.push(obj)
   end

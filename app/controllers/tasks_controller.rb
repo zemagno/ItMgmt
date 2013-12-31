@@ -1,9 +1,17 @@
 class TasksController < ApplicationController
-  #:autenticacao, :except => [:index, :show] # linha adicionada
   authorize_resource :except => [:index]
   
   layout 'application', :except => :console
     
+
+  def carrega_agregados
+    @authors = Author.all
+    @categories = Category.all
+    @sites = Site.all
+    @criticidades = Criticidade.all
+    @fornecedores = Fornecedor.all
+  end
+
   def index
 
     @search_tasks = params[:search] || session[:search_tasks] 
@@ -51,11 +59,8 @@ class TasksController < ApplicationController
     @ci = Ci.find(params[:id])
     puts @ci
     @task = Task.new
-    @authors = Author.all
-    @categories = Category.all
-    @sites = Site.all
-    @criticidades = Criticidade.all
-    @fornecedores = Fornecedor.all
+    carrega_agregados
+   
     # new
     @task.site_id = @ci.site_id
     @task.ci_id = @ci.id
@@ -67,28 +72,21 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
-    @authors = Author.all
-    @categories = Category.all
-    @sites = Site.all
-    @criticidades = Criticidade.all
-    @fornecedores = Fornecedor.all
-    #@tipotasks = Tipotask.all
+    carrega_agregados
   end
 
   def edit
     @task = Task.find(params[:id])
-    @authors = Author.all
-    @categories = Category.all
-    @sites = Site.all
-    @criticidades = Criticidade.all
-    @fornecedores = Fornecedor.all
+    carrega_agregados
     #@tipotasks = Tipotask.all
   end
   
-  def distribui(subject,task)
-    #message = UserMailer.email_alerta("josecarlosmagno@me.com",subject,task)
-    #puts message
-    #message.deliver
+  def distribui(task)
+    p = Hash[:alerta => task.id]
+    #TODO - mudar o 3 para um search (alerta, subtipo)
+    job = JobEnviarEmail.criar(3, p.to_yaml)
+    EnviaEmailWorker.perform_async(job.id)
+    # usar o sidekiq para distribuir email..
     
   end    
 
@@ -97,7 +95,7 @@ class TasksController < ApplicationController
     @task.Ativo = true;
     respond_to do |format|
       if @task.save
-        distribui("Alerta: #{@task.status}",@task)
+        distribui(@task)
         format.html { redirect_to(@task, :notice => 'Alerta criado com sucesso.') }
       else
         flash[:error] = "<ul>" + @task.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"
