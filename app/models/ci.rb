@@ -1,6 +1,8 @@
 require "jiraable"
 class Ci < ActiveRecord::Base
   audited
+  self.per_page = 20
+
   #has_associated_audits
 
   # has_paper_trail
@@ -107,18 +109,6 @@ class Ci < ActiveRecord::Base
     attr_existentes
   end
   
-  
-
-  # def jira_to_url
-  #   @URLs = []
-  #   if jira != nil then 
-  #     jira.split(',').each do |c|
-  #       @URLs << [c,"http://jira.brq.com/browse/#{c}"]
-  #     end
-  #   end
-  #   @URLs
-  # end
-
   def limpa_atributos_outros_tipo
     logger.debug "vou limpar atributos"
     atributo.each do |attr|

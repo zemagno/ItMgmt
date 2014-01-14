@@ -28,7 +28,7 @@
     <td><%= audit.auditable_type %></td>
     <td><%= formatAudit(audit).html_safe %>
     <td><%= link_to 'Detalhe', audit %></td>
-    <td><%= audit.user.name %></td>
+    <td><%= audit.user_name %></td>
     <td><%= audit.action %></td>
     <td><%= audit.remote_address %></td>
     <td><%= audit.created_at %></td>

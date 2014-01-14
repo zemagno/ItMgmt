@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 #gem "newrelic_rpm"
 # gem 'le'
 
+# gem "rails-erd"
+
 gem 'rails', '~> 3.1'
 
 gem 'will_paginate', '~> 3.0'

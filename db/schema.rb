@@ -81,13 +81,6 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
     t.string   "descricao"
   end
 
-  create_table "cargos", :force => true do |t|
-    t.string   "descricao"
-    t.string   "nivel"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -132,7 +125,6 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
     t.integer  "statusci_id"
     t.integer  "contrato_id"
     t.decimal  "CustoMensal", :precision => 10, :scale => 2
-    t.string   "notificacai"
     t.string   "notificacao"
   end
 
@@ -179,6 +171,7 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
   create_table "exec_checklists", :force => true do |t|
+    t.string   "gmud"
     t.string   "descricao"
     t.string   "cis"
     t.string   "users"
@@ -193,16 +186,18 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
   add_index "exec_checklists", ["tipoci_id"], :name => "index_exec_checklists_on_tipoci_id"
 
   create_table "exec_itens_checklists", :force => true do |t|
+    t.string   "gmud"
     t.string   "descricao"
     t.string   "users"
     t.string   "cis"
+    t.integer  "exechecklist_id"
     t.integer  "statuschecklist_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "tickets"
-    t.integer  "exec_checklist_id"
   end
 
+  add_index "exec_itens_checklists", ["exechecklist_id"], :name => "index_exec_itens_checklists_on_exechecklist_id"
   add_index "exec_itens_checklists", ["statuschecklist_id"], :name => "index_exec_itens_checklists_on_statuschecklist_id"
 
   create_table "fornecedores", :force => true do |t|
@@ -296,14 +291,6 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
     t.integer  "status_pedido_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "people", :force => true do |t|
-    t.string   "nome"
-    t.string   "sexo"
-    t.integer  "idade"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "relacionamentos", :force => true do |t|

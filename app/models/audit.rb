@@ -9,6 +9,10 @@ class Audit < ActiveRecord::Base
   #sphinx_scope(:data_criacao) { {:order => :created_at} }
   #default_sphinx_scope :data_criacao
 
+  def user_name
+    user.nil? ? "" : user.name
+  end
+
   define_index do
       indexes action , as => :oque
       indexes user(:name), as => :quem

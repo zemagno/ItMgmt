@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :Descricao %><br />
-    <%= f.text_field :descricao %>
+    <%= f.text_field :descricao, :size => 100 %>
   </div>
 
   <div class="field">
@@ -48,11 +48,11 @@
 
   <div class="field">
     <%= f.label :Executores %><br />
-    <%= f.text_field :users %>
+    <%= f.text_field :users, :size => 50 %>
   </div>
   <div class="field">
     <%= f.label :CIs %><br />
-    <%= f.text_field :cis %>
+    <%= f.text_field :cis, :size => 50 %>
   </div>
   <div class="actions">
     <%= f.submit %>

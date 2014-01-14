@@ -101,16 +101,41 @@ class CisController < ApplicationController
     end
   end
 
+  # def index
+
+  #   @search = params[:search] || session[:search_cis]
+  #   session[:search_cis] = @search
+  #   session[:oldCI] = nil
+    
+  #   begin
+  #     @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
+  #     @cis.length
+  #     @cis.compact!
+  #   rescue 
+  #     flash[:error] = "Error[DB0001] - Search Engine desligado"
+  #     @cis = Ci.paginate(:page => params[:page])
+  #   end 
+    
+  #   respond_to do |format|
+  #       format.html
+  #       format.json { render :json => @cis }
+  #       format.xml  { render :xml => @cis }
+  #   end
+  # end
   def index
 
     @search = params[:search] || session[:search_cis]
     session[:search_cis] = @search
-    session[:oldCI] = nil
-    
+    session[:oldCI] = nil  
     begin
-      @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-      @cis.length
-      @cis.compact!
+      if @search.blank?
+ 
+         @cis = Ci.paginate(:page => params[:page])
+      else
+         @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
+         @cis.length
+         @cis.compact!
+      end
     rescue 
       flash[:error] = "Error[DB0001] - Search Engine desligado"
       @cis = Ci.paginate(:page => params[:page])
@@ -186,9 +211,11 @@ class CisController < ApplicationController
   # 
 
   def gera_grafico_relacionamento(id,direcao)
-    
+    logger.debug "vou pesquisar no cache....#{direcao}-#{@ci.id}-grafico"
     if Rails.cache.exist?("#{direcao}-#{@ci.id}-grafico")
        logger.debug  "Ops... grafico esta no cache"
+    # TODO - tirar esse else daqui...retornar 
+    # FIXME isso aqui tem um erro.... o g.output nao tem @ci
     else
       apath =  File.expand_path('../../../public', __FILE__)
       g = GraphViz::new( "G" )
@@ -293,17 +320,20 @@ class CisController < ApplicationController
       logger.debug  "escrevi no cache"
     end
     @fila_resultado
+    # TODO acertar esse lixo...retornar tudo...@fila e @email impactado..
+    #    devolve fila resultado e seta variavel global email impactado
+    #    mover esse lixo para um servico....retornando 2 variaveis.
   end
 
 def gera_relaciomentos_com_composto_de
-    
+    # TODO colocar cache no gera_relaciomentos_com_composto_de
     @ci = Ci.find(params[:id])
     init_queue
     
     enqueue([@ci,0])
     edges_visitado = Hash.new
 
-    # TODO nao tem email impactado ?
+    # FIXME nao tem email impactado ?
 
     nivel_max = 8
 
@@ -393,7 +423,7 @@ end
 
 
   def elimina_dependente
-    # @customer.orders.delete(@order1)
+    
      ci = Ci.find(params[:idci])
      dep = Ci.find_by_chave(params[:exclusao][:dependente]) 
      if dep == nil || ! ci.dependentes_all.include?(dep) then
@@ -406,7 +436,7 @@ end
    end
 
   def elimina_impactado
-    # @customer.orders.delete(@order1)
+ 
      ci = Ci.find(params[:idci])
      imp = Ci.find_by_chave(params[:exclusao][:impactado]) 
      if imp == nil || ! ci.impactados.include?(imp) then
@@ -458,6 +488,7 @@ end
   end
 
   def dependentes
+
      @fila_dependentes = gera_relaciomentos(:dependentes)
      gera_grafico_relacionamento(params[:id],:dependentes)
      @imagem_dependentes = true

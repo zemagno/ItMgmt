@@ -14,14 +14,14 @@ class InitChecklist
   validates_presence_of :descricao , :message => "Descricao eh obrigatoria"
   validates_length_of :descricao, :maximum => 250
 
-  validates_presence_of :inicioexec , :message => "Data Inicio Obrigatoria"
-  validates_presence_of :fimexec , :message => "Data Fim obrigatoria" #, :if  => lambda { || inicioexec==fimexec }
+  validates_presence_of :inicioexec , :message => "Data de Inicio eh obrigatoria"
+  validates_presence_of :fimexec , :message => "Data de Fim eh obrigatoria" #, :if  => lambda { || inicioexec==fimexec }
 
   validate :valid_date_range_required
 
   def valid_date_range_required
     if (inicioexec && fimexec) && (inicioexec > fimexec)
-      errors.add(:fimexec, "tem que ser posterior ao inicio")
+      errors.add("Data de termino tem que ser posterior a data de inicio")
     end
   end
 
