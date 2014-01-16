@@ -16,3 +16,5 @@ apoio/
 apoio/*
 apoio/**
 .gitignore
+db/sphinx/development/*
+db/sphinx/development/**
