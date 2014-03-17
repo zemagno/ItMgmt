@@ -1,0 +1,27 @@
+<h1>Listing status_incidentes</h1>
+
+<table>
+  <tr>
+    <th>Status</th>
+    <th>Ordem</th>
+    <th>Tipo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @status_incidentes.each do |status_incidente| %>
+  <tr>
+    <td><%= status_incidente.status %></td>
+    <td><%= status_incidente.ordem %></td>
+    <td><%= status_incidente.tipo %></td>
+    <td><%= link_to 'Show', status_incidente %></td>
+    <td><%= link_to 'Edit', edit_status_incidente_path(status_incidente) %></td>
+    <td><%= link_to 'Destroy', status_incidente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Status incidente', new_status_incidente_path %>

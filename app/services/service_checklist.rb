@@ -2,6 +2,9 @@
 require "queueable"
 class ServiceChecklist
 
+	# TODO - crise de identidade... servicechecklist será instanciado ??
+	# recebe um Model Checklist ou um InitChecklist 
+
 	include Queueable
 	def initialize(checklist)
 		@checklist = checklist
@@ -14,7 +17,11 @@ class ServiceChecklist
 	def ChecklistHerdados
 		# @checklist
 		# armazenar no Redis
-		# TODO - Cache...
+		# TODO - armazenar no Cache...
+		# 
+		# Devolve: lista com toos os itens de todos os checklist pais
+		#          que irao virar tickets (jira) e itens que serão somente 
+		#          comentario a serem ticados no ItMgmt
 		# 
 		@itens_novos_ticket = []
 		@itens_comentarios = []

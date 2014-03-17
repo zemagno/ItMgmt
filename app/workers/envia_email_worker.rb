@@ -24,15 +24,16 @@ class EnviaEmailWorker
 
     case template.tipo
     when "CI"  
-         ci = Ci.find(params[:ci])
+      
+         ci = Ci.includes(:atributo => :dicdado).find(params[:id])
          destinatario = "zecarlosmagno@gmail.com"
          CiMailer.send(template.template,ci,"#{template.nome} - #{ci.chave}",destinatario).deliver
-         job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: #{ci.chave} em #{Time.now}"  
+         job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{ci.chave}] em #{Time.now}"  
     when "INCIDENTE"
          task = Task.find(params[:alerta])
          destinatario = "zecarlosmagno@gmail.com"
          CiMailer.send(template.template,task,"#{template.nome} - #{task.id}",destinatario).deliver
-         job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: #{task.id} em #{Time.now}"  
+         job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{task.id}] em #{Time.now}"  
     end
     job.save!
   end

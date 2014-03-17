@@ -62,8 +62,11 @@
 				<% flash.each do |name, msg| %>
                         <%= content_tag :div, msg, id: "flash_#{name}" %>
                 <% end %>
-				</div>	
-				<div id="page-dbgbtm">
+				</div>
+				
+				<div id="enviar_email"></div>
+				
+			    <div id="page-dbgbtm">
 					
 					<%= yield %>
 					<div style="clear: both;"> </div>

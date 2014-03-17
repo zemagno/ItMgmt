@@ -9,7 +9,5 @@ class CreateExecItensChecklists < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :exec_itens_checklists, :exechecklist_id
-    add_index :exec_itens_checklists, :statuschecklist_id
   end
 end

@@ -67,7 +67,8 @@
 <label>Status
 <span class="small">Qual o status de alerta ?</span>
 </label>
-<%= f.select :status, (["Aberto", "Normalizado" , "Resolvido", "Nao Resolvido", "Executado com Sucesso", "Cancelado","Rollback"]) %>
+<%= f.select :status_incidente_id, @status_incidentes.collect { |a| [ a.status, a.id ] }  %>
+<!--%= f.select :status, (["Aberto", "Normalizado" , "Resolvido", "Nao Resolvido", "Executado com Sucesso", "Cancelado","Rollback"]) %-->
 <div class="spacer"></div>
 
 <label>Criticidade
@@ -93,7 +94,7 @@
 <div class="spacer"></div>
 
 <label>Solicitante
-<span class="small">id do Solicitante</span>
+<span class="small">Quem abriu chamado</span>
 </label>
 <%= f.text_field :solicitante , :size => 40 %>
 <div class="spacer"></div>

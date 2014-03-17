@@ -51,18 +51,19 @@
 
 <h1>
   <b>Status do Alerta:</b>
-  <%= @task.status %>
+  <%= @task.status_incidente.status %>
+</h1>
+
+<h1>
+  <b>Status:</b>
+  <%= @task.status_incidente.status %>
+  em <%= @task.criado_em %>
+   por <%= @task.author.name %>
 </h1>
 
 <h1>
   <b>Criticidade:</b>
   <%= @task.criticidade.name %>
-</h1>
-
-
-<h1>
-  <b>Status: </b><%= "#{@task.status} em #{@task.criado_em} por #{@task.author.name}" %>
-
 </h1>
 
 
@@ -99,6 +100,7 @@
 </h1>
  
 
-<%= link_to 'Editar', edit_task_path(@task) unless cannot? :manage, "tasks" %> 
-<%= link_to 'Voltar', tasks_path %>
+<%= link_to '[Editar]', edit_task_path(@task) unless cannot? :manage, "tasks" %> 
+<%= link_to '[Apagar]', @task, :confirm => 'Are you sure?', :method => :delete %></td>
+<%= link_to '[Voltar]', tasks_path %>
  </div>

@@ -5,6 +5,8 @@ class Dicdado < ActiveRecord::Base
   
   validates :nome, :presence => { :message => " eh mandatorio" }
   validates :tipoci_id, :presence => { :message => " eh mandatorio" }
+  validates :apelido, :format => { :with => /^[a-zA-Z]+$/,
+       :message => "Somente Caracter Alfanumerico" }
   
   self.per_page = 20  
 
@@ -15,4 +17,22 @@ class Dicdado < ActiveRecord::Base
       indexes ordem , :as => :ordem, :sortable => true
   end
 
+end
+
+
+# Dicdado.all.each  do |dic|
+#   if dic.apelido.match(/^[a-zA-Z]+$/)
+#       class Ci
+#         define_method "__#{dic.apelido}__" do
+#            atributos[dic.id][1]
+#         end
+#       end
+#   end
+# end
+
+# a = 6
+class Ci
+  define_method "IP" do
+    atributos[6][1]
+  end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131231112848) do
+ActiveRecord::Schema.define(:version => 20140223231508) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -155,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "alertacor"
   end
 
   create_table "dicdados", :force => true do |t|
@@ -166,12 +167,12 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
     t.string   "url"
     t.string   "descricao"
     t.string   "valores"
+    t.string   "apelido"
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
   create_table "exec_checklists", :force => true do |t|
-    t.string   "gmud"
     t.string   "descricao"
     t.string   "cis"
     t.string   "users"
@@ -186,26 +187,24 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
   add_index "exec_checklists", ["tipoci_id"], :name => "index_exec_checklists_on_tipoci_id"
 
   create_table "exec_itens_checklists", :force => true do |t|
-    t.string   "gmud"
     t.string   "descricao"
     t.string   "users"
     t.string   "cis"
-    t.integer  "exechecklist_id"
     t.integer  "statuschecklist_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "tickets"
+    t.integer  "exec_checklist_id"
   end
 
-  add_index "exec_itens_checklists", ["exechecklist_id"], :name => "index_exec_itens_checklists_on_exechecklist_id"
   add_index "exec_itens_checklists", ["statuschecklist_id"], :name => "index_exec_itens_checklists_on_statuschecklist_id"
 
   create_table "fornecedores", :force => true do |t|
     t.string   "nome"
     t.string   "nomecompleto"
     t.string   "cnpj"
-    t.string   "endereco"
-    t.string   "contatos"
+    t.text     "endereco"
+    t.text     "contatos"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "anotacoes"
@@ -318,6 +317,17 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
     t.datetime "updated_at",       :null => false
   end
 
+  create_table "sql_templates", :force => true do |t|
+    t.text     "body"
+    t.string   "path"
+    t.string   "format"
+    t.string   "locale"
+    t.string   "handler"
+    t.boolean  "partial",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "status_chamados", :force => true do |t|
     t.string   "descricao"
     t.datetime "created_at"
@@ -327,6 +337,14 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
   create_table "status_checklists", :force => true do |t|
     t.string   "status"
     t.string   "icon"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "status_incidentes", :force => true do |t|
+    t.string   "status"
+    t.integer  "ordem"
+    t.string   "tipo"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -353,7 +371,6 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
 
   create_table "tasks", :force => true do |t|
     t.text     "description"
-    t.string   "status"
     t.integer  "author_id"
     t.integer  "category_id"
     t.integer  "criticidade_id"
@@ -372,16 +389,20 @@ ActiveRecord::Schema.define(:version => 20131231112848) do
     t.text     "comentario"
     t.integer  "ci_id"
     t.string   "solicitante"
+    t.integer  "status_incidente_id"
   end
 
   create_table "templates_emails", :force => true do |t|
     t.string   "tipo"
     t.string   "template"
     t.string   "nome"
+    t.string   "subtipo"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "subtipo"
+    t.boolean  "sync"
   end
+
+  add_index "templates_emails", ["tipoci_id"], :name => "index_templates_emails_on_tipoci_id"
 
   create_table "tipo_chamados", :force => true do |t|
     t.string   "descricao"

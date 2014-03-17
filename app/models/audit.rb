@@ -10,7 +10,7 @@ class Audit < ActiveRecord::Base
   #default_sphinx_scope :data_criacao
 
   def user_name
-    user.nil? ? "" : user.name
+     (user.blank? ? "Indefinido" : user.name)
   end
 
   define_index do

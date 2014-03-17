@@ -13,3 +13,6 @@ apoio/
 apoio/*
 apoio/**
 .gitignore
+db/sphinx/development/*
+db/sphinx/development/**
+config/local_env.yml

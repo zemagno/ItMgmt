@@ -1,4 +1,4 @@
-<%= link_to("[Impactados]", impactados_path(@ci))%>
+'<%= link_to("[Impactados]", impactados_path(@ci))%>
 <%= link_to("[Dependentes]", dependentes_path(@ci))%>
 <%= link_to("[Dependentes/Composto de]", dependentes_all_path(@ci))%>
 
@@ -24,8 +24,8 @@
 <%= link_to "[Elimina impactado]" , elimina_impactado_path(@ci), :remote => true, :id => "elimina_impactado"%>
 <%= link_to "[Duplicar esse CI]" , duplicar_ci_path(@ci), :remote => true, :id => "duplicar_ci"%>
 </br>
-<%= "<a href=\"/email/alertaci/#{@ci.id}\" onclick=\"window.open(this.href,'new_window_name');return false;\">[Email Normal]</a>".html_safe %>
-<%= link_to("[Email Template]", email_path(@ci), :remote => true, :id => "enviar_email_ci" )%>
+<!--%= "<a href=\"/email/servidor_sem_espaco/#{@ci.id}\" onclick=\"window.open(this.href,'');return false;\">[Email Normal]</a>".html_safe %-->
+<%= link_to("[Enviar Email]", email_path(@ci), :id => "enviar_email_ci", :remote => true)%>
 
 
 <%= link_to "[Abrir Alerta]", tasks_new_from_ci_path(@ci) , :target => '_blank' %>
@@ -35,4 +35,5 @@
 <% if can? :manage, Audit %>
    <a href="<%='/audits?&search=@auditable_type=ci @auditable_id='+@ci.id.to_s%>" >[Auditoria deste CI]</a>
 <% end %>
+<div id="enviar_email_ci_old"></div>
  

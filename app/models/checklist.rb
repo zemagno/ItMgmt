@@ -28,6 +28,9 @@ class Checklist < ActiveRecord::Base
   end
 
   def self.IniciarChecklist(id, cis = '' ,inicio = nil ,fim = nil)
+
+    # ISSO TUDO VAI PARA DENTRO DE ServiceChecklist
+
     # iniciar um exec_checklist copiando todos os atributos
     # abrir jira e atualizar campo gmud
     # se foi aberto de dentro de uma CI, preencher o campo CI

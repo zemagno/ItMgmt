@@ -2,6 +2,15 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  resources :status_incidentes
+
+
+  resources :templates_emails
+
+
+  resources :sql_templates
+
+
   root :to => "tasks#index"
 
   ActiveAdmin.routes(self)
@@ -20,7 +29,7 @@ ItMgmt::Application.routes.draw do
 
 
   resources :checklists do
-      resources :init_checklists, :only => [:create, :new, :show]
+      resources :init_checklists, :only => [:create, :new]
   end
 
 
@@ -66,6 +75,7 @@ ItMgmt::Application.routes.draw do
 
   match 'relatorio/:id', to: "relatorio#index", as: "relatorio"
   match 'email/:acao/:id', to: "email#enviar"
+  match 'email/enviar_email/:id', to: "email#enviar+email"
 
   match '/contratos/todos', to: 'contratos#todos'
   match '/fornecedores/todos', to: 'fornecedores#todos'
@@ -73,7 +83,7 @@ ItMgmt::Application.routes.draw do
   match '/cis/todos', to: 'cis#todos'  
   match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci"
 
-  resources :parametros, :only => [:index,:edit,:update]
+  resources :parametros , :only => [:index,:edit,:update]
 
   resources :dicdados
 
@@ -135,8 +145,6 @@ ItMgmt::Application.routes.draw do
   
   resources :cis
   
-  resources :status_pedidos
-
   resources :notificacaos
 
   resources :criticidades

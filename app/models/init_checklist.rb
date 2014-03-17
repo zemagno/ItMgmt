@@ -4,6 +4,8 @@ class InitChecklist
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
+
+
   def persisted?
     false
   end
@@ -11,6 +13,7 @@ class InitChecklist
   
   attr_accessor :agrupar, :checklist_id, :cis, :descricao, :fimexec, :inicioexec, :users
 
+  
   validates_presence_of :descricao , :message => "Descricao eh obrigatoria"
   validates_length_of :descricao, :maximum => 250
 

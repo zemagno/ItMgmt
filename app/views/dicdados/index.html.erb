@@ -22,6 +22,7 @@
   <tr>
     <th>Tipo CI</th>
     <th>Campo</th>
+    <th>Apelido</th>
     <th>Ordem</th>
     <th></th>
     <th></th>
@@ -31,6 +32,7 @@
   <tr>
     <td><%= link_to dicdado.tipoci.tipo, dicdado %></td>
     <td><%= link_to dicdado.nome, dicdado %></td>
+    <td><%= dicdado.apelido %></th>
     <td><%= dicdado.ordem %></td>
     <td><%= link_to 'Editar', edit_dicdado_path(dicdado) %></td>
     <td><%= link_to 'Apagar', dicdado, :confirm => 'Are you sure?', :method => :delete %></td>

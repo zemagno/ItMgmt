@@ -3,7 +3,7 @@ require "queueable"
 include ApplicationHelper
 class CisController < ApplicationController
   include Queueable
-  authorize_resource 
+  authorize_resource #cancan
 
   #layout 'application_novolyaout' 
 
@@ -17,6 +17,7 @@ class CisController < ApplicationController
   # @sites
   # @tiposci
 
+  # TODO colocar carrega agregadas no before_action/before_filter para alguns metodos abaixo..
   def carrega_agregadas 
     @sites = Site.all
     @tiposci = Tipoci.all
@@ -41,20 +42,42 @@ class CisController < ApplicationController
     carrega_agregadas
   end
 
+  # cis#email 
+  #   monta lista de templates 
+  #   direciona email.js.erb que troca o div pelo formulario email.erb
+  # email.erb (form)
+  #   submit form cis#enviar_email   
+  #   enfilera no sidekiq
+  #   direciona para enviar_email.js que faz reload da pagina cis 
+
+  
   def email
-    @idci = params[:id]
-    t = Ci.find(@idci).tipoci.tipo
+    # so seleciono os templates do tipo de ci sendo visualizado
+    @id = params[:id]
+    t = Ci.find(@id).tipoci.tipo
     @templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI",t)
     respond_to :js
+    # respond_to do |format|
+    #   format.js { render :action => "../email/email" }
+    # end
   end
 
   def enviar_email
-    p = Hash[:ci => params[:id], :to => "zecarlosmagno@gmail.com"]
-    job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
-    EnviaEmailWorker.perform_async(job.id)
-    #EnviaEmailWorker.perform_in(1.hour,job.id)
-    flash[:info] = "INFO: Email enfileirado para #{p[:to]}"
-    respond_to :js
+    #testar se email é sync ou nao.. se for async, chamar abaixo, senao desviar para /email/{template}/:ci
+    #aqui tem um problema...o controller que responde ao /email/template ja esta rodando numa nova tela...ele so responde um href.
+    template_email =TemplatesEmail.find(params[:enviar_email][:template_id])
+
+    if template_email.sync
+      puts "@@@@email sync@@@@"
+      @path = "/email/#{template_email.template}/#{params[:id]}"
+    else
+      p = Hash[:id => params[:id], :to => "zecarlosmagno@gmail.com"]
+      job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
+      EnviaEmailWorker.perform_async(job.id)
+      #EnviaEmailWorker.perform_in(1.hour,job.id)
+      flash[:info] = "INFO: Email enfileirado para #{p[:to]}"
+      respond_to :js
+    end
   end
   # http://stackoverflow.com/questions/7165064/how-do-i-preview-emails-in-rails
 
@@ -81,9 +104,7 @@ class CisController < ApplicationController
          format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
          format.json { head :no_content }
       else
-         #@sites = Site.all
-         #@tiposci = Tipoci.all
-         #@statusci = Statusci.all
+      
          @atributos = @ci.atributos
          
          carrega_agregadas
@@ -101,27 +122,6 @@ class CisController < ApplicationController
     end
   end
 
-  # def index
-
-  #   @search = params[:search] || session[:search_cis]
-  #   session[:search_cis] = @search
-  #   session[:oldCI] = nil
-    
-  #   begin
-  #     @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-  #     @cis.length
-  #     @cis.compact!
-  #   rescue 
-  #     flash[:error] = "Error[DB0001] - Search Engine desligado"
-  #     @cis = Ci.paginate(:page => params[:page])
-  #   end 
-    
-  #   respond_to do |format|
-  #       format.html
-  #       format.json { render :json => @cis }
-  #       format.xml  { render :xml => @cis }
-  #   end
-  # end
   def index
 
     @search = params[:search] || session[:search_cis]
@@ -129,7 +129,6 @@ class CisController < ApplicationController
     session[:oldCI] = nil  
     begin
       if @search.blank?
- 
          @cis = Ci.paginate(:page => params[:page])
       else
          @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
@@ -162,9 +161,6 @@ class CisController < ApplicationController
   
   def new
     @ci = Ci.new
-    #@sites = Site.all
-    #@tiposci = Tipoci.all
-    #@statusci = Statusci.all
     carrega_agregadas
     @oldci = session[:oldCI]==nil ? nil : Ci.find(session[:oldCI])
   end
@@ -313,7 +309,6 @@ class CisController < ApplicationController
           i.send(direcao).map { |x| enqueue([x,nivel+1])}
         end
       end
-      #@email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
       @email_impactados = ListaEmail.acerta(@email_impactados,"@brq.com")
       Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado, expires_in: 5.minute)
       Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
@@ -418,7 +413,6 @@ end
     @newci = ci.duplicar(params[:duplicar][:nova_chave])
 
     respond_to :js if @newci.persisted?
-    logger.debug "Ops....estou no caminho certo...vou duplicar.. #{params[:idci]} - #{params[:duplicar][:nova_chave]}"
   end
 
 

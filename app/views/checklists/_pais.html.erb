@@ -4,7 +4,7 @@
 
 <% @pais.each do |i| %>
   <tr>
-    <td><%= link_to i.descricao[0..50], i %></td>
+    <td><%= link_to i.descricao[0..50], i , :target => "_blank"%></td>
   </tr>
 <% end %>
 </table>

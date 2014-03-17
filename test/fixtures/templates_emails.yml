@@ -4,8 +4,10 @@ one:
   tipo: MyString
   template: MyString
   nome: MyString
+  subtipo: MyString
 
 two:
   tipo: MyString
   template: MyString
   nome: MyString
+  subtipo: MyString

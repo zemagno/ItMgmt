@@ -1,3 +1,5 @@
+# acho que criei isso aqui para ter compatibilidade com um 
+# modulo que é incompativel com WillPaginate
 if defined?(WillPaginate)
   module WillPaginate
     module ActiveRecord

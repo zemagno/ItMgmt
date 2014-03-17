@@ -10,6 +10,7 @@ class TasksController < ApplicationController
     @sites = Site.all
     @criticidades = Criticidade.all
     @fornecedores = Fornecedor.all
+    @status_incidentes = StatusIncidente.all
   end
 
   def index
@@ -26,9 +27,12 @@ class TasksController < ApplicationController
         @tasks = Task.search @search_tasks, :match_mode => :boolean #, :per_page => 20, :page => params[:page]
         @tasks.length
         @tasks.compact!
+        
       else 
          puts "ativos"
-         @tasks = Task.ativos
+         @tasks = Task.abertas
+         @tasksativas = Task.ativas_nao_abertas
+
       end
     else
          puts "publicas"
@@ -67,6 +71,7 @@ class TasksController < ApplicationController
     @task.nome = @ci.descricao
     @task.tipotask = "Incidente"
     @task.fornecedor_id = @ci.contrato.fornecedor_id if @ci.contrato
+    @task.solicitante = @ci.Owner
     render :new
   end
 
@@ -116,7 +121,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        distribui("Alerta: #{@task.status} - Alteracao",@task) 
+        #distribui("Alerta: #{@task.status} - Alteracao",@task) 
         format.html { redirect_to(@task, :notice => 'Tarefa alterada com sucesso.') }
       else
         flash[:error] = "<ul>" + @task.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"

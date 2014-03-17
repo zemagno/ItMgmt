@@ -1,11 +1,15 @@
-source 'http://rubygems.org'
+ source 'http://rubygems.org'
 
 #gem "newrelic_rpm"
 # gem 'le'
 
 # gem "rails-erd"
+# 
+#    gem 'pry-rails', :group => :development   fierj
 
-gem 'rails', '~> 3.1'
+gem 'rails', '3.2.16'
+
+gem 'anemone
 
 gem 'will_paginate', '~> 3.0'
 
@@ -15,10 +19,12 @@ gem 'thin'
 
 gem 'log4r'
 
+gem 'nokogiri'
+
 gem 'hirb'
 
 gem 'activeadmin'
- gem 'sass-rails',   '~> 3.2.3'	
+gem 'sass-rails',   '~> 3.2.3'	
 gem "meta_search",    '>= 1.1.0.pre'
 
 # colocar tag de desenvolvimento TODO

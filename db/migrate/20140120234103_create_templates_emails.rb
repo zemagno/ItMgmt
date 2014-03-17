@@ -4,6 +4,7 @@ class CreateTemplatesEmails < ActiveRecord::Migration
       t.string :tipo
       t.string :template
       t.string :nome
+      t.string :subtipo
 
       t.timestamps
     end

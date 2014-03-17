@@ -1,6 +1,7 @@
 class Atributo < ActiveRecord::Base
   belongs_to :ci
   belongs_to :dicdado
+  
 
   def self.esta_em_uso?(iddic)
     self.where(:dicdado_id => iddic).exists?
@@ -14,12 +15,11 @@ class Atributo < ActiveRecord::Base
       "#{id} : #{ci_id}/#{ci.chave} : #{dicdado.nome} : #{valor} : #{ci.tipoci.tipo}<>#{dicdado.tipoci.tipo}"  
   end
 
-  
 
   define_index do
       indexes valor as :valor
-      indexes dicdado(:nome)
-      
+      indexes dicdado(:nome)      
   end
   
 end
+

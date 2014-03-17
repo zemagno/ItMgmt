@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @templates_email.tipo %>
+</p>
+
+<p>
+  <b>Template:</b>
+  <%= @templates_email.template %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @templates_email.nome %>
+</p>
+
+<p>
+  <b>Subtipo:</b>
+  <%= @templates_email.subtipo %>
+</p>
+
+
+<%= link_to 'Edit', edit_templates_email_path(@templates_email) %> |
+<%= link_to 'Back', templates_emails_path %>
