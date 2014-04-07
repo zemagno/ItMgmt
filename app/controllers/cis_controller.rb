@@ -210,7 +210,7 @@ class CisController < ApplicationController
     
     # TODO - tirar esse else daqui...retornar 
     # FIXME isso aqui tem um erro.... o g.output nao tem @ci
-    #if ! Rails.cache.exist?("#{direcao}-#{@ci.id}-grafico")
+    if ! Rails.cache.exist?("#{direcao}-#{@ci.id}-grafico")
       apath =  File.expand_path('../../../public', __FILE__)
       g = GraphViz::new( "G" )
 
@@ -259,7 +259,7 @@ class CisController < ApplicationController
       g.output( :svg => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.svg" )
       logger.debug "gravei grafico no cache"
       Rails.cache.write("#{direcao}-#{@ci.id}-grafico", "Existe",   expires_in: 5.minute)
-    #end
+    end
 
     
   end
