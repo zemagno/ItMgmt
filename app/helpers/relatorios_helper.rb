@@ -1,7 +1,7 @@
 module RelatoriosHelper
 	def genField(valor,field,i,fields) 
         case field
-		when "CI" 
+		when "CI" , "ID"
             res = link_to valor, ci_path(valor) 
         when "Email"
             res = valor

@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.6.10, for osx10.8 (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.11, for osx10.7 (x86_64)
 --
 -- Host: localhost    Database: tasklist_development
 -- ------------------------------------------------------
@@ -16,33 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `templates_emails`
+-- Table structure for table `parametros`
 --
 
-DROP TABLE IF EXISTS `templates_emails`;
+DROP TABLE IF EXISTS `parametros`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `templates_emails` (
+CREATE TABLE `parametros` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `template` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `nome` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `subtipo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
-  `sync` tinyint(1) DEFAULT NULL,
+  `valor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `templates_emails`
+-- Dumping data for table `parametros`
 --
 
-LOCK TABLES `templates_emails` WRITE;
-/*!40000 ALTER TABLE `templates_emails` DISABLE KEYS */;
-INSERT INTO `templates_emails` VALUES (1,'CI','revalidar_servidor','Revalidar Servidor','servidor virtual','0000-00-00 00:00:00','2014-02-05 00:36:54',0),(2,'CI','problema_servidor','Servidor com Problemas','servidor virtual','0000-00-00 00:00:00','2014-02-05 00:39:48',0),(3,'CI','servidor_sem_espaco','Falta de Espaco em Disco','servidor virtual','2014-02-05 00:39:15','2014-02-05 00:39:15',1),(4,'CONTRATOS','cobrancacontratos','Cobrar Contratos','','2014-02-04 23:37:21','2014-02-04 23:37:21',0),(5,'CI','servidor_down','Servidor Down','servidor virtual','2014-02-06 00:31:52','2014-02-06 00:31:52',1),(14,'CONTRATOS','cobrar_cc','Cobrar CC','','2014-02-06 01:04:08','2014-02-06 01:04:08',1);
-/*!40000 ALTER TABLE `templates_emails` ENABLE KEYS */;
+LOCK TABLES `parametros` WRITE;
+/*!40000 ALTER TABLE `parametros` DISABLE KEYS */;
+INSERT INTO `parametros` VALUES (1,'cobrancacontratos','TO','contratos@brq.com,compras@brq.com','2012-10-31 19:06:06','2014-01-25 14:00:45'),(2,'cobrancacontratos','CC','magno@brq.com',NULL,'2013-10-01 13:15:03'),(3,'cobrancacontratos','BODY','Bom dia,\r\nSegue fatura referente a {{contrato_descricao}}.\r\n\r\nValor    :{{contrato_valor}}\r\nCC       :{{contrato_projetoCCTI}}\r\nClassif. :{{contrato_classificacao}}\r\n\r\n','2014-01-25 11:58:37','2014-01-25 23:53:22'),(4,'cobrancacontratos','SUBJECT','APROVACAO: Fatura {{contrato_fornecedor_nome}} - {{contrato_valor}}','2014-01-25 11:58:43','2014-01-26 00:03:47'),(5,'servidor_sem_espaco','TO','{{ci_owner}},{{ci_notificacao}}','2014-02-04 22:43:50','2014-02-05 01:46:55'),(6,'servidor_sem_espaco','SUBJECT','[dc] Alerta - {{ci_chave}}','2014-02-04 22:43:54','2014-02-05 01:46:30'),(7,'servidor_sem_espaco','CC',NULL,'2014-02-04 22:43:58','2014-02-05 01:18:04'),(8,'servidor_sem_espaco','BODY','Prezados,\r\n\r\nBoa Noite,\r\n\r\nInformamos que o espaço em disco da unidade C do servidor {{ci_chave}} está com ___ de espaço livre.\r\n\r\n\r\nAtt,','2014-02-04 22:44:03','2014-02-05 01:47:04'),(13,'servidor_down','TO','{{ci_owner}},{{ci_notificacao}}','2014-02-06 00:38:35','2014-02-06 01:12:37'),(14,'servidor_down','CC',NULL,'2014-02-06 00:38:35','2014-02-06 00:38:35'),(15,'servidor_down','SUBJECT',NULL,'2014-02-06 00:38:35','2014-02-06 00:38:35'),(16,'servidor_down','BODY',NULL,'2014-02-06 00:38:35','2014-02-06 00:38:35'),(29,'cobrar_cc','TO','','2014-02-06 01:04:08','2014-02-06 01:12:31'),(30,'cobrar_cc','CC','a','2014-02-06 01:04:08','2014-02-06 01:06:31'),(31,'cobrar_cc','SUBJECT','a','2014-02-06 01:04:09','2014-02-06 01:06:36'),(32,'cobrar_cc','BODY','a','2014-02-06 01:04:09','2014-02-06 01:06:39');
+/*!40000 ALTER TABLE `parametros` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -77,31 +75,33 @@ INSERT INTO `sql_templates` VALUES (2,'Alerta aberto pelo NOC....\r\n\r\n<p>\r\n
 UNLOCK TABLES;
 
 --
--- Table structure for table `parametros`
+-- Table structure for table `templates_emails`
 --
 
-DROP TABLE IF EXISTS `parametros`;
+DROP TABLE IF EXISTS `templates_emails`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `parametros` (
+CREATE TABLE `templates_emails` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `template` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nome` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `subtipo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `valor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `sync` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `parametros`
+-- Dumping data for table `templates_emails`
 --
 
-LOCK TABLES `parametros` WRITE;
-/*!40000 ALTER TABLE `parametros` DISABLE KEYS */;
-INSERT INTO `parametros` VALUES (1,'cobrancacontratos','TO','contratos@brq.com,compras@brq.com','2012-10-31 19:06:06','2014-01-25 14:00:45'),(2,'cobrancacontratos','CC','magno@brq.com',NULL,'2013-10-01 13:15:03'),(3,'cobrancacontratos','BODY','Bom dia,\r\nSegue fatura referente a {{contrato_descricao}}.\r\n\r\nValor    :{{contrato_valor}}\r\nCC       :{{contrato_projetoCCTI}}\r\nClassif. :{{contrato_classificacao}}\r\n\r\n','2014-01-25 11:58:37','2014-01-25 23:53:22'),(4,'cobrancacontratos','SUBJECT','APROVACAO: Fatura {{contrato_fornecedor_nome}} - {{contrato_valor}}','2014-01-25 11:58:43','2014-01-26 00:03:47'),(5,'servidor_sem_espaco','TO','{{ci_owner}},{{ci_notificacao}}','2014-02-04 22:43:50','2014-02-05 01:46:55'),(6,'servidor_sem_espaco','SUBJECT','[dc] Alerta - {{ci_chave}}','2014-02-04 22:43:54','2014-02-05 01:46:30'),(7,'servidor_sem_espaco','CC',NULL,'2014-02-04 22:43:58','2014-02-05 01:18:04'),(8,'servidor_sem_espaco','BODY','Prezados,\r\n\r\nBoa Noite,\r\n\r\nInformamos que o espaço em disco da unidade C do servidor {{ci_chave}} está com ___ de espaço livre.\r\n\r\n\r\nAtt,','2014-02-04 22:44:03','2014-02-05 01:47:04'),(13,'servidor_down','TO','{{ci_owner}},{{ci_notificacao}}','2014-02-06 00:38:35','2014-02-06 01:12:37'),(14,'servidor_down','CC',NULL,'2014-02-06 00:38:35','2014-02-06 00:38:35'),(15,'servidor_down','SUBJECT',NULL,'2014-02-06 00:38:35','2014-02-06 00:38:35'),(16,'servidor_down','BODY',NULL,'2014-02-06 00:38:35','2014-02-06 00:38:35'),(29,'cobrar_cc','TO','','2014-02-06 01:04:08','2014-02-06 01:12:31'),(30,'cobrar_cc','CC','a','2014-02-06 01:04:08','2014-02-06 01:06:31'),(31,'cobrar_cc','SUBJECT','a','2014-02-06 01:04:09','2014-02-06 01:06:36'),(32,'cobrar_cc','BODY','a','2014-02-06 01:04:09','2014-02-06 01:06:39');
-/*!40000 ALTER TABLE `parametros` ENABLE KEYS */;
+LOCK TABLES `templates_emails` WRITE;
+/*!40000 ALTER TABLE `templates_emails` DISABLE KEYS */;
+INSERT INTO `templates_emails` VALUES (1,'CI','revalidar_servidor','Revalidar Servidor','servidor virtual','0000-00-00 00:00:00','2014-02-05 00:36:54',0),(2,'CI','problema_servidor','Servidor com Problemas','servidor virtual','0000-00-00 00:00:00','2014-02-05 00:39:48',0),(3,'CI','servidor_sem_espaco','Falta de Espaco em Disco','servidor virtual','2014-02-05 00:39:15','2014-02-05 00:39:15',1),(4,'CONTRATOS','cobrancacontratos','Cobrar Contratos','','2014-02-04 23:37:21','2014-02-04 23:37:21',0),(5,'CI','servidor_down','Servidor Down','servidor virtual','2014-02-06 00:31:52','2014-02-06 00:31:52',1),(14,'CONTRATOS','cobrar_cc','Cobrar CC','','2014-02-06 01:04:08','2014-02-06 01:04:08',1);
+/*!40000 ALTER TABLE `templates_emails` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -113,4 +113,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-09  9:56:33
+-- Dump completed on 2014-03-17 21:26:31

@@ -20,19 +20,3 @@ class Dicdado < ActiveRecord::Base
 end
 
 
-# Dicdado.all.each  do |dic|
-#   if dic.apelido.match(/^[a-zA-Z]+$/)
-#       class Ci
-#         define_method "__#{dic.apelido}__" do
-#            atributos[dic.id][1]
-#         end
-#       end
-#   end
-# end
-
-# a = 6
-class Ci
-  define_method "IP" do
-    atributos[6][1]
-  end
-end

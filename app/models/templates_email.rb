@@ -2,6 +2,7 @@ class TemplatesEmail < ActiveRecord::Base
   attr_accessible :nome, :subtipo, :template, :tipo, :sync
   after_create :criar_parametros
   after_destroy :apagar_parametros
+  before_save :renomear_parametros
 
   def full_nome
   	  "#{nome} - #{sync ? 'Browse' : 'Direto'}"
@@ -9,12 +10,13 @@ class TemplatesEmail < ActiveRecord::Base
 
   # TODO isso da para virar metaprograming
   def criar_parametros
-  	puts "ops..vou criar os parametros para #{template}"
-  	Parametro.criar_parametros_email(template)
+  		Parametro.criar_parametros_email(template)
   end
   def apagar_parametros
-  	puts "ops..vou apagar os parametros para #{template}"
-  	Parametro.apagar_parametros(template)
+  	 	Parametro.apagar_parametros(template)
+  end
+  def renomear_parametros
+       Parametro.renomear_tipo_parametro(template_was,template)
   end
 
 end

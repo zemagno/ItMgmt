@@ -1,4 +1,5 @@
 require "jiraable"
+require "statusable"
 class Ci < ActiveRecord::Base
   audited
   self.per_page = 20
@@ -7,6 +8,7 @@ class Ci < ActiveRecord::Base
 
   # has_paper_trail
   include Jiraable
+  include Statusable # inserir o metodo .status e .status_icon
 
   attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal
 
@@ -195,6 +197,8 @@ class Ci < ActiveRecord::Base
     puts @c
     [@c, @c.atributos] 
   end
+
+
 
   define_index do
       indexes chave

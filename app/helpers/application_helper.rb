@@ -23,6 +23,7 @@ end
 
 def jira_to_docs(jira)
 	@docs = ""
+	return if jira.blank?
 	jira.split(",").each do |j|
 		url = j.split("|")
 		url[1] = url[0] if url[1].blank?

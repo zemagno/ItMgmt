@@ -5,7 +5,6 @@ class ChecklistsController < ApplicationController
   
   def carrega_agregadas 
     @tiposci = Tipoci.all
-    #@statusci = Statusci.all
   end
 
   def index

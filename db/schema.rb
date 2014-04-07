@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140223231508) do
+ActiveRecord::Schema.define(:version => 20140407162454) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -264,7 +264,7 @@ ActiveRecord::Schema.define(:version => 20140223231508) do
   create_table "parametros", :force => true do |t|
     t.string   "tipo"
     t.string   "subtipo"
-    t.string   "valor"
+    t.text     "valor"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -360,6 +360,7 @@ ActiveRecord::Schema.define(:version => 20140223231508) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "icon"
+    t.string   "parametro"
   end
 
   create_table "sub_tipo_chamados", :force => true do |t|
@@ -401,8 +402,6 @@ ActiveRecord::Schema.define(:version => 20140223231508) do
     t.datetime "updated_at", :null => false
     t.boolean  "sync"
   end
-
-  add_index "templates_emails", ["tipoci_id"], :name => "index_templates_emails_on_tipoci_id"
 
   create_table "tipo_chamados", :force => true do |t|
     t.string   "descricao"
@@ -455,17 +454,5 @@ ActiveRecord::Schema.define(:version => 20140223231508) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
-
-  create_table "view_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "prefix"
-    t.boolean  "partial"
-    t.text     "source"
-    t.string   "locale"
-    t.string   "formats"
-    t.string   "handlers"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end

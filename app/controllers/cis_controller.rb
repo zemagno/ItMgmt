@@ -56,10 +56,10 @@ class CisController < ApplicationController
     @id = params[:id]
     t = Ci.find(@id).tipoci.tipo
     @templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI",t)
+    @templates_email.concat(TemplatesEmail.find_all_by_tipo_and_subtipo("CI",""))  
+    
     respond_to :js
-    # respond_to do |format|
-    #   format.js { render :action => "../email/email" }
-    # end
+    
   end
 
   def enviar_email
@@ -207,12 +207,10 @@ class CisController < ApplicationController
   # 
 
   def gera_grafico_relacionamento(id,direcao)
-    logger.debug "vou pesquisar no cache....#{direcao}-#{@ci.id}-grafico"
-    if Rails.cache.exist?("#{direcao}-#{@ci.id}-grafico")
-       logger.debug  "Ops... grafico esta no cache"
+    
     # TODO - tirar esse else daqui...retornar 
     # FIXME isso aqui tem um erro.... o g.output nao tem @ci
-    else
+    #if ! Rails.cache.exist?("#{direcao}-#{@ci.id}-grafico")
       apath =  File.expand_path('../../../public', __FILE__)
       g = GraphViz::new( "G" )
 
@@ -232,12 +230,13 @@ class CisController < ApplicationController
       while not queue.empty?
           #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
           @i,nivel = dequeue
+          nodes[@i.chave] = g.add_nodes(@i.chave, GraficoCmdb.TipoGraficoCI(@i,ci_path(@i)))
           
-          if @i.dataChange and @i.dataChange.to_time >= 5.days.ago then
-             nodes[@i.chave] = g.add_nodes(@i.chave, { :label => "#{@i.chave}\n#{@i.dataChange}", :color => "red"})
-          else 
-             nodes[@i.chave] = g.add_nodes(@i.chave , { :label => "#{@i.chave}\n#{@i.tipoci.tipo}"})
-          end
+          # if @i.dataChange and @i.dataChange.to_time >= 5.days.ago then
+          #    nodes[@i.chave] = g.add_nodes(@i.chave, { :label => "#{@i.chave}\n#{@i.dataChange}", "URL" => ci_path(@i), :color => "red"})
+          # else 
+          #    nodes[@i.chave] = g.add_nodes(@i.chave , { :label => "#{@i.chave}\n#{@i.tipoci.tipo}", "URL" => ci_path(@i)})
+          # end
 
           if nivel <= nivel_max then
             @i.send(direcao).each do |ii|
@@ -257,10 +256,10 @@ class CisController < ApplicationController
             @i.send(direcao).map { |x| enqueue([x,nivel+1])}
           end
       end
-      g.output( :png => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.png" )
+      g.output( :svg => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.svg" )
       logger.debug "gravei grafico no cache"
       Rails.cache.write("#{direcao}-#{@ci.id}-grafico", "Existe",   expires_in: 5.minute)
-    end
+    #end
 
     
   end
