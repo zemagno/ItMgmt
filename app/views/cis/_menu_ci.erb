@@ -1,0 +1,39 @@
+'<%= link_to("[Impactados]", impactados_path(@ci))%>
+<%= link_to("[Dependentes]", dependentes_path(@ci))%>
+<%= link_to("[Dependentes/Composto de]", dependentes_all_path(@ci))%>
+
+<% if @imagem_dependentes then %> 
+    <a href="/imagens/<%=@ci.chave_sanitizada%>-dependentes.svg" onclick="window.open(this.href,'','height=600,width=900');return false";>[Grafico Dependentes]</a>
+<% end %>
+
+<% if @imagem_dependentes_all then %> 
+    <a href="/imagens/<%=@ci.chave_sanitizada%>-dependentes_all.svg" onclick="window.open(this.href,'','height=600,width=900');return false";>[Grafico Dependentes/Composto de]</a>
+<% end %>
+
+<% if @imagem_impactados then %> 
+    <a href="/imagens/<%=@ci.chave_sanitizada%>-impactados.svg" onclick="window.open(this.href,'','height=600,width=900');return false";>[Grafico Impactados]</a>
+<% end %>
+
+<% if @email_impactados then %>
+   <a href="mailto:?bcc=<%=@email_impactados%>&subject=Alerta - <%=@ci.chave%>" onclick="window.open(this.href,'');return false";\>[Email Impactados/Dependentes/Notificacao]</a> 
+<% end %>
+</br>
+<%= link_to "[Adiciona Dependente]", novo_dependente_path(@ci), :remote => true, :id => "novo_dependente" %>
+<%= link_to "[Adiciona Impactado]", novo_impactado_path(@ci), :remote => true, :id => "novo_impactado" %>
+<%= link_to "[Elimina dependente]" , elimina_dependente_path(@ci), :remote => true, :id => "elimina_dependente"%>
+<%= link_to "[Elimina impactado]" , elimina_impactado_path(@ci), :remote => true, :id => "elimina_impactado"%>
+<%= link_to "[Duplicar esse CI]" , duplicar_ci_path(@ci), :remote => true, :id => "duplicar_ci"%>
+</br>
+<!--%= "<a href=\"/email/servidor_sem_espaco/#{@ci.id}\" onclick=\"window.open(this.href,'');return false;\">[Email Normal]</a>".html_safe %-->
+<%= link_to("[Enviar Email]", email_path(@ci), :id => "enviar_email_ci", :remote => true)%>
+
+
+<%= link_to "[Abrir Alerta]", tasks_new_from_ci_path(@ci) , :target => '_blank' %>
+<a href="<%='/tasks?&search=@CI='+@ci.chave%>" >[Alertas deste CI]</a>
+<a href="<%='/tasks?&search='+@ci.chave%>" >[Alertas com este CI]</a>
+
+<% if can? :manage, Audit %>
+   <a href="<%='/audits?&search=@auditable_type=ci @auditable_id='+@ci.id.to_s%>" >[Auditoria deste CI]</a>
+<% end %>
+<div id="enviar_email_ci_old"></div>
+ 

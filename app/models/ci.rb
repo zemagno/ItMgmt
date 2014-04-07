@@ -1,9 +1,14 @@
 require "jiraable"
+require "statusable"
 class Ci < ActiveRecord::Base
   audited
+  self.per_page = 20
+
+  #has_associated_audits
 
   # has_paper_trail
   include Jiraable
+  include Statusable # inserir o metodo .status e .status_icon
 
   attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal
 
@@ -70,7 +75,8 @@ class Ci < ActiveRecord::Base
   end
 
   def chave_sanitizada
-    chave.gsub(/\ /,"_")
+    chave.gsub(/\ /,"_").delete('^a-zA-Z\_')
+
   end
 
   def duplicar(nova_chave)
@@ -80,8 +86,26 @@ class Ci < ActiveRecord::Base
     newci
   end
 
+  # retorno o valor dos atributos a partir de Ci._<apelido_atributo>
+  def method_missing(method_sym, *arguments, &block)
+    if method_sym.to_s =~ /^_([a-zA-Z]+)$/
+      return getatributo($1)
+    else
+      super
+    end
+  end
+
+
+  def getatributo(chave)
+    attr = atributos.select { |k,v| v[5] == chave }
+    return attr.values[0][1] if attr.size > 0
+    return ""
+  end
   
   # TODO colocar todo servicos de atributos numa services. Nao deixar no model do CI.
+  # TODO --> isso aqui é lento...tem que colocar num variavel e se chamar de novo, retorna tud
+  # TODO --> testar se eu chamo varias vezes, ele monta sempre, sempre..
+  # 
   def atributos
     # pegar todos os atributos possiveis (tipoci.dicdado)
     # dicdados.id => [Label,valor]
@@ -89,35 +113,26 @@ class Ci < ActiveRecord::Base
     #  3=>["Designacao", "001a-98/97"], 
     #  2=>["Endereco", "Av Boa Vista"], 
     #  1=>["Capacidade", "4mb"]} 
-    attr_existentes = Hash.new
+    return @attr_existentes unless @attr_existentes.blank?
+
+    @attr_existentes = Hash.new
     
     # monto um hash com todos atributos que esse CI deve ter
-    tipoci.dicdados.map {|x| attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao]} 
+    tipoci.dicdados.map {|x| @attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao,x.apelido]} 
     
     # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
     atributo.map do |x| 
        # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
        # entao eu crio esse atributo no hash
-       if ! attr_existentes[x.dicdado.id] then
-          attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao]
+       if ! @attr_existentes[x.dicdado.id] then
+          puts x.dicdado
+          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido]
        end
-      attr_existentes[x.dicdado.id][1] = x.valor 
+      @attr_existentes[x.dicdado.id][1] = x.valor 
      end 
-    attr_existentes
+    @attr_existentes
   end
   
-  
-
-  # def jira_to_url
-  #   @URLs = []
-  #   if jira != nil then 
-  #     jira.split(',').each do |c|
-  #       @URLs << [c,"http://jira.brq.com/browse/#{c}"]
-  #     end
-  #   end
-  #   @URLs
-  # end
-
   def limpa_atributos_outros_tipo
     logger.debug "vou limpar atributos"
     atributo.each do |attr|
@@ -182,6 +197,8 @@ class Ci < ActiveRecord::Base
     puts @c
     [@c, @c.atributos] 
   end
+
+
 
   define_index do
       indexes chave

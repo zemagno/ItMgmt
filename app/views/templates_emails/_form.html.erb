@@ -1,0 +1,40 @@
+<%= form_for(@templates_email) do |f| %>
+  <% if @templates_email.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@templates_email.errors.count, "error") %> prohibited this templates_email from being saved:</h2>
+
+      <ul>
+      <% @templates_email.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tipo %><br />
+    <%= f.text_field :tipo %>
+  </div>
+    <div class="field">
+    <%= f.label :subtipo %><br />
+    <%= f.text_field :subtipo %>
+  </div>
+  <div class="field">
+    <%= f.label :template %><br />
+    <%= f.text_field :template %>
+  </div>
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+
+
+<div class="field">
+    <%= f.label "Enviar via browser?" %><br />
+    <%= f.check_box :sync %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

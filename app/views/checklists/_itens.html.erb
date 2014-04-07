@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Itens desse checklist</th>
+    <th>Executor</th>
+    <th>CIs</th>
+    <th><%= "Editar Item"  if action == :edit %></th>
+  </tr>
+
+<%= "local variable #{itens} #{action}" %>
+    
+
+<% @itens.each do |i| %>
+  <tr>
+    <td><%= link_to i.descricao[0..50], i, :target => "_blank"%></td>
+    <td><%= i.users %></td>
+    <td><%= i.cis %></td>
+
+    <td><%= link_to "Editar", edit_itens_checklist_path(i) if action == :edit %>
+  </tr>
+<% end %>
+</table>

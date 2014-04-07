@@ -5,24 +5,26 @@
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>BRQ IT Services - Gestão de TI</title>
+</head>
+<body onkeydown="getArrows(event)">
 <!--%= stylesheet_link_tag :all %-->
 <%= stylesheet_link_tag "jquery-ui.css" %>
 <%= stylesheet_link_tag "chavecis.css" %>
 <%= stylesheet_link_tag "CMDBstyle.css" %>
 <%= stylesheet_link_tag "scaffold.css" %>
 <%= stylesheet_link_tag "jquery-ui-timepicker-addon.css" %>
+<%= stylesheet_link_tag "jquery.datetimepicker.css" %>
 
 
 
-<%= javascript_include_tag "jquery", "jquery-ujs", "application" %>
+<%= javascript_include_tag "jquery", "jquery-ujs", "application" , "jquery.datetimepicker.js"%>
 <%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
 <%= javascript_include_tag "utils.js" %>
 
 
 <%= csrf_meta_tag %>
 
-</head>
-<body onkeydown="getArrows(event)">
+
 <div id="wrapper">
 	<div id="header-wrapper">
 		<div id="header">
@@ -60,8 +62,11 @@
 				<% flash.each do |name, msg| %>
                         <%= content_tag :div, msg, id: "flash_#{name}" %>
                 <% end %>
-				</div>	
-				<div id="page-dbgbtm">
+				</div>
+				
+				<div id="enviar_email"></div>
+				
+			    <div id="page-dbgbtm">
 					
 					<%= yield %>
 					<div style="clear: both;"> </div>

@@ -1,3 +1,49 @@
+http://www.libertarianismo.org/index.php/artigos/introducao-teoria-monetaria-austriaca/
+
+"Aberto",      0 ,"ABERTO", now(), now());
+"Cancelado",      9 ,"FECHADO",  now(), now());
+"Executado com Sucesso",      9 ,"FECHADO",  now(), now());
+"Nao Resolvido",      2 ,"ABERTO",  now(), now());
+"Normalizado",      1 ,"FECHADO", now(), now());
+"Resolvido",     9 ,"FECHADO", now(), now()); 
+"Rollback",  0 ,"FECHADO", now(), now());
+
+
+class Ci
+  def method_missing(method_sym, *arguments, &block)
+    # the first argument is a Symbol, so you need to_s it if you want to pattern match
+    if method_sym.to_s =~ /^_([a-zA-Z]+)$/
+      return getatributo($1)
+    else
+      super
+    end
+  end
+end
+
+class AddstatusIdtotasks < ActiveRecord::Migration
+  def change
+    add_column :tasks, :status_id, :integer
+    execute <<-SQL
+        update tasks set status_id = (select id from status_incidentes where tasks.status = status_incidentes.status);
+    SQL
+  end
+end
+
+class RemoveStatusTasks < ActiveRecord::Migration
+  def change
+    remove_column :tasks, :status, :string
+  end
+end
+
+
+if "_aaaadsa" =~ /^_[a-zA-Z]+_$/ then
+   puts "metodo: #{$1}"
+end
+
+if "_aaaadsa" =~ /^_(.*)_$/ then
+   puts "metodo: #{$1}"
+end
+
 http://rhnh.net/2010/10/10/rails-3-ruby-1-9-2-windows-2008-and-sql-server-2008-tutorial
 
 

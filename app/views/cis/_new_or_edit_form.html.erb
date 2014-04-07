@@ -92,7 +92,7 @@
 <div class="spacer"></div>
 <label>Jira	
 <span class="small">Lista de chamados no Jira</span>
-<span class="small">Ex: INFR-1231,INFR-3124</span>
+<span class="small">Ex: INFR-1231,INFRA-3124</span>
 </label>
 <%= f.text_field :jira, :size => 70 %>
 
@@ -105,7 +105,7 @@
   </label>
   
   <% if attr[3] && attr[3]!="" %>
-     <!--%= f.select :jira ,(["a", "b"]) %-->
+     <!--se tem valores predefinidos, monto combobox , senao input normal-->
      <select name="atributos[<%= attr[0]%>]">
       <%= helper_gen_combobox(attr[3],attr[1]).html_safe %>
      </select> 

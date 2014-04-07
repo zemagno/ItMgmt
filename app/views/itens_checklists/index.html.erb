@@ -1,0 +1,40 @@
+
+<!-- isso vai morrer..itens sera partial do Checklist -->
+
+<!-- isso vai morrer..itens sera partial do Checklist --><!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<h1>Itens de um Checklist</h1>
+
+<table>
+  <tr>
+    <th>Checklist</th>
+    <th>Item</th>
+    <th>Executor</th>
+    <th>Ci</th>
+    <th></th>
+    <th></th>
+  </tr><!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+
+<!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
+<% @itens_checklists.each do |itens_checklist| %>
+  <tr>
+    <td><%= link_to itens_checklist.checklist.descricao, itens_checklist.checklist %></td>
+    <td><%= link_to itens_checklist.descricao, itens_checklist %></td>
+    <td><%= itens_checklist.users %></td>
+    <td><%= itens_checklist.cis %></td>
+   
+    <td><%= link_to 'Editar', edit_itens_checklist_path(itens_checklist) %></td>
+    <td><%= link_to 'Apagar', itens_checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Item de um Checklist', new_itens_checklist_path %>

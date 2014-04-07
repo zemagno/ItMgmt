@@ -1,11 +1,13 @@
 
-<%= render :partial => "menu_ci"%>
+<%= render :partial => "menu_top"%>
 
 </br></br>
+
 <div id="stylized" class="myform">
-	<%= render :partial => "form" %>
-	<%= render :partial => "menu_dependentes_ci"%>
+<%= render :partial => "form" %>
+<%= render :partial => "menu_ci"%>
 </div>
+
 </br>
 <div id="stylized" class="myform">
 
@@ -16,7 +18,10 @@
   <% end %>
   <% if ci[0]==:subci then %>
      
-     &nbsp;&nbsp;&nbsp<%= "#{ci[2]} #{ci[1].tipoci.tipo} " %>&nbsp;<%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao} - #{ci[1].Owner}" %></br>
+     &nbsp;&nbsp;&nbsp<%= "#{ci[2]} #{ci[1].tipoci.tipo} " %>&nbsp;<%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao} - #{ci[1].Owner}" %>
+	<font color="red"><%= " - #{ci[1].status.upcase}" if ci[1].statusci_id > 1 %></font>
+
+     </br>
   <% end %>
 
 <% end %>

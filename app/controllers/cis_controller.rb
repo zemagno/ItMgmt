@@ -3,7 +3,7 @@ require "queueable"
 include ApplicationHelper
 class CisController < ApplicationController
   include Queueable
-  authorize_resource 
+  authorize_resource #cancan
 
   #layout 'application_novolyaout' 
 
@@ -17,6 +17,7 @@ class CisController < ApplicationController
   # @sites
   # @tiposci
 
+  # TODO colocar carrega agregadas no before_action/before_filter para alguns metodos abaixo..
   def carrega_agregadas 
     @sites = Site.all
     @tiposci = Tipoci.all
@@ -32,7 +33,6 @@ class CisController < ApplicationController
   end
  
   def show
-    puts "Usuario corrente: #{current_user} "
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     cache(@ci)
   end
@@ -42,12 +42,46 @@ class CisController < ApplicationController
     carrega_agregadas
   end
 
-  def email_alerta
-    @ci = Ci.find(params[:id])
-    CiMailer.revalidar_servidor(@ci,"Revalidacao de servidor").deliver
-    redirect_to(@ci)
-  end
+  # cis#email 
+  #   monta lista de templates 
+  #   direciona email.js.erb que troca o div pelo formulario email.erb
+  # email.erb (form)
+  #   submit form cis#enviar_email   
+  #   enfilera no sidekiq
+  #   direciona para enviar_email.js que faz reload da pagina cis 
+
   
+  def email
+    # so seleciono os templates do tipo de ci sendo visualizado
+    @id = params[:id]
+    t = Ci.find(@id).tipoci.tipo
+    @templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI",t)
+    @templates_email.concat(TemplatesEmail.find_all_by_tipo_and_subtipo("CI",""))  
+    
+    respond_to :js
+    
+  end
+
+  def enviar_email
+    #testar se email é sync ou nao.. se for async, chamar abaixo, senao desviar para /email/{template}/:ci
+    #aqui tem um problema...o controller que responde ao /email/template ja esta rodando numa nova tela...ele so responde um href.
+    template_email =TemplatesEmail.find(params[:enviar_email][:template_id])
+
+    if template_email.sync
+      puts "@@@@email sync@@@@"
+      @path = "/email/#{template_email.template}/#{params[:id]}"
+    else
+      p = Hash[:id => params[:id], :to => "zecarlosmagno@gmail.com"]
+      job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
+      EnviaEmailWorker.perform_async(job.id)
+      #EnviaEmailWorker.perform_in(1.hour,job.id)
+      flash[:info] = "INFO: Email enfileirado para #{p[:to]}"
+      respond_to :js
+    end
+  end
+  # http://stackoverflow.com/questions/7165064/how-do-i-preview-emails-in-rails
+
+   
   def check_chave
     @ci = Ci.find_by_chave(params[:search]) 
     respond_to do |format|
@@ -55,7 +89,7 @@ class CisController < ApplicationController
         format.json { render :json => "inexistente"}
       else
        format.json { render :json => "existente"}
-     end
+    end
    end    
   end
   
@@ -70,9 +104,7 @@ class CisController < ApplicationController
          format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
          format.json { head :no_content }
       else
-         #@sites = Site.all
-         #@tiposci = Tipoci.all
-         #@statusci = Statusci.all
+      
          @atributos = @ci.atributos
          
          carrega_agregadas
@@ -94,12 +126,15 @@ class CisController < ApplicationController
 
     @search = params[:search] || session[:search_cis]
     session[:search_cis] = @search
-    session[:oldCI] = nil
-    
+    session[:oldCI] = nil  
     begin
-      @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-      @cis.length
-      @cis.compact!
+      if @search.blank?
+         @cis = Ci.paginate(:page => params[:page])
+      else
+         @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
+         @cis.length
+         @cis.compact!
+      end
     rescue 
       flash[:error] = "Error[DB0001] - Search Engine desligado"
       @cis = Ci.paginate(:page => params[:page])
@@ -126,9 +161,6 @@ class CisController < ApplicationController
   
   def new
     @ci = Ci.new
-    #@sites = Site.all
-    #@tiposci = Tipoci.all
-    #@statusci = Statusci.all
     carrega_agregadas
     @oldci = session[:oldCI]==nil ? nil : Ci.find(session[:oldCI])
   end
@@ -176,9 +208,9 @@ class CisController < ApplicationController
 
   def gera_grafico_relacionamento(id,direcao)
     
-    if Rails.cache.exist?("#{direcao}-#{@ci.id}-grafico")
-       logger.debug  "Ops... grafico esta no cache"
-    else
+    # TODO - tirar esse else daqui...retornar 
+    # FIXME isso aqui tem um erro.... o g.output nao tem @ci
+    #if ! Rails.cache.exist?("#{direcao}-#{@ci.id}-grafico")
       apath =  File.expand_path('../../../public', __FILE__)
       g = GraphViz::new( "G" )
 
@@ -198,12 +230,13 @@ class CisController < ApplicationController
       while not queue.empty?
           #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
           @i,nivel = dequeue
+          nodes[@i.chave] = g.add_nodes(@i.chave, GraficoCmdb.TipoGraficoCI(@i,ci_path(@i)))
           
-          if @i.dataChange and @i.dataChange.to_time >= 5.days.ago then
-             nodes[@i.chave] = g.add_nodes(@i.chave, { :label => "#{@i.chave}\n#{@i.dataChange}", :color => "red"})
-          else 
-             nodes[@i.chave] = g.add_nodes(@i.chave , { :label => "#{@i.chave}\n#{@i.tipoci.tipo}"})
-          end
+          # if @i.dataChange and @i.dataChange.to_time >= 5.days.ago then
+          #    nodes[@i.chave] = g.add_nodes(@i.chave, { :label => "#{@i.chave}\n#{@i.dataChange}", "URL" => ci_path(@i), :color => "red"})
+          # else 
+          #    nodes[@i.chave] = g.add_nodes(@i.chave , { :label => "#{@i.chave}\n#{@i.tipoci.tipo}", "URL" => ci_path(@i)})
+          # end
 
           if nivel <= nivel_max then
             @i.send(direcao).each do |ii|
@@ -223,10 +256,10 @@ class CisController < ApplicationController
             @i.send(direcao).map { |x| enqueue([x,nivel+1])}
           end
       end
-      g.output( :png => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.png" )
+      g.output( :svg => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.svg" )
       logger.debug "gravei grafico no cache"
-      #Rails.cache.write("#{direcao}-#{@ci.id}-grafico", "Existe",   expires_in: 5.minute)
-    end
+      Rails.cache.write("#{direcao}-#{@ci.id}-grafico", "Existe",   expires_in: 5.minute)
+    #end
 
     
   end
@@ -275,24 +308,26 @@ class CisController < ApplicationController
           i.send(direcao).map { |x| enqueue([x,nivel+1])}
         end
       end
-      #@email_impactados = @email_impactados.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+"@brq.com" }.join(",")
       @email_impactados = ListaEmail.acerta(@email_impactados,"@brq.com")
-      #Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado, expires_in: 5.minute)
-      #Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
-      #logger.debug  "escrevi no cache"
+      Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado, expires_in: 5.minute)
+      Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
+      logger.debug  "escrevi no cache"
     end
     @fila_resultado
+    # TODO acertar esse lixo...retornar tudo...@fila e @email impactado..
+    #    devolve fila resultado e seta variavel global email impactado
+    #    mover esse lixo para um servico....retornando 2 variaveis.
   end
 
 def gera_relaciomentos_com_composto_de
-    
+    # TODO colocar cache no gera_relaciomentos_com_composto_de
     @ci = Ci.find(params[:id])
     init_queue
     
     enqueue([@ci,0])
     edges_visitado = Hash.new
 
-    # TODO nao tem email impactado ?
+    # FIXME nao tem email impactado ?
 
     nivel_max = 8
 
@@ -324,7 +359,7 @@ def gera_relaciomentos_com_composto_de
       end
     end
     @fila_resultado
-  end
+end
 
   def eliminar
     @ci = Ci.find(params[:idci])
@@ -377,12 +412,11 @@ def gera_relaciomentos_com_composto_de
     @newci = ci.duplicar(params[:duplicar][:nova_chave])
 
     respond_to :js if @newci.persisted?
-    logger.debug "Ops....estou no caminho certo...vou duplicar.. #{params[:idci]} - #{params[:duplicar][:nova_chave]}"
   end
 
 
   def elimina_dependente
-    # @customer.orders.delete(@order1)
+    
      ci = Ci.find(params[:idci])
      dep = Ci.find_by_chave(params[:exclusao][:dependente]) 
      if dep == nil || ! ci.dependentes_all.include?(dep) then
@@ -395,7 +429,7 @@ def gera_relaciomentos_com_composto_de
    end
 
   def elimina_impactado
-    # @customer.orders.delete(@order1)
+ 
      ci = Ci.find(params[:idci])
      imp = Ci.find_by_chave(params[:exclusao][:impactado]) 
      if imp == nil || ! ci.impactados.include?(imp) then
@@ -447,6 +481,7 @@ def gera_relaciomentos_com_composto_de
   end
 
   def dependentes
+
      @fila_dependentes = gera_relaciomentos(:dependentes)
      gera_grafico_relacionamento(params[:id],:dependentes)
      @imagem_dependentes = true
@@ -460,11 +495,5 @@ def gera_relaciomentos_com_composto_de
      render :dependentes
   end
 
-  def abrir_alerta
-    logger.debug params
-    #@ci = Ci.find(params[:id])
-    #logger.debug @ci
-    redirect_to tasks_new_from_ci_path(57)
-  end
-  
+   
 end

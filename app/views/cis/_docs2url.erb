@@ -1,0 +1,7 @@
+</br><%=title %><% docs_to_url(documentos).each do|url| %>
+     <% if ! url[1].blank? %>
+         <a href="javascript: void(0)" onclick="window.open('','').location.href='<%=url[1]%>'">[<%=url[0]%>]</a>
+    <%  else %> 
+         <a href="javascript: void(0)" onclick="window.open('','').location.href='<%=url[0]%>'">[Documento]</a>         
+     <% end %>
+<% end %> 

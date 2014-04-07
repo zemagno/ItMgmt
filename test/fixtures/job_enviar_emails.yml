@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  templates_email_id: 1
+  parametro: MyText
+
+two:
+  templates_email_id: 1
+  parametro: MyText

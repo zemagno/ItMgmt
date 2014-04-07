@@ -5,15 +5,15 @@
     <th>Tipo</th>
     <th>Subtipo</th>
     <th>Valor</th>
-    <th></th>
-  </tr>
+   </tr>
 
 <% @parametros.each do |parametro| %>
   <tr>
-    <td><%= parametro.tipo %></td>
+   
+    <td><%= link_to parametro.tipo, edit_parametro_path(parametro) %></td>
     <td><%= parametro.subtipo %></td>
     <td><%= parametro.valor %></td>
-    <td><%= link_to 'Alterar', edit_parametro_path(parametro) %></td>
+    
   </tr>
 <% end %>
 </table>

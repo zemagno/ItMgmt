@@ -1,0 +1,10 @@
+<h1>Iniciar Checklist</h1>
+
+
+<!--%= render :partial => 'checklists/checklist' %-->
+
+<%= render 'form' %>
+
+<%= render :partial => "checklists/pais" unless @pais.empty? %>
+<%= render :partial => "checklists/itens",  :locals => {:action => :show }%>
+

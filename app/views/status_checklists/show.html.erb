@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Status:</b>
+  <%= @status_checklist.status %>
+</p>
+
+<p>
+  <b>Icon:</b>
+  <%= @status_checklist.icon %>
+</p>
+
+
+<%= link_to 'Edit', edit_status_checklist_path(@status_checklist) %> |
+<%= link_to 'Back', status_checklists_path %>

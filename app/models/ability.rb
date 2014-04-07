@@ -102,6 +102,8 @@ class Ability
         cannot :manage, @Tipoci
         cannot :manage, Statusci
         cannot :manage, @Statusci
+        cannot :manage, SqlTemplate
+        cannot :manage, @SqlTemplate
     end
 
     if user and user.is_a :admin
@@ -118,7 +120,7 @@ class Ability
         can :manage, Audit
     end
 
-    #can :manage, :all
+    can :manage, :all
     
   end
 end

@@ -1,0 +1,31 @@
+<h1>Templates de email</h1>
+
+<table>
+  <tr>
+    <th>Template</th>
+    <th>Tipo</th>
+    <th>Subtipo</th>
+    <th>Nome</th>
+    <th>Envi via browser</th>
+
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @templates_emails.each do |templates_email| %>
+  <tr>
+    <td><%= link_to templates_email.template , templates_email%></td>
+    <td><%= templates_email.tipo %></td>
+    <td><%= templates_email.subtipo %></td>
+    <td><%= templates_email.nome %></td>
+    <td><%= templates_email.sync %></td>
+    
+    <td><%= link_to 'Editar', edit_templates_email_path(templates_email) %></td>
+    <td><%= link_to 'Apagar', templates_email, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to '[Criar novo template de email]', new_templates_email_path %>

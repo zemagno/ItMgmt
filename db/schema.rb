@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131207161627) do
+ActiveRecord::Schema.define(:version => 20140407162454) do
+
+  create_table "active_admin_comments", :force => true do |t|
+    t.string   "resource_id",   :null => false
+    t.string   "resource_type", :null => false
+    t.integer  "author_id"
+    t.string   "author_type"
+    t.text     "body"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "namespace"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
   create_table "areafornecedores", :force => true do |t|
     t.string   "area"
@@ -82,6 +97,17 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.datetime "updated_at"
   end
 
+  create_table "checklists", :force => true do |t|
+    t.string   "descricao"
+    t.string   "users"
+    t.integer  "tipoci_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.integer  "tipo_checklist_id"
+  end
+
+  add_index "checklists", ["tipoci_id"], :name => "index_checklists_on_tipoci_id"
+
   create_table "cis", :force => true do |t|
     t.string   "chave"
     t.string   "descricao"
@@ -99,7 +125,6 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.integer  "statusci_id"
     t.integer  "contrato_id"
     t.decimal  "CustoMensal", :precision => 10, :scale => 2
-    t.string   "notificacai"
     t.string   "notificacao"
   end
 
@@ -130,6 +155,7 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "alertacor"
   end
 
   create_table "dicdados", :force => true do |t|
@@ -141,17 +167,44 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.string   "url"
     t.string   "descricao"
     t.string   "valores"
+    t.string   "apelido"
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
+  create_table "exec_checklists", :force => true do |t|
+    t.string   "descricao"
+    t.string   "cis"
+    t.string   "users"
+    t.date     "inicioexec"
+    t.date     "fimexec"
+    t.integer  "tipoci_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "tickets"
+  end
+
+  add_index "exec_checklists", ["tipoci_id"], :name => "index_exec_checklists_on_tipoci_id"
+
+  create_table "exec_itens_checklists", :force => true do |t|
+    t.string   "descricao"
+    t.string   "users"
+    t.string   "cis"
+    t.integer  "statuschecklist_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "tickets"
+    t.integer  "exec_checklist_id"
+  end
+
+  add_index "exec_itens_checklists", ["statuschecklist_id"], :name => "index_exec_itens_checklists_on_statuschecklist_id"
 
   create_table "fornecedores", :force => true do |t|
     t.string   "nome"
     t.string   "nomecompleto"
     t.string   "cnpj"
-    t.string   "endereco"
-    t.string   "contatos"
+    t.text     "endereco"
+    t.text     "contatos"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "anotacoes"
@@ -159,10 +212,38 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.text     "enderecos"
   end
 
+  create_table "heranca_checklists", :force => true do |t|
+    t.integer  "pai_id"
+    t.integer  "filho_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "indicadores_financeiros", :force => true do |t|
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "itens_checklists", :force => true do |t|
+    t.integer  "checklist_id"
+    t.string   "descricao"
+    t.string   "users"
+    t.string   "cis"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.string   "TipoAberturaTicket", :limit => 20
+    t.integer  "tipo_checklist_id"
+  end
+
+  add_index "itens_checklists", ["checklist_id"], :name => "index_itens_checklists_on_checklist_id"
+
+  create_table "job_enviar_emails", :force => true do |t|
+    t.integer  "templates_email_id"
+    t.text     "parametro"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "status"
   end
 
   create_table "notificacaos", :force => true do |t|
@@ -173,11 +254,17 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.string   "status"
   end
 
+  create_table "padrao_checklists", :force => true do |t|
+    t.string   "nome"
+    t.text     "itens"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "parametros", :force => true do |t|
     t.string   "tipo"
     t.string   "subtipo"
-    t.string   "valor"
+    t.text     "valor"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -222,10 +309,44 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.datetime "updated_at"
   end
 
+  create_table "snippets", :force => true do |t|
+    t.string   "language"
+    t.string   "plain_code"
+    t.string   "highlighted_code"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "sql_templates", :force => true do |t|
+    t.text     "body"
+    t.string   "path"
+    t.string   "format"
+    t.string   "locale"
+    t.string   "handler"
+    t.boolean  "partial",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "status_chamados", :force => true do |t|
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "status_checklists", :force => true do |t|
+    t.string   "status"
+    t.string   "icon"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "status_incidentes", :force => true do |t|
+    t.string   "status"
+    t.integer  "ordem"
+    t.string   "tipo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "status_pedidos", :force => true do |t|
@@ -239,6 +360,7 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "icon"
+    t.string   "parametro"
   end
 
   create_table "sub_tipo_chamados", :force => true do |t|
@@ -250,7 +372,6 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
 
   create_table "tasks", :force => true do |t|
     t.text     "description"
-    t.string   "status"
     t.integer  "author_id"
     t.integer  "category_id"
     t.integer  "criticidade_id"
@@ -269,12 +390,29 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
     t.text     "comentario"
     t.integer  "ci_id"
     t.string   "solicitante"
+    t.integer  "status_incidente_id"
+  end
+
+  create_table "templates_emails", :force => true do |t|
+    t.string   "tipo"
+    t.string   "template"
+    t.string   "nome"
+    t.string   "subtipo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.boolean  "sync"
   end
 
   create_table "tipo_chamados", :force => true do |t|
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "tipo_checklists", :force => true do |t|
+    t.string   "tipo"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tipocis", :force => true do |t|
@@ -316,17 +454,5 @@ ActiveRecord::Schema.define(:version => 20131207161627) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
-
-  create_table "view_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "prefix"
-    t.boolean  "partial"
-    t.text     "source"
-    t.string   "locale"
-    t.string   "formats"
-    t.string   "handlers"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end

@@ -1,0 +1,2 @@
+module StatusIncidentesHelper
+end

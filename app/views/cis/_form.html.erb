@@ -1,6 +1,6 @@
 
 <%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.tipoci.tipo}) "%>
-</br>Status: <%= @ci.statusci.status%>
+</br>Status: <%= @ci.status%>
 
 </br>Site: <%= @ci.site.nome%>
 </br>Owner: <%= @ci.Owner%>
@@ -8,6 +8,7 @@
 </br>Data Ultimo Change: <%= @ci.dataChange%>
 <% if ! @ci.DocChange.blank?  %>
     </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= @ci.DocChange %>'">[Doc. Ultima Mudanca]</a>
+    <%= render :partial => 'url', :locals => {:title => url[0], :hyperlink => url[1], :test => url[0] } %> 
     
 <% end %>
 
@@ -21,25 +22,14 @@
 <%= link_to @ci.contrato.fornecedor.nome, fornecedore_path(@ci.contrato.fornecedor) , :target => "_blank" if@ci.contrato.fornecedor   %>
 <% end %>
 
-
-
 </br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
 
-<% if ! @ci.url.blank?	%>
-    </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= @ci.url %>'">[Documentacao]</a>
-<% end %>
+<%= render :partial => 'docs2url', :locals => {:title => "Documentacao", :documentos => @ci.url } %>
 
-
-</br>Jira:<% @ci.jira_to_url.each do|url| %>
-     <% if ! url[0].blank? %>
-         <a href="javascript: void(0)" onclick="window.open('','').location.href='<%=url[1]%>'">[<%=url[0]%>]</a>
-     <% end %>
-<% end %> 
-
+<%= render :partial => 'docs2url', :locals => {:title => "Jira", :documentos => jira_to_docs(@ci.jira) } %>
 
 <% @atributos ||= [] %>
 <% @atributos.map do |dicdado,attr| %>
-     <!--  se campo URL nao conter nada ou se valor do atributo nao conter nada, so imprimo nome do atributo -->
      <% if attr[2].blank? || attr[1].blank? %>
         </br><%="#{attr[0]} : #{attr[1]}"%>
      <% else %>

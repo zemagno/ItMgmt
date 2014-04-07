@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descricao: MyString
+  cis: MyString
+  users: MyString
+  inicioexec: 2013-12-10
+  fimexec: 2013-12-10
+  tipoci: 
+
+two:
+  descricao: MyString
+  cis: MyString
+  users: MyString
+  inicioexec: 2013-12-10
+  fimexec: 2013-12-10
+  tipoci: 

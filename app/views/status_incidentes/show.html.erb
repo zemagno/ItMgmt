@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Status:</b>
+  <%= @status_incidente.status %>
+</p>
+
+<p>
+  <b>Ordem:</b>
+  <%= @status_incidente.ordem %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @status_incidente.tipo %>
+</p>
+
+
+<%= link_to 'Edit', edit_status_incidente_path(@status_incidente) %> |
+<%= link_to 'Back', status_incidentes_path %>

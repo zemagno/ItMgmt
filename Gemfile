@@ -1,6 +1,16 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.1'
+gem 'rails', '3.2.16'
+
+#gem "newrelic_rpm"
+# gem 'le'
+
+# gem "rails-erd"
+# 
+#    gem 'pry-rails', :group => :development   fierj
+gem 'hirb'
+
+#gem 'anemone
 
 gem 'will_paginate', '~> 3.0'
 
@@ -9,6 +19,14 @@ gem 'mysql2'
 gem 'thin'
 
 gem 'log4r'
+
+gem 'nokogiri'
+
+gem 'activeadmin'
+gem 'sass-rails',   '~> 3.2.3'	
+gem "meta_search",    '>= 1.1.0.pre'   # TODO preciso dessa GEM ??
+
+# colocar tag de desenvolvimento TODO
 
 gem 'thinking-sphinx', '2.0.13'
 
@@ -21,6 +39,8 @@ gem "audited-activerecord", "~> 3.0"
 gem 'rake' #, '0.9.2.2'
 # gem "therubyracer"
 #gem "less-rails"
+#
+gem 'redis-rails',  '~> 3.2'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -31,7 +51,7 @@ group :assets do
 end
 
 gem 'omniauth-google-apps'
-gem 'cancan' 
+gem 'cancan' ,  '~> 1.6'
 gem 'dalli'
 #
 gem 'sidekiq'

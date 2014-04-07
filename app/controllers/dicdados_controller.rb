@@ -4,6 +4,10 @@ class DicdadosController < ApplicationController
   authorize_resource
   
 
+  def carrega_agregadas
+    @tipocis = Tipoci.all
+  end
+
   def index
 
     @search = params[:search] || session[:search_dicdados]
@@ -18,7 +22,7 @@ class DicdadosController < ApplicationController
       @dicdados = Dicdado.paginate(:page => params[:page])
  end
 
-    @tipocis = Tipoci.all
+    
     session[:search_dicdados_tipoci] = @dicdados[0].tipoci_id unless @dicdados[0].nil?
 
     respond_to do |format|
@@ -31,7 +35,7 @@ class DicdadosController < ApplicationController
   # GET /dicdados/1.xml
   def show
     @dicdado = Dicdado.find(params[:id])
-    @tipocis = Tipoci.all
+    carrega_agregadas
 
     respond_to do |format|
       format.html # show.html.erb
@@ -44,7 +48,7 @@ class DicdadosController < ApplicationController
   def new
     @dicdado = Dicdado.new
     @dicdado.tipoci_id = session[:search_dicdados_tipoci] unless session[:search_dicdados_tipoci].nil?
-    @tipocis = Tipoci.all
+    carrega_agregadas
 
 
     respond_to do |format|
@@ -56,7 +60,7 @@ class DicdadosController < ApplicationController
   # GET /dicdados/1/edit
   def edit
     @dicdado = Dicdado.find(params[:id])
-    @tipocis = Tipoci.all
+    carrega_agregadas
   end
 
   # POST /dicdados
@@ -69,6 +73,7 @@ class DicdadosController < ApplicationController
         format.html { redirect_to(@dicdado, :notice => 'Dicdado was successfully created.') }
         format.xml  { render :xml => @dicdado, :status => :created, :location => @dicdado }
       else
+        carrega_agregadas
         format.html { render :action => "new" }
         format.xml  { render :xml => @dicdado.errors, :status => :unprocessable_entity }
       end
@@ -85,6 +90,7 @@ class DicdadosController < ApplicationController
         format.html { redirect_to(@dicdado, :notice => 'Dicdado was successfully updated.') }
         format.xml  { head :ok }
       else
+        carrega_agregadas
         format.html { render :action => "edit" }
         format.xml  { render :xml => @dicdado.errors, :status => :unprocessable_entity }
       end

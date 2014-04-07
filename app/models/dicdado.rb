@@ -5,6 +5,8 @@ class Dicdado < ActiveRecord::Base
   
   validates :nome, :presence => { :message => " eh mandatorio" }
   validates :tipoci_id, :presence => { :message => " eh mandatorio" }
+  validates :apelido, :format => { :with => /^[a-zA-Z]+$/,
+       :message => "Somente Caracter Alfanumerico" }
   
   self.per_page = 20  
 
@@ -16,3 +18,5 @@ class Dicdado < ActiveRecord::Base
   end
 
 end
+
+

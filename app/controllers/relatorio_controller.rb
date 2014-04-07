@@ -1,6 +1,44 @@
+require 'action_controller/metal/renderers'
+
+ActionController.add_renderer :csv do |csv, options|
+  self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
+end
+
+#require 'nokogiri'
 class RelatorioController < ApplicationController
   layout 'relatorio' 
    #authorize_resource
+
+  def to_xml (titulo, header, _fields)
+    builder = Nokogiri::XML::Builder.new do |xml|
+      # xml.root {
+      #   xml.products {
+      #     xml.widget {
+      #       xml.id_ "10"
+      #       xml.name "Awesome widget"
+      #     }
+      #   }
+      # }
+      titulo.gsub!(/[^0-9A-Za-z.\-]/, '_')
+      header.each{|i| i.gsub!(/[^0-9A-Za-z.\-]/, '_')}
+      xml.send(titulo.pluralize) {
+        _fields.size.times do |f|
+          xml.send(titulo) {
+            header.size.times do |h|
+              xml.send(header[h],_fields[f][h]) 
+            end
+          }
+        end
+      }
+    end
+    
+    builder.to_xml
+  end
+
+  def to_csv
+    
+  end
+
 
   def index
     authorize!(:index, "relatorio")   
@@ -20,10 +58,12 @@ class RelatorioController < ApplicationController
     mysql_res.each{ |res| @resultado << res }
 
     @campos = mysql_res.fields
-   
+    
+    to_xml(params[:id],@campos,@resultado)
     respond_to do |format|
       format.html # index.html.erb
-      format.xml { render :xml => @campos+@resultado }  
+      format.xml { render :xml => to_xml(params[:id],@campos,@resultado) }  
+      format.csv { render :csv => to_xml(params[:id],@campos,@resultado) }  
     end
   end
 end

@@ -5,10 +5,9 @@ class Task < ActiveRecord::Base
    belongs_to :criticidade
    belongs_to :fornecedor
    belongs_to :ci
-   #belongs_to :tipotask
+   belongs_to :status_incidente
  
    validates_presence_of :description
-   validates_presence_of :status
    validates_presence_of :author
    validates_presence_of :category
    validates_presence_of :site
@@ -20,8 +19,12 @@ class Task < ActiveRecord::Base
    def criado_em
         created_at.in_time_zone("Brasilia").strftime("%d/%m-%H:%M")
    end
-   
-   
+
+   def alterado_em
+        updated_at.in_time_zone("Brasilia").strftime("%d/%m-%H:%M")
+   end
+
+     
    def self.ativos
      Task.find(:all, :order => "criticidade_id, created_at DESC", :conditions => "Ativo=1")
    end
@@ -30,8 +33,16 @@ class Task < ActiveRecord::Base
      Task.find(:all, :order => "created_at DESC")
    end
 
+   def self.abertas
+       Task.includes(:status_incidente).where('status_incidentes.tipo="ABERTO" and ativo=1')
+   end
+
+  def self.ativas_nao_abertas
+       Task.includes(:status_incidente).where('status_incidentes.tipo<>"ABERTO" and ativo=1')
+   end
+
    def self.publicas
-    Task.find(:all, :order => "criticidade_id, created_at DESC", :conditions => "Ativo=1 and publica=1")
+      Task.find(:all, :order => "criticidade_id, created_at DESC", :conditions => "Ativo=1 and publica=1")
    end
 
    def nome_autor
@@ -48,6 +59,10 @@ class Task < ActiveRecord::Base
 
   def nome_site
     site.nome
+  end
+
+  def status
+    status_incidente.blank? ? "" : status_incidente.status 
   end
 
   define_index do

@@ -1,0 +1,30 @@
+<%= form_for(@checklist) do |f| %>
+  <% if @checklist.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checklist.errors.count, "error") %> prohibited this checklist from being saved:</h2>
+
+      <ul>
+      <% @checklist.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Descricao %><br />
+    <%= f.text_field :descricao, :size => 100 %>
+  </div>
+  <div class="field">
+    <%= f.label :Executores %><br />
+    <%= f.text_field :users, :size => 50 %>
+  </div>
+  <div class="field">
+    <%= f.label "Tipo CI" %><br />
+    
+    <%= f.select :tipoci_id, @tiposci.collect { |c| [ c.tipo, c.id ] } %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

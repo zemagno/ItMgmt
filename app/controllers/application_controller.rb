@@ -1,10 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  private
-  def autenticacao
-	authenticate_or_request_with_http_basic do |usuario, senha|
-	  usuario == 'admin' && senha == 'admin'
-	end
+
+  #rescue_from Exception, :with => :error_render_method
+
+  def error_render_method
+    respond_to do |type|
+      type.html { render :template => "errors/error_404", :status => 404 }
+      type.all  { render :nothing => true, :status => 404 }
+    end
+    true
+  end
+  
+  def access_denied(exception)
+    redirect_to admin_organizations_path, :alert => exception.message
   end
 
 

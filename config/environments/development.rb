@@ -16,7 +16,7 @@ ItMgmt::Application.configure do
   #config.cache_store = :dalli_store
 
   # Don't care if the mailer can't send
-\
+
   #config.action_mailer.raise_delivery_errors = true
   #config.action_mailer.delivery_method = :smtp
   #config.action_mailer.perform_deliveries = true
@@ -35,13 +35,13 @@ ItMgmt::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    #domain: "railscasts.com",
+    address: ENV["ITMGMT_EMAIL_SMTP"],
+    port: ENV["ITMGMT_EMAIL_PORT"] || 587,
+    domain: ENV["ITMGMT_EMAIL_DOMAIN"],
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "zemagno@gmail.com",
-    password: "Esqesf!!1"
+    user_name: ENV["ITMGMT_EMAIL_USERNAME"],
+    password: ENV["ITMGMT_EMAIL_PASSWORD"]
   }
 
   # specify what domain to use for mailer URLs

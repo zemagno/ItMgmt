@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @init_checklist.descricao %>
+</p>
+
+<p>
+  <b>Users:</b>
+  <%= @init_checklist.users %>
+</p>
+
+<p>
+  <b>Agrupar:</b>
+  <%= @init_checklist.agrupar %>
+</p>
+
+<p>
+  <b>Cis:</b>
+  <%= @init_checklist.cis %>
+</p>
+
+<p>
+  <b>Inicioexe:</b>
+  <%= @init_checklist.inicioexec %>
+</p>
+
+<p>
+  <b>Fimexec:</b>
+  <%= @init_checklist.fimexec %>
+</p>
+
+<p>
+  <b>Checklist:</b>
+  <%= @init_checklist.checklist_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_init_checklist_path(@init_checklist) %> |
+<%= link_to 'Back', init_checklists_path %>

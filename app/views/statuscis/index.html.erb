@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Status</th>
     <th></th>
     <th></th>
@@ -9,6 +10,8 @@
 
 <% @statuscis.each do |statusci| %>
   <tr>
+    <td><img src="/icons/<%=statusci.icon%>" alt=" " height="16" width="16"></td>
+
     <td><%= statusci.status %></td>
     <td><%= link_to 'Alterar', edit_statusci_path(statusci) %></td>
     <td><%= link_to 'Apagar', statusci, method: :delete, data: { confirm: 'Are you sure?' } %></td>

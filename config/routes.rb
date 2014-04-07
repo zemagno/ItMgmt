@@ -1,9 +1,52 @@
+require 'sidekiq/web'
+
 ItMgmt::Application.routes.draw do
+
+  resources :status_incidentes
+
+
+  resources :templates_emails
+
+
+  resources :sql_templates
+
+
+  root :to => "tasks#index"
+
+  ActiveAdmin.routes(self)
+
+  #resources :init_checklists
+
+
+  mount Sidekiq::Web, at: '/sidekiq'
+  resources :snippets
+  #match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
+
+  resources :exec_itens_checklists
+
+
+  resources :exec_checklists
+
+
+  resources :checklists do
+      resources :init_checklists, :only => [:create, :new]
+  end
+
+
+  resources :itens_checklists
+
+
+  resources :status_checklists
+
 
   resources :audits
 
+
+
   #match "audits", to: "audits#index"
   #match "/audits/:id", to: "audits#show"
+
+  #mount Sidekiq::Web, at: '/sidekiq'
 
   match "ramais", to: "ramal_login#index"
   match "ramais/new", to: "ramal_login#new"
@@ -19,6 +62,9 @@ ItMgmt::Application.routes.draw do
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
 
+  match 'destroy_admin_user_session_path', to: 'sessions#destroy'
+  match 'destroy_admin_user_session', to: 'sessions#destroy'
+
   resources :cadrelatorios
   resources :statuscis
    
@@ -29,6 +75,7 @@ ItMgmt::Application.routes.draw do
 
   match 'relatorio/:id', to: "relatorio#index", as: "relatorio"
   match 'email/:acao/:id', to: "email#enviar"
+  match 'email/enviar_email/:id', to: "email#enviar+email"
 
   match '/contratos/todos', to: 'contratos#todos'
   match '/fornecedores/todos', to: 'fornecedores#todos'
@@ -36,7 +83,7 @@ ItMgmt::Application.routes.draw do
   match '/cis/todos', to: 'cis#todos'  
   match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci"
 
-  resources :parametros, :only => [:index,:edit,:update]
+  resources :parametros , :only => [:index,:edit,:update]
 
   resources :dicdados
 
@@ -52,7 +99,7 @@ ItMgmt::Application.routes.draw do
 
   resources :tipocontratos
 
-  root :to => "tasks#index"
+  
   
 
   
@@ -60,7 +107,9 @@ ItMgmt::Application.routes.draw do
   # gera uma entrada no rake routes
   # ci        /CMDB/:id(.:format)                   {:controller=>"ci", :action=>"show"}
   
-  match 'cis/:id/email_alerta', to: "cis#email_alerta",  :as => :email_alerta
+  get 'cis/:id/email', to: "cis#email",  :as => :email
+  post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email
+  
   
   match 'cis/:id/impactados', to: "cis#impactados",  :as => :impactados
   match 'cis/:id/dependentes', to: "cis#dependentes",  :as => :dependentes
@@ -68,7 +117,7 @@ ItMgmt::Application.routes.draw do
   match 'cis/:id/grafico_impactados', to: "cis#grafico_impactados",  :as => :grafico_impactados
   match 'cis/:id/impactados_h', to: "cis#impactados_h", :as => :impactados_h
   match 'cis/:id/dependentes_h', to: "cis#dependentes_h", :as => :dependentes_h
-  match 'cis/:id/abrir_alerta', to: "cis#abrir_alerta", :as => :abrir_alerta
+  #match 'cis/:id/abrir_alerta', to: "cis#abrir_alerta", :as => :abrir_alerta
  
   post 'cis/:id/novo_dependente', to: "cis#gera_novo_dependente", :as => :gera_novo_dependente
   match 'cis/:id/novo_dependente', to: "cis#novo_dependente", :as => :novo_dependente
@@ -95,8 +144,7 @@ ItMgmt::Application.routes.draw do
   match 'CMDB', to: "cis#index"
   
   resources :cis
-    resources :status_pedidos
-
+  
   resources :notificacaos
 
   resources :criticidades
