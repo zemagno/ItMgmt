@@ -3,7 +3,7 @@ class InitChecklistsController < ApplicationController
     # 
     # InitChecklist é um object que armazenara todos os atributos
     # Sera mostrado num formulario, onde alguns campos são alteraveis
-    #TODO no futuro sera possivel crescer os itens, inserinoo nesse momento mais itens
+    #  TODO no futuro sera possivel crescer os itens, inserinoo nesse momento mais itens
     #
     # ServiceChecklist irá realmente criar a partir do objeto (InitChecklist)
     # 
@@ -25,16 +25,18 @@ class InitChecklistsController < ApplicationController
  
   def create
     @init_checklist = InitChecklist.new(params[:init_checklist])
-    # chamar ServiceChecklist (@init_checklist) e devolver id...
-    #   
-    id = 2 # ServiceChecklist (@init_checklist)  
-    puts @init_checklist.to_yaml
+
+    flag_erro = true # se tudo der certo, zero flag 
+
+    if @init_checklist.valid?
+        svcChecklist = ServiceChecklist.new(@init_checklist)
+        id = svcChecklist.IniciarChecklist
+        flag_erro = false
+    end
 
     respond_to do |format|
-      if @init_checklist.valid?
-        
-        format.html { redirect_to exec_checklist_url(id) , :action => 'show' , notice: 'Init checklist was successfully created.' }
-        
+      if not flag_erro
+        format.html { redirect_to exec_checklist_url(id) , :action => 'show' , notice: 'Checklist iniciado com sucesso' }  
         format.json { render json: @init_checklist, status: :created, location: @init_checklist }
       else
         @checklist = Checklist.find(params[:checklist_id])

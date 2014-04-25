@@ -8,6 +8,11 @@ def edit
 	show!
 end
 
+def new
+	@edit_mode = true
+	new!
+end
+
 private 
 def which_mode
     @edit_mode = false # request.method #.include? ("")

@@ -53,17 +53,22 @@ class ServiceChecklist
 		[@itens_novos_ticket, @itens_comentarios]
 	end
 
-	def IniciarChecklist
-		
+	def IniciarChecklist 
+
 	    exec_checklist = ExecChecklist.new
 	    exec_checklist.descricao = @checklist.descricao
 	    exec_checklist.users = @checklist.users
-	    exec_checklist.cis = @cis
-	    exec_checklist.inicioexec = Date.today
-	    exec_checklist.fimexec = Date.today
+	    exec_checklist.cis = @checklist.cis
+	    exec_checklist.inicioexec = @checklist.inicioexec
+	    exec_checklist.fimexec = @checklist.fimexec
+	    exec_checklist.status_checklist = 4
 	    exec_checklist.save
-	    exec_checklist
-			
+	    # TODO falta tipoci_id
+	    # criar itens
+	    # enfilerar no sidekiq para abrir os tickects
+	    
+		exec_checklist.id
+	    	
 	end
 
 	def print

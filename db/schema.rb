@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140407162454) do
+ActiveRecord::Schema.define(:version => 20140420171610) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -179,9 +179,10 @@ ActiveRecord::Schema.define(:version => 20140407162454) do
     t.date     "inicioexec"
     t.date     "fimexec"
     t.integer  "tipoci_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.string   "tickets"
+    t.integer  "status_checklist_id"
   end
 
   add_index "exec_checklists", ["tipoci_id"], :name => "index_exec_checklists_on_tipoci_id"

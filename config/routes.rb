@@ -25,11 +25,11 @@ ItMgmt::Application.routes.draw do
   resources :exec_itens_checklists
 
 
-  resources :exec_checklists
+  resources :exec_checklists, :only => [:show, :index]
 
 
   resources :checklists do
-      resources :init_checklists, :only => [:create, :new]
+      resources :init_checklists, :only => [:create, :new, :delete]
   end
 
 

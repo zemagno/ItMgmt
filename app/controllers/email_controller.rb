@@ -50,6 +50,8 @@ class EmailController < ApplicationController
         puts "Resposta #{@resposta}"       
         puts "*********************************************************************************************************"
   end
+end
+
 
   # def enviar
   #   case params[:acao]
@@ -85,7 +87,7 @@ class EmailController < ApplicationController
     
   # end
 
-end
+
 
 # when "cobrancacontratos" 
     #   contrato = Contrato.find(params[:id])

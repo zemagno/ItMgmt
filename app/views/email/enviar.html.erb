@@ -1,3 +1,3 @@
-<%= "location.href = \"mailto:#{@resposta[:to]}?cc=#{@resposta[:cc]}&subject=#{@resposta[:subject]}&body=#{URI.encode(@resposta[:body])}\"".html_safe %>
+<%= "location.href = \"mailto:#{ListaEmail.acerta(@resposta[:to],"@brq.com")}?cc=#{ListaEmail.acerta(@resposta[:cc],"@brq.com")}&subject=#{@resposta[:subject]}&body=#{URI.encode(@resposta[:body])}\"".html_safe %>
 
 <!-- o link do cis controller ja tinha aberto uma nova tela..esse script faz enviar email...-->

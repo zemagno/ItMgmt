@@ -27,24 +27,5 @@ class Checklist < ActiveRecord::Base
     tipoci.nil? ? "" : tipoci.tipo
   end
 
-  def self.IniciarChecklist(id, cis = '' ,inicio = nil ,fim = nil)
-
-    # ISSO TUDO VAI PARA DENTRO DE ServiceChecklist
-
-    # iniciar um exec_checklist copiando todos os atributos
-    # abrir jira e atualizar campo gmud
-    # se foi aberto de dentro de uma CI, preencher o campo CI
-    # navegar por todos os pais, copiando os itens, compactando e gerando exec_itens_checklist
-    # notificar quem pediu para iniciar ou responsavel(se foi automatico)
-    checklist = Checklist.find(id)
-    exec_checklist = ExecChecklist.new
-    exec_checklist.descricao = checklist.descricao
-    exec_checklist.users = checklist.users
-    exec_checklist.cis = cis
-    exec_checklist.inicioexec = inicio
-    exec_checklist.fimexec = fim
-    exec_checklist.save
-    exec_checklist
-  end
-            
+              
 end

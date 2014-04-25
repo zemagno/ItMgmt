@@ -1,4 +1,4 @@
-<h1>Listing checklists</h1>
+<h1>Checklists existentes</h1>
 
 <table>
   <tr>
@@ -15,13 +15,13 @@
     <td><%= checklist.descricao %></td>
     <td><%= checklist.users %></td>
     <td><%= checklist.tipoci %></td>
-    <td><%= link_to 'Show', checklist %></td>
-    <td><%= link_to 'Edit', edit_checklist_path(checklist) %></td>
-    <td><%= link_to 'Destroy', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Mostrar', checklist %></td>
+    <td><%= link_to 'Editar', edit_checklist_path(checklist) %></td>
+    <td><%= link_to 'Apagar', checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Checklist', new_checklist_path %>
+<%= link_to 'Novo Checklist', new_checklist_path %>

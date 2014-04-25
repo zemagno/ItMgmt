@@ -14,6 +14,8 @@ gem 'hirb'
 
 gem 'will_paginate', '~> 3.0'
 
+gem 'jira-ruby'
+
 gem 'mysql2' 
 
 gem 'thin'
@@ -54,7 +56,7 @@ gem 'omniauth-google-apps'
 gem 'cancan' ,  '~> 1.6'
 gem 'dalli'
 #
-gem 'sidekiq'
+gem 'sidekiq', '~> 2'
 gem 'sinatra', require: false
 gem 'slim'
 
