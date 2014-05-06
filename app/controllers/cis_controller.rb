@@ -230,31 +230,30 @@ class CisController < ApplicationController
       while not queue.empty?
           #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
           @i,nivel = dequeue
-          nodes[@i.chave] = g.add_nodes(@i.chave, GraficoCmdb.TipoGraficoCI(@i,ci_path(@i)))
-          
-          # if @i.dataChange and @i.dataChange.to_time >= 5.days.ago then
-          #    nodes[@i.chave] = g.add_nodes(@i.chave, { :label => "#{@i.chave}\n#{@i.dataChange}", "URL" => ci_path(@i), :color => "red"})
-          # else 
-          #    nodes[@i.chave] = g.add_nodes(@i.chave , { :label => "#{@i.chave}\n#{@i.tipoci.tipo}", "URL" => ci_path(@i)})
-          # end
+          if @i.ativo? 
+            nodes[@i.chave] = g.add_nodes(@i.chave, GraficoCmdb.TipoGraficoCI(@i,ci_path(@i)))
+            if nivel <= nivel_max then
+              @i.send(direcao).each do |ii|
+                  #erro ??!?!?! nao testo a data de mudanca ???
+                  #TODO aqui tem um erro..eu adiciono sem testar data, sem usar o GraficoCmdb
+                  # eu desconfio que ele sempre aciona pelo add_nodes acima e nunca por esse.
+                  if ii.ativo? 
+                    nodes[ii.chave] = g.add_nodes(ii.chave) 
+                   
+                    if not edges_visitado[@i.chave+"#"+ii.chave] then   
+                      g.add_edges(nodes[@i.chave], nodes[ii.chave])
+                      edges_visitado[@i.chave+"#"+ii.chave] = true
+                    end
+                  end
+              end    
 
-          if nivel <= nivel_max then
-            @i.send(direcao).each do |ii|
-                #erro ??!?!?! nao testo a data de mudanca ???s\          
-                nodes[ii.chave] = g.add_nodes(ii.chave) 
-               
-                if not edges_visitado[@i.chave+"#"+ii.chave] then   
-                  g.add_edges(nodes[@i.chave], nodes[ii.chave])
-                  edges_visitado[@i.chave+"#"+ii.chave] = true
-                end
-            end    
+              # retorna uma matrix com varios elementos (.map)
+              # transforma cada elemento impactado num array com [impactado, nivel + 1]
+              # concatena essas tuplas de impactados no final da fila
 
-            # retorna uma matrix com varios elementos (.map)
-            # transforma cada elemento impactado num array com [impactado, nivel + 1]
-            # concatena essas tuplas de impactados no final da fila
-
-            @i.send(direcao).map { |x| enqueue([x,nivel+1])}
-          end
+              @i.send(direcao).map { |x| enqueue([x,nivel+1])}
+            end # nivel <= nivel_max
+          end # ci.ativo
       end
       g.output( :svg => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.svg" )
       logger.debug "gravei grafico no cache"

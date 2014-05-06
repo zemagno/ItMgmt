@@ -35,14 +35,11 @@ ItMgmt::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV["ITMGMT_EMAIL_SMTP"],
-    port: ENV["ITMGMT_EMAIL_PORT"] || 587,
-    domain: ENV["ITMGMT_EMAIL_DOMAIN"],
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["ITMGMT_EMAIL_USERNAME"],
-    password: ENV["ITMGMT_EMAIL_PASSWORD"]
-  }
+    address: 'mail.brq.com',
+    port: 25,
+    domain: 'localhost',
+    enable_starttls_auto: false
+    }
 
   # specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = {host: "localhost:3000"}

@@ -3,11 +3,6 @@ require 'pp'
 require 'jira'
 #require "awesome_print"
 
-# Consider the use of :use_ssl and :ssl_verify_mode options if running locally 
-# for tests.
-
-username = "myremoteuser"
-password = "myuserspassword"
 
 options = {
             :username => 'magno',
@@ -34,9 +29,18 @@ client = JIRA::Client.new(options)
 projects = client.Project.find('INFRA')
 
 
-projects.issues.each do |issue|
-  puts "#{issue.id} - #{issue.summary}"
-end
+# projects.issues.each do |issue|
+#   puts "#{issue.id} - #{issue.summary}"
+# end
+
+
+ecl = ExecChecklist.find(5)
+scl = ServiceChecklist.new(ecl.checklist)
+ch = scl.ChecklistHerdados
+puts "__________itens__________________________________________________"
+ch[0].each { |i| p i}
+puts "__________comentarios____________________________________________"
+ch[1].each { |i| p i}
 
 
 # https://github.com/sumoheavy/jira-ruby

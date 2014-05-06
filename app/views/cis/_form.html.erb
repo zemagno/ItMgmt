@@ -6,11 +6,8 @@
 </br>Owner: <%= @ci.Owner%>
 </br>Notificacao: <%= @ci.notificacao%>
 </br>Data Ultimo Change: <%= @ci.dataChange%>
-<% if ! @ci.DocChange.blank?  %>
-    </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= @ci.DocChange %>'">[Doc. Ultima Mudanca]</a>
-    <%= render :partial => 'url', :locals => {:title => url[0], :hyperlink => url[1], :test => url[0] } %> 
-    
-<% end %>
+
+<%= render :partial => 'docs2url', :locals => {:title => "[Doc. Ultima Mudanca]", :documentos => @ci.DocChange } %>
 
 <% if @ci.contrato  %>
     </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= contrato_path(@ci.contrato) %>'">[Contrato

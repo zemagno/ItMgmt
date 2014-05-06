@@ -8,7 +8,7 @@
 <% end %>
 
 <%= render :partial => 'tasks' , :locals => {:title => "Alertas Abertos ", :tasks => @tasks } %>
-<%= render :partial => 'tasks' , :locals => {:title => "Alertas Ativos ", :tasks => @tasksativas } if @tasksativas %>
+<%= render :partial => 'tasks' , :locals => {:title => "Alertas Recentes ", :tasks => @tasksativas } if @tasksativas %>
 
 <!--%= render :partial => 'edges' } %-->
 

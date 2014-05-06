@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140420171610) do
+ActiveRecord::Schema.define(:version => 20140426205148) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -183,6 +183,7 @@ ActiveRecord::Schema.define(:version => 20140420171610) do
     t.datetime "updated_at",          :null => false
     t.string   "tickets"
     t.integer  "status_checklist_id"
+    t.integer  "checklist_id"
   end
 
   add_index "exec_checklists", ["tipoci_id"], :name => "index_exec_checklists_on_tipoci_id"
@@ -455,5 +456,17 @@ ActiveRecord::Schema.define(:version => 20140420171610) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  create_table "view_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "prefix"
+    t.boolean  "partial"
+    t.text     "source"
+    t.string   "locale"
+    t.string   "formats"
+    t.string   "handlers"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

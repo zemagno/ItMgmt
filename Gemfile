@@ -22,6 +22,8 @@ gem 'thin'
 
 gem 'log4r'
 
+gem 'foreman'
+
 gem 'nokogiri'
 
 gem 'activeadmin'

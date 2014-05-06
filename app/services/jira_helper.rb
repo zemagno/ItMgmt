@@ -1,4 +1,4 @@
-class Jira
+class JiraHelper
   
   def self.to_url(jira)
     @URLs = []

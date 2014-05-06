@@ -76,7 +76,11 @@ class Ci < ActiveRecord::Base
 
   def chave_sanitizada
     chave.gsub(/\ /,"_").delete('^a-zA-Z\_')
+  end
 
+  def ativo?
+    (statusci_id != 2) and (statusci_id != 5)
+    
   end
 
   def duplicar(nova_chave)

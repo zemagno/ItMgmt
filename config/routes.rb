@@ -36,7 +36,7 @@ ItMgmt::Application.routes.draw do
   resources :itens_checklists
 
 
-  resources :status_checklists
+  #resources :status_checklists
 
 
   resources :audits
