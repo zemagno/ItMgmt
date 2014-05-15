@@ -68,15 +68,20 @@ class CisController < ApplicationController
     template_email =TemplatesEmail.find(params[:enviar_email][:template_id])
 
     if template_email.sync
-      puts "@@@@email sync@@@@"
       @path = "/email/#{template_email.template}/#{params[:id]}"
+      
+      respond_to do |format|
+       format.js { render :action => 'enviar_email_sync.js.erb' }
+      end
+
+
     else
       p = Hash[:id => params[:id], :to => "zecarlosmagno@gmail.com"]
       job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
       EnviaEmailWorker.perform_async(job.id)
       #EnviaEmailWorker.perform_in(1.hour,job.id)
       flash[:info] = "INFO: Email enfileirado para #{p[:to]}"
-      respond_to :js
+      respond_to :js # so para fazer reload da pagina e sumir com 
     end
   end
   # http://stackoverflow.com/questions/7165064/how-do-i-preview-emails-in-rails
