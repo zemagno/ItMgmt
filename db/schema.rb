@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140426205148) do
+ActiveRecord::Schema.define(:version => 20140515002413) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -116,7 +116,6 @@ ActiveRecord::Schema.define(:version => 20140426205148) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "Owner"
-    t.string   "CC"
     t.string   "url"
     t.date     "dataChange"
     t.string   "jira"
@@ -124,8 +123,12 @@ ActiveRecord::Schema.define(:version => 20140426205148) do
     t.string   "DocChange"
     t.integer  "statusci_id"
     t.integer  "contrato_id"
-    t.decimal  "CustoMensal", :precision => 10, :scale => 2
+    t.decimal  "CustoMensal",                  :precision => 10, :scale => 2
     t.string   "notificacao"
+    t.string   "CCDebito",       :limit => 20
+    t.string   "ProjetoDebito",  :limit => 50
+    t.string   "CCCredito",      :limit => 20
+    t.string   "ProjetoCredito", :limit => 50
   end
 
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
@@ -456,17 +459,5 @@ ActiveRecord::Schema.define(:version => 20140426205148) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
-
-  create_table "view_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "prefix"
-    t.boolean  "partial"
-    t.text     "source"
-    t.string   "locale"
-    t.string   "formats"
-    t.string   "handlers"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end

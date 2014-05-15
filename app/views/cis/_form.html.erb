@@ -19,6 +19,10 @@
 <%= link_to @ci.contrato.fornecedor.nome, fornecedore_path(@ci.contrato.fornecedor) , :target => "_blank" if@ci.contrato.fornecedor   %>
 <% end %>
 
+
+</br> CC/Proj Debito: <%= "#{@ci.CCDebito}/#{@ci.ProjetoDebito}" %>
+</br> CC/Proj Credito: <%= "#{@ci.CCCredito}/#{@ci.ProjetoCredito}" %>
+
 </br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
 
 <%= render :partial => 'docs2url', :locals => {:title => "Documentacao", :documentos => @ci.url } %>

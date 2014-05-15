@@ -10,7 +10,7 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito
 
   belongs_to :site
   belongs_to :tipoci
@@ -208,6 +208,11 @@ class Ci < ActiveRecord::Base
       indexes chave
       indexes descricao
       indexes :Owner
+      indexes notificacao
+      indexes :CCCredito
+      indexes :ProjetoCredito
+      indexes :CCDebito
+      indexes :ProjetoDebito 
       indexes jira
       indexes site(:nome), :as => :localidade
       indexes statusci(:status), as => :statusciativo
