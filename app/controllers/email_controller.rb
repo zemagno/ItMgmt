@@ -39,9 +39,19 @@ class EmailController < ApplicationController
           parametros = { contrato_descricao: contrato.descricao, contrato_projetoCCTI: contrato.projetoCCTI, contrato_classificacao: contrato.classificacao, contrato_valor: valor, contrato_fornecedor_nome: contrato.fornecedor.nome}
         when "CI"
           ci = Ci.find(params[:id])
-          parametros = { ci_chave: ci.chave, ci_owner: ci.Owner, ci_notificacao: ci.notificacao, ci_descricao: ci.descricao, ci_site: ci.site.nome, email_impactados: Rails.cache.read("impactados-#{ci.id}-email") }
-
+          parametros = {}
+          ci.attribute_names.each do |attr| 
+              parametros["ci_#{attr}".downcase.to_sym] = ci.send(attr)  
+          end
+          parametros[:ci_site] =ci.site.nome
+          parametros[:email_impactados] = Rails.cache.read("impactados-#{ci.id}-email")
+          
+       #parametros = { ci_chave: ci.chave, ci_owner: ci.Owner, ci_notificacao: ci.notificacao, ci_descricao: ci.descricao, ci_site: ci.site.nome, email_impactados: Rails.cache.read("impactados-#{ci.id}-email") , ci_ccdebito: ci.CCDebito, ci_projetodebito: ci.ProjetoDebito, ci_cccredito: ci.CCCredito, ci_projetocredito: ci.ProjetoCredito}
+          
        end
+       puts "*********************************************************************************************************"
+          puts "Parametros #{parametros}"       
+          puts "*********************************************************************************************************"
        @resposta = Hash.new
        [:to,:cc,:body,:subject].each do |f|
           @resposta[f] = fill_in(Parametro.find_by_tipo_and_subtipo(template,f.to_s).valor,parametros)

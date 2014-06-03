@@ -10,7 +10,7 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca
 
   belongs_to :site
   belongs_to :tipoci
@@ -122,16 +122,15 @@ class Ci < ActiveRecord::Base
     @attr_existentes = Hash.new
     
     # monto um hash com todos atributos que esse CI deve ter
-    tipoci.dicdados.map {|x| @attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao,x.apelido]} 
+    tipoci.dicdados.map {|x| @attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao,x.apelido,x.tipo]} 
     
     # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
     atributo.map do |x| 
-       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
-       # entao eu crio esse atributo no hash
-       if ! @attr_existentes[x.dicdado.id] then
-          puts x.dicdado
-          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido]
-       end
+      # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
+      # entao eu crio esse atributo no hash
+     if ! @attr_existentes[x.dicdado.id] then
+          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido,x.tipo]
+      end
       @attr_existentes[x.dicdado.id][1] = x.valor 
      end 
     @attr_existentes
@@ -170,8 +169,10 @@ class Ci < ActiveRecord::Base
         
         begin  #posso nao ter recebido parametro nenhum
            atr.valor = novos_atributos[attr[1][0]]
+           puts ">>>>> #{atr}:#{attr[1][0]}:#{novos_atributos[attr[1][0]]}"
            atr.save
         rescue
+          puts "deu merda...."
         end
     end
 
@@ -199,7 +200,8 @@ class Ci < ActiveRecord::Base
   def self.find_com_atributos(id)
     @c = Ci.find_gen(id)
     puts @c
-    [@c, @c.atributos] 
+    attr = (@c ? @c.atributos : nil )
+    [@c, attr] 
   end
 
 
@@ -215,13 +217,11 @@ class Ci < ActiveRecord::Base
       indexes :ProjetoDebito 
       indexes jira
       indexes site(:nome), :as => :localidade
-      indexes statusci(:status), as => :statusciativo
-      indexes tipoci(:tipo), :as => :tipotipo
+      indexes statusci(:status), as => :status
+      indexes tipoci(:tipo), :as => :tipo
       indexes atributo(:valor), :as => :valoratributo
-      indexes contrato_id, :as => :contrato
-      #indexes contrato.fornecedor.nome :as => :nomefornecedor :as => :nomefornecedor
       
-   
+ 
 
       #has site_id  # se eu quiser quiser filtrar..
       #has tipoci_id

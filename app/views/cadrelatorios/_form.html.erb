@@ -15,11 +15,12 @@
     <%= f.label :nome %><br />
     <%= f.text_field :nome %>
   </div>
-
+  Atenção: evite mudar o nome do relatorio, caso contrario, qualquer URL, consulta via SQL, automação com esse relatorio irá parar de funcionar
+  <br/><br/>
 
   <div class="field">
     <%= f.label :Descricao %><br />
-    <%= f.text_field :descricao %>
+    <%= f.text_field :descricao, :size => 100 %>
   </div>
 
   <div class="field">

@@ -1,3 +1,15 @@
+filtrotipo = [1,3,4,6,7,9,10,13,14,15,16,18,19,20,32,33,34,35,36,37,38,39]
+Se nao tiver filtro, cria com tudo
+(1..Tipoci.maximum("id")).to_a
+depois de criar um tipoci, atualizar fitros
+ao atualizar filtros, invalidar caches com filtros.
+ter um campo texto com todos os parametros dos usuarios. e guardar hash de tudo dentro desse campo generico.
+to_yaml YAML.load()
+nem precisa fazer o to_yaml ao salvar em text.
+
+
+
+
 http://www.libertarianismo.org/index.php/artigos/introducao-teoria-monetaria-austriaca/
 
 "Aberto",      0 ,"ABERTO", now(), now());

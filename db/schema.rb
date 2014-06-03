@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140515002413) do
+ActiveRecord::Schema.define(:version => 20140530204153) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -123,12 +123,14 @@ ActiveRecord::Schema.define(:version => 20140515002413) do
     t.string   "DocChange"
     t.integer  "statusci_id"
     t.integer  "contrato_id"
-    t.decimal  "CustoMensal",                  :precision => 10, :scale => 2
+    t.decimal  "CustoMensal",                     :precision => 10, :scale => 2
     t.string   "notificacao"
-    t.string   "CCDebito",       :limit => 20
-    t.string   "ProjetoDebito",  :limit => 50
-    t.string   "CCCredito",      :limit => 20
-    t.string   "ProjetoCredito", :limit => 50
+    t.string   "CCDebito",          :limit => 20
+    t.string   "ProjetoDebito",     :limit => 50
+    t.string   "CCCredito",         :limit => 20
+    t.string   "ProjetoCredito",    :limit => 50
+    t.boolean  "cobrar"
+    t.string   "descricaocobranca"
   end
 
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
@@ -171,6 +173,7 @@ ActiveRecord::Schema.define(:version => 20140515002413) do
     t.string   "descricao"
     t.string   "valores"
     t.string   "apelido"
+    t.string   "tipo"
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
@@ -195,14 +198,12 @@ ActiveRecord::Schema.define(:version => 20140515002413) do
     t.string   "descricao"
     t.string   "users"
     t.string   "cis"
-    t.integer  "statuschecklist_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "tickets"
     t.integer  "exec_checklist_id"
+    t.integer  "status_checklist_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "tickets"
   end
-
-  add_index "exec_itens_checklists", ["statuschecklist_id"], :name => "index_exec_itens_checklists_on_statuschecklist_id"
 
   create_table "fornecedores", :force => true do |t|
     t.string   "nome"
@@ -249,6 +250,12 @@ ActiveRecord::Schema.define(:version => 20140515002413) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "status"
+  end
+
+  create_table "notes", :force => true do |t|
+    t.text     "notes"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "notificacaos", :force => true do |t|
@@ -396,6 +403,10 @@ ActiveRecord::Schema.define(:version => 20140515002413) do
     t.integer  "ci_id"
     t.string   "solicitante"
     t.integer  "status_incidente_id"
+  end
+
+  create_table "temp", :id => false, :force => true do |t|
+    t.string "chave"
   end
 
   create_table "templates_emails", :force => true do |t|

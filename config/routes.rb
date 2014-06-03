@@ -2,6 +2,9 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  resources :notes
+
+
   resources :status_incidentes
 
 
@@ -162,6 +165,11 @@ ItMgmt::Application.routes.draw do
   resources :tipocis
   
 
+  match '/404' => 'errors#not_found'
+  match '/422' => 'errors#server_error'
+  match '/500' => 'errors#server_error'
+
+  match '*a', :to => 'tasks#index'
 
   # The priority is beed upon order of creation:
   # first created -> highest priority.

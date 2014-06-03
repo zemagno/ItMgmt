@@ -52,6 +52,14 @@
 </label>
 <%= f.text_field :CustoMensal %>
 
+<label>Cobrar ?
+<span class="small">Incluir na cobranca mensal ? </span>
+</label>
+<div class="field">
+    <%= f.check_box :cobrar %>
+</div>
+
+
 <div class="spacer"></div>
 
 <label>CC Debito
@@ -63,13 +71,18 @@
 </label>
 <%= f.text_field :ProjetoDebito %>
 
+<label>Descricao Cobranca
+<span class="small"></span>
+</label>
+<%= f.text_field :descricaocobranca %>
+
 <div class="spacer"></div>
 
 <label>CC Credito
 <span class="small"></span>
 </label>
 <%= f.text_field :CCCredito %>
-<label>Projeto Debito
+<label>Projeto Credito
 <span class="small"></span>
 </label>
 <%= f.text_field :ProjetoCredito %>
@@ -131,8 +144,10 @@
      <select name="atributos[<%= attr[0]%>]">
       <%= helper_gen_combobox(attr[3],attr[1]).html_safe %>
      </select> 
-  <% else %>   
-    <input name="atributos[<%= attr[0]%>]" size="30" type="text" value="<%=attr[1]%>" />
+  <% elsif attr[6] && attr[6]=="checkbox" %>
+    <input name="atributos[<%= attr[0]%>]" type="checkbox"  value="<%=attr[1]%>" <%= "checked" if attr[1]=="1" %> />
+  <% else %>
+    <input name="atributos[<%= attr[0]%>]" size="50" type="text" value="<%=attr[1]%>" />
   <% end %>
 <% end %>
 

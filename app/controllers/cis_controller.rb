@@ -34,7 +34,12 @@ class CisController < ApplicationController
  
   def show
     @ci, @atributos = Ci.find_com_atributos(params[:id])
-    cache(@ci)
+    if @ci
+        cache(@ci) 
+    else 
+      flash[:error] = "CI Invalido"
+      redirect_to "/cis"
+    end
   end
   
   def edit
@@ -98,26 +103,7 @@ class CisController < ApplicationController
    end    
   end
   
-  def update
-    @ci = Ci.find(params[:id])
 
-    
-    respond_to do |format|
-      if @ci.update_attributes(params[:ci])
-         @ci.atributos = params[:atributos]
-         @ci.limpa_atributos_outros_tipo
-         format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
-         format.json { head :no_content }
-      else
-      
-         @atributos = @ci.atributos
-         
-         carrega_agregadas
-         format.html { render action: "edit" }
-         format.json { render json: @ci.errors, status: :unprocessable_entity }
-      end
-    end
-  end
   
   def todos
     @cis = Ci.paginate(:per_page => 1000000, :page => 1)
@@ -135,15 +121,21 @@ class CisController < ApplicationController
     begin
       if @search.blank?
          @cis = Ci.paginate(:page => params[:page])
+      elsif @search[0] =="%"
+        @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
       else
          @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
          @cis.length
          @cis.compact!
       end
     rescue 
-      flash[:error] = "Error[DB0001] - Search Engine desligado"
+      flash[:error] = "Error[DB0001] - Erro no mecanismo de busca. Listando tudo !"
       @cis = Ci.paginate(:page => params[:page])
     end 
+
+    #if @cis.size==0 then
+    #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
+    #end
     
     respond_to do |format|
         format.html
@@ -183,14 +175,29 @@ class CisController < ApplicationController
         if @ci.save          
           format.html { redirect_to(@ci, :notice => 'CI criada com sucesso.') }
         else
-          #@sites = Site.all
-          #@tiposci = Tipoci.all
-          #@statusci = Statusci.all
           carrega_agregadas
-          @oldci = Ci.find(session[:oldCI])
           format.html { render :action => "new" }
         end
       end 
+  end
+
+  def update
+    @ci = Ci.find(params[:id])
+
+    
+    respond_to do |format|
+      if @ci.update_attributes(params[:ci])
+         @ci.atributos = params[:atributos]
+         @ci.limpa_atributos_outros_tipo
+         format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
+         format.json { head :no_content }
+      else
+         @atributos = @ci.atributos
+         carrega_agregadas
+         format.html { render action: "edit" }
+         format.json { render json: @ci.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
   def search
@@ -293,7 +300,7 @@ class CisController < ApplicationController
       while not queue_empty?
         #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
         i,nivel = dequeue
-        if nivel <= nivel_max then
+        if nivel <= nivel_max then # aqui tem que entrar todos os filtros
             if not edges_visitado[i.chave] then        
                 edges_visitado[i.chave] = true
                 @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email

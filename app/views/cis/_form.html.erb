@@ -7,8 +7,9 @@
 </br>Notificacao: <%= @ci.notificacao%>
 </br>Data Ultimo Change: <%= @ci.dataChange%>
 
-<%= render :partial => 'docs2url', :locals => {:title => "[Doc. Ultima Mudanca]", :documentos => @ci.DocChange } %>
+<%= render :partial => 'docs2url', :locals => {:title => "Doc. Ultima Mudanca: ", :documentos => @ci.DocChange } %>
 
+<!--
 <% if @ci.contrato  %>
     </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%= contrato_path(@ci.contrato) %>'">[Contrato
     ]</a>
@@ -18,14 +19,15 @@
 <% if @ci.contrato %>
 <%= link_to @ci.contrato.fornecedor.nome, fornecedore_path(@ci.contrato.fornecedor) , :target => "_blank" if@ci.contrato.fornecedor   %>
 <% end %>
-
+-->
 
 </br> CC/Proj Debito: <%= "#{@ci.CCDebito}/#{@ci.ProjetoDebito}" %>
 </br> CC/Proj Credito: <%= "#{@ci.CCCredito}/#{@ci.ProjetoCredito}" %>
 
 </br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
+- <%= @ci.cobrar ? "Cobrar do Projeto (#{@ci.descricaocobranca})" : 'Nao Cobrado' %>
 
-<%= render :partial => 'docs2url', :locals => {:title => "Documentacao", :documentos => @ci.url } %>
+<%= render :partial => 'docs2url', :locals => {:title => "Documentacao: ", :documentos => @ci.url } %>
 
 <%= render :partial => 'docs2url', :locals => {:title => "Jira", :documentos => jira_to_docs(@ci.jira) } %>
 
