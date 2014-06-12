@@ -45,7 +45,11 @@ class EmailController < ApplicationController
           end
           parametros[:ci_site] =ci.site.nome
           parametros[:email_impactados] = Rails.cache.read("impactados-#{ci.id}-email")
-          
+          ci.atributos.keys.each do |k|
+              # 5o atributo é o apelido
+              parametros["ci_#{ci.atributos[k][5]}".downcase.to_sym] = ci.send("_#{ci.atributos[k][5]}") unless ci.atributos[k][5].blank?
+          end
+
        #parametros = { ci_chave: ci.chave, ci_owner: ci.Owner, ci_notificacao: ci.notificacao, ci_descricao: ci.descricao, ci_site: ci.site.nome, email_impactados: Rails.cache.read("impactados-#{ci.id}-email") , ci_ccdebito: ci.CCDebito, ci_projetodebito: ci.ProjetoDebito, ci_cccredito: ci.CCCredito, ci_projetocredito: ci.ProjetoCredito}
           
        end

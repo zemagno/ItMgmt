@@ -1,8 +1,16 @@
-<h1>Listing notes</h1>
+<h1>Listagem notas</h1>
+<%= link_to 'Nova Nota', new_note_path %>
+
+<%= will_paginate @notes %>
+<%= form_tag(notes_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search, @search, :size => 25) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
 
 <table>
   <tr>
-    <th>Notes</th>
+    <th>Notas</th>
     <th></th>
     <th></th>
     <th></th>
@@ -10,14 +18,16 @@
 
 <% @notes.each do |note| %>
   <tr>
-    <td><%= note.notes %></td>
-    <td><%= link_to 'Show', note %></td>
-    <td><%= link_to 'Edit', edit_note_path(note) %></td>
-    <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to note.notes[0,30], note %></td>
+  
+    <td><%= link_to 'Editar', edit_note_path(note) %></td>
+    <td><%= link_to 'Apagar', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Note', new_note_path %>
+<%= will_paginate @notes %>
+
+

@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Notes:</b>
-  <%= @note.notes %>
-</p>
+<b>Notas:</b>
+<%= content_tag('pre',@note.notes) %>
+
+<%= link_to 'Editar', edit_note_path(@note) %> |
+<%= link_to 'Voltar', notes_path %>
 
 
-<%= link_to 'Edit', edit_note_path(@note) %> |
-<%= link_to 'Back', notes_path %>
