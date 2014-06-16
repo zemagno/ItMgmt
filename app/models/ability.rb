@@ -83,21 +83,15 @@ class Ability
     can [:index], "relatorio"
     can [:index,:show], "cis"
     can [:index,:show], "ci"
-
-
-    if user and user.is_a :admin
-        puts "======> can manage all"
-        can :manage, :all
-    end
+      
     if user and user.is_a :suporte
-        puts "======> can manage alertas"
         can :manage, :all
         cannot :manage, Dicdado
         cannot :manage, @Dicdado
         cannot :manage, Cadrelatorio
         cannot :manage, @Cadrelatorio   
-        can :index, Cadrelatorio
-        can :index, @Cadrelatorio
+        can    :index, Cadrelatorio
+        can    :index, @Cadrelatorio
         cannot :manage, Tipoci
         cannot :manage, @Tipoci
         cannot :manage, Statusci
@@ -106,21 +100,24 @@ class Ability
         cannot :manage, @SqlTemplate
     end
 
-    if user and user.is_a :admin
-        puts "======> can manage all"
-        can :manage, :all
+    if user and user.is_a :compras
+        can :manage, :cis
+        can :manage, @Ci
+        can :index, Cadrelatorio
+        can :index, @Cadrelatorio   
     end
+   
+    if user and user.is_a :admin
+        puts "opa...sou admin"
+        can :manage, :all
+    end 
 
-    cannot :manage, @Audit
-    cannot :manage, Audit
-    
     if user and user.is_a :audit
-        puts "======> can audit"
         can :manage, @Audit
         can :manage, Audit
     end
 
-    can :manage, :all
+    #can :manage, :all
     
   end
 end

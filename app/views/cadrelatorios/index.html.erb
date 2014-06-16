@@ -15,6 +15,7 @@
     <% if can? :manage, @Cadrelatorio %>
     <td><%= link_to 'Alterar', edit_cadrelatorio_path(cadrelatorio) %></td>
     <td><%= link_to 'Apagar', cadrelatorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% else puts "nao posso administrar relatorio" %>
     <% end %>
   </tr>
 <% end %>

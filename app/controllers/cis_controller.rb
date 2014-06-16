@@ -60,9 +60,10 @@ class CisController < ApplicationController
     # so seleciono os templates do tipo de ci sendo visualizado
     @id = params[:id]
     t = Ci.find(@id).tipoci.tipo
-    @templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI",t)
-    @templates_email.concat(TemplatesEmail.find_all_by_tipo_and_subtipo("CI",""))  
-    
+    # @templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI",t)
+    # @templates_email.concat(TemplatesEmail.find_all_by_tipo_and_subtipo("CI",""))  
+    @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
+
     respond_to :js
     
   end

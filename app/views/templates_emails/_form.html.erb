@@ -1,3 +1,4 @@
+<div id="stylized" class="myform">
 <%= form_for(@templates_email) do |f| %>
   <% if @templates_email.errors.any? %>
     <div id="error_explanation">
@@ -11,30 +12,43 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :tipo %><br />
-    <%= f.text_field :tipo %>
-  </div>
-    <div class="field">
-    <%= f.label :subtipo %><br />
-    <%= f.text_field :subtipo %>
-  </div>
-  <div class="field">
-    <%= f.label :template %><br />
-    <%= f.text_field :template %>
-  </div>
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
-  </div>
 
+<label>Template
+<span class="small">Nome interno do template</span>
+</label>
+<%= f.text_field :template %>
+<div class="spacer"></div>
 
-<div class="field">
-    <%= f.label "Enviar via browser?" %><br />
-    <%= f.check_box :sync %>
-  </div>
+<label>Nome
+<span class="small">Nome publico do template</span>
+</label>
+<%= f.text_field :nome %>
+<div class="spacer"></div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<label>Tipo
+<span class="small">(CI, Contratos, Password, etc)</span>
+</label>
+<%= f.text_field :tipo %>
+<div class="spacer"></div>
+
+<label>Subtipo
+<span class="small">(servidor, contrato, link, etc)</span>
+</label>
+<%= f.text_field :subtipo %>
+ 
+<div class="spacer"></div>
+ 
+<label>Enviar via Brower
+<span class="small">Ou direto</span>
+</label>
+<%= f.check_box :sync %>
+<div class="spacer"></div>
+
+<div class="actions">
+   <%= f.submit %>
+</div>
+
+<div class="spacer"></div>
+
 <% end %>
+</div>
