@@ -40,6 +40,15 @@ ItMgmt::Application.configure do
     domain: 'localhost',
     enable_starttls_auto: false
     }
+  config.action_mailer.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    #:domain               => 'baci.lindsaar.net',
+    :user_name            => 'zemagno@gmail.com',
+    :password             => 'Kjcmnvsf!!1',
+    :authentication       => 'plain',
+    :enable_starttls_auto => true  
+  }
 
   # specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = {host: "localhost:3000"}

@@ -21,19 +21,26 @@ class EnviaEmailWorker
     
     params = YAML.load(job.parametro) 
     destinatario = params[:to]
+    
+    
 
+    # incluir tb no combobox templates_emails/_form.html.erb
     case template.tipo
     when "CI"  
          # TODO simplificar isso aqui..
          ci = Ci.includes(:atributo => :dicdado).find(params[:id])
          destinatario = "zecarlosmagno@gmail.com"
-         CiMailer.enviar(template.template,ci,"NOC - #{template.nome} - #{ci.chave}",destinatario).deliver
+         CiMailer.enviar(template.template,ci,"NOC - #{template.nome} - #{ci.chave}",destinatario,"").deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{ci.chave}] em #{Time.now}"  
-    when "INCIDENTE"
+    when "ALERTAS"
          task = Task.find(params[:alerta])
          destinatario = "zecarlosmagno@gmail.com"
-         CiMailer.send(template.template,task,"NOC - #{template.nome} - #{task.id}",destinatario).deliver
+         CiMailer.enviar(template.template,task,"NOC - #{template.nome} - #{task.id}",destinatario,"").deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{task.id}] em #{Time.now}"  
+    when "MAILING"
+         mailing = Mailing.find(params[:id])
+         CiMailer.enviar(template.template,mailing,params[:subject],params[:to],params[:cc]).deliver
+         job.status = "Email enviado para #{params[:to]}. #{job.templates_email.template}: [#{mailing.id}] em #{Time.now}"  
     end
     job.save!
   end

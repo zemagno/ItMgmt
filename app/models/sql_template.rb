@@ -9,6 +9,7 @@ class SqlTemplate < ActiveRecord::Base
 	class Resolver < ActionView::Resolver 
 	   protected
 		def find_templates(name, prefix, partial, details)
+
 			conditions = { 
 				:path => normalize_path(name, prefix),
 				:locale => normalize_array(details[:locale]).first,
@@ -16,7 +17,7 @@ class SqlTemplate < ActiveRecord::Base
 				:handler => normalize_array(details[:handlers]),
 				:partial => partial || false
 			}
-			::SqlTemplate.where(conditions).map do |record| 
+			::SqlTemplate.where(conditions).map do |record|
 				initialize_template(record)
 			end
 		end

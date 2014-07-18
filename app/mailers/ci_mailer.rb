@@ -3,10 +3,10 @@ class CiMailer < ActionMailer::Base
     append_view_path SqlTemplate::Resolver.new
     default from: "zemagno@gmail.com"
 
-    def enviar(template,obj,subject,destinatario)
+    def enviar(template,obj,subject,destinatario,copiados)
 	    @obj = obj
+	    mail(to: destinatario, subject: subject, template_name: template, cc: copiados)
 
-	    mail(to: destinatario, subject: subject, template_name: template)
     end
 
 

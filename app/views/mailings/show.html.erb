@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Tag:</b>
+  <%= @mailing.tag %>
+</p>
+
+<p>
+  <b>To:</b>
+  <%= @mailing.to %>
+</p>
+
+<p>
+  <b>Cc:</b>
+  <%= @mailing.cc %>
+</p>
+
+<p>
+  <b>Subject:</b>
+  <%= @mailing.subject %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @mailing.body %>
+</p>
+
+<p>
+  <b>Templates email:</b>
+  <%= @mailing.templates_email.nome %>
+</p>
+
+
+<%= link_to 'Edit', edit_mailing_path(@mailing) %> |
+<%= link_to 'Back', mailings_path %>
