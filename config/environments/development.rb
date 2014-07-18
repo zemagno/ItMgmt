@@ -45,7 +45,7 @@ ItMgmt::Application.configure do
     :port                 => 587,
     #:domain               => 'baci.lindsaar.net',
     :user_name            => 'zemagno@gmail.com',
-    :password             => 'Kjcmnvsf!!1',
+    :password             => 'xxxxx',
     :authentication       => 'plain',
     :enable_starttls_auto => true  
   }
