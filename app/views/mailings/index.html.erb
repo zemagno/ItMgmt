@@ -1,13 +1,31 @@
 <h1>Mailing</h1>
 
+<div id="stylized" class="myform">
+<%=  form_for :enviar_email, :url => { :action => :confirma_enviar_email } do |f|  %>
+
+<label>Tag
+</label>
+
+<%= f.select :mailing_tag, campanhas  %>
+<div class="buttons">
+    <%= f.submit "Enviar Mala direta" %>
+</div>
+</br>
+<% end %>
+
+</div>
+
+<%= will_paginate @mailings %>
+
 <table>
   <tr>
     <th>Tag</th>
+    <th>Templates email</th>
     <th>To</th>
     <th>Cc</th>
+    <th>From</th>
     <th>Subject</th>
     <th>Body</th>
-    <th>Templates email</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,17 +34,20 @@
 <% @mailings.each do |mailing| %>
   <tr>
     <td><%= mailing.tag %></td>
+    <td><%= mailing.templates_email.nome %></td>
     <td><%= mailing.to %></td>
     <td><%= mailing.cc %></td>
+    <td><%= mailing.from %></td>
     <td><%= mailing.subject %></td>
     <td><%= mailing.body %></td>
-    <td><%= mailing.templates_email.nome %></td>
     <td><%= link_to 'Mostrar', mailing %></td>
     <td><%= link_to 'Editar', edit_mailing_path(mailing) %></td>
     <td><%= link_to 'Deletar', mailing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @mailings %>
 
 <br />
 

@@ -1,0 +1,40 @@
+
+
+<h1>Confirma enviar <%=@total%> emails ?</h1>
+<h1>Tag: [<%=@mailing_tag%>]</h1>
+
+
+<div id="stylized" class="myform">
+<%=  form_for :enviar_email, :url => { :action => :enviar_email } do |f|  %>
+
+<%= hidden_field_tag 'mailing_tag', @mailing_tag%>
+<div class="buttons">
+    <%= f.submit "Enviar Mala direta" %>
+</div>
+</br>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>Templates email</th>
+    <th>To</th>
+    <th>Cc</th>
+    <th>From</th>
+    <th>Subject</th>
+    <th>Body</th>
+   </tr>
+
+<% @samples.each do |mailing| %>
+  <tr>
+    <td><%= mailing.templates_email.nome %></td>
+    <td><%= mailing.to %></td>
+    <td><%= mailing.cc %></td>
+    <td><%= mailing.from %></td>
+    <td><%= mailing.subject %></td>
+    <td><%= mailing.body %></td>
+   </tr>
+<% end %>
+</table>
+</div>
+

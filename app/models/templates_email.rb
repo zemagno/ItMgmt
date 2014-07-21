@@ -3,6 +3,9 @@ class TemplatesEmail < ActiveRecord::Base
   after_create :criar_parametros
   after_destroy :apagar_parametros
   before_save :renomear_parametros
+  default_scope order('tipo ASC, subtipo ASC')
+
+  # TODO se mudar o tipo fica orfao de parametro..
 
   def full_nome
   	  "#{nome} - #{sync ? 'Browse' : 'Direto'}"
@@ -17,7 +20,7 @@ class TemplatesEmail < ActiveRecord::Base
 
   # TODO isso da para virar metaprograming
   def criar_parametros
-  		Parametro.criar_parametros_email(template)
+    	Parametro.criar_parametros_email(template) if sync # so crio se for via browser (sync)
   end
   def apagar_parametros
   	 	Parametro.apagar_parametros(template)

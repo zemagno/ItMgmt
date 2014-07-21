@@ -6,6 +6,7 @@ class Parametro < ActiveRecord::Base
 
 
   # TODO isso dá para virar metaprograming
+  
    def self.criar_parametros_email(_tipo)
       "TO CC SUBJECT BODY".split.each do |_subtipo| 
         Parametro.create(tipo: _tipo, subtipo: _subtipo)

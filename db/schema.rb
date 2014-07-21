@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140716225229) do
+ActiveRecord::Schema.define(:version => 20140718205519) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -261,6 +261,7 @@ ActiveRecord::Schema.define(:version => 20140716225229) do
     t.integer  "templates_email_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "from"
   end
 
   add_index "mailings", ["templates_email_id"], :name => "index_mailings_on_templates_email_id"
@@ -483,17 +484,5 @@ ActiveRecord::Schema.define(:version => 20140716225229) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
-
-  create_table "view_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "prefix"
-    t.boolean  "partial"
-    t.text     "source"
-    t.string   "locale"
-    t.string   "formats"
-    t.string   "handlers"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
 end

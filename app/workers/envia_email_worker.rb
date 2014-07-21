@@ -30,16 +30,20 @@ class EnviaEmailWorker
          # TODO simplificar isso aqui..
          ci = Ci.includes(:atributo => :dicdado).find(params[:id])
          destinatario = "zecarlosmagno@gmail.com"
-         CiMailer.enviar(template.template,ci,"NOC - #{template.nome} - #{ci.chave}",destinatario,"").deliver
+         from = Parametro.find_by_tipo_and_subtipo("EMAIL_CI","FROM").valor
+        
+         CiMailer.enviar(template.template,ci,"NOC - #{template.nome} - #{ci.chave}",destinatario,"",from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{ci.chave}] em #{Time.now}"  
     when "ALERTAS"
          task = Task.find(params[:alerta])
          destinatario = "zecarlosmagno@gmail.com"
-         CiMailer.enviar(template.template,task,"NOC - #{template.nome} - #{task.id}",destinatario,"").deliver
+         from = Parametro.find_by_tipo_and_subtipo("EMAIL_ALERTA","FROM").valor
+         CiMailer.enviar(template.template,task,"NOC - #{template.nome} - #{task.id}",destinatario,"",from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{task.id}] em #{Time.now}"  
     when "MAILING"
          mailing = Mailing.find(params[:id])
-         CiMailer.enviar(template.template,mailing,params[:subject],params[:to],params[:cc]).deliver
+         from = params[:from] #|| Parametro.find_by_tipo_and_subtipo("EMAIL_ALERTA","FROM").valor
+         CiMailer.enviar(template.template,mailing,params[:subject],params[:to],params[:cc],from).deliver
          job.status = "Email enviado para #{params[:to]}. #{job.templates_email.template}: [#{mailing.id}] em #{Time.now}"  
     end
     job.save!

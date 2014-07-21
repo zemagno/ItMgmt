@@ -254,7 +254,7 @@ class CisController < ApplicationController
                     nodes[ii.chave] = g.add_nodes(ii.chave) 
                    
                     if not edges_visitado[@i.chave+"#"+ii.chave] then   
-                      g.add_edges(nodes[@i.chave], nodes[ii.chave])
+                      g.add_edges(nodes[@i.chave], nodes[ii.chave]) #, { :style => "dashed" })
                       edges_visitado[@i.chave+"#"+ii.chave] = true
                     end
                   end

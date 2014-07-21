@@ -3,6 +3,8 @@ require 'sidekiq/web'
 ItMgmt::Application.routes.draw do
 
   resources :mailings
+  match "mailings/enviar_email", to: "mailings#enviar_email"
+  match "mailings/confirma_enviar_email", to: "mailings#confirma_enviar_email"
 
 
   resources :notes

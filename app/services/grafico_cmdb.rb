@@ -14,6 +14,6 @@ class GraficoCmdb
 
 		parametro.merge!(JSON.parse(ci.status_parametro)) unless ci.status_parametro.blank?
     
-		parametro
+		parametro 
 	end
 end

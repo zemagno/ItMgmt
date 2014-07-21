@@ -2,22 +2,21 @@
 
 <table>
   <tr>
-    <th>Template</th>
     <th>Tipo</th>
     <th>Subtipo</th>
     <th>Nome</th>
+    <th>Template</th>
     <th>Enviar email</th>
-
     <th></th>
     <th></th>
   </tr>
 
 <% @templates_emails.each do |templates_email| %>
   <tr>
-    <td><%= link_to templates_email.template , templates_email%></td>
     <td><%= templates_email.tipo %></td>
     <td><%= templates_email.subtipo %></td>
     <td><%= templates_email.nome %></td>
+    <td><%= link_to templates_email.template , templates_email%></td>
     <td><%= templates_email.sync ? "via Browser" : "Direto"  %></td>
     
     <td><%= link_to 'Editar', edit_templates_email_path(templates_email) %></td>
