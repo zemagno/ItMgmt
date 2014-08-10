@@ -2,6 +2,12 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  resources :custom_de_paras
+
+
+  resources :events, :only => [:index]
+
+
   resources :mailings
   match "mailings/enviar_email", to: "mailings#enviar_email"
   match "mailings/confirma_enviar_email", to: "mailings#confirma_enviar_email"

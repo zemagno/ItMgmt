@@ -1,6 +1,16 @@
 class CadrelatoriosController < ApplicationController
   
   authorize_resource
+
+  helper_method :categoria_relatorios
+
+  def categoria_relatorios
+    # TODO - transferir a logica do Model para o model e deixar uma chamada generica, ja devolvendo o array
+    Parametro.find_by_tipo_and_subtipo("relatorios","categorias").valor.split
+  #testar isso..colocar combo no forma
+  #colocar pesquisa sphinx
+  #colocar will paginate
+  end
   
   def index
     @cadrelatorios = Cadrelatorio.all

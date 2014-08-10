@@ -54,6 +54,8 @@ group :assets do
   gem 'twitter-bootstrap-rails'
 end
 
+gem "nifty-generators", :group => :development
+
 gem 'omniauth-google-apps'
 gem 'cancan' ,  '~> 1.6'
 gem 'dalli'
@@ -68,3 +70,5 @@ gem 'deep_cloneable', '~> 1.5.5'
 
 #gem 'paper_trail', '>= 3.0.0.rc2'
 
+
+gem "mocha", :group => :test

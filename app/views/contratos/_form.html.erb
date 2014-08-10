@@ -1,3 +1,4 @@
+
 <%= form_for(@contrato) do |f| %>
   <% if @contrato.errors.any? %>
     <div id="error_explanation">
@@ -45,16 +46,16 @@
   <div class="spacer"></div>
   <div class="field">
     <%= f.label "Data de Inicio" %>
-    <%= f.text_field :datainicio, :id => "datepicker1" %>
+    <%= f.text_field :datainicio, :id => "date_1", :class => "datepick"  %>
   </div>
   <div class="field">
     <%= f.label "Data Fim" %>
-    <%= f.text_field :datafim, :id => "datepicker2" %>
+    <%= f.text_field :datafim, :id => "date_2", :class => "datepick" %>
   </div>
   <div class="spacer"></div>
   <div class="field">
     <%= f.label "Data Renovacao" %>
-    <%= f.text_field :datarenovacao, :id => "datepicker3" %>
+    <%= f.text_field :datarenovacao, :id => "date_3", :class => "datepick" %>
   </div>
   <div class="spacer"></div>
   <div class="field">
@@ -63,7 +64,7 @@
   </div><div class="spacer"></div>
   <div class="field">
     <%= f.label "Projeto/CC TI" %>
-    <%= f.text_field :projetoCCTI %>
+    <%= f.text_field :projetoCCTI, :id => "ze1", :class => "zemagno" %>
   <div class="field">
     <%= f.label "Projeto/CC Area" %>
     <%= f.text_field :projetoCCArea %>

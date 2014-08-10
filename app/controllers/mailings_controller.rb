@@ -1,11 +1,14 @@
 class MailingsController < InheritedResources::Base
 	
+    load_and_authorize_resource
+
+
 	def templates 
     	TemplatesEmail.find_all_by_tipo("MAILING")
     end
 
     def campanhas
-    	Mailing.find(:all).map(&:tag).uniq!
+    	Mailing.find(:all).map(&:tag).uniq
     end
 
     def confirma_enviar_email

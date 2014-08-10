@@ -80,9 +80,8 @@ class Ability
     # 
     # 
     can [:show, :index] , "tasks"
-    can [:index], "relatorio"
-    can [:index,:show], "cis"
-    can [:index,:show], "ci"
+    can [:index], "relatorio" # autorizo o token especificamente. Nao existe model associado.
+    can [:index,:show], Ci
       
     if user and user.is_a :suporte
         can :manage, :all
@@ -98,18 +97,21 @@ class Ability
         cannot :manage, @Statusci
         cannot :manage, SqlTemplate
         cannot :manage, @SqlTemplate
+        cannot :manage, Mailing
     end
 
     if user and user.is_a :compras
-        can :manage, :cis
-        can :manage, @Ci
+        can :manage, Ci
         can :index, Cadrelatorio
-        can :index, @Cadrelatorio   
     end
    
     if user and user.is_a :admin
         puts "opa...sou admin"
         can :manage, :all
+    end 
+
+    if user and user.is_a :mailing
+       can :manage, Mailing
     end 
 
     if user and user.is_a :audit

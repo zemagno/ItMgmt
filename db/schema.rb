@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140718205519) do
+ActiveRecord::Schema.define(:version => 20140810143606) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -131,6 +131,8 @@ ActiveRecord::Schema.define(:version => 20140718205519) do
     t.string   "ProjetoCredito",    :limit => 50
     t.boolean  "cobrar"
     t.string   "descricaocobranca"
+    t.boolean  "provisionar"
+    t.string   "codigocobranca"
   end
 
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
@@ -163,6 +165,14 @@ ActiveRecord::Schema.define(:version => 20140718205519) do
     t.string   "alertacor"
   end
 
+  create_table "custom_de_paras", :force => true do |t|
+    t.string   "de",         :limit => 100
+    t.string   "para",       :limit => 30
+    t.string   "tipo",       :limit => 10
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
   create_table "dicdados", :force => true do |t|
     t.string   "nome"
     t.integer  "tipoci_id"
@@ -177,6 +187,15 @@ ActiveRecord::Schema.define(:version => 20140718205519) do
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
+
+  create_table "events", :force => true do |t|
+    t.string   "tipo",       :limit => 20
+    t.string   "subtipo",    :limit => 40
+    t.string   "nivel",      :limit => 10
+    t.string   "valor"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
 
   create_table "exec_checklists", :force => true do |t|
     t.string   "descricao"

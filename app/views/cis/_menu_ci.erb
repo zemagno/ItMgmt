@@ -24,9 +24,6 @@
 <%= link_to "[Elimina impactado]" , elimina_impactado_path(@ci), :remote => true, :id => "elimina_impactado"%>
 <%= link_to "[Duplicar esse CI]" , duplicar_ci_path(@ci), :remote => true, :id => "duplicar_ci"%>
 </br>
-<!--%= "<a href=\"/email/servidor_sem_espaco/#{@ci.id}\" onclick=\"window.open(this.href,'');return false;\">[Email Normal]</a>".html_safe %-->
-<%= link_to("[Enviar Email]", email_path(@ci), :id => "enviar_email_ci", :remote => true)%>
-
 
 <%= link_to "[Abrir Alerta]", tasks_new_from_ci_path(@ci) , :target => '_blank' %>
 <a href="<%='/tasks?&search=@CI='+@ci.chave%>" >[Alertas deste CI]</a>

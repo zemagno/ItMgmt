@@ -25,8 +25,8 @@
 </br> CC/Proj Credito: <%= "#{@ci.CCCredito}/#{@ci.ProjetoCredito}" %>
 
 </br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
-- <%= @ci.cobrar ? "Cobrar do Projeto (#{@ci.descricaocobranca})" : 'Nao Cobrado' %>
-
+- <%= @ci.cobrar ? "Cobrar do Projeto (#{@ci.descricaocobranca}/#{@ci.codigocobranca})" : 'Nao Cobrado' %>
+- <%= @ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado' %>
 <%= render :partial => 'docs2url', :locals => {:title => "Documentacao: ", :documentos => @ci.url } %>
 
 <%= render :partial => 'docs2url', :locals => {:title => "Jira", :documentos => jira_to_docs(@ci.jira) } %>

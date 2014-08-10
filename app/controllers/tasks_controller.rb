@@ -18,24 +18,19 @@ class TasksController < ApplicationController
     @search_tasks = params[:search] || session[:search_tasks] 
     session[:search_tasks] = @search
 
-    puts "param: <#{@search_tasks}>"
-    #puts "@search_tasks.to_json"
 
     if can? :manage, "tasks"
       if not (@search_tasks == "" or @search_tasks.nil? ) then
-        puts "search: <#{@search_tasks}>"
         @tasks = Task.search @search_tasks, :match_mode => :boolean #, :per_page => 20, :page => params[:page]
         @tasks.length
         @tasks.compact!
         
       else 
-         puts "ativos"
          @tasks = Task.abertas
          @tasksativas = Task.ativas_nao_abertas
 
       end
     else
-         puts "publicas"
          @tasks = Task.publicas
     end
 

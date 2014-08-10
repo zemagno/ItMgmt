@@ -7,6 +7,7 @@ class ServiceMailing
 			job = JobEnviarEmail.criar(m.templates_email_id, p.to_yaml)
 			EnviaEmailWorker.perform_async(job.id)
 		end
+		Event.register("email","mailing - #{_tag}","resumo","Enfileirados #{mailing.count} emails para envio.")
 	end
 end
 
