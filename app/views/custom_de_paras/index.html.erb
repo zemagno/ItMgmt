@@ -1,0 +1,27 @@
+<h1>Listing custom_de_paras</h1>
+
+<table>
+  <tr>
+    <th>De</th>
+    <th>Para</th>
+    <th>Tipo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @custom_de_paras.each do |custom_de_para| %>
+  <tr>
+    <td><%= custom_de_para.de %></td>
+    <td><%= custom_de_para.para %></td>
+    <td><%= custom_de_para.tipo %></td>
+    <td><%= link_to 'Show', custom_de_para %></td>
+    <td><%= link_to 'Edit', edit_custom_de_para_path(custom_de_para) %></td>
+    <td><%= link_to 'Destroy', custom_de_para, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Custom de para', new_custom_de_para_path %>

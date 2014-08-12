@@ -1,0 +1,29 @@
+<%= form_for(@custom_de_para) do |f| %>
+  <% if @custom_de_para.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@custom_de_para.errors.count, "error") %> prohibited this custom_de_para from being saved:</h2>
+
+      <ul>
+      <% @custom_de_para.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :de %><br />
+    <%= f.text_field :de %>
+  </div>
+  <div class="field">
+    <%= f.label :para %><br />
+    <%= f.text_field :para %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br />
+    <%= f.text_field :tipo %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

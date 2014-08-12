@@ -1,0 +1,18 @@
+Eventos
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Subtype</th>
+    <th>Level</th>
+    <th>Value</th>
+  </tr>
+  <% for event in @events %>
+    <tr>
+      <td><%= event.tipo %></td>
+      <td><%= event.subtipo %></td>
+      <td><%= event.nivel %></td>
+      <td><%= event.valor %></td>
+    </tr>
+  <% end %>
+</table>

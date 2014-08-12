@@ -1,0 +1,20 @@
+<%= form_for @event do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :type %><br />
+    <%= f.text_field :tipo %>
+  </p>
+  <p>
+    <%= f.label :subtype %><br />
+    <%= f.text_field :subtipo %>
+  </p>
+  <p>
+    <%= f.label :level %><br />
+    <%= f.text_field :nivel %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :valor %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
