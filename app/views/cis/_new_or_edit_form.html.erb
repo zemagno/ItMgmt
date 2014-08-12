@@ -41,29 +41,22 @@
 
 <div class="spacer"></div>
 
-<label>Contrato
-<span class="small">ID do contrato</span>
-</label>
-<%= f.text_field :contrato_id %>
-
 
 <label>Custo Mensal
 <span class="small"></span>
 </label>
 <%= f.text_field :CustoMensal %>
+  
 
-<label>Cobrar ?
-<span class="small">Incluir na cobranca mensal ? </span>
+<label>Descricao Cobranca
+<span class="small"></span>
 </label>
-<div class="field">
-    <%= f.check_box :cobrar %>
-</div>
-<label>Provisionar ?
-<span class="small">Incluir na provisao mensal ? </span>
+<%= f.text_field :descricaocobranca %>
+
+<label>Codigo Cobranca
+<span class="small"></span>
 </label>
-<div class="field">
-    <%= f.check_box :provisionar %>
-</div>
+<%= f.text_field :codigocobranca %>
 
 
 <div class="spacer"></div>
@@ -76,11 +69,14 @@
 <span class="small"></span>
 </label>
 <%= f.text_field :ProjetoDebito %>
-
-<label>Descricao Cobranca
-<span class="small"></span>
+<label>Cobrar ?
+<span class="small">Incluir na cobranca mensal ? </span>
 </label>
-<%= f.text_field :descricaocobranca %>
+<div class="field">
+    <%= f.check_box :cobrar %>
+</div>
+
+
 
 
 <div class="spacer"></div>
@@ -93,6 +89,14 @@
 <span class="small"></span>
 </label>
 <%= f.text_field :ProjetoCredito %>
+
+
+<label>Provisionar ?
+<span class="small">Incluir na provisao mensal ? </span>
+</label>
+<div class="field">
+    <%= f.check_box :provisionar %>
+</div>
 
 <div class="spacer"></div>
 

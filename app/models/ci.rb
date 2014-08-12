@@ -133,6 +133,7 @@ class Ci < ActiveRecord::Base
       end
       @attr_existentes[x.dicdado.id][1] = x.valor 
      end 
+     
     @attr_existentes
   end
   
@@ -169,7 +170,6 @@ class Ci < ActiveRecord::Base
         
         begin  #posso nao ter recebido parametro nenhum
            atr.valor = novos_atributos[attr[1][0]]
-           puts ">>>>> #{atr}:#{attr[1][0]}:#{novos_atributos[attr[1][0]]}"
            atr.save
         rescue
           puts "deu merda...."
@@ -215,6 +215,10 @@ class Ci < ActiveRecord::Base
       indexes :ProjetoCredito
       indexes :CCDebito
       indexes :ProjetoDebito 
+      indexes :descricaocobranca
+      indexes :codigocobranca
+      indexes :provisionar
+      indexes :cobrar
       indexes jira
       indexes site(:nome), :as => :localidade
       indexes statusci(:status), as => :status
