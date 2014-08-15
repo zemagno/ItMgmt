@@ -11,3 +11,15 @@ class ServiceMailing
 	end
 end
 
+# eu poderia pegar o resultado de uma consulta, e carregar para um array de mailing
+# so que o EnviaEmailWorker vai pegar o ID e ir no CI..
+
+
+# @results = []
+# ActiveRecord::Base.connection.select_all(
+#   ActiveRecord::Base.send(:sanitize_sql_array, 
+#    ["... your SQL query goes here and ?, ?, ? are replaced...;", a, b, c])
+# ).each do |record|
+#   # instead of an array of hashes, you could put in a custom object with attributes
+#   @results << {id: record["col_a_name"], :to: record["col_b_name"], ...}
+# end

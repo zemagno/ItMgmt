@@ -24,10 +24,23 @@
      <% if attr[2].blank? || attr[1].blank? %>
         </br><%="#{attr[0]} : #{attr[1]}"%>
      <% else %>
-        </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<%=attr[2] % attr[1] %>'">
-            <%="[#{attr[0]}]" %></a>
+        <%= render :partial => 'docs2url', :locals => {:title => attr[0], :documentos => atributos_to_docs(attr[1],attr[2]) } %>
      <% end %>
 <% end %>
+
+<!--     </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<!--%=attr[2] % attr[1] %>'">
+            <!%="[#{attr[0]}]" %></a>
+ -->
+
+
+<!-- 
+attr[0] = Nome
+attr[1] = valor
+attr[2] = URL
+attr[3] = Valores (combobos)
+attr[4] = descricao
+attr[5] = apelido
+ -->
 
 
 

@@ -43,7 +43,9 @@ class EnviaEmailWorker
     when "MAILING"
          mailing = Mailing.find(params[:id])
          from = params[:from] #|| Parametro.find_by_tipo_and_subtipo("EMAIL_ALERTA","FROM").valor
+         #CiMailer.enviar(template.template,mailing,mailing.subject,mailing.to,mailing.mailing.cc,mailing.from).deliver
          CiMailer.enviar(template.template,mailing,params[:subject],params[:to],params[:cc],from).deliver
+         # TODO se isso acima funcionar, alterar as duas linhas abaixo e o from acima
          job.status = "Email enviado para #{params[:to]}. #{job.templates_email.template}: [#{mailing.id}] em #{Time.now}" 
          Event.register("email","mailing - #{mailing.tag}","detalhe","Enviado to:#{params[:to]} - subject:#{params[:subject]} - from: #{from}")  
     end

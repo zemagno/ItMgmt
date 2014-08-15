@@ -12,20 +12,41 @@ class CadrelatoriosController < ApplicationController
   #colocar will paginate
   end
   
+
+  def carrega_agregadas 
+    @tiposci = Tipoci.all
+  end
+
   def index
-    @cadrelatorios = Cadrelatorio.all
+    
+    @search = params[:search] || session[:search_relatorios]
+    session[:search_relatorios] = @search  
+    begin
+      if @search.blank?
+          @cadrelatorios = Cadrelatorio.paginate(:page => params[:page])
+      else
+         @cadrelatorios = Cadrelatorio.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
+         @cadrelatorios.length
+         @cadrelatorios.compact!
+      end
+    rescue 
+      flash[:error] = "Error[DB0001] - Erro no mecanismo de busca. Listando tudo !"
+      @cadrelatorios = Cadrelatorio.paginate(:page => params[:page])
+    end 
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @cadrelatorios }
     end
+
+
   end
 
   # GET /cadrelatorios/1
   # GET /cadrelatorios/1.json
   def show
     @cadrelatorio = Cadrelatorio.find(params[:id])
-
+    carrega_agregadas
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @cadrelatorio }
@@ -35,6 +56,7 @@ class CadrelatoriosController < ApplicationController
   # GET /cadrelatorios/new
   # GET /cadrelatorios/new.json
   def new
+    carrega_agregadas
     @cadrelatorio = Cadrelatorio.new
 
     respond_to do |format|
@@ -45,6 +67,7 @@ class CadrelatoriosController < ApplicationController
 
   # GET /cadrelatorios/1/edit
   def edit
+    carrega_agregadas
     @cadrelatorio = Cadrelatorio.find(params[:id])
   end
 

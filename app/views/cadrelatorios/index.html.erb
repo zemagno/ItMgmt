@@ -1,5 +1,12 @@
 <h1>Relatorios Disponiveis</h1>
 
+<%= will_paginate @cadrelatorios %>
+<%= form_tag(cadrelatorios_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search, @search, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+<% end %>
+
 <table>
   <tr>
     <th>Nome</th>
@@ -22,5 +29,7 @@
 </table>
 
 <br />
+
+<%= will_paginate @cadrelatorios %>
 
 <%= link_to 'Novo Relatorio', new_cadrelatorio_path unless cannot? :manage, @Cadrelatorio %>
