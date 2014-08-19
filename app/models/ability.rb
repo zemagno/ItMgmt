@@ -106,7 +106,6 @@ class Ability
     end
    
     if user and user.is_a :admin
-        puts "opa...sou admin"
         can :manage, :all
     end 
 

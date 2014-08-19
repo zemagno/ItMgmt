@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140814160812) do
+ActiveRecord::Schema.define(:version => 20140819214826) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -183,9 +183,11 @@ ActiveRecord::Schema.define(:version => 20140814160812) do
     t.integer  "ordem"
     t.string   "url"
     t.string   "descricao"
-    t.string   "valores"
+    t.string   "valores",    :limit => 500
     t.string   "apelido"
     t.string   "tipo"
+    t.string   "regex"
+    t.boolean  "mandatorio"
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"

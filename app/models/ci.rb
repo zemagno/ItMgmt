@@ -84,6 +84,7 @@ class Ci < ActiveRecord::Base
   end
 
   def duplicar(nova_chave)
+logger.debug(">>>>> duplicar")
     newci = dup :include => :atributo
     newci.chave = nova_chave
     newci.save
@@ -92,6 +93,7 @@ class Ci < ActiveRecord::Base
 
   # retorno o valor dos atributos a partir de Ci._<apelido_atributo>
   def method_missing(method_sym, *arguments, &block)
+    logger.debug(">>>>> method_missing")
     if method_sym.to_s =~ /^_([a-zA-Z]+)$/
       return getatributo($1)
     else
@@ -101,6 +103,7 @@ class Ci < ActiveRecord::Base
 
 
   def getatributo(chave)
+    logger.debug(">>>>> getatributos")
     attr = atributos.select { |k,v| v[5] == chave }
     return attr.values[0][1] if attr.size > 0
     return ""
@@ -111,6 +114,7 @@ class Ci < ActiveRecord::Base
   # TODO --> testar se eu chamo varias vezes, ele monta sempre, sempre..
   # 
   def atributos
+    logger.debug(">>>>> atributos")
     # pegar todos os atributos possiveis (tipoci.dicdado)
     # dicdados.id => [Label,valor]
     #{ 5=>["Contrato", "Link Citi"], 
@@ -122,14 +126,14 @@ class Ci < ActiveRecord::Base
     @attr_existentes = Hash.new
     
     # monto um hash com todos atributos que esse CI deve ter
-    tipoci.dicdados.map {|x| @attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao,x.apelido,x.tipo]} 
+    tipoci.dicdados.map {|x| @attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao,x.apelido,x.tipo,x.regex,x.mandatorio]} 
     
     # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
     atributo.map do |x| 
       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
       # entao eu crio esse atributo no hash
      if ! @attr_existentes[x.dicdado.id] then
-          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido,x.dicdado.tipo]
+          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido,x.dicdado.tipo,x.dicdado.regex,x.mandatorio]
       end
       @attr_existentes[x.dicdado.id][1] = x.valor 
      end 
@@ -138,7 +142,7 @@ class Ci < ActiveRecord::Base
   end
   
   def limpa_atributos_outros_tipo
-    logger.debug "vou limpar atributos"
+    logger.debug ">>>> vou limpar atributos"
     atributo.each do |attr|
       if attr.dicdado.tipoci_id != tipoci_id
         attr.delete 
@@ -152,6 +156,7 @@ class Ci < ActiveRecord::Base
 
 
   def atributos=(novos_atributos = {})
+    logger.debug(">>>>> atributos=")
     # Descriptions.find_or_create_by_my_id(data["my_id"]).update_attributes(data)
     # Atributo (ci_id, dicdado_id, valor)
     # c.atributo[1].dicdado.nome =  "Contrato"
@@ -198,8 +203,8 @@ class Ci < ActiveRecord::Base
   end
 
   def self.find_com_atributos(id)
+    logger.debug(">>>>> find_com_atributos")
     @c = Ci.find_gen(id)
-    puts @c
     attr = (@c ? @c.atributos : nil )
     [@c, attr] 
   end

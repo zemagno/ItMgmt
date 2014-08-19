@@ -39,7 +39,6 @@ def jira_to_docs(jira)
 end
 
 def atributos_to_docs(attr,_url)
-	puts "vou fazer attr2docs: #{attr}"
 	@docs = ""
 	return if attr.blank?
 	attr.split(",").each do |j|

@@ -1,4 +1,6 @@
-require 'action_controller/metal/renderers'
+  require 'action_controller/metal/renderers'
+  require 'csv'
+
 
 ActionController.add_renderer :csv do |csv, options|
   self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
@@ -35,8 +37,12 @@ class RelatorioController < ApplicationController
     builder.to_xml
   end
 
-  def to_csv
-    
+  def to_csv (titulo, header, _fields)
+    csv_string = CSV.generate do |csv|
+      csv << @campos
+      @resultado.each { |res| csv << res }
+    end
+    csv_string
   end
 
 
@@ -63,7 +69,7 @@ class RelatorioController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml { render :xml => to_xml(params[:id],@campos,@resultado) }  
-      format.csv { render :csv => to_xml(params[:id],@campos,@resultado) }  
+      format.csv { render :csv => to_csv(params[:id],@campos,@resultado) }  
     end
   end
 end

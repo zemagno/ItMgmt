@@ -42,6 +42,16 @@
     <%= f.text_field :ordem %>
   </div>
 
+  <div class="field">
+    <%= f.label "regex: " %>
+    <%= f.text_field :regex, :size=>100 %>
+  </div>
+
+<div class="field">
+    <%= f.label "Mandorio?" %>
+    <%= f.check_box :mandatorio %>
+  </div>
+
 <div class="field">
     <%= f.label "URL: " %>
     <%= f.text_field :url, :size=>100 %>

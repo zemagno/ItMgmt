@@ -6,17 +6,15 @@ class EmailController < ApplicationController
 
   def enviar_email
     logger.debug "EmailController#enviar_email"
-    p = Hash[:id => params[:id], :to => "zecarlosmagno@gmail.com"]
+    p = Hash[:id => params[:id]]
     job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
     EnviaEmailWorker.perform_async(job.id)
     #EnviaEmailWorker.perform_in(1.hour,job.id)
-    flash[:info] = "INFO: Email enfileirado para #{p[:to]}"
+    flash[:info] = "INFO: Email enfileirado para envio"
     respond_to :js
   end
 
   def fill_in(template, data)
-      puts template
-      puts data
       template = template || " "
       template.gsub(/\{\{(\w+)\}\}/) { data[$1.to_sym] } 
   end

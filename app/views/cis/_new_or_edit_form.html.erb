@@ -158,7 +158,7 @@
   <% elsif attr[6] && attr[6]=="checkbox" %>
     <input name="atributos[<%= attr[0]%>]" type="checkbox"  value="<%=attr[1]%>" <%= "checked" if attr[1]=="1" %> />
   <% else %>
-    <input name="atributos[<%= attr[0]%>]" size="50" type="text" value="<%=attr[1]%>" />
+    <input name="atributos[<%= attr[0]%>]" size="50" type="text" <%= attr[8] ? "required" : "" %> pattern="<%= attr[7].blank? ? "[\\s\\S]+" : attr[7] %>" value="<%=attr[1]%>" /><%= attr[8] ? "Mandatorio" : "" %>
   <% end %>
 <% end %>
 

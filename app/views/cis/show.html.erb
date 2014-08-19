@@ -6,9 +6,15 @@
 <!--%= link_to '[Retrocede Navegacao]', cis_sobe_path, :id => "SetaCima" %-->
 <!--%= link_to '[Avanca Navegacao]', cis_desce_path, :id => "SetaBaixo"%-->
 
-<%= render :partial => "menu_top"%>
+<%= form_tag(cis_path, :method => "get") do %>
+   <%= text_field_tag(:search, @search, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+  <%= submit_tag("Estou com sorte") %>
+<% end %>
 
 </br>
+<%= render :partial => "menu_top"%>
+
 </br>
 
 <% [:info, :error].each do |key| %>
@@ -33,10 +39,9 @@
 
 
 <%= form_tag(cis_path, :method => "get") do %>
- 
-  <%= text_field_tag(:search) %>
-  <%= hidden_field_tag 'oldci', @ci.id%>
+  <%= text_field_tag(:search, @search, :size => 50) %>
   <%= submit_tag("Filtrar") %>
+  <%= submit_tag("Estou com sorte") %>
 <% end %>
 </br>
 

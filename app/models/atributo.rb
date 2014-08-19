@@ -16,10 +16,10 @@ class Atributo < ActiveRecord::Base
   end
 
 
-  define_index do
-      indexes valor as :valor
-      indexes dicdado(:nome)      
-  end
+  #define_index do
+  #    indexes valor as :valor
+  #    indexes dicdado(:nome)      
+  #end
   
 end
 

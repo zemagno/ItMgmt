@@ -56,7 +56,6 @@ class TasksController < ApplicationController
 
   def new_from_ci
     @ci = Ci.find(params[:id])
-    puts @ci
     @task = Task.new
     carrega_agregados
    

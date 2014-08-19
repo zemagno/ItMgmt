@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+#gem 'debugger'
+
 gem 'rails', '3.2.16'
 
 #gem "newrelic_rpm"
@@ -63,6 +65,7 @@ gem 'cancan' ,  '~> 1.6'
 gem 'dalli'
 #
 gem 'sidekiq', '~> 2'
+gem 'sidekiq-failures'
 gem 'sinatra', require: false
 gem 'slim'
 

@@ -102,9 +102,8 @@ class DicdadosController < ApplicationController
   def destroy
     if Atributo.esta_em_uso?(params[:id]) then
       flash[:error] = "Nao eh possivel apagar esse Campo. Existem atributos de CI com valores"
-      puts "Atributo existe"
+
     else
-      puts "Atributo nao existe"
       @dicdado = Dicdado.find(params[:id])
       @dicdado.destroy
     end

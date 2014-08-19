@@ -33,6 +33,7 @@ class CisController < ApplicationController
   end
  
   def show
+    @search = session[:search_cis]
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     if @ci
         cache(@ci) 
@@ -82,11 +83,11 @@ class CisController < ApplicationController
 
 
     else
-      p = Hash[:id => params[:id], :to => "zecarlosmagno@gmail.com"]
+      p = Hash[:id => params[:id]]
       job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
       EnviaEmailWorker.perform_async(job.id)
       #EnviaEmailWorker.perform_in(1.hour,job.id)
-      flash[:info] = "INFO: Email enfileirado para #{p[:to]}"
+      flash[:info] = "INFO: Email enfileirado para envio"
       respond_to :js # so para fazer reload da pagina e sumir com 
     end
   end
@@ -118,9 +119,10 @@ class CisController < ApplicationController
 
     @search = params[:search] || session[:search_cis]
     session[:search_cis] = @search
-    session[:oldCI] = nil  
+    session[:oldCI] = nil 
     begin
       if @search.blank?
+
          @cis = Ci.paginate(:page => params[:page])
       elsif @search[0] =="%"
         @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
@@ -138,6 +140,11 @@ class CisController < ApplicationController
     #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
     #end
     
+    if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
+      @ci = @cis[0]
+      render :show and return
+    end
+
     respond_to do |format|
         format.html
         format.json { render :json => @cis }
@@ -165,15 +172,22 @@ class CisController < ApplicationController
   
   def create
       @ci = Ci.new(params[:ci])
+      puts ">>>> #{params[:ci]} <<<<<"
       case params[:dependencia]
         when "2"    
           @ci.dependentes << Ci.find(session[:oldCI])
         when "3" 
           @ci.impactados << Ci.find(session[:oldCI])
       end
-      
+      puts "=================================================================="
+      puts params[:ci]
+
+      puts "=================================================================="
       respond_to do |format|
-        if @ci.save          
+        if @ci.save  
+          # TODO ERRO !!!
+          # ERROR ERRO !!!! 
+          #@ci.limpa_atributos_outros_tipo        
           format.html { redirect_to(@ci, :notice => 'CI criada com sucesso.') }
         else
           carrega_agregadas
@@ -302,8 +316,9 @@ class CisController < ApplicationController
         #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
         i,nivel = dequeue
         if nivel <= nivel_max then # aqui tem que entrar todos os filtros
-            if not edges_visitado[i.chave] then        
+            if (not edges_visitado[i.chave]) then #&& ("fornecedor fatura contrato".include? i.tipoci.tipo) then        
                 edges_visitado[i.chave] = true
+                # if && ("fornecedor fatura contrato".include? i.tipoci.tipo) then
                 @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
                 @email_impactados << ","+@ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == "" or nivel>nivel_max_email
 

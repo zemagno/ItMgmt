@@ -3,7 +3,6 @@ class ConsoleController < ApplicationController
    layout 'console' 
     def index
       #if can? :manage, @alertas
-      #   puts "pode manage"
          @tasks = Task.ativos
     #else
     #     puts "nao pode manage"

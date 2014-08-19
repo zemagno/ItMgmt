@@ -10,7 +10,6 @@ module CiHelper
 			end	      
 	      end
 	    end
-	    puts @st
 	    @st
 	 end
 
