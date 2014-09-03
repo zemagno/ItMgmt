@@ -1,7 +1,14 @@
 class ExecChecklistsController < ApplicationController
   # GET /exec_checklists
   # GET /exec_checklists.json
+  # 
+  def carrega_agregados
+    @url_jira = Parametro.get(:tipo => "JIRA", :subtipo => "URL")
+
+  end
+
   def index
+    carrega_agregados
     @exec_checklists = ExecChecklist.all
 
     respond_to do |format|
@@ -13,6 +20,7 @@ class ExecChecklistsController < ApplicationController
   # GET /exec_checklists/1
   # GET /exec_checklists/1.json
   def show
+    carrega_agregados
     @exec_checklist = ExecChecklist.find(params[:id])
 
     respond_to do |format|

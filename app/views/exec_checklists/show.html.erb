@@ -21,14 +21,15 @@
 </p>
 
 <p>
+  <b>Ticket:</b>
+   <%= link_to @exec_checklist.tickets, @url_jira % @exec_checklist.tickets , :target => '_blank' if ! @exec_checklist.tickets.blank?  %>
+</p>
+
+<p>
   <b>Fimexec:</b>
   <%= @exec_checklist.fimexec %>
 </p>
 
-<p>
-  <b>Tipoci:</b>
-  <%= @exec_checklist.tipoci %>
-</p>
 
 
-<%= link_to 'Voltar', exec_checklists_path %>
+<%= link_to 'Listagem', exec_checklists_path %>

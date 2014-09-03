@@ -3,12 +3,12 @@
 <table>
   <tr>
     <th>Descricao</th>
+    <th>TIcket</th>
     <th>Status</th>
     <th>Cis</th>
     <th>Users</th>
     <th>Inicioexec</th>
     <th>Fimexec</th>
-    <th>Tipoci</th>
     <th></th>
 
   </tr>
@@ -16,13 +16,12 @@
 <% @exec_checklists.each do |exec_checklist| %>
   <tr>
     <td><%= link_to exec_checklist.descricao, exec_checklist  %></td>
+    <td><%= link_to exec_checklist.tickets, @url_jira % exec_checklist.tickets, :target => '_blank'  if ! exec_checklist.tickets.blank? %></td>
     <td><%= exec_checklist.status %></td>
     <td><%= exec_checklist.cis %></td>
     <td><%= exec_checklist.users %></td>
     <td><%= exec_checklist.inicioexec %></td>
     <td><%= exec_checklist.fimexec %></td>
-    <td><%= exec_checklist.tipoci %></td>
-    <td><%= link_to 'Cancelar', exec_checklist, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

@@ -67,7 +67,6 @@ class Ci < ActiveRecord::Base
   
   validates :descricao, :presence => { :message => " eh mandatorio" }
   
-  # default_scope order('chave ASC') # ERRO ta dando erro na hora de navegar com <-- -->
 
   
   def to_s
@@ -133,7 +132,7 @@ logger.debug(">>>>> duplicar")
       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
       # entao eu crio esse atributo no hash
      if ! @attr_existentes[x.dicdado.id] then
-          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido,x.dicdado.tipo,x.dicdado.regex,x.mandatorio]
+          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido,x.dicdado.tipo,x.dicdado.regex,x.dicdado.mandatorio]
       end
       @attr_existentes[x.dicdado.id][1] = x.valor 
      end 
@@ -150,7 +149,7 @@ logger.debug(">>>>> duplicar")
       end
     end
 
-    # ERRO atributos ainda esta apontando para atributos antigos...como limpar cache
+    # FIXME atributos ainda esta apontando para atributos antigos...como limpar cache
 
   end
 

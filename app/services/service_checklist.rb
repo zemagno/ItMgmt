@@ -6,50 +6,53 @@ class ServiceChecklist
 	# recebe um Model Checklist ou um InitChecklist 
 
 	include Queueable
-	def initialize(checklist)
-		@checklist = checklist
-		@itens_novos_ticket = nil
-		@itens_comentarios = nil
+	def initialize(_execchecklist)
+		# esse checklist poderá ser um ExecChecklist ou um InitChecklist
+		@execchecklist = _execchecklist
+		@itens_checklist = nil
 	end 
 
-	def ChecklistHerdados
-		# @checklist
-		# armazenar no Redis
-		# TODO - armazenar no Cache...
-		# 
-		# Devolve: lista com toos os itens de todos os checklist pais
-		#          que irao virar tickets (jira) e itens que serão somente 
-		#          comentario a serem ticados no ItMgmt
-		# 
-		@itens_novos_ticket = []
-		@itens_comentarios = []
 
-		checklist_visitado = Hash.new
-
-		enqueue(@checklist)
-
-		while not queue_empty?
-            checklist = dequeue
-	        if not checklist_visitado[checklist.id] then 
+    def MontaTreeTickets(cl, tipo_ticket)
+    	queue = []
+    	checklist_visitado = Hash.new
+    	
+    	ticket = {tipo: tipo_ticket, descricao: cl.descricao, users: cl.users, comentarios: [] }
+    	
+    	queue.push(cl)
+    	cl.pais.map { |x| queue.push(x)}
+    	puts "fila"
+    	puts queue
+        
+		comentarios = []
+		while not queue.empty?
+			checklist = queue.shift
+			if not checklist_visitado[checklist.id] then 
             	checklist_visitado[checklist.id] = true
-                checklist.itens_checklists.each do |item|
-                	case item.TipoAberturaTicket
-                	when "Novo Ticket"
-                        @itens_novos_ticket << [item.descricao, item.users, item.cis, item.TipoAberturaTicket, item.tipo_checklist_id]
-                	when "Comentario"
+ 	   			checklist.itens_checklists.map do |x| 
+	       			comment = x.descricao
+	       			comment << " CIs: #{x.cis}" if ! x.cis.blank?
+	       			comment << " Resp: #{x.users}" if ! x.users.blank?
+	       			comentarios << comment 
+	       			puts "comment #{comment}"
+	       		end
+	       	end
+	       	checklist.pais.map { |x| queue.push(x)}
+        end
+        puts ">>>> #{comentarios}"
 
-                        @itens_comentarios << [item.descricao, item.users, item.cis, item.TipoAberturaTicket, item.tipo_checklist_id]
-                	end
-                end
+        ticket[:comentarios] = comentarios
 
-            end
-            # coloco os pais na fila para serem navegados
-            checklist.pais.map { |x| enqueue(x)}
-            
-		end	
-		# retorno lista para ticket e lista para comentarios           	
-		[@itens_novos_ticket, @itens_comentarios]
-	end
+        tickets = [ticket]
+        #puts ">>>>> #{jira[0].descricao} #{comentarios}"
+        cl.superpais.map do |x| 
+        	MontaTreeTickets(x, :superpai).each do |tkt|
+        		tickets << tkt
+        	end
+        end
+        
+        tickets
+    end
 
 	def IniciarChecklist 
 		# inicia um checklist, criando um exec_checklist e iniciando uma tarefa no sidekiq
@@ -57,54 +60,60 @@ class ServiceChecklist
 	    
 	    # TODO falta tipoci_id
 	    # criar itens
-	    # enfilerar no sidekiq para abrir os tickects
+	    # enfilerar no sidekiq para abrir os tickets
 
 	    exec_checklist = ExecChecklist.new
-	    exec_checklist.descricao = @checklist.descricao
-	    exec_checklist.users = @checklist.users
-	    exec_checklist.cis = @checklist.cis
-	    exec_checklist.inicioexec = @checklist.inicioexec
-	    exec_checklist.fimexec = @checklist.fimexec
+	    exec_checklist.descricao = @execchecklist.descricao
+	    exec_checklist.users = @execchecklist.users
+	    exec_checklist.cis = @execchecklist.cis
+	    exec_checklist.inicioexec = @execchecklist.inicioexec
+	    exec_checklist.fimexec = @execchecklist.fimexec
+	    exec_checklist.checklist_id = @execchecklist.checklist_id	    
 	    exec_checklist.status_checklist_id = 4
+	     
 	    exec_checklist.save
+
 	    IniciarChecklist.perform_async(exec_checklist.id)
-	    
 	    exec_checklist.id
-    	
-	end
-
+  	end
+=begin
+    id = 7
+  	cl = ExecChecklist.find(id)
+  	sc = ServiceChecklist.new(cl)
+  	ticket = sc.FinalizarCriacaoChecklist
+=end
 	def FinalizarCriacaoChecklist
-		# comentarios --> Comentarios do Jira pai e itens_checklists
-		# ticket --> subjira do jira pai
-		# itens_novos_ticket, itens_comentarios = ChecklistHerdados
+# TODO finalizar CriacaoChecklist
+# se status nao for 4, log de erro
+# users será o executor master desse checklist. pode se sobrepor a area de responsabilidade ??
+# formulario com os parametros dinamico do jira, armazenados no Params do exec.
+# 
 
-		# Montar ticket pai
-		# Adicionar todos os comentarios no ticket pai
-		# Criar ticket pai
-		# criar itens_checklist com comentarios
-
-		# para cada iten novo ticket
-		# 	montar ticket debaixo do ticket pai
-		# 	criar ticket
-		# 	criar itens_checklist
-		# fim 
+		tickets = MontaTreeTickets(@execchecklist.checklist, :master)
+		ticketpai = nil
+		tickets.each do |t|
+			ticket = Jira.new
+			if t[:tipo] == :master
+				ticket.create_ticket({:titulo => t[:descricao], 
+			       	 				  :itens => t[:comentarios].join("\r\n"), 
+			      					  :responsavel => "magno" })	
+				ticketpai = ticket.ticket.key
+			elsif t[:tipo] == :superpai
+				ticket.create_sub_tarefa({:titulo => t[:descricao], 
+			       	 				 	  :itens => t[:comentarios].join("\r\n"), 
+			      					 	  :responsavel => "magno",
+			      					 	  :ticket_pai => ticketpai })	
+			end
+		end
 		
-
-
-
+		@execchecklist.tickets = ticketpai
+		@execchecklist.status_checklist_id = 1
+		@execchecklist.save		
+		{:ticket => ticketpai}
 	end
-
-	def dummy
-		ecl = ExecChecklist.find(5)
-		scl = ServiceChecklist.new(ecl.checklist)
-		ch = scl.ChecklistHerdados
-		
-	end
-
-
 
 	def print
-		p @checklist
+		p @execchecklist
 		p @itens_novos_ticket
 		p @itens_comentarios
 	end

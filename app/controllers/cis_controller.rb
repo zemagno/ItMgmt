@@ -185,8 +185,8 @@ class CisController < ApplicationController
       puts "=================================================================="
       respond_to do |format|
         if @ci.save  
-          # TODO ERRO !!!
-          # ERROR ERRO !!!! 
+          
+          # FIXME  
           #@ci.limpa_atributos_outros_tipo        
           format.html { redirect_to(@ci, :notice => 'CI criada com sucesso.') }
         else

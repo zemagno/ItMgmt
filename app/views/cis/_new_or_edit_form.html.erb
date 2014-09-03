@@ -150,18 +150,42 @@
     <span class="small"><%= attr[4]%></span>
   </label>
   
-  <% if attr[3] && attr[3]!="" %>
-     <!--se tem valores predefinidos, monto combobox , senao input normal-->
-     <select name="atributos[<%= attr[0]%>]">
-      <%= helper_gen_combobox(attr[3],attr[1]).html_safe %>
-     </select> 
+  <% if ! attr[3].blank? %>
+         <!--se tem valores predefinidos, monto combobox , senao input normal-->
+         <select name="atributos[<%= attr[0]%>]">
+              <%= helper_gen_combobox(attr[3],attr[1]).html_safe %>
+         </select> 
   <% elsif attr[6] && attr[6]=="checkbox" %>
-    <input name="atributos[<%= attr[0]%>]" type="checkbox"  value="<%=attr[1]%>" <%= "checked" if attr[1]=="1" %> />
+        <input name="atributos[<%= attr[0]%>]" 
+           type="checkbox"  
+           value="<%=attr[1]%>" 
+           <%= "checked" if attr[1]=="1" %> />
+  <% elsif attr[6] && attr[6]=="data" %>
+       <input name="atributos[<%= attr[0]%>]"
+          class="datepick"
+          value="<%=attr[1]%>" />
+
   <% else %>
-    <input name="atributos[<%= attr[0]%>]" size="50" type="text" <%= attr[8] ? "required" : "" %> pattern="<%= attr[7].blank? ? "[\\s\\S]+" : attr[7] %>" value="<%=attr[1]%>" /><%= attr[8] ? "Mandatorio" : "" %>
+        <input name="atributos[<%= attr[0]%>]" 
+           size="50" 
+           type="text" 
+           <%= attr[8] ? "required" : "" %> 
+           pattern="<%= attr[7].blank? ? "[\\s\\S]+" : attr[7] %>" 
+           value="<%=attr[1]%>" />
+           <%= attr[8] ? "Mandatorio" : "" %>
   <% end %>
 <% end %>
-
+<!-- 
+attr[0] = Nome
+attr[1] = valor
+attr[2] = URL
+attr[3] = Valores (combobos)
+attr[4] = descricao
+attr[5] = apelido
+attr[6] = tipo
+attr[7] = regex
+attr[8] = Mandatorio
+ -->
 
 <% if @oldci.to_s != "" then %>
 <div class="spacer1"></div>

@@ -28,21 +28,21 @@ class EnviaEmailWorker
          # TODO simplificar isso aqui..
          ci = Ci.includes(:atributo => :dicdado).find(params[:id])
          destinatario = ListaEmail.acerta(Ci.Owner,"@brq.com")
-         from = Parametro.find_by_tipo_and_subtipo("EMAIL_CI","FROM").valor
-         cc = Parametro.find_by_tipo_and_subtipo("EMAIL_CI","CC").valor
+         from = Parametro.get(:tipo => "EMAIL_CI", :subtipo => "FROM")
+         cc = Parametro.get(:tipo => "EMAIL_CI", :subtipo => "CC")
          CiMailer.enviar(template.template,ci,"NOC - #{template.nome} - #{ci.chave}",destinatario,cc,from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{ci.chave}] em #{Time.now}"  
          Event.register("email","CI","detalhe","CI - email direto - NOC - #{template.nome} - #{ci.chave}")  
     when "ALERTAS"
          task = Task.find(params[:alerta])
          destinatario = "rbleckmann@brq.com,dacarvalho@brq.com,aroldojunior@brq.com,magno@brq.com"
-         from = Parametro.find_by_tipo_and_subtipo("EMAIL_ALERTA","FROM").valor
-         cc = Parametro.find_by_tipo_and_subtipo("EMAIL_ALERTA","CC").valor
+         from = Parametro.get(:tipo => "EMAIL_ALERTA", :subtipo => "FROM")
+         cc = Parametro.get(:tipo => "EMAIL_ALERTA", :subtipo => "CC")
          CiMailer.enviar(template.template,task,"NOC - #{template.nome} - #{task.id}",destinatario,cc,from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{task.id}] em #{Time.now}"  
     when "MAILING"
          mailing = Mailing.find(params[:id])
-         from = params[:from] #|| Parametro.find_by_tipo_and_subtipo("EMAIL_ALERTA","FROM").valor
+         from = params[:from] #|| Parametro.get( :tipo => "EMAIL_ALERTA", :subtipo => "FROM")
          #CiMailer.enviar(template.template,mailing,mailing.subject,mailing.to,mailing.mailing.cc,mailing.from).deliver
          CiMailer.enviar(template.template,mailing,params[:subject],params[:to],params[:cc],from).deliver
          # TODO se isso acima funcionar, alterar as duas linhas abaixo e o from acima

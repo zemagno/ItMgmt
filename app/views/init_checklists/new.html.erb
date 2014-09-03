@@ -5,6 +5,9 @@
 
 <%= render 'form' %>
 
-<%= render :partial => "checklists/pais" unless @pais.empty? %>
+<%= render :partial => 'checklists/pais', :locals => {:title => "Checklist Incorporados: ", :pais => @pais } unless @pais.empty? %>
+<%= render :partial => 'checklists/pais', :locals => {:title => "Checklist Herdados: ", :pais => @superpais } unless @superpais.empty? %>
+
 <%= render :partial => "checklists/itens",  :locals => {:action => :show }%>
+
 

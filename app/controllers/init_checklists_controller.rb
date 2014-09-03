@@ -1,4 +1,6 @@
 class InitChecklistsController < ApplicationController
+
+  # TODO - colocar seguranca em todo checklist
   def new
     # 
     # InitChecklist é um object que armazenara todos os atributos
@@ -9,12 +11,21 @@ class InitChecklistsController < ApplicationController
     # 
     @checklist = Checklist.find(params[:checklist_id])
     @itens = @checklist.itens_checklists
+    # @pais = @checklist.pais
+
     @pais = @checklist.pais
+    @superpais = @checklist.superpais
+    
     @init_checklist = InitChecklist.new
     @init_checklist.descricao = @checklist.descricao
     @init_checklist.users = @checklist.users
     @init_checklist.checklist_id = @checklist.id
 
+    # TODO - criar campos do jira dinamicamente no formulario.
+    # esta tudo no @res
+    #fields = Parametro.list(:tipo => "Jira Issue Field")
+    #@res = []
+    #fields.each { |f| @res << [f[1],f[2],retrieve_issuefields_values(JiraCorp,f[2])] } 
 
     respond_to do |format|
       format.html # new.html.erb
@@ -25,6 +36,7 @@ class InitChecklistsController < ApplicationController
  
   def create
     @init_checklist = InitChecklist.new(params[:init_checklist])
+    puts "params: #{params}"
 
     flag_erro = true # se tudo der certo, zero flag 
 

@@ -18,15 +18,17 @@ development:
 #  port: 3306
 #  
 
-telefonia:
+instant:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: Telefonia
+  database: instantvoice
   pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+  username: brq-infra
+  password: brq@infra
+  host: 10.3.57.100
+  port: 3306
+# 
 
 
 # Warning: The database defined as "test" will be erased and

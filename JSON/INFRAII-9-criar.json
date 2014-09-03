@@ -1,0 +1,24 @@
+{
+  "fields" => {
+    "summary" => "Parada DC Teofilo",
+    "issuetype" => {
+      "id" => "5"
+    },
+    "customfield_13069" => {
+      "id" => "14414"
+    },
+    "customfield_13059" => "Atividades subtarefa parada DC Teofilo",
+    "project" => {
+      "id" => "12303"
+    },
+    "customfield_13000" => {
+      "value" => "Brasil"
+    },
+    "assignee" => {
+      "name" => "magno"
+    },
+    "parent" => {
+      "key" => "INFRAII-9"
+    },
+  }
+}

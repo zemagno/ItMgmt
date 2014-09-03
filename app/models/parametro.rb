@@ -1,5 +1,16 @@
 class Parametro < ActiveRecord::Base
   
+  def self.get(options)
+      p = Parametro.find_by_tipo_and_subtipo(options[:tipo],options[:subtipo])
+      p.blank? ? "" : p.valor
+  end
+
+  def self.list(options)
+      r = []
+      Parametro.find_all_by_tipo(options[:tipo]).each  { |p| r << [p.tipo,p.subtipo,p.valor] }
+      r
+  end
+
    def ewal(parametro)
      eval(valor)
    end

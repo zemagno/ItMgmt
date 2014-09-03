@@ -1,0 +1,25 @@
+<h1>Listing area_de_responsabilidades</h1>
+
+<table>
+  <tr>
+    <th>Area</th>
+    <th>Responsaveis</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @area_de_responsabilidades.each do |area_de_responsabilidade| %>
+  <tr>
+    <td><%= area_de_responsabilidade.area %></td>
+    <td><%= area_de_responsabilidade.responsaveis %></td>
+    <td><%= link_to 'Show', area_de_responsabilidade %></td>
+    <td><%= link_to 'Edit', edit_area_de_responsabilidade_path(area_de_responsabilidade) %></td>
+    <td><%= link_to 'Destroy', area_de_responsabilidade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Area de responsabilidade', new_area_de_responsabilidade_path %>

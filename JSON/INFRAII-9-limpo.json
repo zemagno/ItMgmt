@@ -1,0 +1,349 @@
+{
+  "id": "87275",
+  "expand": "renderedFields,names,schema,transitions,operations,editmeta,changelog",
+  "self": "http://jiracorp.brq.com/rest/api/2/issue/87275",
+  "key": "INFRAII-9",
+  "fields": {
+    "summary": "Parada DC Teofilo",
+    "customfield_13063": "nil",
+    "customfield_13062": "nil",
+    "customfield_13065": "nil",
+    "customfield_13064": "nil",
+    "issuetype": {
+      "self": "http://jiracorp.brq.com/rest/api/2/issuetype/5",
+      "id": "5",
+      "description": "The sub-task of the issue",
+      "iconUrl": "http://jiracorp.brq.com/images/icons/issue_subtask.gif",
+      "name": "Sub-Tarefa",
+      "subtask": true
+    },
+    "customfield_13061": "nil",
+    "customfield_13060": "nil",
+    "customfield_14107": "nil",
+    "customfield_13067": "nil",
+    "customfield_12521": "nil",
+    "customfield_13066": "nil",
+    "customfield_12520": "nil",
+    "timespent": "nil",
+    "customfield_13069": "nil",
+    "customfield_13068": "nil",
+    "customfield_12522": "nil",
+    "reporter": {
+      "self": "http://jiracorp.brq.com/rest/api/2/user?username=magno",
+      "name": "magno",
+      "emailAddress": "magno@brq.com",
+      "avatarUrls": {
+        "16x16": "http://jiracorp.brq.com/secure/useravatar?size=small&avatarId=10122",
+        "48x48": "http://jiracorp.brq.com/secure/useravatar?avatarId=10122"
+      },
+      "displayName": "Jose Carlos Morand Magno",
+      "active": true
+    },
+    "customfield_12514": "nil",
+    "customfield_12515": "nil",
+    "customfield_12517": "nil",
+    "created": "2014-08-27T18:13:16.981-0300",
+    "customfield_12518": "nil",
+    "customfield_12519": "nil",
+    "customfield_15244": "nil",
+    "customfield_13054": "nil",
+    "customfield_13053": "nil",
+    "customfield_13052": "nil",
+    "customfield_13051": "nil",
+    "customfield_13050": "nil",
+    "parent": {
+      "id": "87250",
+      "key": "INFRAII-8",
+      "self": "http://jiracorp.brq.com/rest/api/2/issue/87250",
+      "fields": {
+        "summary": "Horario de Verao",
+        "status": {
+          "self": "http://jiracorp.brq.com/rest/api/2/status/1",
+          "description": "The issue is open and ready for the assignee to start work on it.",
+          "iconUrl": "http://jiracorp.brq.com/images/icons/status_open.gif",
+          "name": "Aberto",
+          "id": "1"
+        },
+        "issuetype": {
+          "self": "http://jiracorp.brq.com/rest/api/2/issuetype/132",
+          "id": "132",
+          "description": "",
+          "iconUrl": "http://jiracorp.brq.com/images/icons/genericissue.gif",
+          "name": "GMUD",
+          "subtask": false
+        },
+        "priority": {
+          "self": "http://jiracorp.brq.com/rest/api/2/priority/5",
+          "iconUrl": "http://jiracorp.brq.com/images/icons/priority_trivial.gif",
+          "name": "Trivial",
+          "id": "5"
+        }
+      }
+    },
+    "customfield_12733": "nil",
+    "customfield_13059": "nil",
+    "customfield_13058": "nil",
+    "customfield_13057": "nil",
+    "customfield_13056": "nil",
+    "customfield_13055": "nil",
+    "project": {
+      "self": "http://jiracorp.brq.com/rest/api/2/project/INFRAII",
+      "id": "12303",
+      "key": "INFRAII",
+      "name": "Infraestrutura II",
+      "avatarUrls": {
+        "16x16": "http://jiracorp.brq.com/secure/projectavatar?size=small&pid=12303&avatarId=10011",
+        "48x48": "http://jiracorp.brq.com/secure/projectavatar?pid=12303&avatarId=10011"
+      }
+    },
+    "components": [],
+    "comment": {
+      "startAt": 0,
+      "maxResults": 0,
+      "total": 0,
+      "comments": []
+    },
+    "timeoriginalestimate": "nil",
+    "customfield_10307": "nil",
+    "customfield_10306": "nil",
+    "customfield_14509": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17035",
+      "value": "N/A",
+      "id": "17035"
+    },
+    "customfield_14508": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17032",
+      "value": "N/A",
+      "id": "17032"
+    },
+    "customfield_10308": "nil",
+    "customfield_14507": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17029",
+      "value": "N/A",
+      "id": "17029"
+    },
+    "customfield_13041": "nil",
+    "customfield_14506": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17026",
+      "value": "N/A",
+      "id": "17026"
+    },
+    "customfield_13040": "nil",
+    "customfield_14505": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17023",
+      "value": "N/A",
+      "id": "17023"
+    },
+    "customfield_10305": "51153",
+    "customfield_13043": "nil",
+    "customfield_14504": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17020",
+      "value": "N/A",
+      "id": "17020"
+    },
+    "customfield_13042": "nil",
+    "votes": {
+      "self": "http://jiracorp.brq.com/rest/api/2/issue/INFRAII-9/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "customfield_13045": "nil",
+    "customfield_13044": "nil",
+    "customfield_13047": "nil",
+    "customfield_13046": "nil",
+    "resolutiondate": "nil",
+    "customfield_13049": "nil",
+    "customfield_13048": "nil",
+    "customfield_15095": "nil",
+    "customfield_15127": "nil",
+    "customfield_14513": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17047",
+      "value": "N/A",
+      "id": "17047"
+    },
+    "duedate": "nil",
+    "customfield_14514": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17050",
+      "value": "N/A",
+      "id": "17050"
+    },
+    "customfield_14512": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17044",
+      "value": "N/A",
+      "id": "17044"
+    },
+    "watches": {
+      "self": "http://jiracorp.brq.com/rest/api/2/issue/INFRAII-9/watchers",
+      "watchCount": 1,
+      "isWatching": true
+    },
+    "customfield_14510": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17038",
+      "value": "N/A",
+      "id": "17038"
+    },
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 0,
+      "total": 0,
+      "worklogs": []
+    },
+    "customfield_13031": "nil",
+    "customfield_12512": "nil",
+    "customfield_13036": "nil",
+    "customfield_12511": "nil",
+    "customfield_13035": "nil",
+    "customfield_13034": "nil",
+    "customfield_13033": "nil",
+    "customfield_13038": "nil",
+    "customfield_13037": "nil",
+    "customfield_15116": "nil",
+    "timeestimate": "nil",
+    "customfield_15114": "nil",
+    "customfield_12503": "nil",
+    "customfield_14502": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17014",
+      "value": "N/A",
+      "id": "17014"
+    },
+    "customfield_14503": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17017",
+      "value": "N/A",
+      "id": "17017"
+    },
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_12700": "nil",
+    "customfield_12701": "nil",
+    "timetracking": {},
+    "customfield_13022": "nil",
+    "customfield_13090": "nil",
+    "customfield_14528": "nil",
+    "customfield_14529": "nil",
+    "customfield_14526": "nil",
+    "customfield_14527": "nil",
+    "customfield_12903": "nil",
+    "customfield_12846": "nil",
+    "customfield_14532": "nil",
+    "customfield_13099": "nil",
+    "customfield_14531": "nil",
+    "customfield_14530": "nil",
+    "updated": "2014-08-27T18:13:16.981-0300",
+    "customfield_14203": "nil",
+    "customfield_14534": "nil",
+    "priority": {
+      "self": "http://jiracorp.brq.com/rest/api/2/priority/5",
+      "iconUrl": "http://jiracorp.brq.com/images/icons/priority_trivial.gif",
+      "name": "Trivial",
+      "id": "5"
+    },
+    "description": "nil",
+    "customfield_14533": "nil",
+    "customfield_13092": "nil",
+    "customfield_13093": "nil",
+    "customfield_13094": "nil",
+    "issuelinks": [],
+    "customfield_13095": "nil",
+    "customfield_13096": "nil",
+    "customfield_13097": "nil",
+    "customfield_13098": "nil",
+    "customfield_13104": "nil",
+    "customfield_13015": "nil",
+    "subtasks": [],
+    "status": {
+      "self": "http://jiracorp.brq.com/rest/api/2/status/1",
+      "description": "The issue is open and ready for the assignee to start work on it.",
+      "iconUrl": "http://jiracorp.brq.com/images/icons/status_open.gif",
+      "name": "Aberto",
+      "id": "1"
+    },
+    "customfield_14417": "nil",
+    "customfield_14418": "nil",
+    "customfield_14419": "nil",
+    "customfield_10005": "nil",
+    "customfield_14515": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17053",
+      "value": "N/A",
+      "id": "17053"
+    },
+    "workratio": -1,
+    "customfield_14516": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17056",
+      "value": "N/A",
+      "id": "17056"
+    },
+    "customfield_14517": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17059",
+      "value": "N/A",
+      "id": "17059"
+    },
+    "customfield_14207": "2014-02-27",
+    "customfield_13200": "nil",
+    "customfield_13201": "nil",
+    "customfield_12438": "nil",
+    "customfield_12437": "nil",
+    "environment": "nil",
+    "customfield_14523": "nil",
+    "customfield_14525": "nil",
+    "customfield_14524": "nil",
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_14420": "nil",
+    "customfield_14122": "<div class=\"aui-message warning shadowed\">\r\n<p class=\"title\">\r\n<span class=\"aui-icon icon-warning\"></span>\r\n                 Verifique se os documentos abaixo estão devidamente anexados na aba <u>Escopo</u>.\r\n                <ul>\r\n                        <li>EN</li>\r\n                        <li>Plano de Metodologia</li>\r\n                </ul>\r\n</br>\r\n                <b>Obs:</b> A falta de anexos (docs) poderá gerar impacto no processo.\r\n</p>\r\n</div>",
+    "customfield_13000": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14313",
+      "value": "Theophilo",
+      "id": "14313"
+    },
+    "customfield_12024": "nil",
+    "customfield_12729": "nil",
+    "customfield_12426": "nil",
+    "resolution": "nil",
+    "fixVersions": [],
+    "customfield_12600": "nil",
+    "aggregatetimeoriginalestimate": "nil",
+    "customfield_13077": "nil",
+    "customfield_13078": "nil",
+    "customfield_13073": "nil",
+    "customfield_12730": "nil",
+    "customfield_13074": "nil",
+    "customfield_13075": "nil",
+    "customfield_12732": "nil",
+    "customfield_13076": "nil",
+    "customfield_13070": "nil",
+    "customfield_13071": "nil",
+    "customfield_13072": "nil",
+    "customfield_15262": "nil",
+    "assignee": {
+      "self": "http://jiracorp.brq.com/rest/api/2/user?username=magno",
+      "name": "magno",
+      "emailAddress": "magno@brq.com",
+      "avatarUrls": {
+        "16x16": "http://jiracorp.brq.com/secure/useravatar?size=small&avatarId=10122",
+        "48x48": "http://jiracorp.brq.com/secure/useravatar?avatarId=10122"
+      },
+      "displayName": "Jose Carlos Morand Magno",
+      "active": true
+    },
+    "attachment": [],
+    "aggregatetimeestimate": "nil",
+    "customfield_12602": "nil",
+    "customfield_12601": "nil",
+    "customfield_13088": "nil",
+    "customfield_13089": "nil",
+    "customfield_13086": "nil",
+    "customfield_13087": "nil",
+    "customfield_14400": "nil",
+    "customfield_13084": "nil",
+    "customfield_13085": "nil",
+    "customfield_13082": "",
+    "customfield_13083": "nil",
+    "customfield_13080": "nil",
+    "aggregatetimespent": "nil",
+    "customfield_13081": "nil"
+  }
+}

@@ -23,19 +23,19 @@ $(function() {
     <%= f.label :descricao %><br />
     <%= f.text_field :descricao, :size => 100 %>
   </div>
-  <div class="field">
-    <%= f.label :users %><br />
-    <%= f.text_field :users, :size => 50 %>
-  </div>
+  <!--div class="field">
+    <!--%= f.label :users %><br />
+    <!--%= f.text_field :users, :size => 50 %>
+  <!--/div-->
   
   <div class="field">
     <%= f.label :cis %><br />
     <%= f.text_field :cis, :size => 50 %>
   </div>
-  <div class="field">
-    <%= f.label "Agrupar itens dentro um unico ticket ? " %>
-    <%= f.select :agrupar, (["Nao agrupar", "Agrupar"]) %>
-  </div>
+  <!--div class="field">
+    <!--%= f.label "Agrupar itens dentro um unico ticket ? " %>
+    <!--%= f.select :agrupar, (["Nao agrupar", "Agrupar"]) %>
+  </div-->
 
 
   <div class="field">
@@ -46,6 +46,8 @@ $(function() {
     <%= f.label :fimexec %><br />
     <%= f.text_field :fimexec, :id => "datepicker2"  %>
   </div>
+
+  <%= render 'params_tickets' %>
 
 
   <%= f.hidden_field :checklist_id  %>

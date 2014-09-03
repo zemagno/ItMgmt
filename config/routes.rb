@@ -2,6 +2,9 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  resources :area_de_responsabilidades
+
+
   resources :custom_de_paras
 
 
@@ -38,7 +41,7 @@ ItMgmt::Application.routes.draw do
 
   resources :exec_itens_checklists
 
-
+  resources :ramal, :only => [:index]
   resources :exec_checklists, :only => [:show, :index]
 
 
@@ -56,16 +59,14 @@ ItMgmt::Application.routes.draw do
   resources :audits
 
 
-
   #match "audits", to: "audits#index"
   #match "/audits/:id", to: "audits#show"
 
   #mount Sidekiq::Web, at: '/sidekiq'
-
-  match "ramais", to: "ramal_login#index"
-  match "ramais/new", to: "ramal_login#new"
-  match "tel_ramal_login", to: "ramal_login#index"
-  match "tel_ramal_logins", to: "ramal_login#index" #TODO limpar esse lixo..
+  # match "ramais", to: "ramal_login#index"
+  # match "ramais/new", to: "ramal_login#new"
+  # match "tel_ramal_login", to: "ramal_login#index"
+  # match "tel_ramal_logins", to: "ramal_login#index" #TODO limpar esse lixo..
   
   resources :tipotasks
   resources :tipo_tasks

@@ -94,7 +94,7 @@ class TasksController < ApplicationController
     @task.Ativo = true;
     respond_to do |format|
       if @task.save
-        distribui(@task)
+        # distribui(@task)
         format.html { redirect_to(@task, :notice => 'Alerta criado com sucesso.') }
       else
         flash[:error] = "<ul>" + @task.errors.full_messages.map{|o| "<li>" + o + "</li>" }.join("") + "</ul>"

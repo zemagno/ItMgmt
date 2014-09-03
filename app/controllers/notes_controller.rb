@@ -1,5 +1,5 @@
 class NotesController < InheritedResources::Base
-
+load_and_authorize_resource
 def index
     @search = params[:search] || session[:search_notes]
     session[:search_notes] = @search

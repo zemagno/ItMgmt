@@ -1,0 +1,290 @@
+{
+  "fields": {
+    "summary": "Horário de Verão",
+    "issuetype": {
+      "name": "GMUD"
+    },
+    "customfield_13069": 
+      "value": "Produção",
+    },
+    "created": "2014-08-27T16:08:17.366-0300",
+    "project": {
+      "self": "http://jiracorp.brq.com/rest/api/2/project/INFRAII",
+      "id": "12303",
+      "key": "INFRAII",
+      "name": "Infraestrutura II",
+      "avatarUrls": {
+        "16x16": "http://jiracorp.brq.com/secure/projectavatar?size=small&pid=12303&avatarId=10011",
+        "48x48": "http://jiracorp.brq.com/secure/projectavatar?pid=12303&avatarId=10011"
+      }
+    },
+    "comment": {
+      "startAt": 0,
+      "maxResults": 0,
+      "total": 0,
+      "comments": []
+    },
+    "timeoriginalestimate": "nil",
+    "customfield_10307": "nil",
+    "customfield_10306": "nil",
+    "customfield_14509": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17035",
+      "value": "N/A",
+      "id": "17035"
+    },
+    "customfield_14508": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17032",
+      "value": "N/A",
+      "id": "17032"
+    },
+    "customfield_10308": "nil",
+    "customfield_14507": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17029",
+      "value": "N/A",
+      "id": "17029"
+    },
+    "customfield_13041": "nil",
+    "customfield_14506": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17026",
+      "value": "N/A",
+      "id": "17026"
+    },
+    "customfield_13040": "nil",
+    "customfield_14505": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17023",
+      "value": "N/A",
+      "id": "17023"
+    },
+    "customfield_10305": "51106",
+    "customfield_13043": "nil",
+    "customfield_14504": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17020",
+      "value": "N/A",
+      "id": "17020"
+    },
+    "customfield_13042": "nil",
+    "votes": {
+      "self": "http://jiracorp.brq.com/rest/api/2/issue/INFRAII-5/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "customfield_13045": "nil",
+    "customfield_13044": "nil",
+    "customfield_13047": "nil",
+    "customfield_13046": "nil",
+    "resolutiondate": "nil",
+    "customfield_13049": "nil",
+    "customfield_13048": "nil",
+    "customfield_15095": "nil",
+    "customfield_15127": "nil",
+    "customfield_14513": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17047",
+      "value": "N/A",
+      "id": "17047"
+    },
+    "duedate": "nil",
+    "customfield_14514": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17050",
+      "value": "N/A",
+      "id": "17050"
+    },
+    "customfield_14512": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17044",
+      "value": "N/A",
+      "id": "17044"
+    },
+    "watches": {
+      "self": "http://jiracorp.brq.com/rest/api/2/issue/INFRAII-5/watchers",
+      "watchCount": 1,
+      "isWatching": true
+    },
+    "customfield_14510": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17038",
+      "value": "N/A",
+      "id": "17038"
+    },
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 0,
+      "total": 0,
+      "worklogs": []
+    },
+    "customfield_13031": "nil",
+    "customfield_12512": "nil",
+    "customfield_13036": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14375",
+      "value": "Alto",
+      "id": "14375"
+    },
+    "customfield_12511": "nil",
+    "customfield_13035": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14370",
+      "value": "Projeto",
+      "id": "14370"
+    },
+    "customfield_13034": "nil",
+    "customfield_13033": "2014-08-27",
+    "customfield_13038": "2014-08-29T13:06:00.000-0300",
+    "customfield_13037": "Ver o documento deste link:  https://docs.google.com/a/brq.com/spreadsheet/ccc?key=0Age7GKvZkPnqdDFMOVduOFN0THB1d0k2cFBhMFM4ZWc&usp=sharing \r\nAplicar fix/script/etc no AD CIs: ALPHASERVER1 ,BVSERVER1 ,BVSERVER6 ,FORSERVER99 ,FOSERVER1 ,MALSERVER2 ,MALSERVER99 ,MURSERVER1 ,PPSERVER1 ,RJSERVER141 ,RJSERVER2 ,SPSERVER6 ,SPSERVER8 Resp: nsantos\r\nFoi Testado ? \r\nFoi prÃ©-negociado com as Ã¡reas envolvidas ? \r\nComunicaÃ§Ã£o Externa OK ? \r\nComunicaÃ§Ã£o Interna OK ? \r\nNecessita notificar Ã¡rea de suporte interno ? \r\nNecessita treinamento para Ã¡rea de suporte interno ? \r\nPlano de instalaÃ§Ã£o OK ? \r\nPlano de Roll-Back OK ? \r\nPlanos foram aprovados ? \r\nExiste impacto em outros elementos do DC ? \r\nExiste plano de teste pÃ³s-implementaÃ§Ã£o ? \r\nUsuÃ¡rios para testes pÃ³s-implementaÃ§Ã£o foram mobilizados ? \r\nEntidades externas foram notificadas e mobilizadas ? \r\nNecessita de aÃ§Ã£o das entidades externas ? \r\nEnviar comunicado para alta direcao com mudancas da semana \r\nObter ok do magno\r\nObter ok do cesar\r\nObter aprovacao em 25 vias do papa",
+    "customfield_15116": "nil",
+    "timeestimate": "nil",
+    "customfield_15114": "nil",
+    "customfield_12503": "nil",
+    "customfield_14502": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17014",
+      "value": "N/A",
+      "id": "17014"
+    },
+    "customfield_14503": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17017",
+      "value": "N/A",
+      "id": "17017"
+    },
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_12700": "nil",
+    "customfield_12701": "nil",
+    "timetracking": {},
+    "customfield_13022": "nil",
+    "customfield_13090": "nil",
+    "customfield_14528": "nil",
+    "customfield_14529": "nil",
+    "customfield_14526": "nil",
+    "customfield_14527": "nil",
+    "customfield_12903": "nil",
+    "customfield_12846": "nil",
+    "customfield_14532": "nil",
+    "customfield_13099": "nil",
+    "customfield_14531": "nil",
+    "customfield_14530": "nil",
+    "updated": "2014-08-27T16:08:17.366-0300",
+    "customfield_14203": "nil",
+    "customfield_14534": "nil",
+    "priority": {
+      "self": "http://jiracorp.brq.com/rest/api/2/priority/5",
+      "iconUrl": "http://jiracorp.brq.com/images/icons/priority_trivial.gif",
+      "name": "Trivial",
+      "id": "5"
+    },
+    "description": "nil",
+    "customfield_14533": "nil",
+    "customfield_13092": "nil",
+    "customfield_13093": "nil",
+    "customfield_13094": "nil",
+    "issuelinks": [],
+    "customfield_13095": "nil",
+    "customfield_13096": "nil",
+    "customfield_13097": "nil",
+    "customfield_13098": "nil",
+    "customfield_13104": "nil",
+    "customfield_13015": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14373",
+      "value": "Normativa",
+      "id": "14373"
+    },
+    "subtasks": [],
+    "status": {
+      "self": "http://jiracorp.brq.com/rest/api/2/status/1",
+      "description": "The issue is open and ready for the assignee to start work on it.",
+      "iconUrl": "http://jiracorp.brq.com/images/icons/status_open.gif",
+      "name": "Aberto",
+      "id": "1"
+    },
+    "customfield_14417": "2014-08-29T16:08:17.366-0300",
+    "customfield_14418": "nil",
+    "customfield_14419": "nil",
+    "customfield_10005": "nil",
+    "customfield_14515": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17053",
+      "value": "N/A",
+      "id": "17053"
+    },
+    "workratio": -1,
+    "customfield_14516": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17056",
+      "value": "N/A",
+      "id": "17056"
+    },
+    "customfield_14517": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17059",
+      "value": "N/A",
+      "id": "17059"
+    },
+    "customfield_14207": "2014-02-27",
+    "customfield_13200": "nil",
+    "customfield_13201": "nil",
+    "customfield_12438": "nil",
+    "customfield_12437": "nil",
+    "environment": "nil",
+    "customfield_14523": "nil",
+    "customfield_14525": "nil",
+    "customfield_14524": "nil",
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_14420": "nil",
+    "customfield_14122": "<div class=\"aui-message warning shadowed\">\r\n<p class=\"title\">\r\n<span class=\"aui-icon icon-warning\"></span>\r\n                 Verifique se os documentos abaixo estão devidamente anexados na aba <u>Escopo</u>.\r\n                <ul>\r\n                        <li>EN</li>\r\n                        <li>Plano de Metodologia</li>\r\n                </ul>\r\n</br>\r\n                <b>Obs:</b> A falta de anexos (docs) poderá gerar impacto no processo.\r\n</p>\r\n</div>",
+    "customfield_13000": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14302",
+      "value": "Brasil",
+      "id": "14302"
+    },
+    "customfield_12024": "nil",
+    "customfield_12729": "nil",
+    "customfield_12426": "nil",
+    "resolution": "nil",
+    "fixVersions": [],
+    "customfield_12600": "nil",
+    "aggregatetimeoriginalestimate": "nil",
+    "customfield_13077": "nil",
+    "customfield_13078": "nil",
+    "customfield_12730": "nil",
+    "customfield_13073": "nil",
+    "customfield_13074": "nil",
+    "customfield_13075": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14406",
+      "value": "Produção",
+      "id": "14406"
+    },
+    "customfield_12732": "nil",
+    "customfield_13076": "nil",
+    "customfield_13070": "nil",
+    "customfield_13071": "nil",
+    "customfield_13072": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14410",
+      "value": "Produção",
+      "id": "14410"
+    },
+    "customfield_15262": "nil",
+    "assignee": {
+      "self": "http://jiracorp.brq.com/rest/api/2/user?username=magno",
+      "name": "magno",
+      "emailAddress": "magno@brq.com",
+      "avatarUrls": {
+        "16x16": "http://jiracorp.brq.com/secure/useravatar?size=small&avatarId=10122",
+        "48x48": "http://jiracorp.brq.com/secure/useravatar?avatarId=10122"
+      },
+      "displayName": "Jose Carlos Morand Magno",
+      "active": true
+    },
+    "attachment": [],
+    "aggregatetimeestimate": "nil",
+    "customfield_12602": "nil",
+    "customfield_12601": "nil",
+    "customfield_13088": "nil",
+    "customfield_13089": "nil",
+    "customfield_13086": "nil",
+    "customfield_13087": "nil",
+    "customfield_14400": "nil",
+    "customfield_13084": "nil",
+    "customfield_13085": "nil",
+    "customfield_13082": "",
+    "customfield_13083": "nil",
+    "customfield_13080": "nil",
+    "aggregatetimespent": "nil",
+    "customfield_13081": "nil"
+  }
+}

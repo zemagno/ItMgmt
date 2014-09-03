@@ -57,7 +57,7 @@ class EmailController < ApplicationController
           puts "*********************************************************************************************************"
        @resposta = Hash.new
        [:to,:cc,:body,:subject].each do |f|
-          @resposta[f] = fill_in(Parametro.find_by_tipo_and_subtipo(template,f.to_s).valor,parametros)
+          @resposta[f] = fill_in(Parametro.get(:tipo => template,:subtipo => f.to_s),parametros)
         end
         puts "*********************************************************************************************************"
         puts "Resposta #{@resposta}"       
@@ -65,63 +65,3 @@ class EmailController < ApplicationController
   end
 end
 
-
-  # def enviar
-  #   case params[:acao]
-  #   when "cobrancacontratos"
-  #       tipo = params[:acao]
-  #       contrato = Contrato.find(params[:id])
-  #       valor = number_to_currency(contrato.valormensal, :unit => 'R$ ', :separator => '.', :delimiter => ',')  
-  #       parametros = { contrato_descricao: contrato.descricao, contrato_projetoCCTI: contrato.projetoCCTI, contrato_classificacao: contrato.classificacao, contrato_valor: valor, contrato_fornecedor_nome: contrato.fornecedor.nome}
-  #       montar_email(tipo,parametros)       
-
-  #   when "alertaci"
-  #       tipo = params[:acao]
-  #       ci = Ci.find(params[:id])
-  #       parametros = { ci_chave: ci.chave, ci_owner: ci.Owner, ci_notificacao: ci.notificacao, ci_descricao: ci.descricao }
-  #       montar_email("servidor_sem_espaco",parametros)
-  #   when "alertadci" 
-  #       ci = Ci.find(params[:id])
-  #       @resposta = Hash.new   
-  #       @resposta[:to] =  ListaEmail.acerta("#{ci.Owner},#{ci.notificacao}","@brq.com")
-  #       @resposta[:subject] = "ALERTA: #{ci.chave}"
-  #       @resposta[:body] = "Bom dia,\n\nChave: #{ci.chave}\n\nServico: #{ci.tipoci.tipo}\n\nDescricao: #{ci.descricao}"
-  #   when "incidente" 
-  #       task = Task.find(params[:id])
-  #       @resposta = Hash.new   
-  #       @resposta[:to] = ListaEmail.acerta("#{task.solicitante}","@brq.com")
-  #       @resposta[:cc] = ListaEmail.acerta("#{task.ci.notificacao}","@brq.com") unless task.ci.blank?
-  #       @resposta[:subject] = "[dc] ALERTA: #{task.ci.chave} - #{task.ci.descricao} " unless task.ci.blank?
-  #       @resposta[:body] = "Bom dia,\n\nNotificacao importante. \n\nTipo de Alerta: #{task.tipotask}\n\nDescricao: #{task.description}"
-  #       @resposta[:body] += "\n\nElemento: #{task.ci.chave} - #{task.ci.descricao} " unless task.ci.blank?
-  #       @resposta[:body] += "\n\nCriticidade: #{task.criticidade.name} "
-  #   end  
-  #   # colocar o montar_email aqui... nao precisa ser um def a mais
-    
-  # end
-
-
-
-# when "cobrancacontratos" 
-    #   contrato = Contrato.find(params[:id])
-    #   @nome_fornecedor = contrato.fornecedor.nome
-    #   valor = number_to_currency(contrato.valormensal, :unit => 'R$ ', :separator => '.', :delimiter => ',')
-    #   # *TODO* verificar se veio algum contrato..
-      
-    #   parametros = { contrato_descricao: contrato.descricao, contrato_projetoCCTI: contrato.projetoCCTI, contrato_classificacao: contrato.classificacao, contrato_valor: valor, contrato_fornecedor_nome: contrato.fornecedor.nome}
-    
-    #   # TODO tentar pegar o basico do atributos qq coisa do activerecord
-
-    #   @resposta = Hash.new
-    #   @resposta[:to] =  Parametro.find_by_tipo_and_subtipo("cobrancacontratos","TO").valor || "destino@brq.com" 
-    #   @resposta[:cc] =  Parametro.find_by_tipo_and_subtipo("cobrancacontratos","CC").valor || "" 
-    
-    #   @resposta[:body] = fill_in(Parametro.find_by_tipo_and_subtipo("cobrancacontratos","BODY").valor,parametros)
-    #   @resposta[:subject] = fill_in(Parametro.find_by_tipo_and_subtipo("cobrancacontratos","SUBJECT").valor,parametros)
-    
-    #   # @resposta[:subject] = "APROVACAO: Fatura #{contrato.fornecedor.nome} - "+valor
-    #   # @resposta[:body] = "Bom dia,\n"
-    #   # @resposta[:body] += "Segue fatura referente a #{contrato.descricao}.\n\n"
-    #   # @resposta[:body] +="Valor    :"+valor+"\n" 
-    #   # @resposta[:body] +="CC       :#{contrato.projetoCCTI}\n"
-    #   # @resposta[:body] +="Classif. :#{contrato.classificacao}\n\n"

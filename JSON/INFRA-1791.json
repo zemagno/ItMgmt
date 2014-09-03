@@ -1,0 +1,475 @@
+{
+  "id": "83933",
+  "expand": "renderedFields,names,schema,transitions,operations,editmeta,changelog",
+  "self": "http://jiracorp.brq.com/rest/api/2/issue/83933",
+  "key": "INFRA-1791",
+  "fields": {
+    "summary": "[GMUD] Criar hostname no dns externo pms.brq.com, chamado 102239 BTG",
+    "customfield_13063": "Adicionar o hostname pms.brq.com ao servidor spserver126, permitindo que qualquer pessoal de fora da brq acesse o servidor utilizando o novo hostname.",
+    "customfield_13062": "Restart momentâneo no serviço do DNS.",
+    "customfield_13065": "nil",
+    "customfield_13064": "nil",
+    "issuetype": {
+      "self": "http://jiracorp.brq.com/rest/api/2/issuetype/132",
+      "id": "132",
+      "description": "",
+      "iconUrl": "http://jiracorp.brq.com/images/icons/genericissue.gif",
+      "name": "GMUD",
+      "subtask": false
+    },
+    "customfield_13061": "Restaurar arquivos original\r\ncp /var/named/brq.com20140802 /var/named/brq.com\r\n\r\nReiniciar servidor do DNS\r\ninvoke-rc.d named restart",
+    "customfield_13060": "cp /var/named/brq.com /var/named/brq.com20140802 ",
+    "customfield_12744": "nil",
+    "customfield_14107": "nil",
+    "customfield_12521": "nil",
+    "customfield_13067": "nil",
+    "customfield_13066": "nil",
+    "customfield_12520": "nil",
+    "timespent": "nil",
+    "customfield_13069": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14414",
+      "value": "Produção",
+      "id": "14414"
+    },
+    "customfield_13068": "nil",
+    "customfield_12522": "nil",
+    "reporter": {
+      "self": "http://jiracorp.brq.com/rest/api/2/user?username=smartao",
+      "name": "smartao",
+      "emailAddress": "smartao@brq.com",
+      "avatarUrls": {
+        "16x16": "http://jiracorp.brq.com/secure/useravatar?size=small&avatarId=10122",
+        "48x48": "http://jiracorp.brq.com/secure/useravatar?avatarId=10122"
+      },
+      "displayName": "Sergei Armando Martao",
+      "active": true
+    },
+    "customfield_12514": "nil",
+    "customfield_12515": "nil",
+    "customfield_12517": "nil",
+    "created": "2014-08-05T10:43:34.928-0300",
+    "customfield_12518": "nil",
+    "customfield_12519": "nil",
+    "customfield_12002": "nil",
+    "customfield_15244": "nil",
+    "customfield_13054": "nil",
+    "customfield_13053": "nil",
+    "customfield_13052": "nil",
+    "customfield_13051": "nil",
+    "customfield_13050": "nil",
+    "customfield_13059": "No servidor NS1\r\n\r\nNo arquivo /var/named/brq.com\r\n\r\nAtualizar Linha 4\r\nDe:\r\n2014080102; serial\r\n\r\nPara:\r\n2014080501; serial\r\n\r\nAdicionar:\r\npms   IN CNAME FWBVREDIR82\r\n\r\nReiniciar servidor do DNS\r\ninvoke-rc.d named restart",
+    "customfield_12733": "nil",
+    "customfield_13058": "nil",
+    "customfield_13057": "nil",
+    "customfield_13056": "nil",
+    "customfield_13055": "nil",
+    "project": {
+      "self": "http://jiracorp.brq.com/rest/api/2/project/INFRA",
+      "id": "12200",
+      "key": "INFRA",
+      "name": "Infraestrutura",
+      "avatarUrls": {
+        "16x16": "http://jiracorp.brq.com/secure/projectavatar?size=small&pid=12200&avatarId=12704",
+        "48x48": "http://jiracorp.brq.com/secure/projectavatar?pid=12200&avatarId=12704"
+      }
+    },
+    "comment": {
+      "startAt": 0,
+      "maxResults": 1,
+      "total": 1,
+      "comments": [
+        {
+          "self": "http://jiracorp.brq.com/rest/api/2/issue/83933/comment/264974",
+          "id": "264974",
+          "author": {
+            "self": "http://jiracorp.brq.com/rest/api/2/user?username=nsantos",
+            "name": "nsantos",
+            "emailAddress": "nsantos@brq.com",
+            "avatarUrls": {
+              "16x16": "http://jiracorp.brq.com/secure/useravatar?size=small&avatarId=10122",
+              "48x48": "http://jiracorp.brq.com/secure/useravatar?avatarId=10122"
+            },
+            "displayName": "Nelys David Pinto Dos Santos",
+            "active": true
+          },
+          "body": "GMUD executada com sucesso.",
+          "updateAuthor": {
+            "self": "http://jiracorp.brq.com/rest/api/2/user?username=nsantos",
+            "name": "nsantos",
+            "emailAddress": "nsantos@brq.com",
+            "avatarUrls": {
+              "16x16": "http://jiracorp.brq.com/secure/useravatar?size=small&avatarId=10122",
+              "48x48": "http://jiracorp.brq.com/secure/useravatar?avatarId=10122"
+            },
+            "displayName": "Nelys David Pinto Dos Santos",
+            "active": true
+          },
+          "created": "2014-08-05T16:35:01.539-0300",
+          "updated": "2014-08-05T16:35:01.539-0300"
+        }
+      ]
+    },
+    "timeoriginalestimate": "nil",
+    "customfield_10307": "nil",
+    "customfield_10306": "nil",
+    "customfield_14509": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17035",
+      "value": "N/A",
+      "id": "17035"
+    },
+    "customfield_14508": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17032",
+      "value": "N/A",
+      "id": "17032"
+    },
+    "customfield_10308": "nil",
+    "customfield_14507": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17029",
+      "value": "N/A",
+      "id": "17029"
+    },
+    "customfield_13041": "2014-08-05T19:30:00.000-0300",
+    "customfield_14506": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17026",
+      "value": "N/A",
+      "id": "17026"
+    },
+    "customfield_13040": "2014-08-05T19:00:00.000-0300",
+    "customfield_12062": "nil",
+    "customfield_14505": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17023",
+      "value": "N/A",
+      "id": "17023"
+    },
+    "customfield_13043": "Nelys e Sergei",
+    "customfield_10305": "48339",
+    "customfield_14504": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17020",
+      "value": "N/A",
+      "id": "17020"
+    },
+    "customfield_13042": "nil",
+    "votes": {
+      "self": "http://jiracorp.brq.com/rest/api/2/issue/INFRA-1791/votes",
+      "votes": 0,
+      "hasVoted": false
+    },
+    "customfield_13045": "nil",
+    "customfield_13044": "nil",
+    "customfield_13047": "nil",
+    "customfield_13046": "nil",
+    "resolutiondate": "2014-08-05T16:35:01.527-0300",
+    "customfield_13049": "nil",
+    "customfield_13048": "nil",
+    "customfield_15095": "nil",
+    "customfield_15127": "nil",
+    "customfield_14513": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17047",
+      "value": "N/A",
+      "id": "17047"
+    },
+    "duedate": "nil",
+    "customfield_14514": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17050",
+      "value": "N/A",
+      "id": "17050"
+    },
+    "customfield_14512": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17044",
+      "value": "N/A",
+      "id": "17044"
+    },
+    "watches": {
+      "self": "http://jiracorp.brq.com/rest/api/2/issue/INFRA-1791/watchers",
+      "watchCount": 2,
+      "isWatching": false
+    },
+    "customfield_14510": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17038",
+      "value": "N/A",
+      "id": "17038"
+    },
+    "worklog": {
+      "startAt": 0,
+      "maxResults": 0,
+      "total": 0,
+      "worklogs": []
+    },
+    "customfield_13031": "nil",
+    "customfield_13036": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14376",
+      "value": "Baixo",
+      "id": "14376"
+    },
+    "customfield_12512": "nil",
+    "customfield_13035": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14369",
+      "value": "Melhoria",
+      "id": "14369"
+    },
+    "customfield_12511": "nil",
+    "customfield_13034": "nil",
+    "customfield_13033": "2014-08-04",
+    "customfield_13039": "2014-08-05T18:30:00.000-0300",
+    "customfield_13038": "2014-08-05T18:00:00.000-0300",
+    "customfield_13037": "nil",
+    "customfield_15116": "nil",
+    "timeestimate": "nil",
+    "customfield_15114": "nil",
+    "customfield_12503": "nil",
+    "customfield_14502": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17014",
+      "value": "N/A",
+      "id": "17014"
+    },
+    "customfield_14503": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17017",
+      "value": "N/A",
+      "id": "17017"
+    },
+    "progress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_12700": "nil",
+    "customfield_12701": "nil",
+    "timetracking": {},
+    "customfield_13022": "nil",
+    "customfield_13090": "nil",
+    "customfield_14528": "nil",
+    "customfield_14529": "nil",
+    "customfield_14526": "nil",
+    "customfield_14527": "nil",
+    "customfield_12903": "nil",
+    "customfield_12846": "nil",
+    "customfield_14532": "nil",
+    "customfield_13099": "nil",
+    "customfield_14531": "nil",
+    "customfield_14530": "nil",
+    "updated": "2014-08-07T15:51:28.671-0300",
+    "customfield_14203": "nil",
+    "customfield_14534": "nil",
+    "priority": {
+      "self": "http://jiracorp.brq.com/rest/api/2/priority/4",
+      "iconUrl": "http://jiracorp.brq.com/images/icons/priority_minor.gif",
+      "name": "Menor",
+      "id": "4"
+    },
+    "description": "nil",
+    "customfield_14533": "nil",
+    "customfield_13091": "nil",
+    "customfield_13092": "nil",
+    "customfield_13093": "nil",
+    "customfield_13094": "nil",
+    "issuelinks": [
+      {
+        "id": "49421",
+        "self": "http://jiracorp.brq.com/rest/api/2/issueLink/49421",
+        "type": {
+          "id": "10003",
+          "name": "Relates",
+          "inward": "relates to",
+          "outward": "relates to",
+          "self": "http://jiracorp.brq.com/rest/api/2/issueLinkType/10003"
+        },
+        "outwardIssue": {
+          "id": "83934",
+          "key": "INFRA-1792",
+          "self": "http://jiracorp.brq.com/rest/api/2/issue/83934",
+          "fields": {
+            "summary": "[GMUD] Liberar acesso externo ao servidor spserver126 na porta 8080, chamado 102234 BTG",
+            "status": {
+              "self": "http://jiracorp.brq.com/rest/api/2/status/5",
+              "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
+              "iconUrl": "http://jiracorp.brq.com/images/icons/status_resolved.gif",
+              "name": "Resolvido",
+              "id": "5"
+            },
+            "issuetype": {
+              "self": "http://jiracorp.brq.com/rest/api/2/issuetype/132",
+              "id": "132",
+              "description": "",
+              "iconUrl": "http://jiracorp.brq.com/images/icons/genericissue.gif",
+              "name": "GMUD",
+              "subtask": false
+            },
+            "priority": {
+              "self": "http://jiracorp.brq.com/rest/api/2/priority/4",
+              "iconUrl": "http://jiracorp.brq.com/images/icons/priority_minor.gif",
+              "name": "Menor",
+              "id": "4"
+            }
+          }
+        }
+      },
+      {
+        "id": "49415",
+        "self": "http://jiracorp.brq.com/rest/api/2/issueLink/49415",
+        "type": {
+          "id": "10003",
+          "name": "Relates",
+          "inward": "relates to",
+          "outward": "relates to",
+          "self": "http://jiracorp.brq.com/rest/api/2/issueLinkType/10003"
+        },
+        "inwardIssue": {
+          "id": "82543",
+          "key": "INFRA-1786",
+          "self": "http://jiracorp.brq.com/rest/api/2/issue/82543",
+          "fields": {
+            "summary": "[GER MUDANCA - 2014/AGOSTO/04]",
+            "status": {
+              "self": "http://jiracorp.brq.com/rest/api/2/status/1",
+              "description": "The issue is open and ready for the assignee to start work on it.",
+              "iconUrl": "http://jiracorp.brq.com/images/icons/status_open.gif",
+              "name": "Aberto",
+              "id": "1"
+            },
+            "issuetype": {
+              "self": "http://jiracorp.brq.com/rest/api/2/issuetype/52",
+              "id": "52",
+              "description": "",
+              "iconUrl": "http://jiracorp.brq.com/images/icons/documentation.gif",
+              "name": "Documentação",
+              "subtask": false
+            },
+            "priority": {
+              "self": "http://jiracorp.brq.com/rest/api/2/priority/5",
+              "iconUrl": "http://jiracorp.brq.com/images/icons/priority_trivial.gif",
+              "name": "Trivial",
+              "id": "5"
+            }
+          }
+        }
+      }
+    ],
+    "customfield_13095": "nil",
+    "customfield_13096": "nil",
+    "customfield_13097": "nil",
+    "customfield_13098": "nil",
+    "customfield_13104": "nil",
+    "customfield_13015": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14374",
+      "value": "Padrão",
+      "id": "14374"
+    },
+    "subtasks": [],
+    "status": {
+      "self": "http://jiracorp.brq.com/rest/api/2/status/5",
+      "description": "A resolution has been taken, and it is awaiting verification by reporter. From here issues are either reopened, or are closed.",
+      "iconUrl": "http://jiracorp.brq.com/images/icons/status_resolved.gif",
+      "name": "Resolvido",
+      "id": "5"
+    },
+    "customfield_14417": "nil",
+    "customfield_13100": "nil",
+    "customfield_14418": "nil",
+    "customfield_14419": "nil",
+    "customfield_10005": "nil",
+    "customfield_14515": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17053",
+      "value": "N/A",
+      "id": "17053"
+    },
+    "workratio": -1,
+    "customfield_14516": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17056",
+      "value": "N/A",
+      "id": "17056"
+    },
+    "customfield_14517": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/17059",
+      "value": "N/A",
+      "id": "17059"
+    },
+    "customfield_14207": "2014-02-27",
+    "customfield_13200": "nil",
+    "customfield_13201": "nil",
+    "customfield_12438": "nil",
+    "customfield_12437": "nil",
+    "environment": "nil",
+    "customfield_14523": "nil",
+    "customfield_14525": "nil",
+    "customfield_14524": "nil",
+    "aggregateprogress": {
+      "progress": 0,
+      "total": 0
+    },
+    "customfield_14420": "nil",
+    "customfield_14122": "<div class=\"aui-message warning shadowed\">\r\n<p class=\"title\">\r\n<span class=\"aui-icon icon-warning\"></span>\r\n                 Verifique se os documentos abaixo estão devidamente anexados na aba <u>Escopo</u>.\r\n                <ul>\r\n                        <li>EN</li>\r\n                        <li>Plano de Metodologia</li>\r\n                </ul>\r\n</br>\r\n                <b>Obs:</b> A falta de anexos (docs) poderá gerar impacto no processo.\r\n</p>\r\n</div>",
+    "customfield_13000": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14301",
+      "value": "Boa Vista",
+      "id": "14301"
+    },
+    "customfield_12024": "nil",
+    "customfield_12729": "nil",
+    "customfield_12426": "nil",
+    "fixVersions": [
+      {
+        "self": "http://jiracorp.brq.com/rest/api/2/version/10805",
+        "id": "10805",
+        "description": "Ambientes da infraestrutura",
+        "name": "BRQ Infra Interna",
+        "archived": false,
+        "released": false
+      }
+    ],
+    "resolution": {
+      "self": "http://jiracorp.brq.com/rest/api/2/resolution/1",
+      "id": "1",
+      "description": "A resolução para essa pendência foi verificado e testado.",
+      "name": "Resolvido"
+    },
+    "customfield_12600": "nil",
+    "aggregatetimeoriginalestimate": "nil",
+    "customfield_13077": "nil",
+    "customfield_13078": "nil",
+    "customfield_13079": "nil",
+    "customfield_12730": "nil",
+    "customfield_13073": "nil",
+    "customfield_13074": "nil",
+    "customfield_12732": "nil",
+    "customfield_13075": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14406",
+      "value": "Produção",
+      "id": "14406"
+    },
+    "customfield_13076": "nil",
+    "customfield_13070": "nil",
+    "customfield_13071": "nil",
+    "customfield_13072": {
+      "self": "http://jiracorp.brq.com/rest/api/2/customFieldOption/14410",
+      "value": "Produção",
+      "id": "14410"
+    },
+    "customfield_15262": "nil",
+    "assignee": {
+      "self": "http://jiracorp.brq.com/rest/api/2/user?username=nsantos",
+      "name": "nsantos",
+      "emailAddress": "nsantos@brq.com",
+      "avatarUrls": {
+        "16x16": "http://jiracorp.brq.com/secure/useravatar?size=small&avatarId=10122",
+        "48x48": "http://jiracorp.brq.com/secure/useravatar?avatarId=10122"
+      },
+      "displayName": "Nelys David Pinto Dos Santos",
+      "active": true
+    },
+    "attachment": [],
+    "aggregatetimeestimate": "nil",
+    "customfield_12602": "nil",
+    "customfield_12601": "nil",
+    "customfield_13088": "nil",
+    "customfield_13089": "nil",
+    "customfield_13086": "nil",
+    "customfield_13087": "nil",
+    "customfield_14400": "nil",
+    "customfield_13084": "nil",
+    "customfield_13085": "nil",
+    "customfield_13082": "",
+    "customfield_13083": "nil",
+    "customfield_13080": "nil",
+    "aggregatetimespent": "nil",
+    "customfield_13081": "nil"
+  }
+}

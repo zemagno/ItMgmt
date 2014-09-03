@@ -1,0 +1,11 @@
+{
+ "type" => {
+    "name" => "Relates" 
+ }, 
+ "inwardIssue" => { 
+    "key" =>  "INFRAII-10" 
+ }, 
+  "outwardIssue" => { 
+     "key" => "INFRAII-12"
+ }
+}

@@ -1,8 +1,8 @@
 
   <table>
-   <tr><th>Checklist herdados<th></tr>
+   <tr><th><%=title %><th></tr>
 
-<% @pais.each do |i| %>
+<% pais.each do |i| %>
   <tr>
     <td><%= link_to i.descricao[0..50], i , :target => "_blank"%></td>
   </tr>

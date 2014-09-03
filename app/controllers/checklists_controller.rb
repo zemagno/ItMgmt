@@ -23,6 +23,7 @@ class ChecklistsController < ApplicationController
     @checklist = Checklist.find(params[:id])
     @itens = @checklist.itens_checklists
     @pais = @checklist.pais
+    @superpais = @checklist.superpais
 
     respond_to do |format|
       format.html # show.html.erb
