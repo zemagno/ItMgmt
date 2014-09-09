@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  area: MyString
+  responsaveis: MyString
+
+two:
+  area: MyString
+  responsaveis: MyString
