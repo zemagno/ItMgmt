@@ -2,9 +2,12 @@
 <table>
    <tr><th>Checklist: <%= @checklist.descricao %></th></tr>
    <tr><td>  
+        Alias: <%= @checklist.alias %>
+   </td></tr>
+   <tr><td>  
         Tipo Ci: <%= @checklist.tipoci_tipo %>
    </td></tr>
    <tr><td>
-        Executores: <%= @checklist.users %>
+        Responsaveis: <%= @checklist.arearesponsabilidade_full  %>
    <td></tr>
 </table>	

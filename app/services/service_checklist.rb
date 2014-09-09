@@ -14,6 +14,11 @@ class ServiceChecklist
 
 
     def MontaTreeTickets(cl, tipo_ticket)
+    	# navego pelos pais (que herdarao os itens)
+    	# depois navego pelo superpais (que serão tickets independentes)
+    	# devolvo um array com o [ticket mastes, superpai,superpai,superpai]
+
+
     	queue = []
     	checklist_visitado = Hash.new
     	
@@ -21,7 +26,7 @@ class ServiceChecklist
     	
     	queue.push(cl)
     	cl.pais.map { |x| queue.push(x)}
-    	puts "fila"
+    
     	puts queue
         
 		comentarios = []
@@ -34,13 +39,12 @@ class ServiceChecklist
 	       			comment << " CIs: #{x.cis}" if ! x.cis.blank?
 	       			comment << " Resp: #{x.users}" if ! x.users.blank?
 	       			comentarios << comment 
-	       			puts "comment #{comment}"
+	  
 	       		end
 	       	end
 	       	checklist.pais.map { |x| queue.push(x)}
         end
-        puts ">>>> #{comentarios}"
-
+     
         ticket[:comentarios] = comentarios
 
         tickets = [ticket]
@@ -64,8 +68,12 @@ class ServiceChecklist
 
 	    exec_checklist = ExecChecklist.new
 	    exec_checklist.descricao = @execchecklist.descricao
+
+	    #se existir CI e nao estiver na descricao, adiciono.
+	    exec_checklist.descricao << " - #{@execchecklist.cis}"  unless @execchecklist.cis.blank? || exec_checklist.descricao.include?(@execchecklist.cis)
 	    exec_checklist.users = @execchecklist.users
 	    exec_checklist.cis = @execchecklist.cis
+	    exec_checklist.alias = @execchecklist.alias
 	    exec_checklist.inicioexec = @execchecklist.inicioexec
 	    exec_checklist.fimexec = @execchecklist.fimexec
 	    exec_checklist.checklist_id = @execchecklist.checklist_id	    
@@ -82,6 +90,9 @@ class ServiceChecklist
   	sc = ServiceChecklist.new(cl)
   	ticket = sc.FinalizarCriacaoChecklist
 =end
+
+
+
 	def FinalizarCriacaoChecklist
 # TODO finalizar CriacaoChecklist
 # se status nao for 4, log de erro
@@ -96,12 +107,13 @@ class ServiceChecklist
 			if t[:tipo] == :master
 				ticket.create_ticket({:titulo => t[:descricao], 
 			       	 				  :itens => t[:comentarios].join("\r\n"), 
-			      					  :responsavel => "magno" })	
+			      					  :responsavel =>  @execchecklist.users }) #"magno"}) #
+			    # TODO colocar trap de erro aqui..  					  	
 				ticketpai = ticket.ticket.key
 			elsif t[:tipo] == :superpai
 				ticket.create_sub_tarefa({:titulo => t[:descricao], 
 			       	 				 	  :itens => t[:comentarios].join("\r\n"), 
-			      					 	  :responsavel => "magno",
+			      					 	  :responsavel => @execchecklist.users, #"magno", #
 			      					 	  :ticket_pai => ticketpai })	
 			end
 		end
@@ -109,7 +121,18 @@ class ServiceChecklist
 		@execchecklist.tickets = ticketpai
 		@execchecklist.status_checklist_id = 1
 		@execchecklist.save		
+	 
+	 	# TODO - se ja existir um jira, coloca no final e adiciona no comentario do jira pai
+	 	#        se nao existir umj jira, coloca no inicio.
+	    # @execchecklist.cis.split(",") do |c|
+	    # 	ci = Ci.find_gen(c)
+	    	# ci.jira << "#{execchecklist.alias}|#{ticketpai},#{ci.jira}" unless ci.nil?
+	    # end
+	    # atualizar data de mudanca do CI.	
+
 		{:ticket => ticketpai}
+
+
 	end
 
 	def print

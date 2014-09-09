@@ -1,5 +1,5 @@
 class Cadrelatorio < ActiveRecord::Base
-  attr_accessible :consulta, :nome, :descricao, :categoria, :tipoci_id
+  attr_accessible :consulta, :nome, :descricao, :categoria, :tipoci_id, :ultimoacesso, :qtdeacessos
 
   belongs_to :tipoci
 
@@ -8,6 +8,13 @@ class Cadrelatorio < ActiveRecord::Base
       indexes descricao
       indexes categoria
       indexes tipoci(:tipo), :as => :tipo
+  end
+
+
+  def AtualizaEstatisticas
+    self.ultimoacesso = DateTime.now.to_date
+    self.qtdeacessos = self.qtdeacessos.to_i + 1
+    save!
   end
 
 

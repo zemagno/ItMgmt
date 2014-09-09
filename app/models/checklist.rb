@@ -2,7 +2,8 @@
   belongs_to :tipoci
   has_many :itens_checklists
   belongs_to :tipo_checklist
-  attr_accessible :descricao, :users, :tipoci_id
+  belongs_to :area_responsabilidade
+  attr_accessible :descricao, :users, :tipoci_id, :area_responsabilidade_id, :alias
 
   has_many  :relacao_filho, 
             :class_name => "HerancaChecklist",  
@@ -36,6 +37,18 @@
     tipoci.nil? ? "" : tipoci.tipo
   end
 
+  def arearesponsabilidade
+     (area_responsabilidade.area if ! area_responsabilidade.blank?) || ""
+  end
+  def arearesponsabilidade_full
+     ("#{area_responsabilidade.area} - #{area_responsabilidade.responsaveis}" if ! area_responsabilidade.blank?) || "Indef."
+  end
+  def responsaveis
+    (area_responsabilidade.responsaveis if ! area_responsabilidade.blank?) || ""
+  end
+  def responsavel
+    responsaveis.split(",").first || ""
+  end
               
 end
 

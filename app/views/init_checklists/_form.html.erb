@@ -19,35 +19,47 @@ $(function() {
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :descricao %><br />
-    <%= f.text_field :descricao, :size => 100 %>
-  </div>
-  <!--div class="field">
-    <!--%= f.label :users %><br />
-    <!--%= f.text_field :users, :size => 50 %>
-  <!--/div-->
-  
-  <div class="field">
-    <%= f.label :cis %><br />
-    <%= f.text_field :cis, :size => 50 %>
-  </div>
-  <!--div class="field">
-    <!--%= f.label "Agrupar itens dentro um unico ticket ? " %>
-    <!--%= f.select :agrupar, (["Nao agrupar", "Agrupar"]) %>
-  </div-->
+
+<div class="spacer"></div>
+<label>Descrição
+<span class="small">Descriçao desse Checklists</span>
+</label>
+<%= f.text_field :descricao, :size => 100 %>
+
+<div class="spacer"></div>
+<label>Alias
+<span class="small">Alias para campo Jira</span>
+</label>
+<%= f.text_field :alias, :size => 20 %>
+
+<div class="spacer"></div>
+<label>Executor
+<span class="small">Login de quem irá liderar esse checklist</span>
+</label>
+<%= f.text_field :users, :size => 50 %>
 
 
-  <div class="field">
-    <%= f.label :inicioexec %><br />
-    <%= f.text_field :inicioexec, :id => "datepicker1"  %>
-  </div>
-  <div class="field">
-    <%= f.label :fimexec %><br />
-    <%= f.text_field :fimexec, :id => "datepicker2"  %>
-  </div>
+<label>CI
+<span class="small">Principal CI sendo impactado</span>
+</label>
+<div>
+<%= f.text_field :cis, :size => 50 %>
+<div id="ci-droplist-container" style="position:absolute; width: 50px;"></div>
+</div>
 
-  <%= render 'params_tickets' %>
+<div class="spacer"></div>
+<label>Inicio da Execução
+</label>
+<%= f.text_field :inicioexec, :id => "datepicker1", :required => true %>
+
+
+<label>Fim da Execução
+</label>
+<%= f.text_field :fimexec, :id => "datepicker2" , :required => true %>
+
+<div class="spacer"></div>
+
+<%= render 'params_tickets' %>
 
 
   <%= f.hidden_field :checklist_id  %>

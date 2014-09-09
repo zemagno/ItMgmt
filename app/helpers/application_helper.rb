@@ -28,7 +28,7 @@ def jira_to_docs(jira)
 		url = j.split("|")
 		url[1] = url[0] if url[1].blank?
 		
-		if url[1].include? "INFRA-"
+		if url[1].include? "INFRA"
                    url[1] = "http://jiracorp.brq.com/browse/#{url[1]}"
         elsif url[1].include? "INFR-"
                    url[1] = "http://jira.brq.com/browse/#{url[1]}"

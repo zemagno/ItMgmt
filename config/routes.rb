@@ -2,7 +2,9 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
-  resources :area_de_responsabilidades
+  get "ajax/cis"
+
+  resources :area_responsabilidades
 
 
   resources :custom_de_paras

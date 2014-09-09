@@ -118,7 +118,7 @@ class Ability
         can :manage, Audit
     end
 
-    #can :manage, :all
+    can :manage, :all
     
   end
 end

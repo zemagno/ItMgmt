@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140903214504) do
+ActiveRecord::Schema.define(:version => 20140909195552) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20140903214504) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
-  create_table "area_de_responsabilidades", :force => true do |t|
+  create_table "area_responsabilidades", :force => true do |t|
     t.string   "area"
     t.string   "responsaveis"
     t.datetime "created_at",   :null => false
@@ -83,11 +83,13 @@ ActiveRecord::Schema.define(:version => 20140903214504) do
   create_table "cadrelatorios", :force => true do |t|
     t.string   "nome"
     t.text     "consulta"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.string   "descricao"
-    t.string   "categoria",  :limit => 50
+    t.string   "categoria",    :limit => 50
     t.integer  "tipoci_id"
+    t.date     "ultimoacesso"
+    t.integer  "qtdeacessos"
   end
 
   create_table "categories", :force => true do |t|
@@ -110,9 +112,11 @@ ActiveRecord::Schema.define(:version => 20140903214504) do
     t.string   "descricao"
     t.string   "users"
     t.integer  "tipoci_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
     t.integer  "tipo_checklist_id"
+    t.integer  "area_responsabilidade_id"
+    t.string   "alias"
   end
 
   add_index "checklists", ["tipoci_id"], :name => "index_checklists_on_tipoci_id"
@@ -219,6 +223,7 @@ ActiveRecord::Schema.define(:version => 20140903214504) do
     t.integer  "status_checklist_id"
     t.integer  "checklist_id"
     t.text     "params"
+    t.string   "alias"
   end
 
   create_table "exec_itens_checklists", :force => true do |t|

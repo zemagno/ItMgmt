@@ -69,7 +69,9 @@ class Jira
 		issue["fields"]["customfield_13059"]=options[:itens] #{ }"Foi Testado ? \r\nFoi pre-negociado com as areas envolvidas ? \r\nComunicacao Externa OK ? \r\nComunicacao Interna OK ? \r\nNecessita notificar area de suporte interno ? \r\nNecessita treinamento para area de suporte interno ? \r\nPlano de instalacao OK ? \r\nPlano de Roll-Back OK ? \r\nPlanos foram aprovados ? \r\n"
 		issue["fields"]["assignee"]["name"]=options[:responsavel] #{ }"magno"
 		@ticket = Jira.server.Issue.build
+		
 		@ticket.save(issue)
+		# TODO se vier com erro, nao consigo fazer o fetch.
 		@ticket.fetch
 		self
 	end

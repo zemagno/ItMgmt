@@ -11,7 +11,7 @@ class InitChecklist
   end
 
   
-  attr_accessor :agrupar, :checklist_id, :cis, :descricao, :fimexec, :inicioexec, :users
+  attr_accessor :agrupar, :checklist_id, :cis, :descricao, :fimexec, :inicioexec, :users, :alias
 
   
   validates_presence_of :descricao , :message => "Descricao eh obrigatoria"
@@ -24,7 +24,7 @@ class InitChecklist
 
   def valid_date_range_required
     if (inicioexec && fimexec) && (inicioexec > fimexec)
-      errors.add("Data de termino tem que ser posterior a data de inicio")
+      errors.add :fimexec, "Data de termino tem que ser posterior a data de inicio"
     end
   end
 

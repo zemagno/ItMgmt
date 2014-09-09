@@ -9,7 +9,7 @@ class ExecChecklistsController < ApplicationController
 
   def index
     carrega_agregados
-    @exec_checklists = ExecChecklist.all
+    @exec_checklists = ExecChecklist.abertas
 
     respond_to do |format|
       format.html # index.html.erb

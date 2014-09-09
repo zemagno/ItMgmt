@@ -1,5 +1,11 @@
 class InitChecklistsController < ApplicationController
 
+
+  def carrega_agregadas
+    @itens = @checklist.itens_checklists
+    @pais = @checklist.pais
+    @superpais = @checklist.superpais
+  end
   # TODO - colocar seguranca em todo checklist
   def new
     # 
@@ -10,15 +16,15 @@ class InitChecklistsController < ApplicationController
     # ServiceChecklist irá realmente criar a partir do objeto (InitChecklist)
     # 
     @checklist = Checklist.find(params[:checklist_id])
-    @itens = @checklist.itens_checklists
+    carrega_agregadas
+    # @itens = @checklist.itens_checklists
     # @pais = @checklist.pais
-
-    @pais = @checklist.pais
-    @superpais = @checklist.superpais
+    # @superpais = @checklist.superpais
     
     @init_checklist = InitChecklist.new
     @init_checklist.descricao = @checklist.descricao
-    @init_checklist.users = @checklist.users
+    @init_checklist.alias = @checklist.alias
+    @init_checklist.users = @checklist.responsavel
     @init_checklist.checklist_id = @checklist.id
 
     # TODO - criar campos do jira dinamicamente no formulario.
@@ -48,14 +54,13 @@ class InitChecklistsController < ApplicationController
 
     respond_to do |format|
       if not flag_erro
-        format.html { redirect_to exec_checklist_url(id) , :action => 'show' , notice: 'Checklist iniciado com sucesso' }  
-        format.json { render json: @init_checklist, status: :created, location: @init_checklist }
+        format.html { redirect_to exec_checklists_url, :action => 'index' , notice: 'Checklist iniciado com sucesso' }   
       else
         @checklist = Checklist.find(params[:checklist_id])
-        @itens = @checklist.itens_checklists
-        @pais = @checklist.pais
+        carrega_agregadas
+        # @itens = @checklist.itens_checklists
+        # @pais = @checklist.pais
         format.html { render action: "new" }
-        format.json { render json: @init_checklist.errors, status: :unprocessable_entity }
       end
     end
   end

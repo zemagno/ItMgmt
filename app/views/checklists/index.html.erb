@@ -3,7 +3,7 @@
 <table>
   <tr>
     <th>Descricao</th>
-    <th>Executores</th>
+    <th>Area</th>
     <th>Tipoci</th>
     <th></th>
     <th></th>
@@ -13,7 +13,7 @@
 <% @checklists.each do |checklist| %>
   <tr>
      <td><%= link_to checklist.descricao, checklist %></td>
-    <td><%= checklist.users %></td>
+    <td><%= checklist.arearesponsabilidade  %></td>
     <td><%= checklist.tipoci_tipo %></td>
    
     <td><%= link_to 'Iniciar', new_checklist_init_checklist_path(checklist) %></td>

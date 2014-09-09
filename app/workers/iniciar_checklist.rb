@@ -4,7 +4,9 @@ include Sidekiq::Worker
   
   def perform(id)
   	# id = 7
+  	puts "IniciarChecklist: procurando pelo ExecChecklist(#{id})..."
   	cl = ExecChecklist.find(id)
+  	puts "Achei ExecChecklist: #{cl}"
   	sc = ServiceChecklist.new(cl)
   	sc.FinalizarCriacaoChecklist
   end
