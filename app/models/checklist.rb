@@ -3,7 +3,13 @@
   has_many :itens_checklists
   belongs_to :tipo_checklist
   belongs_to :area_responsabilidade
-  attr_accessible :descricao, :users, :tipoci_id, :area_responsabilidade_id, :alias
+  attr_accessible :descricao, :users, :tipoci_id, :area_responsabilidade_id, :alias, :abrir_ticket
+
+  after_initialize :init
+
+  def init
+    self.abrir_ticket = true if self.abrir_ticket.nil?
+  end
 
   has_many  :relacao_filho, 
             :class_name => "HerancaChecklist",  

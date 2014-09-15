@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140909195552) do
+ActiveRecord::Schema.define(:version => 20140911181400) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
     t.integer  "tipo_checklist_id"
     t.integer  "area_responsabilidade_id"
     t.string   "alias"
+    t.boolean  "abrir_ticket"
   end
 
   add_index "checklists", ["tipoci_id"], :name => "index_checklists_on_tipoci_id"
@@ -224,6 +225,7 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
     t.integer  "checklist_id"
     t.text     "params"
     t.string   "alias"
+    t.boolean  "abrir_ticket"
   end
 
   create_table "exec_itens_checklists", :force => true do |t|

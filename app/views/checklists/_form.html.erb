@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :Descricao %><br />
     <%= f.text_field :descricao, :size => 100 %>
@@ -19,6 +20,11 @@
   <div class="field">
     <%= f.label :Alias %><br />
     <%= f.text_field :alias, :size => 20 %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Abrir Ticket?" %>
+    <%= f.check_box :abrir_ticket %>
   </div>
 
   <div class="field">

@@ -21,11 +21,18 @@ class InitChecklistsController < ApplicationController
     # @pais = @checklist.pais
     # @superpais = @checklist.superpais
     
+
+    #@init_checklist= InitChecklist.new(@checklist.attributes.except("id","created_at","updated_at"))
+    # responsavel é o primeiro nome da lista da area_responsaveis.
+    #@init_checklist.users = @checklist.responsavel
+
+
     @init_checklist = InitChecklist.new
     @init_checklist.descricao = @checklist.descricao
     @init_checklist.alias = @checklist.alias
     @init_checklist.users = @checklist.responsavel
     @init_checklist.checklist_id = @checklist.id
+    @init_checklist.abrir_ticket = @checklist.abrir_ticket
 
     # TODO - criar campos do jira dinamicamente no formulario.
     # esta tudo no @res

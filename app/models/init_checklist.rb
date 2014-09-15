@@ -11,7 +11,7 @@ class InitChecklist
   end
 
   
-  attr_accessor :agrupar, :checklist_id, :cis, :descricao, :fimexec, :inicioexec, :users, :alias
+  attr_accessor :agrupar, :checklist_id, :cis, :descricao, :fimexec, :inicioexec, :users, :alias, :abrir_ticket
 
   
   validates_presence_of :descricao , :message => "Descricao eh obrigatoria"
@@ -31,7 +31,7 @@ class InitChecklist
 
   def initialize(attributes = {})
     attributes.each do |name, value|
-      send("#{name}=", value)
+      send("#{name}=", value) if respond_to?(name)
     end
   end
   

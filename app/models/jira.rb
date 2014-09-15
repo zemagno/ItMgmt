@@ -4,7 +4,7 @@ class Jira
      	def server
 	       	@server ||= JIRA::Client.new({
 	            :username => 'magno',
-	            :password => 'Kljcmn@@2', 
+	            :password => 'Jcmnkl##3', 
 	            :site     => 'http://jiracorp.brq.com',
 	            :context_path => '',
 	            :use_ssl=>false, 

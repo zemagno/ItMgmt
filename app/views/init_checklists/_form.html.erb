@@ -32,6 +32,11 @@ $(function() {
 </label>
 <%= f.text_field :alias, :size => 20 %>
 
+<label>Abrir Ticket ?
+<span class="small">Abrir um jira ?</span>
+</label>
+<%= f.check_box :abrir_ticket, :size => 20 %>
+
 <div class="spacer"></div>
 <label>Executor
 <span class="small">Login de quem irá liderar esse checklist</span>

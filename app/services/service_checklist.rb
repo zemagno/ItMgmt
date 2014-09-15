@@ -70,12 +70,14 @@ class ServiceChecklist
 	    exec_checklist.descricao = @execchecklist.descricao
 
 	    #se existir CI e nao estiver na descricao, adiciono.
+	    # esse @execchecklist é na verdade o initchecklist
 	    exec_checklist.descricao << " - #{@execchecklist.cis}"  unless @execchecklist.cis.blank? || exec_checklist.descricao.include?(@execchecklist.cis)
 	    exec_checklist.users = @execchecklist.users
 	    exec_checklist.cis = @execchecklist.cis
 	    exec_checklist.alias = @execchecklist.alias
 	    exec_checklist.inicioexec = @execchecklist.inicioexec
 	    exec_checklist.fimexec = @execchecklist.fimexec
+	    exec_checklist.abrir_ticket = @execchecklist.abrir_ticket
 	    exec_checklist.checklist_id = @execchecklist.checklist_id	    
 	    exec_checklist.status_checklist_id = 4
 	     
@@ -99,6 +101,7 @@ class ServiceChecklist
 # users será o executor master desse checklist. pode se sobrepor a area de responsabilidade ??
 # formulario com os parametros dinamico do jira, armazenados no Params do exec.
 # 
+# TODO - verificar se é somente checklist ou abrir ticket tb
 
 		tickets = MontaTreeTickets(@execchecklist.checklist, :master)
 		ticketpai = nil
@@ -122,7 +125,7 @@ class ServiceChecklist
 		@execchecklist.status_checklist_id = 1
 		@execchecklist.save		
 	 
-	 	# TODO - se ja existir um jira, coloca no final e adiciona no comentario do jira pai
+	 	# TODO - se ja existir um jira no CI, coloca no final e adiciona no comentario do jira pai
 	 	#        se nao existir umj jira, coloca no inicio.
 	    # @execchecklist.cis.split(",") do |c|
 	    # 	ci = Ci.find_gen(c)
