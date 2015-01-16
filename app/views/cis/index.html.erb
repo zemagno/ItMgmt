@@ -27,8 +27,9 @@
     <th>Chave CI</th>
     <th>Descricao</th>
     <th>Tipo</th>
-    <th>Site</th>
-    <th>Owner</th>
+    <th>Localidade</th>
+    <th>Gestor</th>
+    <th>Usuario(s)</th>
     <th>Ult ChgMgmt</th>
   </tr>
 
@@ -40,6 +41,7 @@
     <td><%= ci.tipoci.tipo %></td>
     <td><%= ci.site.nome %></td>
     <td><%= ci.Owner %></td>
+    <td><%= ci.notificacao %></td>
     <% if ci.DocChange.blank?  %>
       <td><%= ci.dataChange %></td>
     <% else %>

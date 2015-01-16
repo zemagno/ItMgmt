@@ -22,7 +22,7 @@ class ServiceChecklist
     	queue = []
     	checklist_visitado = Hash.new
     	
-    	ticket = {tipo: tipo_ticket, descricao: cl.descricao, users: cl.users, comentarios: [] }
+    	ticket = {tipo: tipo_ticket, titulo: cl.titulo, descricao: cl.descricao, users: cl.users, comentarios: [] }
     	
     	queue.push(cl)
     	cl.pais.map { |x| queue.push(x)}
@@ -68,10 +68,11 @@ class ServiceChecklist
 
 	    exec_checklist = ExecChecklist.new
 	    exec_checklist.descricao = @execchecklist.descricao
+	    exec_checklist.titulo = @execchecklist.titulo
 
 	    #se existir CI e nao estiver na descricao, adiciono.
 	    # esse @execchecklist é na verdade o initchecklist
-	    exec_checklist.descricao << " - #{@execchecklist.cis}"  unless @execchecklist.cis.blank? || exec_checklist.descricao.include?(@execchecklist.cis)
+	    exec_checklist.titulo << " - #{@execchecklist.cis}"  unless @execchecklist.cis.blank? || exec_checklist.titulo.include?(@execchecklist.cis)
 	    exec_checklist.users = @execchecklist.users
 	    exec_checklist.cis = @execchecklist.cis
 	    exec_checklist.alias = @execchecklist.alias
@@ -79,63 +80,77 @@ class ServiceChecklist
 	    exec_checklist.fimexec = @execchecklist.fimexec
 	    exec_checklist.abrir_ticket = @execchecklist.abrir_ticket
 	    exec_checklist.checklist_id = @execchecklist.checklist_id	    
-	    exec_checklist.status_checklist_id = 4
+	    exec_checklist.status_checklist_id = STATUS_JIRA_INICIANDO
 	     
 	    exec_checklist.save
 
 	    IniciarChecklist.perform_async(exec_checklist.id)
 	    exec_checklist.id
   	end
-=begin
-    id = 7
-  	cl = ExecChecklist.find(id)
-  	sc = ServiceChecklist.new(cl)
-  	ticket = sc.FinalizarCriacaoChecklist
-=end
 
-
-
-	def FinalizarCriacaoChecklist
-# TODO finalizar CriacaoChecklist
-# se status nao for 4, log de erro
-# users será o executor master desse checklist. pode se sobrepor a area de responsabilidade ??
-# formulario com os parametros dinamico do jira, armazenados no Params do exec.
-# 
-# TODO - verificar se é somente checklist ou abrir ticket tb
-
+	def CriarTickets
 		tickets = MontaTreeTickets(@execchecklist.checklist, :master)
 		ticketpai = nil
 		tickets.each do |t|
 			ticket = Jira.new
 			if t[:tipo] == :master
-				ticket.create_ticket({:titulo => t[:descricao], 
+				ticket.create_ticket({:titulo => @execchecklist.titulo, 
 			       	 				  :itens => t[:comentarios].join("\r\n"), 
-			      					  :responsavel =>  @execchecklist.users }) #"magno"}) #
+			      					  :responsavel =>  @execchecklist.users }) 
 			    # TODO colocar trap de erro aqui..  					  	
 				ticketpai = ticket.ticket.key
 			elsif t[:tipo] == :superpai
-				ticket.create_sub_tarefa({:titulo => t[:descricao], 
+				ticket.create_sub_tarefa({:titulo => t[:titulo], 
 			       	 				 	  :itens => t[:comentarios].join("\r\n"), 
-			      					 	  :responsavel => @execchecklist.users, #"magno", #
+			      					 	  :responsavel => @execchecklist.users,
 			      					 	  :ticket_pai => ticketpai })	
 			end
 		end
+		ticketpai
+	end
+
+	def GerarItens
+		#navegar pelos comentario
+		#criar uma super lista, atentando para nao duplicar comentario de dois pais iguais 
+		#   (a --> gmud, b--> a,gmud)
+		#   aqui eu posso compactar, pois qq coisa do tipo "negociou com impactados", 
+		#   tem que pesquisar nos impactados de todos os CIs.
+		#   colocar botao para impactados do CI cadastrado.
+		concatencar comentarios
+	end
+
+
+
+	# TODO finalizar CriacaoChecklist
+	# TODO FinalizarCriacaoChecklist- se status nao for 4, log de erro
+	# TODO FinalizarCriacaoChecklist- formulario com os parametros dinamico do jira, armazenados no Params do exec.
+	# 
+	# TODO FinalizarCriacaoChecklist- verificar se é somente checklist ou abrir ticket tb
+	# TODO - se ja existir um jira no CI, coloca no final e adiciona no comentario do jira pai
+ 	#        se nao existir um jira, coloca no inicio.
+    # @execchecklist.cis.split(",") do |c|
+    # 	ci = Ci.find_gen(c)
+    	# ci.jira << "#{execchecklist.alias}|#{ticketpai},#{ci.jira}" unless ci.nil?
+    # end
+    # atualizar data de mudanca do CI.
+    # Se existir um jira do criacao, adicionar a esse jira de criacao 
+    #    (historico de servidor e link)	
+
+	def FinalizarCriacaoChecklist
+		if @execchecklist.abrir_ticket
+			ticketpai = CriarTickets()
+			@execchecklist.tickets = ticketpai
+		else
+
+		end
 		
-		@execchecklist.tickets = ticketpai
-		@execchecklist.status_checklist_id = 1
+		@execchecklist.status_checklist_id = STATUS_JIRA_ABERTO
 		@execchecklist.save		
 	 
-	 	# TODO - se ja existir um jira no CI, coloca no final e adiciona no comentario do jira pai
-	 	#        se nao existir umj jira, coloca no inicio.
-	    # @execchecklist.cis.split(",") do |c|
-	    # 	ci = Ci.find_gen(c)
-	    	# ci.jira << "#{execchecklist.alias}|#{ticketpai},#{ci.jira}" unless ci.nil?
-	    # end
-	    # atualizar data de mudanca do CI.	
-
 		{:ticket => ticketpai}
 
 
+	 
 	end
 
 	def print
@@ -144,3 +159,9 @@ class ServiceChecklist
 		p @itens_comentarios
 	end
 end
+=begin
+    id = 7
+  	cl = ExecChecklist.find(id)
+  	sc = ServiceChecklist.new(cl)
+  	ticket = sc.FinalizarCriacaoChecklist
+=end

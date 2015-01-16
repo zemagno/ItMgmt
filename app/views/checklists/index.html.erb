@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Descricao</th>
+    <th>Checklist</th>
     <th>Area</th>
     <th>Tipoci</th>
     <th></th>
@@ -12,7 +12,7 @@
 
 <% @checklists.each do |checklist| %>
   <tr>
-     <td><%= link_to checklist.descricao, checklist %></td>
+     <td><%= link_to checklist.titulo, checklist %></td>
     <td><%= checklist.arearesponsabilidade  %></td>
     <td><%= checklist.tipoci_tipo %></td>
    

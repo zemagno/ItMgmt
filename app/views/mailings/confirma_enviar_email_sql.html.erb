@@ -1,0 +1,17 @@
+
+
+<h1>Confirma enviar emails ?</h1>
+<h1>Consulta: <%=@mailing_sql%></h1>
+
+
+<div id="stylized" class="myform">
+<%=  form_for :enviar_email_sql, :url => { :action => :enviar_email_sql } do |f|  %>
+
+<%= hidden_field_tag 'mailing_sql', @mailing_sql%>
+<div class="buttons">
+    <%= f.submit "Enviar Emails" %>
+</div>
+</br>
+<% end %>
+
+

@@ -3,7 +3,7 @@
   has_many :itens_checklists
   belongs_to :tipo_checklist
   belongs_to :area_responsabilidade
-  attr_accessible :descricao, :users, :tipoci_id, :area_responsabilidade_id, :alias, :abrir_ticket
+  attr_accessible :descricao, :users, :tipoci_id, :area_responsabilidade_id, :alias, :abrir_ticket, :titulo
 
   after_initialize :init
 

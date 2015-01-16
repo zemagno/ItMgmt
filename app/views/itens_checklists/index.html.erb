@@ -24,7 +24,7 @@
 <!-- NAO PERDER TEMPO ALTERANDO ESSE INDEX, pois qq manutencao sera toda no Checklists.. -->
 <% @itens_checklists.each do |itens_checklist| %>
   <tr>
-    <td><%= link_to itens_checklist.checklist.descricao, itens_checklist.checklist %></td>
+    <td><%= link_to itens_checklist.checklist_titulo, itens_checklist.checklist %></td>
     <td><%= link_to itens_checklist.descricao, itens_checklist %></td>
     <td><%= itens_checklist.users %></td>
     <td><%= itens_checklist.cis %></td>

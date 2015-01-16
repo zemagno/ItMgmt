@@ -5,8 +5,8 @@
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>BRQ IT Services - Gestão de TI</title>
-</head>
-<body>
+
+
 <!--%= stylesheet_link_tag :all %-->
 <%= stylesheet_link_tag "jquery-ui.css" %>
 <%= stylesheet_link_tag "chavecis.css" %>
@@ -16,8 +16,7 @@
 <%= stylesheet_link_tag "jquery.datetimepicker.css" %>
 
 
-
-<%= javascript_include_tag "jquery", "jquery-ujs", "application" , "jquery.datetimepicker.js"%>
+<%= javascript_include_tag "jquery", "jquery-ujs", "application" , "angular", "jquery.datetimepicker.js"%>
 <%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
 <%= javascript_include_tag "utils.js" %>
 
@@ -34,8 +33,8 @@ $(function() {
     });
 });
 </script>
-
-
+</head>
+<body ng-app>
 <div id="wrapper">
 	<div id="header-wrapper">
 		<div id="header">

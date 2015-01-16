@@ -27,7 +27,7 @@ class EnviaEmailWorker
     when "CI"  
          # TODO simplificar isso aqui..
          ci = Ci.includes(:atributo => :dicdado).find(params[:id])
-         destinatario = ListaEmail.acerta(Ci.Owner,"@brq.com")
+         destinatario = ListaEmail.acerta(ci.Owner,"@brq.com")
          from = Parametro.get(:tipo => "EMAIL_CI", :subtipo => "FROM")
          cc = Parametro.get(:tipo => "EMAIL_CI", :subtipo => "CC")
          CiMailer.enviar(template.template,ci,"NOC - #{template.nome} - #{ci.chave}",destinatario,cc,from).deliver
@@ -41,13 +41,15 @@ class EnviaEmailWorker
          CiMailer.enviar(template.template,task,"NOC - #{template.nome} - #{task.id}",destinatario,cc,from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{task.id}] em #{Time.now}"  
     when "MAILING"
-         mailing = Mailing.find(params[:id])
-         from = params[:from] #|| Parametro.get( :tipo => "EMAIL_ALERTA", :subtipo => "FROM")
-         #CiMailer.enviar(template.template,mailing,mailing.subject,mailing.to,mailing.mailing.cc,mailing.from).deliver
-         CiMailer.enviar(template.template,mailing,params[:subject],params[:to],params[:cc],from).deliver
+         
+         params[:to] = ListaEmail.acerta(params[:to],"@brq.com")
+         params[:from] = ListaEmail.acerta(params[:from],"@brq.com")
+         params[:cc] = ListaEmail.acerta(params[:cc],"@brq.com")
+        
+         CiMailer.enviar(template.template,params[:body],params[:subject],params[:to],params[:cc],params[:from]).deliver
          # TODO se isso acima funcionar, alterar as duas linhas abaixo e o from acima
-         job.status = "Email enviado para #{params[:to]}. #{job.templates_email.template}: [#{mailing.id}] em #{Time.now}" 
-         Event.register("email","mailing - #{mailing.tag}","detalhe","Enviado to:#{params[:to]} - subject:#{params[:subject]} - from: #{from}")  
+         job.status = "Email enviado para #{params[:to]}. #{job.templates_email.template} em #{Time.now}" 
+         Event.register("email","mailing","detalhe","Enviado to:#{params[:to]} - subject:#{params[:subject]} - from: #{params[:from]}")  
     end
     job.save!
   end

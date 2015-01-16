@@ -39,7 +39,10 @@ class EmailController < ApplicationController
           ci = Ci.find(params[:id])
           parametros = {}
           ci.attribute_names.each do |attr| 
-              parametros["ci_#{attr}".downcase.to_sym] = ci.send(attr)  
+              idx = "ci_#{attr}".downcase.to_sym
+              parametros[idx] = ci.send(attr) 
+              parametros[idx] = parametros[idx].partition('&')[0] if parametros[idx].respond_to?(:partition)
+              # parametros["ci_#{attr}".downcase.to_sym] = ci.send(attr)  
           end
           parametros[:ci_site] =ci.site.nome
           parametros[:email_impactados] = Rails.cache.read("impactados-#{ci.id}-email")

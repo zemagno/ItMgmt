@@ -10,7 +10,7 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca,:provisionar
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca ,:provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex
 
   belongs_to :site
   belongs_to :tipoci
@@ -61,7 +61,7 @@ class Ci < ActiveRecord::Base
 
   validates :Owner, :format => { :with => /[a-zA-Z]*/,
       :message => "Somente Caracter Alfanumerico" }
-  validates :Owner, :presence => { :message => " eh mandatorio" }
+  validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
   validates :chave, :presence => { :message => " eh mandatorio" }
   validates :chave,  :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB" }
   
@@ -221,6 +221,7 @@ logger.debug(">>>>> duplicar")
       indexes :ProjetoDebito 
       indexes :descricaocobranca
       indexes :codigocobranca
+      indexes :codigorateio
       indexes :provisionar
       indexes :cobrar
       indexes jira

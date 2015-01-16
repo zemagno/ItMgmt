@@ -2,7 +2,7 @@ class CreateExecChecklists < ActiveRecord::Migration
   def change
     create_table :exec_checklists do |t|
 
-      t.string :descricao
+      t.text :descricao
       t.string :cis
       t.string :users
       t.date :inicioexec

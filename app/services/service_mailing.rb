@@ -10,11 +10,35 @@ class ServiceMailing
 	def enviar(_tag)
 		mailing = Mailing.find_all_by_tag(_tag)
 		mailing.each do |m|
-			p = Hash[ :id => m.id, :to => m.to, :cc => m.cc, :subject => m.subject, :from => m.from ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
+			p = Hash[ :id => m.id, :to => m.to, :cc => m.cc, :subject => m.subject, :from => m.from, :body => m.body ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
 			job = JobEnviarEmail.criar(m.templates_email_id, p.to_yaml)
 			EnviaEmailWorker.perform_async(job.id)
 		end
 		Event.register("email","mailing - #{_tag}","resumo","Enfileirados #{mailing.count} emails para envio.")
+	end
+
+	def enviar_por_sql(sql)
+		mysql_res = ActiveRecord::Base.connection.execute(sql)
+        mailing = []
+        mysql_res.each{ |res| mailing << res }
+        fields= Hash[mysql_res.fields.map.with_index.to_a]
+        tag = fields["tag"]
+        template_email_id = fields["template_mail_id"]
+        from = fields["from"]
+        to = fields["to"]
+        cc = fields["cc"]
+
+        
+        subject = fields["subject"]
+        body = fields["body"]
+        mailing.each do |m|
+			p = Hash[ :to => m[to], :cc => m[cc], :subject => m[subject], :from => m[from], :body => m[body] ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
+			job = JobEnviarEmail.criar(m[template_email_id], p.to_yaml)
+			EnviaEmailWorker.perform_async(job.id)
+		end
+		Event.register("email","mailing}","resumo","Enfileirados #{mailing.count} emails para envio.")
+
+
 	end
 end
 

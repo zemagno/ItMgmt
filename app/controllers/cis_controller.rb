@@ -141,7 +141,8 @@ class CisController < ApplicationController
     #end
     
     if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
-      @ci = @cis[0]
+      # @ci = @cis[0]
+      @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
       render :show and return
     end
 

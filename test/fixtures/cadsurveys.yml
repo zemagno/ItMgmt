@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  key: MyString
+  formulario: MyText
+  perguntas: MyText
+  respostas: MyText
+  bloqueado: false
+  processado: false
+  chave: MyString
+
+two:
+  key: MyString
+  formulario: MyText
+  perguntas: MyText
+  respostas: MyText
+  bloqueado: false
+  processado: false
+  chave: MyString

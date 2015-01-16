@@ -1,5 +1,10 @@
 require 'extendjira'
+
+STATUS_JIRA_ABERTO = 1
+STATUS_JIRA_INICIANDO = 4
+
 class Jira
+	
    class << self
      	def server
 	       	@server ||= JIRA::Client.new({

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140909195552) do
+ActiveRecord::Schema.define(:version => 20141002191517) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,13 +27,6 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
-
-  create_table "area_de_responsabilidades", :force => true do |t|
-    t.string   "area"
-    t.string   "responsaveis"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
 
   create_table "area_responsabilidades", :force => true do |t|
     t.string   "area"
@@ -99,6 +92,20 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
     t.integer  "qtdeacessos"
   end
 
+  create_table "cadsurveys", :force => true do |t|
+    t.string   "key"
+    t.text     "formulario"
+    t.text     "perguntas"
+    t.text     "respostas"
+    t.boolean  "bloqueado"
+    t.boolean  "processado"
+    t.string   "chave"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "cadsurveys", ["key"], :name => "index_cadsurveys_on_key"
+
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -116,7 +123,7 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
   end
 
   create_table "checklists", :force => true do |t|
-    t.string   "descricao"
+    t.text     "descricao"
     t.string   "users"
     t.integer  "tipoci_id"
     t.datetime "created_at",               :null => false
@@ -124,6 +131,8 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
     t.integer  "tipo_checklist_id"
     t.integer  "area_responsabilidade_id"
     t.string   "alias"
+    t.boolean  "abrir_ticket"
+    t.string   "titulo"
   end
 
   add_index "checklists", ["tipoci_id"], :name => "index_checklists_on_tipoci_id"
@@ -219,7 +228,7 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
   end
 
   create_table "exec_checklists", :force => true do |t|
-    t.string   "descricao"
+    t.text     "descricao"
     t.string   "cis"
     t.string   "users"
     t.date     "inicioexec"
@@ -231,6 +240,8 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
     t.integer  "checklist_id"
     t.text     "params"
     t.string   "alias"
+    t.boolean  "abrir_ticket"
+    t.string   "titulo"
   end
 
   create_table "exec_itens_checklists", :force => true do |t|
@@ -318,13 +329,6 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
-  end
-
-  create_table "padrao_checklists", :force => true do |t|
-    t.string   "nome"
-    t.text     "itens"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "parametros", :force => true do |t|
@@ -434,6 +438,18 @@ ActiveRecord::Schema.define(:version => 20140909195552) do
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "surveys", :force => true do |t|
+    t.string   "key"
+    t.text     "formulario"
+    t.text     "perguntas"
+    t.text     "respostas"
+    t.boolean  "bloqueado"
+    t.boolean  "processado"
+    t.string   "chave"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tasks", :force => true do |t|

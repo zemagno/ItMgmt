@@ -1,0 +1,25 @@
+<h1>Listing template_surveys</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Formulario</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @template_surveys.each do |template_survey| %>
+  <tr>
+    <td><%= template_survey.nome %></td>
+    <td><%= template_survey.formulario %></td>
+    <td><%= link_to 'Show', template_survey %></td>
+    <td><%= link_to 'Edit', edit_template_survey_path(template_survey) %></td>
+    <td><%= link_to 'Destroy', template_survey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Template survey', new_template_survey_path %>

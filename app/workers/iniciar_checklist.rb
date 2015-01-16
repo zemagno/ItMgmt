@@ -3,7 +3,7 @@ include Sidekiq::Worker
   sidekiq_options queue: "Gestao"
   
   def perform(id)
-  	# id = 7
+  	# id = 54
   	puts "IniciarChecklist: procurando pelo ExecChecklist(#{id})..."
   	cl = ExecChecklist.find(id)
   	puts "Achei ExecChecklist: #{cl}"

@@ -21,14 +21,20 @@ $(function() {
 
 
 <div class="spacer"></div>
+<label>Titulo
+<span class="small">Titulo do ticket</span>
+</label>
+<%= f.text_field :titulo, :size => 100 %>
+
+<div class="spacer"></div>
 <label>Descrição
 <span class="small">Descriçao desse Checklists</span>
 </label>
-<%= f.text_field :descricao, :size => 100 %>
+<%= f.text_area :descricao, :size => "50x5"  %>
 
 <div class="spacer"></div>
 <label>Alias
-<span class="small">Alias para campo Jira</span>
+<span class="small">Alias para campo Jira do CI</span>
 </label>
 <%= f.text_field :alias, :size => 20 %>
 

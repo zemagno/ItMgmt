@@ -27,10 +27,10 @@
   <div class="field">
     <%= f.label "Checklist" %><br />
     
-    <%= f.select :checklist_id, @checklists.collect { |c| [ c.descricao, c.id ] } %>
+    <%= f.select :checklist_id, @checklists.collect { |c| [ c.titulo, c.id ] } %>
   </div>
   <div class="field">
-    <%= f.label :Descricao %><br />
+    <%= f.label :descricao %><br />
     <%= f.text_field :descricao, :size => 100 %>
   </div>
 

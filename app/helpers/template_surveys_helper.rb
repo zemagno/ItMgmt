@@ -1,0 +1,2 @@
+module TemplateSurveysHelper
+end

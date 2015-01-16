@@ -2,6 +2,14 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  resources :template_surveys
+
+
+  resources :cadsurveys
+
+
+  match "survey/:id", to: "survey#show"
+
   get "ajax/cis"
 
   resources :area_responsabilidades
@@ -15,7 +23,9 @@ ItMgmt::Application.routes.draw do
 
   resources :mailings
   match "mailings/enviar_email", to: "mailings#enviar_email"
+  match "mailings/enviar_email_sql", to: "mailings#enviar_email_sql"
   match "mailings/confirma_enviar_email", to: "mailings#confirma_enviar_email"
+  match "mailings/confirma_enviar_email_sql", to: "mailings#confirma_enviar_email_sql"
 
 
   resources :notes

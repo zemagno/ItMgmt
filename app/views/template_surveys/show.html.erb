@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @template_survey.nome %>
+</p>
+
+<p>
+  <b>Formulario:</b>
+  <%= @template_survey.formulario %>
+</p>
+
+
+<%= link_to 'Edit', edit_template_survey_path(@template_survey) %> |
+<%= link_to 'Back', template_surveys_path %>

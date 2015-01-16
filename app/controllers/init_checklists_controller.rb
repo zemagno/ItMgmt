@@ -29,6 +29,7 @@ class InitChecklistsController < ApplicationController
 
     @init_checklist = InitChecklist.new
     @init_checklist.descricao = @checklist.descricao
+    @init_checklist.titulo = @checklist.titulo
     @init_checklist.alias = @checklist.alias
     @init_checklist.users = @checklist.responsavel
     @init_checklist.checklist_id = @checklist.id

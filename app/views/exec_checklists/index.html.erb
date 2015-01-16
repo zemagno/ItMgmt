@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Descricao</th>
+    <th>Titulo</th>
     <th>TIcket</th>
     <th>Status</th>
     <th>Cis</th>
@@ -15,7 +15,7 @@
 
 <% @exec_checklists.each do |exec_checklist| %>
   <tr>
-    <td><%= link_to exec_checklist.descricao, exec_checklist  %></td>
+    <td><%= link_to exec_checklist.titulo, exec_checklist  %></td>
     <td><%= link_to exec_checklist.tickets, @url_jira % exec_checklist.tickets, :target => '_blank'  if ! exec_checklist.tickets.blank? %></td>
     <td><%= exec_checklist.status %></td>
     <td><%= exec_checklist.cis %></td>

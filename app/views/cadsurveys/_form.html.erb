@@ -1,0 +1,45 @@
+<%= form_for(@cadsurvey) do |f| %>
+  <% if @cadsurvey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cadsurvey.errors.count, "error") %> prohibited this cadsurvey from being saved:</h2>
+
+      <ul>
+      <% @cadsurvey.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </div>
+  <div class="field">
+    <%= f.label :formulario %><br />
+    <%= f.text_area :formulario, :size => "100x20" %>
+  </div>
+  <div class="field">
+    <%= f.label :perguntas %><br />
+    <%= f.text_area :perguntas, :size => "100x20"%>
+  </div>
+  <div class="field">
+    <%= f.label :respostas %><br />
+    <%= f.text_area :respostas,:size => "100x20" %>
+  </div>
+  <div class="field">
+    <%= f.label :bloqueado %><br />
+    <%= f.check_box :bloqueado %>
+  </div>
+  <div class="field">
+    <%= f.label :processado %><br />
+    <%= f.check_box :processado %>
+  </div>
+  <div class="field">
+    <%= f.label :chave %><br />
+    <%= f.text_field :chave %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

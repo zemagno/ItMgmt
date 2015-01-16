@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Key:</b>
+  <%= @cadsurvey.key %>
+</p>
+
+<p>
+  <b>Formulario:</b>
+  <%= @cadsurvey.formulario.to_s %>
+</p>
+
+<p>
+  <b>Perguntas:</b>
+  <%= @cadsurvey.perguntas.to_s %>
+</p>
+
+<p>
+  <b>Respostas:</b>
+  <%= @cadsurvey.respostas.to_s %>
+</p>
+
+<p>
+  <b>Bloqueado:</b>
+  <%= @cadsurvey.bloqueado %>
+</p>
+
+<p>
+  <b>Processado:</b>
+  <%= @cadsurvey.processado %>
+</p>
+
+<p>
+  <b>Chave:</b>
+  <%= @cadsurvey.chave %>
+</p>
+
+
+<%= link_to 'Edit', edit_cadsurvey_path(@cadsurvey) %> |
+<%= link_to 'Back', cadsurveys_path %>

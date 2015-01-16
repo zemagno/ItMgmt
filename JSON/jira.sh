@@ -1,0 +1,7 @@
+echo $1
+#curl -D-  -X POST -H "Content-Type: application/json" -d @$1 http://jiracorp.brq.com/rest/api/2/issuelink -u magno:Jcmnkl##3
+
+curl -D-  -X POST -H "Content-Type: application/json" -d '{"fields" => {"summary" => "Horario de Verao","issuetype" => {"id" => "132"},"customfield_13069" => {"id" => "14414"},"customfield_13059" => "Foi Testado ? \r\nFoi prÃ©-negociado com as Ã¡reas envolvidas ? \r\nComunicaÃ§Ã£o Externa OK ? \r\nComunicaÃ§Ã£o Interna OK ? \r\nNecessita notificar Ã¡rea de suporte interno ? \r\nNecessita treinamento para Ã¡rea de suporte interno ? \r\nPlano de instalaÃ§Ã£o OK ? \r\nPlano de Roll-Back OK ? \r\nPlanos foram aprovados ? \r\n","project" => {"id" => "12303"},"customfield_13000" => {"value" => "Brasil"},"assignee" => {"name" => "magno"}}}'  http://jiracorp.brq.com/rest/api/2/issuelink -u magno:Jcmnkl##3
+
+
+#{"fields" => {"summary" => "Horario de Verao","issuetype" => {"id" => "132"},"customfield_13069" => {"id" => "14414"},"customfield_13059" => "Foi Testado ? \r\nFoi prÃ©-negociado com as Ã¡reas envolvidas ? \r\nComunicaÃ§Ã£o Externa OK ? \r\nComunicaÃ§Ã£o Interna OK ? \r\nNecessita notificar Ã¡rea de suporte interno ? \r\nNecessita treinamento para Ã¡rea de suporte interno ? \r\nPlano de instalaÃ§Ã£o OK ? \r\nPlano de Roll-Back OK ? \r\nPlanos foram aprovados ? \r\n","project" => {"id" => "12303"},"customfield_13000" => {"value" => "Brasil"},"assignee" => {"name" => "magno"}}}

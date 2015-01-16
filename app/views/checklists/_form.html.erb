@@ -13,10 +13,15 @@
 
 
   <div class="field">
-    <%= f.label :Descricao %><br />
-    <%= f.text_field :descricao, :size => 100 %>
+    <%= f.label :Checklist %><br />
+    <%= f.text_field :titulo, :size => 100 %>
   </div>
 
+   <div class="field">
+     <%= f.label :Descricao %><br />
+       <%= f.text_area :descricao, :size => "50x30" %>
+   </div>
+   
   <div class="field">
     <%= f.label :Alias %><br />
     <%= f.text_field :alias, :size => 20 %>

@@ -18,13 +18,13 @@
 </label>
 <%= f.text_field :chave , :size => 20, :id => "chave_ci"%>
 
-<label>Owner
-<span class="small">Login de rede do Owner </span>
+<label>Gestor
+<span class="small">Login de rede do Gestor </span>
 </label>
 <%= f.text_field :Owner %>
 
-<label>Notificacao
-<span class="small">Email ou login</span>
+<label>Usuario(s)
+<span class="small">Email ou login dos usuarios</span>
 </label>
 <%= f.text_field :notificacao %>
 
@@ -32,12 +32,17 @@
 <label>Descrição
 <span class="small">Descriçao desse CI</span>
 </label>
-<%= f.text_field :descricao %>
+<%= f.text_field :descricao %> 
 
 <label>Change Mgmt
 <span class="small">Data Ultima Mudança</span>
 </label>
 <%= f.text_field :dataChange, :id => "datepicker" %>
+
+<label>Codigo Rateio
+<span class="small"></span>
+</label>
+<%= f.text_field :codigorateio %>
 
 <div class="spacer"></div>
 
@@ -46,6 +51,19 @@
 <span class="small"></span>
 </label>
 <%= f.text_field :CustoMensal %>
+
+<label>Custo Mensal Capex
+<span class="small"></span>
+</label>
+<%= f.text_field :CustoMensalCapex %>
+
+<label>Custo Mensal Opex
+<span class="small"></span>
+</label>
+<%= f.text_field :CustoMensalOpex %>
+
+<div class="spacer"></div>
+
   
 
 <label>Descricao Cobranca
@@ -58,8 +76,16 @@
 </label>
 <%= f.text_field :codigocobranca %>
 
+<label>Cobrar Gerencialmente ?
+<span class="small">Incluir na cobranca mensal ? </span>
+</label>
+<div class="field">
+    <%= f.check_box :cobrar %>
+</div>
+
 
 <div class="spacer"></div>
+
 
 <label>CC Debito
 <span class="small"></span>
@@ -69,12 +95,6 @@
 <span class="small"></span>
 </label>
 <%= f.text_field :ProjetoDebito %>
-<label>Cobrar ?
-<span class="small">Incluir na cobranca mensal ? </span>
-</label>
-<div class="field">
-    <%= f.check_box :cobrar %>
-</div>
 
 
 
@@ -108,8 +128,8 @@
 <div class="spacer"></div>
 
 
-<label>Site
-<span class="small">É global ou de um site</span>
+<label>Localidade
+<span class="small">É global ou de um site ?</span>
 </label>
 <%= f.select :site_id, @sites.collect { |c| [ c.nome, c.id ] } %>
 
@@ -136,7 +156,7 @@
 <%= f.text_field :url , :size => 70%>
 
 <div class="spacer"></div>
-<label>Jira	
+<label>Jira 
 <span class="small">Lista de chamados no Jira</span>
 <span class="small">Ex: INFR-1231,INFRA-3124</span>
 </label>
@@ -189,11 +209,11 @@ attr[8] = Mandatorio
 
 <% if @oldci.to_s != "" then %>
 <div class="spacer1"></div>
-						
+            
 <%= select_tag(:dependencia,options_for_select( [
-	                    ["Nenhuma correlacao com  #{@oldci.chave} - #{@oldci.descricao}", 1], 
-					    ["Depende de #{@oldci.chave} - #{@oldci.descricao}", 2], 								       		
-						["Impacta #{@oldci.chave} - #{@oldci.descricao}", 3]],1)) %>
+                      ["Nenhuma correlacao com  #{@oldci.chave} - #{@oldci.descricao}", 1], 
+              ["Depende de #{@oldci.chave} - #{@oldci.descricao}", 2],                          
+            ["Impacta #{@oldci.chave} - #{@oldci.descricao}", 3]],1)) %>
 <% end %>
 
 <div class="spacer10"></div>  
@@ -201,7 +221,7 @@ attr[8] = Mandatorio
 <button type="submit" id="SalvarCI">Salvar Item</button>
 <div class="spacer"></div>
 
-<!--div class="spacer"></div>	
+<!--div class="spacer"></div> 
 <div class="actions">
     <%= f.submit %>
 </div-->

@@ -11,11 +11,11 @@ class InitChecklist
   end
 
   
-  attr_accessor :agrupar, :checklist_id, :cis, :descricao, :fimexec, :inicioexec, :users, :alias, :abrir_ticket
+  attr_accessor :agrupar, :checklist_id, :cis, :titulo, :descricao, :fimexec, :inicioexec, :users, :alias, :abrir_ticket
 
   
-  validates_presence_of :descricao , :message => "Descricao eh obrigatoria"
-  validates_length_of :descricao, :maximum => 250
+  validates_presence_of :titulo , :message => "Titulo eh obrigatorio"
+  validates_length_of :titulo, :maximum => 250
 
   validates_presence_of :inicioexec , :message => "Data de Inicio eh obrigatoria"
   validates_presence_of :fimexec , :message => "Data de Fim eh obrigatoria" #, :if  => lambda { || inicioexec==fimexec }

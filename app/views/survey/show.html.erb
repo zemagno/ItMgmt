@@ -1,0 +1,16 @@
+<%= form_for(@survey) do |f| %>
+  
+
+ <%= f.fields_for :respostas, OpenStruct.new(@respostas) do |builder| %>
+    <% @formulario.each do |field| %>
+       <%= render "survey/fields/#{field[1][:field_type]}", field: OpenStruct.new(field[1]), f: builder %>
+    <% end %>
+  <% end %>
+
+<%= f.hidden_field :key, :value => @key%>
+
+
+<div class="actions">
+    <%= f.submit %>
+</div>
+<% end %>
