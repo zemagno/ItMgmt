@@ -1,0 +1,55 @@
+<h1>Listing funcionarios</h1>
+
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Matricula</th>
+    <th>Nome</th>
+    <th>Dataadmissao</th>
+    <th>Datademissao</th>
+    <th>Email</th>
+    <th>Cpf</th>
+    <th>Identidade</th>
+    <th>Codigocc</th>
+    <th>Nomecc</th>
+    <th>Nometipocc</th>
+    <th>Ownercc</th>
+    <th>Codigosecao</th>
+    <th>Nomelocaltrabalho</th>
+    <th>Nomecidadetrabalho</th>
+    <th>Cctorre</th>
+    <th>Desccctorre</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @funcionarios.each do |funcionario| %>
+  <tr>
+    <td><%= funcionario.Login %></td>
+    <td><%= funcionario.Matricula %></td>
+    <td><%= funcionario.Nome %></td>
+    <td><%= funcionario.DataAdmissao %></td>
+    <td><%= funcionario.DataDemissao %></td>
+    <td><%= funcionario.Email %></td>
+    <td><%= funcionario.CPF %></td>
+    <td><%= funcionario.Identidade %></td>
+    <td><%= funcionario.CodigoCC %></td>
+    <td><%= funcionario.NomeCC %></td>
+    <td><%= funcionario.NomeTipoCC %></td>
+    <td><%= funcionario.OwnerCC %></td>
+    <td><%= funcionario.CodigoSecao %></td>
+    <td><%= funcionario.NomeLocalTrabalho %></td>
+    <td><%= funcionario.NomeCidadeTrabalho %></td>
+    <td><%= funcionario.CCTorre %></td>
+    <td><%= funcionario.DescCCTorre %></td>
+    <td><%= link_to 'Show', funcionario %></td>
+    <td><%= link_to 'Edit', edit_funcionario_path(funcionario) %></td>
+    <td><%= link_to 'Destroy', funcionario, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Funcionario', new_funcionario_path %>

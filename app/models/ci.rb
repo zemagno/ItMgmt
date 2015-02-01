@@ -59,9 +59,9 @@ class Ci < ActiveRecord::Base
             :through => :relacao_impacto,
             :include => "tipoci"
 
-  validates :Owner, :format => { :with => /[a-zA-Z]*/,
-      :message => "Somente Caracter Alfanumerico" }
-  validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
+  validates :Owner, :format => { :with => /^[a-zA-z]+$/,
+      :message => "Gestor: um unico ID de rede" }
+  #validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
   validates :chave, :presence => { :message => " eh mandatorio" }
   validates :chave,  :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB" }
   

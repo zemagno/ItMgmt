@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141106133409) do
+ActiveRecord::Schema.define(:version => 20150131220846) do
+
+  create_table "Funcionarios", :primary_key => "Login", :force => true do |t|
+    t.integer "Matricula"
+    t.string  "Nome"
+    t.date    "DataAdmissao"
+    t.date    "DataDemissao"
+    t.string  "Email"
+    t.string  "CPF",                :limit => 20
+    t.string  "Identidade",         :limit => 20
+    t.string  "CodigoCC",           :limit => 6
+    t.string  "NomeCC"
+    t.string  "NomeTipoCC"
+    t.string  "OwnerCC"
+    t.string  "CodigoSecao",        :limit => 10
+    t.string  "NomeLocalTrabalho"
+    t.string  "NomeCidadeTrabalho"
+    t.string  "CCTorre",            :limit => 6
+    t.string  "DescCCTorre"
+  end
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false

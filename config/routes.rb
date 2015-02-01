@@ -2,6 +2,9 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  resources :funcionarios
+
+
   resources :template_surveys
 
 
