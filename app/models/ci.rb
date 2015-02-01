@@ -59,7 +59,7 @@ class Ci < ActiveRecord::Base
             :through => :relacao_impacto,
             :include => "tipoci"
 
-  validates :Owner, :format => { :with => /^[a-zA-z]+$/,
+  validates :Owner, :format => { :with => /^[a-zA-z.]+$/,
       :message => "Gestor: um unico ID de rede" }
   #validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
   validates :chave, :presence => { :message => " eh mandatorio" }

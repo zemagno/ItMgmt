@@ -21,6 +21,6 @@ class CreateFuncionarios < ActiveRecord::Migration
     end
 
 
-   execute %Q{ ALTER TABLE Funcionarios ADD PRIMARY KEY (Login); }
+   execute %Q{ ALTER TABLE funcionarios ADD PRIMARY KEY (Login); }
   end
 end
