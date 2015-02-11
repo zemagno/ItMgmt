@@ -30,6 +30,7 @@ class CisController < ApplicationController
     @filaNavegacao ||= Fila.new
     @filaNavegacao.enfilera(ci.id)
     session[:filaNavegacao] = @filaNavegacao 
+    session[:visao_ci] = @visaoci
   end
  
   def show
@@ -117,9 +118,17 @@ class CisController < ApplicationController
 
   def index
 
+    puts "Env ==> #{env}"
+    puts "Params ==> #{params}"
+    puts "Session ==> #{session}"
+
     @search = params[:search] || session[:search_cis]
+
+    @view_default_ci = params[:view_default_ci] || session[:view_default_ci] 
     session[:search_cis] = @search
     session[:oldCI] = nil 
+    session[:view_default_ci] = @view_default_ci
+    
     begin
       if @search.blank?
 
@@ -146,8 +155,15 @@ class CisController < ApplicationController
       render :show and return
     end
 
+
+    #@fields = 
+
+    # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
+    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo =>@view_default_ci))
+    @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
+
     respond_to do |format|
-        format.html
+        format.html { render :html => @cis }
         format.json { render :json => @cis }
         format.xml  { render :xml => @cis }
     end
@@ -173,23 +189,20 @@ class CisController < ApplicationController
   
   def create
       @ci = Ci.new(params[:ci])
-      puts ">>>> #{params[:ci]} <<<<<"
       case params[:dependencia]
         when "2"    
           @ci.dependentes << Ci.find(session[:oldCI])
         when "3" 
           @ci.impactados << Ci.find(session[:oldCI])
       end
-      puts "=================================================================="
-      puts params[:ci]
-
-      puts "=================================================================="
       respond_to do |format|
         if @ci.save  
           
           # FIXME  
           #@ci.limpa_atributos_outros_tipo        
-          format.html { redirect_to(@ci, :notice => 'CI criada com sucesso.') }
+          #format.html { redirect_to(@ci, :notice => 'CI criada com sucesso.') }
+         
+          format.html {redirect_to(:action => 'edit', :id => @ci.id) } 
         else
           carrega_agregadas
           format.html { render :action => "new" }

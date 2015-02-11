@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   def create
   	#raise env["omniauth.auth"].to_yaml
   	#raise env["omniauth.auth"].to_yaml
+    puts "env --> #{env}"
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to root_url, notice: "Signed in!"

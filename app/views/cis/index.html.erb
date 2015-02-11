@@ -10,6 +10,7 @@
 
 
 <%= link_to '[Novo CI]', new_ci_path, :id => "zNovo" %>
+
 <%= will_paginate @cis %>
 
 <%= form_tag(cis_path, :method => "get") do %>
@@ -17,9 +18,31 @@
   <%= text_field_tag(:search, @search, :size => 50) %>
   <%= submit_tag("Filtrar") %>
   <%= submit_tag("Estou com sorte") %>
+  <%= select_tag :view_default_ci, options_for_select(@views_ci, @view_default_ci) %>
+
 <% end %>
 
+<table>
+  <tr>
+    <th></th>
+    <th>Chave CI</th>
+<% @fields[0].each do |f| %>
+   <th><%= f %> </th>
+<% end %>
+  </tr> 
 
+<% @cis.each do |ci| %>
+  <tr>
+    <td><img src="/icons/<%=ci.status_icon%>" alt=" " height="16" width="16"></td>
+    <td><%= link_to ci.chave, ci %></td>
+    <% @fields[1].each do |f| %>
+       <td><%= ci.send(f) %> </td>
+    <% end %>
+  </tr>
+<% end %>
+</table> 
+
+<!--
 
 <table>
   <tr>
@@ -42,16 +65,13 @@
     <td><%= ci.site.nome %></td>
     <td><%= ci.Owner %></td>
     <td><%= ci.notificacao %></td>
-    <% if ci.DocChange.blank?  %>
-      <td><%= ci.dataChange %></td>
-    <% else %>
-      <td><a href="javascript: void(0)" onclick="window.open('','_new').location.href='<%= ci.DocChange %>'"><%=ci.dataChange%></a></td>
-    </h1>
-<% end %>
-
+    <td><%= ci.dataChange %></td>
+    
   </tr>
 <% end %>
 </table>
+
+-->
 
 <%= will_paginate @cis %>
 

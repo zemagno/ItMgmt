@@ -79,8 +79,32 @@ class Ci < ActiveRecord::Base
 
   def ativo?
     (statusci_id != 2) and (statusci_id != 5)
-    
   end
+
+  def tipo_ci
+    tipoci.tipo
+  end
+
+  def data_ultima_alteracao
+    dataChange.blank? ? dataChange : ""
+  end
+
+  def nome_localidade
+    site.nil? ? "" : site.nome
+  end
+
+  def nice_custo_mensal
+     '%10.2f' % (self.CustoMensal.nil? ? 0 : self.CustoMensal)
+  end
+
+  def nice_cobrar
+    cobrar ? "Cobrar" : "Nao Cobrar"
+  end
+
+  def nice_provisionar
+    provisionar ? "Provisionar" : "Nao Provisionar"
+  end
+
 
   def duplicar(nova_chave)
 logger.debug(">>>>> duplicar")

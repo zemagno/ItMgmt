@@ -61,7 +61,9 @@ end
 
 gem "nifty-generators", :group => :development
 
-gem 'omniauth-google-apps'
+# gem 'omniauth-google-apps'
+
+gem 'omniauth-google-oauth2'
 gem 'cancan' ,  '~> 1.6'
 gem 'dalli'
 #

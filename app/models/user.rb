@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-    def self.from_omniauth(auth)
+  def self.from_omniauth(auth)
+    puts "Auth --> #{auth}"
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   end
   
