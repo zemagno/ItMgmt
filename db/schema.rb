@@ -11,26 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150131220846) do
-
-  create_table "Funcionarios", :primary_key => "Login", :force => true do |t|
-    t.integer "Matricula"
-    t.string  "Nome"
-    t.date    "DataAdmissao"
-    t.date    "DataDemissao"
-    t.string  "Email"
-    t.string  "CPF",                :limit => 20
-    t.string  "Identidade",         :limit => 20
-    t.string  "CodigoCC",           :limit => 6
-    t.string  "NomeCC"
-    t.string  "NomeTipoCC"
-    t.string  "OwnerCC"
-    t.string  "CodigoSecao",        :limit => 10
-    t.string  "NomeLocalTrabalho"
-    t.string  "NomeCidadeTrabalho"
-    t.string  "CCTorre",            :limit => 6
-    t.string  "DescCCTorre"
-  end
+ActiveRecord::Schema.define(:version => 20150218200504) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -164,13 +145,13 @@ ActiveRecord::Schema.define(:version => 20150131220846) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "Owner"
-    t.string   "url"
+    t.text     "url",               :limit => 16777215
     t.date     "dataChange"
     t.string   "jira"
     t.string   "obs"
     t.string   "DocChange"
     t.integer  "statusci_id"
-    t.decimal  "CustoMensal",                     :precision => 10, :scale => 2
+    t.decimal  "CustoMensal",                           :precision => 10, :scale => 2
     t.string   "notificacao"
     t.string   "CCDebito",          :limit => 20
     t.string   "ProjetoDebito",     :limit => 50
@@ -181,8 +162,8 @@ ActiveRecord::Schema.define(:version => 20150131220846) do
     t.boolean  "provisionar"
     t.string   "codigocobranca"
     t.string   "codigorateio",      :limit => 20
-    t.decimal  "CustoMensalCapex",                :precision => 10, :scale => 2
-    t.decimal  "CustoMensalOpex",                 :precision => 10, :scale => 2
+    t.decimal  "CustoMensalCapex",                      :precision => 10, :scale => 2
+    t.decimal  "CustoMensalOpex",                       :precision => 10, :scale => 2
   end
 
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
@@ -288,6 +269,25 @@ ActiveRecord::Schema.define(:version => 20150131220846) do
     t.text     "anotacoes"
     t.integer  "areafornecedor_id"
     t.text     "enderecos"
+  end
+
+  create_table "funcionarios", :primary_key => "Login", :force => true do |t|
+    t.integer "Matricula"
+    t.string  "Nome"
+    t.date    "DataAdmissao"
+    t.date    "DataDemissao"
+    t.string  "Email"
+    t.string  "CPF",                :limit => 20
+    t.string  "Identidade",         :limit => 20
+    t.string  "CodigoCC",           :limit => 6
+    t.string  "NomeCC"
+    t.string  "NomeTipoCC"
+    t.string  "OwnerCC"
+    t.string  "CodigoSecao",        :limit => 10
+    t.string  "NomeLocalTrabalho"
+    t.string  "NomeCidadeTrabalho"
+    t.string  "CCTorre",            :limit => 6
+    t.string  "DescCCTorre"
   end
 
   create_table "heranca_checklists", :force => true do |t|

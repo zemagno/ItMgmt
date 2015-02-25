@@ -124,7 +124,7 @@ class CisController < ApplicationController
 
     @search = params[:search] || session[:search_cis]
 
-    @view_default_ci = params[:view_default_ci] || session[:view_default_ci] 
+    @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
     session[:search_cis] = @search
     session[:oldCI] = nil 
     session[:view_default_ci] = @view_default_ci
@@ -159,7 +159,7 @@ class CisController < ApplicationController
     #@fields = 
 
     # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
-    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo =>@view_default_ci))
+    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
 
     respond_to do |format|
