@@ -12,7 +12,7 @@ class Atributo < ActiveRecord::Base
   # end
 
   def to_s
-      "#{id} : #{ci_id}/#{ci.chave} : #{dicdado.nome} : #{valor} : #{ci.tipoci.tipo}<>#{dicdado.tipoci.tipo}"  
+      "#{id} : #{ci_id}/#{ci.chave} : #{dicdado.nome} : #{valor} : #{ci.nice_tipoci}<>#{dicdado.nice_tipoci}"  
   end
 
 

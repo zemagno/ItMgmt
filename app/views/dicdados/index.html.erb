@@ -31,7 +31,7 @@
 
 <% @dicdados.each do |dicdado| %>
   <tr>
-    <td><%= link_to dicdado.tipoci.tipo, dicdado %></td>
+    <td><%= link_to dicdado.nice_tipoci, dicdado %></td>
     <td><%= link_to dicdado.nome, dicdado %></td>
     <td><%= dicdado.apelido %></th>
     <td><%= dicdado.mandatorio ? "Sim" : "" %></td>   

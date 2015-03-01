@@ -1,5 +1,5 @@
 
-<%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.tipoci.tipo}) "%>
+<%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.nice_tipoci}) "%>
 </br>Status: <%= @ci.status%>
 
 </br>Localidade: <%= @ci.site.nome%>

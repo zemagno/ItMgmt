@@ -61,7 +61,7 @@ class CisController < ApplicationController
   def email
     # so seleciono os templates do tipo de ci sendo visualizado
     @id = params[:id]
-    t = Ci.find(@id).tipoci.tipo
+    t = Ci.find(@id).nice_tipoci
     # @templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI",t)
     # @templates_email.concat(TemplatesEmail.find_all_by_tipo_and_subtipo("CI",""))  
     @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
@@ -330,9 +330,8 @@ class CisController < ApplicationController
         #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
         i,nivel = dequeue
         if nivel <= nivel_max then # aqui tem que entrar todos os filtros
-            if (not edges_visitado[i.chave]) then #&& ("fornecedor fatura contrato".include? i.tipoci.tipo) then        
+            if (not edges_visitado[i.chave]) then       
                 edges_visitado[i.chave] = true
-                # if && ("fornecedor fatura contrato".include? i.tipoci.tipo) then
                 @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
                 @email_impactados << ","+@ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == "" or nivel>nivel_max_email
 

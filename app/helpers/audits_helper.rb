@@ -7,8 +7,7 @@ module AuditsHelper
         end
         #when "Relacionamento"
         #end 
-        # colocar tempplate de email
-        # contrato
+        
         # 
         res = "" unless res
 

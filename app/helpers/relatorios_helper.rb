@@ -12,8 +12,7 @@ module RelatoriosHelper
         else 
             res = valor
         end
-        # colocar tempplate de email
-        # contrato
+        
         # 
         res = "" unless res
 

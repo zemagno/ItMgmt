@@ -27,14 +27,10 @@ class EmailController < ApplicationController
 
 
   def enviar
-      #aqui pesquisar no tipo de template, para saber se leio CI, Contratos, que valores eu monto...
+      #aqui pesquisar no tipo de template, para saber se leio CI, que valores eu monto...
       
       template = params[:acao]
       case TemplatesEmail.find_by_template(template).tipo
-        when "CONTRATOS" 
-          contrato = Contrato.find(params[:id])
-          valor = number_to_currency(contrato.valormensal, :unit => 'R$ ', :separator => '.', :delimiter => ',')  
-          parametros = { contrato_descricao: contrato.descricao, contrato_projetoCCTI: contrato.projetoCCTI, contrato_classificacao: contrato.classificacao, contrato_valor: valor, contrato_fornecedor_nome: contrato.fornecedor.nome}
         when "CI"
           ci = Ci.find(params[:id])
           parametros = {}

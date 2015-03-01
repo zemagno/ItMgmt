@@ -1,0 +1,108 @@
+<h1>Gestao de Usuario</h1>
+
+
+<%= form_tag(custom_gestao_usuarios_path, :method => "get") do %>
+ 
+  <%= text_field_tag(:search, @login, :size => 50) %>
+  <%= submit_tag("Procurar") %>
+  
+<% end %>
+
+
+<b>
+</br>Login: <%= @usuario.login %>
+</br>Nome: <%= @nomecompleto %>
+</b>
+</br>
+<%= link_to '[Alocar Estacao]', custom_alocar_estacao_path, :id => "zNovo" %>
+<%= link_to '[Alocar Licenca]', custom_alocar_licenca_path, :id => "zNovo" %>
+</br></br>
+
+<table>
+   <tr>
+    <th>Estacao</th> 
+  </tr>
+  <% @estacao.each do |estacao| %>
+      <tr>
+        <td><%= link_to estacao[:descricao], ci_path(estacao[:chave]), :target => '_blank' %></td>
+      </tr>
+  <% end %>
+</table>  
+<%= link_to '[Incluir Estacao]', new_ci_path, :id => "zNovo" %>
+</br></br>
+
+<table>
+  <tr>
+    <th>Licenca</th>
+    <th>Descricao</th>
+    <th>Gestor</th>
+    <th>CC/Projeto Debito</th>
+    <th>Status</th>
+    <th></th>
+  </tr>
+
+<% @licencas.each do |licenca| %>
+  <tr>
+    <td><%= link_to licenca[:chave],  ci_path(licenca[:chave]), :target => '_blank' %></td>
+    <td><%= licenca[:descricao] %></td>
+    <td><%= licenca[:gestor] %></td>
+    <td><%= "#{licenca[:CCDebito]}/#{licenca[:ProjetoDebito]}" %></td>
+    <td><%= licenca[:status] %></td>
+    <td><%= link_to '[Remover Licenca]', custom_confirmar_remocao_licenca_path(@usuario.login,licenca[:chave]) %></td> 
+  </tr>
+<% end %>
+</table>
+
+<table>
+  <tr>
+    <th>Erros e Distorcoes</th>
+   
+  </tr>
+
+<% @erros.each do |e| %>
+  <tr>
+    <td><%= e %></td> 
+  </tr>
+<% end %>
+</table>
+
+
+
+
+<% if @modo == :remocao %>
+<div id="stylized" class="myform">
+<h1>Se voce deseja realmente remover a licenca <%=@licenca%>, digite o nome da licenca abaixo
+</h1>
+
+
+<%= form_tag(custom_remover_licenca_path, :method => "post") do %>
+ 
+  <%= text_field_tag("confirmacao", @confirmacao, :size => 50) %>
+  <%= hidden_field_tag 'token_confirmacao',@licenca %>
+  <%= hidden_field_tag 'id', @login%>
+  <%= submit_tag("Eliminar") %>
+</br></br>
+</div>
+<% end %>
+<% end %>
+
+<% if @modo == :alocar_licenca %>
+<div id="stylized" class="myform">
+<h1>Qual licenca voce deseja alocar ?
+</h1>
+
+
+<%= form_tag(custom_remover_licenca_path, :method => "post") do %>
+ 
+  <%= text_field_tag("confirmacao", @confirmacao, :size => 50) %>
+  <%= hidden_field_tag 'token_confirmacao',@licenca %>
+  <%= hidden_field_tag 'id', @login%>
+  <%= submit_tag("Alocar") %>
+</br></br>
+</div>
+<% end %>
+<% end %>
+
+
+
+

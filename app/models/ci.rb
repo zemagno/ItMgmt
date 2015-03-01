@@ -10,12 +10,11 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :contrato_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca ,:provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca ,:provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex
 
   belongs_to :site
   belongs_to :tipoci
   belongs_to :statusci
-  belongs_to :contrato
   has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
   has_many :task
  
@@ -70,7 +69,7 @@ class Ci < ActiveRecord::Base
 
   
   def to_s
-      "#{id}:#{chave} : #{descricao} : #{tipoci.tipo}"  
+      "#{id}:#{chave} : #{descricao} : #{nice_tipoci}"  
   end
 
   def chave_sanitizada
@@ -84,6 +83,11 @@ class Ci < ActiveRecord::Base
   def tipo_ci
     tipoci.tipo
   end
+
+  def nice_tipoci
+    tipoci.tipo
+  end
+
 
   def data_ultima_alteracao
     dataChange.blank? ? dataChange : ""
@@ -140,7 +144,7 @@ logger.debug(">>>>> duplicar")
     logger.debug(">>>>> atributos")
     # pegar todos os atributos possiveis (tipoci.dicdado)
     # dicdados.id => [Label,valor]
-    #{ 5=>["Contrato", "Link Citi"], 
+    #{ 5=>["Contrat", "Link Citi"], 
     #  3=>["Designacao", "001a-98/97"], 
     #  2=>["Endereco", "Av Boa Vista"], 
     #  1=>["Capacidade", "4mb"]} 
@@ -182,9 +186,9 @@ logger.debug(">>>>> duplicar")
     logger.debug(">>>>> atributos=")
     # Descriptions.find_or_create_by_my_id(data["my_id"]).update_attributes(data)
     # Atributo (ci_id, dicdado_id, valor)
-    # c.atributo[1].dicdado.nome =  "Contrato"
+    # c.atributo[1].dicdado.nome =  "Contrat"
     # atributos : dicdados.id => [Label do dicdados,valor]
-    #{ 5=>["Contrato", "Link Citi"], 
+    #{ 5=>["Contrat", "Link Citi"], 
     #  3=>["Designacao", "001a-98/97"], 
     #  2=>["Endereco", "Av Boa Vista"], 
     #  1=>["Capacidade", "4mb"]} 
@@ -237,8 +241,8 @@ logger.debug(">>>>> duplicar")
   define_index do
       indexes chave
       indexes descricao
-      indexes :Owner
-      indexes notificacao
+      indexes :Owner, :as => :gestor
+      indexes notificacao, :as => :usuario 
       indexes :CCCredito
       indexes :ProjetoCredito
       indexes :CCDebito

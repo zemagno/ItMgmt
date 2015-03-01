@@ -16,6 +16,9 @@ module ItMgmt
     # -- all .rb files in that directory are automatically loaded.
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/models/concerns)
+    # config.autoload_paths += %W(
+    #     #{config.root}/app/controllers/custom
+    # )
 
 
     config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }

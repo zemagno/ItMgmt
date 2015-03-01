@@ -2,6 +2,16 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+namespace :custom do
+   match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
+   get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca"
+   post "GestaoUsuarios/deletelicenca", to: "GestaoUsuarios#remover_licenca", as: "remover_licenca"
+   get "GestaoUsuario/AlocarLicenca",  to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
+   get "GestaoUsuario/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
+end
+# match '/404' => 'errors#not_found'
+# match '/422' => 'errors#server_error'
+
   resources :funcionarios
 
 
@@ -23,12 +33,15 @@ ItMgmt::Application.routes.draw do
 
   resources :events, :only => [:index]
 
+resources :fornecedores
 
   resources :mailings
   match "mailings/enviar_email", to: "mailings#enviar_email"
   match "mailings/enviar_email_sql", to: "mailings#enviar_email_sql"
   match "mailings/confirma_enviar_email", to: "mailings#confirma_enviar_email"
   match "mailings/confirma_enviar_email_sql", to: "mailings#confirma_enviar_email_sql"
+
+
 
 
   resources :notes
@@ -98,17 +111,13 @@ ItMgmt::Application.routes.draw do
   resources :cadrelatorios
   resources :statuscis
    
-  resources :areafornecedores
-
-  # para todos nao ser confundido com ID
+    # para todos nao ser confundido com ID
 
 
   match 'relatorio/:id', to: "relatorio#index", as: "relatorio"
   match 'email/:acao/:id', to: "email#enviar"
   match 'email/enviar_email/:id', to: "email#enviar+email"
 
-  match '/contratos/todos', to: 'contratos#todos'
-  match '/fornecedores/todos', to: 'fornecedores#todos'
   match '/tasks/todos', to: 'tasks#todos'  
   match '/cis/todos', to: 'cis#todos'  
   match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci"
@@ -117,20 +126,7 @@ ItMgmt::Application.routes.draw do
 
   resources :dicdados
 
-  resources :contratos do
-       collection do
-         get 'erros'
-       end
-  end
-
-  #resources :indicadores_financeiros
-
-  resources :fornecedores
-
-  resources :tipocontratos
-
-  
-  
+ 
 
   
   # :as --> criar o help ci_path

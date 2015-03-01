@@ -2,7 +2,7 @@
 <h1><%= title %></h1>
 <% cis.each do |ci| %>
   </br>
-  <%= link_to ci.chave, ci %> <%= " - #{ci.descricao} - #{ci.tipoci.tipo} - #{ci.Owner}" %>
+  <%= link_to ci.chave, ci %> <%= " - #{ci.descricao} - #{ci.nice_tipoci} - #{ci.Owner}" %>
   <font color="red"><%= " - #{ci.status.upcase}" if ci.statusci_id > 1 %></font>
 <% end %>
 </div>

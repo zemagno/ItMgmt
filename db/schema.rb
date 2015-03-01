@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150218200504) do
+ActiveRecord::Schema.define(:version => 20150227143410) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(:version => 20150218200504) do
   add_index "active_admin_comments", ["author_type", "author_id"], :name => "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
+
+  create_table "area_de_responsabilidades", :force => true do |t|
+    t.string   "area"
+    t.string   "responsaveis"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "area_responsabilidades", :force => true do |t|
     t.string   "area"
@@ -112,6 +119,14 @@ ActiveRecord::Schema.define(:version => 20150218200504) do
     t.datetime "updated_at"
   end
 
+  create_table "cc", :id => false, :force => true do |t|
+    t.string "LoginFunc",   :limit => 30, :default => "", :null => false
+    t.string "NomeFunc"
+    t.string "LoginGestor", :limit => 30, :default => "", :null => false
+    t.string "NomeGestor"
+    t.string "CC",          :limit => 6
+  end
+
   create_table "chamados", :force => true do |t|
     t.integer  "SubTipoChamado_id"
     t.integer  "StatusChamado_id"
@@ -166,28 +181,9 @@ ActiveRecord::Schema.define(:version => 20150218200504) do
     t.decimal  "CustoMensalOpex",                       :precision => 10, :scale => 2
   end
 
+  add_index "cis", ["Owner"], :name => "index_cis_on_Owner"
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
-
-  create_table "contratos", :force => true do |t|
-    t.string   "codcontrato"
-    t.string   "descricao"
-    t.decimal  "valormensal",             :precision => 10, :scale => 2
-    t.integer  "tipocontrato_id"
-    t.integer  "fornecedor_id"
-    t.date     "datainicio"
-    t.date     "datafim"
-    t.date     "datarenovacao"
-    t.integer  "indicador_financeiro_id"
-    t.string   "projetoCCTI"
-    t.string   "projetoCCArea"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "classificacao"
-    t.string   "url"
-    t.string   "contrato"
-  end
-
-  add_index "contratos", ["codcontrato"], :name => "index_contratos_on_codcontrato"
+  add_index "cis", ["notificacao"], :name => "index_cis_on_notificacao"
 
   create_table "criticidades", :force => true do |t|
     t.string   "name"
@@ -236,16 +232,18 @@ ActiveRecord::Schema.define(:version => 20150218200504) do
     t.string   "users"
     t.date     "inicioexec"
     t.date     "fimexec"
+    t.integer  "tipoci_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "tickets"
     t.integer  "status_checklist_id"
     t.integer  "checklist_id"
-    t.text     "params"
     t.string   "alias"
     t.boolean  "abrir_ticket"
     t.string   "titulo"
   end
+
+  add_index "exec_checklists", ["tipoci_id"], :name => "index_exec_checklists_on_tipoci_id"
 
   create_table "exec_itens_checklists", :force => true do |t|
     t.string   "descricao"
@@ -538,12 +536,6 @@ ActiveRecord::Schema.define(:version => 20150218200504) do
     t.string   "Owner"
   end
 
-  create_table "tipocontratos", :force => true do |t|
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "tipotasks", :force => true do |t|
     t.string   "nome"
     t.datetime "created_at", :null => false
@@ -557,6 +549,21 @@ ActiveRecord::Schema.define(:version => 20150218200504) do
     t.string   "roles"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "uso_licencas", :force => true do |t|
+    t.string "Item",         :limit => 45
+    t.string "Descricao",    :limit => 200
+    t.string "Software",     :limit => 45
+    t.string "LoginGestor",  :limit => 45
+    t.string "Site",         :limit => 45
+    t.string "LoginUsuario", :limit => 45
+    t.string "CC",           :limit => 45
+    t.string "Torre",        :limit => 45
+    t.string "TipoSoftware", :limit => 45
+    t.string "CustoAnual",   :limit => 45
+    t.string "Gestor",       :limit => 200
+    t.string "Usuario",      :limit => 200
   end
 
   create_table "versions", :force => true do |t|
