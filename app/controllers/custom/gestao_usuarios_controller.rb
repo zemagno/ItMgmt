@@ -14,7 +14,8 @@ def load
 
   @usuario = Custom::GestaoUsuario.new(:login => @login)
 
-  @nomecompleto = (f = Funcionario.find_by_Login(@login)) ? f.Nome : "Nao Identificado" 
+  
+  @nomecompleto = (@funcionario = Funcionario.find_by_Login(@login)) ? @funcionario.Nome : "Nao Identificado" 
   @licencas  = @usuario.LicencasEmUso
   @estacao   = @usuario.Estacoes
   

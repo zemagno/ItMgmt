@@ -40,7 +40,7 @@
             :through => :relacao_superpai
 
   def tipoci_tipo
-    tipoci.nil? ? "" : nice_tipoci
+    tipoci.nil? ? "" : tipoci.tipo
   end
 
   def arearesponsabilidade

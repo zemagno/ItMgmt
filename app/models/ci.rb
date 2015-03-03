@@ -85,7 +85,7 @@ class Ci < ActiveRecord::Base
   end
 
   def nice_tipoci
-    tipoci.tipo
+    tipoci.nil? ? "" : tipoci.tipo
   end
 
 

@@ -19,6 +19,6 @@ class Cadrelatorio < ActiveRecord::Base
 
 
   def nome_tipoci
-  	tipoci_id.nil? || tipoci_id==0 ? "" : nice_tipoci
+  	tipoci_id.nil? || tipoci_id==0 ? "" : tipoci.tipo
   end
 end

@@ -12,7 +12,7 @@ end
 # match '/404' => 'errors#not_found'
 # match '/422' => 'errors#server_error'
 
-  resources :funcionarios
+  resources :funcionarios, :only => [:index,:show]
 
 
   resources :template_surveys

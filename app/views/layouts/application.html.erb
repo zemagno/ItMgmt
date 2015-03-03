@@ -60,6 +60,9 @@ $(function() {
                        <li><%= link_to 'Templates Email', templates_emails_path %></li>	
                        <li><%= link_to 'Parametros', parametros_path %></li>	
                     <% end %>
+                    <% if can? :manager, :usuarios %>
+                       <li><%= link_to 'Gestao de Usuarios', custom_gestao_usuarios_path %></li>	
+                    <% end %>   
 
 
 				</ul>

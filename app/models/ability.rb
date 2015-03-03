@@ -98,6 +98,7 @@ class Ability
         cannot :manage, SqlTemplate
         cannot :manage, @SqlTemplate
         cannot :manage, Mailing
+        can    :manage, :usuarios
     end
 
     if user and user.is_a :compras
@@ -118,7 +119,7 @@ class Ability
         can :manage, Audit
     end
 
-    can :manage, :all
+    #can :manage, :all
     
   end
 end

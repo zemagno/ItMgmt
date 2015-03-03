@@ -10,14 +10,21 @@
 
 
 <b>
-</br>Login: <%= @usuario.login %>
-</br>Nome: <%= @nomecompleto %>
+</br>Login: <%= @usuario.login %> - Nome: <%= @nomecompleto %>
+<% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
+      </br><%= "CPF: #{@funcionario.CPF} - Identidade: #{@funcionario.Identidade}" %>
+      </br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataDemissao}" %>
+      </br><%= "Torre: #{@funcionario.NomeTipoCC} - Local Trabalho: #{@funcionario.NomeLocalTrabalho}" %>
+
+      
+      </br>
+<% end %>  
 </b>
 </br>
 <%= link_to '[Alocar Estacao]', custom_alocar_estacao_path, :id => "zNovo" %>
 <%= link_to '[Alocar Licenca]', custom_alocar_licenca_path, :id => "zNovo" %>
 </br></br>
-
+<% if (! @usuario.nil?) and (! @usuario.login.nil?) %>
 <table>
    <tr>
     <th>Estacao</th> 
@@ -28,7 +35,6 @@
       </tr>
   <% end %>
 </table>  
-<%= link_to '[Incluir Estacao]', new_ci_path, :id => "zNovo" %>
 </br></br>
 
 <table>
@@ -65,7 +71,7 @@
   </tr>
 <% end %>
 </table>
-
+<% end %>
 
 
 

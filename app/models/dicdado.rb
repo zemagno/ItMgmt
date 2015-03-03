@@ -10,6 +10,10 @@ class Dicdado < ActiveRecord::Base
   
   self.per_page = 20  
 
+  def nice_tipoci
+      tipoci.nil? ? "" : tipoci.tipo
+  end
+
   define_index do
       indexes nome
       indexes tipoci(:tipo), :as => :tipoci
