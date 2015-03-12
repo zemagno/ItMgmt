@@ -3,6 +3,8 @@ module RelatoriosHelper
         case field
 		when "CI" , "ID"
             res = link_to valor, ci_path(valor) 
+        when "Usuario" , "Login"
+            res = link_to(valor,"/custom/GestaoUsuarios?search=#{valor}",:target => "_blank" )
         when "Email"
             res = valor
             #criar um template de email...colocar em banco de dados em memoria

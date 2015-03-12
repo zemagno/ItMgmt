@@ -18,6 +18,7 @@ def load
   @nomecompleto = (@funcionario = Funcionario.find_by_Login(@login)) ? @funcionario.Nome : "Nao Identificado" 
   @licencas  = @usuario.LicencasEmUso
   @estacao   = @usuario.Estacoes
+  @celulares = @usuario.Celulares
   
   @erros.concat @usuario.DistorcoesUsoLicenca 
 end

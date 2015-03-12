@@ -25,19 +25,50 @@
 <%= link_to '[Alocar Licenca]', custom_alocar_licenca_path, :id => "zNovo" %>
 </br></br>
 <% if (! @usuario.nil?) and (! @usuario.login.nil?) %>
-<table>
+<table style="table-layout:fixed">
+<col style="width:20%" span="5" />
    <tr>
-    <th>Estacao</th> 
+    <th>Estacao</th>
+     <th>Descricao</th> 
+    <th>Gestor</th>
+    <th>CC/Projeto Debito</th>
+    <th>Status</th>
   </tr>
   <% @estacao.each do |estacao| %>
       <tr>
-        <td><%= link_to estacao[:descricao], ci_path(estacao[:chave]), :target => '_blank' %></td>
+        <td><%= link_to estacao[:chave], ci_path(estacao[:chave]), :target => '_blank' %></td>
+         <td><%= estacao[:descricao] %></td>
+        <td><%= estacao[:gestor] %></td>
+        <td><%= "#{estacao[:CCDebito]}/#{estacao[:ProjetoDebito]}" %></td>
+        <td><%= estacao[:status] %></td>
       </tr>
   <% end %>
 </table>  
 </br></br>
 
-<table>
+<table style="table-layout:fixed">
+<col style="width:20%" span="5" />
+   <tr>
+    <th>Celular</th> 
+    <th>Descricao</th>
+    <th>Gestor</th>
+    <th>CC/Projeto Debito</th>
+    <th>Status</th>
+  </tr>
+  <% @celulares.each do |celular| %>
+      <tr>
+        <td><%= link_to celular[:chave], ci_path(celular[:chave]), :target => '_blank' %></td>
+         <td><%= celular[:descricao] %></td>
+        <td><%= celular[:gestor] %></td>
+        <td><%= "#{celular[:CCDebito]}/#{celular[:ProjetoDebito]}" %></td>
+        <td><%= celular[:status] %></td>
+      </tr>
+  <% end %>
+</table>  
+</br></br>
+
+<table style="table-layout:fixed">
+<col style="width:20%" span="5" />
   <tr>
     <th>Licenca</th>
     <th>Descricao</th>

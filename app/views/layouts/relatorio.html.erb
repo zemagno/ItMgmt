@@ -10,17 +10,28 @@
 <%= stylesheet_link_tag "CMDBstyle.css" %>
 <%= stylesheet_link_tag "scaffold.css" %>
 
+<%= javascript_include_tag "jquery" %>
+<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.css" %>
+<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.js" %>
+
 
 
 <%= csrf_meta_tag %>
+
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+    	pageLength: 100,
+    	pagingType: "full_numbers"
+    })
+});
+</script>
 
 </head>
 <div id="wrapper">
 	<div id="header-wrapper">
 		<div id="header">
-			<div id="logo">
-				<h2><%= @NomeRelatorio %></h2>
-			</div>
+			<h2><%= @NomeRelatorio %></h2>		
 		</div>
 	</div>
 	<!-- end #header -->
