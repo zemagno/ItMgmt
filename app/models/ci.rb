@@ -153,14 +153,14 @@ logger.debug(">>>>> duplicar")
     @attr_existentes = Hash.new
     
     # monto um hash com todos atributos que esse CI deve ter
-    tipoci.dicdados.map {|x| @attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao,x.apelido,x.tipo,x.regex,x.mandatorio]} 
+    tipoci.dicdados.map {|x| @attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao,x.apelido,x.tipo,x.regex,x.mandatorio,x.tooltip]} 
     
     # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
     atributo.map do |x| 
       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
       # entao eu crio esse atributo no hash
      if ! @attr_existentes[x.dicdado.id] then
-          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido,x.dicdado.tipo,x.dicdado.regex,x.dicdado.mandatorio]
+          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido,x.dicdado.tipo,x.dicdado.regex,x.dicdado.mandatorio,x.dicdado.tooltip]
       end
       @attr_existentes[x.dicdado.id][1] = x.valor 
      end 

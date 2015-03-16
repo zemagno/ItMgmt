@@ -49,4 +49,11 @@ def atributos_to_docs(attr,_url)
 	@docs
 end
 
+
+def tooltip(content, options = {}, html_options = {}, *parameters_for_method_reference)
+	html_options[:title] = options[:tooltip]
+	html_options[:class] = html_options[:class] || 'tooltip'
+	content_tag("span", content, html_options, false)
+end
+
 end

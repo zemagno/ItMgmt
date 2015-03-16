@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150227143410) do
+ActiveRecord::Schema.define(:version => 20150313235529) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -185,6 +185,27 @@ ActiveRecord::Schema.define(:version => 20150227143410) do
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
   add_index "cis", ["notificacao"], :name => "index_cis_on_notificacao"
 
+  create_table "contratos", :force => true do |t|
+    t.string   "codcontrato"
+    t.string   "descricao"
+    t.decimal  "valormensal",             :precision => 10, :scale => 2
+    t.integer  "tipocontrato_id"
+    t.integer  "fornecedor_id"
+    t.date     "datainicio"
+    t.date     "datafim"
+    t.date     "datarenovacao"
+    t.integer  "indicador_financeiro_id"
+    t.string   "projetoCCTI"
+    t.string   "projetoCCArea"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "classificacao"
+    t.string   "url"
+    t.string   "contrato"
+  end
+
+  add_index "contratos", ["codcontrato"], :name => "index_contratos_on_codcontrato"
+
   create_table "criticidades", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -213,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20150227143410) do
     t.string   "tipo"
     t.string   "regex"
     t.boolean  "mandatorio"
+    t.text     "tooltip"
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
@@ -534,6 +556,12 @@ ActiveRecord::Schema.define(:version => 20150227143410) do
     t.datetime "updated_at"
     t.string   "Descricao"
     t.string   "Owner"
+  end
+
+  create_table "tipocontratos", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tipotasks", :force => true do |t|

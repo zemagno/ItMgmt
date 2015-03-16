@@ -95,7 +95,7 @@ p, h1, form, button{
 	font-size:12px;
 	width:400px;
 }
-
+/**/
 #stylized actions{
 	clear:both;
 	margin-left:150px;
@@ -153,4 +153,10 @@ p, h1, form, button{
 .flash .close a {
     color:                              #f00;
     text-decoration:    none;
+}
+
+.mytooltip {
+cursor: help;
+color: green;
+white-space:pre-wrap;
 }

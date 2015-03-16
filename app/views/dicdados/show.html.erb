@@ -46,6 +46,11 @@
   <%= @dicdado.url %>
 </p>
 
+<p>
+  <b>Ajuda:</b>
+  <%= @dicdado.tooltip %>
+</p>
+
 <%= link_to 'Editar', edit_dicdado_path(@dicdado) %> |
 <%= link_to 'Novo', new_dicdado_path %> |
 <%= link_to 'Listagem', dicdados_path %>
