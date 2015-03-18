@@ -16,10 +16,13 @@
 <%= stylesheet_link_tag "jquery.datetimepicker.css" %>
 
 
-<%= javascript_include_tag "jquery", "jquery-ujs", "application" , "angular", "jquery.datetimepicker.js"%>
+<%= javascript_include_tag "jquery"%>
+<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.css" %>
+<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.js" %>
+
 <%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
 <%= javascript_include_tag "utils.js" %>
-
+<%= javascript_include_tag "jquery-ujs", "application" , "jquery.datetimepicker.js"%>
 <%= javascript_include_tag "ajax.js.coffee" %>
 
 
@@ -33,8 +36,17 @@ $(function() {
     });
 });
 </script>
+<script type="text/javascript">
+$(document).ready( function(){
+	$('#coolTable').dataTable({
+    	pageLength: 100,
+    	pagingType: "full_numbers"
+    	
+    })
+});
+</script>
 </head>
-<body ng-app>
+<body>
 <div id="wrapper">
 	<div id="header-wrapper">
 		<div id="header">
@@ -62,7 +74,10 @@ $(function() {
                     <% end %>
                     <% if can? :manager, :usuarios %>
                        <li><%= link_to 'Gestao de Usuarios', custom_gestao_usuarios_path %></li>	
-                    <% end %>   
+                    <% end %>  
+                    <li><%= link_to 'Producao', painel_producao_index_path %></li>	
+                    
+                                                  
 
 
 				</ul>

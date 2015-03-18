@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  get "painel_producao/index"
+
 namespace :custom do
    match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
    get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca"

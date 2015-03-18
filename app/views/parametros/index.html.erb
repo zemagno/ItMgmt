@@ -1,12 +1,15 @@
-<h1>Listing parametros</h1>
 
-<table>
+<h1>Parametros</h1>
+
+<table id="coolTable" class="display">
+<thead>
   <tr>
     <th>Tipo</th>
     <th>Subtipo</th>
     <th>Valor</th>
    </tr>
-
+</thead>
+<tbody>
 <% @parametros.each do |parametro| %>
   <tr>
    
@@ -16,7 +19,6 @@
     
   </tr>
 <% end %>
+</tbody>
 </table>
-
-<br />
 

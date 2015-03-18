@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150313235529) do
+ActiveRecord::Schema.define(:version => 20150317210756) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20150313235529) do
     t.integer  "tipoci_id"
     t.date     "ultimoacesso"
     t.integer  "qtdeacessos"
+    t.boolean  "painel"
   end
 
   create_table "cadsurveys", :force => true do |t|

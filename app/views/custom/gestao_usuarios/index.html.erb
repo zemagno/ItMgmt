@@ -10,11 +10,12 @@
 
 
 <b>
-</br>Login: <%= @usuario.login %> - Nome: <%= @nomecompleto %>
+</br><%= "Login:  #{@usuario.login} - Nome: #{@nomecompleto}" %>
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
+      <%= "- Matricula: #{@funcionario.Matricula}" %>
       </br><%= "CPF: #{@funcionario.CPF} - Identidade: #{@funcionario.Identidade}" %>
       </br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataDemissao}" %>
-      </br><%= "Torre: #{@funcionario.NomeTipoCC} - Local Trabalho: #{@funcionario.NomeLocalTrabalho}" %>
+      </br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho: #{@funcionario.NomeLocalTrabalho}" %>
 
       
       </br>

@@ -113,6 +113,11 @@ a:hover {
 	color: #FFFFFF;
 	border: none;
 }
+
+/* Configurações nivel 2*/
+.menu li:hover > ul.submenu-2{ display:block; top:0; left:195px; padding:5px; width:200px;  border-radius: 0 5px 5px 5px; }
+.menu ul.submenu-2 a{  width:160px; padding:0 20px; border-radius:5px; }
+
 #menu a:hover, #menu .current_page_item a {
 	background: #2AA1CC;
 	text-decoration: none;

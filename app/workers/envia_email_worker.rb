@@ -27,7 +27,9 @@ class EnviaEmailWorker
     when "CI"  
          # TODO simplificar isso aqui..
          ci = Ci.includes(:atributo => :dicdado).find(params[:id])
-         destinatario = ListaEmail.acerta(ci.Owner,"@brq.com")
+         destinatario = ListaEmail.acerta(ci.Owner+","+ci.notificacao,"@brq.com")
+
+
          from = Parametro.get(:tipo => "EMAIL_CI", :subtipo => "FROM")
          cc = Parametro.get(:tipo => "EMAIL_CI", :subtipo => "CC")
          CiMailer.enviar(template.template,ci,"NOC - #{template.nome} - #{ci.chave}",destinatario,cc,from).deliver

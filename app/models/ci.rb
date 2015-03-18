@@ -65,7 +65,11 @@ class Ci < ActiveRecord::Base
   validates :chave,  :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB" }
   
   validates :descricao, :presence => { :message => " eh mandatorio" }
-  
+
+  after_save :atualiza_chave
+
+
+
 
   
   def to_s
@@ -109,9 +113,20 @@ class Ci < ActiveRecord::Base
     provisionar ? "Provisionar" : "Nao Provisionar"
   end
 
+  def self.massiveUpdate(_search,_command)
+
+    cis = search _search , :match_mode => :boolean
+    cmd_expandido = _command.split(",").map { |x|  x.split("=") }
+
+    cis.each do  |x| 
+       puts x
+       cmd_expandido.each { |k,v| x.send("#{k}=", v) if x.respond_to?(k) }
+       x.save!
+    end
+  end
+
 
   def duplicar(nova_chave)
-logger.debug(">>>>> duplicar")
     newci = dup :include => :atributo
     newci.chave = nova_chave
     newci.save
@@ -120,9 +135,18 @@ logger.debug(">>>>> duplicar")
 
   # retorno o valor dos atributos a partir de Ci._<apelido_atributo>
   def method_missing(method_sym, *arguments, &block)
-    logger.debug(">>>>> method_missing")
     if method_sym.to_s =~ /^_([a-zA-Z]+)$/
       return getatributo($1)
+    elsif method_sym.to_s =~ /^_([a-zA-Z]+)=$/
+       setatributo($1,*arguments) 
+    else
+      super
+    end
+  end
+
+  def respond_to?(method_sym, include_private = false)
+    if method_sym.to_s =~ /^_([a-zA-Z]+)=?$/
+      true
     else
       super
     end
@@ -130,7 +154,6 @@ logger.debug(">>>>> duplicar")
 
 
   def getatributo(chave)
-    logger.debug(">>>>> getatributos")
     attr = atributos.select { |k,v| v[5] == chave }
     return attr.values[0][1] if attr.size > 0
     return ""
@@ -179,6 +202,18 @@ logger.debug(">>>>> duplicar")
 
     # FIXME atributos ainda esta apontando para atributos antigos...como limpar cache
 
+  end
+
+  def setatributo(key,value)
+    
+    k = atributos.select {|k,v| v[5] == key}
+    if ! k.blank?
+        a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id,k.keys[0])
+        a.valor=value
+        a.save!
+        atributos[398][1] = value
+    end
+# TODO fazer um set atributo com um valor, para poder
   end
 
 
@@ -263,6 +298,13 @@ logger.debug(">>>>> duplicar")
       #has site_id  # se eu quiser quiser filtrar..
       #has tipoci_id
   end
+
+
+  private
+  def atualiza_chave
+      nova_chave = self.chave.gsub "<ID>", id.to_s
+      self.update_attributes(:chave => nova_chave) if self.chave != nova_chave
+  end    
   
 end
 

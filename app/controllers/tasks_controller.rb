@@ -64,7 +64,6 @@ class TasksController < ApplicationController
     @task.ci_id = @ci.id
     @task.nome = @ci.descricao
     @task.tipotask = "Incidente"
-    @task.fornecedor_id = @ci.contrato.fornecedor_id if @ci.contrato
     @task.solicitante = @ci.Owner
     render :new
   end

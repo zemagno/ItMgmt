@@ -47,6 +47,7 @@ class CisController < ApplicationController
   def edit
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     carrega_agregadas
+    #@ci.chave.gsub! '<ID>', @ci.id.to_s
   end
 
   # cis#email 
@@ -188,6 +189,9 @@ class CisController < ApplicationController
   end
   
   def create
+      #  "ci"=>{"chave"=>"mamae"
+
+      puts params[:ci]
       @ci = Ci.new(params[:ci])
       case params[:dependencia]
         when "2"    
@@ -196,7 +200,16 @@ class CisController < ApplicationController
           @ci.impactados << Ci.find(session[:oldCI])
       end
       respond_to do |format|
-        if @ci.save  
+        if @ci.save 
+           # puts "==================================================="
+           # @ci.chave.gsub! '<ID>', @ci.id.to_s
+           # puts @ci.chave
+           # @ci.save!
+           # puts @ci.chave
+           # puts @ci
+           # params[:ci][:chave] = @ci.chave
+           # puts params[:ci]
+           # puts "==================================================="
           
           # FIXME  
           #@ci.limpa_atributos_outros_tipo        

@@ -58,13 +58,17 @@ class RelatorioController < ApplicationController
     #end 
     @NomeRelatorio = relatorio.descricao
    
-    mysql_res = ActiveRecord::Base.connection.execute(sql)
-
-    @resultado = []
-
-    mysql_res.each{ |res| @resultado << res }
-
-    @campos = mysql_res.fields
+    begin
+      mysql_res = ActiveRecord::Base.connection.execute(sql)
+      @resultado = []
+      mysql_res.each{ |res| @resultado << res }
+      @campos = mysql_res.fields
+    rescue
+      @resultado = [["Consulta com erro de SQL..."]]
+      @campos = ["Status"]
+    ensure 
+      # this_code_will_execute_always()
+    end
     
     to_xml(params[:id],@campos,@resultado)
     respond_to do |format|

@@ -1,0 +1,22 @@
+<h1>Painel de Producao</h1>
+<br><br>
+
+<table>
+  <tr>
+    <th>Relatorio</th>
+    <th>Descricao</th>
+    <th>Quantidades</th>
+ 
+  </tr>
+
+<% @painel.each do |c| %>
+  <tr>
+   
+    <td><%= link_to c[0], relatorio_path(c[0]), :target => "_blank" %></th>
+    <td><%= link_to c[1], relatorio_path(c[0]), :target => "_blank" %></td>   
+    <td><%= c[2] %></td>   
+    
+  </tr>
+<% end %>
+</table>
+
