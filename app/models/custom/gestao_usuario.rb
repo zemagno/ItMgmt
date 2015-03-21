@@ -37,18 +37,20 @@ class Custom::GestaoUsuario
 
         temEAPouMSDN = (! self.LicencasEmUso.index { |x| /^VSPrem.*(EAP|MSDN)/ === x[:chave] }.nil?)
         
-        # o IF abaixo tem que ser logo apos o index, para nao perder o $1
+        #### ATENCAO... o IF abaixo tem que ser logo apos o index, para nao perder o $1
         temOffice = self.LicencasEmUso.count { |x| /(^Office.*)/ === x[:chave] } - self.LicencasEmUso.count { |x| /(^Office.*VS.*)/ === x[:chave] }
         if (temOffice>0) and temEAPouMSDN
             # officeErroneo = $1
             # i = self.LicencasEmUso.index { |x| x[:chave] == officeErroneo } 
             # @licencasemuso[i][:status] = "Erro !" unless i.nil?
             distorcoes << "Licenca VS Prem EAP ou MSDN permite o uso de Office. Trocar para licenca Office_VS_EAP" 
-          end
+        end
 
-
-        tem2Offices = self.LicencasEmUso.count{ |x| /(^Office.*)/ === x[:chave] }
-        distorcoes << "Usuario possui mais de uma licenca de Office" if tem2Offices > 1
+        ["Project","VSS","Visio","Office"].each do |l|
+            if self.LicencasEmUso.count{ |x| /(^#{l}.*)/ === x[:chave] } >1
+                distorcoes << "Usuario possui mais de uma licenca de #{l}" 
+            end
+        end
 
         distorcoes << "Usuario nao eh mais funcionario. Liberar licencas" if (!self.Usuario.nil?) and (! self.Usuario.DataDemissao.nil?) and (self.LicencasEmUso.count >0) 
         distorcoes << "Usuario nao eh mais funcionario. Liberar estacoes" if (!self.Usuario.nil?) and (! self.Usuario.DataDemissao.nil?) and (self.Estacoes.count >0) 

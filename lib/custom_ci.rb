@@ -8,7 +8,7 @@ module CustomCi
  #        ActiveRecord::Base::where("statusci_id = 8 and chave LIKE ?","#{search}%")
  #    end
 
-    puts "Definindo Delete licenca"
+    # puts "Definindo Delete licenca"
     def desaloca_licenca
   		self.statusci_id = 8
   		self.CCDebito = ""

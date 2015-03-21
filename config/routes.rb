@@ -8,7 +8,8 @@ namespace :custom do
    match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
    get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca"
    post "GestaoUsuarios/deletelicenca", to: "GestaoUsuarios#remover_licenca", as: "remover_licenca"
-   get "GestaoUsuario/AlocarLicenca",  to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
+   post "GestaoUsuarios/AlocarLicenca", to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
+   get "GestaoUsuario/EscolherLicencaAlocar",  to: "GestaoUsuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
    get "GestaoUsuario/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
 end
 # match '/404' => 'errors#not_found'

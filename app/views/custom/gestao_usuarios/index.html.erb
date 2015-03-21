@@ -23,17 +23,18 @@
 </b>
 </br>
 <%= link_to '[Alocar Estacao]', custom_alocar_estacao_path, :id => "zNovo" %>
-<%= link_to '[Alocar Licenca]', custom_alocar_licenca_path, :id => "zNovo" %>
+<%= link_to '[Alocar Licenca]', custom_escolher_licenca_alocar_path, :id => "zNovo" %>
 </br></br>
 <% if (! @usuario.nil?) and (! @usuario.login.nil?) %>
 <table style="table-layout:fixed">
-<col style="width:20%" span="5" />
+<col style="width:16%" span="6" />
    <tr>
     <th>Estacao</th>
      <th>Descricao</th> 
     <th>Gestor</th>
     <th>CC/Projeto Debito</th>
     <th>Status</th>
+    <th></th>
   </tr>
   <% @estacao.each do |estacao| %>
       <tr>
@@ -48,13 +49,14 @@
 </br></br>
 
 <table style="table-layout:fixed">
-<col style="width:20%" span="5" />
+<col style="width:16%" span="6" />
    <tr>
     <th>Celular</th> 
     <th>Descricao</th>
     <th>Gestor</th>
     <th>CC/Projeto Debito</th>
     <th>Status</th>
+    <th></th>
   </tr>
   <% @celulares.each do |celular| %>
       <tr>
@@ -63,13 +65,14 @@
         <td><%= celular[:gestor] %></td>
         <td><%= "#{celular[:CCDebito]}/#{celular[:ProjetoDebito]}" %></td>
         <td><%= celular[:status] %></td>
+         <th></th>
       </tr>
   <% end %>
 </table>  
 </br></br>
 
 <table style="table-layout:fixed">
-<col style="width:20%" span="5" />
+<col style="width:16%" span="6" />
   <tr>
     <th>Licenca</th>
     <th>Descricao</th>
@@ -107,7 +110,7 @@
 
 
 
-<% if @modo == :remocao %>
+<% if @modo == :remocao_licenca %>
 <div id="stylized" class="myform">
 <h1>Se voce deseja realmente remover a licenca <%=@licenca%>, digite o nome da licenca abaixo
 </h1>
@@ -126,15 +129,36 @@
 
 <% if @modo == :alocar_licenca %>
 <div id="stylized" class="myform">
-<h1>Qual licenca voce deseja alocar ?
-</h1>
 
 
-<%= form_tag(custom_remover_licenca_path, :method => "post") do %>
+<%= form_tag(custom_alocar_licenca_path, :method => "post") do %>
+
+
  
-  <%= text_field_tag("confirmacao", @confirmacao, :size => 50) %>
-  <%= hidden_field_tag 'token_confirmacao',@licenca %>
-  <%= hidden_field_tag 'id', @login%>
+  
+  <label>Qual licenca alocar ?
+  </label>
+  <%= select_tag :licenca, options_for_select(@licencasexistentes) %>
+  <div class="spacer"></div>
+  
+  <label>Gestor
+  <span class="small">Login de rede do Gestor </span>
+  </label>
+  <%= text_field_tag :gestor  %>
+  
+  <div class="spacer"></div>
+  <label>Centro de Custo
+  <span class="small">para debitar </span>
+  </label>
+  <%= text_field_tag :cc  %>
+
+  <div class="spacer"></div>
+  <label>Codigo do Projeto
+  </label>
+  <%= text_field_tag :projeto  %>
+
+
+  <%= hidden_field_tag :id, @login%>
   <%= submit_tag("Alocar") %>
 </br></br>
 </div>

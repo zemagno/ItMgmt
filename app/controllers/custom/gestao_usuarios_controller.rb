@@ -37,21 +37,37 @@ def index
 end
 
 def confirmar_remocao_licenca
-    @modo = :remocao
+    @modo = :remocao_licenca
     @login = params[:id]
     @licenca = params[:licenca]
+    load 
+    render :index and return
+end
+
+def escolher_licenca_alocar
+    @modo = :alocar_licenca
+    @login = params[:id]
+    @licenca = params[:licenca]
+    @licencasexistentes = Custom::GestaoLicenca.LicencasExistentes.map { |x| x[0]}
     load 
     render :index and return
 end
 
 def alocar_licenca
-    @modo = :alocar_licenca
-    @login = params[:id]
-    @licenca = params[:licenca]
+    @modo = :vizualizacao
+    puts params
+    if (@licencaalocada = Custom::GestaoLicenca.AlocarLicenca(params))
+       puts "aloquei"
+       flash[:info] = "INFO: Alocada licenca #{@licencaalocada.chave} - #{@licencaalocada.descricao} "
+    else
+      flash[:error] = "Erro: Nao existe licenca disponivel para alocar"
+      puts "nao achei nada"
+    end
+    # @login = params[:id]
+    # @licenca = params[:licenca]
     load 
     render :index and return
 end
-
 
 def alocar_estacao
     @modo = :alocar_estacao

@@ -1,3 +1,6 @@
+<% if can? :manage, :all %>
+  <%= link_to '[Relatorio]', edit_cadrelatorio_path(@relatorio)%>
+<% end %>
 <table id="coolTable" class="display">
 <thead>
 	<tr>

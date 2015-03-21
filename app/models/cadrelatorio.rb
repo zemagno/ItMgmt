@@ -17,6 +17,12 @@ class Cadrelatorio < ActiveRecord::Base
     save!
   end
 
+  def getPainel
+    r = Cadrelatorio.find_all_by_painel(1)
+    
+  end
+
+
 
   def nome_tipoci
   	tipoci_id.nil? || tipoci_id==0 ? "" : tipoci.tipo
