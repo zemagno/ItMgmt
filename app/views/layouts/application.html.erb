@@ -16,14 +16,12 @@
 <%= stylesheet_link_tag "jquery.datetimepicker.css" %>
 
 
-<%= javascript_include_tag "jquery"%>
-<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.css" %>
-<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.js" %>
-
+<%= javascript_include_tag "jquery", "jquery-ujs", "application" , "angular", "jquery.datetimepicker.js"%>
 <%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
 <%= javascript_include_tag "utils.js" %>
-<%= javascript_include_tag "jquery-ujs", "application" , "jquery.datetimepicker.js"%>
+
 <%= javascript_include_tag "ajax.js.coffee" %>
+
 
 
 <%= csrf_meta_tag %>

@@ -4,7 +4,7 @@
 #register { width: 100px; }
 
 #chave_ci { 
-  background: #fff url('/images/stsatus.gif') 150px 0 no-repeat; background-size: 20px 90px; 
+  background: #fff url('/images/status.gif') 150px 0 no-repeat; background-size: 20px 90px; 
   padding: 0 20px 0 2px; 
   width: 185px; 
 }

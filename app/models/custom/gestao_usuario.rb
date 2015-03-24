@@ -12,7 +12,6 @@ class Custom::GestaoUsuario
     end
 
     def Usuario
-        puts "Login... #{@login}"
         @funcionario ||= Funcionario.find_by_Login(@login) 
     end
 
@@ -30,6 +29,14 @@ class Custom::GestaoUsuario
 
     def Celulares 
         @celulares ||= retrieveCIs(37)
+    end
+
+
+    def self.LiberaEstacao(attributes = {})
+        
+        c = Ci.find_by_chave(attributes[:estacao])
+        
+        c.libera_estacao if ! c.nil?
     end
 
     def DistorcoesUsoLicenca

@@ -9,7 +9,7 @@ module CustomCi
  #    end
 
     # puts "Definindo Delete licenca"
-    def desaloca_licenca
+    def libera_estacao
   		self.statusci_id = 8
   		self.CCDebito = ""
   		self.ProjetoDebito = ""
@@ -17,6 +17,16 @@ module CustomCi
   		self.notificacao = ""
   		save!
   	end
+
+    def desaloca_licenca
+      self.statusci_id = 8
+      self.CCDebito = ""
+      self.ProjetoDebito = ""
+      self.Owner = "BRQ"
+      self.notificacao = ""
+      save!
+    end
+
 end
 
 Ci.send(:include, CustomCi)

@@ -122,9 +122,29 @@ p, h1, form, button{
 	font-weight:bold;
 }
 
+#flash_notice,
+#flash_error,
+#flash_info,
+#flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+#flash_error,
+#flash_info,
+#flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
 .flash {
     text-align: center;
-    font-size:  14px;
+    font-size:  18px;
     padding:    .3em .4em;
     margin:             0 auto .5em;
     clear:              both;

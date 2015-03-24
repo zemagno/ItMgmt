@@ -22,7 +22,7 @@
 <% end %>  
 </b>
 </br>
-<%= link_to '[Alocar Estacao]', custom_alocar_estacao_path, :id => "zNovo" %>
+<%= link_to '[Alocar Estacao]', custom_escolher_estacao_alocar_path, :id => "zNovo" %>
 <%= link_to '[Alocar Licenca]', custom_escolher_licenca_alocar_path, :id => "zNovo" %>
 </br></br>
 <% if (! @usuario.nil?) and (! @usuario.login.nil?) %>
@@ -33,16 +33,15 @@
      <th>Descricao</th> 
     <th>Gestor</th>
     <th>CC/Projeto Debito</th>
-    <th>Status</th>
     <th></th>
   </tr>
-  <% @estacao.each do |estacao| %>
+  <% @estacoes.each do |estacao| %>
       <tr>
         <td><%= link_to estacao[:chave], ci_path(estacao[:chave]), :target => '_blank' %></td>
          <td><%= estacao[:descricao] %></td>
         <td><%= estacao[:gestor] %></td>
         <td><%= "#{estacao[:CCDebito]}/#{estacao[:ProjetoDebito]}" %></td>
-        <td><%= estacao[:status] %></td>
+        <td><%= link_to '[Desalocar Estacao]', custom_confirmar_desalocar_estacao_path(@usuario.login,estacao[:chave]) %></td> 
       </tr>
   <% end %>
 </table>  
@@ -55,7 +54,6 @@
     <th>Descricao</th>
     <th>Gestor</th>
     <th>CC/Projeto Debito</th>
-    <th>Status</th>
     <th></th>
   </tr>
   <% @celulares.each do |celular| %>
@@ -64,7 +62,7 @@
          <td><%= celular[:descricao] %></td>
         <td><%= celular[:gestor] %></td>
         <td><%= "#{celular[:CCDebito]}/#{celular[:ProjetoDebito]}" %></td>
-        <td><%= celular[:status] %></td>
+        
          <th></th>
       </tr>
   <% end %>
@@ -78,7 +76,7 @@
     <th>Descricao</th>
     <th>Gestor</th>
     <th>CC/Projeto Debito</th>
-    <th>Status</th>
+  
     <th></th>
   </tr>
 
@@ -88,7 +86,7 @@
     <td><%= licenca[:descricao] %></td>
     <td><%= licenca[:gestor] %></td>
     <td><%= "#{licenca[:CCDebito]}/#{licenca[:ProjetoDebito]}" %></td>
-    <td><%= licenca[:status] %></td>
+    
     <td><%= link_to '[Remover Licenca]', custom_confirmar_remocao_licenca_path(@usuario.login,licenca[:chave]) %></td> 
   </tr>
 <% end %>
@@ -108,7 +106,65 @@
 </table>
 <% end %>
 
+<table>
+  <tr>
+    <th>Acao</th>
+  </tr>
+</table>
 
+<% if @modo == :desalocar_estacao %>
+<div id="stylized" class="myform">
+<h1>Se voce deseja realmente desalocar a estacao <%=@estacao%>, digite o nome da estacao abaixo
+</h1>
+
+
+<%= form_tag(custom_desalocar_estacao_path, :method => "post") do %>
+ 
+  <%= text_field_tag("confirmacao", @confirmacao, :size => 50) %>
+  <%= hidden_field_tag 'token_confirmacao',@estacao %>
+  <%= hidden_field_tag 'id', @login%>
+  <%= submit_tag("Eliminar") %>
+</br></br>
+</div>
+<% end %>
+<% end %>
+
+<% if @modo == :alocar_estacao %>
+   <div id="stylized" class="myform">
+   <%= form_tag(custom_alocar_estacao_path, :method => "post") do %>
+        
+        <label>Estacao
+        <span class="small">Chave (ou patrimonio) </span>
+        </label>
+        <%= text_field_tag :estacao  %>
+        <div class="spacer"></div>
+
+        <label>Gestor
+        <span class="small">Login de rede do Gestor </span>
+        </label>
+        <%= text_field_tag :gestor  %>
+        
+        <label>Centro de Custo
+        <span class="small">para debitar </span>
+        </label>
+        <%= text_field_tag :cc  %>
+
+        
+        <label>Codigo do Projeto
+        </label>
+        <%= text_field_tag :projeto  %>
+
+        <%= javascript_include_tag "validador_atributos.js" %>
+        <%= render :partial => 'cis/edit_atributos' %>
+        <br><br>
+        <%= hidden_field_tag :id, @login%>
+        <div class="spacer"></div>
+        <%= submit_tag("Alocar") %>
+    <% end %>
+    </br></br>
+  </div>
+  
+<% end %>
 
 <% if @modo == :remocao_licenca %>
 <div id="stylized" class="myform">
@@ -130,12 +186,8 @@
 <% if @modo == :alocar_licenca %>
 <div id="stylized" class="myform">
 
-
 <%= form_tag(custom_alocar_licenca_path, :method => "post") do %>
 
-
- 
-  
   <label>Qual licenca alocar ?
   </label>
   <%= select_tag :licenca, options_for_select(@licencasexistentes) %>
@@ -146,19 +198,20 @@
   </label>
   <%= text_field_tag :gestor  %>
   
-  <div class="spacer"></div>
+  
   <label>Centro de Custo
   <span class="small">para debitar </span>
   </label>
   <%= text_field_tag :cc  %>
 
-  <div class="spacer"></div>
+  
   <label>Codigo do Projeto
   </label>
   <%= text_field_tag :projeto  %>
-
+  <div class="spacer"></div>
 
   <%= hidden_field_tag :id, @login%>
+  <div class="spacer"></div>
   <%= submit_tag("Alocar") %>
 </br></br>
 </div>

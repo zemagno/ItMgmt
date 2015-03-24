@@ -164,7 +164,7 @@ class Ci < ActiveRecord::Base
   # TODO --> testar se eu chamo varias vezes, ele monta sempre, sempre..
   # 
   def atributos
-    logger.debug(">>>>> atributos")
+   
     # pegar todos os atributos possiveis (tipoci.dicdado)
     # dicdados.id => [Label,valor]
     #{ 5=>["Contrat", "Link Citi"], 
@@ -205,13 +205,15 @@ class Ci < ActiveRecord::Base
   end
 
   def setatributo(key,value)
-    
+    puts "setatributo"
     k = atributos.select {|k,v| v[5] == key}
+    puts "k: #{k} #{k.blank?}"
     if ! k.blank?
+        puts "vou salvar atributos"
         a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id,k.keys[0])
         a.valor=value
         a.save!
-        atributos[398][1] = value
+        
     end
 # TODO fazer um set atributo com um valor, para poder
   end

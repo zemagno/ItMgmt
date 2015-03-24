@@ -8,7 +8,7 @@ class MailingsController < InheritedResources::Base
     end
 
     def campanhas
-    	Mailing.find(:all).map(&:tag).uniq
+    	Mailing.campanhas
     end
 
     def campanhas_sql
@@ -18,6 +18,7 @@ class MailingsController < InheritedResources::Base
     def confirma_enviar_email
     	@samples = Mailing.where(tag: params[:enviar_email][:mailing_tag]).first(20)
         @total = Mailing.where(tag: params[:enviar_email][:mailing_tag]).count
+        @erros = Mailing.erros(tag: params[:enviar_email][:mailing_tag])
         @mailing_tag = params[:enviar_email][:mailing_tag]
     end
 

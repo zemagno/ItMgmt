@@ -3,13 +3,27 @@
 <h1>Confirma enviar <%=@total%> emails ?</h1>
 <h1>Tag: [<%=@mailing_tag%>]</h1>
 
+<div id="wrapper">
+<div id="page">
+      <div id="page-bgtop">
+        <div >
+        <% @erros.each do |e| %>
+          <%= content_tag :div,e[1], id: "flash_#{e[0]}" %>
+        <% end %>
+        </div>
+      </div>
+  </div>
+</div>
+
+<% puts @erros %>
+<% puts @erros.count %>
 
 <div id="stylized" class="myform">
 <%=  form_for :enviar_email, :url => { :action => :enviar_email } do |f|  %>
 
 <%= hidden_field_tag 'mailing_tag', @mailing_tag%>
 <div class="buttons">
-    <%= f.submit "Enviar Mala direta" %>
+    <%= f.submit "Enviar Mala direta" if @erros.count == 0 %>
 </div>
 </br>
 <% end %>
@@ -27,7 +41,7 @@
 
 <% @samples.each do |mailing| %>
   <tr>
-    <td><%= mailing.templates_email.nome %></td>
+    <td><%= mailing.templates_email_nome %></td>
     <td><%= mailing.to %></td>
     <td><%= mailing.cc %></td>
     <td><%= mailing.from %></td>

@@ -6,11 +6,15 @@ ItMgmt::Application.routes.draw do
 
 namespace :custom do
    match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
-   get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca"
-   post "GestaoUsuarios/deletelicenca", to: "GestaoUsuarios#remover_licenca", as: "remover_licenca"
-   post "GestaoUsuarios/AlocarLicenca", to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
+
+   post "GestaoUsuario/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
    get "GestaoUsuario/EscolherLicencaAlocar",  to: "GestaoUsuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
-   get "GestaoUsuario/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
+   get "GestaoUsuario/EscolherEstacaoAlocar",  to: "GestaoUsuarios#escolher_estacao_alocar", as: "escolher_estacao_alocar"
+   get "GestaoUsuarios/:id/confirmardesalocarestacao/:estacao", to: "GestaoUsuarios#confirmar_desalocar_estacao", as: "confirmar_desalocar_estacao"
+   get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca"
+   post "GestaoUsuarios/AlocarLicenca", to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
+   post "GestaoUsuarios/deletelicenca", to: "GestaoUsuarios#remover_licenca", as: "remover_licenca"
+   post "GestaoUsuarios/DesalocarEstacao", to: "GestaoUsuarios#desalocar_estacao", as: "desalocar_estacao"
 end
 # match '/404' => 'errors#not_found'
 # match '/422' => 'errors#server_error'
