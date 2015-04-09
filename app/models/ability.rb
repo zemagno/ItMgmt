@@ -102,6 +102,7 @@ class Ability
         cannot :manage, @SqlTemplate
         cannot :manage, Mailing
 
+
         can    :manage, :usuarios
     end
 

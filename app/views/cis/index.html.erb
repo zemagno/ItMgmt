@@ -12,6 +12,7 @@
  -->
 <%= link_to '[Novo CI]', new_ci_path, :id => "zNovo" %>
 
+
 <%= will_paginate @cis %>
 
 <%= form_tag(cis_path, :method => "get") do %>
@@ -75,5 +76,9 @@
 -->
 
 <%= will_paginate @cis %>
+
+<% if can? :manage, :all %>
+    
+<% end %>
 
 <br />

@@ -119,10 +119,7 @@ class CisController < ApplicationController
 
   def index
 
-    puts "Env ==> #{env}"
-    puts "Params ==> #{params}"
-    puts "Session ==> #{session}"
-
+   
     @search = params[:search] || session[:search_cis]
 
     @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
@@ -191,7 +188,6 @@ class CisController < ApplicationController
   def create
       #  "ci"=>{"chave"=>"mamae"
 
-      puts params[:ci]
       @ci = Ci.new(params[:ci])
       case params[:dependencia]
         when "2"    
@@ -201,15 +197,6 @@ class CisController < ApplicationController
       end
       respond_to do |format|
         if @ci.save 
-           # puts "==================================================="
-           # @ci.chave.gsub! '<ID>', @ci.id.to_s
-           # puts @ci.chave
-           # @ci.save!
-           # puts @ci.chave
-           # puts @ci
-           # params[:ci][:chave] = @ci.chave
-           # puts params[:ci]
-           # puts "==================================================="
           
           # FIXME  
           #@ci.limpa_atributos_outros_tipo        
@@ -284,8 +271,7 @@ class CisController < ApplicationController
       while not queue.empty?
           #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
           @i,nivel = dequeue
-          if @i.ativo? 
-            nodes[@i.chave] = g.add_nodes(@i.chave, GraficoCmdb.TipoGraficoCI(@i,ci_path(@i)))
+          nodes[@i.chave] = g.add_nodes(@i.chave, GraficoCmdb.TipoGraficoCI(@i,ci_path(@i)))
             if nivel <= nivel_max then
               @i.send(direcao).each do |ii|
                   #erro ??!?!?! nao testo a data de mudanca ???
@@ -307,7 +293,6 @@ class CisController < ApplicationController
 
               @i.send(direcao).map { |x| enqueue([x,nivel+1])}
             end # nivel <= nivel_max
-          end # ci.ativo
       end
       g.output( :svg => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.svg" )
       logger.debug "gravei grafico no cache"
@@ -320,13 +305,15 @@ class CisController < ApplicationController
   def gera_relaciomentos (direcao)
     @ci = Ci.find(params[:id])    
     if Rails.cache.exist?("#{direcao}-#{@ci.id}")
-       @fila_resultado = Rails.cache.read("#{direcao}-#{@ci.id}")
+       logger.debug "vou ler do cache [#{direcao}-#{@ci.id}]"
+       @fila_resultado = JSON.load Rails.cache.read("#{direcao}-#{@ci.id}")
        @email_impactados = Rails.cache.read("#{direcao}-#{@ci.id}-email")
        logger.debug  "Ops... li do cache"
     else
       logger.debug "vou ler do db"
       @email_impactados = ""
       init_queue
+      
       @email_impactados << @ci.Owner unless @ci.Owner.nil? or @ci.Owner == ""
       @email_impactados << ","+@ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == ""
 
@@ -338,33 +325,34 @@ class CisController < ApplicationController
       nivel_max_email = 8
 
       @fila_resultado = []
-
       while not queue_empty?
         #retira (e retorna) o primeiro elementro da fila ([impactado, nivel])
         i,nivel = dequeue
-        if nivel <= nivel_max then # aqui tem que entrar todos os filtros
-            if (not edges_visitado[i.chave]) then       
+           
+        if (not edges_visitado[i.chave]) then 
+            if nivel <= nivel_max then # aqui tem que entrar todos os filtros
+                 
                 edges_visitado[i.chave] = true
                 @email_impactados << ","+i.Owner unless i.Owner.nil? or i.Owner == "" or nivel>nivel_max_email
                 @email_impactados << ","+@ci.notificacao unless @ci.notificacao.nil? or @ci.notificacao == "" or nivel>nivel_max_email
 
-                @fila_resultado << [:ci,i] unless i.send(direcao).empty?
+                @fila_resultado << [:ci,i.to_hash] unless i.send(direcao).empty?
+
                 i.send(direcao).each do |ii|
-                    @fila_resultado << [:subci,ii, "Depende de"]
+                    @fila_resultado << [:subci,ii.to_hash, "Depende de"] unless edges_visitado[ii.chave]
                 end
             end    
 
-          # retorna uma matrix com varios elementos (.map)
-          # transforma cada elemento impactado numa tupla com [impactado, nivel + 1]
-          # concatena essas tuplas de impactados no final da fila
+            # retorna uma matrix com varios elementos (.map)
+            # transforma cada elemento impactado numa tupla com [impactado, nivel + 1]
+            # concatena essas tuplas de impactados no final da fila
 
-          i.send(direcao).map { |x| enqueue([x,nivel+1])}
+            i.send(direcao).map { |x| enqueue([x,nivel+1]) unless edges_visitado[x.chave]}
         end
       end
       @email_impactados = ListaEmail.acerta(@email_impactados,"@brq.com")
-      Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado, expires_in: 5.minute)
+      Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado.to_json, expires_in: 5.minute)
       Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
-      logger.debug  "escrevi no cache"
     end
     @fila_resultado
     # TODO acertar esse lixo...retornar tudo...@fila e @email impactado..
@@ -392,12 +380,12 @@ def gera_relaciomentos_com_composto_de
       if nivel <= nivel_max then
           if not edges_visitado[i.chave] then        
               edges_visitado[i.chave] = true
-              @fila_resultado << [:ci,i] unless i.dependentes.empty?
+              @fila_resultado << [:ci,i.to_hash] unless i.dependentes.empty?
               i.dependentes.each do |ii|
-                  @fila_resultado << [:subci,ii,"Depende de"]
+                  @fila_resultado << [:subci,ii.to_hash,"Depende de"]
               end
               i.composto_de.each do |ii|
-                  @fila_resultado << [:subci,ii,"Composto por"]
+                  @fila_resultado << [:subci,ii.to_hash,"Composto por"]
               end
 
           end    
@@ -530,7 +518,7 @@ end
   def impactados
      @fila_impactados = gera_relaciomentos(:impactados)
      gera_grafico_relacionamento(params[:id],:impactados)
-     @imagem_impactados = true
+     @imagem_impactados = true 
   end
 
   def dependentes

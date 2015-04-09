@@ -76,8 +76,12 @@ class Ci < ActiveRecord::Base
       "#{id}:#{chave} : #{descricao} : #{nice_tipoci}"  
   end
 
+  def to_hash
+    {"chave" => chave, "descricao" => descricao, "tipoci" => nice_tipoci, "Owner" => self.Owner, "id" => id, "status" => status.upcase}
+  end
+
   def chave_sanitizada
-    chave.gsub(/\ /,"_").delete('^a-zA-Z\_')
+    chave.gsub(/\ /,"_").delete('^a-zA-Z0-9\_')
   end
 
   def ativo?

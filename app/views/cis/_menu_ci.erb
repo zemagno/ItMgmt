@@ -2,7 +2,7 @@
 <%= link_to("[Dependentes]", dependentes_path(@ci))%>
 <%= link_to("[Dependentes/Composto de]", dependentes_all_path(@ci))%>
 
-<% if @imagem_dependentes then %> 
+<% if @imagem_dependentes  then %> 
     <a href="/imagens/<%=@ci.chave_sanitizada%>-dependentes.svg" onclick="window.open(this.href,'','height=600,width=900');return false";>[Grafico Dependentes]</a>
 <% end %>
 

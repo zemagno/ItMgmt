@@ -12,15 +12,14 @@
 <div id="stylized" class="myform">
 
 <% @fila_resultado.each do |ci| %>
-  <% if ci[0]==:ci then %>
+  <% if ci[0].to_s=="ci" then %>
      </br>
-     <h1><%= "#{ci[1].nice_tipoci} "%><%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao} - #{ci[1].Owner}" %></h1>
+     <h1><%= "#{ci[1]["tipoci"]} "%><%= link_to ci[1]["chave"], ci_path(ci[1]["id"]) %> <%= " - #{ci[1]["descricao"]} - #{ci[1]["Owner"]}" %></h1>
   <% end %>
-  <% if ci[0]==:subci then %>
+  <% if ci[0].to_s=="subci" then %>
      
-     &nbsp;&nbsp;&nbsp<%= "#{ci[2]} #{ci[1].nice_tipoci} " %>&nbsp;<%= link_to ci[1].chave, ci[1] %> <%= " - #{ci[1].descricao} - #{ci[1].Owner}" %>
-	<font color="red"><%= " - #{ci[1].status.upcase}" if ci[1].statusci_id > 1 %></font>
-
+     &nbsp;&nbsp;&nbsp;Depende<%= " #{ci[1]["tipoci"]} " %>&nbsp;<%= link_to ci[1]["chave"], ci_path(ci[1]["id"]) %> <%= " - #{ci[1]["descricao"]} - #{ci[1]["Owner"]}" %>
+     <font color="red"><%= " - #{ci[1]["status"]}" if ci[1]["status"] != "ATIVO" %></font>
      </br>
   <% end %>
 
