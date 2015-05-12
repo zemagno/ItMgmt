@@ -45,19 +45,21 @@
                                         <td colspan='6'>&nbsp;</td>
                                     </tr>
                                     <tr border='1' style='font-size:10px;'>
+                                        <td width="50%"   align='center' style='color:white' bgcolor='blue';>Descri&ccedil;&atilde;o</td>
                                         <td width="20%" align='center' style='color:white' bgcolor='blue';>Ativo</td>
                                         <td width="15%"   align='center' style='color:white' bgcolor='blue';>Data da Entrega</td>
                                         <td width="15%"   align='center' style='color:white' bgcolor='blue';>Data da Devolu&ccedil;&atilde;o</td>
-                                        <td width="50%"   align='center' style='color:white' bgcolor='blue';>Descri&ccedil;&atilde;o</td>
+                                        
                                  
                       
                                     </tr>
                                     <% @ativos_termo.each do |a| %>
                                       <tr>
+                                        <td width="50%"   align='center' style='color:black' bgcolor='white';><%= a[:descricao] %></td>
                                         <td width="20%"   align='center' style='color:black' bgcolor='white';><%= a[:chave] %></td>
                                         <td width="15%"   align='center' style='color:black' bgcolor='white';><%= a[:dataEntrega] %></td>
                                         <td width="15%"   align='center' style='color:black' bgcolor='white';><%= a[:dataDevolucao] if @termo[0] ==:devolucao %></td>
-                                        <td width="50%"   align='center' style='color:black' bgcolor='white';><%= a[:descricao] %></td>
+                                      
                                  
                                       </tr>      
                                     <% end %>
