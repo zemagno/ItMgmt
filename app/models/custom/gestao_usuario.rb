@@ -20,18 +20,21 @@ class Custom::GestaoUsuario
     end
 
     def LicencasEmUso 
-        @licencasemuso ||= Ci.where(notificacao: @login, tipoci_id: 13, statusci_id: 1).map { |x| {:chave => x.chave,:descricao => x.descricao,:gestor => x.Owner,:CCDebito => x.CCDebito, :ProjetoDebito => x.ProjetoDebito, :status => ""} }
+        # @licencasemuso ||= Ci.where(notificacao: @login, tipoci_id: 13, statusci_id: 1).map { |x| {:chave => x.chave,:descricao => x.descricao,:gestor => x.Owner,:CCDebito => x.CCDebito, :ProjetoDebito => x.ProjetoDebito, :status => ""} }
+        @licencasemuso ||= retrieveCIs(13)
     end
 
     def Estacoes 
-        @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map { |x| {:chave => x.chave,:descricao => x.descricao,:gestor => x.Owner,:CCDebito => x.CCDebito, :ProjetoDebito => x.ProjetoDebito, :status => ""} }
+        @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map { |x| {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:descricao => "#{x._tipo} #{x.descricao} Processador #{x._linhaprocessador} com #{x._memoria}Gb de Memoria"} }
+       
     end
 
     def Celulares 
-        @celulares ||= retrieveCIs(37)
+        @celulares ||= Ci.where(notificacao: @login, tipoci_id: 37, statusci_id: 1).map { |x| {:chave => x.chave,:descricao => x.descricao,:gestor => x.Owner,:CCDebito => x.CCDebito, :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega, :dataDevolucao => x._dataliberacao, :status => "", :descricao => "Linha #{x._Operadora}-#{x._ICCID}" }}
+        
     end
 
-
+   
     def self.LiberaEstacao(attributes = {})
         
         c = Ci.find_by_chave(attributes[:estacao])

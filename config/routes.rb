@@ -11,6 +11,8 @@ namespace :custom do
    get "GestaoUsuario/EscolherLicencaAlocar",  to: "GestaoUsuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
    get "GestaoUsuario/EscolherEstacaoAlocar",  to: "GestaoUsuarios#escolher_estacao_alocar", as: "escolher_estacao_alocar"
    get "GestaoUsuarios/:id/confirmardesalocarestacao/:estacao", to: "GestaoUsuarios#confirmar_desalocar_estacao", as: "confirmar_desalocar_estacao"
+   get "GestaoUsuarios/:id/imprimirtermoentrega/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_entrega", as: "imprimir_termo_entrega"
+   get "GestaoUsuarios/:id/imprimirtermodevolucao/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_devolucao", as: "imprimir_termo_devolucao"
    get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca"
    post "GestaoUsuarios/AlocarLicenca", to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
    post "GestaoUsuarios/deletelicenca", to: "GestaoUsuarios#remover_licenca", as: "remover_licenca"

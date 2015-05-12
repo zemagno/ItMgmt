@@ -29,6 +29,7 @@ def index
     end
 end
 
+
 def confirmar_remocao_licenca
     @modo = :remocao_licenca
     @login = params[:id]
@@ -61,8 +62,47 @@ def alocar_estacao
     load 
     redirect_to :custom_gestao_usuarios
 
+end
+
+def carrega_ativos_termo
+  load
+
+ puts params
+  @ativos_termo = []
+  if params[:tipo] == "celular" || params[:tipo] == "__ALL__"
+
+    puts "carregando celular #{params[:tipo]}"
+     @celulares.each do |x|
+        @ativos_termo << x if params[:tipo] == "__ALL__" || x[:chave] == params[:ativo]
+     end   
+  end
+
+  if params[:tipo] == "estacao" || params[:tipo] == "__ALL__"
+      puts "carregando estacao #{params[:tipo]}"
+     @estacoes.each do |x|
+        @ativos_termo << x if params[:tipo] == "__ALL__" || x[:chave] == params[:ativo]
+     end 
+  end
 
 
+end
+
+def imprimir_termo_entrega
+  
+  carrega_ativos_termo
+
+
+  @termo = [:entrega,"entrega","receber"]
+  render "imprimir_termo", layout: "plain"
+  
+end
+
+
+def imprimir_termo_devolucao
+  carrega_ativos_termo
+  @termo = [:devolucao,"devolucao","a devolu&ccedil;&atilde;o"]
+  render "imprimir_termo", layout: "plain"
+  
 end
 
 def escolher_estacao_alocar

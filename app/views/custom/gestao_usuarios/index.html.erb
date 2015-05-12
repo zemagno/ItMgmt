@@ -24,6 +24,9 @@
 </br>
 <%= link_to '[Alocar Estacao]', custom_escolher_estacao_alocar_path, :id => "zNovo" %>
 <%= link_to '[Alocar Licenca]', custom_escolher_licenca_alocar_path, :id => "zNovo" %>
+<%= link_to '[Termo Entrega de Tudo]', custom_imprimir_termo_entrega_path(@usuario.login,"__ALL__",:all) , :target => "_blank"%>
+<%= link_to '[Termo Devolucao de Tudo]', custom_imprimir_termo_devolucao_path(@usuario.login,"__ALL__",:all) , :target => "_blank"%>
+
 </br></br>
 <% if (! @usuario.nil?) and (! @usuario.login.nil?) %>
 <table style="table-layout:fixed">
@@ -41,7 +44,11 @@
          <td><%= estacao[:descricao] %></td>
         <td><%= estacao[:gestor] %></td>
         <td><%= "#{estacao[:CCDebito]}/#{estacao[:ProjetoDebito]}" %></td>
-        <td><%= link_to '[Desalocar Estacao]', custom_confirmar_desalocar_estacao_path(@usuario.login,estacao[:chave]) %></td> 
+        <td><%= link_to '[Desalocar Estacao]', custom_confirmar_desalocar_estacao_path(@usuario.login,estacao[:chave]) %>
+        <%= link_to '[Termo Entrega]', custom_imprimir_termo_entrega_path(@usuario.login,:estacao,estacao[:chave]) , :target => "_blank"%>
+        <%= link_to '[Termo Devolucao]', custom_imprimir_termo_devolucao_path(@usuario.login,:estacao,estacao[:chave]) , :target => "_blank"%>
+           
+        </td> 
       </tr>
   <% end %>
 </table>  
@@ -62,6 +69,9 @@
          <td><%= celular[:descricao] %></td>
         <td><%= celular[:gestor] %></td>
         <td><%= "#{celular[:CCDebito]}/#{celular[:ProjetoDebito]}" %></td>
+        <td><%= link_to '[Termo Entrega]', custom_imprimir_termo_entrega_path(@usuario.login,:celular,celular[:chave]) , :target => "_blank"%>
+        <%= link_to '[Termo Devolucao]', custom_imprimir_termo_devolucao_path(@usuario.login,:celular,celular[:chave]) , :target => "_blank"%>
+        </td>
         
          <th></th>
       </tr>

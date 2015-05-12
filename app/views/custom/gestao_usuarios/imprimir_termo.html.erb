@@ -1,0 +1,109 @@
+    
+    <table>
+            <tr style='font-size:12px;'>
+                <td>&nbsp; 
+                    <table>
+                        <tr align='center'>
+                             <td align='center'>
+                                <img src='http://sitebeta.brq.com/wp-content/uploads/2013/11/logo-brq.png' align='center'/>
+                                
+                             </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr align='center'>
+                                        <td colspan='6'>&nbsp;&nbsp;
+                                        Termo de <%= @termo[1] %> de equipamento e/ou software</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='6'>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                           <td colspan='6'>Eu, <%= "#{@nomecompleto}" %>                                   
+                                            , portador do CPF n&#186;<%= "#{@funcionario.CPF}" %>
+                                            DECLARO, nesta data, <%= @termo[2].html_safe %> em perfeito estado de uso e conserva&ccedil;&atilde;o – 
+									     	ressalvados os desgastes naturais inerentes a sua utiliza&ccedil;&atilde;o - os abaixo 
+											descrito(s) ativo(s), iten(s), insumo(s) e/ou equipamento(s) ou elemento(s) de 
+											hardware e/ou software.
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                            <td colspan='6'>&nbsp;</td>
+                                    </tr>
+                        <% if @termo[0] == :entrega %>
+                                    <tr>
+                                        <td colspan='6'>Outrossim, DECLARO estar ciente que tais ativos, itens e/ou equipamentos ou 
+												elementos de hardware e/ou software s&atilde;o de exclusiva propriedade da BRQ 
+												Solu&ccedil;&otilde;es em Inform&aacute;tica S.A., comprometo-me, desde j&aacute; e durante o 												per&iacute;odo de 
+												tempo que estiverem sob minha guarda, a zelar por sua seguran&ccedil;a, integridade e 
+												manuten&ccedil;&atilde;o.
+                                        </td>
+                                    </tr>
+                        <% end %>
+                                    <tr>
+                                        <td colspan='6'>&nbsp;</td>
+                                    </tr>
+                                    <tr border='1' style='font-size:10px;'>
+                                        <td width="20%" align='center' style='color:white' bgcolor='blue';>Ativo</td>
+                                        <td width="15%"   align='center' style='color:white' bgcolor='blue';>Data da Entrega</td>
+                                        <td width="15%"   align='center' style='color:white' bgcolor='blue';>Data da Devolu&ccedil;&atilde;o</td>
+                                        <td width="50%"   align='center' style='color:white' bgcolor='blue';>Descri&ccedil;&atilde;o</td>
+                                 
+                      
+                                    </tr>
+                                    <% @ativos_termo.each do |a| %>
+                                      <tr>
+                                        <td width="20%"   align='center' style='color:black' bgcolor='white';><%= a[:chave] %></td>
+                                        <td width="15%"   align='center' style='color:black' bgcolor='white';><%= a[:dataEntrega] %></td>
+                                        <td width="15%"   align='center' style='color:black' bgcolor='white';><%= a[:dataDevolucao] if @termo[0] ==:devolucao %></td>
+                                        <td width="50%"   align='center' style='color:black' bgcolor='white';><%= a[:descricao] %></td>
+                                 
+                                      </tr>      
+                                    <% end %>
+                                </table>
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+    </table>
+    <table>
+          <tr style='font-size:12px;'>
+                <td>Em caso de danos ao(s) equipamento(s) provocados por mau uso, quaisquer custos 
+			    incorridos por manuten&ccedil;&atilde;o ou substitui&ccedil;&atilde;o do equipamento ser&atilde;o apropriados ao 
+			    projeto do usu&aacute;rio solicitante.
+                </td>
+          </tr>
+          <tr align='center'>
+            <br><br>
+                <td>______________________, <%= I18n.l Date.current(), :format => :long, :locale => 'pt-BR' %>
+                </td>
+          </tr>
+          <tr>
+                <td>
+   <br><br><br>
+		    <table>
+          		<tr>
+              			<td>
+               			Usu&aacute;rio
+               			</td>
+               			<td>
+               			Respons&aacute;vel TI
+               			</td> 
+          		</tr>
+          		<tr>
+               			<td> 
+	        		____________________________
+                		</td>    
+               			<td> 
+	       			____________________________
+		                </td>       
+       	  		</tr>  	
+    		   </table>
+	       </td>
+          </tr>
+    </table>
+    </form>
+    
