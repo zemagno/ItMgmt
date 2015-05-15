@@ -14,6 +14,7 @@ def load
   @licencas  = @usuario.LicencasEmUso
   @estacoes   = @usuario.Estacoes
   @celulares = @usuario.Celulares
+  @placadados = @usuario.PlacaDados
   
   @erros.concat @usuario.DistorcoesUsoLicenca 
 end
@@ -69,17 +70,24 @@ def carrega_ativos_termo
 
  puts params
   @ativos_termo = []
-  if params[:tipo] == "celular" || params[:tipo] == "__ALL__"
+  
 
-    puts "carregando celular #{params[:tipo]}"
+  if params[:tipo] == "estacao" || params[:tipo] == "__ALL__"
+     
+     @estacoes.each do |x|
+        @ativos_termo << x if params[:tipo] == "__ALL__" || x[:chave] == params[:ativo]
+     end 
+  end
+  
+  if params[:tipo] == "celular" || params[:tipo] == "__ALL__"
      @celulares.each do |x|
         @ativos_termo << x if params[:tipo] == "__ALL__" || x[:chave] == params[:ativo]
      end   
   end
 
-  if params[:tipo] == "estacao" || params[:tipo] == "__ALL__"
-      puts "carregando estacao #{params[:tipo]}"
-     @estacoes.each do |x|
+  if params[:tipo] == "placadados" || params[:tipo] == "__ALL__"
+      
+     @placadados.each do |x|
         @ativos_termo << x if params[:tipo] == "__ALL__" || x[:chave] == params[:ativo]
      end 
   end
@@ -92,7 +100,7 @@ def imprimir_termo_entrega
   carrega_ativos_termo
 
 
-  @termo = [:entrega,"entrega","receber"]
+  @termo = [:entrega,"entrega","que recebi"]
   render "imprimir_termo", layout: "plain"
   
 end

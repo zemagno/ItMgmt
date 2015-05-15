@@ -85,7 +85,10 @@ class Ability
 
     cannot :manage, Funcionario
     cannot :manage, @Funcionario
+    cannot :manage, :financeiro
       
+
+
     if user and user.is_a :suporte
         can :manage, :all
         cannot :manage, Dicdado
@@ -105,6 +108,10 @@ class Ability
 
         can    :manage, :usuarios
     end
+
+    if user and user.is_a :financeiro
+        can :manage, :financeiro
+    end 
 
     if user and user.is_a :compras
         can :manage, Ci

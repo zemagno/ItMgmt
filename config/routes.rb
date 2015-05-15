@@ -7,9 +7,9 @@ ItMgmt::Application.routes.draw do
 namespace :custom do
    match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
 
-   post "GestaoUsuario/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
-   get "GestaoUsuario/EscolherLicencaAlocar",  to: "GestaoUsuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
-   get "GestaoUsuario/EscolherEstacaoAlocar",  to: "GestaoUsuarios#escolher_estacao_alocar", as: "escolher_estacao_alocar"
+   post "GestaoUsuarios/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
+   get "GestaoUsuarios/EscolherLicencaAlocar",  to: "GestaoUsuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
+   get "GestaoUsuarios/EscolherEstacaoAlocar",  to: "GestaoUsuarios#escolher_estacao_alocar", as: "escolher_estacao_alocar"
    get "GestaoUsuarios/:id/confirmardesalocarestacao/:estacao", to: "GestaoUsuarios#confirmar_desalocar_estacao", as: "confirmar_desalocar_estacao"
    get "GestaoUsuarios/:id/imprimirtermoentrega/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_entrega", as: "imprimir_termo_entrega"
    get "GestaoUsuarios/:id/imprimirtermodevolucao/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_devolucao", as: "imprimir_termo_devolucao"

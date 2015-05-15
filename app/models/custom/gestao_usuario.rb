@@ -25,13 +25,41 @@ class Custom::GestaoUsuario
     end
 
     def Estacoes 
-        @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map { |x| {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:descricao => "#{x._tipo} #{x.descricao} Processador #{x._linhaprocessador} com #{x._memoria}Gb de Memoria"} }
+       
+        @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map do |x| 
+            detalhes = "#{x._tipo} #{x.descricao} Processador #{x._linhaprocessador} com #{x._memoria}Gb de Memoria"
+            detalhes << " - Dock " if x._dock.downcase == "sim"
+            detalhes << " - Mouse " if x._mouse.downcase == "sim"
+            detalhes << " - Teclado " if x._tecladoextra.downcase == "sim"
+            detalhes << " - Cadeado " if x._cadeado.downcase == "sim"
+
+            {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:detalhes => detalhes} 
+        end    
        
     end
 
+    def PlacaDados
+       @placadados ||= Ci.where(notificacao: @login, tipoci_id: 36, statusci_id: 1).map do |x| 
+            detalhes = ""
+            detalhes << "Placa Dados #{x._Operadora}" unless x._Operadora.blank?
+            detalhes << " ICCID:#{x._ICCID}" unless x._ICCID.blank?
+            detalhes << " IMEI:#{x._IMEI}" unless x._IMEI.blank?
+            detalhes << " Modelo:#{x._Modelo}" unless x._Modelo.blank?
+          {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:detalhes => detalhes, :obs => x._Obs }
+        end 
+    end
+
     def Celulares 
-        @celulares ||= Ci.where(notificacao: @login, tipoci_id: 37, statusci_id: 1).map { |x| {:chave => x.chave,:descricao => x.descricao,:gestor => x.Owner,:CCDebito => x.CCDebito, :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega, :dataDevolucao => x._dataliberacao, :status => "", :descricao => "Linha #{x._Operadora}-#{x._ICCID}" }}
         
+        
+        @celulares ||= Ci.where(notificacao: @login, tipoci_id: 37, statusci_id: 1).map do |x|
+            detalhes = ""
+            detalhes << "Chip #{x._Operadora}" unless x._Operadora.blank?
+            detalhes << " ICCID:#{x._ICCID}" unless x._ICCID.blank?
+            detalhes << " IMEI:#{x._IMEI}" unless x._IMEI.blank?
+            detalhes << " Modelo:#{x._Modelo}" unless x._Modelo.blank?
+             {:chave => x.chave,:descricao => x.descricao,:gestor => x.Owner,:CCDebito => x.CCDebito, :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega, :dataDevolucao => x._dataliberacao, :status => "", :detalhes => detalhes , :obs => x._Obs}
+        end    
     end
 
    

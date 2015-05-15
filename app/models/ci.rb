@@ -159,7 +159,7 @@ class Ci < ActiveRecord::Base
 
   def getatributo(chave)
     attr = atributos.select { |k,v| v[5] == chave }
-    return attr.values[0][1] if attr.size > 0
+    return attr.values[0][1] if attr.size > 0 && ! attr.values[0][1].nil?
     return ""
   end
   

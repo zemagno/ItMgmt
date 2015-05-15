@@ -19,13 +19,15 @@
 
       
       </br>
-<% end %>  
+  
 </b>
 </br>
+<% if ! @usuario.login.nil? %>
 <%= link_to '[Alocar Estacao]', custom_escolher_estacao_alocar_path, :id => "zNovo" %>
 <%= link_to '[Alocar Licenca]', custom_escolher_licenca_alocar_path, :id => "zNovo" %>
-<%= link_to '[Termo Entrega de Tudo]', custom_imprimir_termo_entrega_path(@usuario.login,"__ALL__",:all) , :target => "_blank"%>
-<%= link_to '[Termo Devolucao de Tudo]', custom_imprimir_termo_devolucao_path(@usuario.login,"__ALL__",:all) , :target => "_blank"%>
+<%= link_to '[Termo Entrega de Tudo]', custom_imprimir_termo_entrega_path(@usuario.login,"__ALL__",:all) , :target => "_blank" %>
+<%= link_to '[Termo Devolucao de Tudo]', custom_imprimir_termo_devolucao_path(@usuario.login,"__ALL__",:all) , :target => "_blank" %>
+<% end %>
 
 </br></br>
 <% if (! @usuario.nil?) and (! @usuario.login.nil?) %>
@@ -73,7 +75,32 @@
         <%= link_to '[Termo Devolucao]', custom_imprimir_termo_devolucao_path(@usuario.login,:celular,celular[:chave]) , :target => "_blank"%>
         </td>
         
-         <th></th>
+         
+      </tr>
+  <% end %>
+</table>  
+</br></br>
+
+<table style="table-layout:fixed">
+<col style="width:16%" span="6" />
+   <tr>
+    <th>Placa de Dados</th> 
+    <th>Descricao</th>
+    <th>Gestor</th>
+    <th>CC/Projeto Debito</th>
+    <th></th>
+  </tr>
+  <% @placadados.each do |placadados| %>
+      <tr>
+        <td><%= link_to placadados[:chave], ci_path(placadados[:chave]), :target => '_blank' %></td>
+         <td><%= placadados[:descricao] %></td>
+        <td><%= placadados[:gestor] %></td>
+        <td><%= "#{placadados[:CCDebito]}/#{placadados[:ProjetoDebito]}" %></td>
+        <td><%= link_to '[Termo Entrega]', custom_imprimir_termo_entrega_path(@usuario.login,:placadados,placadados[:chave]) , :target => "_blank"%>
+        <%= link_to '[Termo Devolucao]', custom_imprimir_termo_devolucao_path(@usuario.login,:placadados,placadados[:chave]) , :target => "_blank"%>
+        </td>
+        
+        
       </tr>
   <% end %>
 </table>  
@@ -225,6 +252,8 @@
   <%= submit_tag("Alocar") %>
 </br></br>
 </div>
+
+<% end %>
 <% end %>
 <% end %>
 

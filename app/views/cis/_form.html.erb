@@ -3,8 +3,8 @@
 </br>Status: <%= @ci.status%>
 
 </br>Localidade: <%= @ci.site.nome%>
-</br>Gestor: <%= @ci.Owner%>
-</br>Usuario(s): <%= @ci.notificacao%>
+</br>Gestor: <%= helper_login_to_url(@ci.Owner)%>
+</br>Usuario(s): <%= helper_login_to_url(@ci.notificacao)%>
 </br>Data Ultimo Change: <%= @ci.dataChange%>
 
 <%= render :partial => 'docs2url', :locals => {:title => "Doc. Ultima Mudanca: ", :documentos => @ci.DocChange } %>
