@@ -34,7 +34,8 @@
 
 <div class="field">
     <%= f.label "Valores padrao (combobox): " %>
-    <%= f.text_field :valores %>
+    <br>
+    <%= f.text_area :valores, :size => "100x4" %>
   </div> 
 
 <div class="field">
@@ -59,7 +60,14 @@
 
   <div class="field">
     <%= f.label "Ajuda: " %>
+     <br>
     <%= f.text_area :tooltip, :size => "50x6" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Comentario " %>
+     <br>
+    <%= f.text_area :comentarios, :size => "50x6" %>
   </div>
 
   <div class="actions">

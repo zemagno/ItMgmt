@@ -1,6 +1,15 @@
 module RelatoriosHelper
 	def genField(valor,field,i,fields) 
         case field
+        when "CIs"
+            res = ""
+            valor.split(",").each do |c|
+                res << link_to(c,"/cis/#{c}",:target => "_blank" )+ " "
+            end
+            puts res
+
+        when "SearchCIS"
+            res = link_to(valor,"/cis?search=#{valor}",:target => "_blank" )
 		when "CI" , "ID"
             res = link_to valor, ci_path(valor) 
         when "Usuario" , "Login"

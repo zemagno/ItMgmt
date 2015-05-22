@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150317210756) do
+ActiveRecord::Schema.define(:version => 20150520160330) do
+
+  create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
+    t.string  "NomSite",                :limit => 30
+    t.string  "NomAndarSite",           :limit => 30
+    t.string  "NomTipoPosicao",         :limit => 30
+    t.string  "FlgContabilizaAlocacao", :limit => 1
+    t.integer "QtdTotalTipoPosicao"
+    t.integer "NomPosicaoAndarSite"
+    t.integer "FlgReserva"
+    t.integer "NumMatrProfissional"
+    t.string  "LoginProfissional",      :limit => 30
+    t.string  "LoginGestor",            :limit => 30
+  end
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -56,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20150317210756) do
     t.datetime "updated_at"
   end
 
+  add_index "atributos", ["ci_id"], :name => "index_atributos_on_ci_id"
   add_index "atributos", ["dicdado_id"], :name => "dicdado_atributo"
   add_index "atributos", ["valor"], :name => "valor_atributo"
 
@@ -230,12 +244,13 @@ ActiveRecord::Schema.define(:version => 20150317210756) do
     t.integer  "ordem"
     t.string   "url"
     t.string   "descricao"
-    t.string   "valores",    :limit => 500
+    t.string   "valores",     :limit => 500
     t.string   "apelido"
     t.string   "tipo"
     t.string   "regex"
     t.boolean  "mandatorio"
     t.text     "tooltip"
+    t.text     "comentarios"
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
@@ -522,6 +537,10 @@ ActiveRecord::Schema.define(:version => 20150317210756) do
     t.string "chave"
   end
 
+  create_table "temp1", :id => false, :force => true do |t|
+    t.integer "id"
+  end
+
   create_table "template_surveys", :force => true do |t|
     t.string   "nome"
     t.text     "formulario"
@@ -616,6 +635,14 @@ ActiveRecord::Schema.define(:version => 20150317210756) do
     t.string   "handlers"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "vwcargaativosportal", :id => false, :force => true do |t|
+    t.string "Patrimonio"
+    t.string "usuario"
+    t.text   "ativo"
+    t.string "DataEntrega"
+    t.string "DataDevolucao"
   end
 
 end

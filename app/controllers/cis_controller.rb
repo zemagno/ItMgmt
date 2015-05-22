@@ -34,8 +34,10 @@ class CisController < ApplicationController
   end
  
   def show
+
     @search = session[:search_cis]
     @ci, @atributos = Ci.find_com_atributos(params[:id])
+    # if @ci.tipo
     if @ci
         cache(@ci) 
     else 

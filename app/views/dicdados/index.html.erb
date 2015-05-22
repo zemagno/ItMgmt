@@ -23,7 +23,8 @@
     <th>Tipo CI</th>
     <th>Campo</th>
     <th>Apelido</th>
-        <th>Mandatorio</th>
+    <th>Regex</th>
+    <th>Mandatorio</th>
     <th>Ordem</th>
     <th></th>
     <th></th>
@@ -34,6 +35,7 @@
     <td><%= link_to dicdado.nice_tipoci, dicdado %></td>
     <td><%= link_to dicdado.nome, dicdado %></td>
     <td><%= dicdado.apelido %></th>
+    <td><%= dicdado.regex %></th>  
     <td><%= dicdado.mandatorio ? "Sim" : "" %></td>   
     <td><%= dicdado.ordem %></td>
     <td><%= link_to 'Editar', edit_dicdado_path(dicdado) %></td>
