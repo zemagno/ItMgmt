@@ -19,7 +19,7 @@
  
   <%= text_field_tag(:search, @search, :size => 50) %>
   <%= submit_tag("Filtrar") %>
-  <%= submit_tag("Estou com sorte") %>
+  <!--%= submit_tag("Estou com sorte") % -->
   <%= select_tag :view_default_ci, options_for_select(@views_ci, @view_default_ci), :onchange => "this.form.submit();"  %>
 
 <% end %>
@@ -77,8 +77,5 @@
 
 <%= will_paginate @cis %>
 
-<% if can? :manage, :all %>
-    
-<% end %>
 
 <br />

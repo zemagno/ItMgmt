@@ -1,5 +1,5 @@
 class Tipoci < ActiveRecord::Base
-   attr_accessible :Descricao, :defCampo1, :defCampo2, :defCampo3, :defCampo4, :tipo, :Owner
+   attr_accessible :Descricao, :defCampo1, :defCampo2, :defCampo3, :defCampo4, :tipo, :Owner, :perfil
      has_many :dicdados
    
 	default_scope order('tipo ASC')

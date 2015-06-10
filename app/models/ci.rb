@@ -17,6 +17,8 @@ class Ci < ActiveRecord::Base
   belongs_to :statusci
   has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
   has_many :task
+
+
  
   
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
@@ -69,7 +71,7 @@ class Ci < ActiveRecord::Base
   after_save :atualiza_chave
 
 
-
+  scope :por_tipo, lambda { |t| where("tipoci_id in (?)",t) }
 
   
   def to_s

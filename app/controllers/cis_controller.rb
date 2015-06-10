@@ -32,6 +32,31 @@ class CisController < ApplicationController
     session[:filaNavegacao] = @filaNavegacao 
     session[:visao_ci] = @visaoci
   end
+
+  def massiveupdate
+
+
+# <% if can? :admin, :all %>
+#    <%= form_tag(cis_massiveupdate_path, :method => "get") do %>
+ 
+#   <%= text_field_tag(:massiveupdate, @massiveupdate, :size => 50) %>
+#   <%= submit_tag("Atualizar") %>
+  
+
+# <% end %>
+
+    
+# <% end %>
+    
+    # render :
+    @modo = :confirmar_atualizacao_massiva
+    @massiveupdate = params[:massiveupdate]
+    puts params
+    puts @massiveupdate
+    #redirect_to :controller => 'cis', :action => 'index' 
+    index
+    render :index and return
+  end
  
   def show
 
@@ -148,6 +173,8 @@ class CisController < ApplicationController
     #if @cis.size==0 then
     #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
     #end
+
+    # TODO filtro de tipos aqui...
     
     if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
       # @ci = @cis[0]

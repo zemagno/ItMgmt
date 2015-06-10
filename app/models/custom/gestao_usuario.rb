@@ -27,7 +27,8 @@ class Custom::GestaoUsuario
     def Estacoes 
        
         @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map do |x| 
-            detalhes = "#{x._tipo} #{x.descricao} Processador #{x._linhaprocessador} com #{x._memoria}Gb de Memoria"
+            detalhes = "#{x._tipo}" unless x.descricao.include? x._tipo
+            detalhes = "#{x.descricao} Processador #{x._linhaprocessador} com #{x._memoria}Gb de Memoria"
             detalhes << " - Dock " if x._dock.downcase == "sim"
             detalhes << " - Mouse " if x._mouse.downcase == "sim"
             detalhes << " - Teclado " if x._tecladoextra.downcase == "sim"
@@ -40,12 +41,23 @@ class Custom::GestaoUsuario
 
     def PlacaDados
        @placadados ||= Ci.where(notificacao: @login, tipoci_id: 36, statusci_id: 1).map do |x| 
-            detalhes = ""
-            detalhes << "Placa Dados #{x._Operadora}" unless x._Operadora.blank?
+            detalhes = "Placa Dados "
+            detalhes << "#{x._Operadora}" unless x._Operadora.blank?
             detalhes << " ICCID:#{x._ICCID}" unless x._ICCID.blank?
             detalhes << " IMEI:#{x._IMEI}" unless x._IMEI.blank?
             detalhes << " Modelo:#{x._Modelo}" unless x._Modelo.blank?
           {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:detalhes => detalhes, :obs => x._Obs }
+        end 
+    end
+
+    def Monitores
+       @monitores ||= Ci.where(notificacao: @login, tipoci_id: 49, statusci_id: 1).map do |x| 
+            detalhes = "Monitor"
+            
+            detalhes << " #{x._fabricante}" unless x._fabricante.blank?
+            detalhes << " #{x._dimensao}'" unless x._dimensao.blank?
+            detalhes << " Modelo #{x._modelo}" unless x._modelo.blank?
+            {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:detalhes => detalhes, :obs => x._Obs }
         end 
     end
 

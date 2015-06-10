@@ -73,11 +73,45 @@
     </table>
     <table>
           <tr style='font-size:12px;'>
-                <td>Em caso de danos ao(s) equipamento(s) provocados por mau uso, quaisquer custos 
+                <td >Em caso de danos ao(s) equipamento(s) provocados por mau uso, quaisquer custos 
 			    incorridos por manuten&ccedil;&atilde;o ou substitui&ccedil;&atilde;o do equipamento ser&atilde;o apropriados ao 
 			    projeto do usu&aacute;rio solicitante.
                 </td>
           </tr>
+    </table>
+    <table>
+          <% if @termo[0] == :devolucao%>
+                                    <tr>
+                                        <td colspan='6'>Responsavel por TI: Assinalar o estado do(s) ativo(s)
+                                        </td>
+                                    </tr>
+                                    <tr style='font-size:12px;'>
+                                        <td colspan='6'>(  ) Em perfeito estado de uso e conserva&ccedil;&atilde;o, ressalvo os desgates naturais inerentes a sua utiliza&ccedil;&atilde;o.
+                                        </td>
+                                    </tr>
+                                    <tr style='font-size:12px;'>
+                                        <td colspan='6'>(  ) Com danos de utiliza&ccedil;&atilde;o, em que o reparo ser&aacute; custeado pelo projeto de atua&ccedil;&atilde;o do colaborador. 
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan='6'><br>Perif&eacute;ricos devolvidos
+                                        </td>
+                                    </tr>
+                                 
+                                    <tr style='font-size:12px;'>
+                                       <td width="50%"   align='left'>(  ) Mouse </td>
+                                       <td width="50%"   align='left'>(  ) Teclado </td>
+                                    </tr>
+                                     <tr style='font-size:12px;'>
+                                       <td width="50%"   align='left'>(  ) Carregador </td>
+                                       <td width="50%"   align='left'>(  ) Cadeado senha _______ </td>
+                                    </tr>
+                                     <tr style='font-size:12px;'>
+                                       <td width="50%"   align='left'>(  ) Cartao SD _____ GB </td>
+                                       <td width="50%"   align='left'>(  ) ___________________ </td>
+                                    </tr>
+          <% end %>
           <tr align='right'>
             <br><br>
                 <td><br><br>______________________, <%= I18n.l Date.current(), :format => :long, :locale => 'pt-BR' %>

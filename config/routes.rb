@@ -135,6 +135,8 @@ resources :fornecedores
 
   resources :dicdados
 
+  #match '/admin/massiveupdate', to: 'massiveupdate#index', as: "massiveupdate"
+
  
 
   
@@ -172,7 +174,9 @@ resources :fornecedores
   post 'cis/:id/cis_eliminar', to: "cis#eliminar", :as => :eliminar_ci
   match 'cis/checkChave', to: "cis#check_chave"
 
-  
+  match 'cis/massiveupdate', to: "cis#massiveupdate"
+
+
   match 'cis/search', to: "cis#search"
   match 'cis/sobe', to: "cis#sobe"
   match 'cis/desce', to: "cis#desce"

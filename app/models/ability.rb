@@ -81,7 +81,7 @@ class Ability
     # 
     can [:show, :index] , "tasks"
     can [:index], "relatorio" # autorizo o token especificamente. Nao existe model associado.
-    can [:index,:show], Ci
+    # can [:index,:show], Ci
 
     cannot :manage, Funcionario
     cannot :manage, @Funcionario
@@ -120,6 +120,7 @@ class Ability
    
     if user and user.is_a :admin
         can :manage, :all
+        can :admin, :all
     end 
 
     if user and user.is_a :mailing
@@ -131,7 +132,7 @@ class Ability
         can :manage, Audit
     end
 
-    can :manage, :all
+    #can :manage, :all
     
   end
 end

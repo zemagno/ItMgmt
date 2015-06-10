@@ -15,6 +15,7 @@ def load
   @estacoes   = @usuario.Estacoes
   @celulares = @usuario.Celulares
   @placadados = @usuario.PlacaDados
+  @monitores = @usuario.Monitores
   
   @erros.concat @usuario.DistorcoesUsoLicenca 
 end
@@ -92,6 +93,12 @@ def carrega_ativos_termo
      end 
   end
 
+  if params[:tipo] == "monitor" || params[:tipo] == "__ALL__"
+      
+     @monitores.each do |x|
+        @ativos_termo << x if params[:tipo] == "__ALL__" || x[:chave] == params[:ativo]
+     end 
+  end
 
 end
 

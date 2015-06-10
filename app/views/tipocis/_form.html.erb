@@ -20,6 +20,10 @@
     <%= f.text_field :Descricao %>
   </div>
   <div class="field">
+    <%= f.label :Perfil %><br />
+    <%= f.text_field :perfil %>
+  </div>
+  <div class="field">
     <%= f.label :"Owner" %><br />
     <%= f.text_field :Owner,
 	    :size => Tipoci::OWNER_SCREEN_SIZE,
