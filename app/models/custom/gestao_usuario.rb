@@ -27,8 +27,9 @@ class Custom::GestaoUsuario
     def Estacoes 
        
         @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map do |x| 
-            detalhes = "#{x._tipo}" unless x.descricao.include? x._tipo
-            detalhes = "#{x.descricao} Processador #{x._linhaprocessador} com #{x._memoria}Gb de Memoria"
+            detalhes = ""
+            detalhes << "#{x._tipo} " unless ! x._tipo.nil? && (x.descricao.include? x._tipo)
+            detalhes << "#{x.descricao} Processador #{x._linhaprocessador} com #{x._memoria}Gb de Memoria"
             detalhes << " - Dock " if x._dock.downcase == "sim"
             detalhes << " - Mouse " if x._mouse.downcase == "sim"
             detalhes << " - Teclado " if x._tecladoextra.downcase == "sim"
