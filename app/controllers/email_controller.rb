@@ -55,9 +55,10 @@ class EmailController < ApplicationController
           puts "Parametros #{parametros}"       
           puts "*********************************************************************************************************"
        @resposta = Hash.new
-       [:to,:cc,:body,:subject].each do |f|
+       [:to,:cc,:body,:subject,:bcc].each do |f|
           @resposta[f] = fill_in(Parametro.get(:tipo => template,:subtipo => f.to_s),parametros)
         end
+        
         puts "*********************************************************************************************************"
         puts "Resposta #{@resposta}"       
         puts "*********************************************************************************************************"

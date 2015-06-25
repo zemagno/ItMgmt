@@ -1,4 +1,6 @@
 class Parametro < ActiveRecord::Base
+
+  default_scope order('Tipo ASC')
   
   def self.get(options)
       p = Parametro.find_by_tipo_and_subtipo(options[:tipo],options[:subtipo])
@@ -19,7 +21,7 @@ class Parametro < ActiveRecord::Base
   # TODO isso dá para virar metaprograming
   
    def self.criar_parametros_email(_tipo)
-      "TO CC SUBJECT BODY".split.each do |_subtipo| 
+      "TO CC SUBJECT BODY BCC".split.each do |_subtipo| 
         Parametro.create(tipo: _tipo, subtipo: _subtipo)
       end   
    		# Parametro.create(tipo: _tipo, subtipo: "TO")

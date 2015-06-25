@@ -13,7 +13,7 @@
 <%= link_to '[Novo CI]', new_ci_path, :id => "zNovo" %>
 
 
-<%= will_paginate @cis %>
+<%= will_paginate @cis %> <%= "#{@cis.total_entries} CIs achados"%>
 
 <%= form_tag(cis_path, :method => "get") do %>
  
