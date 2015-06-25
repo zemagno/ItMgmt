@@ -86,7 +86,7 @@ class Ability
     cannot :manage, Funcionario
     cannot :manage, @Funcionario
     cannot :manage, :financeiro
-      
+    cannot :manage, Scheduler 
 
 
     if user and user.is_a :suporte
@@ -104,9 +104,14 @@ class Ability
         cannot :manage, SqlTemplate
         cannot :manage, @SqlTemplate
         cannot :manage, Mailing
+        cannot :manage, Scheduler
 
 
         can    :manage, :usuarios
+    end
+
+    if user and user.is_a :producao
+        can :manage, Scheduler
     end
 
     if user and user.is_a :financeiro

@@ -1,11 +1,11 @@
-<h1>Listing producaos</h1>
+<h1>Jobs que executaram</h1>
 
 <table>
   <tr>
     <th>Job</th>
     <th>Id</th>
     <th>Status</th>
-    <th>Data</th>
+    <th>Data Execucao</th>
     <th>Detalhe</th>
     <th></th>
     <th></th>
@@ -19,13 +19,11 @@
     <td><%= producao.status %></td>
     <td><%= producao.data %></td>
     <td><%= producao.detalhe %></td>
-    <td><%= link_to 'Show', producao %></td>
-    <td><%= link_to 'Edit', edit_producao_path(producao) %></td>
-    <td><%= link_to 'Destroy', producao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!-- <td><%= link_to 'Show', producao %></td> -->
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Producao', new_producao_path %>
+

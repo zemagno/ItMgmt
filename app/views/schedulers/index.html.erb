@@ -1,4 +1,4 @@
-<h1>Listing schedulers</h1>
+<h1>Jobs Agendados</h1>
 
 <table>
   <tr>
@@ -13,13 +13,16 @@
   <tr>
     <td><%= scheduler.job %></td>
     <td><%= scheduler.when %></td>
-    <td><%= link_to 'Show', scheduler %></td>
-    <td><%= link_to 'Edit', edit_scheduler_path(scheduler) %></td>
-    <td><%= link_to 'Destroy', scheduler, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Mostrar', scheduler %></td>
+    <% if (can? :manage, Scheduler)  %>
+    <td><%= link_to 'Editar', edit_scheduler_path(scheduler) %></td>
+    <td><%= link_to 'Apagar', scheduler, method: :delete, data: { confirm: 'Tem Certeza?' } %></td>
+    <% end %>
+
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Scheduler', new_scheduler_path %>
+<%= link_to 'Novo Job', new_scheduler_path %>
