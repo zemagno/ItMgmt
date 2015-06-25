@@ -2,6 +2,15 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  resources :producao_cis
+
+
+  resources :schedulers
+
+
+  resources :producaos
+
+
   get "painel_producao/index"
 
 namespace :custom do

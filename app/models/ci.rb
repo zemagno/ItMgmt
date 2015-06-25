@@ -266,9 +266,16 @@ class Ci < ActiveRecord::Base
   
   def self.find_gen(param)
     begin 
-       Ci.includes(:atributo => :dicdado).find(param)
+       if param =~ /^[1-9]\d*$/
+         puts "vou procurar pelo ID."  
+         Ci.includes(:atributo => :dicdado).find(param)
+       else
+         puts "match numero de serie: vou procurar pela chave."
+         Ci.includes(:atributo => :dicdado).find_by_chave(param)
+       end
     rescue ActiveRecord::RecordNotFound
-      Ci.includes(:atributo => :dicdado).find_by_chave(param)
+    #   puts "vou procurar pela chave."
+       Ci.includes(:atributo => :dicdado).find_by_chave(param)
     end
   end
 

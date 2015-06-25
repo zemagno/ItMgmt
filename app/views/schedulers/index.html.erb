@@ -1,0 +1,25 @@
+<h1>Listing schedulers</h1>
+
+<table>
+  <tr>
+    <th>Job</th>
+    <th>When</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @schedulers.each do |scheduler| %>
+  <tr>
+    <td><%= scheduler.job %></td>
+    <td><%= scheduler.when %></td>
+    <td><%= link_to 'Show', scheduler %></td>
+    <td><%= link_to 'Edit', edit_scheduler_path(scheduler) %></td>
+    <td><%= link_to 'Destroy', scheduler, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Scheduler', new_scheduler_path %>

@@ -1,22 +1,16 @@
 source 'http://rubygems.org'
 
-#gem 'debugger'
-
 gem 'rails', '3.2.16'
 
-#gem "newrelic_rpm"
-# gem 'le'
-
-# gem "rails-erd"
-# 
-#    gem 'pry-rails', :group => :development   fierj
 gem 'hirb'
 
-#gem 'anemone
 
+gem 'tiny_tds'
+gem 'activerecord-sqlserver-adapter'
 gem 'will_paginate', '~> 3.0'
 
 #gem 'jira-ruby'
+
 gem 'oauth', '~> 0.4.7' # exigido pelo JIRA, que agora esta dentro do lib
 
 gem 'mysql2' 
@@ -65,8 +59,10 @@ gem "nifty-generators", :group => :development
 
 gem 'omniauth-google-oauth2'
 gem 'cancan' ,  '~> 1.6'
-gem 'dalli'
-#
+gem 'dalli'  #high performance pure Ruby client for accessing memcached servers
+
+
+gem 'whenever', :require => false # crontab like
 gem 'sidekiq', '~> 2'
 gem 'sidekiq-failures'
 gem 'sinatra', require: false

@@ -1,0 +1,136 @@
+    
+    <table>
+            <tr style='font-size:12px;'>
+                <td>&nbsp; 
+                    <table>
+                        <tr align='center'>
+                             <td align='center'>
+                                <img src='http://sitebeta.brq.com/wp-content/uploads/2013/11/logo-brq.png' align='center'/>
+                                
+                             </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tr align='center'>
+                                        <td colspan='6'>&nbsp;&nbsp;
+                                        Termo de Emprestimo de equipamento </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='6'>&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                           <td colspan='6'>Eu, <%= "#{@nomecompleto}" %>                                   
+                                            , portador do CPF n&#186;<%= "#{@funcionario.CPF}" %>,
+                                            DECLARO nesta data, DECLARO receber o(s) equipamento(s) listado(s) para fins de empr&eacute;stimo para uso corporativo, comprovando que encontra(m)-se em perfeito estado de uso e conserva&ccedil;&atilde;o, ressalvo os desgastes naturais inerentes a sua utiliza&ccedil;&atilde;o e ciente que o(s) mesmo(s) dever&aacute;(&atilde;o) ser devolvido no prazo m&aacute;ximo de 15 (quinze) dias corridos, contados a partir da data de assinatura deste termo.
+                                            </td>
+                                    </tr>
+                                    <tr>
+                                            <td colspan='6'>&nbsp;</td>
+                                    </tr>
+                        
+                                    <tr>
+                                        <td colspan='6'>Outrossim, DECLARO estar ciente que tais ativos, itens e/ou equipamentos ou 
+												elementos de hardware e/ou software s&atilde;o de exclusiva propriedade da BRQ 
+												Solu&ccedil;&otilde;es em Inform&aacute;tica S.A., comprometo-me, desde j&aacute; e durante o per&iacute;odo de 
+												tempo que estiverem sob minha guarda, a zelar por sua seguran&ccedil;a, integridade e 
+												manuten&ccedil;&atilde;o.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan='6'>&nbsp;</td>
+                                    </tr>
+                                    <tr border='1' style='font-size:10px;'>
+                                        <td width="50%"   align='center' style='color:white' bgcolor='blue';>Descri&ccedil;&atilde;o</td>
+                                        <td width="20%" align='center' style='color:white' bgcolor='blue';>Ativo</td>
+                                        <td width="15%"   align='center' style='color:white' bgcolor='blue';>Data da Entrega</td>
+                                        <td width="15%"   align='center' style='color:white' bgcolor='blue';>Data da Devolu&ccedil;&atilde;o</td>
+                                        
+                                 
+                      
+                                    </tr>
+                                    <% @ativos_termo.each do |a| %>
+                                      <tr>
+                                        <td width="50%"   align='center' style='color:black' bgcolor='white';><%= a[:detalhes] %></td>
+                                        <td width="20%"   align='center' style='color:black' bgcolor='white';><%= a[:chave] %></td>
+                                        <td width="15%"   align='center' style='color:black' bgcolor='white';><%= a[:dataEntrega] %></td>
+                                        <td width="15%"   align='center' style='color:black' bgcolor='white';><%= a[:dataDevolucao] if @termo[0] ==:devolucao %></td>
+                                      
+                                 
+                                      </tr>      
+                                    <% end %>
+                                </table>
+                                
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+    </table>
+    <table>
+          <tr style='font-size:12px;'>
+                <td >Em caso de danos ao(s) equipamento(s) provocados por mau uso, quaisquer custos 
+			    incorridos por manuten&ccedil;&atilde;o ou substitui&ccedil;&atilde;o do equipamento ser&atilde;o apropriados ao 
+			    projeto do usu&aacute;rio solicitante.
+                </td>
+          </tr>
+    </table>
+    <table>
+          
+                                    <tr>
+                                        <td colspan='6'>Responsavel por TI: Assinalar o estado do(s) ativo(s)
+                                        </td>
+                                    </tr>
+                                    <tr style='font-size:12px;'>
+                                        <td colspan='6'>(  ) Em perfeito estado de uso e conserva&ccedil;&atilde;o, ressalvo os desgates naturais inerentes a sua utiliza&ccedil;&atilde;o.
+                                        </td>
+                                    </tr>
+                                    <tr style='font-size:12px;'>
+                                        <td colspan='6'>(  ) Com danos de utiliza&ccedil;&atilde;o, em que o reparo ser&aacute; custeado pelo projeto de atua&ccedil;&atilde;o do colaborador. 
+                                        </td>
+                                    </tr>
+
+        
+          <tr align='right'>
+            <br><br>
+                <td><br><br>______________________, <%= I18n.l Date.current(), :format => :long, :locale => 'pt-BR' %>
+                </td>
+          </tr>
+          <tr>
+                <td>
+   <br><br><br>
+		    <table>
+              
+              <tr>
+                    <td> <br><br>
+              ____________________________
+                    </td>    
+              </tr>
+              <tr>
+                    <td>
+                    Usu&aacute;rio
+                    </td>
+                    
+              </tr>
+
+              
+              <tr>
+            
+
+                    <td> <br><br>
+              ____________________________
+                    </td>       
+              </tr>  
+              <tr>
+              <td>
+                    Respons&aacute;vel TI
+                    </td> 
+ </tr> 
+
+          		
+    		   </table>
+	       </td>
+          </tr>
+    </table>
+    </form>
+    

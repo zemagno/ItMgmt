@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Job:</b>
+  <%= @scheduler.job %>
+</p>
+
+<p>
+  <b>When:</b>
+  <%= @scheduler.when %>
+</p>
+
+
+<%= link_to 'Edit', edit_scheduler_path(@scheduler) %> |
+<%= link_to 'Back', schedulers_path %>

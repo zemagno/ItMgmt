@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Job:</b>
+  <%= @producao.job %>
+</p>
+
+<p>
+  <b>Id:</b>
+  <%= @producao.id %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @producao.status %>
+</p>
+
+<p>
+  <b>Data:</b>
+  <%= @producao.data %>
+</p>
+
+<p>
+  <b>Detalhe:</b>
+  <%= @producao.detalhe %>
+</p>
+
+
+<%= link_to 'Edit', edit_producao_path(@producao) %> |
+<%= link_to 'Back', producaos_path %>

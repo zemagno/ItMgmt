@@ -1,0 +1,31 @@
+<h1>Listing producao_cis</h1>
+
+<table>
+  <tr>
+    <th>Job</th>
+    <th>Ci</th>
+    <th>Status</th>
+    <th>Date</th>
+    <th>Detalhe</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @producao_cis.each do |producao_ci| %>
+  <tr>
+    <td><%= producao_ci.job %></td>
+    <td><%= producao_ci.ci_id %></td>
+    <td><%= producao_ci.status %></td>
+    <td><%= producao_ci.date %></td>
+    <td><%= producao_ci.detalhe %></td>
+    <td><%= link_to 'Show', producao_ci %></td>
+    <td><%= link_to 'Edit', edit_producao_ci_path(producao_ci) %></td>
+    <td><%= link_to 'Destroy', producao_ci, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Producao ci', new_producao_ci_path %>
