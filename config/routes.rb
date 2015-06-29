@@ -4,8 +4,13 @@ ItMgmt::Application.routes.draw do
 
   resources :producao_cis
 
+  resources :users
+
 
   resources :schedulers
+  get "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
+  post "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
+   
 
 
   resources :producaos

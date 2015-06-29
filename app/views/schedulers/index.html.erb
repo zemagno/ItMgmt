@@ -7,6 +7,7 @@
     <th></th>
     <th></th>
     <th></th>
+     <th></th>
   </tr>
 
 <% @schedulers.each do |scheduler| %>
@@ -15,8 +16,11 @@
     <td><%= scheduler.when %></td>
     <td><%= link_to 'Mostrar', scheduler %></td>
     <% if (can? :manage, Scheduler)  %>
+    
+    
     <td><%= link_to 'Editar', edit_scheduler_path(scheduler) %></td>
     <td><%= link_to 'Apagar', scheduler, method: :delete, data: { confirm: 'Tem Certeza?' } %></td>
+    <td><%= link_to 'Rodar', scheduler_run_path(scheduler) ,method: :post, data: { confirm: 'Confirma executar esse job agora ?' } %></td>
     <% end %>
 
   </tr>

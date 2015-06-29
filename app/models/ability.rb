@@ -87,6 +87,7 @@ class Ability
     cannot :manage, @Funcionario
     cannot :manage, :financeiro
     cannot :manage, Scheduler 
+    cannot :manager, User
 
 
     if user and user.is_a :suporte
@@ -138,6 +139,9 @@ class Ability
     end
 
     #can :manage, :all
+    cannot :manager, User
+
+    #fazendo edit + seguranca de user
     
   end
 end
