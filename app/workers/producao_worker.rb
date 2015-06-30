@@ -12,6 +12,9 @@ class ProducaoWorker
     if job.job == "CargaPosicao"  
           status,detalhes = ServiceCargaPosicao.new.go
     end
+    if job.job == "CargaUra"  
+          status,detalhes = ServiceCargaUra.new.go
+    end
     
     if job.job =~ /^Query_([a-zA-Z]+)$/
       status,detalhes = ServiceQueries.new.go($1)
