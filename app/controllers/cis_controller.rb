@@ -22,6 +22,12 @@ class CisController < ApplicationController
     @sites = Site.all
     @tiposci = Tipoci.all
     @statusci = Statusci.all
+
+# l =Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})
+# a = JSON.parse l
+# a.select { |x| x[0] == "estacao" }[0][1]
+
+
   end
 
   def cache(ci)
@@ -74,6 +80,13 @@ class CisController < ApplicationController
   def edit
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     carrega_agregadas
+    begin
+       @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
+       
+       @statusci.reject! { |s| ! @st.include? s.status }
+    rescue
+       
+    end
     #@ci.chave.gsub! '<ID>', @ci.id.to_s
   end
 
