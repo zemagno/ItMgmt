@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150630012331) do
+ActiveRecord::Schema.define(:version => 20150715220126) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -359,6 +359,14 @@ ActiveRecord::Schema.define(:version => 20150630012331) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "status"
+  end
+
+  create_table "log_desligamentos", :force => true do |t|
+    t.string   "ip"
+    t.string   "login"
+    t.date     "data"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "mailings", :force => true do |t|

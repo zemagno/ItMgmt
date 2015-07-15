@@ -30,7 +30,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   
-
+def remote_ip
+    request.remote_ip
+end
 
 
   

@@ -72,6 +72,8 @@ class Ci < ActiveRecord::Base
 
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)",t) }
+  default_scope order('chave ASC')
+  #sphinx_scope order('chave ASC')
 
   
   def to_s

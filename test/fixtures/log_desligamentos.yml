@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ip: MyString
+  login: MyString
+  data: 2015-07-15
+
+two:
+  ip: MyString
+  login: MyString
+  data: 2015-07-15

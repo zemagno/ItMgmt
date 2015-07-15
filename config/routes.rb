@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento" 
+
   resources :producao_cis
 
   resources :users
