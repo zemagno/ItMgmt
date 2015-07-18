@@ -15,6 +15,10 @@ class Custom::GestaoUsuario
         @funcionario ||= Funcionario.find_by_Login(@login) 
     end
 
+    def Ramais
+        @ramais ||= TelRamalLogin.where(IdtLogin: @login).map { |x| "#{x.IdtLocalidade} - #{x.NumRamal.to_s}" }.join(" / ")
+    end
+
     def retrieveCIs(_tipoci)
         Ci.where(notificacao: @login, tipoci_id: _tipoci, statusci_id: 1).map { |x| {:chave => x.chave,:descricao => x.descricao,:gestor => x.Owner,:CCDebito => x.CCDebito, :ProjetoDebito => x.ProjetoDebito, :status => ""} }
     end

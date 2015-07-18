@@ -41,6 +41,16 @@ telefonia:
   password:
   socket: /tmp/mysql.sock
 
+telefonia2:
+  adapter: sqlserver
+  mode: dblib
+  host: 10.2.17.92   # Name from freetds.conf, host or instance 'localhost\SQLEXPRESS'
+  port: 1362              # Used if host present. Default is 1433.
+  database: infrati
+  username: infrati
+  password: db@1702
+  timeout: 5000
+
 rm:
   adapter: mysql2
   encoding: utf8

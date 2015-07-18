@@ -29,15 +29,11 @@ class MailingsController < InheritedResources::Base
     end
 
     def enviar_email
-        ServiceMailing.new.enviar(params["mailing_tag"])
+        ServiceMailing.new.enviar_por_tag(params["mailing_tag"])
     end
 
     def enviar_email_sql
-        sql = Cadrelatorio.where("descricao='#{params["mailing_sql"]}'").map(&:consulta).uniq
-        puts sql[0]
-        puts sql[0].class
-        ServiceMailing.new.enviar_por_sql(sql[0])
-       # ServiceMailing.new.enviar(params["mailing_sql"])
+        ServiceMailing.new.enviar_por_relatorio("descricao='#{params["mailing_sql"]}'")
     end
 
 

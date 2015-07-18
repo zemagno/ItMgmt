@@ -16,6 +16,7 @@ def load
   @celulares = @usuario.Celulares
   @placadados = @usuario.PlacaDados
   @monitores = @usuario.Monitores
+  @ramais =@usuario.Ramais
   
   @erros.concat @usuario.DistorcoesUsoLicenca 
 end

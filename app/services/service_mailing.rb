@@ -7,7 +7,9 @@ class ServiceMailing
 	 # que le o mailing novamente para pegar o body
 	 # É mais limpo, eu so passar o ID no p.
 
-	def enviar(_tag)
+	
+
+	def enviar_por_tag(_tag)
 		mailing = Mailing.find_all_by_tag(_tag)
 		mailing.each do |m|
 			p = Hash[ :id => m.id, :to => m.to, :cc => m.cc, :subject => m.subject, :from => m.from, :body => m.body ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
@@ -17,7 +19,22 @@ class ServiceMailing
 		Event.register("email","mailing - #{_tag}","resumo","Enfileirados #{mailing.count} emails para envio.")
 	end
 
-	def enviar_por_sql(sql)
+
+	# usado para producao_workers
+	def go(nome_relatorio)
+		enviar_por_relatorio("nome='#{nome_relatorio}'")
+		["Ok",""]
+	end
+
+	def enviar_por_relatorio(filtro)
+		sql = Cadrelatorio.where(filtro).map(&:consulta).uniq[0]
+		real_enviar_por_sql(sql)
+	end
+
+
+private
+	def real_enviar_por_sql(sql)
+        
 		mysql_res = ActiveRecord::Base.connection.execute(sql)
         mailing = []
         mysql_res.each{ |res| mailing << res }

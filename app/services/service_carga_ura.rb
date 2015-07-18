@@ -2,7 +2,7 @@ class ServiceCargaUra
 
 def go
 	status = "Erro"
-	detalhes = ""
+	detalhe = ""
 	total = 0
 	antes = Ura.count *1.0
 	carga = Funcionario.where(DataDemissao: "0000-00-00").count *1.0

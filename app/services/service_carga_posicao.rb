@@ -2,7 +2,7 @@ class ServiceCargaPosicao
 
 def go
 	status = "Erro"
-	detalhes = ""
+	detalhe = ""
 	total = 0
 	antes = MapaPosicao.count *1.0
 	carga = MapaPosicaoRm.count *1.0

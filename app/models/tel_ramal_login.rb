@@ -1,5 +1,5 @@
 class TelRamalLogin < TelefoniaDb
-	#establish_connection "telefonia"
+	
 	set_table_name "TelRamalLogin"
 	set_primary_key "IdtLogin"
 

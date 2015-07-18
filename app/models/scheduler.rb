@@ -2,14 +2,22 @@ class Scheduler < ActiveRecord::Base
   attr_accessible :job, :when
 
   def self.go
-  	hoje = Time.now().wday
+  	hoje = Time.now()
   	Scheduler.all.each do |x|
-  		if x.when[hoje]=="1" 
-  			Producao.dispatcherJob(x.job)
-  		end
+  		# if x.when[hoje]=="1" 
+  		# 	Producao.dispatcherJob(x.job)
+  		# end
+  		if ((x.when.include? "[#{hoje.day}]") ||  (x.when.include? ["dom","seg","ter","qua","qui","sex","sab"][hoje.wday]))
+  		 	Producao.dispatcherJob(x.job)
+  		 end
  	end  	
   end
 end
+
+# "[seg],[ter],[qua],[sex],[17],[18]"
+# 
+# x.include? "[#{a.day}]"
+# x.downcase.include? ["dom","seg","ter","qua","qui","sex","sab"][a.wday]
 
 # Whenever 
 #    Roda rake scheduler:go

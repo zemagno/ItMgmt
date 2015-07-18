@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150715220126) do
+ActiveRecord::Schema.define(:version => 20150718171931) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(:version => 20150715220126) do
   end
 
   create_table "cadrelatorios", :force => true do |t|
-    t.string   "nome"
+    t.string   "nome",         :limit => 30
     t.text     "consulta"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
@@ -324,6 +324,7 @@ ActiveRecord::Schema.define(:version => 20150715220126) do
     t.string  "NomeCidadeTrabalho"
     t.string  "CCTorre",            :limit => 6
     t.string  "DescCCTorre"
+    t.string  "NomAlocacao"
   end
 
   create_table "heranca_checklists", :force => true do |t|
@@ -452,7 +453,7 @@ ActiveRecord::Schema.define(:version => 20150715220126) do
   end
 
   create_table "producaos", :force => true do |t|
-    t.string   "job",        :limit => 30
+    t.string   "job",        :limit => 50
     t.string   "status",     :limit => 10
     t.datetime "data"
     t.string   "detalhe"
