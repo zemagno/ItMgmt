@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150718171931) do
+ActiveRecord::Schema.define(:version => 20150719104807) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -136,10 +136,10 @@ ActiveRecord::Schema.define(:version => 20150718171931) do
 
   create_table "cc", :id => false, :force => true do |t|
     t.string "LoginFunc",   :limit => 30, :default => "", :null => false
-    t.string "NomeFunc"
+    t.string "Nome",        :limit => 50
     t.string "LoginGestor", :limit => 30, :default => "", :null => false
     t.string "NomeGestor"
-    t.string "CC",          :limit => 6
+    t.string "CC",          :limit => 10
   end
 
   create_table "chamados", :force => true do |t|
@@ -308,23 +308,23 @@ ActiveRecord::Schema.define(:version => 20150718171931) do
   end
 
   create_table "funcionarios", :primary_key => "Login", :force => true do |t|
-    t.integer "Matricula"
-    t.string  "Nome"
-    t.date    "DataAdmissao"
-    t.date    "DataDemissao"
-    t.string  "Email"
-    t.string  "CPF",                :limit => 20
-    t.string  "Identidade",         :limit => 20
-    t.string  "CodigoCC",           :limit => 6
-    t.string  "NomeCC"
-    t.string  "NomeTipoCC"
+    t.integer "NumMatrProfissional"
+    t.string  "NomProfissional",        :limit => 50
+    t.date    "DtaAdmissao"
+    t.date    "DtaDemissao"
+    t.string  "NomEmailBRQ",            :limit => 50
+    t.string  "IdtCPF",                 :limit => 20
+    t.string  "IdtRG",                  :limit => 20
+    t.string  "IdtCodigoCentroCusto",   :limit => 10
+    t.string  "NomCentroCusto"
+    t.string  "NomTipoCentroCusto"
     t.string  "OwnerCC"
-    t.string  "CodigoSecao",        :limit => 10
-    t.string  "NomeLocalTrabalho"
-    t.string  "NomeCidadeTrabalho"
-    t.string  "CCTorre",            :limit => 6
-    t.string  "DescCCTorre"
-    t.string  "NomAlocacao"
+    t.string  "IdtCodigoSecao",         :limit => 10
+    t.string  "NomLocalTrabalho",       :limit => 50
+    t.string  "NomCidadeLocalTrabalho", :limit => 50
+    t.string  "IdtCentroCustoTorre",    :limit => 10
+    t.string  "DscCentroCustoTorre",    :limit => 50
+    t.string  "NomAlocacao",            :limit => 50
   end
 
   create_table "heranca_checklists", :force => true do |t|
