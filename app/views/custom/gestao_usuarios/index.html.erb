@@ -15,9 +15,11 @@
       <%= "- Matricula: #{@funcionario.Matricula}" %>
       </br><%= "CPF: #{@funcionario.CPF} - Identidade: #{@funcionario.Identidade}" %>
       </br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataDemissao}" %>
-      </br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho: #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
+      </br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
+      <%= " - Posicao: #{@posicaoFacilities} "  %>   
       </br><%= "Gestor: #{@funcionario.OwnerCC}" %>
-    </br><%= "Ramais: #{@ramais}" %>
+      </br><%= "Ramais: #{@ramais}" %>
+
       
       
       </br>

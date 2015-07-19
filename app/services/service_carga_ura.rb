@@ -5,7 +5,7 @@ def go
 	detalhe = ""
 	total = 0
 	antes = Ura.count *1.0
-	carga = Funcionario.where(DataDemissao: "0000-00-00").count *1.0
+	carga = Funcionario.where(DataDemissao: nil).count *1.0
 	Funcionario.all.each do |f|
     	if ! f.DataDemissao.nil?
         	u = Ura.find_by_login(f.Login)

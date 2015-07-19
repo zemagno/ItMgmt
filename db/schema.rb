@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150719104807) do
+ActiveRecord::Schema.define(:version => 20150719223851) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -396,6 +396,9 @@ ActiveRecord::Schema.define(:version => 20150719104807) do
     t.string  "LoginProfissional"
     t.string  "LoginGestor"
   end
+
+  add_index "mapa_posicaos", ["LoginGestor"], :name => "index_mapa_posicaos_on_LoginGestor"
+  add_index "mapa_posicaos", ["LoginProfissional"], :name => "index_mapa_posicaos_on_LoginProfissional"
 
   create_table "notes", :force => true do |t|
     t.text     "notes"

@@ -17,6 +17,8 @@ def load
   @placadados = @usuario.PlacaDados
   @monitores = @usuario.Monitores
   @ramais =@usuario.Ramais
+  @posicaoFacilities = ""
+  @posicaoFacilities = " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
   
   @erros.concat @usuario.DistorcoesUsoLicenca 
 end

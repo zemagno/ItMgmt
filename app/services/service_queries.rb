@@ -1,7 +1,7 @@
 class ServiceQueries
 
 def go(query)
-	status = "Query executada"
+	status = "Ok"
     detalhes = ""
 	[status,detalhes]
 end

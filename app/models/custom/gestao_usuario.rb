@@ -28,6 +28,10 @@ class Custom::GestaoUsuario
         @licencasemuso ||= retrieveCIs(13)
     end
 
+    def PosicaoFacilities
+        @posicaoFacilities ||= MapaPosicao.find_by_LoginProfissional_and_FlgReserva(@login,0)
+    end
+
     def Estacoes 
        
         @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map do |x| 
