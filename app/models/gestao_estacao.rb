@@ -1,4 +1,4 @@
-class Custom::GestaoEstacao
+class GestaoEstacao
 
 	def self.LiberaEstacao(attributes = {})
 		c = Ci.find_by_chave(attributes[:estacao]) 

@@ -12,7 +12,7 @@ class TemplatesEmail < ActiveRecord::Base
   end
 
   def self.find_by_tipo_and_subtipo(_tipo,_subtipo)
-      templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI","")
+      templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo(_tipo,"")
       templates_email.concat(TemplatesEmail.find(:all, :conditions => ["tipo = ? AND subtipo like ?", _tipo, "%#{_subtipo}%"]))
       templates_email
   end

@@ -1,4 +1,4 @@
-class Custom::GestaoUsuario
+class GestaoUsuario
 
     attr_accessor :login
     # attr_accessor :licencasemuso

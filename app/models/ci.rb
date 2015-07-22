@@ -77,7 +77,7 @@ class Ci < ActiveRecord::Base
 
   
   def to_s
-      "#{id}:#{chave} : #{descricao} : #{nice_tipoci}"  
+      "Chave:#{chave} : #{descricao} : Tipo: #{nice_tipoci} : Status:#{status} : Owner:#{self.Owner} : Usuario: #{notificacao}"  
   end
 
   def to_hash
@@ -213,11 +213,10 @@ class Ci < ActiveRecord::Base
   end
 
   def setatributo(key,value)
-    puts "setatributo"
     k = atributos.select {|k,v| v[5] == key}
-    puts "k: #{k} #{k.blank?}"
+    # puts "k: #{k} #{k.blank?}"
     if ! k.blank?
-        puts "vou salvar atributos"
+        # puts "vou salvar atributos"
         a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id,k.keys[0])
         a.valor=value
         a.save!

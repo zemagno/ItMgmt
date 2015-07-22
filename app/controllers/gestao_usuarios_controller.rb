@@ -1,4 +1,4 @@
-class Custom::GestaoUsuariosController < ApplicationController
+class GestaoUsuariosController < ApplicationController
 
 
 def load
@@ -8,7 +8,7 @@ def load
   @login = params[:search] || session[:search_gestao_usuario]
   session[:search_gestao_usuario] = @login
 
-  @usuario = Custom::GestaoUsuario.new(:login => @login)
+  @usuario = GestaoUsuario.new(:login => @login)
   
   @nomecompleto = (@funcionario = Funcionario.find_by_Login(@login)) ? @funcionario.Nome : "Nao Identificado" 
   @licencas  = @usuario.LicencasEmUso
@@ -18,11 +18,56 @@ def load
   @monitores = @usuario.Monitores
   @ramais =@usuario.Ramais
   @posicaoFacilities = ""
-  @posicaoFacilities = " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
+  @posicaoFacilities << " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
   
   @erros.concat @usuario.DistorcoesUsoLicenca 
 end
 
+
+def email
+    # so seleciono os templates do tipo de ci sendo visualizado
+    @id = params[:id]
+    
+    @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("GESTAO USUARIO","xxxx") #  esse metodo ta no Templates e nao pertence ao Rails
+    
+    respond_to do |format|
+      format.js { 
+        logger.debug  "Gestao::email - #{params}"
+           render :action => "../common/email.js.erb"          
+      }
+    end
+
+    # respond_to :js
+end
+
+def enviar_email
+    #testar se email é sync ou nao.. se for async, chamar abaixo, senao desviar para /email/{template}/:ci
+    #aqui tem um problema...o controller que responde ao /email/template ja esta rodando numa nova tela...ele so responde um href.
+    logger.debug  "Gestao::enviar_email - #{params}"
+    template_email =TemplatesEmail.find(params[:enviar_email][:template_id])
+
+    if template_email.sync
+      @path = "/email/#{template_email.template}/#{params[:id]}"
+      
+      respond_to do |format|
+         format.js { render :action => '../common/enviar_email_sync.js.erb' }
+      end
+
+
+    else
+      p = Hash[:id => params[:id]]
+      job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
+      EnviaEmailWorker.perform_async(job.id)
+      #EnviaEmailWorker.perform_in(1.hour,job.id)
+      flash[:info] = "INFO: Email enfileirado para envio"
+      respond_to do |format|
+          format.js { 
+               render :action => "../common/enviar_email.js.erb"          
+          }
+      end
+      # respond_to :js # so para fazer reload da pagina e sumir com 
+    end
+end
 
 def index
   @modo = :vizualizacao
@@ -34,6 +79,9 @@ def index
     end
 end
 
+def enviar_senha
+  Service
+end
 
 def confirmar_remocao_licenca
     @modo = :remocao_licenca
@@ -56,7 +104,7 @@ end
 def alocar_estacao
     @modo = :vizualizacao
     puts params
-    if (@estacaoalocada = Custom::GestaoEstacao.AlocarEstacao(params))
+    if (@estacaoalocada = GestaoEstacao.AlocarEstacao(params))
        puts @estacaoalocada
        flash[:info] = "INFO: Alocada estacao #{@estacaoalocada.chave} - #{@estacaoalocada.descricao} "
     else
@@ -126,14 +174,14 @@ end
 def escolher_estacao_alocar
     @modo = :alocar_estacao
     @login = params[:id]
-    @atributos = Custom::GestaoEstacao.Atributos
+    @atributos = GestaoEstacao.Atributos
     load 
     render :index and return
 end
 
 def desalocar_estacao
   if (params[:confirmacao]==params[:token_confirmacao])
-     Custom::GestaoEstacao.LiberaEstacao(:estacao => params[:token_confirmacao])
+     GestaoEstacao.LiberaEstacao(:estacao => params[:token_confirmacao])
      flash[:info] = "Estacao devolvido para estoque"
   else
      flash[:error] = "Estacao nao desalocada"
@@ -149,14 +197,14 @@ def escolher_licenca_alocar
     @modo = :alocar_licenca
     @login = params[:id]
     @licenca = params[:licenca]
-    @licencasexistentes = Custom::GestaoLicenca.LicencasExistentes.map { |x| x[0]}
+    @licencasexistentes = GestaoLicenca.LicencasExistentes.map { |x| x[0]}
     load 
     render :index and return
 end
 
 def alocar_licenca
     @modo = :vizualizacao
-    if (@licencaalocada = Custom::GestaoLicenca.AlocarLicenca(params))
+    if (@licencaalocada = GestaoLicenca.AlocarLicenca(params))
        flash[:info] = "INFO: Alocada licenca #{@licencaalocada.chave} - #{@licencaalocada.descricao} "
     else
       flash[:error] = "Erro: Nao existe licenca disponivel para alocar"     
@@ -179,7 +227,7 @@ def remover_licenca
 # "token_confirmacao"=>"Office365E3_0008", 
 # "id"=>"paulofreire"
   if (params[:confirmacao]==params[:token_confirmacao])
-     Custom::GestaoLicenca.LiberaLicenca(:licenca => params[:token_confirmacao])
+     GestaoLicenca.LiberaLicenca(:licenca => params[:token_confirmacao])
      flash[:info] = "Licenca Liberada"
   else
      flash[:error] = "Licencas Nao removida"

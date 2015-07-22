@@ -1,4 +1,4 @@
-class Custom::GestaoLicenca
+class GestaoLicenca
 
 	def self.LiberaLicenca(attributes = {})
 		
@@ -11,7 +11,7 @@ class Custom::GestaoLicenca
 		
 		puts attributes
 
-		licencas = Custom::GestaoLicenca.LicencasExistentes.detect {|n| n[0] == attributes[:licenca]}
+		licencas = GestaoLicenca.LicencasExistentes.detect {|n| n[0] == attributes[:licenca]}
  
  		
  		licenca_disponivel = nil

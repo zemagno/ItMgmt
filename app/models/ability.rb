@@ -138,9 +138,9 @@ class Ability
         can :manage, Audit
     end
 
-    #can :manage, :all
     cannot :manager, User
-
+    #can :manage, :all
+    
     #fazendo edit + seguranca de user
     
   end

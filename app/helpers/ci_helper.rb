@@ -15,7 +15,7 @@ module CiHelper
 
 	 def helper_login_to_url(login)
 	 	if login =~ /^[a-zA-z.]+$/
-	 	   res = link_to(login,"/custom/GestaoUsuarios?search=#{login}",:target => "_blank" )
+	 	   res = link_to(login,"/GestaoUsuarios?search=#{login}",:target => "_blank" )
 	 	else 
 	 	   res = login
 	 	end

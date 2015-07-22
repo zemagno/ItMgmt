@@ -71,7 +71,7 @@ $(document).ready( function(){
                        <li><%= link_to 'Parametros', parametros_path %></li>	
                     <% end %>
                     <% if can? :manager, :usuarios %>
-                       <li><%= link_to 'Gestao de Usuarios', custom_gestao_usuarios_path %></li>	
+                       <li><%= link_to 'Gestao de Usuarios', gestao_usuarios_path %></li>	
                     <% end %>  
                     <li><%= link_to 'Producao', painel_producao_index_path %></li>	
                     

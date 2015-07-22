@@ -1,0 +1,18 @@
+<div id="stylized" class="myform">
+<%=  form_for :enviar_email_gestao_usuario,  :remote => true, :html => {:id => "email"} do |f|  %>
+
+<label>Selecione o Template
+</label>
+
+<%= hidden_field_tag 'id', @id %>
+<%= f.select :template_id, @templates_email.collect { |c| [ c.full_nome, c.id ] } %>
+<div class="buttons">
+    <%= f.submit "Enviar Email" %>
+</div>
+</br>
+
+<% end %>
+</div>
+
+<!-- <:url => url_for(:controller => 'email', :action => 'enviar_email'), > -->
+	

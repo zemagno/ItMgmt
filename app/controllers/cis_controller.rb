@@ -103,12 +103,15 @@ class CisController < ApplicationController
     # so seleciono os templates do tipo de ci sendo visualizado
     @id = params[:id]
     t = Ci.find(@id).nice_tipoci
-    # @templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo("CI",t)
-    # @templates_email.concat(TemplatesEmail.find_all_by_tipo_and_subtipo("CI",""))  
     @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
-
-    respond_to :js
     
+    respond_to do |format|
+      format.js { 
+           render :action => "../common/email.js.erb"          
+      }
+    end
+
+    # respond_to :js
   end
 
   def enviar_email
@@ -120,7 +123,7 @@ class CisController < ApplicationController
       @path = "/email/#{template_email.template}/#{params[:id]}"
       
       respond_to do |format|
-       format.js { render :action => 'enviar_email_sync.js.erb' }
+         format.js { render :action => '../common/enviar_email_sync.js.erb' }
       end
 
 
@@ -130,7 +133,12 @@ class CisController < ApplicationController
       EnviaEmailWorker.perform_async(job.id)
       #EnviaEmailWorker.perform_in(1.hour,job.id)
       flash[:info] = "INFO: Email enfileirado para envio"
-      respond_to :js # so para fazer reload da pagina e sumir com 
+      respond_to do |format|
+          format.js { 
+               render :action => "../common/enviar_email.js.erb"          
+          }
+      end
+      # respond_to :js # so para fazer reload da pagina e sumir com 
     end
   end
   # http://stackoverflow.com/questions/7165064/how-do-i-preview-emails-in-rails
