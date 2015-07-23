@@ -1,6 +1,6 @@
 class ScheduleWorker
   include Sidekiq::Worker
-  sidekiq_options queue: "Gestao", :retry => 2, :backtrace => true
+  sidekiq_options queue: "Producao", :retry => 2, :backtrace => true
   #sidekiq_options retry: false
   
   def perform(job_id)

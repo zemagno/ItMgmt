@@ -1,5 +1,7 @@
 class Scheduler < ActiveRecord::Base
-  attr_accessible :job, :when
+  attr_accessible :job, :when, :ordem
+
+  default_scope order('ordem ASC')
 
   def self.go
   	hoje = Time.now()
@@ -7,7 +9,7 @@ class Scheduler < ActiveRecord::Base
   		# if x.when[hoje]=="1" 
   		# 	Producao.dispatcherJob(x.job)
   		# end
-  		if ((x.when.include? "[#{hoje.day}]") ||  (x.when.include? ["dom","seg","ter","qua","qui","sex","sab"][hoje.wday]))
+  		if ((x.when.include? "[#{hoje.day}]") ||  (x.when.include? ["[dom]","[seg]","[ter]","[qua]","[qui]","[sex]","[sab]"][hoje.wday]))
   		 	Producao.dispatcherJob(x.job)
   		 end
  	end  	

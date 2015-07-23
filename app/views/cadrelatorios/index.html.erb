@@ -11,6 +11,7 @@
   <tr>
     <th>Nome</th>
     <th>Descricao</th>
+    <th>Dashboard</th>
     <th></th>
     <th></th>
   </tr>
@@ -19,6 +20,7 @@
   <tr>
     <td><%= link_to cadrelatorio.nome, relatorio_path(cadrelatorio.nome) %></td>
     <td><%= cadrelatorio.descricao %></td>
+    <td><%= cadrelatorio.dashboard %></td>
     <% if can? :manage, @Cadrelatorio %>
     <td><%= link_to 'Alterar', edit_cadrelatorio_path(cadrelatorio) %></td>
     <td><%= link_to 'Apagar', cadrelatorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>

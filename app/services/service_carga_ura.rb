@@ -29,6 +29,9 @@ def go
 		status = "Ok"
 		detalhe = "Carga URA efetuado com sucesso."
 	end
+
+	# status sempre sera OK ate acertar. Pode ter dados expurios na URA e essa carga nao apaga.
+	status = "Ok"
 		
 	detalhe << " - Antes: #{antes} - Carga: #{carga} - Depois: #{depois}"
 	

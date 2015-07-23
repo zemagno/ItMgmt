@@ -73,7 +73,7 @@ $(document).ready( function(){
                     <% if can? :manager, :usuarios %>
                        <li><%= link_to 'Gestao de Usuarios', gestao_usuarios_path %></li>	
                     <% end %>  
-                    <li><%= link_to 'Producao', painel_producao_index_path %></li>	
+                    <li><%= link_to 'Producao', painel_producao_path("PRODUCAO/NONZERO") %></li>	
                     
                                                   
 

@@ -1,6 +1,6 @@
 class ProducaoWorker
   include Sidekiq::Worker
-  sidekiq_options queue: "Gestao" , :retry => 4, :backtrace => true
+  sidekiq_options queue: "Producao" , :retry => 4, :backtrace => true
   #sidekiq_options retry: false
   
 
@@ -19,7 +19,7 @@ class ProducaoWorker
     #   puts "vou rodar dinamento CargaRM"
     #       status,detalhes = ServiceCargaRm.new.go
     # end
-    puts "Producao..."
+   
 
     if job.job =~ /^Carga_([a-zA-Z]+)$/
        status,detalhes = Object::const_get("ServiceCarga#{$1}").new().go

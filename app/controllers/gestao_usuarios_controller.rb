@@ -4,13 +4,86 @@ class GestaoUsuariosController < ApplicationController
 def load
   @erros = []
 
+ 
+  # dois modos. :login --> achei um unico funcionario e vou direto para a pagina dele. :search --> achei varios e mostro uma listatem antes
+  @mode = :login
 
   @login = params[:search] || session[:search_gestao_usuario]
-  session[:search_gestao_usuario] = @login
-
-  @usuario = GestaoUsuario.new(:login => @login)
   
-  @nomecompleto = (@funcionario = Funcionario.find_by_Login(@login)) ? @funcionario.Nome : "Nao Identificado" 
+  if @login =~ /^\d{6}$/
+    @mode = :login
+    puts "Pesquisando pelo ramal #{@login}"
+    usr = TelRamalLogin.find_by_NumRamal(@login)
+    puts "achei: <#{usr.IdtLogin}> <#{usr.NumRamal}>"
+    @login = usr.IdtLogin.strip if ! usr.nil?
+  end
+  
+  # tento ir direto no login, se digitou uma unica palavra
+  if @login =~ /^[a-zA-z._]+$/
+     puts "mode :login"
+     @usuario = GestaoUsuario.new(:login => @login)
+  end
+
+  # com o login, eu procuro o funcionario
+  @funcionario = Funcionario.find_by_Login(@login)
+  
+
+  # se nao achei nenhum login, faco a pesquisa generica com nome 
+  if @funcionario.nil?
+    @mode = :nome
+    search = @login.strip.gsub(" ","%").gsub("%%","%")
+    @f = Funcionario.where("NomProfissional like '%#{search}%'")
+
+    # se o resultado do where devolveu um unico funcionario, mudo o modo para :login
+    if @f.count == 1
+      @login = @f[0].Login
+      @mode = :login
+      @usuario = GestaoUsuario.new(:login => @login)
+      @funcionario = Funcionario.find_by_Login(@login)
+    end
+  end
+
+  # se eu achei um usuario, entao carrego todos os dados
+  if @mode == :login
+    session[:search_gestao_usuario] = @login
+    @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
+    #@nomecompleto = (@funcionario = Funcionario.find_by_Login(@login)) ? @funcionario.Nome : "Nao Identificado" 
+    @licencas  = @usuario.LicencasEmUso
+    @estacoes   = @usuario.Estacoes
+    @celulares = @usuario.Celulares
+    @placadados = @usuario.PlacaDados
+    @monitores = @usuario.Monitores
+    @ramais =@usuario.Ramais
+    @posicaoFacilities = ""
+    @posicaoFacilities << " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
+    @erros.concat @usuario.DistorcoesUsoLicenca 
+  end
+
+
+end
+
+def loadOld
+  @erros = []
+
+  @login = params[:search] || session[:search_gestao_usuario]
+  @usuario = GestaoUsuario.new(:login => @login)
+
+  # if @login =~ /^[a-zA-z.]+$/
+     @usuario = GestaoUsuario.new(:login => @login)
+  # end
+  # @funcionario = Funcionario.find_by_Login(@login)
+  # if @funcionario.nil?
+  #   search = @login.strip.gsub(" ","%").gsub("%%","%")
+  #   f = Funcionario.where("NomProfissional like '%#{search}%'")[0]
+  #   @login = f.Login
+  #   @usuario = GestaoUsuario.new(:login => @login)
+  #   @funcionario = Funcionario.find_by_Login(@login)
+  # end
+
+  # isso ta um lixo..listar todo mundo que o Where like devolveu e desviar para tela de escolha de usuario.
+
+  session[:search_gestao_usuario] = @login
+  @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
   @licencas  = @usuario.LicencasEmUso
   @estacoes   = @usuario.Estacoes
   @celulares = @usuario.Celulares
@@ -72,11 +145,16 @@ end
 def index
   @modo = :vizualizacao
 
-  load  
+  load
+
+  if @mode == :nome
+     render :search and return
+  end
+   
   
   respond_to do |format|
       format.html # index.html.erb
-    end
+  end
 end
 
 def enviar_senha
@@ -113,7 +191,7 @@ def alocar_estacao
     # @login = params[:id]
     # @licenca = params[:licenca]
     load 
-    redirect_to :custom_gestao_usuarios
+    redirect_to :gestao_usuarios
 
 end
 
@@ -189,7 +267,7 @@ def desalocar_estacao
 
   @modo = :vizualizacao
   load
-  redirect_to :custom_gestao_usuarios
+  redirect_to :gestao_usuarios
 
 end
 
@@ -212,7 +290,7 @@ def alocar_licenca
     # @login = params[:id]
     # @licenca = params[:licenca]
     load 
-    redirect_to :custom_gestao_usuarios
+    redirect_to :gestao_usuarios
 end
 
 
@@ -235,7 +313,7 @@ def remover_licenca
 
   @modo = :vizualizacao
   load
-  redirect_to :custom_gestao_usuarios
+  redirect_to :gestao_usuarios
 end
 
 end

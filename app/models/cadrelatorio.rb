@@ -1,5 +1,5 @@
 class Cadrelatorio < ActiveRecord::Base
-  attr_accessible :consulta, :nome, :descricao, :categoria, :tipoci_id, :ultimoacesso, :qtdeacessos, :painel
+  attr_accessible :consulta, :nome, :descricao, :categoria, :tipoci_id, :ultimoacesso, :qtdeacessos, :dashboard
 
   belongs_to :tipoci
 

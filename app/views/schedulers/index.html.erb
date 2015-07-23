@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Ordem</th>
     <th>Job</th>
     <th>When</th>
     <th></th>
@@ -12,6 +13,7 @@
 
 <% @schedulers.each do |scheduler| %>
   <tr>
+    <td><%= scheduler.ordem %></td>
     <td><%= scheduler.job %></td>
     <td><%= scheduler.when %></td>
     <td><%= link_to 'Mostrar', scheduler %></td>

@@ -1,0 +1,21 @@
+<h1>Funcionarios</h1>
+
+<%= link_to_function "Pesquisar novamente", "history.back()" %>
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Nome</th>
+    
+  </tr>
+
+<% @f.each do |func| %>
+  <tr>
+    <td><%= link_to(func.Login,"/GestaoUsuarios?search=#{func.Login}") %></td>
+    <td><%= func.Nome %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+

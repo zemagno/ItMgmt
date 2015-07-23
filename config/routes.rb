@@ -18,7 +18,10 @@ ItMgmt::Application.routes.draw do
   resources :producaos
 
 
-  get "painel_producao/index"
+
+  get "painel_producao/:id/:scope" , to:"painel_producao#index", as: "painel_producao"
+  get "painel_producao/:id" , to:"painel_producao#index", as: "painel_producao"
+
 
 
    match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"

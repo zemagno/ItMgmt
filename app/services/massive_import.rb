@@ -46,7 +46,7 @@ def self.go(configfile)
 		   c = Ci.find_or_initialize_by_chave(chave)
 		end
 		dados.headers.each do |h|
-			c.send("#{h}=",linha[h].gsub("\t","").strip) if h =~ /^([a-zA-Z]+)$/
+			c.send("#{h}=",linha[h].gsub("\t","").strip) if (h =~ /^([a-zA-Z]+)$/) && c.respond_to?(h)
 		end
 
 		config["default"].each do |k,v|
@@ -62,7 +62,7 @@ def self.go(configfile)
 		c.save! if ! teste_mode
 
 		dados.headers.each do |h|
-			c.send("#{h}=",linha[h].gsub("\t","").strip) if h =~ /^(_[a-zA-Z]+)$/
+			c.send("#{h}=",linha[h].gsub("\t","").strip) if (h =~ /^(_[a-zA-Z]+)$/)  && c.respond_to?(h)
 		end
 		c.save if ! teste_mode
 	end

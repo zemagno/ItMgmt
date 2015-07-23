@@ -1,6 +1,6 @@
 class EnviaEmailWorker
   include Sidekiq::Worker
-  sidekiq_options queue: "Gestao" , :retry => 4, :backtrace => true
+  sidekiq_options queue: "Mailing" , :retry => 4, :backtrace => true
   #sidekiq_options retry: false
   
 

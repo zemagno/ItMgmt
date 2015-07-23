@@ -6,14 +6,14 @@ module RelatoriosHelper
             valor.split(",").each do |c|
                 res << link_to(c,"/cis/#{c}",:target => "_blank" )+ " "
             end
-            puts res
+            puts resposta
 
         when "SearchCIS"
             res = link_to(valor,"/cis?search=#{valor}",:target => "_blank" )
 		when "CI" , "ID"
             res = link_to valor, ci_path(valor) 
         when "Usuario" , "Login"
-            res = link_to(valor,"GestaoUsuarios?search=#{valor}",:target => "_blank" )
+            res = link_to(valor,"/GestaoUsuarios?search=#{valor}",:target => "_blank" )
         when "Email"
             res = valor
             #criar um template de email...colocar em banco de dados em memoria

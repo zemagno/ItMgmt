@@ -70,24 +70,5 @@ end
 
 end
 
-		   Funcionario.create(:Login => f.Login,
-		   						:Matricula=> f.NumMatrProfissional,
-		   						:Nome => f.NomProfissional    ,
-		   						:DataAdmissao => f.DtaDemissao    ,
-		   						:DataDemissao   => f.DtaAdmissao  ,
-		   						:Email => f.NomEmailBRQ ,
-		   						:CPF => f.IdtCPF ,
-		   						:Identidade => f.IdtRG ,
-		   						:CodigoCC => f.IdtCodigoCentroCusto ,
-		   						:NomeCC => f.NomCentroCusto.force_encoding("ISO-8859-1").encode("UTF-8") ,
-		   						:NomeTipoCC => f.NomTipoCentroCusto.force_encoding("ISO-8859-1").encode("UTF-8") ,
-		   						:OwnerCC => f.OwnerCC ,
-		   						:CodigoSecao => f.IdtCodigoSecao ,
-		   						:NomeLocalTrabalho => f.NomLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8") ,
-		   						:NomeCidadeTrabalho=> f.NomCidadeLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8") ,
-		   						:CCTorre => f.IdtCentroCustoTorre ,
-		   						:DescCCTorre => f.DscCentroCustoTorre.force_encoding("ISO-8859-1").encode("UTF-8") ,
-		   						:NomAlocacao => f.NomAlocacao.force_encoding("ISO-8859-1").encode("UTF-8") )
-
-
+		 
 
