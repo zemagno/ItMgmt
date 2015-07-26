@@ -64,7 +64,7 @@ def self.go(configfile)
 		dados.headers.each do |h|
 			c.send("#{h}=",linha[h].gsub("\t","").strip) if (h =~ /^(_[a-zA-Z]+)$/)  && c.respond_to?(h)
 		end
-		c.save if ! teste_mode
+		c.save! if ! teste_mode
 	end
 	puts "done"
 	"OK"

@@ -11,20 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150723002231) do
-
-  create_table "Cadrelatorios", :force => true do |t|
-    t.string   "nome",         :limit => 30
-    t.text     "consulta"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "descricao"
-    t.string   "categoria",    :limit => 50
-    t.integer  "tipoci_id"
-    t.date     "ultimoacesso"
-    t.integer  "qtdeacessos"
-    t.string   "dashboard"
-  end
+ActiveRecord::Schema.define(:version => 20150726131010) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -112,6 +99,19 @@ ActiveRecord::Schema.define(:version => 20150723002231) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "Logon"
+  end
+
+  create_table "cadrelatorios", :force => true do |t|
+    t.string   "nome",         :limit => 30
+    t.text     "consulta"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.string   "descricao"
+    t.string   "categoria",    :limit => 50
+    t.integer  "tipoci_id"
+    t.date     "ultimoacesso"
+    t.integer  "qtdeacessos"
+    t.string   "dashboard"
   end
 
   create_table "cadsurveys", :force => true do |t|
@@ -325,6 +325,9 @@ ActiveRecord::Schema.define(:version => 20150723002231) do
     t.string  "IdtCentroCustoTorre",    :limit => 10
     t.string  "DscCentroCustoTorre",    :limit => 50
     t.string  "NomAlocacao",            :limit => 50
+    t.string  "ramal"
+    t.string  "observacao"
+    t.boolean "semEstacao"
   end
 
   create_table "heranca_checklists", :force => true do |t|
@@ -443,6 +446,16 @@ ActiveRecord::Schema.define(:version => 20150723002231) do
     t.integer  "status_pedido_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "producao_ads", :force => true do |t|
+    t.string   "userid"
+    t.string   "acao"
+    t.string   "parametro"
+    t.boolean  "processado"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "cmd"
   end
 
   create_table "producao_cis", :force => true do |t|

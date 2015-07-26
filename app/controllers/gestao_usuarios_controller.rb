@@ -9,42 +9,59 @@ def load
   @mode = :login
 
   @login = params[:search] || session[:search_gestao_usuario]
+
+  # session[:search_gestao_usuario] = ""
+
   
+  # se for um ramal, recupero o @login
   if @login =~ /^\d{6}$/
     @mode = :login
     puts "Pesquisando pelo ramal #{@login}"
     usr = TelRamalLogin.find_by_NumRamal(@login)
-    puts "achei: <#{usr.IdtLogin}> <#{usr.NumRamal}>"
-    @login = usr.IdtLogin.strip if ! usr.nil?
+    if ! usr.nil?
+       @login = usr.IdtLogin.strip if ! usr.nil? 
+    else
+       @login = nil
+    end
   end
   
-  # tento ir direto no login, se digitou uma unica palavra
+  # tento ir direto no login, se digitou uma unica palavra ou se login veio do Ramal
   if @login =~ /^[a-zA-z._]+$/
      puts "mode :login"
-     @usuario = GestaoUsuario.new(:login => @login)
+     @mode = :login
+     # @usuario = GestaoUsuario.new(:login => @login)
   end
 
-  # com o login, eu procuro o funcionario
-  @funcionario = Funcionario.find_by_Login(@login)
+  # sempre instancio um usuario. ele retornara nada para as chamadas de licencas, celulares, etc
+  # usuario tem as info do CMDB
   
 
+  # com o login, eu procuro o funcionario 
+  # funcionario tem as info do RM
+  @funcionario = Funcionario.find_by_Login(@login)
+  
+   
   # se nao achei nenhum login, faco a pesquisa generica com nome 
-  if @funcionario.nil?
+  if @funcionario.nil? && ! @login.nil?
     @mode = :nome
     search = @login.strip.gsub(" ","%").gsub("%%","%")
     @f = Funcionario.where("NomProfissional like '%#{search}%'")
-
+    session[:search_gestao_usuario] = ""
+    @login = ""
     # se o resultado do where devolveu um unico funcionario, mudo o modo para :login
     if @f.count == 1
-      @login = @f[0].Login
       @mode = :login
-      @usuario = GestaoUsuario.new(:login => @login)
-      @funcionario = Funcionario.find_by_Login(@login)
+      @login = @f[0].Login
+      @funcionario = @f[0]
     end
   end
 
-  # se eu achei um usuario, entao carrego todos os dados
+  puts "mode :#{@mode} - #{@login}"
+  @usuario = GestaoUsuario.new(:login => @login)
+  # se eu estou em modo de apresentar um usuario 
   if @mode == :login
+    puts "vou montar usuario com licencas..."
+    # tenho que deixar o login na sessao, pois ela será usada para alocacao de licencas, etc. Nao posso deixar o criterio de busca
     session[:search_gestao_usuario] = @login
     @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
     #@nomecompleto = (@funcionario = Funcionario.find_by_Login(@login)) ? @funcionario.Nome : "Nao Identificado" 
@@ -68,20 +85,8 @@ def loadOld
   @login = params[:search] || session[:search_gestao_usuario]
   @usuario = GestaoUsuario.new(:login => @login)
 
-  # if @login =~ /^[a-zA-z.]+$/
-     @usuario = GestaoUsuario.new(:login => @login)
-  # end
-  # @funcionario = Funcionario.find_by_Login(@login)
-  # if @funcionario.nil?
-  #   search = @login.strip.gsub(" ","%").gsub("%%","%")
-  #   f = Funcionario.where("NomProfissional like '%#{search}%'")[0]
-  #   @login = f.Login
-  #   @usuario = GestaoUsuario.new(:login => @login)
-  #   @funcionario = Funcionario.find_by_Login(@login)
-  # end
-
-  # isso ta um lixo..listar todo mundo que o Where like devolveu e desviar para tela de escolha de usuario.
-
+  @funcionario = Funcionario.find_by_Login(@login)
+  
   session[:search_gestao_usuario] = @login
   @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
   @licencas  = @usuario.LicencasEmUso
