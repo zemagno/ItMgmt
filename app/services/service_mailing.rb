@@ -53,7 +53,7 @@ private
 			job = JobEnviarEmail.criar(m[template_email_id], p.to_yaml)
 			EnviaEmailWorker.perform_async(job.id)
 		end
-		Event.register("email","mailing}","resumo","Enfileirados #{mailing.count} emails para envio.")
+		Event.register("email","mailing","resumo","Enfileirados #{mailing.count} emails para envio.")
 
 
 	end

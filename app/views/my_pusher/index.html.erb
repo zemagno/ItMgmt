@@ -1,0 +1,10 @@
+<h1>Notificao em tempo real</h1>
+<p>Digite a mensagem a ser publicada</p>
+
+<%= form_tag(my_pusher_publica_path, :method => "post") do %>
+ 
+  <%= text_field_tag :mensagem, @mensagem, :size => 50 , :width => 50 %>
+  <%= submit_tag("Enviar") %>
+  <!--%= submit_tag("Estou com sorte") % -->
+
+<% end %>

@@ -17,7 +17,8 @@ class EnviaEmailWorker
   def perform(job_id)
     job = JobEnviarEmail.find(job_id) # busco o job no BD
 
-    template = job.templates_email 
+
+    template = job.templates_email # esse template é um id. Pego o template que é path ci_mailes/<<template>> e que esta no SQL.
     
     params = YAML.load(job.parametro) 
     

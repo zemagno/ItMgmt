@@ -21,18 +21,24 @@ class ProducaoWorker
     # end
    
 
-    if job.job =~ /^Carga_([a-zA-Z]+)$/
+    if job.job =~ /^Carga_([a-zA-Z0-9]+)$/
        status,detalhes = Object::const_get("ServiceCarga#{$1}").new().go
     end
 
-    if job.job =~ /^Mailing_([a-zA-Z]+)$/
+    if job.job =~ /^Mailing_([a-zA-Z0-9]+)$/
        puts "vou enviar [#{$1}]"
        status,detalhes = Object::const_get("ServiceMailing").new().go($1)
     end
 
-    if job.job =~ /^Query_([a-zA-Z]+)$/
+    if job.job =~ /^Query_([a-zA-Z0-9]+)$/
       status,detalhes = ServiceQueries.new.go($1)
     end
+
+
+    if job.job =~ /^Dashboard_([a-zA-Z0-9]+)$/
+      status,detalhes = ServiceAlerta.new.go($1)
+    end
+
     puts "---------"
     puts status
     puts detalhes

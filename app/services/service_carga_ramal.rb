@@ -19,6 +19,13 @@ def go
 	    	f.save
 	    end
 	end
+	Funcionario.all.each do |f|
+	    r = TelRamalLogin.find_by_IdtLogin(f.Login)
+	    if r.nil?
+	        f.ramal = ""
+	        f.save
+	    end
+	end
 	# status sempre sera OK ate acertar. Pode ter dados expurios na URA e essa carga nao apaga.
 	status = "Ok"
 		

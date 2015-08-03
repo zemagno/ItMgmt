@@ -25,6 +25,8 @@ gem 'foreman'
 
 gem 'nokogiri'
 
+gem 'pusher'
+
 gem 'wisper' # publish/subscriber
 
 gem 'activeadmin'

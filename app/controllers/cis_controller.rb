@@ -32,10 +32,6 @@ class CisController < ApplicationController
 
   def cache(ci)
     session[:oldCI] = ci.id
-    @filaNavegacao = session[:filaNavegacao]
-    @filaNavegacao ||= Fila.new
-    @filaNavegacao.enfilera(ci.id)
-    session[:filaNavegacao] = @filaNavegacao 
     session[:visao_ci] = @visaoci
   end
 
@@ -217,18 +213,7 @@ class CisController < ApplicationController
     end
   end
   
-  def sobe
-    filaNavegacao = session[:filaNavegacao]
-    @ci, @atributos = Ci.find_com_atributos(filaNavegacao.anterior)
-    render :show
-  end
-  
-  def desce
-    filaNavegacao = session[:filaNavegacao]
-    @ci, @atributos = Ci.find_com_atributos(filaNavegacao.proximo)
-    render :show
-  end
-  
+    
   def new
     @ci = Ci.new
     carrega_agregadas

@@ -2,6 +2,10 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  get "my_pusher", to: "my_pusher#index"
+
+  post  "my_pusher/publica"
+
   post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento" 
 
   resources :producao_cis
@@ -154,7 +158,7 @@ resources :fornecedores
   match '/cis/todos', to: 'cis#todos'  
   match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci"
 
-  resources :parametros , :only => [:index,:edit,:update]
+  resources :parametros #, :only => [:index,:edit,:update,:new]
 
   resources :dicdados
 
@@ -201,8 +205,6 @@ resources :fornecedores
 
 
   match 'cis/search', to: "cis#search"
-  match 'cis/sobe', to: "cis#sobe"
-  match 'cis/desce', to: "cis#desce"
   match 'CMDB', to: "cis#index"
   
   resources :cis

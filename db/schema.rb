@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150726131010) do
+ActiveRecord::Schema.define(:version => 20150803220240) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -244,7 +244,7 @@ ActiveRecord::Schema.define(:version => 20150726131010) do
     t.integer  "ordem"
     t.string   "url"
     t.string   "descricao"
-    t.string   "valores",     :limit => 500
+    t.string   "valores",     :limit => 1000
     t.string   "apelido"
     t.string   "tipo"
     t.string   "regex"
@@ -262,6 +262,7 @@ ActiveRecord::Schema.define(:version => 20150726131010) do
     t.string   "valor"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+    t.boolean  "processado"
   end
 
   create_table "exec_checklists", :force => true do |t|
@@ -328,6 +329,16 @@ ActiveRecord::Schema.define(:version => 20150726131010) do
     t.string  "ramal"
     t.string  "observacao"
     t.boolean "semEstacao"
+    t.integer "IdLocalTrabalho"
+  end
+
+  add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
+  add_index "funcionarios", ["OwnerCC"], :name => "onwerfunc"
+
+  create_table "google_accounts", :id => false, :force => true do |t|
+    t.string   "login",        :limit => 50
+    t.boolean  "ativo"
+    t.datetime "ultimoAcesso"
   end
 
   create_table "heranca_checklists", :force => true do |t|
