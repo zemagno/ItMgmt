@@ -8,25 +8,25 @@ module CustomCi
  #        ActiveRecord::Base::where("statusci_id = 8 and chave LIKE ?","#{search}%")
  #    end
 
-    # puts "Definindo Delete licenca"
-    def libera_estacao
-  		self.statusci_id = 8
-  		self.CCDebito = ""
-  		self.ProjetoDebito = ""
-  		self.Owner = "BRQ"
-  		self.notificacao = ""
-  		save!
-  	end
+   #  # puts "Definindo Delete licenca"
+   #  def libera_estacao
+  	# 	self.statusci_id = 8
+  	# 	self.CCDebito = ""
+  	# 	self.ProjetoDebito = ""
+  	# 	self.Owner = "BRQ"
+  	# 	self.notificacao = ""
+  	# 	save!
+  	# end
 
-    def desaloca_licenca
-      self.statusci_id = 8
-      self.CCDebito = ""
-      self.ProjetoDebito = ""
-      self.Owner = "BRQ"
-      self.notificacao = ""
-      save!
-    end
+   #  def desaloca_licenca
+   #    self.statusci_id = 8
+   #    self.CCDebito = ""
+   #    self.ProjetoDebito = ""
+   #    self.Owner = "BRQ"
+   #    self.notificacao = ""
+   #    save!
+   #  end
 
 end
 
-Ci.send(:include, CustomCi)
+# Ci.send(:include, CustomCi)
