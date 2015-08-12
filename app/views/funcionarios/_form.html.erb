@@ -11,75 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :Login %><br />
-    <%= f.text_field :Login %>
-  </div>
-  <div class="field">
-    <%= f.label :Matricula %><br />
-    <%= f.number_field :Matricula %>
-  </div>
-  <div class="field">
-    <%= f.label :Nome %><br />
-    <%= f.text_field :Nome %>
-  </div>
-  <div class="field">
-    <%= f.label :DataAdmissao %><br />
-    <%= f.date_select :DataAdmissao %>
-  </div>
-  <div class="field">
-    <%= f.label :DataDemissao %><br />
-    <%= f.date_select :DataDemissao %>
-  </div>
-  <div class="field">
-    <%= f.label :Email %><br />
-    <%= f.text_field :Email %>
-  </div>
-  <div class="field">
-    <%= f.label :CPF %><br />
-    <%= f.text_field :CPF %>
-  </div>
-  <div class="field">
-    <%= f.label :Identidade %><br />
-    <%= f.text_field :Identidade %>
-  </div>
-  <div class="field">
-    <%= f.label :CodigoCC %><br />
-    <%= f.text_field :CodigoCC %>
-  </div>
-  <div class="field">
-    <%= f.label :NomeCC %><br />
-    <%= f.text_field :NomeCC %>
-  </div>
-  <div class="field">
-    <%= f.label :NomeTipoCC %><br />
-    <%= f.text_field :NomeTipoCC %>
-  </div>
-  <div class="field">
-    <%= f.label :OwnerCC %><br />
-    <%= f.text_field :OwnerCC %>
-  </div>
-  <div class="field">
-    <%= f.label :CodigoSecao %><br />
-    <%= f.text_field :CodigoSecao %>
-  </div>
-  <div class="field">
-    <%= f.label :NomeLocalTrabalho %><br />
-    <%= f.text_field :NomeLocalTrabalho %>
-  </div>
-  <div class="field">
-    <%= f.label :NomeCidadeTrabalho %><br />
-    <%= f.text_field :NomeCidadeTrabalho %>
-  </div>
-  <div class="field">
-    <%= f.label :CCTorre %><br />
-    <%= f.text_field :CCTorre %>
-  </div>
-  <div class="field">
-    <%= f.label :DescCCTorre %><br />
-    <%= f.text_field :DescCCTorre %>
-  </div>
-  <div class="actions">
+
+
+
+<label>Cipa ?
+<span class="small">Integrante da Cipa? </span>
+</label>
+<div class="field">
+    <%= f.check_box :cipa %>
+</div>
+
+<div class="spacer"></div>
+
+<label>Sem Estacao ?
+<span class="small">Esse usuario nao usa estação BRQ? </span>
+</label>
+<div class="field">
+    <%= f.check_box :semEstacao %>
+</div>
+
+<label>
+<span class="small">Observacao</span>
+</label>
+<%= f.text_field :observacao, :size => 70 %>
+<div class="spacer"></div>
+
+<div class="actions">
     <%= f.submit %>
-  </div>
+</div>
+<div class="spacer"></div>
 <% end %>

@@ -48,7 +48,7 @@ ItMgmt::Application.routes.draw do
 # match '/404' => 'errors#not_found'
 # match '/422' => 'errors#server_error'
 
-  resources :funcionarios, :only => [:index,:show]
+  resources :funcionarios #, :only => [:index,:show,:edit]
 
 
   resources :template_surveys

@@ -34,6 +34,8 @@ class GestaoUsuario
 
     def Estacoes 
        
+       
+
         @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map do |x| 
             detalhes = ""
             detalhes << "#{x._tipo} " unless ! x._tipo.nil? && (x.descricao.downcase.include? x._tipo.downcase )
@@ -43,9 +45,14 @@ class GestaoUsuario
             detalhes << " - Teclado " if x._tecladoextra.downcase == "sim"
             detalhes << " - Cadeado " if x._cadeado.downcase == "sim"
 
+
             {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:detalhes => detalhes} 
-        end    
-       
+        end 
+
+        funcionario = Funcionario.find_by_Login(@login) 
+        @estacoes << {:chave => "Sem Estacao", :descricao => funcionario.observacao, :gestor => "", :CCDebito => "",  :ProjetoDebito => "", :dataEntrega => "",  :dataDevolucao => "", :status => "",:detalhes => funcionario.observacao}  if funcionario.semEstacao
+        @estacoes
+        
     end
 
     def PlacaDados

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150803220240) do
+ActiveRecord::Schema.define(:version => 20150811223803) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -328,8 +328,9 @@ ActiveRecord::Schema.define(:version => 20150803220240) do
     t.string  "NomAlocacao",            :limit => 50
     t.string  "ramal"
     t.string  "observacao"
-    t.boolean "semEstacao"
     t.integer "IdLocalTrabalho"
+    t.boolean "semEstacao"
+    t.boolean "cipa"
   end
 
   add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
@@ -464,9 +465,10 @@ ActiveRecord::Schema.define(:version => 20150803220240) do
     t.string   "acao"
     t.string   "parametro"
     t.boolean  "processado"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "cmd"
+    t.date     "dataExecucao"
   end
 
   create_table "producao_cis", :force => true do |t|

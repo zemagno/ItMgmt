@@ -12,7 +12,7 @@ class ServiceCargaRm
     carga = funcRm.count * 1.0
 
     funcRm.each do |f|
-      f.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional.force_encoding("ISO-8859-1").encode("UTF-8").split.map(&:capitalize).join(' ')
       f.NomEmailBRQ = f.NomEmailBRQ.nil? ? "" : f.NomEmailBRQ.force_encoding("ISO-8859-1").encode("UTF-8")
       f.IdtCPF = f.IdtCPF.nil? ? "" : f.IdtCPF.force_encoding("ISO-8859-1").encode("UTF-8")
       f.IdtRG = f.IdtRG.nil? ? "" : f.IdtRG.force_encoding("ISO-8859-1").encode("UTF-8")
@@ -30,7 +30,7 @@ class ServiceCargaRm
 
     # f2 = duas bases de dados de funcionarios (12115 registros)
 
-    f2 = (funcRm+func).map { |f| { login: f.Login, demissao: f.DtaDemissao, local: f.IdLocalTrabalho ,interno: f.NomAlocacao}}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:demissao], f[:local], f[:interno]]}}
+    f2 = (funcRm+func).map { |f| { login: f.Login, demissao: f.DtaDemissao, local: f.IdLocalTrabalho ,interno: f.NomAlocacao, fullname: f.NomProfissional, cpf: f.IdtCPF }}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:demissao], f[:local], f[:interno], f[:fullname], f[:cpf]]}}
 
     # f2 = (funcRm+func).map { |f| { login: f.Login, demissao: f.DtaDemissao, local: (f.NomLocalTrabalho.nil? ? f.NomLocalTrabalho : f.NomLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8")),interno: f.NomAlocacao}}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:demissao], f[:local], f[:interno]]}}
 
@@ -106,40 +106,42 @@ class ServiceCargaRm
 
     if comandoAdDemitidos != "N/A" &&  ! comandoAdDemitidos.nil?
       demitidos.each do |m|
+        
         puts "Gerar : #{m.flatten[0]} Demitidos #{m.flatten[1][0][1]}"
         cmd3 = comandoAdDemitidos.dup
         m1 = m.flatten
+        puts "Demitito #{m1}"
         cmd3.sub! "{{userid}}", m1[0]
         cmd3.sub! "{{local_antes}}", m1[1][0][1].to_s
-        ProducaoAd.create(:userid => m1[0], :parametro => m1[1][0][1], :cmd => cmd3, :acao => "Demissao", :processado => false )
+        ProducaoAd.create(:userid => m1[0], :parametro => m1[1][0][1], :cmd => cmd3, :acao => "Demissao", :processado => false , :dataExecucao => m1[1][0][0] )
       end
     end
 
 
 
-    funcRm.each do |f|
-      fnew = Funcionario.find_or_create_by_Login(:Login => f.Login)
-      fnew.NumMatrProfissional= f.NumMatrProfissional
-      fnew.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional
-      fnew.DtaAdmissao = f.DtaAdmissao
-      fnew.DtaDemissao   = f.DtaDemissao
-      fnew.NomEmailBRQ = f.NomEmailBRQ.nil? ? "" : f.NomEmailBRQ
-      fnew.IdtCPF = f.IdtCPF.nil? ? "" : f.IdtCPF
-      fnew.IdtRG = f.IdtRG.nil? ? "" : f.IdtRG
-      fnew.IdtCodigoCentroCusto = f.IdtCodigoCentroCusto.nil? ? "" : f.IdtCodigoCentroCusto
-      fnew.NomCentroCusto = f.NomCentroCusto.nil? ? "" : f.NomCentroCusto
-      fnew.NomTipoCentroCusto = f.NomTipoCentroCusto.nil? ? "" : f.NomTipoCentroCusto
-      fnew.OwnerCC = f.OwnerCC.nil? ? "" : f.OwnerCC
-      fnew.IdtCodigoSecao = f.IdtCodigoSecao.nil? ? "" : f.IdtCodigoSecao
-      fnew.IdLocalTrabalho = f.IdLocalTrabalho
-      fnew.NomLocalTrabalho = f.NomLocalTrabalho.nil? ? "" : f.NomLocalTrabalho
-      fnew.NomCidadeLocalTrabalho= f.NomCidadeLocalTrabalho.nil? ? "" : f.NomCidadeLocalTrabalho
-      fnew.IdtCentroCustoTorre = f.IdtCentroCustoTorre.nil? ? "" : f.IdtCentroCustoTorre
-      fnew.DscCentroCustoTorre = f.DscCentroCustoTorre.nil? ? "" : f.DscCentroCustoTorre
-      fnew.NomAlocacao = f.NomAlocacao.nil? ? "" : f.NomAlocacao
-      fnew.save!
-      total = total + 1
-    end
+    # funcRm.each do |f|
+    #   fnew = Funcionario.find_or_create_by_Login(:Login => f.Login)
+    #   fnew.NumMatrProfissional= f.NumMatrProfissional
+    #   fnew.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional
+    #   fnew.DtaAdmissao = f.DtaAdmissao
+    #   fnew.DtaDemissao   = f.DtaDemissao
+    #   fnew.NomEmailBRQ = f.NomEmailBRQ.nil? ? "" : f.NomEmailBRQ
+    #   fnew.IdtCPF = f.IdtCPF.nil? ? "" : f.IdtCPF
+    #   fnew.IdtRG = f.IdtRG.nil? ? "" : f.IdtRG
+    #   fnew.IdtCodigoCentroCusto = f.IdtCodigoCentroCusto.nil? ? "" : f.IdtCodigoCentroCusto
+    #   fnew.NomCentroCusto = f.NomCentroCusto.nil? ? "" : f.NomCentroCusto
+    #   fnew.NomTipoCentroCusto = f.NomTipoCentroCusto.nil? ? "" : f.NomTipoCentroCusto
+    #   fnew.OwnerCC = f.OwnerCC.nil? ? "" : f.OwnerCC
+    #   fnew.IdtCodigoSecao = f.IdtCodigoSecao.nil? ? "" : f.IdtCodigoSecao
+    #   fnew.IdLocalTrabalho = f.IdLocalTrabalho
+    #   fnew.NomLocalTrabalho = f.NomLocalTrabalho.nil? ? "" : f.NomLocalTrabalho
+    #   fnew.NomCidadeLocalTrabalho= f.NomCidadeLocalTrabalho.nil? ? "" : f.NomCidadeLocalTrabalho
+    #   fnew.IdtCentroCustoTorre = f.IdtCentroCustoTorre.nil? ? "" : f.IdtCentroCustoTorre
+    #   fnew.DscCentroCustoTorre = f.DscCentroCustoTorre.nil? ? "" : f.DscCentroCustoTorre
+    #   fnew.NomAlocacao = f.NomAlocacao.nil? ? "" : f.NomAlocacao
+    #   fnew.save!
+    #   total = total + 1
+    # end
 
     depois = Funcionario.count * 1.0
 

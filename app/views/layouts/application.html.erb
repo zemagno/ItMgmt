@@ -22,28 +22,7 @@
 
 <%= javascript_include_tag "ajax.js.coffee" %>
 
- <script src="https://js.pusher.com/2.2/pusher.min.js"></script>
-  <script>
-    // Enable pusher logging - don't include this in production
-    // Pusher.log = function(message) {
-    //   if (window.console && window.console.log) {
-    //     window.console.log(message);
-    //   }
-    // };
-
-    var pusher = new Pusher('9da961bed0679fea6d49', {
-      encrypted: true
-    });
-    var channel = pusher.subscribe('test_channel');
-    channel.bind('my_event', function(data) {
-      alert(data.message);
-    
-      //$('div.notification').text(data.message);
-    });
-  </script>
-
-
-
+ 
 <%= csrf_meta_tag %>
 
 <script type="text/javascript">
