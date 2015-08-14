@@ -119,29 +119,29 @@ class ServiceCargaRm
 
 
 
-    # funcRm.each do |f|
-    #   fnew = Funcionario.find_or_create_by_Login(:Login => f.Login)
-    #   fnew.NumMatrProfissional= f.NumMatrProfissional
-    #   fnew.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional
-    #   fnew.DtaAdmissao = f.DtaAdmissao
-    #   fnew.DtaDemissao   = f.DtaDemissao
-    #   fnew.NomEmailBRQ = f.NomEmailBRQ.nil? ? "" : f.NomEmailBRQ
-    #   fnew.IdtCPF = f.IdtCPF.nil? ? "" : f.IdtCPF
-    #   fnew.IdtRG = f.IdtRG.nil? ? "" : f.IdtRG
-    #   fnew.IdtCodigoCentroCusto = f.IdtCodigoCentroCusto.nil? ? "" : f.IdtCodigoCentroCusto
-    #   fnew.NomCentroCusto = f.NomCentroCusto.nil? ? "" : f.NomCentroCusto
-    #   fnew.NomTipoCentroCusto = f.NomTipoCentroCusto.nil? ? "" : f.NomTipoCentroCusto
-    #   fnew.OwnerCC = f.OwnerCC.nil? ? "" : f.OwnerCC
-    #   fnew.IdtCodigoSecao = f.IdtCodigoSecao.nil? ? "" : f.IdtCodigoSecao
-    #   fnew.IdLocalTrabalho = f.IdLocalTrabalho
-    #   fnew.NomLocalTrabalho = f.NomLocalTrabalho.nil? ? "" : f.NomLocalTrabalho
-    #   fnew.NomCidadeLocalTrabalho= f.NomCidadeLocalTrabalho.nil? ? "" : f.NomCidadeLocalTrabalho
-    #   fnew.IdtCentroCustoTorre = f.IdtCentroCustoTorre.nil? ? "" : f.IdtCentroCustoTorre
-    #   fnew.DscCentroCustoTorre = f.DscCentroCustoTorre.nil? ? "" : f.DscCentroCustoTorre
-    #   fnew.NomAlocacao = f.NomAlocacao.nil? ? "" : f.NomAlocacao
-    #   fnew.save!
-    #   total = total + 1
-    # end
+    funcRm.each do |f|
+      fnew = Funcionario.find_or_create_by_Login(:Login => f.Login)
+      fnew.NumMatrProfissional= f.NumMatrProfissional
+      fnew.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional
+      fnew.DtaAdmissao = f.DtaAdmissao
+      fnew.DtaDemissao   = f.DtaDemissao
+      fnew.NomEmailBRQ = f.NomEmailBRQ.nil? ? "" : f.NomEmailBRQ
+      fnew.IdtCPF = f.IdtCPF.nil? ? "" : f.IdtCPF
+      fnew.IdtRG = f.IdtRG.nil? ? "" : f.IdtRG
+      fnew.IdtCodigoCentroCusto = f.IdtCodigoCentroCusto.nil? ? "" : f.IdtCodigoCentroCusto
+      fnew.NomCentroCusto = f.NomCentroCusto.nil? ? "" : f.NomCentroCusto
+      fnew.NomTipoCentroCusto = f.NomTipoCentroCusto.nil? ? "" : f.NomTipoCentroCusto
+      fnew.OwnerCC = f.OwnerCC.nil? ? "" : f.OwnerCC
+      fnew.IdtCodigoSecao = f.IdtCodigoSecao.nil? ? "" : f.IdtCodigoSecao
+      fnew.IdLocalTrabalho = f.IdLocalTrabalho
+      fnew.NomLocalTrabalho = f.NomLocalTrabalho.nil? ? "" : f.NomLocalTrabalho
+      fnew.NomCidadeLocalTrabalho= f.NomCidadeLocalTrabalho.nil? ? "" : f.NomCidadeLocalTrabalho
+      fnew.IdtCentroCustoTorre = f.IdtCentroCustoTorre.nil? ? "" : f.IdtCentroCustoTorre
+      fnew.DscCentroCustoTorre = f.DscCentroCustoTorre.nil? ? "" : f.DscCentroCustoTorre
+      fnew.NomAlocacao = f.NomAlocacao.nil? ? "" : f.NomAlocacao
+      fnew.save!
+      total = total + 1
+    end
 
     depois = Funcionario.count * 1.0
 
@@ -155,6 +155,8 @@ class ServiceCargaRm
     puts "-----------------------"
     puts mudaramInterno
     puts "-----------------------"
+
+    Event.register("Carga","RM","detalhe","#{status} - #{detalhe}")
 
     [status,detalhe]
   end

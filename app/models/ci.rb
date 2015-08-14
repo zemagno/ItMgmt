@@ -77,7 +77,7 @@ class Ci < ActiveRecord::Base
 
   
   def to_s
-      "Chave:#{chave} : #{descricao} : Tipo: #{nice_tipoci} : Status:#{status} : Owner:#{self.Owner} : Usuario: #{notificacao}"  
+      "Chave:#{chave} : #{descricao} : Tipo: #{nice_tipoci} : Status:#{status} : Owner:#{self.Owner} : Usuario: #{notificacao} : Site: #{self.nome_localidade}"  
   end
 
   def to_hash

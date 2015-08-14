@@ -32,6 +32,8 @@ def go
 	end
 		
 	detalhe << " - Antes: #{antes} - Carga: #{carga} - Depois: #{depois}"
+
+	Event.register("Carga","Posicao","detalhe","#{status} - #{detalhe}")
 	
 	[status,detalhe]
 end

@@ -14,6 +14,7 @@ class ServiceLiberaCis
 	          		end
 	          		puts ci
 	          		!ci.save
+	          		Event.register("Acerta Ci","Liberar Licenca","detalhe","Liberado #{ci.chave}:#{ci.descricao} : #{f.Login} : desligamento em #{f.DataDemissao}")
 	        	end
 	      	end
     	end

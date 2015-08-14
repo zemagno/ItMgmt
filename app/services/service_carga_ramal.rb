@@ -32,6 +32,8 @@ def go
  	total = Funcionario.where("ramal <> '' and ramal is not null").count
 
 	detalhe << " Atualizado: total de #{total} ramais"
+
+	Event.register("Carga","Ramal","detalhe","#{status} - #{detalhe}")
 	
 	[status,detalhe]
 end

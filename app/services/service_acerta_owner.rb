@@ -3,7 +3,7 @@ class ServiceAcertaOwner
 		Ci.find_each do |ci|
 			 if ci.Owner =~ /^[a-zA-z.]+$/ and ci.notificacao =~ /^[a-zA-z.]+$/
 			 	f = Funcionario.find_by_Login(ci.Owner)
-			 	if ! f.nil? and ! f.DataDemissao.nil? 
+			 	if ! f.nil? and ! f.DataDemissao.nil? and f.DataDemissao < DateTime.now
 			 		novoGestor = Gestores.find_by_LoginFunc(ci.notificacao)
 			 		if ! novoGestor.nil?
 			 			ci.Owner = novoGestor.LoginGestor

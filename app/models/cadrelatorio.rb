@@ -7,6 +7,7 @@ class Cadrelatorio < ActiveRecord::Base
       indexes nome
       indexes descricao
       indexes categoria
+      indexex dashboard
       indexes tipoci(:tipo), :as => :tipo
   end
 

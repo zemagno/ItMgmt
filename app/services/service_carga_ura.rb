@@ -34,6 +34,8 @@ def go
 	status = "Ok"
 		
 	detalhe << " - Antes: #{antes} - Carga: #{carga} - Depois: #{depois}"
+
+	Event.register("Carga","URA","detalhe","#{status} - #{detalhe}")
 	
 	[status,detalhe]
 end
