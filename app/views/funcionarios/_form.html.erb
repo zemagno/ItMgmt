@@ -23,12 +23,34 @@
 
 <div class="spacer"></div>
 
+
+<label>Brigadista ?
+<span class="small">É brigadista? </span>
+</label>
+<div class="field">
+    <%= f.check_box :brigadista %>
+</div>
+
+<div class="spacer"></div>
+
 <label>Sem Estacao ?
 <span class="small">Esse usuario nao usa estação BRQ? </span>
 </label>
 <div class="field">
     <%= f.check_box :semEstacao %>
 </div>
+
+<div class="spacer"></div>
+
+<label>Afastado ?
+<span class="small">Esta afastado da BRQ, sem trabalhar ? </span>
+</label>
+<div class="field">
+    <%= f.check_box :afastado %>
+</div>
+
+<div class="spacer"></div>
+
 
 <label>
 <span class="small">Observacao</span>

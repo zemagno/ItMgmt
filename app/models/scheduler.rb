@@ -9,7 +9,8 @@ class Scheduler < ActiveRecord::Base
   		# if x.when[hoje]=="1" 
   		# 	Producao.dispatcherJob(x.job)
   		# end
-  		if ((x.when.include? "[#{hoje.day}]") ||  (x.when.include? ["[dom]","[seg]","[ter]","[qua]","[qui]","[sex]","[sab]"][hoje.wday]))
+  		if (((x.when.include? "[#{hoje.day}]") ||  (x.when.include? ["[dom]","[seg]","[ter]","[qua]","[qui]","[sex]","[sab]"][hoje.wday])) and x.when.include? "[H#{hoje.hour}]")
+        puts x.job
   		 	Producao.dispatcherJob(x.job)
   		 end
  	end  	

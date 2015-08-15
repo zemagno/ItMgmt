@@ -21,6 +21,16 @@
 </p>
 
 <p>
+  <b>Brigadista:</b>
+  <%= @funcionario.brigadista ? "Sim" : "Nao" %>
+</p>
+
+<p>
+  <b>Afastado:</b>
+  <%= @funcionario.afastado ? "Sim" : "Nao" %>
+</p>
+
+<p>
   
   <b><%= @funcionario.semEstacao ? "Sem Estacao :" : "" %><%= @funcionario.observacao%> </b> 
 </p>

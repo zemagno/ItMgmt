@@ -8,4 +8,5 @@ namespace :massive_import do
 end
 
 # rake massive_import:cis[/Users/zemagno/Dropbox/dev/ror/ItMgmt/externos_bsb.config]
-
+# rake massive_import:cis[/home/itmgmt/carga/___.config]
+# 
