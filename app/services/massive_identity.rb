@@ -4,7 +4,7 @@ class MassiveIdentity
 
 
 
-def self.go(configfile)
+def self.go
 	# configfile  = "/Users/zemagno/Dropbox/dev/ror/ItMgmt/externos_bsb.csv"
 
 	total_replaced = 0
@@ -15,7 +15,9 @@ def self.go(configfile)
     # 	puts "Config file [#{configfile[:configfile]}]"
     	# config = JSON.parse(File.read(configfile[:configfile]))
 
-    	config = JSON.parse(File.read("/Users/zemagno/Dropbox/dev/ror/ItMgmt/balanceline/massive_import.config"))
+    	path = Parametro.get(:tipo => "PATH", :subtipo => "MassiveImportIdentities")
+
+    	config = JSON.parse(File.read(path))
     	fileAD = config["AD"]
     	fileGoogle = config["Google"]
     	puts config
