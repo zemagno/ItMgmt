@@ -18,18 +18,18 @@
       </br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
       <%= " - Posicao: #{@posicaoFacilities} "  %>   
       </br><%= "Gestor: #{@funcionario.OwnerCC}" %>
-      </br><%= "Ramais: #{@ramais}" %>
+      </br><%= "Ramais: #{@ramais}" %> - <%= @funcionario.status %>
 
-      <!--%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true)%-->
+      <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true)%>
 
 
-      
+</b>      
       
       </br>
-  
-</b>
+      </br> <%= link_to '[Identidades]', identities_path(@usuario.login), :target => "_blank" %>
+
 </br>
-<% if ! @usuario.login.nil? %>
+<% if ! @usuario.login.nil? && ! @funcionario.afastado %>
 <%= link_to '[Alocar Estacao]', escolher_estacao_alocar_path, :id => "zNovo" %>
 <%= link_to '[Alocar Licenca]', escolher_licenca_alocar_path, :id => "zNovo" %>
 <%= link_to '[Termo Entrega de Tudo]', imprimir_termo_entrega_path(@usuario.login,"__ALL__",:all) , :target => "_blank" %>

@@ -18,9 +18,17 @@ class Funcionario < ActiveRecord::Base
   alias_attribute :NomeCidadeTrabalho,:NomCidadeLocalTrabalho
   alias_attribute :NomeLocalTrabalho,:NomLocalTrabalho
   alias_attribute :NomeTipoCC,  		:NomTipoCentroCusto
+
+def status
+  status_func = ""
+  status_func << "Afastado - " if self.afastado
+  status_func << "Sem Estacao - " if self.semEstacao
+  status_func << self.observacao if  self.semEstacao || self.afastado
+  status_func
 end
 
 
+end
 
 
 

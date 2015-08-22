@@ -26,13 +26,20 @@
 </p>
 
 <p>
+  <b>Sem Estacao:</b>
+  <%= @funcionario.semEstacao ? "Sim" : "Nao" %>
+</p>
+
+
+<p>
   <b>Afastado:</b>
   <%= @funcionario.afastado ? "Sim" : "Nao" %>
 </p>
 
 <p>
+  <b>Observacao:</b>
   
-  <b><%= @funcionario.semEstacao ? "Sem Estacao :" : "" %><%= @funcionario.observacao%> </b> 
+  <b><%= @funcionario.observacao%> </b> 
 </p>
 
 

@@ -98,12 +98,13 @@ class CisController < ApplicationController
   def email
     # so seleciono os templates do tipo de ci sendo visualizado
     @id = params[:id]
+    @controller="cis"
     t = Ci.find(@id).nice_tipoci
     @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
-
+    puts "Templates --> #{@templates_email}"
     respond_to do |format|
       format.js {
-        render :action => "../common/email.js.erb"
+        render :action => "../common/email", :format => [:js]
       }
     end
 
@@ -113,7 +114,7 @@ class CisController < ApplicationController
   def enviar_email
     #testar se email é sync ou nao.. se for async, chamar abaixo, senao desviar para /email/{template}/:ci
     #aqui tem um problema...o controller que responde ao /email/template ja esta rodando numa nova tela...ele so responde um href.
-    template_email =TemplatesEmail.find(params[:enviar_email][:template_id])
+    template_email =TemplatesEmail.find(params[:template_id])
 
     if template_email.sync
       @path = "/email/#{template_email.template}/#{params[:id]}"
@@ -125,7 +126,7 @@ class CisController < ApplicationController
 
     else
       p = Hash[:id => params[:id]]
-      job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
+      job = JobEnviarEmail.criar(params[:template_id], p.to_yaml)
       EnviaEmailWorker.perform_async(job.id)
       #EnviaEmailWorker.perform_in(1.hour,job.id)
       flash[:info] = "INFO: Email enfileirado para envio"

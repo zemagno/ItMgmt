@@ -2,6 +2,8 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+  get "identities/:id", to: "Identities#show", as: "identities" 
+
   get "my_pusher", to: "my_pusher#index"
 
   post  "my_pusher/publica"

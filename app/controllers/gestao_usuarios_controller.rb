@@ -4,15 +4,11 @@ class GestaoUsuariosController < ApplicationController
 def load
   @erros = []
 
- 
   # dois modos. :login --> achei um unico funcionario e vou direto para a pagina dele. :search --> achei varios e mostro uma listatem antes
   @mode = :login
 
   @login = params[:search] || session[:search_gestao_usuario]
 
-  # session[:search_gestao_usuario] = ""
-
-  
   # se for um ramal, recupero o @login
   if @login =~ /^\d{6}$/
     @mode = :login
@@ -64,7 +60,6 @@ def load
     # tenho que deixar o login na sessao, pois ela será usada para alocacao de licencas, etc. Nao posso deixar o criterio de busca
     session[:search_gestao_usuario] = @login
     @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
-    #@nomecompleto = (@funcionario = Funcionario.find_by_Login(@login)) ? @funcionario.Nome : "Nao Identificado" 
     @licencas  = @usuario.LicencasEmUso
     @estacoes   = @usuario.Estacoes
 
@@ -72,10 +67,11 @@ def load
     @celulares = @usuario.Celulares
     @placadados = @usuario.PlacaDados
     @monitores = @usuario.Monitores
-    @ramais =@usuario.Ramais
+    @ramais = @usuario.Ramais
     @posicaoFacilities = ""
     @posicaoFacilities << " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
     @erros.concat @usuario.DistorcoesUsoLicenca 
+  
   end
 
 
@@ -89,7 +85,7 @@ def loadOld
 
   @funcionario = Funcionario.find_by_Login(@login)
   
-  session[:search_gestao_usuario] = @login
+  session[:search_gestao_usuario] = @login 
   @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
   @licencas  = @usuario.LicencasEmUso
   @estacoes   = @usuario.Estacoes
@@ -107,13 +103,14 @@ end
 def email
     # so seleciono os templates do tipo de ci sendo visualizado
     @id = params[:id]
+    @controller="GestaoUsuarios"
     
     @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("GESTAO USUARIO","xxxx") #  esse metodo ta no Templates e nao pertence ao Rails
     
     respond_to do |format|
       format.js { 
         logger.debug  "Gestao::email - #{params}"
-           render :action => "../common/email.js.erb"          
+        render :action => "../common/email", :format => [:js]        
       }
     end
 
@@ -124,7 +121,7 @@ def enviar_email
     #testar se email é sync ou nao.. se for async, chamar abaixo, senao desviar para /email/{template}/:ci
     #aqui tem um problema...o controller que responde ao /email/template ja esta rodando numa nova tela...ele so responde um href.
     logger.debug  "Gestao::enviar_email - #{params}"
-    template_email =TemplatesEmail.find(params[:enviar_email][:template_id])
+    template_email =TemplatesEmail.find(params[:template_id])
 
     if template_email.sync
       @path = "/email/#{template_email.template}/#{params[:id]}"
@@ -136,7 +133,7 @@ def enviar_email
 
     else
       p = Hash[:id => params[:id]]
-      job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
+      job = JobEnviarEmail.criar(params[:template_id], p.to_yaml)
       EnviaEmailWorker.perform_async(job.id)
       #EnviaEmailWorker.perform_in(1.hour,job.id)
       flash[:info] = "INFO: Email enfileirado para envio"
@@ -157,16 +154,14 @@ def index
   if @mode == :nome
      render :search and return
   end
-   
+
+  
   
   respond_to do |format|
       format.html # index.html.erb
   end
 end
 
-def enviar_senha
-  Service
-end
 
 def confirmar_remocao_licenca
     @modo = :remocao_licenca

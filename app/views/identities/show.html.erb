@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<table style="table-layout:fixed">
+<col style="width:16%" span="6" />
+   <tr>
+    <th>Identidades</th> 
+    <th></th>
+   </tr>
+   <% @idts.each do |idt| %>
+      <tr><td><%=idt[0]%></td><td><%=idt[1]%></td></tr>
+   <% end %>   
+</table> 

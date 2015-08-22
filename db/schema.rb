@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150814232458) do
+ActiveRecord::Schema.define(:version => 20150821124147) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -255,6 +255,13 @@ ActiveRecord::Schema.define(:version => 20150814232458) do
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
+  create_table "email_externos", :force => true do |t|
+    t.string   "login"
+    t.string   "provedor"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "events", :force => true do |t|
     t.string   "tipo",       :limit => 20
     t.string   "subtipo",    :limit => 40
@@ -351,6 +358,32 @@ ActiveRecord::Schema.define(:version => 20150814232458) do
     t.datetime "updated_at",   :null => false
     t.integer  "tipo_heranca"
   end
+
+  create_table "identities", :force => true do |t|
+    t.string   "login",                  :limit => 30
+    t.string   "ADUser",                 :limit => 30
+    t.date     "ADCriadoEm"
+    t.date     "ADLastLogon"
+    t.date     "ADExpiraEm"
+    t.date     "ADDataDesligamento"
+    t.string   "ADUsuarioTipo",          :limit => 30
+    t.string   "GoogleprimaryEmail",     :limit => 30
+    t.datetime "GooglelastLoginTime"
+    t.string   "GoogleorgUnitPath"
+    t.boolean  "Googlesuspended"
+    t.string   "GooglesuspensionReason"
+    t.string   "GoogleLicenses"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "RMLogin",                :limit => 30
+    t.datetime "RMDataAdmissao"
+    t.datetime "RMDataDemissao"
+  end
+
+  add_index "identities", ["ADUser"], :name => "index_identities_on_ADUser"
+  add_index "identities", ["GoogleprimaryEmail"], :name => "index_identities_on_GoogleprimaryEmail"
+  add_index "identities", ["RMLogin"], :name => "index_identities_on_RMLogin"
+  add_index "identities", ["login"], :name => "index_identities_on_login"
 
   create_table "indicadores_financeiros", :force => true do |t|
     t.string   "nome"

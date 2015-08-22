@@ -53,6 +53,17 @@ class EnviaEmailWorker
          # TODO se isso acima funcionar, alterar as duas linhas abaixo e o from acima
          job.status = "Email enviado para #{params[:to]}. #{job.templates_email.template} em #{Time.now}" 
          Event.register("email","mailing","detalhe","Enviado to:#{params[:to]} - subject:#{params[:subject]} - from: #{params[:from]}")  
+    when "GESTAO USUARIO" 
+         puts "EnviaEmailWorker::GESTAO USUARIO" 
+         # TODO simplificar isso aqui..
+         usr = GestaoUsuario.new(login: params[:id])
+         
+         destinatario = ListaEmail.acerta("magno","@brq.com")
+         from = "servicedesk@brq.com"
+         cc =  ""
+         CiMailer.enviar(template.template,usr,"Service Desk - #{template.nome}",destinatario,cc,from).deliver
+         job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{usr.login}] em #{Time.now}"  
+         Event.register("email","Gestao Usuario","detalhe","Gestao Usuario - email direto - #{template.nome} - #{usr.login}")  
     end
     job.save!
   end

@@ -11,6 +11,17 @@ class GestaoUsuario
         end
     end
 
+    def SenhaTelefonia
+        tls = TelLoginSenha.where(:IdtLogin => login)
+        senhas = ""
+        tls.each do |t|
+            senhas << t.NumSenha.to_s
+            senhas << " "
+        end
+        senhas
+    end
+
+
     def Usuario
         @funcionario ||= Funcionario.find_by_Login(@login) 
     end
