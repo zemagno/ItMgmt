@@ -76,6 +76,10 @@ class Ci < ActiveRecord::Base
   #sphinx_scope order('chave ASC')
 
   
+  def teste
+    
+  end
+
   def to_s
       "Chave:#{chave} : #{descricao} : Tipo: #{nice_tipoci} : Status:#{status} : Owner:#{self.Owner} : Usuario: #{notificacao} : Site: #{self.nome_localidade}"  
   end

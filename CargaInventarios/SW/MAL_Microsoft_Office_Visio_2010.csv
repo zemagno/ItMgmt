@@ -1,0 +1,12 @@
+﻿DescriptionLabelTextbox,DescriptionTextbox
+Descrição,Este relatório lista todos os computadores com software específico instalado. Ele está vinculado a Software 02E - Software instalado em um computador específico.
+
+Header_Table0_ComputerName,Header_Table0_ComputerManufacturer,Header_Table0_ComputerModel,Header_Table0_ProductName,Header_Table0_ProductID,Header_Table0_DSLID,Header_Table0_InstallationType,Details_Table0_ComputerName,Details_Table0_ComputerManufacturer,Details_Table0_ComputerModel,Details_Table0_ProductName,Details_Table0_ProductID,Details_Table0_DSLID,Details_Table0_InstallationType
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,DTMA018018,LENOVO,5474G4P,Microsoft Office Visio 2010,02287-001-0000502-69821,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NBKE019627,LENOVO,057938P,Microsoft Office Visio 2010,02290-001-0000502-69641,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NBMA018369,"VMware, Inc.",VMware Virtual Platform,Microsoft Office Visio 2010,82503-001-0000502-69866,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NBMA019628,LENOVO,057938P,Microsoft Office Visio 2010,02290-001-0000502-69478,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NBMA024801,LENOVO,3254H4P,Microsoft Office Visio 2010,02290-001-0000502-69313,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NBMA024826,LENOVO,627189P,Microsoft Office Visio 2010,82503-001-0000502-69370,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NBMA024827,LENOVO,627189P,Microsoft Office Visio 2010,02292-775-1204597-69828,,Fisicamente instalado
+

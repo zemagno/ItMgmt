@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  estacao: MyString
+  software: MyString
+
+two:
+  estacao: MyString
+  software: MyString

@@ -1,0 +1,12 @@
+﻿DescriptionLabelTextbox,DescriptionTextbox
+Descrição,Este relatório lista todos os computadores com software específico instalado. Ele está vinculado a Software 02E - Software instalado em um computador específico.
+
+Header_Table0_ComputerName,Header_Table0_ComputerManufacturer,Header_Table0_ComputerModel,Header_Table0_ProductName,Header_Table0_ProductID,Header_Table0_DSLID,Header_Table0_InstallationType,Details_Table0_ComputerName,Details_Table0_ComputerManufacturer,Details_Table0_ComputerModel,Details_Table0_ProductName,Details_Table0_ProductID,Details_Table0_DSLID,Details_Table0_InstallationType
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,DT022260,LENOVO,3569Q6P,Microsoft Office Standard 2010,02278-619-1215156-38922,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,DT022264,LENOVO,3569Q6P,Microsoft Office Standard 2010,02278-619-1215156-38565,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,DT022290,LENOVO,3569Q6P,Microsoft Office Standard 2010,02278-619-1215156-38938,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NB015953,LENOVO,0913,Microsoft Office Standard 2010,02278-619-1215156-38208,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NB015965,LENOVO,0913,Microsoft Office Standard 2010,02278-619-1215156-38357,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NB018163E,LENOVO,3254E4P,Microsoft Office Standard 2010,02278-619-1215156-38496,,Fisicamente instalado
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NB023800,Hewlett-Packard,HP Pavilion 14 Notebook PC,Microsoft Office Standard 2010,82503-619-1215156-38243,,Fisicamente instalado
+

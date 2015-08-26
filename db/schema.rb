@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150821124147) do
+ActiveRecord::Schema.define(:version => 20150825201235) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -72,6 +72,28 @@ ActiveRecord::Schema.define(:version => 20150821124147) do
   add_index "atributos", ["ci_id"], :name => "index_atributos_on_ci_id"
   add_index "atributos", ["dicdado_id"], :name => "dicdado_atributo"
   add_index "atributos", ["valor"], :name => "valor_atributo"
+
+  create_table "audit_hws", :force => true do |t|
+    t.string   "hostname"
+    t.string   "userid"
+    t.boolean  "kpmg",       :default => false
+    t.boolean  "inventario", :default => false
+    t.boolean  "cmdb",       :default => false
+    t.integer  "score",      :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "audit_sws", :force => true do |t|
+    t.string   "software"
+    t.string   "userid"
+    t.boolean  "kpmg",       :default => false
+    t.boolean  "sccm",       :default => false
+    t.boolean  "cmdb",       :default => false
+    t.integer  "score",      :default => 0
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -389,6 +411,30 @@ ActiveRecord::Schema.define(:version => 20150821124147) do
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "inventario_hws", :force => true do |t|
+    t.string   "hostname"
+    t.string   "fabricante"
+    t.string   "modelo"
+    t.string   "numSerie"
+    t.string   "processador"
+    t.string   "memoria"
+    t.string   "hd"
+    t.string   "so"
+    t.string   "userid"
+    t.date     "dataUltimoLogin"
+    t.string   "site"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "inventario_sws", :force => true do |t|
+    t.string   "hostname"
+    t.string   "software"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "status"
   end
 
   create_table "itens_checklists", :force => true do |t|

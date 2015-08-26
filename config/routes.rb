@@ -32,17 +32,17 @@ ItMgmt::Application.routes.draw do
 
    match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
 
-   get 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#email",  :as => :email_gestao_usuario
-   post 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#enviar_email",  :as => :enviar_email_gestao_usuario
+   get 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#email", :constraints => { :id => /.*/ },  :as => :email_gestao_usuario
+   post 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#enviar_email", :constraints => { :id => /.*/ },  :as => :enviar_email_gestao_usuario
  
 
    post "GestaoUsuarios/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
    get "GestaoUsuarios/EscolherLicencaAlocar",  to: "GestaoUsuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
    get "GestaoUsuarios/EscolherEstacaoAlocar",  to: "GestaoUsuarios#escolher_estacao_alocar", as: "escolher_estacao_alocar"
-   get "GestaoUsuarios/:id/confirmardesalocarestacao/:estacao", to: "GestaoUsuarios#confirmar_desalocar_estacao", as: "confirmar_desalocar_estacao"
-   get "GestaoUsuarios/:id/imprimirtermoentrega/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_entrega", as: "imprimir_termo_entrega"
-   get "GestaoUsuarios/:id/imprimirtermodevolucao/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_devolucao", as: "imprimir_termo_devolucao"
-   get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca"
+   get "GestaoUsuarios/:id/confirmardesalocarestacao/:estacao", to: "GestaoUsuarios#confirmar_desalocar_estacao", as: "confirmar_desalocar_estacao", :constraints => { :id => /.*/ }
+   get "GestaoUsuarios/:id/imprimirtermoentrega/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_entrega", as: "imprimir_termo_entrega", :constraints => { :id => /.*/ }
+   get "GestaoUsuarios/:id/imprimirtermodevolucao/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_devolucao", as: "imprimir_termo_devolucao", :constraints => { :id => /.*/ }
+   get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca", :constraints => { :id => /.*/ }
    post "GestaoUsuarios/AlocarLicenca", to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
    post "GestaoUsuarios/deletelicenca", to: "GestaoUsuarios#remover_licenca", as: "remover_licenca"
    post "GestaoUsuarios/DesalocarEstacao", to: "GestaoUsuarios#desalocar_estacao", as: "desalocar_estacao"

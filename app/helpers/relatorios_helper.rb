@@ -10,10 +10,12 @@ module RelatoriosHelper
 
         when "SearchCIS"
             res = link_to(valor,"/cis?search=#{valor}",:target => "_blank" )
-		when "CI" , "ID"
+		when "CI" , "ID", "Chave"
             res = link_to valor, ci_path(valor) 
-        when "Usuario" , "Login"
+        when "Usuario" , "Login", "Gestor"
             res = link_to(valor,"/GestaoUsuarios?search=#{valor}",:target => "_blank" )
+        when "Identity", "Identidade"
+            res = link_to(valor,"/identities/#{valor}",:target => "_blank" )
         when "Email"
             res = valor
             #criar um template de email...colocar em banco de dados em memoria

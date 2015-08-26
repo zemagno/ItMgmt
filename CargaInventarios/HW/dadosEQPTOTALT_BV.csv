@@ -1,0 +1,882 @@
+#TYPE System.Management.Automation.PSCustomObject
+"Tipo de Equipamento","Patrimonio","Hostname","Fabricante","Modelo","Numero de Serie","Processador","Memoria","HD","SO","Nota FIscal","Data de Compra","Observacao Equipamento","Login","Data Ultimo Login","Matricula","Solicitacao","Site","Nome do Entregador","Data da Entrega","Observacao Vinculo"
+"Desktop",,"DT015215","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT016279","LENOVO","7099A5P","L1BXC7P","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","75GB
+","Microsoft Windows XP Professional","","","","BRQ\PMLIMA","01/08/2015 10:57:13","","","BV","","",""
+"Desktop",,"DT015825","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows XP Professional","","","","ADMINISTRATOR","31/07/2015 14:40:27","","","BV","","",""
+"Notebook",,"NB017852E","LENOVO","3254E4P","R7003YX","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\julianalara","01/08/2015 12:29:19","","","BV","","",""
+"Notebook",,"NB017287","LENOVO","0913                            ","3100297202860","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","297GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lgrecco","01/08/2015 12:18:11","","","BV","","",""
+"Notebook",,"NB022109","LENOVO","3254H4P","R700A2H","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\pdomingues","01/08/2015 12:27:25","","","BV","","",""
+"Notebook",,"NB022011","LENOVO","3254H4P","R700C7B","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\bpalaria","01/08/2015 11:26:51","","","BV","","",""
+"Desktop",,"DT00938","Intel Corp.","D945GCR_","                                ","Intel(R) Pentium(R) Dual  CPU  E2140  @ 1.60GHz","2GB","75GB
+","Microsoft Windows XP Professional","","","","ADMINISTRATOR","31/07/2015 13:54:40","","","BV","","",""
+"Desktop",,"DT018398","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNS8","Intel Pentium III Xeon processor","2GB","466GB
+","Microsoft Windows XP Professional","","","","BRQ\WILLIANSILVA","10/07/2014 14:15:23","","","BV","","",""
+"Desktop",,"DT014410","LENOVO","7848","l1bpb0t","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\EKUNIZAWA","01/08/2015 12:37:46","","","BV","","",""
+"Desktop",,"DT014409","LENOVO","7848","l1bpb2h","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB022018","LENOVO","3254H4P","R700C37","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lpessini","01/08/2015 12:36:54","","","BV","","",""
+"Desktop",,"DT013136","LENOVO","7848","l1bp9vk","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\PEDRODEROSSI","01/08/2015 12:39:37","","","BV","","",""
+"Desktop",,"DT014401","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Desktop",,"DT017675E","LENOVO","3569A8P","L1CBBRP","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rmarcondes","01/08/2015 12:22:06","","","BV","","",""
+"Notebook",,"NB016561E","LENOVO","3254E4P","R7001K3","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rluz","01/08/2015 11:58:50","","","BV","","",""
+"Desktop",,"DT017681","LENOVO","5474G4P","L1BZX6R","Intel(R) Core(TM) i3 CPU         550  @ 3.20GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rconstantino","01/08/2015 12:40:01","","","BV","","",""
+"Notebook",,"NB016640","LENOVO","3254E4P","R7001H5","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fabiofraga","01/08/2015 12:33:59","","","BV","","",""
+"Desktop",,"DT018273","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNSH","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\igabriel","01/08/2015 12:38:04","","","BV","","",""
+"Desktop",,"DT016290","LENOVO","7099A5P","L1BXC80","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lfcabral","01/08/2015 12:37:30","","","BV","","",""
+"Desktop",,"DT014436","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Desktop",,"DT022164","LENOVO","3569A8P","L1CBBPN","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fsanches","01/08/2015 12:41:24","","","BV","","",""
+"Desktop",,"DT015844","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\walacesouza","01/08/2015 12:37:33","","","BV","","",""
+"Desktop",,"DT012493","LENOVO","7848","l1bmxbl","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","4GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\alancardoso","01/08/2015 12:11:57","","","BV","","",""
+"Desktop",,"DT014432","LENOVO","7848","l1bpaky","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB016637","LENOVO","3254E4P","R7001GH","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\andrefrazao","01/08/2015 12:45:47","","","BV","","",""
+"Desktop",,"DT012465","LENOVO","7848","l1bmxpz","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\LUIZMASSARENTE","01/08/2015 12:20:53","","","BV","","",""
+"Desktop",,"DT012476","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","149GB
+","Microsoft Windows XP Professional","","","","BRQ\ROVIGANICO","01/08/2015 12:22:32","","","BV","","",""
+"Notebook",,"NB018046","LENOVO","32549BP","R7005HL","Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rflaperuta","01/08/2015 12:37:35","","","BV","","",""
+"Notebook",,"NB018175","LENOVO","3254E4P","R7003ZK","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\marciowendel","01/08/2015 12:14:18","","","BV","","",""
+"Desktop",,"DT007010","Dell Inc.","Vostro 200","JJFGQF1","Intel(R) Pentium(R) Dual  CPU  E2160  @ 1.80GHz","2GB","149GB
+","Microsoft Windows XP Professional","","","","BRQ\WYUKIMIDE","01/08/2015 12:52:32","","","BV","","",""
+"Notebook",,"NB023766","LENOVO","627793P","PEDVY34","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","16GB","200GB
+266GB
+","Microsoft Windows 7 Professional ","","","","BRQ\hugomartinez","01/08/2015 12:50:36","","","BV","","",""
+"Notebook",,"NB018110E","LENOVO","3254E4P","R7003FH","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","451GB
+","Microsoft Windows 7 Professional ","","","","BRQ\crcosta","01/08/2015 12:45:32","","","BV","","",""
+"Desktop",,"DT012098","LENOVO","7848","l1bm9xw","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\MVARAUJO","01/08/2015 12:02:45","","","BV","","",""
+"Desktop",,"DT009441","LENOVO","7848b5p","l1bd7ym","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\kborges","01/08/2015 12:33:56","","","BV","","",""
+"Desktop",,"DT022140","LENOVO","3569A8P","L1CBG2P","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\azampieri","01/08/2015 12:56:18","","","BV","","",""
+"Desktop",,"DT017817E","LENOVO","3569A8P","L1CBG25","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\wleite","01/08/2015 12:32:15","","","BV","","",""
+"Desktop",,"DT012402","LENOVO","7848","l1blx6h","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","4GB","233GB
+931GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gcsouza","01/08/2015 11:55:52","","","BV","","",""
+"Desktop",,"DT012492","LENOVO","7848","l1bmxz4","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fgomes","01/08/2015 12:37:47","","","BV","","",""
+"Desktop",,"DT017759E","LENOVO","3569A8P","L1CBBPH","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\sergioesteves","01/08/2015 12:49:49","","","BV","","",""
+"Desktop",,"DT016293","LENOVO","7099A5P","L1BXCHT","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\PSMARTINS","01/08/2015 12:59:20","","","BV","","",""
+"Notebook",,"NB016260","LENOVO","0913                            ","3000307200897","Intel(R) Core(TM) i3 CPU       M 350  @ 2.27GHz","4GB","297GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ebakanovas","01/08/2015 12:18:53","","","BV","","",""
+"Desktop",,"DT014434","LENOVO","7848","l1bmxvy","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\AOSANTOS","01/08/2015 12:26:05","","","BV","","",""
+"Desktop",,"DT011367","LENOVO","7848","l1bl95k","Intel Pentium III Xeon processor","1GB","233GB
+","Microsoft Windows XP Professional","","","","BRQ\LMARCONI","01/08/2015 12:33:45","","","BV","","",""
+"Notebook",,"NB018127E","LENOVO","3254E4P","R7003PY","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\radleygustavo","01/08/2015 12:56:03","","","BV","","",""
+"Notebook",,"NB023641","LENOVO","3254H4P","R700D93","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\avaleriano","01/08/2015 12:53:52","","","BV","","",""
+"Desktop",,"DT022149","LENOVO","3569A8P","L1CBG6T","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\alandy","01/08/2015 13:02:33","","","BV","","",""
+"Desktop",,"DT012426","LENOVO","7848","l1bn0gx","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\DOUGLASSOUZA","01/08/2015 13:04:58","","","BV","","",""
+"Desktop",,"DT017686E","LENOVO","3569A8P","L1CBG6M","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\misaelrt","01/08/2015 12:52:10","","","BV","","",""
+"Desktop",,"DT022157","LENOVO","3569A8P","L1CBBHF","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ricardoasouza","01/08/2015 12:54:03","","","BV","","",""
+"Desktop",,"DT018268","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNTK","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","7GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\diogogiordani","01/08/2015 13:02:21","","","BV","","",""
+"Desktop",,"DT009460","LENOVO","7848b5p","l1bd84h","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","74GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB0020129","Hewlett-Packard","HP 430 Notebook PC              ","BRG220FBGY","Intel(R) Core(TM) i3-2310M CPU @ 2.10GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ccyrino","01/08/2015 12:57:08","","","BV","","",""
+"Desktop",,"DT018260","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNRT","Intel Pentium III Xeon processor","4GB","466GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT012048","LENOVO","7848","l1bm9cb","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\ARGARCIA","01/08/2015 13:04:05","","","BV","","",""
+"Desktop",,"DT013132","LENOVO","7848","l1bpan3","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\TELMAPEDROSO","01/08/2015 12:32:10","","","BV","","",""
+"Desktop",,"DT022138","LENOVO","3569A8P","L1CBBKR","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\nairacatherine","01/08/2015 13:06:03","","","BV","","",""
+"Desktop",,"DT009466","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows XP Professional","","","","BRQ\JMS","01/08/2015 11:47:08","","","BV","","",""
+"Desktop",,"DT018252","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNQB","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","8GB","349GB
+116GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rodrigoniak","01/08/2015 11:36:05","","","BV","","",""
+"Desktop",,"DT014429","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\PGOMES","01/08/2015 13:03:30","","","BV","","",""
+"Desktop",,"DT012093","LENOVO","7848","l1bm9cd","Intel Pentium III Xeon processor","2GB","233GB
+","Microsoft Windows XP Professional","","","","BRQ\CZILIOLI","01/08/2015 13:07:35","","","BV","","",""
+"Notebook",,"NB020141","Hewlett-Packard","HP 430 Notebook PC              ","BRG220FBGC","Intel(R) Core(TM) i3-2310M CPU @ 2.10GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\wataliba","01/08/2015 13:05:31","","","BV","","",""
+"Desktop",,"DT016297","LENOVO","7099A5P","L1BWWY5","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\AUCHOA","01/08/2015 13:04:05","","","BV","","",""
+"Desktop",,"DT017795","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNRG","        Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","2GB","466GB
+298GB
+","Microsoft Windows XP Professional","","","","BRQ\JCBGOMES","01/08/2015 13:02:07","","","BV","","",""
+"Desktop",,"DT012085","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\WSSANTOS","01/08/2015 12:18:49","","","BV","","",""
+"Notebook",,"NB0020074","LENOVO","057938P","R6C4565","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cleberrsantos","01/08/2015 13:09:29","","","BV","","",""
+"Desktop",,"DT012096","LENOVO","7848","l1bm9ck","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\nishi","01/08/2015 13:02:00","","","BV","","",""
+"Desktop",,"DT017407","LENOVO","5474G4P","L1BZGBW","Intel(R) Core(TM) i3 CPU         550  @ 3.20GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\FTARABAY","01/08/2015 13:02:28","","","BV","","",""
+"Notebook",,"NB018143E","LENOVO","32549BP","R7006MW","Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz","8GB","466GB
+466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\orion","01/08/2015 13:03:54","","","BV","","",""
+"Notebook",,"NB016578","LENOVO","3254E4P","R7000YZ","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mcraveiro","01/08/2015 12:28:04","","","BV","","",""
+"Desktop",,"DT018242","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNQ8","        Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\UMENEZES","01/08/2015 12:34:59","","","BV","","",""
+"Desktop",,"DT016289","LENOVO","7099A5P","L1BX9W6","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\thatianecalegari","01/08/2015 12:45:59","","","BV","","",""
+"Desktop",,"DT012360","LENOVO","7848","l1blxxa","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gperillo","01/08/2015 13:12:36","","","BV","","",""
+"Desktop",,"DT009464","LENOVO","7848b5p","l1bd9ag","Intel Pentium III Xeon processor","3GB","149GB
+","Microsoft Windows XP Professional","","","","BRQ\M.SILVA","01/08/2015 11:48:22","","","BV","","",""
+"Notebook",,"NB016633E","LENOVO","3254E4P","R70018E","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB023607","LENOVO","3254H4P","R701P0L","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\vvigati","01/08/2015 13:04:25","","","BV","","",""
+"Desktop",,"DT016310","LENOVO","7099A5P","L1BX9D9","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\APSSILVA","01/08/2015 13:04:01","","","BV","","",""
+"Desktop",,"DT017155","LENOVO","7099A5P","L1BX9RP","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT022132","LENOVO","3569A8P","L1CBG1R","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lrsantos","31/07/2015 17:08:15","","","BV","","",""
+"Notebook",,"NB022025","LENOVO","3254H4P","R700C77","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fabianoprazeres","01/08/2015 12:53:11","","","BV","","",""
+"Desktop",,"DT017719E","LENOVO","3569A8P","L1CBBPT","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\alanpenha","01/08/2015 13:21:45","","","BV","","",""
+"Notebook",,"NB016623E","LENOVO","3254E4P","R7001C7","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\haroldoassis","01/08/2015 13:19:59","","","BV","","",""
+"Desktop",,"DT012372","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Desktop",,"DT018279","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNR8","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\douglasmartinez","01/08/2015 12:25:28","","","BV","","",""
+"Desktop",,"DT012081","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","149GB
+","Microsoft Windows XP Professional","","","","BRQ\RVETTORAZZO","01/08/2015 12:11:25","","","BV","","",""
+"Notebook",,"NB023614","LENOVO","3254H4P","R701P0X","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mcobo","01/08/2015 12:57:01","","","BV","","",""
+"Desktop",,"DT014405","LENOVO","7848","l1bparx","Intel Pentium III Xeon processor","3GB","233GB
+","Microsoft Windows XP Professional","","","","BRQ\MARCIAFEITOSA","01/08/2015 13:17:52","","","BV","","",""
+"Desktop",,"DT009461","LENOVO","7848b5p","l1bd9dl","Intel Pentium III Xeon processor","3GB","149GB
+","Microsoft Windows XP Professional","","","","BRQ\ROSERICCETTO","01/08/2015 13:19:44","","","BV","","",""
+"Desktop",,"DT012482","LENOVO","7848","l1bmxg2","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\paulo.real","01/08/2015 12:57:26","","","BV","","",""
+"Notebook",,"NB018190E","LENOVO","3254E4P","R7003XN","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\c.monteiro","01/08/2015 13:22:26","","","BV","","",""
+"Notebook",,"NB017285","LENOVO","0913                            ","3100297202617","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ingridlopesrufino","01/08/2015 13:15:31","","","BV","","",""
+"Desktop",,"DT0112564","IPM31","STI","091212835","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","75GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB023631","LENOVO","3254H4P","R700KHB","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\latanza","01/08/2015 13:22:47","","","BV","","",""
+"Notebook",,"NB022217","LENOVO","3254H4P","R700A0C","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\josebamorim","01/08/2015 13:26:04","","","BV","","",""
+"Desktop",,"DT017716E","LENOVO","3569A8P","L1CBFPA","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dnunes","01/08/2015 13:29:42","","","BV","","",""
+"Desktop",,"DT017695","LENOVO","3569A8P","L1CBG88","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\emoisinho","01/08/2015 13:13:05","","","BV","","",""
+"Desktop",,"DT017692E","LENOVO","3569A8P","L1CBBT5","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\monicav","01/08/2015 13:07:35","","","BV","","",""
+"Desktop",,"DT016285","LENOVO","7099A5P","L1BX8WH","Intel Pentium III Xeon processor","4GB","298GB
+","Microsoft Windows XP Professional","","","","ADMINISTRATOR","01/08/2015 06:17:25","","","BV","","",""
+"Desktop",,"DT017724E","LENOVO","3569A8P","L1CBG8M","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rvsantos","01/08/2015 13:05:10","","","BV","","",""
+"Desktop",,"DT013130","LENOVO","7848","l1bp0k0","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\arubello","01/08/2015 13:12:15","","","BV","","",""
+"Notebook",,"NB020118","LENOVO","1141EJP","L1C78ZP","Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lcobo","01/08/2015 13:30:59","","","BV","","",""
+"Desktop",,"DT012356","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\GABRIELXAVIER","01/08/2015 13:31:00","","","BV","","",""
+"Desktop",,"DT017095","LENOVO","7099A5P","L1BX9T7","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","ADMINISTRATOR","01/08/2015 12:37:13","","","BV","","",""
+"Desktop",,"DT017163","LENOVO","7099A5P","L1BX9KX","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","ADMINISTRATOR","31/07/2015 17:28:24","","","BV","","",""
+"Desktop",,"DT018263","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNQP","        Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\WNOBREGA","01/08/2015 12:56:34","","","BV","","",""
+"Notebook",,"NB023799","Insyde","HP Pavilion 14 Notebook PC      ","BRJ446BRW8","Intel(R) Core(TM) i7-4510U CPU @ 2.00GHz","16GB","931GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB022007","LENOVO","3254H4P","R700C6W","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lmagalhaes","01/08/2015 13:09:22","","","BV","","",""
+"Desktop",,"DT017667E","LENOVO","3569A8P","L1CBBPA","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\brunocampos","01/08/2015 13:26:43","","","BV","","",""
+"Notebook",,"NB016600E","LENOVO","3254E4P","R70010M","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\eltondias","01/08/2015 13:34:49","","","BV","","",""
+"Desktop",,"DT017152","LENOVO","7099A5P","L1BXCDV","Processador Intel Pentium III Xeon","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT015229","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT014658","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","1GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\RUEHARA","01/08/2015 13:14:01","","","BV","","",""
+"Notebook",,"NB014527","Hewlett-Packard","Compaq 510","BRG035G6VH","Intel(R) Core(TM)2 Duo CPU     T5870  @ 2.00GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cdazevedo","01/08/2015 13:08:53","","","BV","","",""
+"Notebook",,"NB023783","LENOVO","688642P","PEECM56","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","16GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\vmunhoz","01/08/2015 13:04:39","","","BV","","",""
+"Notebook",,"NB016575","LENOVO","3254E4P","R7000YE","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\splima","01/08/2015 13:22:51","","","BV","","",""
+"Desktop",,"DT018246","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNTL","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\nonaka","01/08/2015 13:41:23","","","BV","","",""
+"Notebook",,"NB018198E","LENOVO","32549BP","R7006V4","Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\csalmeida","01/08/2015 13:37:55","","","BV","","",""
+"Desktop",,"DT018276","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNSD","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gilmarc","01/08/2015 13:37:51","","","BV","","",""
+"Notebook",,"NB016630","LENOVO","3254E4P","R70019M","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\adelgado","01/08/2015 13:07:10","","","BV","","",""
+"Notebook",,"NB022124","LENOVO","3254TMP","R7018EA","Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\willianalfeu","31/07/2015 19:04:19","","","BV","","",""
+"Desktop",,"DT013134","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Desktop",,"DT017775E","LENOVO","3569A8P","L1CBBK2","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jsantossilva","01/08/2015 13:06:16","","","BV","","",""
+"Desktop",,"DT017097","LENOVO","7099A5P","L1BXCF6","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\paulobrito","01/08/2015 12:02:52","","","BV","","",""
+"Notebook",,"NB023669","LENOVO","3254H4P","R700DV5","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\frsilva","01/08/2015 13:50:50","","","BV","","",""
+"Desktop",,"DT0013153","LENOVO","7848","l1bp9w2","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB016687E","LENOVO","3254E4P","R7001H7","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lkoti","01/08/2015 13:03:00","","","BV","","",""
+"Desktop",,"DT017765E","LENOVO","3569A8P","L1CBBNF","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\juanblasco","01/08/2015 13:37:08","","","BV","","",""
+"Desktop",,"DT013123","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB019796","LENOVO","057938P","R6B5642","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\tsteiner","01/08/2015 12:48:36","","","BV","","",""
+"Desktop",,"DT016517E","LENOVO","1577K1P","L1C9997","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dgalhardoni","01/08/2015 13:35:49","","","BV","","",""
+"Notebook",,"NB017572","LENOVO","057938P","R6B9629","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jcapelli","01/08/2015 12:53:14","","","BV","","",""
+"Notebook",,"NB016692E","LENOVO","3254E4P","R70012Y","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","439GB
+25GB
+","Microsoft Windows 7 Professional ","","","","BRQ\monicab","01/08/2015 13:50:04","","","BV","","",""
+"Desktop",,"DT021024","LENOVO","3569PPP","L1CCL8A","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\colivan","01/08/2015 13:53:53","","","BV","","",""
+"Desktop",,"DT017719E","LENOVO","3569A8P","L1CBBPT","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\alanpenha","01/08/2015 13:56:47","","","BV","","",""
+"Desktop",,"DT017111","LENOVO","7099A5P","L1BXCG4","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\SERGIOOTSUKA","01/08/2015 12:42:52","","","BV","","",""
+"Desktop",,"DT025862","LENOVO","2124AAP","PEH4308","Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\armoraes","01/08/2015 13:35:46","","","BV","","",""
+"Desktop",,"DT017717E","LENOVO","3569A8P","L1CBG1Z","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ldevico","01/08/2015 13:04:05","","","BV","","",""
+"Desktop",,"DT016296","LENOVO","7099A5P","L1BX9W3","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\flandim","01/08/2015 13:17:52","","","BV","","",""
+"Notebook",,"NB023649","LENOVO","3254H4P","R700DLD","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lucasmiranda","01/08/2015 13:58:52","","","BV","","",""
+"Desktop",,"DT012462","LENOVO","7848","l1bmxdx","Intel Pentium III Xeon processor","4GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\GAUGUSTOGIMENES","01/08/2015 13:55:08","","","BV","","",""
+"Desktop",,"DT025859","LENOVO","2124AAP","PE99477","Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rtavares","01/08/2015 13:40:32","","","BV","","",""
+"Notebook",,"NB023809","LENOVO","62772E9","PEEGC39","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\afmendes","01/08/2015 13:43:14","","","BV","","",""
+"Desktop",,"DT021034","LENOVO","3569PPP","L1CCLD4","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\niltonatanasio","01/08/2015 13:45:00","","","BV","","",""
+"Desktop",,"DT018213","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNS4","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jonathanreis","01/08/2015 12:29:49","","","BV","","",""
+"Desktop",,"DT009454","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","149GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB018121E","LENOVO","3254E4P","R7003P7","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\vanessaalves","01/08/2015 13:16:06","","","BV","","",""
+"Desktop",,"DT012477","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB020108","LENOVO","057938P","R6B5553","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rodrigobarros","01/08/2015 13:53:36","","","BV","","",""
+"Notebook",,"NB017866E","LENOVO","3254E4P","R7003YM","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lucascaran","01/08/2015 12:56:24","","","BV","","",""
+"Desktop",,"DT012487","LENOVO","7848","l1bmx41","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rfranzoni","01/08/2015 13:45:41","","","BV","","",""
+"Notebook",,"NB016655","LENOVO","3254E4P","R70010B","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\williamrodrigues","01/08/2015 14:01:47","","","BV","","",""
+"Desktop",,"DT012481","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB017857","LENOVO","3254E4P","R7003X8","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jabreu","01/08/2015 14:04:38","","","BV","","",""
+"Notebook",,"NB017307","LENOVO","0913                            ","3100297204334","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","112GB
+","Microsoft Windows 7 Professional ","","","","BRQ\elsousa","01/08/2015 14:01:43","","","BV","","",""
+"Notebook",,"NB022018","LENOVO","3254H4P","R700C37","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lpessini","01/08/2015 13:57:49","","","BV","","",""
+"Desktop",,"DT011410","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT013122","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT022135","LENOVO","3569A8P","L1CBG2X","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dlodi","01/08/2015 13:46:04","","","BV","","",""
+"Desktop",,"DT022158","LENOVO","3569A8P","L1CBFT9","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\vrodrigues","01/08/2015 14:04:42","","","BV","","",""
+"Desktop",,"DTSP024468","LENOVO","2124AAP","PEA2596","Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\bkenji","01/08/2015 13:25:02","","","BV","","",""
+"Desktop",,"DT012488","LENOVO","7848","l1bmxp5","Intel Pentium III Xeon processor","2GB","233GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT009527","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","149GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB023701","LENOVO","3254H4P","R700DKT","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\aconsolaro","01/08/2015 14:02:36","","","BV","","",""
+"Desktop",,"DT016519E","LENOVO","1577K1P","L1C997H","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\wlopes","01/08/2015 13:45:44","","","BV","","",""
+"Desktop",,"DT016311","LENOVO","7099A5P","L1BXC7B","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT007054","Intel Corp.","D945GCR_","                                ","Intel(R) Core(TM)2 Duo CPU     E4600  @ 2.40GHz","4GB","149GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT012466","LENOVO","7848","l1bmxcv","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB017284","LENOVO","0913                            ","3000316805614","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\tcnunes","01/08/2015 14:15:56","","","BV","","",""
+"Desktop",,"DT012062","LENOVO","7848","l1bm9n0","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB023767","LENOVO","627793P","PEDWX33","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","16GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ecfreitas","01/08/2015 14:05:30","","","BV","","",""
+"Desktop",,"NT018241","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNTD","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rsoledade","01/08/2015 13:09:43","","","BV","","",""
+"Notebook",,"NB022178","LENOVO","3254H4P","R7009BV","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\e.alves","01/08/2015 14:16:21","","","BV","","",""
+"Desktop",,"DT014433","LENOVO","7848","l1bpmt7","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT021028","LENOVO","3569PPP","L1CCK46","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dmacedo","01/08/2015 13:44:57","","","BV","","",""
+"Notebook",,"NB020056","LENOVO","057938P","R6C4948","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jprodrigues","01/08/2015 13:49:34","","","BV","","",""
+"Desktop",,"DT016306","LENOVO","7099A5P","L1BXCHB","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT011402","LENOVO","7848","l1bl9la","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\sarafat","01/08/2015 13:40:36","","","BV","","",""
+"Notebook",,"NB22186","LENOVO","3254H4P","R7009GV","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\pimentelvieira","01/08/2015 13:58:09","","","BV","","",""
+"Notebook",,"NB016230","LENOVO","0913                            ","3000307203094","Intel(R) Core(TM) i3 CPU       M 350  @ 2.27GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lucasoliverx","01/08/2015 13:49:57","","","BV","","",""
+"Desktop",,"DT018392","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNQJ","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\johnnysk","01/08/2015 14:09:42","","","BV","","",""
+"Desktop",,"DT012355","LENOVO","7848","l1blxhp","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","149GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT020995","LENOVO","3569A8P","L1CBBKY","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gledsoncarvalho","01/08/2015 14:18:09","","","BV","","",""
+"Desktop",,"DT018236","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNPJ","        Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","2GB","75GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT009528","LENOVO","7848b5p","l1bd7xt","Processador Intel Pentium III Xeon","4GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT017387","LENOVO","7099A5P","L1BX9PH","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\liliane.delvecchio","01/08/2015 13:03:10","","","BV","","",""
+"Desktop",,"DT009465","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\eneves","01/08/2015 14:27:12","","","BV","","",""
+"Desktop","","DT017428A","LENOVO","5474G4P","L1BZX4V","Intel Pentium II processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB016587","LENOVO","3254E4P","R7001RZ","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\noshiro","01/08/2015 13:56:13","","","BV","","",""
+"Desktop",,"DT012084","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB017570","LENOVO","057938P","R6B9678","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fportela","31/07/2015 19:46:53","","","BV","","",""
+"Notebook",,"NB018131E","LENOVO","3254E4P","R7003LR","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mlsouza","01/08/2015 13:47:28","","","BV","","",""
+"Desktop",,"DT016320","LENOVO","7099A5P","L1BX93T","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT013174","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","3GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB016618","LENOVO","3254E4P","R7001FA","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\danielmonteiro","01/08/2015 14:31:40","","","BV","","",""
+"Desktop",,"DT018270","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNPV","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rguerrero","01/08/2015 14:32:03","","","BV","","",""
+"Desktop",,"DT018416","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNPN","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ranierisantos","01/08/2015 14:03:36","","","BV","","",""
+"Notebook",,"NB023659","LENOVO","3254H4P","R700KL3","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lcampana","01/08/2015 14:26:00","","","BV","","",""
+"Desktop",,"DT012049","LENOVO","7848","l1bm9c3","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB019798","LENOVO","057938P","R6C4902","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mpaganini","01/08/2015 14:33:56","","","BV","","",""
+"Desktop",,"DT0017405","LENOVO","5474G4P","L1BZ3PF","Intel(R) Core(TM) i3 CPU         550  @ 3.20GHz","2GB","149GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB020165","Hewlett-Packard","HP 430 Notebook PC              ","BRG220FBCX","Intel(R) Core(TM) i3-2310M CPU @ 2.10GHz","3GB","465GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB023645","LENOVO","3254H4P","R700D3T","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\assouza","01/08/2015 14:26:16","","","BV","","",""
+"Desktop",,"DT015225","LENOVO","7848","l1bpmvx","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ROVIEIRA","01/08/2015 14:18:26","","","BV","","",""
+"Desktop",,"DT011411","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ssborges","01/08/2015 14:29:43","","","BV","","",""
+"Desktop",,"DT009526","LENOVO","7848","l1bp979","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT011305","LENOVO","7848","l1bhb5t","Intel Pentium III Xeon processor","2GB","233GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB016579E","LENOVO","3254E4P","R7001V9","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\hairaalves","01/08/2015 13:18:23","","","BV","","",""
+"Notebook",,"NB022107","LENOVO","3254H4P","R700A8V","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\scortez","01/08/2015 14:31:22","","","BV","","",""
+"Desktop",,"DT01329","LENOVO","7848","l1bp1bg","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB015979","LENOVO","0913                            ","3000316805524","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\iasilva","01/08/2015 13:20:36","","","BV","","",""
+"Notebook",,"NB016625E","LENOVO","3254E4P","R7001AT","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rldasilva","01/08/2015 14:43:10","","","BV","","",""
+"Notebook",,"NB018122E","LENOVO","3254E4P","R7003RW","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\frizzi","01/08/2015 14:46:21","","","BV","","",""
+"Desktop",,"DT012464","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB018050E","LENOVO","32549BP","R7005H0","Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\caugusto","01/08/2015 14:39:48","","","BV","","",""
+"Desktop",,"DT0152110","LENOVO","7848","l1bp9an","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","466GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB023786","Insyde","HP Pavilion 14 Notebook PC      ","BRJ4438CV7","Intel(R) Core(TM) i7-4500U CPU @ 1.80GHz","12GB","929GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mqueiroz","01/08/2015 14:41:47","","","BV","","",""
+"Desktop",,"DT012385","LENOVO","7848","l1blxn2","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB023641","LENOVO","3254H4P","R700D93","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\avaleriano","01/08/2015 14:40:30","","","BV","","",""
+"Desktop",,"DT011311","LENOVO","7848","l1bhah5","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Desktop",,"DT014413","LENOVO","7848","l1bp1l0","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB017307","LENOVO","0913                            ","3100297204334","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","112GB
+","Microsoft Windows 7 Professional ","","","","BRQ\elsousa","01/08/2015 14:48:59","","","BV","","",""
+"Notebook",,"NB022118","LENOVO","3254H4P","R700AKD","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cesarzapata","01/08/2015 14:48:32","","","BV","","",""
+"Desktop",,"DT00192","Intel Corp.","D865GLC_","                               ","              Intel(R) Pentium(R) D CPU 2.80GHz","1GB","149GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT017772E","LENOVO","3569A8P","L1CBBMA","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rcatarina","01/08/2015 14:49:48","","","BV","","",""
+"Desktop",,"DT012083","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\brunocasali","01/08/2015 14:02:44","","","BV","","",""
+"Notebook",,"NB018099E","LENOVO","3254E4P","R7003NH","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\caterinakeller","01/08/2015 14:22:09","","","BV","","",""
+"Desktop",,"DT015214","LENOVO","7848","l1bpa8l","Intel Pentium III Xeon processor","3GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT014412","LENOVO","7848","l1bpb43","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT017156","LENOVO","7099A5P","L1BXCGG","Processador Intel Pentium III Xeon","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB022129","LENOVO","3254TMP","R70188N","Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mgiordani","01/08/2015 14:57:27","","","BV","","",""
+"Notebook",,"NB018099E","LENOVO","3254E4P","R7003NH","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\caterinakeller","01/08/2015 14:22:09","","","BV","","",""
+"Desktop",,"DT011403","LENOVO","7848","l1bl9d9","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Desktop",,"DT018232","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNPM","Intel Pentium III Xeon processor","4GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB018097E","LENOVO","3254E4P","R7003ET","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\vramos","01/08/2015 14:32:42","","","BV","","",""
+"Notebook",,"NB018050E","LENOVO","32549BP","R7005H0","Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\caugusto","01/08/2015 14:49:53","","","BV","","",""
+"Notebook",,"NB018187E","LENOVO","3254E4P","R7003YP","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\sergiosimoes","28/07/2015 18:24:38","","","BV","","",""
+"Desktop",,"DT022053","LENOVO","3569A8P","L1CBBL5","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fabioalves","01/08/2015 14:37:45","","","BV","","",""
+"Desktop",,"DT018274","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNTN","Intel Pentium III Xeon processor","2GB","466GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB018176E","LENOVO","3254E4P","R7003WR","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\camillaaraujo","01/08/2015 14:59:33","","","BV","","",""
+"Desktop",,"DT017672","LENOVO","5474G4P","L1BZX3H","Intel Pentium II processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB016587","LENOVO","3254E4P","R7001RZ","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\noshiro","01/08/2015 14:55:30","","","BV","","",""
+"Notebook",,"NB016624","LENOVO","3254E4P","R7000ZZ","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\sergiovianello","01/08/2015 15:04:59","","","BV","","",""
+"Desktop",,"DT013154","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB018156","LENOVO","3254E4P","R7003YA","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rooseveltsjunior","01/08/2015 15:03:07","","","BV","","",""
+"Notebook",,"NB023776","LENOVO","627793P","PEEAY92","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\nishi","01/08/2015 14:50:05","","","BV","","",""
+"Notebook",,"NB016251","LENOVO","0913                            ","3000307200304","Intel(R) Core(TM) i3 CPU       M 350  @ 2.27GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\douglasralencar","01/08/2015 14:56:17","","","BV","","",""
+"Desktop",,"DT012379","LENOVO","7848","l1blx8a","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","466GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT015803","LENOVO","7848","l1bt81h","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","75GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB018089","LENOVO","3254E4P","R7004RL","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\pmassarente","01/08/2015 15:05:22","","","BV","","",""
+"Desktop",,"NT020171","Hewlett-Packard","HP ProBook 4430s","BRG219F127","Intel(R) Core(TM) i5-2450M CPU @ 2.50GHz","8GB","445GB
+16GB
+5GB
+","Microsoft Windows 7 Professional ","","","","BRQ\adilsonsouza","01/08/2015 15:16:58","","","BV","","",""
+"Notebook",,"NB023712","LENOVO","6277C4P","PEBPM88","Intel(R) Core(TM) i7-3632QM CPU @ 2.20GHz","16GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mrodriguessilva","01/08/2015 15:16:23","","","BV","","",""
+"Desktop",,"DT018214","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNS2","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\tiagosanches","01/08/2015 14:37:56","","","BV","","",""
+"Desktop",,"DT018267","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNQQ","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fecosta","01/08/2015 14:29:05","","","BV","","",""
+"Notebook",,"NB018382","Hewlett-Packard","HP ProBook 4320s","BRG134FCRV","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\joliveira","01/08/2015 14:44:47","","","BV","","",""
+"Desktop",,"NT020139","Hewlett-Packard","HP 430 Notebook PC              ","BRG220FBCY","Intel(R) Core(TM) i3-2310M CPU @ 2.10GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\pssouza","01/08/2015 14:23:06","","","BV","","",""
+"Desktop",,"DT022165","LENOVO","3569A8P","L1CBG7A","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\llozano","01/08/2015 15:19:30","","","BV","","",""
+"Desktop",,"DT014402","LENOVO","7848","l1bp137","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\hyukimide","06/08/2015 19:03:26","","","BV","","",""
+"Notebook",,"NB022093","LENOVO","3254H4P","R700AKN","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rtsantos","06/08/2015 19:06:18","","","BV","","",""
+"Desktop",,"DT016513E","LENOVO","1577K1P","L1C99BX","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ronaldojrsilva","06/08/2015 19:06:30","","","BV","","",""
+"Notebook",,"NB022010","LENOVO","3254H4P","R700C79","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\emjunior","06/08/2015 19:00:25","","","BV","","",""
+"Desktop",,"DT012368","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\elpidiayshida","06/08/2015 17:38:35","","","BV","","",""
+"Notebook",,"NB023773","LENOVO","627793P","PEDWW77","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","16GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\abrizzi","06/08/2015 18:40:06","","","BV","","",""
+"Desktop",,"DT020994","LENOVO","3569A8P","L1CBG12","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cpassos","06/08/2015 19:02:50","","","BV","","",""
+"Notebook",,"NB017855","LENOVO","3254E4P","R7003N6","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\arsilveira","06/08/2015 19:04:36","","","BV","","",""
+"Desktop",,"DT009469","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\haroldoriccetto","06/08/2015 18:49:13","","","BV","","",""
+"Notebook",,"NB016256","LENOVO","0913                            ","3000307204041","Intel(R) Core(TM) i3 CPU       M 350  @ 2.27GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\valdir","06/08/2015 19:05:25","","","BV","","",""
+"Desktop",,"DT018009E","LENOVO","1577K1P","L1C99H6","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\anapaulanascimento","06/08/2015 19:03:01","","","BV","","",""
+"Desktop",,"DT009447","LENOVO","7848b5p","l1bd7p5","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\claudiacosta","06/08/2015 19:04:42","","","BV","","",""
+"Desktop",,"DT021016","LENOVO","3569Q6P","PEA4109","Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz","6GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dzambon","06/08/2015 19:17:25","","","BV","","",""
+"Notebook",,"NB020054","LENOVO","057938P","R6B5666","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\javierelizondo","06/08/2015 19:08:09","","","BV","","",""
+"Notebook",,"NB022076","LENOVO","3254H4P","R700ADD","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rdamici","06/08/2015 19:11:37","","","BV","","",""
+"Desktop",,"DT017800","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNV0","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rgomes","06/08/2015 19:18:15","","","BV","","",""
+"Notebook",,"NB017864","LENOVO","3254E4P","R7003YZ","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\icamilo","06/08/2015 18:22:37","","","BV","","",""
+"Notebook",,"NB018174","LENOVO","3254E4P","R7003Y9","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\hsaldon","06/08/2015 19:17:19","","","BV","","",""
+"Notebook",,"NB022094","LENOVO","3254H4P","R700A33","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rodrigomonteiro","06/08/2015 19:23:38","","","BV","","",""
+"Notebook",,"NB0120060","LENOVO","057938P","R6B5748","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ccaroano","06/08/2015 19:00:17","","","BV","","",""
+"Notebook",,"NB017299","LENOVO","0913                            ","3100297200429","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dbertim","06/08/2015 19:21:03","","","BV","","",""
+"Desktop",,"DT012063","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\DBATISTASILVA","06/08/2015 18:46:40","","","BV","","",""
+"Desktop",,"DT015220","LENOVO","7848","l1bp85b","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","75GB
+","Microsoft Windows 7 Professional ","","","","BRQ\leidianef","06/08/2015 19:18:17","","","BV","","",""
+"Desktop",,"DT014578","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\brunoheidorn","06/08/2015 19:01:09","","","BV","","",""
+"Desktop",,"DT022259","LENOVO","3569Q6P","PEA3423","Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ligianovelli","06/08/2015 19:27:04","","","BV","","",""
+"Notebook",,"NB022106","LENOVO","3254H4P","R700A7X","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\luanaazevedo","06/08/2015 19:24:10","","","BV","","",""
+"Desktop",,"DT015212","LENOVO","7848","l1bpn0k","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB020188","Hewlett-Packard","HP 430 Notebook PC              ","BRG220FBG7","Intel(R) Core(TM) i3-2310M CPU @ 2.10GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\adrianosouza","06/08/2015 19:27:34","","","BV","","",""
+"Desktop",,"DT020999","LENOVO","3569A8P","L1CBBMK","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dcardozo","06/08/2015 19:06:40","","","BV","","",""
+"Notebook",,"NB016577","LENOVO","3254E4P","R7000YX","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dpaulo","06/08/2015 19:29:57","","","BV","","",""
+"Desktop",,"DT016313","LENOVO","7099A5P","L1BX93W","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\wagnerhilario","06/08/2015 19:02:56","","","BV","","",""
+"Notebook",,"NB015734","Hewlett-Packard","HP 420","BRG041FWMH","Intel(R) Core(TM)2 Duo CPU     T6570  @ 2.10GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\sjesus","06/08/2015 19:34:02","","","BV","","",""
+"Notebook",,"NB012114","Hewlett-Packard","Compaq 510","BRG015F509","Intel(R) Core(TM)2 Duo CPU     T5870  @ 2.00GHz","2GB","218GB
+","Microsoft Windows 7 Professional ","","","","BRQ\neko","06/08/2015 19:40:08","","","BV","","",""
+"Desktop",,"DT021023","LENOVO","3569PPP","L1CCLB0","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\eliasprince","06/08/2015 19:34:29","","","BV","","",""
+"Notebook",,"NB019771","LENOVO","057938P","R6B5730","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fbsantos","06/08/2015 19:21:59","","","BV","","",""
+"Notebook",,"NB018108","LENOVO","3254E4P","R7003MR","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","439GB
+25GB
+","Microsoft Windows 7 Professional ","","","","BRQ\maragon","06/08/2015 19:09:06","","","BV","","",""
+"Desktop",,"DT016282","LENOVO","7099A5P","L1BX8XW","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\APFNASCIMENTO","06/08/2015 18:35:04","","","BV","","",""
+"Desktop",,"DT012486","LENOVO","7848","l1bmxyf","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\LRAMOSOUZA","06/08/2015 19:10:05","","","BV","","",""
+"Desktop",,"DT018271","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNSJ","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\leandroanzai","06/08/2015 19:39:26","","","BV","","",""
+"Desktop",,"DT016308","LENOVO","7099A5P","L1BX93F","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\LEMORAES","06/08/2015 19:29:06","","","BV","","",""
+"Notebook",,"NB021485","LENOVO","3254TMP","R7018FR","Intel(R) Core(TM) i5-3210M CPU @ 2.50GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lfsilva","06/08/2015 19:45:15","","","BV","","",""
+"Notebook",,"NB016614E","LENOVO","3254E4P","R70017B","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\earado","06/08/2015 19:10:10","","","BV","","",""
+"Notebook",,"NB016908","LENOVO","0913                            ","3000307201106","Intel(R) Core(TM) i3 CPU       M 350  @ 2.27GHz","8GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\leonardoxavier","06/08/2015 19:03:18","","","BV","","",""
+"Notebook",,"NB016622E","LENOVO","3254E4P","R7001FV","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\emiyazaki","06/08/2015 19:33:31","","","BV","","",""
+"Notebook",,"NB015972","LENOVO","0913                            ","3000316805604","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","297GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jmigliorini","06/08/2015 19:46:41","","","BV","","",""
+"Notebook",,"NB016678E","LENOVO","3254E4P","R7001A8","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jtomazpires","06/08/2015 19:47:23","","","BV","","",""
+"Notebook",,"NB022075","LENOVO","3254H4P","R700AK0","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fernandomauricio","06/08/2015 19:39:59","","","BV","","",""
+"Desktop",,"DT009472","LENOVO","7848b5p","l1bd7za","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB018373","Hewlett-Packard","HP ProBook 4320s","BRG128FHR5","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mayaranobrega","06/08/2015 19:04:07","","","BV","","",""
+"Notebook",,"NB016566","LENOVO","3254E4P","R7000Z2","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mferreirasilva","06/08/2015 19:54:56","","","BV","","",""
+"Desktop",,"DT018207","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNT8","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mpacifico","06/08/2015 19:47:56","","","BV","","",""
+"Desktop",,"DT014666","LENOVO","7848","l1bn0br","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lucasnocete","06/08/2015 19:55:01","","","BV","","",""
+"Notebook",,"NB017870E","LENOVO","32549BP","R70074P","Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cpoletti","06/08/2015 19:58:19","","","BV","","",""
+"Desktop",,"DT022159","LENOVO","3569A8P","L1CBG41","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gnomura","06/08/2015 19:55:14","","","BV","","",""
+"Notebook",,"NB22175","LENOVO","3254H4P","R7009LM","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\marciawolff","06/08/2015 19:41:27","","","BV","","",""
+"Desktop",,"DT022162","LENOVO","3569A8P","L1CBBM7","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gssouza","06/08/2015 19:59:47","","","BV","","",""
+"Notebook",,"NB023605","LENOVO","3254H4P","R701NYZ","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ronaldomartins","06/08/2015 19:59:57","","","BV","","",""
+"Desktop",,"DT012485","LENOVO","7848","l1bmx8b","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fyoshio","06/08/2015 19:04:11","","","BV","","",""
+"Notebook",,"NB020052","LENOVO","057938P","R6B9701","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lapuglisi","06/08/2015 19:22:01","","","BV","","",""
+"Desktop",,"DT014657","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Desktop",,"DT012064","LENOVO","7848","l1bm9dy","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","4GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\anaguedes","06/08/2015 19:29:42","","","BV","","",""
+"Desktop",,"DT017761E","LENOVO","3569A8P","L1CBBL9","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\monicavasques","06/08/2015 19:54:52","","","BV","","",""
+"Notebook",,"NB023668","LENOVO","3254H4P","R700KKK","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\veronicabarreto","06/08/2015 19:42:08","","","BV","","",""
+"Desktop",,"DT018002E","LENOVO","1577K1P","L1C99NY","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gbleite","06/08/2015 19:42:37","","","BV","","",""
+"Desktop",,"DT017721E","LENOVO","3569A8P","L1CBBNV","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ivan","06/08/2015 20:00:18","","","BV","","",""
+"Desktop",,"DT011407","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\elisabetemota","06/08/2015 20:07:18","","","BV","","",""
+"Notebook",,"NB023626","LENOVO","3254H4P","R701P12","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cmoretti","06/08/2015 20:05:10","","","BV","","",""
+"Notebook",,"NB022021","LENOVO","3254H4P","R700C7V","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mmlima","06/08/2015 20:09:19","","","BV","","",""
+"Notebook",,"NB019634","LENOVO","057938P","R6B5602","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","455GB
+10GB
+","Microsoft Windows 7 Professional ","","","","BRQ\carlossouza","06/08/2015 20:10:47","","","BV","","",""
+"Notebook",,"NB022006","LENOVO","3254H4P","R700C72","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fsantos","06/08/2015 20:09:18","","","BV","","",""
+"Notebook",,"NB016682E","LENOVO","3254E4P","R700106","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\algomes","06/08/2015 20:14:09","","","BV","","",""
+"Notebook",,"NT018233","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNTF","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lalguin","06/08/2015 19:38:05","","","BV","","",""
+"Notebook",,"NB015742","Hewlett-Packard","HP 420","BRG041FWL6","Intel(R) Core(TM)2 Duo CPU     T6570  @ 2.10GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cperandin","06/08/2015 19:14:22","","","BV","","",""
+"Notebook",,"NB019791","LENOVO","057938P","R6C4821","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\acavalher","06/08/2015 20:13:12","","","BV","","",""
+"Notebook",,"NB022092","LENOVO","3254H4P","R700ADE","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dgrangeiro","06/08/2015 20:14:45","","","BV","","",""
+"Desktop",,"DT022150","LENOVO","3569A8P","L1CBBM9","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","234GB
+231GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jrodopano","06/08/2015 19:03:15","","","BV","","",""
+"Desktop",,"DT011315","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\elainedupim","06/08/2015 19:57:01","","","BV","","",""
+"Notebook",,"NB023794","Insyde","HP Pavilion 14 Notebook PC      ","BRJ446BRZG","Intel(R) Core(TM) i7-4510U CPU @ 2.00GHz","16GB","931GB
+","Microsoft Windows 8.1 Pro","","","","BRQ\rdonaire","06/08/2015 20:20:45","","","BV","","",""
+"Notebook",,"NB009936","Hewlett-Packard","Compaq 510 Notebook PC","BRG946F8TX","Intel(R) Core(TM)2 Duo CPU     T5870  @ 2.00GHz","4GB","233GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mbneto","06/08/2015 19:48:59","","","BV","","",""
+"Desktop",,"DT015845","LENOVO","IPM31","123456789","Processador Intel Pentium III Xeon","2GB","298GB
+","Microsoft Windows XP Professional","","","",,,"","","BV","","",""
+"Notebook",,"NB015966","LENOVO","0913                            ","3000316807570","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\danilovale","06/08/2015 20:09:47","","","BV","","",""
+"Desktop",,"DT014574","LENOVO","7848","l1bt81z","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fesilva","06/08/2015 20:23:07","","","BV","","",""
+"Desktop",,"DT014653","LENOVO","7848","l1bpmt4","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB023812","LENOVO","62772E9","PEEGC31","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\alprado","06/08/2015 20:08:43","","","BV","","",""
+"Notebook",,"NB016673","LENOVO","32549BP","R70036A","Intel(R) Core(TM) i5-2520M CPU @ 2.50GHz","8GB","465GB
+","Microsoft Windows 8.1 Pro","","","","BRQ\wleite","06/08/2015 20:24:48","","","BV","","",""
+"Desktop",,"DT022266","LENOVO","3569A8P","L1CBBN2","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\nmonteiro","06/08/2015 19:02:48","","","BV","","",""
+"Notebook",,"NB016584E","LENOVO","3254E4P","R7001T0","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\aguerra","06/08/2015 19:43:26","","","BV","","",""
+"Desktop",,"DT012475","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fribeiro","06/08/2015 20:06:45","","","BV","","",""
+"Desktop",,"DT014415","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ltorre","06/08/2015 19:48:07","","","BV","","",""
+"Notebook",,"NB022108","LENOVO","3254H4P","R7009AF","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rsekine","06/08/2015 20:26:32","","","BV","","",""
+"Notebook",,"NB016642E","LENOVO","3254E4P","R70012G","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fjusto","06/08/2015 19:43:35","","","BV","","",""
+"Desktop",,"DT022153","LENOVO","3569A8P","L1CBBH4","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\davelar","06/08/2015 20:29:21","","","BV","","",""
+"Notebook",,"NB023782","LENOVO","688642P","PEECG12","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rosilva","06/08/2015 20:27:04","","","BV","","",""
+"Desktop",,"DT014424","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Notebook",,"NB018115E","LENOVO","3254E4P","R7003WN","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","439GB
+25GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ibritto","06/08/2015 20:27:58","","","BV","","",""
+"Desktop",,"DT012480","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\apereirasilva","06/08/2015 19:45:27","","","BV","","",""
+"Notebook",,"NB023703","LENOVO","3254H4P","R700KKH","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","446GB
+20GB
+","Microsoft Windows 7 Professional ","","","","BRQ\thiagoito","06/08/2015 20:15:42","","","BV","","",""
+"Desktop",,"DT018222","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNV3","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\eduardopeixoto","06/08/2015 20:37:02","","","BV","","",""
+"Notebook",,"NB023785","Insyde","HP Pavilion 14 Notebook PC      ","BRJ4438B5Z","Intel(R) Core(TM) i7-4500U CPU @ 1.80GHz","8GB","531GB
+400GB
+","Microsoft Windows 7 Professional ","","","","BRQ\abrizzi","06/08/2015 20:36:09","","","BV","","",""
+"Desktop",,"DT021035","LENOVO","3569PPP","L1CCL9A","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\frrsantos","06/08/2015 20:17:52","","","BV","","",""
+"Desktop",,"DT012094","LENOVO","7848","l1bmxny","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ppeixoto","06/08/2015 20:26:06","","","BV","","",""
+"Desktop",,"DT014599","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Desktop",,"DT017674E","LENOVO","3569A8P","L1CBBR7","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dtiberio","06/08/2015 19:49:10","","","BV","","",""
+"Desktop",,"DT021036","LENOVO","3569PPP","L1CCL7M","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mjsoares","06/08/2015 20:29:10","","","BV","","",""
+"Desktop",,"DT017681E","LENOVO","3569A8P","L1CBG70","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\andreiwazaki","06/08/2015 20:40:17","","","BV","","",""
+"Desktop",,"DT018229-","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNTB","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","289GB
+9GB
+","Microsoft Windows 7 Professional ","","","","BRQ\vnsilva","06/08/2015 20:41:48","","","BV","","",""
+"Desktop",,"DT022131","LENOVO","3569A8P","L1CBBLD","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\hdoliveira","06/08/2015 20:18:51","","","BV","","",""
+"Notebook",,"NB016657E","LENOVO","3254E4P","R7001EE","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rcfogaca","06/08/2015 20:34:12","","","BV","","",""
+"Desktop",,"DT018032E","LENOVO","3569PPP","L1CCK5P","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fneto_pvila","06/08/2015 20:41:37","","","BV","","",""
+"Desktop",,"DT017774E","LENOVO","3569A8P","L1CBG7K","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","6GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fabianosilva","06/08/2015 20:12:10","","","BV","","",""
+"Notebook",,"NB022114","LENOVO","3254H4P","R7009AT","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ddpereira","06/08/2015 19:59:08","","","BV","","",""
+"Desktop",,"NT020140","Hewlett-Packard","HP 430 Notebook PC              ","BRG219F04H","Intel(R) Core(TM) i3-2310M CPU @ 2.10GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ensilva","06/08/2015 20:35:08","","","BV","","",""
+"Desktop",,"DT011405","LENOVO","7848","l1bl9k9","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dflopes","06/08/2015 20:32:05","","","BV","","",""
+"Notebook",,"NB017270","LENOVO","0913                            ","3000327907465","Intel(R) Core(TM) i3 CPU       M 380  @ 2.53GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\giseleleite","06/08/2015 20:36:46","","","BV","","",""
+"Notebook",,"NB016695E","LENOVO","3254E4P","R7001CR","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\tnlima","06/08/2015 20:47:10","","","BV","","",""
+"Desktop",,"DT018227","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNS6","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gdarlan","06/08/2015 17:52:52","","","BV","","",""
+"Notebook",,"NB022112","LENOVO","3254H4P","R700ACT","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\felipemagalhaes","06/08/2015 20:54:30","","","BV","","",""
+"Desktop",,"DT018210","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNR7","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\aclaudiosilva","06/08/2015 20:28:33","","","BV","","",""
+"Notebook",,"NB018106E","LENOVO","3254E4P","R7003ND","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","439GB
+25GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mpjunior","06/08/2015 20:45:05","","","BV","","",""
+"Desktop",,"DT012353","LENOVO","IPM31","123456789","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\maxalves","06/08/2015 20:35:38","","","BV","","",""
+"Notebook",,"NB018103E","LENOVO","3254E4P","R7003F7","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","88GB
+25GB
+351GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ulysses","06/08/2015 20:28:07","","","BV","","",""
+"Desktop",,"DT022151","LENOVO","3569A8P","L1CBG3Z","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\vmedici","06/08/2015 20:07:25","","","BV","","",""
+"Notebook",,"NB0020120","LENOVO","1141EJP","L1C7918","Intel(R) Core(TM) i5-2430M CPU @ 2.40GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\renato","06/08/2015 20:50:08","","","BV","","",""
+"Notebook",,"NB020082","LENOVO","057938P","R6C4686","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","270GB
+195GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mrtavares","06/08/2015 20:42:10","","","BV","","",""
+"Desktop",,"DT018247","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNPT","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\emmanuel","06/08/2015 19:23:56","","","BV","","",""
+"Notebook",,"NB023609","LENOVO","3254H4P","R701P7H","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\brunovsilva","06/08/2015 20:42:53","","","BV","","",""
+"Notebook",,"NB022090","LENOVO","3254H4P","R7009AR","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\smanzuti","06/08/2015 20:59:25","","","BV","","",""
+"Notebook",,"NB019789","LENOVO","057938P","R6B5685","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\alinealmeida","06/08/2015 20:33:11","","","BV","","",""
+"Desktop",,"DT017713E","LENOVO","3569A8P","L1CBBP9","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","6GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\luansoares","06/08/2015 20:45:16","","","BV","","",""
+"Notebook",,"NB022156","LENOVO","3569A8P","L1CBBHA","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\bpalaria","06/08/2015 20:25:11","","","BV","","",""
+"Desktop",,"DT016321","LENOVO","7099A5P","L1BWWAX","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\RDSOLIVEIRA","06/08/2015 20:30:14","","","BV","","",""
+"Desktop",,"DT011365","LENOVO","7848","l1bl9b4","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\CASANTOS","06/08/2015 19:57:10","","","BV","","",""
+"Notebook",,"NB020156","Hewlett-Packard","HP 430 Notebook PC              ","BRG220F9GX","Intel(R) Core(TM) i3-2310M CPU @ 2.10GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\marai","06/08/2015 20:55:28","","","BV","","",""
+"Desktop",,"DT021019","LENOVO","3569PPP","L1CCK2L","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\josevalter","06/08/2015 21:04:22","","","BV","","",""
+"Notebook",,"NB017271","LENOVO","0913                            ","3000316801927","Intel(R) Core(TM) i3 CPU       M 380  @ 2.53GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fernandacardoso","06/08/2015 20:13:25","","","BV","","",""
+"Desktop",,"DT022055","LENOVO","3569A8P","L1CBG89","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\smpaes","06/08/2015 20:58:17","","","BV","","",""
+"Notebook",,"NB018155E","LENOVO","3254E4P","R7003YV","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ljorge","06/08/2015 20:14:41","","","BV","","",""
+"Desktop",,"DT012472","LENOVO","IPM31","123456789","Intel Pentium III Xeon processor","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\MICHIYAMA","06/08/2015 21:07:28","","","BV","","",""
+"Desktop",,"DT022283","LENOVO","3569A8P","L1CBG30","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mabrinstein","06/08/2015 20:55:05","","","BV","","",""
+"Notebook",,"NB017562","LENOVO","057938P","R6C4592","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\luizhenriquesilva","06/08/2015 21:09:36","","","BV","","",""
+"Desktop",,"DT012051","LENOVO","7848","l1bm9mt","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","298GB
+","Microsoft Windows XP Professional","","","","BRQ\ALEXGIOVANNI","06/08/2015 20:13:04","","","BV","","",""
+"Desktop",,"DT015227","LENOVO","7848","l1bp9ad","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\avaraujo","06/08/2015 20:44:44","","","BV","","",""
+"Notebook",,"NB023792","Insyde","HP Pavilion 14 Notebook PC      ","BRJ446BS2K","Intel(R) Core(TM) i7-4510U CPU @ 2.00GHz","16GB","931GB
+","Microsoft Windows 8.1 Pro","","","","BRQ\edleson","06/08/2015 21:10:58","","","BV","","",""
+"Notebook",,"NB018177E","LENOVO","3254E4P","R7003T2","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ftakao","06/08/2015 21:09:47","","","BV","","",""
+"Desktop",,"DT018289","Hewlett-Packard","HP Compaq 6200 Pro MT PC","BRG142FNST","Intel(R) Core(TM) i3-2100 CPU @ 3.10GHz","8GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\pneto","06/08/2015 20:33:55","","","BV","","",""
+"Notebook",,"NB012377","LENOVO","7848","l1blxl9","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rrolim","06/08/2015 20:57:21","","","BV","","",""
+"Desktop",,"DT021022","LENOVO","3569PPP","L1CCK26","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jhsoares","06/08/2015 19:56:50","","","BV","","",""
+"Desktop",,"DT021020","LENOVO","3569PPP","L1CCK3Z","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","4GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\claudirsouza","06/08/2015 20:46:11","","","BV","","",""
+"Notebook",,"NB017292","LENOVO","0913                            ","3100297202664","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ffilsali","06/08/2015 21:16:49","","","BV","","",""
+"Notebook",,"NB023720","LENOVO","62772E9","PEETD70","Intel(R) Core(TM) i5-3230M CPU @ 2.60GHz","8GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mslima","06/08/2015 21:02:19","","","BV","","",""
+"Desktop",,"DT017718E","LENOVO","3569A8P","L1CBG92","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rafaelsakai","06/08/2015 21:12:00","","","BV","","",""
+"Notebook",,"NB018125E","LENOVO","3254E4P","R7003YF","Intel(R) Core(TM) i3-2330M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lasantos","06/08/2015 21:20:27","","","BV","","",""
+"Desktop",,"DT015829","LENOVO","7848","l1bt82p","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","233GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BV","","",""
+"Desktop",,"DT017669E","LENOVO","3569A8P","L1CBBN7","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","4GB","412GB
+49GB
+","Microsoft Windows 7 Professional ","","","","BRQ\emferreira","06/08/2015 21:20:10","","","BV","","",""
+"Desktop",,"DT018590","LENOVO","1577K1P","L1C99RG","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","3GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rsilvaferreira","06/08/2015 21:05:24","","","BV","","",""
+"Notebook",,"NB022089","LENOVO","3254H4P","R7009D3","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\rodrigopsilva","06/08/2015 20:50:29","","","BV","","",""
+"Notebook",,"NB022180","LENOVO","3254H4P","R7008VT","Intel(R) Core(TM) i3-2328M CPU @ 2.20GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\viniciusmartins","06/08/2015 21:23:50","","","BV","","",""
+"Desktop",,"DT015824","LENOVO","7848","l1bp99w","Intel(R) Core(TM)2 Duo CPU     E7500  @ 2.93GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\thiagomoura","06/08/2015 21:27:17","","","BV","","",""
+"Notebook",,"NB019765","LENOVO","057938P","R6B5732","Intel(R) Core(TM) i3 CPU       M 370  @ 2.40GHz","4GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gvtorre","06/08/2015 21:16:22","","","BV","","",""
+"Notebook",,"NB020155","Hewlett-Packard","HP 430 Notebook PC              ","BRG220FBM0","Intel(R) Core(TM) i3-2310M CPU @ 2.10GHz","4GB","465GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lincongiro","06/08/2015 21:32:36","","","BV","","",""
+"Notebook",,"NB011435","Hewlett-Packard","Compaq 510","BRG012FF1M","Intel(R) Core(TM)2 Duo CPU     T5870  @ 2.00GHz","2GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cguarnelli","06/08/2015 21:12:24","","","BV","","",""
+"Desktop",,"DTSP024453","LENOVO","2124AAP","PE69253","Intel(R) Core(TM) i3-3220 CPU @ 3.30GHz","4GB","149GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fanny","06/08/2015 21:06:56","","","BV","","",""
+"Notebook",,"NB015753","Hewlett-Packard","HP 420","BRG041FWMP","Intel(R) Core(TM)2 Duo CPU     T6570  @ 2.10GHz","4GB","298GB
+","Microsoft Windows 7 Professional ","","","","BRQ\thfranco","06/08/2015 21:34:06","","","BV","","",""

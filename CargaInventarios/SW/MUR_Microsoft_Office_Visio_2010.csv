@@ -1,0 +1,6 @@
+﻿DescriptionLabelTextbox,DescriptionTextbox
+Descrição,Este relatório lista todos os computadores com software específico instalado. Ele está vinculado a Software 02E - Software instalado em um computador específico.
+
+Header_Table0_ComputerName,Header_Table0_ComputerManufacturer,Header_Table0_ComputerModel,Header_Table0_ProductName,Header_Table0_ProductID,Header_Table0_DSLID,Header_Table0_InstallationType,Details_Table0_ComputerName,Details_Table0_ComputerManufacturer,Details_Table0_ComputerModel,Details_Table0_ProductName,Details_Table0_ProductID,Details_Table0_DSLID,Details_Table0_InstallationType
+Nome do Computador,Fabricante do computador,Modelo do Computador,Nome do Produto,ID de Produto,ID DSL,Tipo de Instalação,NB015988,LENOVO,0913,Microsoft Office Visio 2010,02290-001-0000502-69706,,Fisicamente instalado
+

@@ -1,0 +1,108 @@
+#TYPE System.Management.Automation.PSCustomObject
+"Tipo de Equipamento","Patrimonio","Hostname","Fabricante","Modelo","Numero de Serie","Processador","Memoria","HD","SO","Nota FIscal","Data de Compra","Observacao Equipamento","Login","Data Ultimo Login","Matricula","Solicitacao","Site","Nome do Entregador","Data da Entrega","Observacao Vinculo"
+"Desktop",,"DTDF021132","LENOVO","3569PPP","L1CCK0C","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cgraciano_pbsb","02/08/2015 21:44:38","","","BSB","","",""
+"Desktop",,"DTDF021130","LENOVO","3569PPP","L1CCK1K","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dpaula_pbsb","02/08/2015 20:36:08","","","BSB","","",""
+"Desktop",,"DTDF021113","LENOVO","3569PPP","L1CCK2Z","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fmoises_pbsb","02/08/2015 21:42:48","","","BSB","","",""
+"Desktop",,"DTDF021115","LENOVO","3569PPP","L1CCK47","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lneto_pbsb","02/08/2015 21:23:32","","","BSB","","",""
+"Desktop",,"DTDF021128","LENOVO","3569PPP","L1CCK49","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mdias_pbsb","02/08/2015 21:22:59","","","BSB","","",""
+"Desktop",,"DTDF021110","LENOVO","3569PPP","L1CCLFC","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\mmatos_pbsb","02/08/2015 21:39:59","","","BSB","","",""
+"Desktop",,"DTDF021275","LENOVO","3569PPP","L1CCLD6","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ateles_pbsb","02/08/2015 21:47:51","","","BSB","","",""
+"Desktop",,"DTDF021268","LENOVO","3569PPP","L1CCLBB","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\tneto_pbsb","02/08/2015 21:30:48","","","BSB","","",""
+"Desktop",,"DTDF021256","LENOVO","3569PPP","L1CCLBC","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jcvasconcelos_pbsb","31/07/2015 15:02:15","","","BSB","","",""
+"Desktop",,"DTDF021146","LENOVO","3569PPP","L1CCLAZ","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\msousa_pbsb","02/08/2015 21:44:53","","","BSB","","",""
+"Desktop",,"DTDF021116","LENOVO","3569PPP","L1CCK18","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dpaula_pbsb","02/08/2015 21:09:17","","","BSB","","",""
+"Desktop",,"DTDF021289","LENOVO","3569PPP","L1CCLF8","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cferreira_pbsb","02/08/2015 21:57:00","","","BSB","","",""
+"Desktop",,"DTDF021120","LENOVO","3569PPP","L1CCK3N","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\cfreitas_pbsb","02/08/2015 21:58:01","","","BSB","","",""
+"Desktop",,"DTDF021137","LENOVO","3569PPP","L1CCK5F","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\carlosaugustosantos","02/08/2015 21:36:03","","","BSB","","",""
+"Desktop",,"DTDF021276","LENOVO","3569PPP","L1CCLC5","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fgarcia_pbsb","02/08/2015 21:29:21","","","BSB","","",""
+"Desktop",,"DTDF021085","LENOVO","3569A8P","L1CBG5A","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","6GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\hsantos_pbsb","02/08/2015 21:58:32","","","BSB","","",""
+"Desktop",,"DTDF021261","LENOVO","3569PPP","L1CCHY1","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gladstonepereira","23/07/2015 16:50:27","","","BSB","","",""
+"Desktop",,"DTDF021149","LENOVO","3569PPP","L1CCHY9","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","244GB
+222GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fgarcia_pbsb","02/08/2015 21:52:35","","","BSB","","",""
+"Desktop",,"DTDF021123","LENOVO","3569PPP","L1CCK22","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\csouza_pbsb","02/08/2015 22:02:57","","","BSB","","",""
+"Desktop",,"DTDF021136","LENOVO","3569PPP","L1CCL79","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fgarcia_pbsb","02/08/2015 21:15:46","","","BSB","","",""
+"Desktop",,"DTDF021143","LENOVO","3569PPP","L1CCLAP","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\msousa_pbsb","02/08/2015 21:31:59","","","BSB","","",""
+"Desktop",,"DTDF021121","LENOVO","3569PPP","L1CCLAR","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\salmeida_pbsb","14/07/2015 16:40:31","","","BSB","","",""
+"Desktop",,"DTDF021284","LENOVO","3569PPP","L1CCL8L","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jcvasconcelos_pbsb","02/08/2015 22:05:19","","","BSB","","",""
+"Desktop",,"DTDF021142","LENOVO","3569PPP","L1CCLDW","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","",,,"","","BSB","","",""
+"Desktop",,"DTDF021114","LENOVO","3569PPP","L1CCLBP","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lfdcosta","02/08/2015 22:12:08","","","BSB","","",""
+"Desktop",,"DTDF021117","LENOVO","3569PPP","L1CCK0D","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jpaula_pbsb","02/08/2015 21:57:38","","","BSB","","",""
+"Desktop",,"DTDF021130","LENOVO","3569PPP","L1CCK1K","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dpaula_pbsb","02/08/2015 22:25:56","","","BSB","","",""
+"Desktop",,"DTDF021131","LENOVO","3569PPP","L1CCK79","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\marcelo_pbsb","02/08/2015 23:09:55","","","BSB","","",""
+"Desktop",,"DTDF021146","LENOVO","3569PPP","L1CCLAZ","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\msousa_pbsb","02/08/2015 22:29:30","","","BSB","","",""
+"Desktop",,"DTDF021149","LENOVO","3569PPP","L1CCHY9","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","244GB
+222GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fgarcia_pbsb","02/08/2015 23:06:52","","","BSB","","",""
+"Desktop",,"DTDF021270","LENOVO","3569PPP","L1CCK2K","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\pmacedo_pbsb","02/08/2015 23:13:11","","","BSB","","",""
+"Desktop",,"DTDF021284","LENOVO","3569PPP","L1CCL8L","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jcvasconcelos_pbsb","02/08/2015 22:40:34","","","BSB","","",""
+"Desktop",,"DTDF021113","LENOVO","3569PPP","L1CCK2Z","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fmoises_pbsb","02/08/2015 23:28:46","","","BSB","","",""
+"Desktop",,"DTDF021129","LENOVO","3569PPP","L1CCLC1","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gassuncao_pbsb","07/08/2015 11:52:49","","","BSB","","",""
+"Desktop",,"DTDF021266","LENOVO","3569PPP","L1CCL9W","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","8GB","244GB
+222GB
+","Microsoft Windows 8 Pro","","","","BRQ\andrefonseca","07/08/2015 11:59:13","","","BSB","","",""
+"Desktop",,"DTDF021267","LENOVO","3569PPP","L1CCLAK","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\secretariabsb","07/08/2015 11:58:16","","","BSB","","",""
+"Desktop",,"DTDF021135","LENOVO","3569PPP","L1CCHYG","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","465GB
+","Microsoft Windows 8 Pro","","","","BRQ\rrodrigues_pbsb","07/08/2015 12:01:41","","","BSB","","",""
+"Desktop",,"DTDF021125","LENOVO","3569PPP","L1CCLC2","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\lneto_pbsb","07/08/2015 12:01:37","","","BSB","","",""
+"Desktop",,"DTDF021150","LENOVO","3569PPP","L1CCK5K","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ecristina_pbsb","07/08/2015 11:59:05","","","BSB","","",""
+"Desktop",,"DTDF021127","LENOVO","3569PPP","L1CCK5H","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\tmendes_pbsb","07/08/2015 11:27:56","","","BSB","","",""
+"Desktop",,"DTDF021145","LENOVO","3569PPP","L1CCK15","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\ucodognotto_pbsb","07/08/2015 12:06:13","","","BSB","","",""
+"Desktop",,"DTDF021126","LENOVO","3569PPP","L1CCLDT","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\nalcantara","07/08/2015 12:07:00","","","BSB","","",""
+"Desktop",,"DTDF021133","LENOVO","3569PPP","L1CCL92","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\fmonteiro_pbsb","07/08/2015 12:08:39","","","BSB","","",""
+"Desktop",,"DTDF021138","LENOVO","3569PPP","L1CCK0R","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\dcarvalho_pbsb","07/08/2015 12:00:07","","","BSB","","",""
+"Desktop",,"DTDF021084","LENOVO","3569A8P","L1CBG1H","Intel(R) Core(TM) i3-2120 CPU @ 3.30GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\gladstonepereira","07/08/2015 12:07:52","","","BSB","","",""
+"Desktop",,"DTDF021260","LENOVO","3569PPP","L1CCL8F","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\msousa_pbsb","07/08/2015 12:12:33","","","BSB","","",""
+"Desktop",,"DTDF021254XP","LENOVO","3569PPP","L1CCHZN","        Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows XP Professional","","","","BRQ\ECECAN","07/08/2015 12:07:52","","","BSB","","",""
+"Desktop",,"DTDF021139","LENOVO","3569PPP","L1CCK5T","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\marcomelosilva","07/08/2015 12:18:12","","","BSB","","",""
+"Desktop",,"DTDF021288","LENOVO","3569PPP","L1CCLBV","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","449GB
+16GB
+","Microsoft Windows 7 Professional ","","","","BRQ\jclemente","07/08/2015 12:10:54","","","BSB","","",""
+"Desktop",,"DTDF021272","LENOVO","3569PPP","L1CCK59","Intel(R) Core(TM) i3-2130 CPU @ 3.40GHz","6GB","466GB
+","Microsoft Windows 7 Professional ","","","","BRQ\sandrade_pbsb","07/08/2015 13:15:01","","","BSB","","",""

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  software: MyString
+  userid: 
+  kpmg: false
+  sccm: false
+  cmdb: false
+  score: 1
+
+two:
+  software: MyString
+  userid: 
+  kpmg: false
+  sccm: false
+  cmdb: false
+  score: 1

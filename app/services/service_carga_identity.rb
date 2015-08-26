@@ -1,14 +1,16 @@
 require 'csv'
-class MassiveIdentity
+class ServiceCargaIdentity
 
 
 
 
-def self.go
+def go
 	# configfile  = "/Users/zemagno/Dropbox/dev/ror/ItMgmt/externos_bsb.csv"
 
 	total_replaced = 0
 	total_created = 0
+
+	Identity.delete_all
 
     # if configfile.kind_of? Rake::TaskArguments    	
  	
@@ -68,10 +70,13 @@ def self.go
     	idt.save!
     end
 
-	puts "done"
-	puts "Total de registros criado #{total_created}"
-	puts "Total de registros atualizados #{total_replaced}"
-	"OK"
+	detalhe << "Total de registros criado #{total_created}"
+	detalhe << "Total de registros atualizados #{total_replaced}"
+	
+	status = "Ok"
+		
+	Event.register("Carga","Identities","detalhe","#{status} - #{detalhe}")
+	[status,detalhe]
 end
 
 end
