@@ -1,0 +1,2 @@
+10.2.68.190;"BRQ\lucasmiranda";"BRQ\lucasmiranda";"";""
+10.2.68.190;"BRQ";""

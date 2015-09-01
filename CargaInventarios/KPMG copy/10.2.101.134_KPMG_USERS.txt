@@ -1,0 +1,5 @@
+10.2.101.134;"BRQ\ppassos";"BRQ\ppassos";"";""
+10.2.101.134;"";"";"BRQ\ppassos";"BRQ\ppassos"
+10.2.101.134;"";"";"BRQ\ppassos";"BRQ.COM\ppassos"
+10.2.101.134;"";"";"BRQ\ppassos";"BRQ\ppassos"
+10.2.101.134;"suportebrq";""

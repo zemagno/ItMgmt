@@ -1,0 +1,5 @@
+10.2.10.208;"BRQ\thiagohsouza";"BRQ\thiagohsouza";"";""
+10.2.10.208;"";"";"BRQ\thiagohsouza";"BRQ\thiagohsouza"
+10.2.10.208;"";"";"BRQ\jucielfreitas";"BRQ\jucielfreitas"
+10.2.10.208;"";"";"BRQ\thiagohsouza";"BRQ\thiagohsouza"
+10.2.10.208;"adm";""

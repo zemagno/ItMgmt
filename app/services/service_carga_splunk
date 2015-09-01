@@ -1,0 +1,44 @@
+class ServiceCargaSplunk
+
+def go
+    total_atualizacoes = [0,0,0,0,0]
+	path = "/Users/zemagno/Dropbox/dev/ror/ItMgmt/CargaInventarios/KPMG"
+
+	file = ""
+
+    InventarioSplunk.delete_all
+    
+	dados = CSV.read(f, headers: false, :col_sep => ";" , :quote_char => '"')	
+	dados.each do |d|
+        userid = d[1] unless d[1].nil?
+        userid = d[2] unless d[2].nil?
+        userid = d[3] unless d[3].nil?
+        userid = d[4] unless d[4].nil?
+        userid.gsub!(/BRQ(\.COM)?\\/i,"")
+        if userid.match(/shdw?/).nil? and ! userid.nil? and ! userid.blank?
+            invKPMGUserid = InventarioKpmgUserid.find_or_create_by_ip_and_userid(:ip => d[0], :userid => userid)
+            invKPMGUserid.contador = invKPMGUserid.contador+1
+            invKPMGUserid.save!
+        end 
+        # begin   
+        #     i = InventarioKpmgUserid.new(ip: d[0], sw: d[1], data: d[2], versao1: d[3], versao2: d[4], fabricante: d[5])
+        #     i.save!
+        #     total_atualizacoes[0] = total_atualizacoes[0]+1
+        # rescue
+        #     total_atualizacoes[1] = total_atualizacoes[1]+1
+        # end
+
+    end
+
+    total_atualizacoes
+end
+
+end
+
+
+# filtro = Regexp.union(/Update\ for/,/Hotfix/,/Update\ for/,/Windows\ Phone/,/Driver/,/Service\ Pack/,/Pacote\ de\ Idiomas/)
+
+# BRQ\zadmbrq
+# BRQ.COM\zadmbrq
+
+# se tiver shdw no final, esquece

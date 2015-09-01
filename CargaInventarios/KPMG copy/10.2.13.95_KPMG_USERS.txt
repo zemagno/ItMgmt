@@ -1,0 +1,5 @@
+10.2.13.95;"BRQ\aerciomendes";"BRQ\aerciomendes";"";""
+10.2.13.95;"";"";"BRQ\aerciomendes";"BRQ\aerciomendes"
+10.2.13.95;"";"";"BRQ\lspolaore";"BRQ\lspolaore"
+10.2.13.95;"";"";"BRQ\aerciomendes";"BRQ\aerciomendes"
+10.2.13.95;"brq";""

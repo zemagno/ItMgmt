@@ -1,0 +1,3 @@
+10.2.8.114;"VMSANEPAR04\brqadmusr";".\brqadmusr";"";""
+10.2.8.114;"";"";"BRQ\muchimura_pmal";"muchimura_pmal@brq.com"
+10.2.8.114;"";"";"BRQ\muchimura_pmal";"muchimura_pmal@brq.com"

@@ -1,0 +1,6 @@
+10.2.8.118;"vmgvt01\brq";".\brq";"";""
+10.2.8.118;"";"";"BRQ\leandrocaronshdw";"brq.com\leandrocaronshdw"
+10.2.8.118;"";"";"BRQ\ronybrugnolo";"BRQ.COM\ronybrugnolo"
+10.2.8.118;"";"";"vmgvt01\admin";".\admin"
+10.2.8.118;"";"";"vmgvt01\admin";".\admin"
+10.2.8.118;"brq";""

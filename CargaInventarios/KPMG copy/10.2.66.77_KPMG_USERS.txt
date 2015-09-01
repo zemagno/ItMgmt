@@ -1,0 +1,5 @@
+10.2.66.77;"BRQ\azanardi";"BRQ\azanardi";"";""
+10.2.66.77;"";"";"BRQ\azanardi";"BRQ\azanardi"
+10.2.66.77;"";"";"BRQ\michellenigmann";"BRQ\michellenigmann"
+10.2.66.77;"";"";"BRQ\azanardi";"BRQ\azanardi"
+10.2.66.77;"BRQ";""

@@ -1,0 +1,8 @@
+10.2.101.225;"BRQ\vanessafigueira";"BRQ\vanessafigueira";"";""
+10.2.101.225;"";"";"BRQ\vanessafigueira";"BRQ\vanessafigueira"
+10.2.101.225;"";"";"BRQ\vanessafigueira";"BRQ\vanessafigueira"
+10.2.101.225;"";"";"BRQ\vanessafigueira";"BRQ.COM\vanessafigueira"
+10.2.101.225;"";"";"BRQ\vanessafigueira";"BRQ\vanessafigueira"
+10.2.101.225;"";"";"BRQ\vanessafigueira";"BRQ.COM\vanessafigueira"
+10.2.101.225;"";"";"BRQ\vanessafigueira";"BRQ\vanessafigueira"
+10.2.101.225;"brqadmusr";""

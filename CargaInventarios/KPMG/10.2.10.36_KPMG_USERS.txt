@@ -1,0 +1,3 @@
+10.2.10.36;"BRQ\diegocordeiro";"BRQ\diegocordeiro";"";""
+10.2.10.36;"";"";"BRQ\diegocordeiro";"BRQ\diegocordeiro"
+10.2.10.36;"adm";""

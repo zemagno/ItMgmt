@@ -1,0 +1,4 @@
+10.2.66.142;"BRQ\fabiofraga";"BRQ\fabiofraga";"";""
+10.2.66.142;"";"";"BRQ\fabiofraga";"BRQ\fabiofraga"
+10.2.66.142;"";"";"BRQ\fabiofraga";"BRQ\fabiofraga"
+10.2.66.142;"suporte";""

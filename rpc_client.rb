@@ -4,10 +4,7 @@
 require "bunny"
 require "thread"
 
-conn = Bunny.new(:host => "192.168.0.113",:user => "cmdb",:pass => "0411ainbusg",:port => 5672,:ssl => false,:auth_mechanism => "PLAIN",:automatically_recover => false)
-conn.start
 
-ch   = conn.create_channel
 
 class FibonacciClient
   attr_reader :reply_queue
@@ -35,6 +32,7 @@ class FibonacciClient
 
   def call(n)
     self.call_id = self.generate_uuid
+    
 
     @x.publish(n.to_s,
       :routing_key    => @server_queue,
@@ -54,10 +52,23 @@ class FibonacciClient
   end
 end
 
-client   = FibonacciClient.new(ch, "rpc_queuew")
-puts " [x] Requesting fib(30)"
-response = client.call(30)
+# conn = Bunny.new(:automatically_recover => false)
+conn = Bunny.new(:host => "192.168.0.113",:user => "cmdb",:pass => "0411ainbusg",:auth_mechanism => "PLAIN",:automatically_recover => false)
+#conn = Bunny.new(:host => "127.0.0.1",:user => "cmdb",:pass => "0411ainbusg",:auth_mechanism => "PLAIN",:automatically_recover => false)
+conn.start
+
+ch   = conn.create_channel
+
+client   = FibonacciClient.new(ch, "rpc_queue")
+puts " [x] Requesting fib(14)"
+response = client.call(14)
 puts " [.] Got #{response}"
+
+puts " [x] Requesting fib(12)"
+response = client.call(12)
+puts " [.] Got #{response}"
+
+
 
 ch.close
 conn.close

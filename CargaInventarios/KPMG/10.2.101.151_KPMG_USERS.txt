@@ -1,0 +1,5 @@
+10.2.101.151;"BRQ\claytonoliveira";"BRQ.COM\claytonoliveira";"";""
+10.2.101.151;"";"";"BRQ\claytonoliveira";"BRQ.COM\claytonoliveira"
+10.2.101.151;"";"";"BRQ\pedronjunior";"BRQ\pedronjunior"
+10.2.101.151;"";"";"BRQ\claytonoliveira";"BRQ.COM\claytonoliveira"
+10.2.101.151;"suportebrq";""

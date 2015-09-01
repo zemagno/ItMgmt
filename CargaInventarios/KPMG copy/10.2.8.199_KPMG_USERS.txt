@@ -1,0 +1,4 @@
+10.2.8.199;"ADPROD199MAL\Administrator";".\Administrator";"";""
+10.2.8.199;"";"";"BRQ\fportelashdw";"BRQ\fportelashdw"
+10.2.8.199;"";"";"BRQ\leandrocaronshdw";"brq.com\leandrocaronshdw"
+10.2.8.199;"";"";"BRQ\fportelashdw";"BRQ\fportelashdw"

@@ -1,0 +1,4 @@
+10.2.0.125;"BRQ\meryreis";"BRQ\meryreis";"";""
+10.2.0.125;"";"";"BRQ\meryreis";"BRQ\meryreis"
+10.2.0.125;"";"";"BRQ\meryreis";"BRQ\meryreis"
+10.2.0.125;"citrix";""

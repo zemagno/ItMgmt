@@ -1,0 +1,5 @@
+10.2.0.116;"BRQ\carlosnascimento";"BRQ\carlosnascimento";"";""
+10.2.0.116;"";"";"BRQ\carlosnascimento";"BRQ\carlosnascimento"
+10.2.0.116;"";"";"BRQ\carlosnascimento";"BRQ\carlosnascimento"
+10.2.0.116;"";"";"BRQ\msfigueiredo";"BRQ.COM\msfigueiredo"
+10.2.0.116;"admindc";""

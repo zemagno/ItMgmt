@@ -1,0 +1,6 @@
+10.2.97.99;"BRQ\aroldojunior";"BRQ\aroldojunior";"";""
+10.2.97.99;"";"";"BRQ\sccmshdw";"BRQ.COM\sccmshdw"
+10.2.97.99;"";"";"BRQ\fportelashdw";"BRQ.COM\fportelashdw"
+10.2.97.99;"";"";"BRQ\cfelicioshdw";"BRQ.COM\cfelicioshdw"
+10.2.97.99;"";"";"BRQ\wallacemoraes";"BRQ.COM\wallacemoraes"
+10.2.97.99;"";"";"BRQ\sccmshdw";"BRQ.COM\sccmshdw"

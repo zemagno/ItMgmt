@@ -1,0 +1,1 @@
+10.2.73.222;"TEMPLATE-WIN-2K\Administrator";".\Administrator";"";""

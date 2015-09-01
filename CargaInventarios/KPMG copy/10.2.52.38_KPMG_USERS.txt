@@ -1,0 +1,3 @@
+10.2.52.38;"BRQ\wallacecarvalho";"BRQ\wallacecarvalho";"";""
+10.2.52.38;"";"";"BRQ\wallacecarvalho";"BRQ\wallacecarvalho"
+10.2.52.38;"DT020758BRQ";""

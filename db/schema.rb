@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150825201235) do
+ActiveRecord::Schema.define(:version => 20150901135441) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -413,6 +413,15 @@ ActiveRecord::Schema.define(:version => 20150825201235) do
     t.datetime "updated_at"
   end
 
+  create_table "inventario_hostnames", :force => true do |t|
+    t.string   "hostname"
+    t.string   "ip"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "inventario_hostnames", ["hostname"], :name => "index_inventario_hostnames_on_hostname"
+
   create_table "inventario_hws", :force => true do |t|
     t.string   "hostname"
     t.string   "fabricante"
@@ -428,6 +437,40 @@ ActiveRecord::Schema.define(:version => 20150825201235) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "inventario_kpmg_sws", :force => true do |t|
+    t.string   "ip",         :limit => 20
+    t.string   "sw",         :limit => 100
+    t.string   "versao1",    :limit => 20
+    t.string   "versao2",    :limit => 20
+    t.string   "fabricante", :limit => 50
+    t.date     "data"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "inventario_kpmg_sws", ["ip", "sw"], :name => "index_inventario_kpmg_sws_on_ip_and_sw"
+  add_index "inventario_kpmg_sws", ["ip"], :name => "index_inventario_kpmg_sws_on_ip"
+
+  create_table "inventario_kpmg_userids", :force => true do |t|
+    t.string   "ip",         :limit => 20
+    t.string   "userid",     :limit => 50
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+    t.integer  "contador",                 :default => 0
+  end
+
+  add_index "inventario_kpmg_userids", ["ip", "userid"], :name => "index_inventario_kpmg_userids_on_ip_and_userid"
+
+  create_table "inventario_splunks_userids", :force => true do |t|
+    t.string   "ip",         :limit => 20
+    t.string   "userid",     :limit => 50
+    t.integer  "contador"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "inventario_splunks_userids", ["ip", "userid"], :name => "index_inventario_splunks_userids_on_ip_and_userid"
 
   create_table "inventario_sws", :force => true do |t|
     t.string   "hostname"
@@ -495,6 +538,11 @@ ActiveRecord::Schema.define(:version => 20150825201235) do
 
   add_index "mapa_posicaos", ["LoginGestor"], :name => "index_mapa_posicaos_on_LoginGestor"
   add_index "mapa_posicaos", ["LoginProfissional"], :name => "index_mapa_posicaos_on_LoginProfissional"
+
+  create_table "microsoft_sw", :id => false, :force => true do |t|
+    t.string  "sw",   :limit => 100
+    t.integer "flag"
+  end
 
   create_table "notes", :force => true do |t|
     t.text     "notes"

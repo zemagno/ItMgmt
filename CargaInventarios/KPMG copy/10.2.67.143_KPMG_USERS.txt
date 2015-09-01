@@ -1,0 +1,3 @@
+10.2.67.143;"BRQ\vvigati";"BRQ\vvigati";"";""
+10.2.67.143;"";"";"BRQ\vvigati";"BRQ\vvigati"
+10.2.67.143;"teste";""

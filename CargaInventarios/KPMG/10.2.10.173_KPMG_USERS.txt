@@ -1,0 +1,4 @@
+10.2.10.173;"BRQ\lucaseduardo";"BRQ\lucaseduardo";"";""
+10.2.10.173;"";"";"BRQ\lucaseduardo";"BRQ\lucaseduardo"
+10.2.10.173;"";"";"BRQ\lucaseduardo";"BRQ\lucaseduardo"
+10.2.10.173;"brq";""

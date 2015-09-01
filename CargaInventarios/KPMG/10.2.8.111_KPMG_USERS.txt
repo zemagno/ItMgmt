@@ -1,0 +1,4 @@
+10.2.8.111;"VMSANEPAR01\Administrador";".\Administrador";"";""
+10.2.8.111;"";"";"VMSANEPAR01\Administrador";".\Administrador"
+10.2.8.111;"";"";"BRQ\lsilva_pmal";"lsilva_pmal@brq.com"
+10.2.8.111;"";"";"BRQ\lsilva_pmal";"lsilva_pmal@brq.com"

@@ -1,0 +1,4 @@
+10.2.100.161;"BRQ\vanessamoraes";"BRQ\vanessamoraes";"";""
+10.2.100.161;"";"";"BRQ\vanessamoraes";"BRQ\vanessamoraes"
+10.2.100.161;"";"";"BRQ\vanessamoraes";"BRQ\vanessamoraes"
+10.2.100.161;"brqadmusr";""

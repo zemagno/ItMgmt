@@ -1,0 +1,4 @@
+10.2.42.46;"BRQ\mfroelich";"BRQ\mfroelich";"";""
+10.2.42.46;"";"";"BRQ\mfroelich";"BRQ\mfroelich"
+10.2.42.46;"";"";"BRQ\mfroelich";"BRQ.COM\mfroelich"
+10.2.42.46;"brq";""

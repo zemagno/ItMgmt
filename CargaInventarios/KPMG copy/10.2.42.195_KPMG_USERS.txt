@@ -1,0 +1,3 @@
+10.2.42.195;"BRQ\adrianoranea";"BRQ\adrianoranea";"";""
+10.2.42.195;"";"";"BRQ\adrianoranea";"BRQ\adrianoranea"
+10.2.42.195;"suporte";""

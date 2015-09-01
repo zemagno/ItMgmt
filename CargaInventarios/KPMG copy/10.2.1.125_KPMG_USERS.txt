@@ -1,0 +1,7 @@
+10.2.1.125;"BRQ\wmjuniorshdw";"BRQ.COM\wmjuniorshdw";"";""
+10.2.1.125;"";"";"BRQ\dkarolakshdw";"BRQ.COM\dkarolakshdw"
+10.2.1.125;"";"";"BRQ\wmjuniorshdw";"BRQ.COM\wmjuniorshdw"
+10.2.1.125;"";"";"BRQ\sccmshdw";"BRQ\sccmshdw"
+10.2.1.125;"";"";"BRQ\aroldojunior";"BRQ.COM\aroldojunior"
+10.2.1.125;"";"";"BRQ\leandrocaronshdw";"brq.com\leandrocaronshdw"
+10.2.1.125;"";"";"BRQ\sccmshdw";"BRQ\sccmshdw"

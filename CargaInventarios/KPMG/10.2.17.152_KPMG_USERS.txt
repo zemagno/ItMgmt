@@ -1,0 +1,4 @@
+10.2.17.152;"BRQ\edsonshdw";"BRQ\edsonshdw";"";""
+10.2.17.152;"";"";"BRQ\equitrac";"BRQ\equitrac"
+10.2.17.152;"";"";"RJSERVER152\equitrac";".\equitrac"
+10.2.17.152;"";"";"BRQ\equitrac";"BRQ\equitrac"

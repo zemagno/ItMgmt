@@ -1,0 +1,3 @@
+10.2.68.196;"BRQ\rtavares";"BRQ\rtavares";"";""
+10.2.68.196;"";"";"BRQ\rtavares";"BRQ\rtavares"
+10.2.68.196;"brqadmuser";""

@@ -1,0 +1,5 @@
+10.2.0.123;"BRQ\alexandrecosta";"BRQ\alexandrecosta";"";""
+10.2.0.123;"";"";"BRQ\alexandrecosta";"BRQ.COM\alexandrecosta"
+10.2.0.123;"";"";"BRQ\alexandrecosta";"BRQ.COM\alexandrecosta"
+10.2.0.123;"";"";"BRQ\msfigueiredo";"BRQ.COM\msfigueiredo"
+10.2.0.123;"brq";""

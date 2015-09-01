@@ -1,0 +1,4 @@
+10.2.71.67;"BRQ\lucasmiranda";"BRQ\lucasmiranda";"";""
+10.2.71.67;"";"";"BRQ\lasantos";"BRQ\lasantos"
+10.2.71.67;"";"";"BRQ\lucasmiranda";"BRQ\lucasmiranda"
+10.2.71.67;"brq";""

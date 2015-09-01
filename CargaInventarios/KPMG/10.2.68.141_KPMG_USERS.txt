@@ -1,0 +1,3 @@
+10.2.68.141;"BRQ\juliofigueiredo";"BRQ\juliofigueiredo";"";""
+10.2.68.141;"";"";"BRQ\juliofigueiredo";"BRQ\juliofigueiredo"
+10.2.68.141;"BRQ";""

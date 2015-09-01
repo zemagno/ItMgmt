@@ -67,6 +67,7 @@ def go
     	idt.RMLogin = f.Login
     	idt.RMDataAdmissao = f.DataAdmissao
     	idt.RMDataDemissao = f.DataDemissao
+    	idt.RMInterno      = f.NomAlocacao
     	idt.save!
     end
 

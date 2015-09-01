@@ -1,0 +1,3 @@
+10.2.66.198;"BRQ\rflaperuta";"BRQ\rflaperuta";"";""
+10.2.66.198;"";"";"BRQ\rflaperuta";"BRQ\rflaperuta"
+10.2.66.198;"brq";""

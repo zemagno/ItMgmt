@@ -1,0 +1,3 @@
+10.2.101.82;"BRQ\lucasrodrigues";"BRQ\lucasrodrigues";"";""
+10.2.101.82;"";"";"BRQ\lucasrodrigues";"BRQ\lucasrodrigues"
+10.2.101.82;"suportebrq";""

@@ -1,6 +1,5 @@
 class Identity < ActiveRecord::Base
-  attr_accessible :login, :ADUser, :ADCriadoem, :ADLastLogon, :ADExpiraem, :ADDataDesligamento, :ADUsuarioTipo, :GoogleprimaryEmail, :GooglelastLoginTime, :GoogleorgUnitPath,  :Googlesuspended, :GooglesuspensionReason, :GoogleLicenses
-
+  attr_accessible :login, :ADUser, :ADCriadoem, :ADLastLogon, :ADExpiraem, :ADDataDesligamento, :ADUsuarioTipo, :GoogleprimaryEmail, :GooglelastLoginTime, :GoogleorgUnitPath,  :Googlesuspended, :GooglesuspensionReason, :GoogleLicenses, :RMDataAdmissao, :RMLogin, :RMDataDemissao, :RmInterno
   before_save :sanitizar_campos
 
 

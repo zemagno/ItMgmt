@@ -1,0 +1,4 @@
+10.2.12.180;"BRQ\kelyporfirio";"BRQ\kelyporfirio";"";""
+10.2.12.180;"";"";"BRQ\kelyporfirio";"BRQ\kelyporfirio"
+10.2.12.180;"";"";"BRQ\kelyporfirio";"BRQ\kelyporfirio"
+10.2.12.180;"adm";""

@@ -1,0 +1,4 @@
+10.2.65.212;"BRQ\edsonshdw";"BRQ\edsonshdw";"";""
+10.2.65.212;"";"";"BRQ\equitrac";"BRQ\equitrac"
+10.2.65.212;"";"";"BRQ\imoura";"BRQ.COM\imoura"
+10.2.65.212;"";"";"BRQ\imoura";"BRQ.COM\imoura"

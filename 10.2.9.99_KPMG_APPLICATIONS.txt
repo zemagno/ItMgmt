@@ -1,0 +1,49 @@
+10.2.9.99;WCF Data Services 5.0 (for OData v3) Primary Components;20150211;5.0;5.0.50628.0;Microsoft Corporation
+10.2.9.99;Citrix Receiver(USB);20141124;14.1;14.1.0.0;Citrix Systems, Inc.
+10.2.9.99;Windows Live Essentials;20121129;14.0;14.0.8117.416;Microsoft Corporation
+10.2.9.99;Microsoft Visual C++ 2013 x86 Minimum Runtime - 12.0.21005;20150210;12.0;12.0.21005;Microsoft Corporation
+10.2.9.99;WCF Data Services Tools for Microsoft Visual Studio 2012;20150211;5.0;5.0.50710.0;Microsoft Corporation
+10.2.9.99; Tools for .Net 3.5;20150211;3.11;3.11.50727;Microsoft Corporation
+10.2.9.99;Microsoft Visual Studio 2012 Preparation;20150211;11.0;11.0.50727;Microsoft Corporation
+10.2.9.99;DameWare Mini Remote Control 8.0;20131028;8.0;8.0.1.151;SolarWinds
+10.2.9.99;Microsoft Silverlight 4 SDK;20150211;4.0;4.0.60310.0;Microsoft Corporation
+10.2.9.99;Microsoft .NET Framework 4.5 SDK;20150211;4.5;4.5.50709;Microsoft Corporation
+10.2.9.99;Citrix Receiver(SSON);20141124;14.1;14.1.0.0;Citrix Systems, Inc.
+10.2.9.99;Microsoft Visual Studio Team Foundation Server 2012 Team Explorer Language Pack - ENU;20150211;11.0;11.0.50727;Microsoft Corporation
+10.2.9.99;Microsoft Visual C++ 2012 x86 Debug Runtime - 11.0.50727;20150211;11.0;11.0.50727;Microsoft Corporation
+10.2.9.99;Microsoft Report Viewer Add-On for Visual Studio 2012;20150304;11.1;11.1.2802.16;Microsoft Corporation
+10.2.9.99;Microsoft Visual C++ 2008 Redistributable - x86 9.0.30729.4148;20150304;9.0;9.0.30729.4148;Microsoft Corporation
+10.2.9.99;Microsoft Visual C++ 2012 Compilers;20150211;11.0;11.0.50727;Microsoft Corporation
+10.2.9.99;Ferramenta de Carregamento do Windows Live;20121129;14.0;14.0.8014.1029;Microsoft Corporation
+10.2.9.99;Google Talk (remove only);;;;
+10.2.9.99;MSVCRT;20121129;14.0;14.0.1468.721;Microsoft
+10.2.9.99;Windows Software Development Kit DirectX x86 Remote;20150211;8.59;8.59.25584;Microsoft Corporation
+10.2.9.99;Lenovo System Update;20140605;5.5;5.05.0009;Lenovo
+10.2.9.99;Java 7 Update 60;20130527;7.0;7.0.600;Oracle
+10.2.9.99;Microsoft Visual C++ 2012 Microsoft Foundation Class Libraries;20150211;11.0;11.0.50727;Microsoft Corporation
+10.2.9.99;Microsoft Visual Studio Ultimate 2012 XAML UI Designer enu Resources;;;;
+10.2.9.99;PreEmptive Analytics Visual Studio Components;20150304;1.0;1.0.2180.1;PreEmptive Solutions
+10.2.9.99;Microsoft ASP.NET MVC 3 - Visual Studio 2012 Tools Update;20150304;3.0;3.0.30710.0;Microsoft Corporation
+10.2.9.99;Microsoft Visual C++ 2012 x86 Minimum Runtime - 11.0.50727;20150211;11.0;11.0.50727;Microsoft Corporation
+10.2.9.99;Windows Live Communications Platform;20121129;14.0;14.0.8117.416;Microsoft Corporation
+10.2.9.99;Microsoft Visual Studio 2012 Devenv;20150211;11.0;11.0.50727;Microsoft Corporation
+10.2.9.99;Microsoft Visual C++ 2012 Redistributable (x86) - 11.0.61030;;;11.0.61030.0;Microsoft Corporation
+10.2.9.99;Adobe AIR;20150520;17.0;17.0.0.172;Adobe Systems Incorporated
+10.2.9.99;M?dulo de Seguran?a - Banco do Brasil;20150622;;3.12.1.2;
+10.2.9.99;Dotfuscator and Analytics Community Edition;20150211;5.5;5.5.4521.29298;PreEmptive Solutions
+10.2.9.99;Microsoft Visual Studio 2012 Shell (Minimum) Resources;20150211;11.0;11.0.50727;Microsoft Corporation
+10.2.9.99;WCF RIA Services V1.0 SP2;20150211;4.1;4.1.61829.0;Microsoft Corporation
+10.2.9.99;Windows Software Development Kit for Windows Store Apps DirectX x86 Remote;20150211;8.59;8.59.25584;Microsoft Corporation
+10.2.9.99;BizAgi Process Modeler;20140605;1.4;1.4.0.0;Nome de sua empresa:
+10.2.9.99;Self-service Plug-in;20141124;4.1;4.1.0.41738;Citrix Systems, Inc.
+10.2.9.99;Java Auto Updater;20140605;2.1;2.1.60.19;Oracle, Inc.
+10.2.9.99;Assistente de Conex?o do Windows Live;20121129;5.0;5.000.818.5;Microsoft Corporation
+10.2.9.99;Blend for Visual Studio 2012 ENU resources;20150211;5.0;5.0.30709.0;Microsoft Corporation
+10.2.9.99;Microsoft ASP.NET Web Pages 2 - Visual Studio 2012 Tools;20150304;2.0;2.0.20710.0;Microsoft Corporation
+10.2.9.99;Blend for Visual Studio 2012;20150211;5.0;5.0.30709.0;Microsoft Corporation
+10.2.9.99;Windows Live Call;20121129;14.0;14.0.8117.0416;Microsoft Corporation
+10.2.9.99;Microsoft ASP.NET MVC 4 - Visual Studio 2012 Tools;20150304;4.0;4.0.20710.0;Microsoft Corporation
+10.2.9.99;Microsoft .NET Framework 4.5 Multi-Targeting Pack;20150211;4.5;4.5.50709;Microsoft Corporation
+10.2.9.99;Citrix Receiver Updater;20141124;4.1;4.1.0.56461;Citrix Systems, Inc.
+10.2.9.99;NextUp-ScanSoft Raquel Brazilian Portuguese Voice;20150701;4.0;4.0.0;NextUp.com
+10.2.9.99;Windows Software Development Kit;20150211;8.59;8.59.25584;Microsoft Corporation

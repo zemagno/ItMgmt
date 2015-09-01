@@ -1,0 +1,4 @@
+10.2.11.70;"BRQ\sauloyassoyama";"BRQ\sauloyassoyama";"";""
+10.2.11.70;"";"";"BRQ\sauloyassoyama";"BRQ\sauloyassoyama"
+10.2.11.70;"";"";"BRQ\sauloyassoyama";"BRQ\sauloyassoyama"
+10.2.11.70;"adm";""

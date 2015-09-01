@@ -1,0 +1,2 @@
+10.2.52.29;"BRQ\pedronjunior";"BRQ\pedronjunior";"";""
+10.2.52.29;"suportebrq";""

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ip: MyString
+  userid: MyString
+  contador: 1
+
+two:
+  ip: MyString
+  userid: MyString
+  contador: 1

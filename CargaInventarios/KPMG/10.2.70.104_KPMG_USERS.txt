@@ -1,0 +1,5 @@
+10.2.70.104;"BRQ\emmanuel";"BRQ\emmanuel";"";""
+10.2.70.104;"";"";"BRQ\sccmshdw";"BRQ\sccmshdw"
+10.2.70.104;"";"";"BRQ\emmanuel";"BRQ\emmanuel"
+10.2.70.104;"";"";"BRQ\emmanuel";"BRQ\emmanuel"
+10.2.70.104;"brq";""

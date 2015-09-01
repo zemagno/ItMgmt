@@ -1,0 +1,6 @@
+10.2.1.208;"BRQ\ealvessantosshdw";"BRQ\ealvessantosshdw";"";""
+10.2.1.208;"";"";"BRQ\ealvessantosshdw";"BRQ.COM\ealvessantosshdw"
+10.2.1.208;"";"";"BRQ\fportelashdw";"BRQ\fportelashdw"
+10.2.1.208;"";"";"BRQ\smartaoshdw";"brq.com\smartaoshdw"
+10.2.1.208;"";"";"BRQ\wmjuniorshdw";"BRQ.COM\wmjuniorshdw"
+10.2.1.208;"";"";"BRQ\smartaoshdw";"brq.com\smartaoshdw"

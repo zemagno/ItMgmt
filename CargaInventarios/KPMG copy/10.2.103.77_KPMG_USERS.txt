@@ -1,0 +1,6 @@
+10.2.103.77;"BRQ\rguedes";"BRQ\rguedes";"";""
+10.2.103.77;"";"";"BRQ\rguedes";"BRQ\rguedes"
+10.2.103.77;"";"";"BRQ\rguedes";"BRQ\rguedes"
+10.2.103.77;"";"";"BRQ\rguedes";"BRQ\rguedes"
+10.2.103.77;"";"";"BRQ\rguedes";"BRQ\rguedes"
+10.2.103.77;"brqadmusr";""

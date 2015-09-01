@@ -1,0 +1,5 @@
+10.2.0.140;"BRQ\edsonshdw";"BRQ\edsonshdw";"";""
+10.2.0.140;"";"";"BRQ\citrixxd";"BRQ.COM\citrixxd"
+10.2.0.140;"";"";"BRQ\leandrotavares";"brq\leandrotavares"
+10.2.0.140;"";"";"BRQ\leandrotavares";"brq\leandrotavares"
+10.2.0.140;"";"";"BRQ\leandrotavares";"brq\leandrotavares"

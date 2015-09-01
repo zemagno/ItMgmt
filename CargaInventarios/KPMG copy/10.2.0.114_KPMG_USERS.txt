@@ -1,0 +1,5 @@
+10.2.0.114;"BRQ\marcianascimento";"BRQ\marcianascimento";"";""
+10.2.0.114;"";"";"BRQ\marcianascimento";"BRQ\marcianascimento"
+10.2.0.114;"";"";"BRQ\marcianascimento";"BRQ\marcianascimento"
+10.2.0.114;"";"";"BRQ\marcianascimento";"BRQ.COM\marcianascimento"
+10.2.0.114;"brq";""

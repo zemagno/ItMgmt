@@ -1,0 +1,4 @@
+10.2.12.112;"BRQ\bbarreto";"BRQ.COM\bbarreto";"";""
+10.2.12.112;"";"";"BRQ\bbarreto";"BRQ.COM\bbarreto"
+10.2.12.112;"";"";"BRQ\bbarreto";"BRQ.COM\bbarreto"
+10.2.12.112;"adm";""

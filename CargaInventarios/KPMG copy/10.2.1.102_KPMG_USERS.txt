@@ -1,0 +1,6 @@
+10.2.1.102;"BRQ\edsonshdw";"BRQ\edsonshdw";"";""
+10.2.1.102;"";"";"BRQ\fportelashdw";"BRQ\fportelashdw"
+10.2.1.102;"";"";"BRQ\wmjuniorshdw";"BRQ\wmjuniorshdw"
+10.2.1.102;"";"";"BRQ\edsonshdw";"BRQ\edsonshdw"
+10.2.1.102;"";"";"BRQ\wmjuniorshdw";"BRQ\wmjuniorshdw"
+10.2.1.102;"";"";"BRQ\leandrocaronshdw";"leandrocaronshdw@brq.com"

@@ -1,0 +1,5 @@
+10.2.70.251;"BRQ\fabioalves";"BRQ\fabioalves";"";""
+10.2.70.251;"";"";"BRQ\fabioalves";"BRQ\fabioalves"
+10.2.70.251;"";"";"BRQ\vvigati";"BRQ\vvigati"
+10.2.70.251;"";"";"BRQ\fabioalves";"BRQ\fabioalves"
+10.2.70.251;"brq1";""

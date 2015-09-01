@@ -1,0 +1,1 @@
+10.2.73.201;"TEMPLATE-WIN-2K\admindc";".\admindc";"";""

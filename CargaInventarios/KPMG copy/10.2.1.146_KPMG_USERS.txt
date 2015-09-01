@@ -1,0 +1,5 @@
+10.2.1.146;"BRQ\cfelicioshdw";"BRQ\cfelicioshdw";"";""
+10.2.1.146;"";"";"BRQ\alineayres";"BRQ.COM\alineayres"
+10.2.1.146;"";"";"BRQ\sccmshdw";"BRQ\sccmshdw"
+10.2.1.146;"";"";"BRQ\alineayres";"BRQ.COM\alineayres"
+10.2.1.146;"admindc";""

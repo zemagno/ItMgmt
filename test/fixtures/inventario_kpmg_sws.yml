@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ip: MyString
+  sw: MyString
+  versao1: MyString
+  versao2: MyString
+  fabricante: MyString
+  data: 2015-08-27
+
+two:
+  ip: MyString
+  sw: MyString
+  versao1: MyString
+  versao2: MyString
+  fabricante: MyString
+  data: 2015-08-27

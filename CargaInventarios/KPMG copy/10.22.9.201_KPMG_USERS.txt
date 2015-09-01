@@ -1,0 +1,3 @@
+10.22.9.201;"MALCEFSRV01\brqserveradm";".\brqserveradm";"";""
+10.22.9.201;"";"";"BRQ\azavadisk";"BRQ\azavadisk"
+10.22.9.201;"";"";"BRQ\azavadisk";"BRQ.COM\azavadisk"

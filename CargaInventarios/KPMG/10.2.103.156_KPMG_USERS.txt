@@ -1,0 +1,7 @@
+10.2.103.156;"BRQ\rvieira_fteo";"BRQ\rvieira_fteo";"";""
+10.2.103.156;"";"";"BRQ\rvieira_fteo";"BRQ\rvieira_fteo"
+10.2.103.156;"";"";"BRQ\pmariano";"BRQ\pmariano"
+10.2.103.156;"";"";"BRQ\pmariano";"BRQ\pmariano"
+10.2.103.156;"";"";"BRQ\rbpsilva_fteo";"BRQ\rbpsilva_fteo"
+10.2.103.156;"";"";"BRQ\rvieira_fteo";"BRQ\rvieira_fteo"
+10.2.103.156;"suportebrq";""

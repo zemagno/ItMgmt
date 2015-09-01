@@ -1,0 +1,4 @@
+10.2.80.201;"TEMP-W2008-64\Administrator";".\Administrator";"";""
+10.2.80.201;"";"";"BRQ\fazevedoshdw";"BRQ\fazevedoshdw"
+10.2.80.201;"";"";"BRQ\fazevedoshdw";"BRQ\fazevedoshdw"
+10.2.80.201;"";"";"BRQ\smartaoshdw";"BRQ.COM\smartaoshdw"

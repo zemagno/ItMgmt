@@ -100,7 +100,7 @@ class ServiceCargaRm
         cmd2.sub! "{{userid}}", m1[0]
         cmd2.sub! "{{local_depois}}", m1[1][0][1].to_s
         cmd2.sub! "{{extint_depois}}", m1[1][0][2]
-        ProducaoAd.create(:userid => m1[0], :parametro => m1[1][0][1], :cmd => cmd2, :acao => "Novo", :processado => false )
+        ProducaoAd.create(:userid => m1[0], :parametro => m1[1][0][1], :cmd => cmd2, :acao => "Novo", :processado => false  , :dataExecucao => m1[1][0][0] )
       end
     end
 

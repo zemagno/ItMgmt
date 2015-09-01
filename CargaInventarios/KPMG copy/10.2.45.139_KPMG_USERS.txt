@@ -1,0 +1,7 @@
+10.2.45.139;"BRQ\rortolani";"BRQ\rortolani";"";""
+10.2.45.139;"";"";"BRQ\wferrara";"BRQ\wferrara"
+10.2.45.139;"";"";"BRQ\rortolani";"BRQ\rortolani"
+10.2.45.139;"";"";"BRQ\fernandonascimento";"BRQ\fernandonascimento"
+10.2.45.139;"";"";"BRQ\wferrara";"BRQ\wferrara"
+10.2.45.139;"";"";"BRQ\rortolani";"BRQ\rortolani"
+10.2.45.139;"brq";""

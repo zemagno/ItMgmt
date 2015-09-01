@@ -1,0 +1,5 @@
+10.2.8.247;"BRQ\leandrocaronshdw";"brq.com\leandrocaronshdw";"";""
+10.2.8.247;"";"";"BRQ\fportelashdw";"BRQ.COM\fportelashdw"
+10.2.8.247;"";"";"BRQ\fportelashdw";"BRQ.COM\fportelashdw"
+10.2.8.247;"";"";"BRQ\leandrocaronshdw";"brq.com\leandrocaronshdw"
+10.2.8.247;"";"";"BRQ\dkarolak";"BRQ.COM\dkarolak"

@@ -1,0 +1,4 @@
+10.2.9.140;"BRQ\hmgomes";"BRQ\hmgomes";"";""
+10.2.9.140;"";"";"BRQ\hmgomes";"BRQ\hmgomes"
+10.2.9.140;"";"";"BRQ\hmgomes";"BRQ.COM\hmgomes"
+10.2.9.140;"adm";""

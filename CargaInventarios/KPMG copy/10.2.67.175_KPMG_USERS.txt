@@ -1,0 +1,4 @@
+10.2.67.175;"BRQ\fabianoprazeres";"BRQ\fabianoprazeres";"";""
+10.2.67.175;"";"";"BRQ\fabianoprazeres";"BRQ\fabianoprazeres"
+10.2.67.175;"";"";"BRQ\fabianoprazeres";"BRQ\fabianoprazeres"
+10.2.67.175;"brq";""

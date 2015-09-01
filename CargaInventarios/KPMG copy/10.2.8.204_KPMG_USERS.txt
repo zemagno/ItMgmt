@@ -1,0 +1,5 @@
+10.2.8.204;"BRQ\fportelashdw";"brq\fportelashdw";"";""
+10.2.8.204;"";"";"BRQ\wmjuniorshdw";"BRQ.COM\wmjuniorshdw"
+10.2.8.204;"";"";"BRQ\wmjuniorshdw";"BRQ.COM\wmjuniorshdw"
+10.2.8.204;"";"";"BRQ\fportelashdw";"BRQ\fportelashdw"
+10.2.8.204;"";"";"BRQ\dkarolak";"BRQ.COM\dkarolak"

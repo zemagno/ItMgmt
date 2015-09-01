@@ -1,0 +1,7 @@
+10.2.88.136;"BRQ\icavalcante";"BRQ\icavalcante";"";""
+10.2.88.136;"";"";"BRQ\adsoncosta";"BRQ\adsoncosta"
+10.2.88.136;"";"";"BRQ\adsoncostashdw";"BRQ\adsoncostashdw"
+10.2.88.136;"";"";"BRQ\icavalcante";"BRQ\icavalcante"
+10.2.88.136;"";"";"BRQ\adsoncostashdw";"BRQ\adsoncostashdw"
+10.2.88.136;"";"";"BRQ\adsoncostashdw";"BRQ.COM\adsoncostashdw"
+10.2.88.136;"brqadmusr";""

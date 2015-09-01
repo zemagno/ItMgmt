@@ -1,0 +1,3 @@
+10.2.10.26;"BRQ\naujalis";"BRQ\naujalis";"";""
+10.2.10.26;"";"";"BRQ\naujalis";"BRQ\naujalis"
+10.2.10.26;"adm";""

@@ -1,0 +1,4 @@
+10.2.68.169;"BRQ\jcapelli";"BRQ\jcapelli";"";""
+10.2.68.169;"";"";"BRQ\jcapelli";"BRQ\jcapelli"
+10.2.68.169;"";"";"BRQ\jcapelli";"BRQ.COM\jcapelli"
+10.2.68.169;"teste";""
