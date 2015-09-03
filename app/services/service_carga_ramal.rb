@@ -10,11 +10,7 @@ def go
 	    r = ramais.map { |r| "#{r.IdtLocalidade} - #{r.NumRamal.to_s}" }.join(" / ") 
 	    f = Funcionario.find_by_Login(login)
 	    if ! f.nil? &&  f.ramal != r
-	    	puts "vou alterar ramal para #{r}"
 	    	f.ramal = r
-	    	puts f.NomProfissional
-	    	puts f.ramal
-	    	puts f.save!
 	    	f.save!
 	    	f.save
 	    end

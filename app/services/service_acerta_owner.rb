@@ -3,9 +3,9 @@ class ServiceAcertaOwner
 		Ci.find_each do |ci|
 			 if ci.Owner =~ /^[a-zA-z.]+$/ and ci.notificacao =~ /^[a-zA-z.]+$/
 			 	f = Funcionario.find_by_Login(ci.Owner)
-			 	if ! f.nil? and ! f.DataDemissao.nil? and f.DataDemissao < DateTime.now
+			 	if ! f.nil? and ! f.demitido?
 			 		novoGestor = Gestores.find_by_LoginFunc(ci.notificacao)
-			 		if ! novoGestor.nil?
+			 		if ! novoGestor.nil? and f.Login != novoGestor.LoginGestor
 			 			ci.Owner = novoGestor.LoginGestor
 			 			ci.save!
 			 			Event.register("Acerta Ci","Owner","detalhe","Novo gestor de #{ci.chave}:#{ci.notificacao} ==> #{novoGestor.LoginGestor}")

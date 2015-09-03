@@ -7,7 +7,7 @@ def go
 	antes = Ura.count *1.0
 	carga = Funcionario.where(DtaDemissao: nil).count *1.0
 	Funcionario.all.each do |f|
-    	if ! f.DataDemissao.nil?
+    	if ! f.demitido?
         	u = Ura.find_by_login(f.Login)
         	u.delete if  ! u.nil?
     	else

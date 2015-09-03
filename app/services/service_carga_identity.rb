@@ -5,7 +5,6 @@ class ServiceCargaIdentity
 
 
 def go
-	# configfile  = "/Users/zemagno/Dropbox/dev/ror/ItMgmt/externos_bsb.csv"
 
 	total_replaced = 0
 	total_created = 0
@@ -66,7 +65,7 @@ def go
 		end
     	idt.RMLogin = f.Login
     	idt.RMDataAdmissao = f.DataAdmissao
-    	idt.RMDataDemissao = f.DataDemissao
+    	idt.RMDataDemissao = f.DataRemocaoAcesso
     	idt.RMInterno      = f.NomAlocacao
     	idt.save!
     end

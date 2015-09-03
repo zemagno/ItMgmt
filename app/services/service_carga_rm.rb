@@ -19,23 +19,22 @@ class ServiceCargaRm
       f.IdtCodigoCentroCusto = f.IdtCodigoCentroCusto.nil? ? "" : f.IdtCodigoCentroCusto.force_encoding("ISO-8859-1").encode("UTF-8")
       f.NomCentroCusto = f.NomCentroCusto.nil? ? "" : f.NomCentroCusto.force_encoding("ISO-8859-1").encode("UTF-8")
       f.NomTipoCentroCusto = f.NomTipoCentroCusto.nil? ? "" : f.NomTipoCentroCusto.force_encoding("ISO-8859-1").encode("UTF-8")
-      f.OwnerCC = f.OwnerCC.nil? ? "" : f.OwnerCC.force_encoding("ISO-8859-1").encode("UTF-8")
       f.IdtCodigoSecao = f.IdtCodigoSecao.nil? ? "" : f.IdtCodigoSecao.force_encoding("ISO-8859-1").encode("UTF-8")
       f.NomLocalTrabalho = f.NomLocalTrabalho.nil? ? "" : f.NomLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8")
-      f.NomCidadeLocalTrabalho= f.NomCidadeLocalTrabalho.nil? ? "" : f.NomCidadeLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.NomCidadeLocalTrabalho = f.NomCidadeLocalTrabalho.nil? ? "" : f.NomCidadeLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8")
       f.IdtCentroCustoTorre = f.IdtCentroCustoTorre.nil? ? "" : f.IdtCentroCustoTorre.force_encoding("ISO-8859-1").encode("UTF-8")
       f.DscCentroCustoTorre = f.DscCentroCustoTorre.nil? ? "" : f.DscCentroCustoTorre.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.NomGestorProfissional  = f.NomGestorProfissional.nil? ? "" : f.NomGestorProfissional.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.NomEmailGestorProfissional = f.NomEmailGestorProfissional.nil? ? "" : f.NomEmailGestorProfissional.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.NomEstadoLocalTrabalho = f.NomEstadoLocalTrabalho.nil? ? "" : f.NomEstadoLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8")
       f.NomAlocacao = f.NomAlocacao.nil? ? "" : f.NomAlocacao.force_encoding("ISO-8859-1").encode("UTF-8")
     end
 
     # f2 = duas bases de dados de funcionarios (12115 registros)
 
-    f2 = (funcRm+func).map { |f| { login: f.Login.strip, demissao: f.DtaDemissao, local: f.IdLocalTrabalho ,interno: f.NomAlocacao, fullname: f.NomProfissional, cpf: f.IdtCPF }}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:demissao], f[:local], f[:interno], f[:fullname], f[:cpf]]}}
+    f2 = (funcRm+func).map { |f| { login: f.Login.strip, remocaoAcesso: f.DtaRemocaoAcesso, local: f.IdLocalTrabalho ,interno: f.NomAlocacao, fullname: f.NomProfissional, cpf: f.IdtCPF }}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:remocaoAcesso], f[:local], f[:interno], f[:fullname], f[:cpf]]}}
 
-    # f2 = (funcRm+func).map { |f| { login: f.Login, demissao: f.DtaDemissao, local: (f.NomLocalTrabalho.nil? ? f.NomLocalTrabalho : f.NomLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8")),interno: f.NomAlocacao}}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:demissao], f[:local], f[:interno]]}}
-
-
-
+  
     # Contratados sao os que so constam numa base de dados, logo o group acima so retornou um valor (38)
     novos = f2.map { |k,v| {k => v} if v[1].nil? }.delete_if { |k| k.nil?}
 
@@ -124,13 +123,13 @@ class ServiceCargaRm
       fnew.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional
       fnew.DtaAdmissao = f.DtaAdmissao
       fnew.DtaDemissao   = f.DtaDemissao
+      
       fnew.NomEmailBRQ = f.NomEmailBRQ.nil? ? "" : f.NomEmailBRQ
       fnew.IdtCPF = f.IdtCPF.nil? ? "" : f.IdtCPF
       fnew.IdtRG = f.IdtRG.nil? ? "" : f.IdtRG
       fnew.IdtCodigoCentroCusto = f.IdtCodigoCentroCusto.nil? ? "" : f.IdtCodigoCentroCusto
       fnew.NomCentroCusto = f.NomCentroCusto.nil? ? "" : f.NomCentroCusto
       fnew.NomTipoCentroCusto = f.NomTipoCentroCusto.nil? ? "" : f.NomTipoCentroCusto
-      fnew.OwnerCC = f.OwnerCC.nil? ? "" : f.OwnerCC
       fnew.IdtCodigoSecao = f.IdtCodigoSecao.nil? ? "" : f.IdtCodigoSecao
       fnew.IdLocalTrabalho = f.IdLocalTrabalho
       fnew.NomLocalTrabalho = f.NomLocalTrabalho.nil? ? "" : f.NomLocalTrabalho
@@ -138,6 +137,11 @@ class ServiceCargaRm
       fnew.IdtCentroCustoTorre = f.IdtCentroCustoTorre.nil? ? "" : f.IdtCentroCustoTorre
       fnew.DscCentroCustoTorre = f.DscCentroCustoTorre.nil? ? "" : f.DscCentroCustoTorre
       fnew.NomAlocacao = f.NomAlocacao.nil? ? "" : f.NomAlocacao
+      fnew.DtaRemocaoAcesso  = f.DtaRemocaoAcesso.nil? ? "" : f.DtaRemocaoAcesso
+      fnew.FlgIndicaRetorno  = f.FlgIndicaRetorno.nil? ? "" : f.FlgIndicaRetorno
+      fnew.NomGestorProfissional  = f.NomGestorProfissional.nil? ? "" : f.NomGestorProfissional
+      fnew.NomEmailGestorProfissional  = f.NomEmailGestorProfissional.nil? ? "" : f.NomEmailGestorProfissional.gsub(/@brq.com/,"")
+      fnew.NomEstadoLocalTrabalho  = f.NomEstadoLocalTrabalho.nil? ? "" : f.NomEstadoLocalTrabalho
       fnew.save!
       total = total + 1
     end

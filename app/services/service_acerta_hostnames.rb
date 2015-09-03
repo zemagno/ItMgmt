@@ -1,6 +1,11 @@
 class ServiceAcertaHostnames
 
 	
+	def evento(_chave,_hostname_antigo,_hostname_novo)
+		Event.register("Acerta Estacao","Hostname","detalhe","Novo hostname de #{_chave}. De:#{_hostname_antigo} Para:#{_hostname_novo}")
+	end
+
+
 
 	ActiveRecord::Base.logger.level = 1
 	def go
@@ -14,9 +19,9 @@ class ServiceAcertaHostnames
 			status = 99
 			# puts "#{hostname} #{serial}"
 			if ! serial.nil?
-			   c = Ci.where(chave: serial).first
-			   if ! c.nil? 
-			   	   hostname_ci = c._hostname
+			   ci = Ci.where(chave: serial).first
+			   if ! ci.nil? 
+			   	   hostname_ci = ci._hostname
 			   	   hostname_ci =~ /^(NB|NT|DT|nb)(RJ|MA|KE|DF|PP)?(\d{4,6}E?)$/
 			   	   serial_ci = $3
 			   	   if serial_ci == serial 
@@ -27,26 +32,28 @@ class ServiceAcertaHostnames
 			   	   	   	else
 					      # puts "Hostname eh diferente. Vou atualizar hostname [#{hostname}]:[#{serial}] | [#{hostname_ci}]:[#{serial_ci}]"
 					      total_atualizacoes[1] = total_atualizacoes[1] + 1
-					      c._hostname = hostname
-					      c.save!
+					      ci._hostname = hostname
+					      ci.save!
+					      evento(ci.chave,hostname_ci,hostname)
 					      status = 1
 				   		end
 				   else
-						puts "ops..serial nao eh o mesmo [#{hostname}]:[#{serial}] | [#{hostname_ci}]:[#{serial_ci}]"
+						#puts "ops..serial nao eh o mesmo [#{hostname}]:[#{serial}] | [#{hostname_ci}]:[#{serial_ci}]"
 						total_atualizacoes[2] = total_atualizacoes[2] + 1
-						c._hostname = hostname
-					    c.save!
+						ci._hostname = hostname
+					    ci.save!
+  					    evento(ci.chave,hostname_ci,hostname)
 					    status = 2
 
 				   end
 				else
-					puts "Hostname/serial nao achado. [#{hostname}]:[#{serial}]"
+					#puts "Hostname/serial nao achado. [#{hostname}]:[#{serial}]"
 					total_atualizacoes[3] = total_atualizacoes[3] + 1
 					status = 3
 					
 				end
 			else
-				puts "serial nao achado. Nao deve ser estacao [#{hostname}]:[#{serial}]"
+				# puts "serial nao achado. Nao deve ser estacao [#{hostname}]:[#{serial}]"
 				total_atualizacoes[4] = total_atualizacoes[4] + 1
 				status = 4
 			    

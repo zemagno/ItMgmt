@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150901135441) do
+ActiveRecord::Schema.define(:version => 20150903210904) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -154,14 +154,6 @@ ActiveRecord::Schema.define(:version => 20150901135441) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "cc", :id => false, :force => true do |t|
-    t.string "LoginFunc",   :limit => 30, :default => "", :null => false
-    t.string "Nome",        :limit => 50
-    t.string "LoginGestor", :limit => 30, :default => "", :null => false
-    t.string "NomeGestor"
-    t.string "CC",          :limit => 10
   end
 
   create_table "chamados", :force => true do |t|
@@ -339,22 +331,21 @@ ActiveRecord::Schema.define(:version => 20150901135441) do
 
   create_table "funcionarios", :primary_key => "Login", :force => true do |t|
     t.integer "NumMatrProfissional"
-    t.string  "NomProfissional",        :limit => 50
+    t.string  "NomProfissional",            :limit => 50
     t.date    "DtaAdmissao"
     t.date    "DtaDemissao"
-    t.string  "NomEmailBRQ",            :limit => 50
-    t.string  "IdtCPF",                 :limit => 20
-    t.string  "IdtRG",                  :limit => 20
-    t.string  "IdtCodigoCentroCusto",   :limit => 10
+    t.string  "NomEmailBRQ",                :limit => 50
+    t.string  "IdtCPF",                     :limit => 20
+    t.string  "IdtRG",                      :limit => 20
+    t.string  "IdtCodigoCentroCusto",       :limit => 10
     t.string  "NomCentroCusto"
     t.string  "NomTipoCentroCusto"
-    t.string  "OwnerCC"
-    t.string  "IdtCodigoSecao",         :limit => 10
-    t.string  "NomLocalTrabalho",       :limit => 50
-    t.string  "NomCidadeLocalTrabalho", :limit => 50
-    t.string  "IdtCentroCustoTorre",    :limit => 10
-    t.string  "DscCentroCustoTorre",    :limit => 50
-    t.string  "NomAlocacao",            :limit => 50
+    t.string  "IdtCodigoSecao",             :limit => 10
+    t.string  "NomLocalTrabalho",           :limit => 50
+    t.string  "NomCidadeLocalTrabalho",     :limit => 50
+    t.string  "IdtCentroCustoTorre",        :limit => 10
+    t.string  "DscCentroCustoTorre",        :limit => 50
+    t.string  "NomAlocacao",                :limit => 50
     t.string  "ramal"
     t.string  "observacao"
     t.boolean "semEstacao"
@@ -362,10 +353,14 @@ ActiveRecord::Schema.define(:version => 20150901135441) do
     t.boolean "cipa"
     t.boolean "brigadista"
     t.boolean "afastado"
+    t.date    "DtaRemocaoAcesso"
+    t.boolean "FlgIndicaRetorno"
+    t.string  "NomGestorProfissional",      :limit => 50
+    t.string  "NomEmailGestorProfissional", :limit => 30
+    t.string  "NomEstadoLocalTrabalho",     :limit => 10
   end
 
   add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
-  add_index "funcionarios", ["OwnerCC"], :name => "onwerfunc"
 
   create_table "google_accounts", :id => false, :force => true do |t|
     t.string   "login",        :limit => 50
@@ -499,6 +494,14 @@ ActiveRecord::Schema.define(:version => 20150901135441) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "status"
+  end
+
+  create_table "licenciamento_ms_de_paras", :force => true do |t|
+    t.string   "licencaOrig"
+    t.string   "licenca"
+    t.string   "catLicenca"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "log_desligamentos", :force => true do |t|

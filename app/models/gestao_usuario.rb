@@ -11,16 +11,25 @@ class GestaoUsuario
         end
     end
 
+    # def SenhaTelefonia
+    #     tls = TelLoginSenha.where(:IdtLogin => login)
+    #     senhas = ""
+    #     tls.each do |t|
+    #         senhas << t.NumSenha.to_s
+    #         senhas << " "
+    #     end
+    #     senhas
+    # end
+
     def SenhaTelefonia
-        tls = TelLoginSenha.where(:IdtLogin => login)
+        tls = TelLoginSenha.where(:description => login)
         senhas = ""
         tls.each do |t|
-            senhas << t.NumSenha.to_s
+            senhas << t.password.to_s
             senhas << " "
         end
         senhas
     end
-
 
     def Usuario
         @funcionario ||= Funcionario.find_by_Login(@login) 
@@ -129,8 +138,8 @@ class GestaoUsuario
             end
         end
 
-        distorcoes << "Usuario nao eh mais funcionario. Liberar licencas" if (!self.Usuario.nil?) and (! self.Usuario.DataDemissao.nil?) and (self.LicencasEmUso.count >0) 
-        distorcoes << "Usuario nao eh mais funcionario. Liberar estacoes" if (!self.Usuario.nil?) and (! self.Usuario.DataDemissao.nil?) and (self.Estacoes.count >0) 
+        distorcoes << "Usuario nao eh mais funcionario. Liberar licencas" if (!self.Usuario.nil?) and (! self.Usuario.demitido?) and (self.LicencasEmUso.count >0) 
+        distorcoes << "Usuario nao eh mais funcionario. Liberar estacoes" if (!self.Usuario.nil?) and (! self.Usuario.demitido?) and (self.Estacoes.count >0) 
         
 
 

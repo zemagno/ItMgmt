@@ -14,10 +14,10 @@
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
       <%= "- Matricula: #{@funcionario.Matricula}" %>
       </br><%= "CPF: #{@funcionario.CPF} - Identidade: #{@funcionario.Identidade}" %>
-      </br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataDemissao}" %>
+      </br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataRemocaoAcesso}" %>
       </br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
       <%= " - Posicao: #{@posicaoFacilities} "  %>   
-      </br><%= "Gestor: #{@funcionario.OwnerCC}" %>
+      </br><%= "Gestor: #{@funcionario.NomeGestor}" %>
       </br><%= "Ramais: #{@ramais}" %> - <%= @funcionario.status %>
 
       <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true)%>
