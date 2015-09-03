@@ -56,9 +56,10 @@ class EnviaEmailWorker
     when "GESTAO USUARIO" 
          puts "EnviaEmailWorker::GESTAO USUARIO" 
          # TODO simplificar isso aqui..
-         usr = GestaoUsuario.new(login: params[:id])
+         login = params[:id]
+         usr = GestaoUsuario.new(login: login )
          
-         destinatario = ListaEmail.acerta("magno","@brq.com")
+         destinatario = ListaEmail.acerta(login,"@brq.com")
          from = "servicedesk@brq.com"
          cc =  ""
          CiMailer.enviar(template.template,usr,"Service Desk - #{template.nome}",destinatario,cc,from).deliver

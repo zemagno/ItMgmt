@@ -36,7 +36,8 @@ class ServiceAuditSw001
 		LicenciamentoMsDePara.all.each { |x|  licencas[x.licencaOrig]= [x.licenca,x.catLicenca] }
 		InventarioSw.all.each do |sw|
 			puts sw
-			update(hw.userid,hw.hostname) do |inv| 
+			
+			update(sw.userid,sw.softhostname) do |inv| 
 				inv.sccm = true 
 			end
 		end

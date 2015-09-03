@@ -30,7 +30,7 @@ class ServiceCargaRm
 
     # f2 = duas bases de dados de funcionarios (12115 registros)
 
-    f2 = (funcRm+func).map { |f| { login: f.Login, demissao: f.DtaDemissao, local: f.IdLocalTrabalho ,interno: f.NomAlocacao, fullname: f.NomProfissional, cpf: f.IdtCPF }}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:demissao], f[:local], f[:interno], f[:fullname], f[:cpf]]}}
+    f2 = (funcRm+func).map { |f| { login: f.Login.strip, demissao: f.DtaDemissao, local: f.IdLocalTrabalho ,interno: f.NomAlocacao, fullname: f.NomProfissional, cpf: f.IdtCPF }}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:demissao], f[:local], f[:interno], f[:fullname], f[:cpf]]}}
 
     # f2 = (funcRm+func).map { |f| { login: f.Login, demissao: f.DtaDemissao, local: (f.NomLocalTrabalho.nil? ? f.NomLocalTrabalho : f.NomLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8")),interno: f.NomAlocacao}}.group_by { |func| func[:login]}.each { |login, infos| infos.map! { |f| [f[:demissao], f[:local], f[:interno]]}}
 
@@ -94,7 +94,6 @@ class ServiceCargaRm
 
     if comandoAdNovos != "N/A" && ! comandoAdNovos.nil?
       novos.each do |m|
-        puts "Gerar : #{m[0]} Novo #{m.flatten[1][0][1]}"
         cmd2 = comandoAdNovos.dup
         m1 = m.flatten
         cmd2.sub! "{{userid}}", m1[0]
@@ -107,7 +106,7 @@ class ServiceCargaRm
     if comandoAdDemitidos != "N/A" &&  ! comandoAdDemitidos.nil?
       demitidos.each do |m|
         
-        puts "Gerar : #{m.flatten[0]} Demitidos #{m.flatten[1][0][1]}"
+       
         cmd3 = comandoAdDemitidos.dup
         m1 = m.flatten
         puts "Demitito #{m1}"
