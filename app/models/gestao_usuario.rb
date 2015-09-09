@@ -21,6 +21,16 @@ class GestaoUsuario
     #     senhas
     # end
 
+
+    def Status
+        # gestor = Funcionario.where(NomEmailGestorProfissional: login).count > 0
+
+        status=Hash.new
+        status["gestor?"] = Funcionario.where(NomEmailGestorProfissional: login).count > 0 ? "Sim" : "Nao"
+
+        status
+    end
+
     def SenhaTelefonia
         tls = TelLoginSenha.where(:description => login)
         senhas = ""

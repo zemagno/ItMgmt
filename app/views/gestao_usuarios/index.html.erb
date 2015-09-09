@@ -17,7 +17,7 @@
       </br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataRemocaoAcesso}" %>
       </br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
       <%= " - Posicao: #{@posicaoFacilities} "  %>   
-      </br><%= "Gestor: #{@funcionario.NomeGestor}" %>
+      </br><%= "Gestor Direto: #{@funcionario.NomeGestor}" %><%= " - É Gestor ? #{@usuario.Status['gestor?']} "%>
       </br><%= "Ramais: #{@ramais}" %> - <%= @funcionario.status %>
 
       <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true)%>
