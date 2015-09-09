@@ -6,6 +6,8 @@ class ServiceCargaIdentity
 
 def go
 
+	detalhe = ""
+
 	total_replaced = 0
 	total_created = 0
 

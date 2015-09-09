@@ -7,6 +7,6 @@ LOAD DATA INFILE '/Users/zemagno/Dropbox/dev/ror/ItMgmt/CargaInventarios/HW/hw.o
         TERMINATED BY ','
         ENCLOSED BY '"'
      (@Tipo,@Patrimonio,@hostname,@fabricante,@modelo,@numSerie,@processador,@memoria,@hd,@so,@nf,@dataCompra,@obs,@login,@dataUltimoLogin,@matricula,@solicitacao,@site)
-    set hostname=@hostname,fabricante=@fabricante,modelo=@modelo,numSerie=@numSerie,processador=@processador,memoria=@memoria,hd=@hd,so=@so,login=@login,dataUltimoLogin=@dataUltimoLogin,site=@site
+    set hostname=@hostname,fabricante=@fabricante,modelo=@modelo,numSerie=@numSerie,processador=@processador,memoria=@memoria,hd=@hd,so=@so,userid=@login,dataUltimoLogin=@dataUltimoLogin,site=@site
 ;
 
