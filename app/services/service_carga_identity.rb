@@ -19,7 +19,7 @@ def go
     	# config = JSON.parse(File.read(configfile[:configfile]))
 
     	path = Parametro.get(:tipo => "PATH", :subtipo => "MassiveImportIdentities")
-
+path="/Users/zemagno/Dropbox/dev/ror/ItMgmt/balanceline/massive_import_identities.config"
     	config = JSON.parse(File.read(path))
     	fileAD = config["AD"]
     	fileGoogle = config["Google"]
@@ -72,7 +72,7 @@ def go
     	idt.save!
     end
 
-	detalhe << "Total de registros criado #{total_created}"
+	detalhe << "Total de registros criado #{total_created} - "
 	detalhe << "Total de registros atualizados #{total_replaced}"
 	
 	status = "Ok"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150903210904) do
+ActiveRecord::Schema.define(:version => 20150909032039) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -395,6 +395,7 @@ ActiveRecord::Schema.define(:version => 20150903210904) do
     t.string   "RMLogin",                :limit => 30
     t.datetime "RMDataAdmissao"
     t.datetime "RMDataDemissao"
+    t.string   "ADDN"
   end
 
   add_index "identities", ["ADUser"], :name => "index_identities_on_ADUser"
