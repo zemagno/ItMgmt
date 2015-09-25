@@ -1,4 +1,0 @@
-10.2.102.213;"BRQ\rsampaio";"BRQ\rsampaio";"";""
-10.2.102.213;"";"";"BRQ\rsampaio";""
-10.2.102.213;"";"";"BRQ\rsampaio";""
-10.2.102.213;"MicrosoftAccount\brqadmusr@hotmail.com";""

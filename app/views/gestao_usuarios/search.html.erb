@@ -1,12 +1,16 @@
 <h1>Funcionarios</h1>
 
-<%= link_to "Pesqdduisar novamente", "/GestaoUsuarios?search=#{@f[0].Login}" %>
+<%= link_to "Pesquisar novamente", "/GestaoUsuarios?search=''" %>
 <table>
   <tr>
     <th>Login</th>
     <th>Nome</th>
     
   </tr>
+
+<% if @f.count==0 %>
+   <p><p>Nenhum usuario achado 
+<% end %>  
 
 <% @f.each do |func| %>
   <tr>

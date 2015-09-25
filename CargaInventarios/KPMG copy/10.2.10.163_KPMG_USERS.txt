@@ -1,3 +1,0 @@
-10.2.10.163;"BRQ\adrianodib";"BRQ\adrianodib";"";""
-10.2.10.163;"";"";"BRQ\adrianodib";"BRQ\adrianodib"
-10.2.10.163;"adm";""

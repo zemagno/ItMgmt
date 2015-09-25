@@ -1,3 +1,0 @@
-10.2.1.109;"BRQ\smartaoshdw";"BRQ\smartaoshdw";"";""
-10.2.1.109;"";"";"SPSERVER109\administrator";".\administrator"
-10.2.1.109;"";"";"BRQ\cfelicioshdw";"BRQ\cfelicioshdw"

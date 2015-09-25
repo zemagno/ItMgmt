@@ -1,4 +1,0 @@
-10.2.101.128;"BRQ\guilhermeviana";"BRQ\guilhermeviana";"";""
-10.2.101.128;"";"";"BRQ\hugop";"BRQ\hugop"
-10.2.101.128;"";"";"BRQ\guilhermeviana";"BRQ\guilhermeviana"
-10.2.101.128;"suportebrq";""

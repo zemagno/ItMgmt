@@ -1,3 +1,0 @@
-10.2.101.174;"BRQ\eprata";"BRQ\eprata";"";""
-10.2.101.174;"";"";"BRQ\eprata";"BRQ\eprata"
-10.2.101.174;"brqadmusr";""

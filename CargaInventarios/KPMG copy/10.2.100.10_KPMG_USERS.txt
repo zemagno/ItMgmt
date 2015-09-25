@@ -1,5 +1,0 @@
-10.2.100.10;"BRQ\evertongoncalves";"BRQ\evertongoncalves";"";""
-10.2.100.10;"";"";"BRQ\evertongoncalves";"BRQ\evertongoncalves"
-10.2.100.10;"";"";"BRQ\lvieira";"BRQ.COM\lvieira"
-10.2.100.10;"";"";"BRQ\evertongoncalves";"BRQ.COM\evertongoncalves"
-10.2.100.10;"suportebrq";""

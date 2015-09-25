@@ -1,0 +1,4 @@
+10.2.10.197;"BRQ\wsantiago";"BRQ\wsantiago";"";""
+10.2.10.197;"";"";"BRQ\wsantiago";"BRQ\wsantiago"
+10.2.10.197;"";"";"BRQ\wsantiago";"BRQ\wsantiago"
+10.2.10.197;"brqadmusr";""

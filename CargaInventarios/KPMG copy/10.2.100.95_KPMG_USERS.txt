@@ -1,3 +1,0 @@
-10.2.100.95;"BRQ\priscilacardozo";"BRQ\priscilacardozo";"";""
-10.2.100.95;"";"";"BRQ\priscilacardozo";"BRQ\priscilacardozo"
-10.2.100.95;"suportebrq";""

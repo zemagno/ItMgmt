@@ -1,3 +1,0 @@
-10.2.100.81;"BRQ\gcampos";"BRQ\gcampos";"";""
-10.2.100.81;"";"";"BRQ\gcampos";"BRQ\gcampos"
-10.2.100.81;"hugo";""

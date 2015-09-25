@@ -28,6 +28,11 @@ class ServiceCargaRm
       f.NomEmailGestorProfissional = f.NomEmailGestorProfissional.nil? ? "" : f.NomEmailGestorProfissional.force_encoding("ISO-8859-1").encode("UTF-8")
       f.NomEstadoLocalTrabalho = f.NomEstadoLocalTrabalho.nil? ? "" : f.NomEstadoLocalTrabalho.force_encoding("ISO-8859-1").encode("UTF-8")
       f.NomAlocacao = f.NomAlocacao.nil? ? "" : f.NomAlocacao.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.DscCentroCustoBU        = f.DscCentroCustoBU.nil? ? "" : f.DscCentroCustoBU.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.DscCentroCustoExecutivo = f.DscCentroCustoExecutivo.nil? ? "" : f.DscCentroCustoExecutivo.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.IdtCentroCustoBU        = f.IdtCentroCustoBU.nil? ? "" : f.IdtCentroCustoBU.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.IdtCentroCustoExecutivo = f.IdtCentroCustoExecutivo.nil? ? "" : f.IdtCentroCustoExecutivo.force_encoding("ISO-8859-1").encode("UTF-8")
+      f.NomEmailPessoal         = f.NomEmailPessoal.nil? ? "" : f.NomEmailPessoal.force_encoding("ISO-8859-1").encode("UTF-8")
     end
 
     # f2 = duas bases de dados de funcionarios (12115 registros)
@@ -123,7 +128,8 @@ class ServiceCargaRm
       fnew.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional
       fnew.DtaAdmissao = f.DtaAdmissao
       fnew.DtaDemissao   = f.DtaDemissao
-      
+      fnew.DtaRemocaoAcesso  = f.DtaRemocaoAcesso.nil? ? "" : f.DtaRemocaoAcesso
+      fnew.DtaRemocaoAcesso = (f.DtaRemocaoAcesso.nil? && ! f.DtaDemissao.nil?) ? f.DtaDemissao : fnew.DtaRemocaoAcesso
       fnew.NomEmailBRQ = f.NomEmailBRQ.nil? ? "" : f.NomEmailBRQ
       fnew.IdtCPF = f.IdtCPF.nil? ? "" : f.IdtCPF
       fnew.IdtRG = f.IdtRG.nil? ? "" : f.IdtRG
@@ -137,12 +143,22 @@ class ServiceCargaRm
       fnew.IdtCentroCustoTorre = f.IdtCentroCustoTorre.nil? ? "" : f.IdtCentroCustoTorre
       fnew.DscCentroCustoTorre = f.DscCentroCustoTorre.nil? ? "" : f.DscCentroCustoTorre
       fnew.NomAlocacao = f.NomAlocacao.nil? ? "" : f.NomAlocacao
-      fnew.DtaRemocaoAcesso  = f.DtaRemocaoAcesso.nil? ? "" : f.DtaRemocaoAcesso
+      
       fnew.FlgIndicaRetorno  = f.FlgIndicaRetorno.nil? ? "" : f.FlgIndicaRetorno
       fnew.NomGestorProfissional  = f.NomGestorProfissional.nil? ? "" : f.NomGestorProfissional
       fnew.NomEmailGestorProfissional  = f.NomEmailGestorProfissional.nil? ? "" : f.NomEmailGestorProfissional.gsub(/@brq.com/,"")
       fnew.NomEstadoLocalTrabalho  = f.NomEstadoLocalTrabalho.nil? ? "" : f.NomEstadoLocalTrabalho
+
+      fnew.DscCentroCustoBU        = f.DscCentroCustoBU.nil?        ? "" : f.DscCentroCustoBU
+      fnew.DscCentroCustoExecutivo = f.DscCentroCustoExecutivo.nil? ? "" : f.DscCentroCustoExecutivo
+      fnew.IdtCentroCustoBU        = f.IdtCentroCustoBU.nil?        ? "" : f.IdtCentroCustoBU
+      fnew.IdtCentroCustoExecutivo = f.IdtCentroCustoExecutivo.nil? ? "" : f.IdtCentroCustoExecutivo
+      fnew.NomEmailPessoal         = f.NomEmailPessoal.nil?         ? "" : f.NomEmailPessoal
+
+
+
       fnew.save!
+
       total = total + 1
     end
 

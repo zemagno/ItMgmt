@@ -1,5 +1,0 @@
-10.2.103.45;"BRQ\caiogreco";"BRQ\caiogreco";"";""
-10.2.103.45;"";"";"BRQ\caiogreco";"BRQ\caiogreco"
-10.2.103.45;"";"";"BRQ\caiogreco";"BRQ.COM\caiogreco"
-10.2.103.45;"";"";"BRQ\caiogreco";"BRQ\caiogreco"
-10.2.103.45;"suportebrq";""

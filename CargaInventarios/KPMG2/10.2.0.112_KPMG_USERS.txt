@@ -1,0 +1,8 @@
+10.2.0.112;"BRQ\citrixxd";"BRQ\citrixxd";"";""
+10.2.0.112;"";"";"BRQ\pmendes";"brq\pmendes"
+10.2.0.112;"";"";"BRQ\rsagara";"brq\rsagara"
+10.2.0.112;"";"";"BRQ\jaquelinetoliveira";"BRQ\jaquelinetoliveira"
+10.2.0.112;"";"";"BRQ\citrixxd";"brq\citrixxd"
+10.2.0.112;"";"";"BRQ\asantos";"brq\asantos"
+10.2.0.112;"";"";"BRQ\pmarques";"brq\pmarques"
+10.2.0.112;"";"";"BRQ\rsagara";"brq\rsagara"

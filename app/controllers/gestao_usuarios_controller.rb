@@ -135,7 +135,7 @@ def enviar_email
       p = Hash[:id => params[:id]]
       job = JobEnviarEmail.criar(params[:template_id], p.to_yaml)
       EnviaEmailWorker.perform_async(job.id)
-      #EnviaEmailWorker.perform_in(1.hour,job.id)
+      
       flash[:info] = "INFO: Email enfileirado para envio"
       respond_to do |format|
           format.js { 

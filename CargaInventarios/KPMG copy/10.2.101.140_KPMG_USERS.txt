@@ -1,5 +1,0 @@
-10.2.101.140;"BRQ\fernandabispo";"BRQ\fernandabispo";"";""
-10.2.101.140;"";"";"BRQ\fernandabispo";"BRQ\fernandabispo"
-10.2.101.140;"";"";"BRQ\lgfranco";"BRQ\lgfranco"
-10.2.101.140;"";"";"BRQ\fernandabispo";"BRQ\fernandabispo"
-10.2.101.140;"suportebrq";""

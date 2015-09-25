@@ -2,7 +2,7 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
-  get "identities/:id", to: "Identities#show", as: "identities" 
+  get "identities/:id", to: "Identities#show", as: "identities" , :constraints => { :id => /.*/ }
 
   get "my_pusher", to: "my_pusher#index"
 

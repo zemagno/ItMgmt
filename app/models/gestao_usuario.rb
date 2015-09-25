@@ -49,6 +49,11 @@ class GestaoUsuario
         @ramais ||= TelRamalLogin.where(IdtLogin: @login).map { |x| "#{x.IdtLocalidade} - #{x.NumRamal.to_s}" }.join(" / ")
     end
 
+    def Telefones
+        
+        # @telefones ||= TelRamalLogin.where(IdtLogin: @login).map { |x| "#{x.IdtLocalidade} - #{x.NumRamal.to_s[0..1]} #{x.NumPrefixo}-#{x.NumRamal.to_s[2..5]}" }.join(" / ")
+    end
+
     def retrieveCIs(_tipoci)
         Ci.where(notificacao: @login, tipoci_id: _tipoci, statusci_id: 1).map { |x| {:chave => x.chave,:descricao => x.descricao,:gestor => x.Owner,:CCDebito => x.CCDebito, :ProjetoDebito => x.ProjetoDebito, :status => ""} }
     end
@@ -80,7 +85,7 @@ class GestaoUsuario
         end 
 
         funcionario = Funcionario.find_by_Login(@login) 
-        @estacoes << {:chave => "Sem Estacao", :descricao => funcionario.observacao, :gestor => "", :CCDebito => "",  :ProjetoDebito => "", :dataEntrega => "",  :dataDevolucao => "", :status => "",:detalhes => funcionario.observacao}  if funcionario.semEstacao
+        @estacoes << {:chave => "Sem Estacao", :descricao => funcionario.observacao, :gestor => "", :CCDebito => "",  :ProjetoDebito => "", :dataEntrega => "",  :dataDevolucao => "", :status => "",:detalhes => funcionario.observacao}  if ! funcionario.nil? and funcionario.semEstacao
         @estacoes
         
     end
@@ -148,8 +153,8 @@ class GestaoUsuario
             end
         end
 
-        distorcoes << "Usuario nao eh mais funcionario. Liberar licencas" if (!self.Usuario.nil?) and (! self.Usuario.demitido?) and (self.LicencasEmUso.count >0) 
-        distorcoes << "Usuario nao eh mais funcionario. Liberar estacoes" if (!self.Usuario.nil?) and (! self.Usuario.demitido?) and (self.Estacoes.count >0) 
+        distorcoes << "Usuario nao eh mais funcionario. Liberar licencas" if (!self.Usuario.nil?) and (self.Usuario.demitido?) and (self.LicencasEmUso.count >0) 
+        distorcoes << "Usuario nao eh mais funcionario. Liberar estacoes" if (!self.Usuario.nil?) and (self.Usuario.demitido?) and (self.Estacoes.count >0) 
         
 
 

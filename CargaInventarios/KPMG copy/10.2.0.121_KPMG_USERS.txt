@@ -1,4 +1,0 @@
-10.2.0.121;"BRQ\andreiarodrigues";"BRQ\andreiarodrigues";"";""
-10.2.0.121;"";"";"BRQ\andreiarodrigues";"BRQ.COM\andreiarodrigues"
-10.2.0.121;"";"";"BRQ\andreiarodrigues";"BRQ.COM\andreiarodrigues"
-10.2.0.121;"brq";""

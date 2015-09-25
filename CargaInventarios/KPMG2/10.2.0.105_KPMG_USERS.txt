@@ -1,0 +1,5 @@
+10.2.0.105;"BRQ\citrixxd";"BRQ.COM\citrixxd";"";""
+10.2.0.105;"";"";"BRQ\citrixdb";"brq\citrixdb"
+10.2.0.105;"";"";"BRQ\citrixxd";"BRQ.COM\citrixxd"
+10.2.0.105;"";"";"BRQ\igorfreire";"BRQ.COM\igorfreire"
+10.2.0.105;"";"";"BRQ\igorfreire";"BRQ.COM\igorfreire"

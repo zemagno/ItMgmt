@@ -1,5 +1,0 @@
-10.2.101.151;"BRQ\claytonoliveira";"BRQ.COM\claytonoliveira";"";""
-10.2.101.151;"";"";"BRQ\claytonoliveira";"BRQ.COM\claytonoliveira"
-10.2.101.151;"";"";"BRQ\dalbernaz";"BRQ.COM\dalbernaz"
-10.2.101.151;"";"";"BRQ\claytonoliveira";"BRQ.COM\claytonoliveira"
-10.2.101.151;"suportebrq";""

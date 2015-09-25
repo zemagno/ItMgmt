@@ -1,0 +1,4 @@
+10.2.102.165;"BRQ\ricardocouto";"BRQ.COM\ricardocouto";"";""
+10.2.102.165;"";"";"BRQ\ricardocouto";"BRQ.COM\ricardocouto"
+10.2.102.165;"";"";"BRQ\ricardocouto";"BRQ.COM\ricardocouto"
+10.2.102.165;"suportebrq";""

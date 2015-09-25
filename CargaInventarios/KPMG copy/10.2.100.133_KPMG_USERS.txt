@@ -1,3 +1,0 @@
-10.2.100.133;"BRQ\denislopes";"BRQ\denislopes";"";""
-10.2.100.133;"";"";"BRQ\denislopes";"denislopes@brq.com"
-10.2.100.133;"brqadmusr";""

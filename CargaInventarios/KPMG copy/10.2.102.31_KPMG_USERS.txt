@@ -1,5 +1,0 @@
-10.2.102.31;"BRQ\anakrieger";"BRQ\anakrieger";"";""
-10.2.102.31;"";"";"BRQ\anakrieger";"BRQ\anakrieger"
-10.2.102.31;"";"";"BRQ\lrsantos";"BRQ\lrsantos"
-10.2.102.31;"";"";"BRQ\anakrieger";"BRQ\anakrieger"
-10.2.102.31;"suportebrq";""

@@ -1,0 +1,5 @@
+10.2.100.155;"BRQ\msobrinho";"BRQ\msobrinho";"";""
+10.2.100.155;"";"";"BRQ\msobrinho";""
+10.2.100.155;"";"";"BRQ\msobrinho";""
+10.2.100.155;"";"";"BRQ\msobrinho";""
+10.2.100.155;"brqadmusr";""

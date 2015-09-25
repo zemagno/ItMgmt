@@ -1,6 +1,0 @@
-10.2.1.141;"BRQ\ealvessantosshdw";"BRQ\ealvessantosshdw";"";""
-10.2.1.141;"";"";"BRQ\rbpsilva_fteo";"BRQ.COM\rbpsilva_fteo"
-10.2.1.141;"";"";"BRQ\smsilva";"BRQ.COM\smsilva"
-10.2.1.141;"";"";"BRQ\mgsouza";"BRQ.COM\mgsouza"
-10.2.1.141;"";"";"BRQ\pneto";"BRQ.COM\pneto"
-10.2.1.141;"";"";"BRQ\smsilva";"BRQ.COM\smsilva"

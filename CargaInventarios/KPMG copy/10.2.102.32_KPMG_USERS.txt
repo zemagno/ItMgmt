@@ -1,4 +1,0 @@
-10.2.102.32;"BRQ\reamco";"BRQ\reamco";"";""
-10.2.102.32;"";"";"BRQ\reamco";"BRQ\reamco"
-10.2.102.32;"";"";"BRQ\reamco";"BRQ\reamco"
-10.2.102.32;"suportebrq";""

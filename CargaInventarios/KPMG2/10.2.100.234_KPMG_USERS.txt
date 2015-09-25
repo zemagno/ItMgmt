@@ -1,0 +1,7 @@
+10.2.100.234;"BRQ\rafaellacerda";"BRQ\rafaellacerda";"";""
+10.2.100.234;"";"";"BRQ\rafaellacerda";"BRQ\rafaellacerda"
+10.2.100.234;"";"";"BRQ\rafaellacerda";"BRQ.COM\rafaellacerda"
+10.2.100.234;"";"";"BRQ\rafaellacerda";"BRQ\rafaellacerda"
+10.2.100.234;"";"";"BRQ\rafaellacerda";"BRQ.COM\rafaellacerda"
+10.2.100.234;"";"";"BRQ\rafaellacerda";"BRQ\rafaellacerda"
+10.2.100.234;"suportebrq";""

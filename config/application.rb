@@ -21,7 +21,7 @@ module ItMgmt
     # )
 
 
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache', { expires_in: 90.minutes }
+    config.cache_store = :redis_store #, 'redis://10.0.2.2:6379/0/cache', { expires_in: 90.minutes }
     # config.cache_classes = true
     # # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.

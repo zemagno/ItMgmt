@@ -44,7 +44,6 @@ class EnviaEmailWorker
          CiMailer.enviar(template.template,task,"NOC - #{template.nome} - #{task.id}",destinatario,cc,from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{task.id}] em #{Time.now}"  
     when "MAILING"
-         
          params[:to] = ListaEmail.acerta(params[:to],"@brq.com")
          params[:from] = ListaEmail.acerta(params[:from],"@brq.com")
          params[:cc] = ListaEmail.acerta(params[:cc],"@brq.com")
@@ -54,17 +53,15 @@ class EnviaEmailWorker
          job.status = "Email enviado para #{params[:to]}. #{job.templates_email.template} em #{Time.now}" 
          Event.register("email","mailing","detalhe","Enviado to:#{params[:to]} - subject:#{params[:subject]} - from: #{params[:from]}")  
     when "GESTAO USUARIO" 
-         puts "EnviaEmailWorker::GESTAO USUARIO" 
          # TODO simplificar isso aqui..
          login = params[:id]
          usr = GestaoUsuario.new(login: login )
-         
          destinatario = ListaEmail.acerta(login,"@brq.com")
          from = "servicedesk@brq.com"
          cc =  ""
          CiMailer.enviar(template.template,usr,"Service Desk - #{template.nome}",destinatario,cc,from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{usr.login}] em #{Time.now}"  
-         Event.register("email","Gestao Usuario","detalhe","Gestao Usuario - email direto - #{template.nome} - #{usr.login}")  
+         Event.register("email","Gestao Usuario","detalhe","Gestao Usuario - email direto - #{template.nome} - #{usr.login}")
     end
     job.save!
   end

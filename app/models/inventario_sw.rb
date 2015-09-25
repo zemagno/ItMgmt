@@ -1,3 +1,11 @@
 class InventarioSw < ActiveRecord::Base
-  attr_accessible :estacao, :software
+  # set_primary_key :hostname
+  attr_accessible :hostname, :software
+
+  def self.licencaEstacao(estacoes)
+  	self.where("hostname IN (?)", estacoes).pluck(:software)
+  end
+
+  
+
 end

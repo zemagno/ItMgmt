@@ -1,4 +1,0 @@
-10.2.102.167;"BRQ\denislopes";"denislopes@brq.com";"";""
-10.2.102.167;"";"";"BRQ\denislopes";"denislopes@brq.com"
-10.2.102.167;"";"";"BRQ\denislopes";"denislopes@brq.com"
-10.2.102.167;"brqadmusr";""

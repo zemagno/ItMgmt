@@ -1,5 +1,0 @@
-10.2.103.137;"BRQ\cintiacaetano";"BRQ\cintiacaetano";"";""
-10.2.103.137;"";"";"BRQ\cintiacaetano";"BRQ\cintiacaetano"
-10.2.103.137;"";"";"BRQ\cintiacaetano";"BRQ\cintiacaetano"
-10.2.103.137;"";"";"BRQ\cintiacaetano";"BRQ\cintiacaetano"
-10.2.103.137;"suportebrq";""

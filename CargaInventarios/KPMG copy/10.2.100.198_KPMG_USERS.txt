@@ -1,4 +1,0 @@
-10.2.100.198;"BRQ\hugop";"BRQ\hugop";"";""
-10.2.100.198;"";"";"BRQ\sandracp";"BRQ.COM\sandracp"
-10.2.100.198;"";"";"BRQ\sandracp";"BRQ.COM\sandracp"
-10.2.100.198;"suportebrq";""
