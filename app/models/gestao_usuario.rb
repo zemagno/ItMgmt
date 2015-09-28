@@ -46,7 +46,15 @@ class GestaoUsuario
     end
 
     def Ramais
-        @ramais ||= TelRamalLogin.where(IdtLogin: @login).map { |x| "#{x.IdtLocalidade} - #{x.NumRamal.to_s}" }.join(" / ")
+        @ramais ||= TelRamalLogin.where(IdtLogin: @login).map do |x| 
+            if x.NumRamal.to_s =~ /(\d\d)(\d\d\d\d)/
+                # se for 6 digitos, tranformo prefixo+ramal em ddd+prefixo+ramal
+                "#{x.IdtLocalidade} - (#{$1}) #{x.Ramal.NumPrefixo}-#{$2}" 
+            else
+                "#{x.IdtLocalidade} - #{x.NumRamal.to_s}"
+            end
+        end
+        @ramais.join(" / ")
     end
 
     def Telefones

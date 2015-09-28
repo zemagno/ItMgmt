@@ -1,9 +1,6 @@
 require 'csv'
 class ServiceCargaIdentity
 
-
-
-
 def go
 
 	detalhe = ""
@@ -12,30 +9,16 @@ def go
 	total_created = 0
 
 	Identity.delete_all
-
-    # if configfile.kind_of? Rake::TaskArguments    	
- 	
-    # 	puts "Config file [#{configfile[:configfile]}]"
-    	# config = JSON.parse(File.read(configfile[:configfile]))
-
-    	path = Parametro.get(:tipo => "PATH", :subtipo => "MassiveImportIdentities")
-    	config = JSON.parse(File.read(path))
-    	fileAD = config["AD"]
-    	fileGoogle = config["Google"]
-    	puts config
-    # end
-
-
-    # if ! File.exist?(fileAD) || ! File.exist?(fileGoogle)
-    # 	puts "arquivo nao exite. Terminando tarefa"
-    # 	return "Erro"
-    # end
+   	path = Parametro.get(:tipo => "PATH", :subtipo => "MassiveImportIdentities")
+   	config = JSON.parse(File.read(path))
 
     config.each do |provider, file|   
 		dados = CSV.read(file, headers: true)
+		detalhe << "Provider #{provider} - "
 		dados.each do |linha|
 			chave = linha[:User.to_s].gsub("\t","").strip if provider=="AD"
 			chave = linha[:primaryEmail.to_s].gsub("\t","").strip.gsub!(/@[^\s]+/,"") if provider=="Google"
+			chave = linha[:User.to_s].gsub("\t","").strip.gsub(/@[^\s]+/,"") if provider=="Zimbra" || provider="ZMail"
 			idt = Identity.find_or_initialize_by_login(chave)
 			if idt.id.nil?
 				total_created = total_created + 1
@@ -45,18 +28,22 @@ def go
 
 			
 
+			# dados.headers.each do |h|
+			# 	linha[h] = linha[h].upcase if linha[h]=="True"
+			# 	idt.send("#{provider}#{h}=",linha[h].gsub("\t","").strip) if idt.respond_to?("#{provider}#{h}") && ! linha[h].nil?
+			# end
 			dados.headers.each do |h|
-				linha[h] = linha[h].upcase if linha[h]=="True"
-				idt.send("#{provider}#{h}=",linha[h].gsub("\t","").strip) if idt.respond_to?("#{provider}#{h}") && ! linha[h].nil?
-			end
-
-			# Date.strptime('20011131', '%Y%m%d')
-
-			
+                linha[h] = linha[h].upcase if linha[h]=="True"
+                idt.send("#{provider}#{h}=",linha[h].gsub("\t","").gsub(/@[^\s]+/,"").strip) if idt.respond_to?("#{provider}#{h}") && ! linha[h].nil?
+            end
+  			
 			idt.save! 
 		end
+		detalhe << "Total de registros criado #{total_created} - "
+		detalhe << "Total de registros atualizados #{total_replaced}"
 	end
-    
+  
+  	detalhe << "Provider: Funcionario"  
     Funcionario.all.each do |f|
     	idt = Identity.find_or_initialize_by_login(f.Login)
     	if idt.id.nil?

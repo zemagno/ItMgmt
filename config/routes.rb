@@ -2,11 +2,11 @@ require 'sidekiq/web'
 
 ItMgmt::Application.routes.draw do
 
+
+  get "Gestores/:id", to: "GestaoGestores#index", as: "Gestores" , :constraints => { :id => /.*/ }
+
+
   get "identities/:id", to: "Identities#show", as: "identities" , :constraints => { :id => /.*/ }
-
-  get "my_pusher", to: "my_pusher#index"
-
-  post  "my_pusher/publica"
 
   post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento" 
 

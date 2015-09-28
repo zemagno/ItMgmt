@@ -1,14 +1,24 @@
 class ServiceAcertaOwner
+	
 	def go
+		status = "Ok"
+		detalhe = ""
+		totalUpdated = 0
 		Ci.find_each do |ci|
 			 if ci.Owner =~ /^[a-zA-z.]+$/ and ci.notificacao =~ /^[a-zA-z.]+$/
-			 	f = Funcionario.find_by_Login(ci.Owner)
-			 	if ! f.nil? and ! f.demitido?
-			 		novoGestor = Gestores.find_by_LoginFunc(ci.notificacao)
-			 		if ! novoGestor.nil? and f.Login != novoGestor.LoginGestor
-			 			ci.Owner = novoGestor.LoginGestor
-			 			ci.save!
-			 			Event.register("Acerta Ci","Owner","detalhe","Novo gestor de #{ci.chave}:#{ci.notificacao} ==> #{novoGestor.LoginGestor}")
+			 	gestor = Funcionario.find_by_Login(ci.Owner)
+			 	usuario = Funcionario.find_by_Login(ci.notificacao)
+			 	if ! gestor.nil? and gestor.demitido? and ! usuario.nil? and ! usuario.demitido?
+			 		novoGestor = usuario.gestor
+			 		if ! novoGestor.nil? and gestor.Login != novoGestor
+			 			ci.Owner = novoGestor
+			 			begin
+				 			ci.save!
+				 		rescue
+				 		end
+			 			Event.register("Acerta Ci","Owner","detalhe","Novo gestor de #{ci.chave}:#{ci.notificacao} ==> #{novoGestor}")
+			 			totalUpdated = totalUpdated + 1
+
 			 		end
 			 	end
 			 end
@@ -16,6 +26,8 @@ class ServiceAcertaOwner
 			 # estacao --> prefiro nao liberar por codigo e sim por processo
 			 # licenca --> liberar por processo, enviando comando para estrutura do AD / sccm
 		end
+	detalhe << "Acerta Gestor - total de #{totalUpdated} gestores atualizados"
+	[status,detalhe]
 	end
 end
 

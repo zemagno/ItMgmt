@@ -1,4 +1,5 @@
 class ServiceMailing
+# ServiceMailing --> carrega o resultado de uma consulta (cadrelatorios) e carrega no JobEnviarEmails.
 
 
 

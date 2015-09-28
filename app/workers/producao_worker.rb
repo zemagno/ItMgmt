@@ -25,6 +25,10 @@ class ProducaoWorker
        status,detalhes = Object::const_get("ServiceCarga#{$1}").new().go
     end
 
+    if job.job =~ /^Acerta_([a-zA-Z0-9]+)$/
+       status,detalhes = Object::const_get("ServiceAcerta#{$1}").new().go
+    end
+
     if job.job =~ /^Mailing_([a-zA-Z0-9]+)$/
        puts "vou enviar [#{$1}]"
        status,detalhes = Object::const_get("ServiceMailing").new().go($1)

@@ -21,7 +21,8 @@ class Funcionario < ActiveRecord::Base
   alias_attribute :NomeCC,			:NomCentroCusto
   alias_attribute :NomeCidadeTrabalho,:NomCidadeLocalTrabalho
   alias_attribute :NomeLocalTrabalho,:NomLocalTrabalho
-  alias_attribute :NomeTipoCC,  		:NomTipoCentroCusto
+  alias_attribute :NomeTipoCC,      :NomTipoCentroCusto
+  alias_attribute :gestor,  		:NomEmailGestorProfissional
 
 def status
   status_func = ""

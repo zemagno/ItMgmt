@@ -1,6 +1,11 @@
 class LicenciamentoGestor
 
 
+#
+# g = LicenciamentoGestor.new("ronaldocarvalho")
+# l = g.niceSoftwareEmUso
+
+
 # colocar hardcoded para nao enviar para andrea, tonyr, benjamin e monica, pelo menos ate inventario estar ok
 
 	def initialize(_login)
@@ -23,18 +28,18 @@ class LicenciamentoGestor
 
 	def niceSoftwareEmUso
 		@matrixUserSw = []
-		@dadosGestor = [@funcionario.NomProfissional]
+		@dadosGestor = [[@funcionario.NomProfissional]]
 	
 
 		@custoSoftware = @custoSoftware || CustoSoftware.licencasExistentes
 		@custoSoftware.delete_if{ |s| s[:status]==0}
 	
-		l = ["Funcionario"]
+		l = ["Funcionario","Funcionario"]
 		@custoSoftware.each{|c| l << c[:software]}
 		l << "Total Mensal"
 		@matrixUserSw << l
 
-		totalGeral = ["Total Geral"]
+		totalGeral = ["Total Geral","Total Geral"]
 		subTotalGeralSw = [] 
 		subContGeralSw = []
 		totalGeralSw = 0
@@ -44,6 +49,7 @@ class LicenciamentoGestor
 			l = [sw[0],sw[1]]
 			c = 0
 			@custoSoftware.each do |cs|
+				subTotalGeralSw[c] = 0 if subTotalGeralSw[c].nil?
 				if sw[2].include? cs[:software] 
 					# puts "#{sw[0]} - tem softare #{sw[2]} - #{cs[:software]}"
 					l << '%.2f' % cs[:custoMensal] 
@@ -60,23 +66,23 @@ class LicenciamentoGestor
 				end
 				c = c + 1
 			end
-			l << '%.2f' % subtotal 
+			l << (subtotal ==0 ? "-" : '%.2f' % subtotal )
 			@matrixUserSw << l
 		end
 		puts subTotalGeralSw[0]
 		puts subTotalGeralSw[1]
-		subTotalGeralSw.each {|v| totalGeral <<  (v.nil? ? "-" : '%.2f' % v ) }
+		subTotalGeralSw.each {|v| totalGeral <<  (v.nil? || v=="-" || v==0 ? "-" : '%.2f' % v ) }
 		totalGeral << '%.2f' % totalGeralSw
 		@matrixUserSw << totalGeral
 
 
-		@matrixSw = ["Software","Qtde","Custo Mensal"]
+		@matrixSw = [["Software","Qtde","Custo Mensal"]]
 		c = 0
 		@custoSoftware.each do |cs|
 			@matrixSw << [cs[:software],subContGeralSw[c].nil? ? "-" : subContGeralSw[c], subTotalGeralSw[c].nil? ? "-" : "%.2f" % subTotalGeralSw[c]]
 			c = c + 1
 		end
-		@matrixSw << ["Total Geral","",totalGeral]
+		@matrixSw << ["Total Geral","",'%.2f' % totalGeralSw]
 
 
 		[@dadosGestor,@matrixUserSw,@matrixSw]

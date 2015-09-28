@@ -62,6 +62,20 @@ class EnviaEmailWorker
          CiMailer.enviar(template.template,usr,"Service Desk - #{template.nome}",destinatario,cc,from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{usr.login}] em #{Time.now}"  
          Event.register("email","Gestao Usuario","detalhe","Gestao Usuario - email direto - #{template.nome} - #{usr.login}")
+     when "GESTAO LICENCA" 
+
+         gestor=LicenciamentoGestor.new(params[:gestor])
+         if ! gestor.nil?
+             licencas=gestor.niceSoftwareEmUso
+             licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
+             destinatario = "magno@brq.com"
+             from = "magno@brq.com"
+             cc =  ""
+             CiMailer.enviar(template.template,licencas,"Extrato Mensal: Uso de Software",destinatario,cc,from).deliver
+             job.status = "Email enviado para #{destinatario}. Extrato Mensal de Uso de Software em #{Time.now}"  
+             Event.register("email","Gestao Licenca","detalhe","Gestao Licenca - email direto - #{template.nome} - #{gestor}")
+          end
+      
     end
     job.save!
   end

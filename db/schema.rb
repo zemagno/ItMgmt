@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150924143129) do
+ActiveRecord::Schema.define(:version => 20150928195442) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -256,13 +256,6 @@ ActiveRecord::Schema.define(:version => 20150924143129) do
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
 
-  create_table "email_externos", :force => true do |t|
-    t.string   "login"
-    t.string   "provedor"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "events", :force => true do |t|
     t.string   "tipo",       :limit => 20
     t.string   "subtipo",    :limit => 40
@@ -355,12 +348,6 @@ ActiveRecord::Schema.define(:version => 20150924143129) do
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"
   add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
 
-  create_table "google_accounts", :id => false, :force => true do |t|
-    t.string   "login",        :limit => 50
-    t.boolean  "ativo"
-    t.datetime "ultimoAcesso"
-  end
-
   create_table "heranca_checklists", :force => true do |t|
     t.integer  "pai_id"
     t.integer  "filho_id"
@@ -370,26 +357,36 @@ ActiveRecord::Schema.define(:version => 20150924143129) do
   end
 
   create_table "identities", :force => true do |t|
-    t.string   "login",                  :limit => 30
-    t.string   "ADUser",                 :limit => 30
+    t.string   "login",                       :limit => 30
+    t.string   "ADUser",                      :limit => 30
     t.date     "ADCriadoEm"
     t.date     "ADLastLogon"
     t.date     "ADExpiraEm"
     t.date     "ADDataDesligamento"
-    t.string   "ADUsuarioTipo",          :limit => 30
-    t.string   "GoogleprimaryEmail",     :limit => 30
+    t.string   "ADUsuarioTipo",               :limit => 30
+    t.string   "GoogleprimaryEmail",          :limit => 30
     t.datetime "GooglelastLoginTime"
     t.string   "GoogleorgUnitPath"
     t.boolean  "Googlesuspended"
     t.string   "GooglesuspensionReason"
     t.string   "GoogleLicenses"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.string   "RMLogin",                :limit => 30
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.string   "RMLogin",                     :limit => 30
     t.datetime "RMDataAdmissao"
     t.datetime "RMDataDemissao"
+    t.string   "RMInterno",                   :limit => 30
     t.string   "ADDN"
-    t.string   "RMInterno",              :limit => 30
+    t.string   "ZMailUser",                   :limit => 30
+    t.string   "ZMailStatus"
+    t.datetime "ZMailUltimologon"
+    t.string   "ZMailRedirect"
+    t.string   "ZMailLocalDeliveryDisabled"
+    t.string   "ZimbraUser",                  :limit => 30
+    t.string   "ZimbraStatus"
+    t.datetime "ZimbraUltimologon"
+    t.string   "ZimbraRedirect"
+    t.string   "ZimbraLocalDeliveryDisabled"
   end
 
   add_index "identities", ["ADUser"], :name => "index_identities_on_ADUser"
@@ -401,6 +398,16 @@ ActiveRecord::Schema.define(:version => 20150924143129) do
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "inventario_kpmg_sw", :id => false, :force => true do |t|
+    t.string "software", :limit => 50
+    t.string "hostname", :limit => 20
+  end
+
+  create_table "inventario_kpmg_user", :id => false, :force => true do |t|
+    t.string "hostname", :limit => 20
+    t.string "login",    :limit => 30
   end
 
   create_table "inventario_sws", :force => true do |t|

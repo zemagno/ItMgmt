@@ -5,7 +5,7 @@ class ServiceLiberaCis
     	Ci.where(tipoci_id: filtro).find_each do |ci|
 	      	if ci.notificacao =~ /^[a-zA-z.]+$/
 	        	f = Funcionario.find_by_Login(ci.notificacao)
-	       		if ! f.nil? and ! f.demitido?
+	       		if ! f.nil? and f.demitido?
 	          		cmds = params[ci.tipoci_id.to_s]
 	          		cmds.each do |cmd|
 	            		attr=cmd.split("=")[0]
@@ -13,7 +13,10 @@ class ServiceLiberaCis
 	            		ci.send("#{attr}=",v)
 	          		end
 	          		puts ci
-	          		!ci.save
+	          		begin
+				 		ci.save!
+			 		rescue
+			 		end
 	          		Event.register("Acerta Ci","Liberar Licenca","detalhe","Liberado #{ci.chave}:#{ci.descricao} : #{f.Login} : desligamento em #{f.DataDemissao}")
 	        	end
 	      	end
