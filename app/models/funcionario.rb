@@ -1,7 +1,8 @@
 class Funcionario < ActiveRecord::Base
   set_primary_key :Login
   attr_accessible  :Login,  :NumMatrProfissional,:NomProfissional,:DtaAdmissao,:DtaDemissao,:NomEmailBRQ,:IdtCPF,:IdtRG,:IdtCodigoCentroCusto,:NomCentroCusto,:NomTipoCentroCusto,:IdtCodigoSecao,:NomLocalTrabalho,:NomCidadeLocalTrabalho, :IdtCentroCustoTorre,:DscCentroCustoTorre, :NomAlocacao, :IdLocalTrabalho, :cipa, :semEstacao, :observacao, :brigadista, :afastado,
-                   :DtaRemocaoAcesso, :FlgIndicaRetorno, :NomGestorProfissional, :NomEmailGestorProfissional, :NomEstadoLocalTrabalho
+                   :DtaRemocaoAcesso, :FlgIndicaRetorno, :NomGestorProfissional, :NomEmailGestorProfissional, :NomEstadoLocalTrabalho,
+                   :ramalSendoExterno
 
 
   alias_attribute :CCTorre ,			:IdtCentroCustoTorre

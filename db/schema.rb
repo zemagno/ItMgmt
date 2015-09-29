@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150929181038) do
+ActiveRecord::Schema.define(:version => 20150929192136) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -356,6 +356,7 @@ ActiveRecord::Schema.define(:version => 20150929181038) do
     t.string  "IdtCentroCustoBU",           :limit => 30
     t.string  "IdtCentroCustoExecutivo",    :limit => 30
     t.string  "NomEmailPessoal",            :limit => 50
+    t.boolean "ramalSendoExterno"
   end
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"

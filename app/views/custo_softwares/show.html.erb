@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Software:</b>
+  <%= @custo_software.software %>
+</p>
+
+<p>
+  <b>Customensal:</b>
+  <%= @custo_software.custoMensal %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @custo_software.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_custo_software_path(@custo_software) %> |
+<%= link_to 'Back', custo_softwares_path %>

@@ -1,0 +1,29 @@
+<%= form_for(@custo_software) do |f| %>
+  <% if @custo_software.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@custo_software.errors.count, "error") %> prohibited this custo_software from being saved:</h2>
+
+      <ul>
+      <% @custo_software.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Software %><br />
+    <%= f.text_field :software %>
+  </div>
+  <div class="field">
+    <%= f.label "Custo Mensal" %><br />
+    <%= f.text_field :custoMensal %>
+  </div>
+  <div class="field">
+    <%= f.label "Status" %><br />
+    <%= f.number_field :status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

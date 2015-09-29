@@ -23,7 +23,7 @@ select
   sum(c.custoMensal)
 from 
   UsoUnicoSoftware s,
-  Custo_Softwares c
+  custo_softwares c
 where 
 	c.software=s.software and 
     c.customensal<>0 

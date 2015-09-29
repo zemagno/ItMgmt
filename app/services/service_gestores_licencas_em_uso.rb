@@ -9,6 +9,8 @@ class ServiceGestoresLicencasEmUso
 
 		gestores = gestores || Funcionario.where(DtaDemissao: nil).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
 		totalEnviado = 0
+
+
 		
 		gestores.reject! { |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
 

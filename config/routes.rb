@@ -3,6 +3,9 @@ require 'sidekiq/web'
 ItMgmt::Application.routes.draw do
 
 
+  resources :custo_softwares
+
+
   get "Licencas/PorGestor/:id", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /.*/ }
 
 
