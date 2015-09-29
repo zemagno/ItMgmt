@@ -16,9 +16,14 @@ class LicenciamentoGestor
 		@funcionarios = @funcionarios || Funcionario.where(DtaDemissao: nil, NomEmailGestorProfissional: @login).map{|f| [f.Login,f.NomProfissional]} #pluck(:Login) #,:NomProfissional)
 	end
 
+
+	def terceiros
+		@terceiros = @terceiros || Ci.where(tipoci_id: 51, Owner: @login, statusci_id: 1).map{|ci| [ci.chave,ci.descricao]}
+	end
+
 	def softwareEmUso
 		@sw = []
-		funcionarios.each do |f|
+		(funcionarios+terceiros).each do |f|
 			func = LicenciamentoUsuario.new(f)
 			@sw << [f[0],f[1],func.softwareEmUso]
 		end
@@ -28,6 +33,7 @@ class LicenciamentoGestor
 
 	def niceSoftwareEmUso
 		@matrixUserSw = []
+		
 		@dadosGestor = [[@funcionario.NomProfissional]]
 	
 
@@ -69,8 +75,7 @@ class LicenciamentoGestor
 			l << (subtotal ==0 ? "-" : '%.2f' % subtotal )
 			@matrixUserSw << l
 		end
-		puts subTotalGeralSw[0]
-		puts subTotalGeralSw[1]
+
 		subTotalGeralSw.each {|v| totalGeral <<  (v.nil? || v=="-" || v==0 ? "-" : '%.2f' % v ) }
 		totalGeral << '%.2f' % totalGeralSw
 		@matrixUserSw << totalGeral

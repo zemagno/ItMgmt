@@ -7,7 +7,7 @@ gem 'hirb'
 gem 'bunny', '~> 1.7.0'
 
 
-# gem 'tiny_tds'
+gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter'
 gem 'will_paginate', '~> 3.0'
 

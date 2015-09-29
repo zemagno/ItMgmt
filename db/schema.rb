@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150928195442) do
+ActiveRecord::Schema.define(:version => 20150929181038) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -192,6 +192,12 @@ ActiveRecord::Schema.define(:version => 20150928195442) do
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
   add_index "cis", ["notificacao"], :name => "index_cis_on_notificacao"
 
+  create_table "cobrancamensalusosoftware", :id => false, :force => true do |t|
+    t.string  "login"
+    t.text    "softwares"
+    t.decimal "customensal", :precision => 32, :scale => 0
+  end
+
   create_table "contratos", :force => true do |t|
     t.string   "codcontrato"
     t.string   "descricao"
@@ -255,6 +261,13 @@ ActiveRecord::Schema.define(:version => 20150928195442) do
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
+
+  create_table "email_externos", :force => true do |t|
+    t.string   "login"
+    t.string   "provedor"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.string   "tipo",       :limit => 20
@@ -347,6 +360,12 @@ ActiveRecord::Schema.define(:version => 20150928195442) do
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"
   add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
+
+  create_table "google_accounts", :id => false, :force => true do |t|
+    t.string   "login",        :limit => 50
+    t.boolean  "ativo"
+    t.datetime "ultimoAcesso"
+  end
 
   create_table "heranca_checklists", :force => true do |t|
     t.integer  "pai_id"
@@ -778,6 +797,11 @@ ActiveRecord::Schema.define(:version => 20150928195442) do
     t.string "CustoAnual",   :limit => 45
     t.string "Gestor",       :limit => 200
     t.string "Usuario",      :limit => 200
+  end
+
+  create_table "usounicosoftware", :id => false, :force => true do |t|
+    t.string "Login"
+    t.string "Software"
   end
 
   create_table "versions", :force => true do |t|

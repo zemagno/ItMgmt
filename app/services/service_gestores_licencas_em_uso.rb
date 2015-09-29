@@ -7,7 +7,7 @@ class ServiceGestoresLicencasEmUso
 
 
 
-		gestores = gestores || Funcionario.where(DtaDemissao: nil).take(10).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
+		gestores = gestores || Funcionario.where(DtaDemissao: nil).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
 		totalEnviado = 0
 		
 		gestores.reject! { |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
@@ -26,5 +26,30 @@ class ServiceGestoresLicencasEmUso
 		[status,detalhe]
 
 	end
+
+	def test
+		status = "ok"
+		detalhe = ""
+		total = 0
+		gestores = gestores || Funcionario.where(DtaDemissao: nil).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
+		totalEnviado = 0
+		totalGestores =  0
+		
+		# gestores.reject! { |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
+
+		gestores.each do |g|
+			f = LicenciamentoGestor.new(g)
+			l = f.niceSoftwareEmUso
+			totalGestores = totalGestores + 1
+			total = total + l[2].last[2].to_i
+		end
+
+		 
+
+        detalhe << "Total a ser cobrado #{total} de #{totalGestores} gestores"
+		[status,detalhe]
+	end
+
+
 
 end

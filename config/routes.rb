@@ -3,7 +3,7 @@ require 'sidekiq/web'
 ItMgmt::Application.routes.draw do
 
 
-  get "Gestores/:id", to: "GestaoGestores#index", as: "Gestores" , :constraints => { :id => /.*/ }
+  get "Licencas/PorGestor/:id", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /.*/ }
 
 
   get "identities/:id", to: "Identities#show", as: "identities" , :constraints => { :id => /.*/ }

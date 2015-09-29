@@ -18,7 +18,7 @@ def go
 		dados.each do |linha|
 			chave = linha[:User.to_s].gsub("\t","").strip if provider=="AD"
 			chave = linha[:primaryEmail.to_s].gsub("\t","").strip.gsub!(/@[^\s]+/,"") if provider=="Google"
-			chave = linha[:User.to_s].gsub("\t","").strip.gsub(/@[^\s]+/,"") if provider=="Zimbra" || provider="ZMail"
+			chave = linha[:User.to_s].gsub("\t","").strip.gsub(/@[^\s]+/,"") if provider=="Zimbra" || provider=="ZMail"
 			idt = Identity.find_or_initialize_by_login(chave)
 			if idt.id.nil?
 				total_created = total_created + 1

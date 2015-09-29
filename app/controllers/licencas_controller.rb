@@ -1,6 +1,6 @@
-class GestaoGestoresController < ApplicationController
+class LicencasController < ApplicationController
 
-  def index
+  def porGestor
     usr = params[:id]
     @gestor=LicenciamentoGestor.new(usr)
     @licencas=@gestor.niceSoftwareEmUso
