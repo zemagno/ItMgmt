@@ -7,7 +7,7 @@ class ServiceGestoresLicencasEmUso
 
 
 
-		gestores = gestores || Funcionario.where(DtaDemissao: nil).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
+		gestores = gestores || Funcionario.where(DtaDemissao: nil).take(10).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
 		totalEnviado = 0
 
 
@@ -22,9 +22,7 @@ class ServiceGestoresLicencasEmUso
             totalEnviado = totalEnviado + 1
 		end
 
-		 
-
-        detalhe << "Enfilerados para enviar #{totalEnviado}"
+		detalhe << "Enfilerados para enviar #{totalEnviado}"
 		[status,detalhe]
 
 	end
@@ -40,8 +38,8 @@ class ServiceGestoresLicencasEmUso
 		# gestores.reject! { |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
 
 		gestores.each do |g|
-			f = LicenciamentoGestor.new(g)
-			l = f.niceSoftwareEmUso
+			f = GestaoLicenciamento.new(g)
+			l = f.niceSoftwareEmUsoEquipeGestor
 			totalGestores = totalGestores + 1
 			total = total + l[2].last[2].to_i
 		end

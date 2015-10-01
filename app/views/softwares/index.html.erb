@@ -1,0 +1,27 @@
+<h1>Custos de Software</h1>
+
+<table>
+  <tr>
+    <th>Software</th>
+    <th>Custo Mensal</th>
+    <th>Cobrar</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @softwares.each do |sw| %>
+  <tr>
+    <td><%= sw.software %></td>
+    <td><%= sw.custoMensal %></td>
+    <td><%= sw.status %></td>
+    
+    <td><%= link_to 'Editar', edit_software_path(sw) %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Software', new_software_path %>

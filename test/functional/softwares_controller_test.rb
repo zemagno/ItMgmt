@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CustoSoftwaresControllerTest < ActionController::TestCase
+class SoftwaresControllerTest < ActionController::TestCase
   setup do
     @custo_software = custo_softwares(:one)
   end
@@ -8,7 +8,7 @@ class CustoSoftwaresControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:custo_softwares)
+    assert_not_nil assigns(:softwares)
   end
 
   test "should get new" do

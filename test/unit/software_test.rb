@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CustoSoftwareTest < ActiveSupport::TestCase
+class SoftwareTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

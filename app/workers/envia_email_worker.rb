@@ -64,9 +64,9 @@ class EnviaEmailWorker
          Event.register("email","Gestao Usuario","detalhe","Gestao Usuario - email direto - #{template.nome} - #{usr.login}")
      when "GESTAO LICENCA" 
 
-         gestor=LicenciamentoGestor.new(params[:gestor])
+         gestor=GestaoLicenciamento.new(params[:gestor])
          if ! gestor.nil?
-             licencas=gestor.niceSoftwareEmUso
+             licencas=gestor.niceSoftwareEmUsoEquipeGestor
              licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
              destinatario = "magno@brq.com"
              from = "magno@brq.com"

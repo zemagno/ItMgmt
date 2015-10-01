@@ -3,4 +3,6 @@ class InventarioUser < ActiveRecord::Base
   attr_accessible :hostname, :login
 
   # has_many :sofwaresEmUso, through: : :attribute_key => 'issueTypes'
+
+
 end

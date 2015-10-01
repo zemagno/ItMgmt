@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150929192136) do
+ActiveRecord::Schema.define(:version => 20150930231709) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -224,15 +224,6 @@ ActiveRecord::Schema.define(:version => 20150929192136) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "alertacor"
-  end
-
-  create_table "custo_softwares", :force => true do |t|
-    t.string   "software"
-    t.string   "fabricante"
-    t.decimal  "custoMensal", :precision => 10, :scale => 0
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.integer  "status"
   end
 
   create_table "custom_de_paras", :force => true do |t|
@@ -628,6 +619,15 @@ ActiveRecord::Schema.define(:version => 20150929192136) do
     t.string   "highlighted_code"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "softwares", :force => true do |t|
+    t.string   "software"
+    t.string   "fabricante"
+    t.decimal  "custoMensal", :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "status"
   end
 
   create_table "sql_templates", :force => true do |t|

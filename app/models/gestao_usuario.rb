@@ -11,6 +11,11 @@ class GestaoUsuario
         end
     end
 
+
+    def funcionarios
+        @funcionarios = @funcionarios || Funcionario.where(DtaDemissao: nil, NomEmailGestorProfissional: login).map { |f| [f.Login, f.NomProfissional] } #pluck(:Login) #,:NomProfissional)
+    end
+
     # def SenhaTelefonia
     #     tls = TelLoginSenha.where(:IdtLogin => login)
     #     senhas = ""
