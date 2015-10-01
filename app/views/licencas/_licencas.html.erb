@@ -31,7 +31,12 @@
 
  <% @licencas[1].each_with_index do |linha,idx| %>
  <tr height=25 style='height:15.0pt'>
-         <% linha.drop(1).each do |col| %>
+   <% if idx==0 %>
+       <td height=15 class=xl67 style='height:15.0pt'><%=linha[1] %></td>
+   <% else %>
+       <td height=15 class=xl67 style='height:15.0pt'><%=link_to(linha[1],LicencasPorUsuario_path(linha[0])) %></td>
+      <% end %>
+   <% linha.drop(2).each do |col| %>
         <td height=15 class=xl67 style='height:15.0pt'><%=col %></td>
       <% end %>
  </tr>

@@ -17,18 +17,24 @@ class GestaoLicenciamento
 
   end
 
-
+  # estacoes de um usuario, segundo o inventario, nao o CIS
   def estacoesUsuario
     @estacoes = @estacoes || InventarioUser.where(login: @login).pluck(:hostname)
   end
 
+  # todos os softwares em uso por um usuario. Devolve array com nome dos sw
   def softwareEmUso
     @softwareEmUso = @softwareEmUso || InventarioSw.licencaEstacao(estacoesUsuario)
+  end
+
+  def softwareEmUsoPorEstacao
+    @softwareEmUsoPorEstacao = @softwareEmUsoPorEstacao || InventarioSw.LicencasPorEstacao(estacoesUsuario)
   end
 
   def terceiros
     @terceiros = @terceiros || Ci.where(tipoci_id: 51, Owner: @login, statusci_id: 1).map { |ci| [ci.chave, ci.descricao] }
   end
+
 
   def softwareEmUsoEquipeGestor
     @sw = []

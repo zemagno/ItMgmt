@@ -8,6 +8,13 @@ class LicencasController < ApplicationController
     puts @licencas
   end
 
+  def porUsuario
+    usr = params[:id]
+    @usuario = GestaoUsuario.new(:login => usr)
+    usuario=GestaoLicenciamento.new(usr)
+    @licencas=usuario.softwareEmUsoPorEstacao
+  end
+
 end
 
 

@@ -58,8 +58,8 @@ class ServiceAcertaHostnames
 				status = 4
 			    
 			end
-			estacao.status = status
-			estacao.save!
+			# estacao.status = status
+			# estacao.save!
 		end
 		total_atualizacoes
 	end

@@ -7,6 +7,7 @@ ItMgmt::Application.routes.draw do
 
 
   get "Licencas/PorGestor/:id", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /.*/ }
+  get "Licencas/PorUsuario/:id", to: "Licencas#porUsuario", as: "LicencasPorUsuario" , :constraints => { :id => /.*/ }
 
 
   get "identities/:id", to: "Identities#show", as: "identities" , :constraints => { :id => /.*/ }

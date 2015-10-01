@@ -17,7 +17,8 @@
       </br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataRemocaoAcesso}" %>
       </br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
       <%= " - Posicao: #{@posicaoFacilities} "  %>   
-      </br><%= "Gestor Direto: #{@funcionario.NomeGestor}" %><%= " - É Gestor ? #{@usuario.Status['gestor?']} "%>
+      </br>Gestor Direto: <%= link_to(@funcionario.NomeGestor,"/GestaoUsuarios?search=#{@funcionario.gestor}") %></td><%= " - É Gestor ? #{@usuario.Status['gestor?']} "%>
+
       </br><%= "Ramais: #{@ramais}" %> - <%= @funcionario.status %>
 
       <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true)%>
@@ -26,9 +27,13 @@
 </b>      
       
       </br>
-      </br> <%= link_to '[Identidades]', identities_path(@usuario.login), :target => "_blank" %>
+      </br>
+      <%= link_to '[Identidades]', identities_path(@usuario.login), :target => "_blank" %>
+      <%= link_to '[Inventario SW]', LicencasPorUsuario_path(@usuario.login), :target => "_blank" %>
+      <%= link_to '[Inventario SW Equipe]', LicencasPorGestor_path(@usuario.login), :target => "_blank" %>
 
-</br>
+
+      </br>
 <% if ! @usuario.login.nil? && ! @funcionario.afastado %>
 <%= link_to '[Alocar Estacao]', escolher_estacao_alocar_path, :id => "zNovo" %>
 <%= link_to '[Alocar Licenca]', escolher_licenca_alocar_path, :id => "zNovo" %>
