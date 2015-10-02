@@ -1,14 +1,18 @@
 class LicencasController < ApplicationController
+  # load_and_authorize_resource
+
 
   def porGestor
+
+    authorize! :read, :licencas, :message => "Voce nao tem permissao para visuzalizar isso."
     usr = params[:id]
     @gestor=GestaoLicenciamento.new(usr)
     @licencas=@gestor.niceSoftwareEmUsoEquipeGestor
     @licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
-    puts @licencas
   end
 
   def porUsuario
+    authorize! :read, :licencas, :message => "Voce nao tem permissao para visuzalizar isso."
     usr = params[:id]
     @usuario = GestaoUsuario.new(:login => usr)
     usuario=GestaoLicenciamento.new(usr)

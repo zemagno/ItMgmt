@@ -1,5 +1,7 @@
 class SchedulersController < InheritedResources::Base
 
+	load_and_authorize_resource
+
 def run
 	id = params[:id]
 	job = Scheduler.find(id)

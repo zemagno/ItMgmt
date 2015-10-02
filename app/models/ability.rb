@@ -36,48 +36,7 @@ class Ability
     # suporte - criar qq coisa
     # usuario - ver alerta, relatorios [ talvez CMDB]
     #
-    #
-    # if user
-    #   if user.is_a :admin
-    #       puts "======> can manage all"
-    #     can :manage, :all
-    #   elsif user.is_a :suporte
-    #     puts "======> can manage alertas"
-    #     can :manage, :all
-    #     cannot :manage, Dicdado
-    #     cannot :manage, @Dicdado
-    #     cannot :manage, Cadrelatorio
-    #     cannot :manage, @Cadrelatorio   
-    #     can :index, Cadrelatorio
-    #     can :index, @Cadrelatorio
-    #     cannot :manage, Tipoci
-    #     cannot :manage, @Tipoci
-    #     cannot :manage, Statusci
-    #     cannot :manage, @Statusci
-    #   else
-    #     puts "======> can read all"
-    #     can [:show, :index] , "tasks"
-    #     can [:index], "relatorio"
-    #     can [:index,:show], "cis"
-    #     can [:index,:show], "ci"
-        
-    #   end
-    # else 
-    #   puts "======> can read all - publico"
-    #   can [:show, :index] , "tasks"
-    #   can [:index], "relatorio"
-    #   can [:index,:show], "cis"
-    #   can [:index,:show], "ci"
-      
-    # end
-    # cannot :manage, @Audit
-    # cannot :manage, Audit
-    # if user.is_a :audit
-    #     puts "======> can audit"
-    #     can :manage, @Audit
-    #     can :manage, Audit
-    # end
-    # 
+
     # 
     can [:show, :index] , "tasks"
     can [:index], "relatorio" # autorizo o token especificamente. Nao existe model associado.
@@ -106,6 +65,10 @@ class Ability
         cannot :manage, @SqlTemplate
         cannot :manage, Mailing
         cannot :manage, Scheduler
+        cannot :manage, Software
+        can    :index, Software
+        cannot :manage, User
+        can    :index, User
 
 
         can    :manage, :usuarios

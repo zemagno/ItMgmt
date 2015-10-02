@@ -50,16 +50,3 @@ class ProducaoWorker
     job.finaliza(status, detalhes)
   end
 end
-
-#
-#  query (CI, Tag, PadraoEmail...... )
-#  gera ProducaoCi(Ci, tag)
-#
-#
-#
-#
-#
-#
-#
-#
-#
