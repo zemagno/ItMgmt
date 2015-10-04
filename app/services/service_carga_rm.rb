@@ -162,6 +162,9 @@ class ServiceCargaRm
       total = total + 1
     end
 
+    #TODO mudar para BRE....
+    Gestores.invalidate
+
     depois = Funcionario.count * 1.0
 
     detalhe << " - Antes: #{antes} - Carga: #{carga} - Depois: #{depois}"

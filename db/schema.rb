@@ -55,11 +55,7 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "areafornecedores", :force => true do |t|
-    t.string   "area"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+
 
   create_table "atributos", :force => true do |t|
     t.integer  "ci_id"
@@ -134,15 +130,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.datetime "updated_at"
   end
 
-  create_table "chamados", :force => true do |t|
-    t.integer  "SubTipoChamado_id"
-    t.integer  "StatusChamado_id"
-    t.string   "Solicitante"
-    t.string   "Userid"
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "checklists", :force => true do |t|
     t.text     "descricao"
@@ -207,7 +194,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.date     "datainicio"
     t.date     "datafim"
     t.date     "datarenovacao"
-    t.integer  "indicador_financeiro_id"
     t.string   "projetoCCTI"
     t.string   "projetoCCArea"
     t.datetime "created_at"
@@ -405,11 +391,7 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
   add_index "identities", ["RMLogin"], :name => "index_identities_on_RMLogin"
   add_index "identities", ["login"], :name => "index_identities_on_login"
 
-  create_table "indicadores_financeiros", :force => true do |t|
-    t.string   "nome"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ 
 
   create_table "inventario_kpmg_sw", :id => false, :force => true do |t|
     t.string "software", :limit => 50
@@ -641,13 +623,7 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.datetime "updated_at",                    :null => false
   end
 
-  create_table "status_chamados", :force => true do |t|
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "status_checklists", :force => true do |t|
+   create_table "status_checklists", :force => true do |t|
     t.string   "status"
     t.string   "icon"
     t.datetime "created_at", :null => false
@@ -676,12 +652,7 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.string   "parametro"
   end
 
-  create_table "sub_tipo_chamados", :force => true do |t|
-    t.integer  "TipoChamado_id"
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+
 
   create_table "surveys", :force => true do |t|
     t.string   "key"
@@ -798,11 +769,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.string "CustoAnual",   :limit => 45
     t.string "Gestor",       :limit => 200
     t.string "Usuario",      :limit => 200
-  end
-
-  create_table "usounicosoftware", :id => false, :force => true do |t|
-    t.string "Login"
-    t.string "Software"
   end
 
   create_table "versions", :force => true do |t|

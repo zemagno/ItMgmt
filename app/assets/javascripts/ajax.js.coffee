@@ -4,3 +4,7 @@
 
 $(document).ready ->
   $('#init_checklist_cis').autocomplete({source: "/ajax/cis", delay: 500, minLength: 3, appendTo: "#ci-droplist-container"})
+
+
+$(document).ready ->
+  $('#ci_Owner').autocomplete({source: "/ajax/gestores", delay: 500, minLength: 3, appendTo: "#dropbox-gestor-container"})

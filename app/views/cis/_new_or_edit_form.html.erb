@@ -21,7 +21,12 @@
 <label>Gestor
 <span class="small">Login de rede do Gestor </span>
 </label>
-<%= f.text_field :Owner  %>
+<!--%= f.text_field :Owner  %-->
+
+    <div>
+      <%= f.text_field :Owner %>
+      <div id="dropbox-gestor-container" style="position:absolute; width: 50px;"></div>
+    </div>
 
 <label>Usuario(s)
 <span class="small">Email ou login dos usuarios</span>

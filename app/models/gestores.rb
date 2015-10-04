@@ -1,5 +1,14 @@
-class Gestores < ActiveRecord::Base
-	set_table_name "cc"
-	set_primary_key "LoginFunc"
+class Gestores
+
+  @@gestores = nil
+
+
+  def self.all
+		@@gestores = @@gestores || Funcionario.where(DtaDemissao: nil).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
+	end
+
+  def self.invalidate
+		@@gestores = nil
+	end
 
 end

@@ -63,6 +63,7 @@ ItMgmt::Application.routes.draw do
   match "survey/:id", to: "survey#show"
 
   get "ajax/cis"
+  get "ajax/gestores"
 
   resources :area_responsabilidades
 
@@ -95,7 +96,7 @@ resources :fornecedores
   resources :sql_templates
 
 
-  root :to => "tasks#index"
+  root :to => "cis#index"
 
   ActiveAdmin.routes(self)
 
@@ -211,10 +212,7 @@ resources :fornecedores
   match 'CMDB', to: "cis#index"
   
   resources :cis
-  
-  resources :notificacaos
-
-  resources :criticidades
+    resources :criticidades
 
   resources :sites
 
