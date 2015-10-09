@@ -1,0 +1,28 @@
+<h1>Estacoes da equipe de: <%=@usuario.login%> - <%=@usuario.Usuario.NomProfissional %> </h1>
+
+
+
+
+
+
+<% @licencas.each do |l| %>
+    <table style="table-layout:fixed">
+      <col style="width:16%" span="2" />
+      <tr>
+        <th>Hostname</th>
+        <th>Software</th>
+      </tr>
+
+      <tr>
+        <td><%= l[0] %></td>
+        <td><%= l[1][0] %></td>
+      </tr>
+      <% l[1].drop(1).each do |sw| %>
+          <tr>
+            <td></td>
+            <td><%= sw %></td>
+          </tr>
+      <% end %>
+    </table>
+    <br><br>
+<% end %>
