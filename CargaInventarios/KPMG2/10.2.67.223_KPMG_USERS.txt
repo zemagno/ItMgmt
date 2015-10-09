@@ -1,3 +1,0 @@
-10.2.67.223;"BRQ\ingridlopesrufino";"BRQ\ingridlopesrufino";"";""
-10.2.67.223;"";"";"BRQ\ingridlopesrufino";"BRQ\ingridlopesrufino"
-10.2.67.223;"brq";""

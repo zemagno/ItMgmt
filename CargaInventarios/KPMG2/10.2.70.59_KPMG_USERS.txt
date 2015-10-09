@@ -1,3 +1,0 @@
-10.2.70.59;"BRQ\hairaalves";"BRQ\hairaalves";"";""
-10.2.70.59;"";"";"BRQ\hairaalves";"BRQ\hairaalves"
-10.2.70.59;"brq";""

@@ -1,3 +1,0 @@
-10.2.100.27;"BRQ\fafernandes";"BRQ\fafernandes";"";""
-10.2.100.27;"";"";"BRQ\fafernandes";"BRQ\fafernandes"
-10.2.100.27;"suportebrq";""

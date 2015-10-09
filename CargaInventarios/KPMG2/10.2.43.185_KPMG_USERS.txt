@@ -1,3 +1,0 @@
-10.2.43.185;"BRQ\gallo";"BRQ\gallo";"";""
-10.2.43.185;"";"";"BRQ\gallo";"BRQ\gallo"
-10.2.43.185;"suporte";""

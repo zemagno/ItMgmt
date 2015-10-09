@@ -1,3 +1,0 @@
-10.2.103.152;"BRQ\nflima";"BRQ\nflima";"";""
-10.2.103.152;"";"";"BRQ\nflima";"BRQ\nflima"
-10.2.103.152;"suportebrq";""

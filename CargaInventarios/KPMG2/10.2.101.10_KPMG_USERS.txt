@@ -1,3 +1,0 @@
-10.2.101.10;"BRQ\amandamlima";"BRQ\amandamlima";"";""
-10.2.101.10;"";"";"BRQ\amandamlima";"BRQ\amandamlima"
-10.2.101.10;"suportebrq";""

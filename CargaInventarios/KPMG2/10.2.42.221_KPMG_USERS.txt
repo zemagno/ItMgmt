@@ -1,4 +1,0 @@
-10.2.42.221;"BRQ\jackelinevalentin";"BRQ\jackelinevalentin";"";""
-10.2.42.221;"";"";"BRQ\nmdantas";"BRQ.COM\nmdantas"
-10.2.42.221;"";"";"BRQ\nmdantas";"BRQ.COM\nmdantas"
-10.2.42.221;"suporte";""

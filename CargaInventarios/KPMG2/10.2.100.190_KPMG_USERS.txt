@@ -1,3 +1,0 @@
-10.2.100.190;"BRQ\mromagnoli";"BRQ\mromagnoli";"";""
-10.2.100.190;"";"";"BRQ\mromagnoli";"BRQ\mromagnoli"
-10.2.100.190;"suportebrq";""

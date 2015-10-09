@@ -1,4 +1,0 @@
-10.2.11.156;"BRQ\veralucia";"veralucia@brq.com";"";""
-10.2.11.156;"";"";"BRQ\veralucia";"veralucia@brq.com"
-10.2.11.156;"";"";"BRQ\veralucia";"veralucia@brq.com"
-10.2.11.156;"adm";""

@@ -1,6 +1,0 @@
-10.2.42.45;"BRQ\klebersantos";"BRQ\klebersantos";"";""
-10.2.42.45;"";"";"BRQ\klebersantos";"BRQ\klebersantos"
-10.2.42.45;"";"";"BRQ\wallacecarvalho";"BRQ.COM\wallacecarvalho"
-10.2.42.45;"";"";"dt017118\brqadmusr";".\brqadmusr"
-10.2.42.45;"";"";"BRQ\klebersantos";"BRQ\klebersantos"
-10.2.42.45;"suporte";""

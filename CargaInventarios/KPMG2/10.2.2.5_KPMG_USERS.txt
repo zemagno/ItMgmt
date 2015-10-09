@@ -1,3 +1,0 @@
-10.2.2.5;"BRQ\wmjunior";"BRQ\wmjunior";"";""
-10.2.2.5;"";"";"BRQ\wmjunior";"BRQ\wmjunior"
-10.2.2.5;"brq";""

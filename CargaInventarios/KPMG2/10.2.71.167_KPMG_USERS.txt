@@ -1,3 +1,0 @@
-10.2.71.167;"BRQ\cguarnelli";"BRQ\cguarnelli";"";""
-10.2.71.167;"";"";"BRQ\cguarnelli";"BRQ\cguarnelli"
-10.2.71.167;"BRQ";""

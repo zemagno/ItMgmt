@@ -1,3 +1,0 @@
-10.2.13.78;"BRQ\douglascampos";"BRQ\douglascampos";"";""
-10.2.13.78;"";"";"BRQ\douglascampos";"BRQ\douglascampos"
-10.2.13.78;"adm";""

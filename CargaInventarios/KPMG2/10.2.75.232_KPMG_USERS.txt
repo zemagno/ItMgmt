@@ -1,3 +1,0 @@
-10.2.75.232;"BRQ\paulorsilva";"BRQ\paulorsilva";"";""
-10.2.75.232;"";"";"BRQ\paulorsilva";"BRQ\paulorsilva"
-10.2.75.232;"brq";""

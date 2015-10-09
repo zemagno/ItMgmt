@@ -1,3 +1,0 @@
-10.2.43.119;"BRQ\vinicius.tadeu";"BRQ\vinicius.tadeu";"";""
-10.2.43.119;"";"";"BRQ\vinicius.tadeu";"BRQ\vinicius.tadeu"
-10.2.43.119;"suporte";""

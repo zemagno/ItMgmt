@@ -1,4 +1,0 @@
-10.2.66.200;"BRQ\marciowendel";"BRQ\marciowendel";"";""
-10.2.66.200;"";"";"BRQ\marciowendel";"BRQ\marciowendel"
-10.2.66.200;"";"";"BRQ\marciowendel";"BRQ\marciowendel"
-10.2.66.200;"usuario";""

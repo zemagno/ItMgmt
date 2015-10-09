@@ -1,5 +1,0 @@
-10.2.10.16;"BRQ\wallysonrenato";"BRQ\wallysonrenato";"";""
-10.2.10.16;"";"";"BRQ\wallysonrenato";"BRQ\wallysonrenato"
-10.2.10.16;"";"";"BRQ\gabrielmylla";"BRQ\gabrielmylla"
-10.2.10.16;"";"";"BRQ\wallysonrenato";"BRQ\wallysonrenato"
-10.2.10.16;"adm";""

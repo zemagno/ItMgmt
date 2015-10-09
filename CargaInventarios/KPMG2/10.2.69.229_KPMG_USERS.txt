@@ -1,4 +1,0 @@
-10.2.69.229;"BRQ\danielmonteiro";"BRQ\danielmonteiro";"";""
-10.2.69.229;"";"";"BRQ\danielmonteiro";"BRQ\danielmonteiro"
-10.2.69.229;"";"";"BRQ\danielmonteiro";"BRQ\danielmonteiro"
-10.2.69.229;"suporte";""

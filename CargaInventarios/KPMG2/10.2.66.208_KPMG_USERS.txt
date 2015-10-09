@@ -1,3 +1,0 @@
-10.2.66.208;"BRQ\hugomartinez";"BRQ\hugomartinez";"";""
-10.2.66.208;"";"";"BRQ\hugomartinez";"BRQ\hugomartinez"
-10.2.66.208;"brq";""

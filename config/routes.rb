@@ -7,6 +7,7 @@ ItMgmt::Application.routes.draw do
 
 
   get "Licencas/PorGestor/:id", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /.*/ }
+  get "Licencas/PorGestor/:id/Estacoes", to: "Licencas#estacoesEquipeGestor", as: "EstacoesEquipeGestor" , :constraints => { :id => /.*/ }
   get "Licencas/PorUsuario/:id", to: "Licencas#porUsuario", as: "LicencasPorUsuario" , :constraints => { :id => /.*/ }
 
 
@@ -96,7 +97,7 @@ resources :fornecedores
   resources :sql_templates
 
 
-  root :to => "cis#index"
+  root :to => "tasks#index"
 
   ActiveAdmin.routes(self)
 

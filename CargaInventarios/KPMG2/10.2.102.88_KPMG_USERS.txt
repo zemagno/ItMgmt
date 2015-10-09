@@ -1,3 +1,0 @@
-10.2.102.88;"BRQ\natanoliveira";"BRQ\natanoliveira";"";""
-10.2.102.88;"";"";"BRQ\natanoliveira";"BRQ\natanoliveira"
-10.2.102.88;"suportebrq";""

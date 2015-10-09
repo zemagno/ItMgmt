@@ -1,4 +1,0 @@
-10.2.9.57;"BRQ\miltonjose";"BRQ\miltonjose";"";""
-10.2.9.57;"";"";"BRQ\miltonjose";"BRQ\miltonjose"
-10.2.9.57;"";"";"DTMA024170\brqadmusr";".\brqadmusr"
-10.2.9.57;"";"";"BRQ\miltonjose";"BRQ\miltonjose"

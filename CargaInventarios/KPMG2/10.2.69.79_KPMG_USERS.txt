@@ -1,3 +1,0 @@
-10.2.69.79;"BRQ\aconsolaro";"BRQ.COM\aconsolaro";"";""
-10.2.69.79;"";"";"BRQ\aconsolaro";"BRQ.COM\aconsolaro"
-10.2.69.79;"teste";""

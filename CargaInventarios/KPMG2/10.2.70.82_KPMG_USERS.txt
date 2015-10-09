@@ -1,3 +1,0 @@
-10.2.70.82;"BRQ\e.silva";"BRQ\e.silva";"";""
-10.2.70.82;"";"";"BRQ\e.silva";"BRQ\e.silva"
-10.2.70.82;"brq";""

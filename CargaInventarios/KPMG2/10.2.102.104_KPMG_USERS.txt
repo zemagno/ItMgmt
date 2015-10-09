@@ -1,3 +1,0 @@
-10.2.102.104;"BRQ\rdelboni";"BRQ\rdelboni";"";""
-10.2.102.104;"";"";"BRQ\rdelboni";"BRQ\rdelboni"
-10.2.102.104;"suportebrq";""

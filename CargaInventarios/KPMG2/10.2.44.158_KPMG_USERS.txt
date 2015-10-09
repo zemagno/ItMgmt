@@ -1,4 +1,0 @@
-10.2.44.158;"BRQ\fabio.soares";"BRQ\fabio.soares";"";""
-10.2.44.158;"";"";"BRQ\fabio.soares";"BRQ\fabio.soares"
-10.2.44.158;"";"";"BRQ\fabio.soares";"BRQ\fabio.soares"
-10.2.44.158;"brq";""

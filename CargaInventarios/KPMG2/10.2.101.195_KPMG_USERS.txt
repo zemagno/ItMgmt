@@ -1,3 +1,0 @@
-10.2.101.195;"BRQ\jlello";"BRQ\jlello";"";""
-10.2.101.195;"";"";"BRQ\jlello";"BRQ\jlello"
-10.2.101.195;"suportebrq";""

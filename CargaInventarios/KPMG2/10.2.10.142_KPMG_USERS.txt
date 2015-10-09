@@ -1,3 +1,0 @@
-10.2.10.142;"BRQ\rcsilveira";"BRQ\rcsilveira";"";""
-10.2.10.142;"";"";"BRQ\rcsilveira";"BRQ\rcsilveira"
-10.2.10.142;"adm";""

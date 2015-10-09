@@ -1,3 +1,0 @@
-10.2.71.143;"BRQ\ivanlima";"BRQ\ivanlima";"";""
-10.2.71.143;"";"";"BRQ\ivanlima";"BRQ\ivanlima"
-10.2.71.143;"BRQ";""

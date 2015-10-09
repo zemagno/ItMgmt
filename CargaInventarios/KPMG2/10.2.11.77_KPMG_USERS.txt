@@ -1,4 +1,0 @@
-10.2.11.77;"BRQ\diegorangel";"BRQ\diegorangel";"";""
-10.2.11.77;"";"";"BRQ\diegorangel";"BRQ\diegorangel"
-10.2.11.77;"";"";"dtma024208\brqadmusr";".\brqadmusr"
-10.2.11.77;"";"";"BRQ\diegorangel";"BRQ\diegorangel"

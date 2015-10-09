@@ -1,4 +1,0 @@
-10.2.45.201;"BRQ\fernanda.oliveira";"BRQ.COM\fernanda.oliveira";"";""
-10.2.45.201;"";"";"BRQ\fernanda.oliveira";"BRQ.COM\fernanda.oliveira"
-10.2.45.201;"";"";"BRQ\fernanda.oliveira";"BRQ.COM\fernanda.oliveira"
-10.2.45.201;"suporte";""

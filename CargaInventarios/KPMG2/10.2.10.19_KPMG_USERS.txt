@@ -1,5 +1,0 @@
-10.2.10.19;"BRQ\esrocha";"BRQ\esrocha";"";""
-10.2.10.19;"";"";"BRQ\esrocha";"BRQ\esrocha"
-10.2.10.19;"";"";"BRQ\esrocha";"BRQ.COM\esrocha"
-10.2.10.19;"";"";"BRQ\esrocha";"BRQ\esrocha"
-10.2.10.19;"brq";""

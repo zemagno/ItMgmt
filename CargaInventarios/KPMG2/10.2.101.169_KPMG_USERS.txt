@@ -1,3 +1,0 @@
-10.2.101.169;"BRQ\mjezuz";"BRQ\mjezuz";"";""
-10.2.101.169;"";"";"BRQ\mjezuz";"BRQ\mjezuz"
-10.2.101.169;"suportebrq";""

@@ -1,3 +1,0 @@
-10.2.100.69;"BRQ\asantiago";"BRQ\asantiago";"";""
-10.2.100.69;"";"";"BRQ\asantiago";"BRQ\asantiago"
-10.2.100.69;"suportebrq";""

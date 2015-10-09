@@ -7,7 +7,7 @@ class InventarioSw < ActiveRecord::Base
            :primary_key => :hostname,
            :class_name => "InventarioUser"
 
-
+  default_scope where(:versao => 0)
 
   def self.quemUsa
 

@@ -1,3 +1,0 @@
-10.2.100.209;"BRQ\snovaes";"BRQ\snovaes";"";""
-10.2.100.209;"";"";"BRQ\snovaes";"BRQ\snovaes"
-10.2.100.209;"suporterio";""

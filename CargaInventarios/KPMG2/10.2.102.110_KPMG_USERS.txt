@@ -1,3 +1,0 @@
-10.2.102.110;"BRQ\lpalmeiro";"BRQ\lpalmeiro";"";""
-10.2.102.110;"";"";"BRQ\lpalmeiro";"BRQ\lpalmeiro"
-10.2.102.110;"brqadmusr";""

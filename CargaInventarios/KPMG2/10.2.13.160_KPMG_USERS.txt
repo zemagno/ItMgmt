@@ -1,3 +1,0 @@
-10.2.13.160;"BRQ\erickrolim";"BRQ\erickrolim";"";""
-10.2.13.160;"";"";"BRQ\erickrolim";"BRQ\erickrolim"
-10.2.13.160;"adm";""

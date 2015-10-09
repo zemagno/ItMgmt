@@ -1,3 +1,0 @@
-10.2.70.183;"BRQ\rcatarina";"BRQ\rcatarina";"";""
-10.2.70.183;"";"";"BRQ\rcatarina";"BRQ\rcatarina"
-10.2.70.183;"brq";""

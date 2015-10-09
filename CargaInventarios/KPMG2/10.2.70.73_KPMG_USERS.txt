@@ -1,3 +1,0 @@
-10.2.70.73;"BRQ\mpjunior";"BRQ\mpjunior";"";""
-10.2.70.73;"";"";"BRQ\mpjunior";"BRQ\mpjunior"
-10.2.70.73;"brq";""

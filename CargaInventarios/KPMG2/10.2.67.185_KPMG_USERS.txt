@@ -1,3 +1,0 @@
-10.2.67.185;"BRQ\alanpenha";"BRQ.COM\alanpenha";"";""
-10.2.67.185;"";"";"BRQ\alanpenha";"BRQ.COM\alanpenha"
-10.2.67.185;"BRQ";""

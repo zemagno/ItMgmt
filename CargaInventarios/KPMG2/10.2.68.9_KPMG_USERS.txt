@@ -1,5 +1,0 @@
-10.2.68.9;"BRQ\arubello";"BRQ\arubello";"";""
-10.2.68.9;"";"";"BRQ\arubello";"BRQ\arubello"
-10.2.68.9;"";"";"BRQ\arubello";"BRQ.COM\arubello"
-10.2.68.9;"";"";"BRQ\arubello";"BRQ\arubello"
-10.2.68.9;"BRQ";""

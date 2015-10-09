@@ -1,3 +1,0 @@
-10.2.9.19;"BRQ\lsolano";"BRQ\lsolano";"";""
-10.2.9.19;"";"";"BRQ\lsolano";"BRQ\lsolano"
-10.2.9.19;"adm";""

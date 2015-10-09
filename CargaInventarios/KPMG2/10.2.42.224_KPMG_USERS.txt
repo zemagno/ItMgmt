@@ -1,3 +1,0 @@
-10.2.42.224;"BRQ\robsoncesa";"BRQ\robsoncesa";"";""
-10.2.42.224;"";"";"BRQ\robsoncesa";"BRQ\robsoncesa"
-10.2.42.224;"suporte";""

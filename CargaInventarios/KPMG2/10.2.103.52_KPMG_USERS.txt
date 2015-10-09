@@ -1,3 +1,0 @@
-10.2.103.52;"BRQ\gabrielbittencourt";"BRQ\gabrielbittencourt";"";""
-10.2.103.52;"";"";"BRQ\gabrielbittencourt";"BRQ\gabrielbittencourt"
-10.2.103.52;"brqadmusr";""

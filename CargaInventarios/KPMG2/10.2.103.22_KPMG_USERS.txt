@@ -1,3 +1,0 @@
-10.2.103.22;"BRQ\carlosfurtado";"BRQ\carlosfurtado";"";""
-10.2.103.22;"";"";"BRQ\carlosfurtado";"BRQ\carlosfurtado"
-10.2.103.22;"suportebrq";""

@@ -1,3 +1,0 @@
-10.2.66.93;"BRQ\anapaulanascimento";"BRQ\anapaulanascimento";"";""
-10.2.66.93;"";"";"BRQ\anapaulanascimento";"BRQ\anapaulanascimento"
-10.2.66.93;"brq";""

@@ -1,3 +1,0 @@
-10.2.101.176;"BRQ\andersonas";"BRQ\andersonas";"";""
-10.2.101.176;"";"";"BRQ\andersonas";"BRQ\andersonas"
-10.2.101.176;"suportebrq";""

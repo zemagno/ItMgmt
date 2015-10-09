@@ -1,3 +1,0 @@
-10.2.66.211;"BRQ\fjusto";"BRQ\fjusto";"";""
-10.2.66.211;"";"";"BRQ\fjusto";"BRQ\fjusto"
-10.2.66.211;"brqadmuser";""

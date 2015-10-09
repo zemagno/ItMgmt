@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150930231709) do
+ActiveRecord::Schema.define(:version => 20151009093656) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.integer "NumMatrProfissional"
     t.string  "LoginProfissional",      :limit => 30
     t.string  "LoginGestor",            :limit => 30
+  end
+
+  create_table "UsoUnicoSoftware", :id => false, :force => true do |t|
+    t.string "Login"
+    t.string "Software"
   end
 
   create_table "active_admin_comments", :force => true do |t|
@@ -55,7 +60,11 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.datetime "updated_at",   :null => false
   end
 
-
+  create_table "areafornecedores", :force => true do |t|
+    t.string   "area"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "atributos", :force => true do |t|
     t.integer  "ci_id"
@@ -130,7 +139,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.datetime "updated_at"
   end
 
-
   create_table "checklists", :force => true do |t|
     t.text     "descricao"
     t.string   "users"
@@ -178,32 +186,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
   add_index "cis", ["Owner"], :name => "index_cis_on_Owner"
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
   add_index "cis", ["notificacao"], :name => "index_cis_on_notificacao"
-
-  create_table "cobrancamensalusosoftware", :id => false, :force => true do |t|
-    t.string  "login"
-    t.text    "softwares"
-    t.decimal "customensal", :precision => 32, :scale => 0
-  end
-
-  create_table "contratos", :force => true do |t|
-    t.string   "codcontrato"
-    t.string   "descricao"
-    t.decimal  "valormensal",             :precision => 10, :scale => 2
-    t.integer  "tipocontrato_id"
-    t.integer  "fornecedor_id"
-    t.date     "datainicio"
-    t.date     "datafim"
-    t.date     "datarenovacao"
-    t.string   "projetoCCTI"
-    t.string   "projetoCCArea"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "classificacao"
-    t.string   "url"
-    t.string   "contrato"
-  end
-
-  add_index "contratos", ["codcontrato"], :name => "index_contratos_on_codcontrato"
 
   create_table "criticidades", :force => true do |t|
     t.string   "name"
@@ -339,12 +321,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"
   add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
 
-  create_table "google_accounts", :id => false, :force => true do |t|
-    t.string   "login",        :limit => 50
-    t.boolean  "ativo"
-    t.datetime "ultimoAcesso"
-  end
-
   create_table "heranca_checklists", :force => true do |t|
     t.integer  "pai_id"
     t.integer  "filho_id"
@@ -391,7 +367,16 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
   add_index "identities", ["RMLogin"], :name => "index_identities_on_RMLogin"
   add_index "identities", ["login"], :name => "index_identities_on_login"
 
- 
+  create_table "indicadores_financeiros", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventario_hws", :id => false, :force => true do |t|
+    t.string "source",   :limit => 20
+    t.string "hostname", :limit => 30
+  end
 
   create_table "inventario_kpmg_sw", :id => false, :force => true do |t|
     t.string "software", :limit => 50
@@ -406,8 +391,9 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
   create_table "inventario_sws", :force => true do |t|
     t.string   "hostname"
     t.string   "software"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "versao",     :default => 0
   end
 
   add_index "inventario_sws", ["hostname"], :name => "index_inventario_sws_on_hostname"
@@ -415,8 +401,9 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
   create_table "inventario_users", :force => true do |t|
     t.string   "hostname"
     t.string   "login"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "versao",     :default => 0
   end
 
   add_index "inventario_users", ["hostname"], :name => "index_inventario_users_on_hostname"
@@ -489,11 +476,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
   add_index "mapa_posicaos", ["LoginGestor"], :name => "index_mapa_posicaos_on_LoginGestor"
   add_index "mapa_posicaos", ["LoginProfissional"], :name => "index_mapa_posicaos_on_LoginProfissional"
 
-  create_table "microsoft_sw", :id => false, :force => true do |t|
-    t.string  "sw",   :limit => 100
-    t.integer "flag"
-  end
-
   create_table "notes", :force => true do |t|
     t.text     "notes"
     t.datetime "created_at", :null => false
@@ -512,29 +494,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.string   "tipo"
     t.string   "subtipo"
     t.text     "valor",      :limit => 16777215
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "pedidos", :force => true do |t|
-    t.string   "requisicao",             :limit => 20
-    t.string   "solicitante",            :limit => 40
-    t.string   "loginUsuario",           :limit => 20
-    t.date     "dataPedido"
-    t.date     "dataAutorizacao"
-    t.date     "dataSolicitacaoCompras"
-    t.date     "dataEntrega"
-    t.string   "comprador",              :limit => 20
-    t.integer  "site_id"
-    t.string   "ativo"
-    t.integer  "custoEstimado"
-    t.string   "pedidoResumido",         :limit => 40
-    t.string   "observacao"
-    t.string   "CCUN",                   :limit => 6
-    t.string   "projetoUN",              :limit => 30
-    t.string   "ccTI",                   :limit => 6
-    t.string   "projetoTI",              :limit => 30
-    t.integer  "status_pedido_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -623,7 +582,13 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.datetime "updated_at",                    :null => false
   end
 
-   create_table "status_checklists", :force => true do |t|
+  create_table "status_chamados", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "status_checklists", :force => true do |t|
     t.string   "status"
     t.string   "icon"
     t.datetime "created_at", :null => false
@@ -651,8 +616,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.string   "icon"
     t.string   "parametro"
   end
-
-
 
   create_table "surveys", :force => true do |t|
     t.string   "key"
@@ -741,12 +704,6 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
     t.datetime "updated_at"
   end
 
-  create_table "tipotasks", :force => true do |t|
-    t.string   "nome"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "users", :force => true do |t|
     t.string   "provider"
     t.string   "uid"
@@ -782,22 +739,10 @@ ActiveRecord::Schema.define(:version => 20150930231709) do
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
-  create_table "view_templates", :force => true do |t|
-    t.string   "name"
-    t.string   "prefix"
-    t.boolean  "partial"
-    t.text     "source"
-    t.string   "locale"
-    t.string   "formats"
-    t.string   "handlers"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "vwcargaativosportal", :id => false, :force => true do |t|
     t.string "Patrimonio"
     t.string "usuario"
-    t.text   "ativo"
+    t.text   "ativo",         :limit => 2147483647
     t.string "DataEntrega"
     t.string "DataDevolucao"
   end

@@ -1,3 +1,0 @@
-10.2.100.142;"BRQ\brunobgw";"BRQ\brunobgw";"";""
-10.2.100.142;"";"";"BRQ\brunobgw";"BRQ\brunobgw"
-10.2.100.142;"suportebrq";""

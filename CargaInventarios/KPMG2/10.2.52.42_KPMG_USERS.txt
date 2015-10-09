@@ -1,3 +1,0 @@
-10.2.52.42;"BRQ\wallacecarvalho";"BRQ\wallacecarvalho";"";""
-10.2.52.42;"";"";"BRQ\wallacecarvalho";"BRQ\wallacecarvalho"
-10.2.52.42;"suportebrq";""

@@ -1,3 +1,0 @@
-10.2.102.81;"BRQ\jguilherme";"BRQ\jguilherme";"";""
-10.2.102.81;"";"";"BRQ\jguilherme";"BRQ\jguilherme"
-10.2.102.81;"suporte";""

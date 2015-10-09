@@ -1,3 +1,0 @@
-10.2.101.14;"BRQ\kamyllasouza";"BRQ\kamyllasouza";"";""
-10.2.101.14;"";"";"BRQ\kamyllasouza";"BRQ\kamyllasouza"
-10.2.101.14;"suportebrq";""

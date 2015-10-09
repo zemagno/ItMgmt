@@ -1,3 +1,0 @@
-10.2.101.0;"BRQ\renansena";"BRQ\renansena";"";""
-10.2.101.0;"";"";"BRQ\renansena";"BRQ\renansena"
-10.2.101.0;"suportebrq";""

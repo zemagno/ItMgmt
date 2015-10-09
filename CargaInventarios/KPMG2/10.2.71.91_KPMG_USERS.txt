@@ -1,3 +1,0 @@
-10.2.71.91;"BRQ\rsilvaferreira";"BRQ\rsilvaferreira";"";""
-10.2.71.91;"";"";"BRQ\rsilvaferreira";"BRQ\rsilvaferreira"
-10.2.71.91;"brq";""

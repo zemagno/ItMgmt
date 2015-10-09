@@ -1,3 +1,0 @@
-10.2.100.124;"BRQ\jmarins";"BRQ\jmarins";"";""
-10.2.100.124;"";"";"BRQ\jmarins";"BRQ\jmarins"
-10.2.100.124;"suportebrq";""

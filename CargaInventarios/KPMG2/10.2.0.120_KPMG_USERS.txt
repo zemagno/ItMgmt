@@ -1,4 +1,0 @@
-10.2.0.120;"BRQ\gnigro";"BRQ\gnigro";"";""
-10.2.0.120;"";"";"BRQ\gnigro";"BRQ\gnigro"
-10.2.0.120;"";"";"BRQ\gnigro";"BRQ\gnigro"
-10.2.0.120;"brq";""

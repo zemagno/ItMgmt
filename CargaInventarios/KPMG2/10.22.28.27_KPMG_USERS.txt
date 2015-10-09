@@ -1,7 +1,0 @@
-10.22.28.27;"BRQ\dpaula_pbsb";"BRQ\dpaula_pbsb";"";""
-10.22.28.27;"";"";"BRQ\gassuncao_pbsb";"BRQ\gassuncao_pbsb"
-10.22.28.27;"";"";"BRQ\lneto_pbsb";"BRQ\lneto_pbsb"
-10.22.28.27;"";"";"BRQ\nalcantara";"BRQ\nalcantara"
-10.22.28.27;"";"";"BRQ\dpaula_pbsb";"BRQ\dpaula_pbsb"
-10.22.28.27;"";"";"BRQ\dpaula_pbsb";"BRQ\dpaula_pbsb"
-10.22.28.27;"";"";"BRQ\gladstonepereira";"BRQ\gladstonepereira"

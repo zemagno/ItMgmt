@@ -1,3 +1,0 @@
-10.2.101.254;"BRQ\julianaguimaraes";"BRQ\julianaguimaraes";"";""
-10.2.101.254;"";"";"BRQ\julianaguimaraes";"BRQ\julianaguimaraes"
-10.2.101.254;"suportebrq";""

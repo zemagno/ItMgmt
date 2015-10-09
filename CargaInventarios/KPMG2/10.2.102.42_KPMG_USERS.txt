@@ -1,3 +1,0 @@
-10.2.102.42;"BRQ\juarezsilva";"BRQ\juarezsilva";"";""
-10.2.102.42;"";"";"BRQ\juarezsilva";"BRQ\juarezsilva"
-10.2.102.42;"suporterio";""

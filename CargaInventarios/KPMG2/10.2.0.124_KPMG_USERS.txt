@@ -1,4 +1,0 @@
-10.2.0.124;"BRQ\mcardoso";"BRQ\mcardoso";"";""
-10.2.0.124;"";"";"BRQ\mcardoso";"BRQ\mcardoso"
-10.2.0.124;"";"";"BRQ\mcardoso";"BRQ\mcardoso"
-10.2.0.124;"brq";""

@@ -1,7 +1,0 @@
-10.2.45.237;"BRQ\mariobruno";"BRQ\mariobruno";"";""
-10.2.45.237;"";"";"BRQ\thomaslima";"BRQ.COM\thomaslima"
-10.2.45.237;"";"";"BRQ\thomaslima";"BRQ.COM\thomaslima"
-10.2.45.237;"";"";"BRQ\thomaslima";"BRQ.COM\thomaslima"
-10.2.45.237;"";"";"BRQ\thomaslima";"BRQ.COM\thomaslima"
-10.2.45.237;"";"";"BRQ\dassis";"BRQ.COM\dassis"
-10.2.45.237;"";"";"BRQ\thomaslima";"BRQ.COM\thomaslima"

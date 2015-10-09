@@ -1,3 +1,0 @@
-10.2.1.129;"SRV3246\admindc";".\admindc";"";""
-10.2.1.129;"";"";"BRQ\vguerrero";"BRQ.COM\vguerrero"
-10.2.1.129;"";"";"BRQ\vguerrero";"BRQ\vguerrero"

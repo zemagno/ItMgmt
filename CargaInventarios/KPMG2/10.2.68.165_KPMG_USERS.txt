@@ -1,4 +1,0 @@
-10.2.68.165;"BRQ\tsteiner";"BRQ\tsteiner";"";""
-10.2.68.165;"";"";"BRQ\tsteiner";"BRQ\tsteiner"
-10.2.68.165;"";"";"BRQ\tsteiner";"BRQ\tsteiner"
-10.2.68.165;"brq";""

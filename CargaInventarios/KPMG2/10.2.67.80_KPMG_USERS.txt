@@ -1,5 +1,0 @@
-10.2.67.80;"BRQ\sccmshdw";"BRQ\sccmshdw";"";""
-10.2.67.80;"";"";"BRQ\rodrigoniak";"BRQ\rodrigoniak"
-10.2.67.80;"";"";"BRQ\sccmshdw";"BRQ\sccmshdw"
-10.2.67.80;"";"";"BRQ\rodrigoniak";"BRQ\rodrigoniak"
-10.2.67.80;"brq";""

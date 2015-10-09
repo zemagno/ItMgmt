@@ -1,2 +1,0 @@
-10.2.8.115;"VMSANEPAR05\brqadmusr";".\brqadmusr";"";""
-10.2.8.115;"";"";"VMSANEPAR05\brqadmusr";".\brqadmusr"

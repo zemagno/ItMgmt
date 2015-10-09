@@ -36,6 +36,15 @@ class GestaoLicenciamento
   end
 
 
+  def estacoesEmUsoEquipeGestor
+    @hw = []
+    (funcionarios+terceiros).each do |f|
+      func = GestaoLicenciamento.new(f)
+      @hw << [f[0], f[1], func.estacoesUsuario]
+    end
+    @hw
+  end
+
   def softwareEmUsoEquipeGestor
     @sw = []
 

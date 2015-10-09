@@ -5,14 +5,9 @@ class ServiceGestoresLicencasEmUso
 		params = JSON.parse Parametro.get({:tipo => "Licencas", :subtipo => "ParametrosCobranca"})
 		params = params.inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
 
-
-
-		gestores = gestores || Funcionario.where(DtaDemissao: nil).take(10).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
 		totalEnviado = 0
 
-
-		
-		gestores.reject! { |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
+		gestores = Gestores.all.reject{ |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
 
 		gestores.each do |g|
 			p = Hash[:gestor => g] 

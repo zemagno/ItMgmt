@@ -1,3 +1,0 @@
-10.2.13.121;"BRQ\arrosario";"BRQ\arrosario";"";""
-10.2.13.121;"";"";"BRQ\arrosario";"BRQ\arrosario"
-10.2.13.121;"adm";""

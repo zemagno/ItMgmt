@@ -1,3 +1,0 @@
-10.2.102.163;"BRQ\giselesabb";"BRQ\giselesabb";"";""
-10.2.102.163;"";"";"BRQ\giselesabb";"BRQ\giselesabb"
-10.2.102.163;"suporterio";""

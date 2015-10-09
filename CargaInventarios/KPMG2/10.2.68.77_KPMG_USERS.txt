@@ -1,3 +1,0 @@
-10.2.68.77;"BRQ\gssouza";"BRQ\gssouza";"";""
-10.2.68.77;"";"";"BRQ\gssouza";"BRQ\gssouza"
-10.2.68.77;"brq";""

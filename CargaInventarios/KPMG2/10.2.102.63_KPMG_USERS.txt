@@ -1,3 +1,0 @@
-10.2.102.63;"BRQ\dmarcondes";"BRQ\dmarcondes";"";""
-10.2.102.63;"";"";"BRQ\dmarcondes";"BRQ\dmarcondes"
-10.2.102.63;"suportebrq";""

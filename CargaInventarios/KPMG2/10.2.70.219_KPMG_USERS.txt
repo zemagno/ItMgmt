@@ -1,3 +1,0 @@
-10.2.70.219;"BRQ\jyoliveira";"BRQ\jyoliveira";"";""
-10.2.70.219;"";"";"BRQ\jyoliveira";"BRQ\jyoliveira"
-10.2.70.219;"teste";""

@@ -1,3 +1,0 @@
-10.2.70.181;"BRQ\mabrinstein";"BRQ\mabrinstein";"";""
-10.2.70.181;"";"";"BRQ\mabrinstein";"BRQ\mabrinstein"
-10.2.70.181;"BRQ";""

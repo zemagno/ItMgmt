@@ -1,4 +1,0 @@
-10.2.67.57;"BRQ\diogogiordani";"BRQ\diogogiordani";"";""
-10.2.67.57;"";"";"BRQ\diogogiordani";"BRQ\diogogiordani"
-10.2.67.57;"";"";"BRQ\diogogiordani";"BRQ.COM\diogogiordani"
-10.2.67.57;"brq";""

@@ -1,3 +1,0 @@
-10.2.77.224;"BRQ\fernandadossantos";"BRQ\fernandadossantos";"";""
-10.2.77.224;"";"";"BRQ\fernandadossantos";"BRQ\fernandadossantos"
-10.2.77.224;"brq";""

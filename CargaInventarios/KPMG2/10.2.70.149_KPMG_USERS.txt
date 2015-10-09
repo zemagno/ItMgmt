@@ -1,3 +1,0 @@
-10.2.70.149;"BRQ\fernandacardoso";"BRQ\fernandacardoso";"";""
-10.2.70.149;"";"";"BRQ\fernandacardoso";"BRQ\fernandacardoso"
-10.2.70.149;"teste";""

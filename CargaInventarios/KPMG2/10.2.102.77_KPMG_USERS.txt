@@ -1,3 +1,0 @@
-10.2.102.77;"BRQ\pmatta";"BRQ\pmatta";"";""
-10.2.102.77;"";"";"BRQ\pmatta";"BRQ\pmatta"
-10.2.102.77;"suporterio";""

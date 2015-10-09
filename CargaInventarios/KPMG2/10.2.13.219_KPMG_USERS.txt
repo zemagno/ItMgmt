@@ -1,2 +1,0 @@
-10.2.13.219;"BRQ\fportela";"brq\fportela";"";""
-10.2.13.219;"";"";"BRQ\fportela";"brq\fportela"

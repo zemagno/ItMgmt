@@ -1,5 +1,0 @@
-10.2.45.183;"BRQ\elisangela.escribano";"BRQ.COM\elisangela.escribano";"";""
-10.2.45.183;"";"";"BRQ\elisangela.escribano";"BRQ.COM\elisangela.escribano"
-10.2.45.183;"";"";"BRQ\elisangela.escribano";"BRQ.COM\elisangela.escribano"
-10.2.45.183;"";"";"BRQ\elisangela.escribano";"BRQ.COM\elisangela.escribano"
-10.2.45.183;"brq";""

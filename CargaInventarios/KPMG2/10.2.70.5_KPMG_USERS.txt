@@ -1,2 +1,0 @@
-10.2.70.5;"BRQ\mpaganini";"BRQ\mpaganini";"";""
-10.2.70.5;"brq";""

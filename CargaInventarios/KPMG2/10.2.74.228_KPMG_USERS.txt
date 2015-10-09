@@ -1,3 +1,0 @@
-10.2.74.228;"BRQ\emersonlima";"BRQ\emersonlima";"";""
-10.2.74.228;"";"";"BRQ\emersonlima";"BRQ\emersonlima"
-10.2.74.228;"BRQ";""

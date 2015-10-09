@@ -1,3 +1,0 @@
-10.2.101.2;"BRQ\anamarques";"BRQ\anamarques";"";""
-10.2.101.2;"";"";"BRQ\anamarques";"BRQ\anamarques"
-10.2.101.2;"suportebrq";""

@@ -1,3 +1,0 @@
-10.2.67.132;"BRQ\gperillo";"BRQ\gperillo";"";""
-10.2.67.132;"";"";"BRQ\gperillo";"BRQ\gperillo"
-10.2.67.132;"teste";""

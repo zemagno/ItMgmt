@@ -1,3 +1,0 @@
-10.2.66.31;"BRQ\lgrecco";"BRQ\lgrecco";"";""
-10.2.66.31;"";"";"BRQ\lgrecco";"BRQ\lgrecco"
-10.2.66.31;"brq";""

@@ -1,3 +1,0 @@
-10.2.70.94;"BRQ\frizzi";"BRQ\frizzi";"";""
-10.2.70.94;"";"";"BRQ\frizzi";"BRQ\frizzi"
-10.2.70.94;"brq";""

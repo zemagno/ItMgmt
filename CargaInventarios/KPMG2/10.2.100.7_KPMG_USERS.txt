@@ -1,3 +1,0 @@
-10.2.100.7;"BRQ\rpedrosa";"BRQ\rpedrosa";"";""
-10.2.100.7;"";"";"BRQ\rpedrosa";"BRQ\rpedrosa"
-10.2.100.7;"suportebrq";""

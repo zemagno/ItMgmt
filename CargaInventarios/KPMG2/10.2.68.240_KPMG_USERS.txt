@@ -1,5 +1,0 @@
-10.2.68.240;"BRQ\dgrangeiro";"BRQ\dgrangeiro";"";""
-10.2.68.240;"";"";"BRQ\dgrangeiro";"BRQ\dgrangeiro"
-10.2.68.240;"";"";"BRQ\dgrangeiro";"BRQ\dgrangeiro"
-10.2.68.240;"";"";"BRQ\dgrangeiro";"BRQ\dgrangeiro"
-10.2.68.240;"brq";""

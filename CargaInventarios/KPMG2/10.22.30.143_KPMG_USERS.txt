@@ -1,4 +1,0 @@
-10.22.30.143;"BRQ\thalitapaiva";"BRQ\thalitapaiva";"";""
-10.22.30.143;"";"";"BRQ\thalitapaiva";"BRQ\thalitapaiva"
-10.22.30.143;"";"";"BRQ\thalitapaiva";"BRQ\thalitapaiva"
-10.22.30.143;"";"";"BRQ\thalitapaiva";"BRQ\thalitapaiva"

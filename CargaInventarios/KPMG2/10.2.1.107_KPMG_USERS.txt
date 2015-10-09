@@ -1,4 +1,0 @@
-10.2.1.107;"BRQ\ealvessantosshdw";"BRQ\ealvessantosshdw";"";""
-10.2.1.107;"";"";"SRV2851\dmoreira";".\dmoreira"
-10.2.1.107;"";"";"BRQ\fernando";"BRQ.COM\fernando"
-10.2.1.107;"";"";"SRV2851\dmoreira";".\dmoreira"

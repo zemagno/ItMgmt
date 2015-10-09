@@ -1,5 +1,0 @@
-10.2.97.202;"BRQ\fportelashdw";"BRQ\fportelashdw";"";""
-10.2.97.202;"";"";"BRQ\zadmbrq";"BRQ.COM\zadmbrq"
-10.2.97.202;"";"";"BRQ\fportelashdw";"BRQ\fportelashdw"
-10.2.97.202;"";"";"BRQ\dkarolakshdw";"BRQ.COM\dkarolakshdw"
-10.2.97.202;"";"";"BRQ\zadmbrq";"BRQ\zadmbrq"

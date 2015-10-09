@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   rescue_from Exception, :with => :error_render_method
 
   def error_render_method(error)
-     logger.warn(error.message)
+    logger.warn(error.message)
     respond_to do |type|
       type.html { render :template => "errors/error_404", :status => 404 }
       type.all  { render :nothing => true, :status => 404 }

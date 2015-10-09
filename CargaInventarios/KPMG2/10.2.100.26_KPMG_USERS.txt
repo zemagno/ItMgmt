@@ -1,3 +1,0 @@
-10.2.100.26;"BRQ\gleice";"gleice@brq.com";"";""
-10.2.100.26;"";"";"BRQ\gleice";"gleice@brq.com"
-10.2.100.26;"suportebrq";""

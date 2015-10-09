@@ -1,3 +1,0 @@
-10.2.70.165;"BRQ\caiorapha";"BRQ\caiorapha";"";""
-10.2.70.165;"";"";"BRQ\caiorapha";"BRQ\caiorapha"
-10.2.70.165;"brq";""

@@ -1,6 +1,0 @@
-10.2.69.123;"BRQ\priscilaluiz";"BRQ\priscilaluiz";"";""
-10.2.69.123;"";"";"BRQ\azanardi";"BRQ\azanardi"
-10.2.69.123;"";"";"BRQ\michellenigmann";"BRQ\michellenigmann"
-10.2.69.123;"";"";"BRQ\priscilaluiz";"BRQ\priscilaluiz"
-10.2.69.123;"";"";"BRQ\priscilaluiz";"BRQ\priscilaluiz"
-10.2.69.123;"BRQ";""

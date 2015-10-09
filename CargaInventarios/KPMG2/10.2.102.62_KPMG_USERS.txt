@@ -1,3 +1,0 @@
-10.2.102.62;"BRQ\rnascimento";"BRQ\rnascimento";"";""
-10.2.102.62;"";"";"BRQ\rnascimento";"BRQ\rnascimento"
-10.2.102.62;"suportebrq";""

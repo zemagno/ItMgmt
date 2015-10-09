@@ -1,8 +1,0 @@
-10.2.42.241;"BRQ\bmoraes";"BRQ\bmoraes";"";""
-10.2.42.241;"";"";"BRQ\rbeti";"BRQ.COM\rbeti"
-10.2.42.241;"";"";"BRQ\nmdantas";"BRQ.COM\nmdantas"
-10.2.42.241;"";"";"BRQ\emarquessantos";"BRQ.COM\emarquessantos"
-10.2.42.241;"";"";"BRQ\emarquessantos";"BRQ.COM\emarquessantos"
-10.2.42.241;"";"";"BRQ\jelima";"BRQ.COM\jelima"
-10.2.42.241;"";"";"BRQ\renatoangelao";"BRQ.COM\renatoangelao"
-10.2.42.241;"";"";"BRQ\bmoraes";"BRQ.COM\bmoraes"

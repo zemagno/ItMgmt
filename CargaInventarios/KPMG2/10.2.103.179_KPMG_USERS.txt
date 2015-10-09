@@ -1,3 +1,0 @@
-10.2.103.179;"BRQ\emirmoreira";"BRQ\emirmoreira";"";""
-10.2.103.179;"";"";"BRQ\emirmoreira";"BRQ\emirmoreira"
-10.2.103.179;"suportebrq";""

@@ -1,3 +1,0 @@
-10.2.102.95;"BRQ\andrecastro";"BRQ\andrecastro";"";""
-10.2.102.95;"";"";"BRQ\andrecastro";"BRQ\andrecastro"
-10.2.102.95;"brqadmusr";""

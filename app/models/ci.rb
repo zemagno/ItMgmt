@@ -10,7 +10,7 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca ,:provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex
 
   belongs_to :site
   belongs_to :tipoci
@@ -19,69 +19,67 @@ class Ci < ActiveRecord::Base
   has_many :task
 
 
- 
-  
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
-  has_many  :relacao_dependencia, 
-            :class_name => "Relacionamento",  
-            :foreign_key => "impactado_id", 
-            :dependent => :delete_all, 
-            :conditions => "tipo = 0"
+  has_many :relacao_dependencia,
+           :class_name => "Relacionamento",
+           :foreign_key => "impactado_id",
+           :dependent => :delete_all,
+           :conditions => "tipo = 0"
 
-  has_many  :dependentes, 
-            :through => :relacao_dependencia, 
-            :include => "tipoci"
+  has_many :dependentes,
+           :through => :relacao_dependencia,
+           :include => "tipoci"
 
-  has_many  :relacao_composto_de, 
-            :class_name => "Relacionamento",  
-            :foreign_key => "impactado_id", 
-            :dependent => :delete_all, 
-            :conditions => "tipo = 1"
+  has_many :relacao_composto_de,
+           :class_name => "Relacionamento",
+           :foreign_key => "impactado_id",
+           :dependent => :delete_all,
+           :conditions => "tipo = 1"
 
-  has_many  :composto_de, 
-            :through => :relacao_composto_de, 
-            :include => "tipoci"
-  
-  has_many :relacao_dependencia_all, 
-           :class_name => "Relacionamento", 
-           :foreign_key => "impactado_id", 
+  has_many :composto_de,
+           :through => :relacao_composto_de,
+           :include => "tipoci"
+
+  has_many :relacao_dependencia_all,
+           :class_name => "Relacionamento",
+           :foreign_key => "impactado_id",
            :dependent => :delete_all
-  
-  has_many  :dependentes_all, 
-            :through => :relacao_dependencia_all,
-            :include => "tipoci"
-  
-  has_many  :relacao_impacto, 
-            :class_name => "Relacionamento", 
-            :foreign_key => "dependente_id",  
-            :dependent => :delete_all
-  
-  has_many  :impactados, 
-            :through => :relacao_impacto,
-            :include => "tipoci"
 
-  validates :Owner, :format => { :with => /^[a-zA-z.]+$/,
-      :message => "Gestor: um unico ID de rede" }
+  has_many :dependentes_all,
+           :through => :relacao_dependencia_all,
+           :include => "tipoci"
+
+  has_many :relacao_impacto,
+           :class_name => "Relacionamento",
+           :foreign_key => "dependente_id",
+           :dependent => :delete_all
+
+  has_many :impactados,
+           :through => :relacao_impacto,
+           :include => "tipoci"
+
+  validates :Owner, :format => {:with => /^[a-zA-z.]+$/,
+                                :message => "Gestor: um unico ID de rede"}
   #validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
-  validates :chave, :presence => { :message => " eh mandatorio" }
-  validates :chave,  :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB" }
-  
-  validates :descricao, :presence => { :message => " eh mandatorio" }
+  validates :chave, :presence => {:message => " eh mandatorio"}
+  validates :chave, :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB"}
+
+  validates :descricao, :presence => {:message => " eh mandatorio"}
 
   after_save :atualiza_chave
 
 
-  scope :por_tipo, lambda { |t| where("tipoci_id in (?)",t) }
+  scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
   default_scope order('chave ASC')
   #sphinx_scope order('chave ASC')
 
-  
+
   def teste
-    
+
   end
 
   def to_s
-      "Chave:#{chave} : #{descricao} : Tipo: #{nice_tipoci} : Status:#{status} : Owner:#{self.Owner} : Usuario: #{notificacao} : Site: #{self.nome_localidade}"  
+    "Chave:#{chave} : #{descricao} : Tipo: #{nice_tipoci} : Status:#{status} : Owner:#{self.Owner} : Usuario: #{notificacao} : Site: #{self.nome_localidade}"
   end
 
   def to_hash
@@ -89,7 +87,7 @@ class Ci < ActiveRecord::Base
   end
 
   def chave_sanitizada
-    chave.gsub(/\ /,"_").delete('^a-zA-Z0-9\_')
+    chave.gsub(/\ /, "_").delete('^a-zA-Z0-9\_')
   end
 
   def ativo?
@@ -114,7 +112,7 @@ class Ci < ActiveRecord::Base
   end
 
   def nice_custo_mensal
-     '%10.2f' % (self.CustoMensal.nil? ? 0 : self.CustoMensal)
+    '%10.2f' % (self.CustoMensal.nil? ? 0 : self.CustoMensal)
   end
 
   def nice_cobrar
@@ -125,15 +123,15 @@ class Ci < ActiveRecord::Base
     provisionar ? "Provisionar" : "Nao Provisionar"
   end
 
-  def self.massiveUpdate(_search,_command)
+  def self.massiveUpdate(_search, _command)
 
-    cis = search _search , :match_mode => :boolean
-    cmd_expandido = _command.split(",").map { |x|  x.split("=") }
+    cis = search _search, :match_mode => :boolean
+    cmd_expandido = _command.split(",").map { |x| x.split("=") }
 
-    cis.each do  |x| 
-       puts x
-       cmd_expandido.each { |k,v| x.send("#{k}=", v) if x.respond_to?(k) }
-       x.save!
+    cis.each do |x|
+      puts x
+      cmd_expandido.each { |k, v| x.send("#{k}=", v) if x.respond_to?(k) }
+      x.save!
     end
   end
 
@@ -150,7 +148,7 @@ class Ci < ActiveRecord::Base
     if method_sym.to_s =~ /^_([a-zA-Z]+)$/
       return getatributo($1)
     elsif method_sym.to_s =~ /^_([a-zA-Z]+)=$/
-       setatributo($1,*arguments) 
+      setatributo($1, *arguments)
     else
       super
     end
@@ -166,17 +164,17 @@ class Ci < ActiveRecord::Base
 
 
   def getatributo(chave)
-    attr = atributos.select { |k,v| v[5] == chave }
-    return attr.values[0][1] if attr.size > 0 && ! attr.values[0][1].nil?
+    attr = atributos.select { |k, v| v[5] == chave }
+    return attr.values[0][1] if attr.size > 0 && !attr.values[0][1].nil?
     return ""
   end
-  
+
   # TODO colocar todo servicos de atributos numa services. Nao deixar no model do CI.
   # TODO --> isso aqui é lento...tem que colocar num variavel e se chamar de novo, retorna tud
   # TODO --> testar se eu chamo varias vezes, ele monta sempre, sempre..
   # 
   def atributos
-   
+
     # pegar todos os atributos possiveis (tipoci.dicdado)
     # dicdados.id => [Label,valor]
     #{ 5=>["Contrat", "Link Citi"], 
@@ -186,28 +184,28 @@ class Ci < ActiveRecord::Base
     return @attr_existentes unless @attr_existentes.blank?
 
     @attr_existentes = Hash.new
-    
+
     # monto um hash com todos atributos que esse CI deve ter
-    tipoci.dicdados.map {|x| @attr_existentes[x.id] = [x.nome,nil,x.url,x.valores,x.descricao,x.apelido,x.tipo,x.regex,x.mandatorio,x.tooltip]} 
-    
+    tipoci.dicdados.map { |x| @attr_existentes[x.id] = [x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip] }
+
     # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
-    atributo.map do |x| 
+    atributo.map do |x|
       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
       # entao eu crio esse atributo no hash
-     if ! @attr_existentes[x.dicdado.id] then
-          @attr_existentes[x.dicdado.id] = [x.dicdado.nome,nil,x.dicdado.url,x.dicdado.valores,x.dicdado.descricao,x.dicdado.apelido,x.dicdado.tipo,x.dicdado.regex,x.dicdado.mandatorio,x.dicdado.tooltip]
+      if !@attr_existentes[x.dicdado.id] then
+        @attr_existentes[x.dicdado.id] = [x.dicdado.nome, nil, x.dicdado.url, x.dicdado.valores, x.dicdado.descricao, x.dicdado.apelido, x.dicdado.tipo, x.dicdado.regex, x.dicdado.mandatorio, x.dicdado.tooltip]
       end
-      @attr_existentes[x.dicdado.id][1] = x.valor 
-     end 
-     
+      @attr_existentes[x.dicdado.id][1] = x.valor
+    end
+
     @attr_existentes
   end
-  
+
   def limpa_atributos_outros_tipo
     logger.debug ">>>> vou limpar atributos"
     atributo.each do |attr|
       if attr.dicdado.tipoci_id != tipoci_id
-        attr.delete 
+        attr.delete
         attr.save
       end
     end
@@ -216,15 +214,14 @@ class Ci < ActiveRecord::Base
 
   end
 
-  def setatributo(key,value)
-    k = atributos.select {|k,v| v[5] == key}
+  def setatributo(key, value)
+    k = atributos.select { |k, v| v[5] == key }
     # puts "k: #{k} #{k.blank?}"
-    if ! k.blank?
-        # puts "vou salvar atributos"
-        a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id,k.keys[0])
-        a.valor=value
-        a.save!
-        
+    if !k.blank?
+      # puts "vou salvar atributos"
+      a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, k.keys[0])
+      a.valor=value
+      a.save!
     end
 # TODO fazer um set atributo com um valor, para poder
   end
@@ -242,21 +239,21 @@ class Ci < ActiveRecord::Base
     #  1=>["Capacidade", "4mb"]} 
 
     attr_default = atributos
-    
+
 
     attr_default.each do |attr|
-     
-      atr = Atributo.find_or_create_by_ci_id_and_dicdado_id(id,attr[0])
-        
-        begin  #posso nao ter recebido parametro nenhum
-           atr.valor = novos_atributos[attr[1][0]]
-           atr.save
-        rescue
-          puts "deu merda...."
-        end
+
+      atr = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, attr[0])
+
+      begin #posso nao ter recebido parametro nenhum
+        atr.valor = novos_atributos[attr[1][0]]
+        atr.save
+      rescue
+        puts "deu merda...."
+      end
     end
 
-   
+
     limpa_atributos_outros_tipo
 
   end
@@ -264,88 +261,85 @@ class Ci < ActiveRecord::Base
   def anterior
     Ci.where("id < ?", id).last
   end
-  
+
   def proximo
     Ci.where("id > ?", id).first
   end
-  
+
   def self.find_gen(param)
-    begin 
-       if param =~ /^[1-9]\d*$/
-         puts "vou procurar pelo ID."  
-         Ci.includes(:atributo => :dicdado).find(param)
-       else
-         puts "match numero de serie: vou procurar pela chave."
-         Ci.includes(:atributo => :dicdado).find_by_chave(param)
-       end
+    begin
+      if param =~ /^[1-9]\d*$/
+        puts "vou procurar pelo ID."
+        Ci.includes(:atributo => :dicdado).find(param)
+      else
+        puts "match numero de serie: vou procurar pela chave."
+        Ci.includes(:atributo => :dicdado).find_by_chave(param)
+      end
     rescue ActiveRecord::RecordNotFound
-    #   puts "vou procurar pela chave."
-       Ci.includes(:atributo => :dicdado).find_by_chave(param)
+      #   puts "vou procurar pela chave."
+      Ci.includes(:atributo => :dicdado).find_by_chave(param)
     end
   end
 
   def self.find_com_atributos(id)
     logger.debug(">>>>> find_com_atributos")
     @c = Ci.find_gen(id)
-    attr = (@c ? @c.atributos : nil )
-    [@c, attr] 
+    attr = (@c ? @c.atributos : nil)
+    [@c, attr]
   end
-
 
 
   def libera_estacao
-      self.statusci_id = 8
-      self.CCDebito = ""
-      self.ProjetoDebito = ""
-      self.Owner = "BRQ"
-      self.notificacao = ""
-      save!
+    self.statusci_id = 8
+    self.CCDebito = ""
+    self.ProjetoDebito = ""
+    self.Owner = "BRQ"
+    self.notificacao = ""
+    save!
   end
 
   def desaloca_licenca
-      self.statusci_id = 8
-      self.CCDebito = ""
-      self.ProjetoDebito = ""
-      self.Owner = "BRQ"
-      self.notificacao = ""
-      save!
+    self.statusci_id = 8
+    self.CCDebito = ""
+    self.ProjetoDebito = ""
+    self.Owner = "BRQ"
+    self.notificacao = ""
+    save!
   end
 
 
-
   define_index do
-      indexes chave
-      indexes descricao
-      indexes :Owner, :as => :gestor
-      indexes notificacao, :as => :usuario 
-      indexes :CCCredito
-      indexes :ProjetoCredito
-      indexes :CCDebito
-      indexes :ProjetoDebito 
-      indexes :descricaocobranca
-      indexes :codigocobranca
-      indexes :codigorateio
-      indexes :provisionar
-      indexes :cobrar
-      indexes jira
-      indexes site(:nome), :as => :localidade
-      indexes statusci(:status), as => :status
-      indexes tipoci(:tipo), :as => :tipo
-      indexes atributo(:valor), :as => :valoratributo
-      
- 
+    indexes chave
+    indexes descricao
+    indexes :Owner, :as => :gestor
+    indexes notificacao, :as => :usuario
+    indexes :CCCredito
+    indexes :ProjetoCredito
+    indexes :CCDebito
+    indexes :ProjetoDebito
+    indexes :descricaocobranca
+    indexes :codigocobranca
+    indexes :codigorateio
+    indexes :provisionar
+    indexes :cobrar
+    indexes jira
+    indexes site(:nome), :as => :localidade
+    indexes statusci(:status), as => :status
+    indexes tipoci(:tipo), :as => :tipo
+    indexes atributo(:valor), :as => :valoratributo
 
-      #has site_id  # se eu quiser quiser filtrar..
-      #has tipoci_id
+
+    #has site_id  # se eu quiser quiser filtrar..
+    #has tipoci_id
   end
 
 
   private
   def atualiza_chave
-      nova_chave = self.chave.gsub "<ID>", id.to_s
-      self.update_attributes(:chave => nova_chave) if self.chave != nova_chave
-  end    
-  
+    nova_chave = self.chave.gsub "<ID>", id.to_s
+    self.update_attributes(:chave => nova_chave) if self.chave != nova_chave
+  end
+
 end
 
 # http://freelancing-god.github.com/ts/en/installing_sphinx.html

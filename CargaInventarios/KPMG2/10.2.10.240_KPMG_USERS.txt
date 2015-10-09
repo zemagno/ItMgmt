@@ -1,2 +1,0 @@
-10.2.10.240;"BRQ\eduardomendes";"BRQ\eduardomendes";"";""
-10.2.10.240;"";"";"BRQ\eduardomendes";"BRQ\eduardomendes"

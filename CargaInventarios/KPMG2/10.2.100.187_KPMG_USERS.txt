@@ -1,3 +1,0 @@
-10.2.100.187;"BRQ\gcmendes";"BRQ.COM\gcmendes";"";""
-10.2.100.187;"";"";"BRQ\gcmendes";"BRQ.COM\gcmendes"
-10.2.100.187;"suportebrq";""

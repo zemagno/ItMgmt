@@ -1,5 +1,0 @@
-10.2.70.189;"BRQ\caterinakeller";"BRQ.COM\caterinakeller";"";""
-10.2.70.189;"";"";"BRQ\caterinakeller";"BRQ.COM\caterinakeller"
-10.2.70.189;"";"";"BRQ\caterinakeller";"BRQ.COM\caterinakeller"
-10.2.70.189;"";"";"BRQ\caterinakeller";"BRQ.COM\caterinakeller"
-10.2.70.189;"brq";""

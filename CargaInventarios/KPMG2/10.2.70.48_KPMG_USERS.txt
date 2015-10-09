@@ -1,4 +1,0 @@
-10.2.70.48;"BRQ\gdarlan";"BRQ\gdarlan";"";""
-10.2.70.48;"";"";"BRQ\gdarlan";"BRQ\gdarlan"
-10.2.70.48;"";"";"BRQ\gdarlan";"BRQ\gdarlan"
-10.2.70.48;"teste";""

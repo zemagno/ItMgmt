@@ -1,3 +1,0 @@
-10.2.10.76;"BRQ\cristiano";"BRQ\cristiano";"";""
-10.2.10.76;"";"";"BRQ\cristiano";"BRQ\cristiano"
-10.2.10.76;"adm";""

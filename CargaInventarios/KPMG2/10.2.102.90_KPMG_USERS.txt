@@ -1,3 +1,0 @@
-10.2.102.90;"BRQ\elisabete";"BRQ\elisabete";"";""
-10.2.102.90;"";"";"BRQ\elisabete";"BRQ\elisabete"
-10.2.102.90;"suporterio";""

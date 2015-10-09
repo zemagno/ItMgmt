@@ -1,5 +1,0 @@
-10.2.43.47;"BRQ\douglasralencar";"BRQ\douglasralencar";"";""
-10.2.43.47;"";"";"BRQ\douglasralencar";"BRQ\douglasralencar"
-10.2.43.47;"";"";"BRQ\douglasralencar";"BRQ.COM\douglasralencar"
-10.2.43.47;"";"";"BRQ\douglasralencar";"BRQ\douglasralencar"
-10.2.43.47;"suporte";""

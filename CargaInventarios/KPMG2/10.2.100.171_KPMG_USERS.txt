@@ -1,6 +1,0 @@
-10.2.100.171;"BRQ\mfonseca";"BRQ\mfonseca";"";""
-10.2.100.171;"";"";"BRQ\alexandropereira";"BRQ\alexandropereira"
-10.2.100.171;"";"";"BRQ\heliofilho";"BRQ\heliofilho"
-10.2.100.171;"";"";"BRQ\mfonseca";"BRQ\mfonseca"
-10.2.100.171;"";"";"BRQ\mfonseca";"BRQ\mfonseca"
-10.2.100.171;"suportebrq";""

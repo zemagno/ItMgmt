@@ -1,3 +1,0 @@
-10.2.100.36;"BRQ\sergioluigi";"BRQ\sergioluigi";"";""
-10.2.100.36;"";"";"BRQ\sergioluigi";"BRQ\sergioluigi"
-10.2.100.36;"suportebrq";""

@@ -1,3 +1,0 @@
-10.2.100.176;"BRQ\flaviamacedo";"BRQ\flaviamacedo";"";""
-10.2.100.176;"";"";"BRQ\flaviamacedo";"BRQ\flaviamacedo"
-10.2.100.176;"suportebrq";""

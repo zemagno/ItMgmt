@@ -19,6 +19,14 @@ class LicencasController < ApplicationController
     @licencas=usuario.softwareEmUsoPorEstacao
   end
 
+
+  def estacoesEquipeGestor
+    authorize! :read, :licencas, :message => "Voce nao tem permissao para visuzalizar isso."
+    usr = params[:id]
+    @gestor=GestaoLicenciamento.new(usr)
+    @estacoesEquipe = @gestor.estacoesEmUsoEquipeGestor
+  end
+
 end
 
 

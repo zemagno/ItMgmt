@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.16'
+#gem 'rack-cache', '1.2'
 
 gem 'hirb'
 
@@ -15,7 +16,8 @@ gem 'will_paginate', '~> 3.0'
 
 gem 'oauth', '~> 0.4.7' # exigido pelo JIRA, que agora esta dentro do lib
 
-gem 'mysql2' 
+gem 'mysql2', '0.3.20'
+# gem 'activerecord-mysql2-adapter'
 
 gem 'thin'
 
@@ -25,7 +27,7 @@ gem 'foreman'
 
 gem 'nokogiri'
 
-gem 'pusher'
+#gem 'pusher'
 
 gem 'wisper' # publish/subscriber
 
@@ -63,7 +65,7 @@ gem "nifty-generators", :group => :development
 
 gem 'omniauth-google-oauth2'
 gem 'cancan' ,  '~> 1.6'
-gem 'dalli'  #high performance pure Ruby client for accessing memcached servers
+gem 'dalli', '2.7.4'    #high performance pure Ruby client for accessing memcached servers
 
 
 gem 'whenever', :require => false # crontab like

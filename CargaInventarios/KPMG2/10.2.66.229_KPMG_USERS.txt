@@ -1,3 +1,0 @@
-10.2.66.229;"BRQ\azampieri";"BRQ\azampieri";"";""
-10.2.66.229;"";"";"BRQ\azampieri";"BRQ\azampieri"
-10.2.66.229;"brq";""

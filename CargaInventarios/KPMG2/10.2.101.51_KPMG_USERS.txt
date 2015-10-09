@@ -1,3 +1,0 @@
-10.2.101.51;"BRQ\pmarques";"BRQ\pmarques";"";""
-10.2.101.51;"";"";"BRQ\pmarques";"BRQ\pmarques"
-10.2.101.51;"brqadmusr";""
