@@ -146,7 +146,6 @@
     <orderEntry type="library" scope="PROVIDED" name="activeadmin (v0.6.6, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activemodel (v3.2.16, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v3.2.16, RVM: ruby-1.9.3-p551) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="activerecord-mysql2-adapter (v0.0.3, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activerecord-sqlserver-adapter (v3.2.13, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activeresource (v3.2.16, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v3.2.16, RVM: ruby-1.9.3-p551) [gem]" level="application" />
@@ -199,7 +198,7 @@
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.11.2, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multi_xml (v0.5.5, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="multipart-post (v2.0.0, RVM: ruby-1.9.3-p551) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.4.1, RVM: ruby-1.9.3-p551) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="mysql2 (v0.3.20, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nifty-generators (v0.4.6, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.6.6.2, RVM: ruby-1.9.3-p551) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="oauth (v0.4.7, RVM: ruby-1.9.3-p551) [gem]" level="application" />
