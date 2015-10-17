@@ -1,16 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  rescue_from Exception, :with => :error_render_method
+  # rescue_from Exception, :with => :error_render_method
 
-  def error_render_method(error)
-    logger.warn(error.message)
-    respond_to do |type|
-      type.html { render :template => "errors/error_404", :status => 404 }
-      type.all  { render :nothing => true, :status => 404 }
-    end
-    true
-  end
+  # def error_render_method(error)
+  #   logger.warn(error.message)
+  #   respond_to do |type|
+  #     type.html { render :template => "errors/error_404", :status => 404 }
+  #     type.all  { render :nothing => true, :status => 404 }
+  #   end
+  #   true
+  # end
   
   def access_denied(exception)
     redirect_to admin_organizations_path, :alert => exception.message
