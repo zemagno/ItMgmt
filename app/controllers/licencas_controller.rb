@@ -4,6 +4,10 @@ class LicencasController < ApplicationController
 
   def porGestor
 
+    puts "_____________________________________________________________________________"
+    puts params
+    puts "_____________________________________________________________________________"
+
     authorize! :read, :licencas, :message => "Voce nao tem permissao para visuzalizar isso."
     usr = params[:id]
     @gestor=GestaoLicenciamento.new(usr)
@@ -24,6 +28,7 @@ class LicencasController < ApplicationController
     authorize! :read, :licencas, :message => "Voce nao tem permissao para visuzalizar isso."
     usr = params[:id]
     @gestor=GestaoLicenciamento.new(usr)
+    @usuario = GestaoUsuario.new(:login => usr)
     @estacoesEquipe = @gestor.estacoesEmUsoEquipeGestor
   end
 

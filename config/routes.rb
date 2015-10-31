@@ -6,8 +6,9 @@ ItMgmt::Application.routes.draw do
   resources :softwares
 
 
-  get "Licencas/PorGestor/:id", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /.*/ }
-  get "Licencas/PorGestor/:id/Estacoes", to: "Licencas#estacoesEquipeGestor", as: "EstacoesEquipeGestor" , :constraints => { :id => /.*/ }
+  # get "Licencas/PorGestor/:id", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /.*/ }
+  get "Licencas/PorGestor/:id(/:versao)", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /[a-zA-z0-9.]*/ }
+  # get "Licencas/EstacoesPorGestor/:id", to: "Licencas#estacoesEquipeGestor", as: "EstacoesEquipeGestor" , :constraints => { :id => /.*/ }
   get "Licencas/PorUsuario/:id", to: "Licencas#porUsuario", as: "LicencasPorUsuario" , :constraints => { :id => /.*/ }
 
 
@@ -52,7 +53,7 @@ ItMgmt::Application.routes.draw do
 # match '/404' => 'errors#not_found'
 # match '/422' => 'errors#server_error'
 
-  resources :funcionarios #, :only => [:index,:show,:edit]
+  resources :funcionarios , :constraints => { :id => /.*/ }
 
 
   resources :template_surveys

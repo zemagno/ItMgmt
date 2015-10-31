@@ -68,6 +68,7 @@ class EnviaEmailWorker
          if ! gestor.nil?
              licencas=gestor.niceSoftwareEmUsoEquipeGestor
              licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
+             destinatario = ListaEmail.acerta(loginGestor,"@brq.com")
              destinatario = "magno@brq.com"
              from = "magno@brq.com"
              cc =  ""
