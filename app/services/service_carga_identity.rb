@@ -24,6 +24,8 @@ class ServiceCargaIdentity
             chave = linha[:primaryEmail.to_s]
           when "Zimbra", "ZMail"
             chave = linha[:User.to_s]
+          when "O365"
+            chave = linha[:UserPrincipalName.to_s]  
           else
             chave = nil
         end

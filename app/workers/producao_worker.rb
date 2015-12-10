@@ -34,9 +34,14 @@ class ProducaoWorker
        status,detalhes = Object::const_get("ServiceMailing").new().go($1)
     end
 
+    if job.job =~ /^Producao_([a-zA-Z0-9]+)$/
+       status,detalhes = Object::const_get("ServiceProducao#{$1}").new().go()
+    end
+
     if job.job =~ /^Query_([a-zA-Z0-9]+)$/
       status,detalhes = ServiceQueries.new.go($1)
     end
+
 
 
     if job.job =~ /^Dashboard_([a-zA-Z0-9]+)$/

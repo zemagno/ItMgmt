@@ -53,8 +53,10 @@ class GestaoUsuario
     def Ramais
         @ramais ||= TelRamalLogin.where(IdtLogin: @login).map do |x| 
             if x.NumRamal.to_s =~ /(\d\d)(\d\d\d\d)/
+                ddd = $1
+                ddd = "12" if ddd=="11"
                 # se for 6 digitos, tranformo prefixo+ramal em ddd+prefixo+ramal
-                "#{x.IdtLocalidade} - #{x.Ramal.NumPrefixo}-#{$2}" 
+                "#{x.IdtLocalidade} - (#{ddd}) #{x.Ramal.NumPrefixo}-#{$2}" 
             else
                 "#{x.IdtLocalidade} - #{x.NumRamal.to_s}"
             end

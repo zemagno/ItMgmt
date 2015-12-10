@@ -108,7 +108,7 @@ class GestaoLicenciamento
 
     @matrixSw = [["Software", "Qtde", "Custo Mensal"]]
     c = 0
-    @custoSoftware.each do |cs|
+    @custoSoftware.sort{ |a,b| a[:software] <=> b[:software] }.each do |cs|
       @matrixSw << [cs[:software], subContGeralSw[c].nil? ? "-" : subContGeralSw[c], subTotalGeralSw[c].nil? ? "-" : "%.2f" % subTotalGeralSw[c]]
       c = c + 1
     end

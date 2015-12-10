@@ -63,7 +63,8 @@ gem "nifty-generators", :group => :development
 
 # gem 'omniauth-google-apps'
 
-gem 'omniauth-google-oauth2'
+#gem 'omniauth-google-oauth2'
+gem 'omniauth-office365', github: 'simi/omniauth-office365'
 gem 'cancan' ,  '~> 1.6'
 gem 'dalli', '2.7.4'    #high performance pure Ruby client for accessing memcached servers
 

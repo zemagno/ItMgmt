@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151009093656) do
+ActiveRecord::Schema.define(:version => 20151210151905) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -92,11 +92,13 @@ ActiveRecord::Schema.define(:version => 20151009093656) do
     t.string   "comment"
     t.string   "remote_address"
     t.datetime "created_at"
+    t.string   "request_uuid"
   end
 
   add_index "audits", ["associated_id", "associated_type"], :name => "associated_index"
   add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
   add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
+  add_index "audits", ["request_uuid"], :name => "index_audits_on_request_uuid"
   add_index "audits", ["user_id", "user_type"], :name => "user_index"
 
   create_table "authors", :force => true do |t|
@@ -282,40 +284,42 @@ ActiveRecord::Schema.define(:version => 20151009093656) do
   end
 
   create_table "funcionarios", :primary_key => "Login", :force => true do |t|
-    t.integer "NumMatrProfissional"
-    t.string  "NomProfissional",            :limit => 50
-    t.date    "DtaAdmissao"
-    t.date    "DtaDemissao"
-    t.string  "NomEmailBRQ",                :limit => 50
-    t.string  "IdtCPF",                     :limit => 20
-    t.string  "IdtRG",                      :limit => 20
-    t.string  "IdtCodigoCentroCusto",       :limit => 10
-    t.string  "NomCentroCusto"
-    t.string  "NomTipoCentroCusto"
-    t.string  "IdtCodigoSecao",             :limit => 10
-    t.string  "NomLocalTrabalho",           :limit => 50
-    t.string  "NomCidadeLocalTrabalho",     :limit => 50
-    t.string  "IdtCentroCustoTorre",        :limit => 10
-    t.string  "DscCentroCustoTorre",        :limit => 50
-    t.string  "NomAlocacao",                :limit => 50
-    t.string  "ramal"
-    t.string  "observacao"
-    t.boolean "semEstacao"
-    t.integer "IdLocalTrabalho"
-    t.boolean "cipa"
-    t.boolean "brigadista"
-    t.boolean "afastado"
-    t.date    "DtaRemocaoAcesso"
-    t.boolean "FlgIndicaRetorno"
-    t.string  "NomGestorProfissional",      :limit => 50
-    t.string  "NomEmailGestorProfissional", :limit => 30
-    t.string  "NomEstadoLocalTrabalho",     :limit => 10
-    t.string  "DscCentroCustoBU",           :limit => 30
-    t.string  "DscCentroCustoExecutivo",    :limit => 50
-    t.string  "IdtCentroCustoBU",           :limit => 30
-    t.string  "IdtCentroCustoExecutivo",    :limit => 30
-    t.string  "NomEmailPessoal",            :limit => 50
-    t.boolean "ramalSendoExterno"
+    t.integer  "NumMatrProfissional"
+    t.string   "NomProfissional",            :limit => 50
+    t.date     "DtaAdmissao"
+    t.date     "DtaDemissao"
+    t.string   "NomEmailBRQ",                :limit => 50
+    t.string   "IdtCPF",                     :limit => 20
+    t.string   "IdtRG",                      :limit => 20
+    t.string   "IdtCodigoCentroCusto",       :limit => 10
+    t.string   "NomCentroCusto"
+    t.string   "NomTipoCentroCusto"
+    t.string   "IdtCodigoSecao",             :limit => 10
+    t.string   "NomLocalTrabalho",           :limit => 50
+    t.string   "NomCidadeLocalTrabalho",     :limit => 50
+    t.string   "IdtCentroCustoTorre",        :limit => 10
+    t.string   "DscCentroCustoTorre",        :limit => 50
+    t.string   "NomAlocacao",                :limit => 50
+    t.string   "ramal"
+    t.string   "observacao"
+    t.boolean  "semEstacao"
+    t.integer  "IdLocalTrabalho"
+    t.boolean  "cipa"
+    t.boolean  "brigadista"
+    t.boolean  "afastado"
+    t.date     "DtaRemocaoAcesso"
+    t.boolean  "FlgIndicaRetorno"
+    t.string   "NomGestorProfissional",      :limit => 50
+    t.string   "NomEmailGestorProfissional", :limit => 30
+    t.string   "NomEstadoLocalTrabalho",     :limit => 10
+    t.string   "DscCentroCustoBU",           :limit => 30
+    t.string   "DscCentroCustoExecutivo",    :limit => 50
+    t.string   "IdtCentroCustoBU",           :limit => 30
+    t.string   "IdtCentroCustoExecutivo",    :limit => 30
+    t.string   "NomEmailPessoal",            :limit => 50
+    t.boolean  "ramalSendoExterno"
+    t.datetime "DataInicioAfastamento"
+    t.datetime "DataFinalAfastamento"
   end
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"
@@ -360,6 +364,16 @@ ActiveRecord::Schema.define(:version => 20151009093656) do
     t.datetime "ZimbraUltimologon"
     t.string   "ZimbraRedirect"
     t.string   "ZimbraLocalDeliveryDisabled"
+    t.string   "O365DisplayName",             :limit => 50
+    t.string   "O365UserPrincipalName",       :limit => 50
+    t.string   "O365AccountSku",              :limit => 50
+    t.string   "O365SWAY",                    :limit => 50
+    t.string   "O365INTUNE_O365",             :limit => 50
+    t.string   "O365YAMMER_ENTERPRISE",       :limit => 50
+    t.string   "O365Lync_Online",             :limit => 50
+    t.string   "O365Sharepoint_Online",       :limit => 50
+    t.string   "O365Exchange_Online",         :limit => 50
+    t.text     "ADGrupos"
   end
 
   add_index "identities", ["ADUser"], :name => "index_identities_on_ADUser"

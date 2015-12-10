@@ -1,8 +1,5 @@
 
-<style>
-.style0,td{color:#000;font-size:12pt;font-weight:400;font-style:normal;text-decoration:none;font-family:Calibri,sans-serif;mso-font-charset:0;mso-number-format:General;text-align:general;vertical-align:bottom;border:none;mso-background-source:auto;mso-pattern:auto;mso-protection:locked visible;white-space:nowrap;mso-rotate:0}.xl65,td{mso-style-parent:style0}<style><!--table{mso-displayed-decimal-separator:"\.";mso-displayed-thousand-separator:"\,"}@page{margin:1in .75in 1in .75in;mso-header-margin:.5in;mso-footer-margin:.5in}.style0{mso-style-name:Normal;mso-style-id:0}td{padding-top:1px;padding-right:1px;padding-left:1px;mso-ignore:padding}.xl65,.xl66{border-top:none;border-right:none;border-bottom:.5pt solid #9BC2E6;border-left:none;background:#DCE6F1;mso-pattern:#DCE6F1 none}.xl68,.xl70,.xl71{mso-number-format:"_-* \#\,\#\#0\.00_-\;\\-* \#\,\#\#0\.00_-\;_-* \0022-\0022??_-\;_-\@_-"}.xl65{font-size:11pt;font-weight:700}.xl66{mso-style-parent:style0;font-size:11pt;font-weight:700;text-align:right}.xl69,.xl70{font-size:11pt;font-weight:700;border-top:.5pt solid #9BC2E6;border-right:none;border-bottom:none;border-left:none;background:#DCE6F1;mso-pattern:#DCE6F1 none}.xl67,.xl69{mso-style-parent:style0;text-align:left}.xl68{mso-style-parent:style0}.xl70{mso-style-parent:style0}.xl71{mso-style-parent:style0;text-align:right}.xl72{mso-style-parent:style0;mso-number-format:"_-* \#\,\#\#0_-\;\\-* \#\,\#\#0_-\;_-* \0022-\0022??_-\;_-\@_-"}
--->
-</style>
+
 
 <h2><%=@licencas[0][0][0]%></h2>
 
@@ -32,7 +29,7 @@
  <% @licencas[1].each_with_index do |linha,idx| %>
  <tr height=25 style='height:15.0pt'>
    <% if idx==0 %>
-       <td height=15 class=xl67 style='height:15.0pt'><%=linha[1] %></td>
+       <td height=25 class=xl67 style='height:15.0pt;word-wrap:break-word;'><%=linha[1] %></td>
    <% else %>
        <td height=15 class=xl67 style='height:15.0pt'><%=link_to(linha[1],LicencasPorUsuario_path(linha[0])) %></td>
       <% end %>

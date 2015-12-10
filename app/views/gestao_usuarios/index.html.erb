@@ -10,16 +10,18 @@
 
 
 <b>
+<font color="red"><%= "ATENCAO: Funcionario Afastado !!" if @funcionario.afastado %></font>
+
 </br><%= "Login:  #{@usuario.login} - Nome: #{@nomecompleto}" %>
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
       <%= "- Matricula: #{@funcionario.Matricula}" %>
-      </br><%= "CPF: #{@funcionario.CPF} - Identidade: #{@funcionario.Identidade}" %>
-      </br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataRemocaoAcesso}" %>
-      </br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
+      <br><%= "CPF: #{@funcionario.CPF} - Identidade: #{@funcionario.Identidade}" %>
+      <br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataRemocaoAcesso}" %>
+      <br><%= "É Gestor ? #{@usuario.Status['gestor?']} "%>
+      <br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
       <%= " - Posicao: #{@posicaoFacilities} "  %>   
-      </br>Gestor Direto: <%= link_to(@funcionario.NomeGestor,"/GestaoUsuarios?search=#{@funcionario.gestor}") %></td><%= " - É Gestor ? #{@usuario.Status['gestor?']} "%>
-
-      </br><%= "Ramais: #{@ramais}" %> - <%= @funcionario.status %>
+      <br>Gestor Direto: <%= link_to(@funcionario.NomeGestor,"/GestaoUsuarios?search=#{@funcionario.gestor}") %></td>
+      <br><%= "Ramais: #{@ramais}" %> - <%= @funcionario.status %>
 
       <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true)%>
 
