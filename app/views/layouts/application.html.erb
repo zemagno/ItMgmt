@@ -55,7 +55,7 @@ $(document).ready( function(){
         		  	Logado como <%= current_user.name %>!
           			<%= link_to "Deslogar", signout_path %>
         		<% else %>
-          			<%= link_to "Se logar com Google", "/auth/office365" %>
+          			<%= link_to "Se logar com Google", "/auth/google_oauth2" %>
         		<% end %>
             </div>
          

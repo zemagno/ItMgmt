@@ -18,8 +18,9 @@ class ServiceCargaIdentity
       dados.each do |linha|
 
         case provider
-          when "AD"
+          when "AD","GruposAD"
             chave = linha[:User.to_s]
+            provider = "AD"  # para o grupos
           when "Google"
             chave = linha[:primaryEmail.to_s]
           when "Zimbra", "ZMail"

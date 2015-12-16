@@ -29,7 +29,7 @@ def status
   status_func = ""
   status_func << "Afastado - " if self.afastado
   status_func << "Sem Estacao - " if self.semEstacao
-  status_func << self.observacao if  self.semEstacao || self.afastado
+  status_func << (self.observacao || "" ) if  self.semEstacao || self.afastado
   status_func
 end
 

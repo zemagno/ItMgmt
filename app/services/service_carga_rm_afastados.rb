@@ -41,7 +41,7 @@ class ServiceCargaRmAfastados
       func = Funcionario.find_by_Login(f.Login)
       func.afastado = true
       func.DataInicioAfastamento = f.DTINICIO
-      func.DataFimAfastamento = f.DTFINAL
+      func.DataFinalAfastamento = f.DTFINAL
       func.save!
       total = total + 1
     end

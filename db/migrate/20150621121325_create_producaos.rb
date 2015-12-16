@@ -5,7 +5,7 @@ class CreateProducaos < ActiveRecord::Migration
       t.integer :id
       t.string :status, :limit => 10
       t.datetime :data
-      t.string :detalhe
+      t.text :detalhe, :limit => 4096
 
       t.timestamps
     end

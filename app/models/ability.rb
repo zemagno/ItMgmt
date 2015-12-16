@@ -102,7 +102,7 @@ class Ability
     end
 
     cannot :manager, User
-    #can :manage, :all
+    can :manage, :all
     
     #fazendo edit + seguranca de user
     
