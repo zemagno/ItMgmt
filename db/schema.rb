@@ -537,7 +537,7 @@ ActiveRecord::Schema.define(:version => 20151210151905) do
     t.string   "job",        :limit => 50
     t.string   "status",     :limit => 10
     t.datetime "data"
-    t.string   "detalhe"
+    t.text     "detalhe",    :limit => 4096
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end

@@ -10,7 +10,7 @@
 
 
 <b>
-<font color="red"><%= "ATENCAO: Funcionario Afastado !!" if @funcionario.afastado %></font>
+<font color="red"><%= "ATENCAO: Funcionario Afastado !!" if @funcionaro && @funcionario.afastado %></font>
 
 </br><%= "Login:  #{@usuario.login} - Nome: #{@nomecompleto}" %>
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
