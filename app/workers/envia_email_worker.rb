@@ -63,8 +63,8 @@ class EnviaEmailWorker
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{usr.login}] em #{Time.now}"  
          Event.register("email","Gestao Usuario","detalhe","Gestao Usuario - email direto - #{template.nome} - #{usr.login}")
      when "GESTAO LICENCA" 
-
-         gestor=GestaoLicenciamento.new(params[:gestor])
+         loginGestor = params[:gestor]
+         gestor=GestaoLicenciamento.new(loginGestor)
          if ! gestor.nil?
              licencas=gestor.niceSoftwareEmUsoEquipeGestor
              licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}

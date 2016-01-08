@@ -56,7 +56,7 @@ class GestaoLicenciamento
   end
 
 
-  def niceSoftwareEmUsoEquipeGestor
+  def niceSoftwareEmUsoEquipeGestor(reduzido = false)
     @matrixUserSw = []
 
     @dadosGestor = [[@funcionario.NomProfissional]]
@@ -113,6 +113,21 @@ class GestaoLicenciamento
       c = c + 1
     end
     @matrixSw << ["Total Geral", "", '%.2f' % totalGeralSw]
+
+    if reduzido
+      @lic1 = @matrixUserSw.transpose
+      i = 2
+        begin
+         if @lic1[i].last.to_i == 0
+            puts "vou apagar #{i} - #{@lic1.count-2}"
+            @lic1.delete_at(i)
+         else 
+            i = i + 1
+         end
+        end while i < @lic1.count
+        @matrixUserSw = @lic1.transpose
+    end
+
 
 
     [@dadosGestor, @matrixUserSw, @matrixSw]

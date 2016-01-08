@@ -269,6 +269,12 @@
 
 <%= form_tag(alocar_licenca_path, :method => "post") do %>
 
+
+  <label>Em qual estacao ?
+  </label>
+  <%= select_tag :estacao, options_for_select(@estacoes.map { |x| "#{x[:chave]} - #{x[:detalhes]}" }) %>
+  <div class="spacer"></div>
+
   <label>Qual licenca alocar ?
   </label>
   <%= select_tag :licenca, options_for_select(@licencasexistentes) %>
@@ -302,7 +308,3 @@
 <% else %>
   <br><b><p>Voce nao tem autorizacao para vizualizar...</b>
 <% end %>
-
-
-
-

@@ -11,7 +11,7 @@ class LicencasController < ApplicationController
     authorize! :read, :licencas, :message => "Voce nao tem permissao para visualizar isso."
     usr = params[:id]
     @gestor=GestaoLicenciamento.new(usr)
-    @licencas=@gestor.niceSoftwareEmUsoEquipeGestor
+    @licencas=@gestor.niceSoftwareEmUsoEquipeGestor(false)
     #@licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
    
       @lic1 = @licencas[1].transpose

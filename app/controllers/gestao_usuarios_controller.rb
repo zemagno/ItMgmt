@@ -77,27 +77,27 @@ def load
 
 end
 
-def loadOld
-  @erros = []
+# def loadOld
+#   @erros = []
 
-  @login = params[:search] || session[:search_gestao_usuario]
-  @usuario = GestaoUsuario.new(:login => @login)
+#   @login = params[:search] || session[:search_gestao_usuario]
+#   @usuario = GestaoUsuario.new(:login => @login)
 
-  @funcionario = Funcionario.find_by_Login(@login)
+#   @funcionario = Funcionario.find_by_Login(@login)
   
-  session[:search_gestao_usuario] = @login 
-  @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
-  @licencas  = @usuario.LicencasEmUso
-  @estacoes   = @usuario.Estacoes
-  @celulares = @usuario.Celulares
-  @placadados = @usuario.PlacaDados
-  @monitores = @usuario.Monitores
-  @ramais =@usuario.Ramais
-  @posicaoFacilities = ""
-  @posicaoFacilities << " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
+#   session[:search_gestao_usuario] = @login 
+#   @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
+#   @licencas  = @usuario.LicencasEmUso
+#   @estacoes   = @usuario.Estacoes
+#   @celulares = @usuario.Celulares
+#   @placadados = @usuario.PlacaDados
+#   @monitores = @usuario.Monitores
+#   @ramais =@usuario.Ramais
+#   @posicaoFacilities = ""
+#   @posicaoFacilities << " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
   
-  @erros.concat @usuario.DistorcoesUsoLicenca 
-end
+#   @erros.concat @usuario.DistorcoesUsoLicenca 
+# end
 
 
 def email
