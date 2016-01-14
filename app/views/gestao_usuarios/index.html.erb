@@ -163,7 +163,7 @@
 
 <% @licencas.each do |licenca| %>
   <tr>
-    <td><%= link_to licenca[:chave],  ci_path(licenca[:chave]), :target => '_blank' %></td>
+    <td><%= link_to "#{licenca[:chave]} - Estacao:#{licenca[:hostname]}",  ci_path(licenca[:chave]), :target => '_blank' %></td>
     <td><%= licenca[:descricao] %></td>
     <td><%= licenca[:gestor] %></td>
     <td><%= "#{licenca[:CCDebito]}/#{licenca[:ProjetoDebito]}" %></td>
@@ -269,6 +269,12 @@
 
 <%= form_tag(alocar_licenca_path, :method => "post") do %>
 
+
+  <label>Em qual estacao ?
+  </label>
+  <%= select_tag :estacao, options_for_select(@estacoes.map { |x| "#{x[:chave]} - #{x[:detalhes]}" }) %>
+  <div class="spacer"></div>
+
   <label>Qual licenca alocar ?
   </label>
   <%= select_tag :licenca, options_for_select(@licencasexistentes) %>
@@ -302,7 +308,3 @@
 <% else %>
   <br><b><p>Voce nao tem autorizacao para vizualizar...</b>
 <% end %>
-
-
-
-

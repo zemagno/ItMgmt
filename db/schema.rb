@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151210151905) do
+ActiveRecord::Schema.define(:version => 20160108183329) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -537,7 +537,7 @@ ActiveRecord::Schema.define(:version => 20151210151905) do
     t.string   "job",        :limit => 50
     t.string   "status",     :limit => 10
     t.datetime "data"
-    t.text     "detalhe",    :limit => 4096
+    t.text     "detalhe"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
   end
@@ -756,7 +756,7 @@ ActiveRecord::Schema.define(:version => 20151210151905) do
   create_table "vwcargaativosportal", :id => false, :force => true do |t|
     t.string "Patrimonio"
     t.string "usuario"
-    t.text   "ativo",         :limit => 2147483647
+    t.text   "ativo"
     t.string "DataEntrega"
     t.string "DataDevolucao"
   end

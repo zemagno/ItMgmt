@@ -20,7 +20,8 @@ class GestaoEstacao
 		
 		puts attributes
 		estacao_disponivel = Ci.find_by_chave(attributes[:estacao])
-		if estacao_disponivel and estacao_disponivel.tipoci_id==46 and estacao_disponivel.statusci_id == 8			
+		if estacao_disponivel and estacao_disponivel.tipoci_id==46 and estacao_disponivel.statusci_id == 8	
+		    		
 		    estacao_disponivel.Owner = attributes[:gestor]
 		    estacao_disponivel.notificacao = attributes[:id]
 		    estacao_disponivel.CCDebito = attributes[:cc]

@@ -26,11 +26,12 @@ class GestaoLicenca
 			licenca_disponivel.CCDebito = attributes[:cc]
 			licenca_disponivel.ProjetoDebito = attributes[:projeto]
 			licenca_disponivel.statusci_id = 1
+			licenca_disponivel._hostname = attributes[:estacao].split(" - ")[0]
 	        licenca_disponivel.save!
 		end
 		licenca_disponivel
 	end
-
+	
 	def self.LicencasDisponiveis(search)
 		l = Ci.where("tipoci_id = 13 and statusci_id = 8 and chave LIKE ?","#{search}%").map(&:descricao).uniq
 		l
