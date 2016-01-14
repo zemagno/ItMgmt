@@ -1,8 +1,8 @@
 class GestaoLicenciamento
 
-#
-# g = LicenciamentoGestor.new("ronaldocarvalho")
-# l = g.niceSoftwareEmUso
+  #
+  # g = LicenciamentoGestor.new("ronaldocarvalho")
+  # l = g.niceSoftwareEmUso
 
   def initialize(_login)
     @login = _login
@@ -23,17 +23,31 @@ class GestaoLicenciamento
 
   # estacoes de um usuario, segundo o inventario, nao o CIS
   def estacoesUsuario
-    @estacoes = @estacoes || InventarioUser.estacoes(@login)
-    # @estacoes = @estacoes || InventarioUser.where(login: @login).pluck(:hostname)
+    # @estacoes = @estacoes || InventarioUser.estacoes(@login) # KPMG
+    @estacoes = @estacoes || Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 46).pluck(:chave)
+
   end
 
   # todos os softwares em uso por um usuario. Devolve array com nome dos sw
   def softwareEmUso
-    @softwareEmUso = @softwareEmUso || InventarioSw.licencaEstacao(estacoesUsuario)
+    # @softwareEmUso = @softwareEmUso || InventarioSw.licencaEstacao(estacoesUsuario) # KPMG
+    @softwareEmUso = @softwareEmUso || Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 13).pluck(:descricao)
   end
 
   def softwareEmUsoPorEstacao
-    @softwareEmUsoPorEstacao = @softwareEmUsoPorEstacao || InventarioSw.LicencasPorEstacao(estacoesUsuario)
+    
+    # montar a matriz a partir das licencas - se nao tiver estacao, paciencia..
+    
+    licencasAlocadas = []
+    Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 13).each do |ci|
+      licencasAlocadas << [ci._hostname,ci.descricao]
+    end
+    @softwareEmUsoPorEstacao = []
+    licencasAlocadas.group_by{|x| x[0]}.each do |k,v|
+      @softwareEmUsoPorEstacao << [k,v.map {|x| x[1]}]
+    end
+    # @softwareEmUsoPorEstacao = InventarioSw.LicencasPorEstacao(estacoesUsuario) #KPMG
+    @softwareEmUsoPorEstacao
   end
 
 
@@ -118,15 +132,15 @@ class GestaoLicenciamento
     if reduzido
       @lic1 = @matrixUserSw.transpose
       i = 2
-        begin
-         if @lic1[i].last.to_i == 0
-            puts "vou apagar #{i} - #{@lic1.count-2}"
-            @lic1.delete_at(i)
-         else 
-            i = i + 1
-         end
-        end while i < @lic1.count
-        @matrixUserSw = @lic1.transpose
+      begin
+        if @lic1[i].last.to_i == 0
+          puts "vou apagar #{i} - #{@lic1.count-2}"
+          @lic1.delete_at(i)
+        else
+          i = i + 1
+        end
+      end while i < @lic1.count
+      @matrixUserSw = @lic1.transpose
     end
 
 
