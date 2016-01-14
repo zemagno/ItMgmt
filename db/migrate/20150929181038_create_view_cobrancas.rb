@@ -11,7 +11,9 @@ from
 	inventario_sws s, 
     inventario_users u
 where 
-	u.hostname = s.hostname   
+	u.hostname = s.hostname  and
+  s.versao = 0 and
+  u.versao = 0
 group by u.login, s.software }
 
 
