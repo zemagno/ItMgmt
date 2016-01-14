@@ -223,7 +223,7 @@
         <label>Gestor
         <span class="small">Login de rede do Gestor </span>
         </label>
-        <%= text_field_tag :gestor, nil, :required => true  %>
+        <%= text_field_tag :gestor, @funcionario.gestor, :required => true  %>
         
         <label>Centro de Custo
         <span class="small">para debitar </span>
@@ -283,7 +283,7 @@
   <label>Gestor
   <span class="small">Login de rede do Gestor </span>
   </label>
-  <%= text_field_tag :gestor, nil, :required => true  %>
+  <%= text_field_tag :gestor, @funcionario.gestor , required: true  %>
   
   
   <label>Centro de Custo
@@ -295,6 +295,11 @@
   <label>Codigo do Projeto
   </label>
   <%= text_field_tag :projeto  %>
+  <div class="spacer"></div>
+
+  <label>Numero da Solicitacao
+  </label>
+  <%= text_field_tag :solicitacao  %>
   <div class="spacer"></div>
 
   <%= hidden_field_tag :id, @login%>

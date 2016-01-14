@@ -18,5 +18,6 @@ class Audit < ActiveRecord::Base
       indexes user(:name), as => :quem
       indexes auditable_id, as => :onde
       indexes auditable_type, as => :tipoci
+      indexes associated_id, as => :relacionado
   end
 end

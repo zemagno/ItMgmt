@@ -289,23 +289,23 @@ class Ci < ActiveRecord::Base
   end
 
 
-  def libera_estacao
-    self.statusci_id = 8
-    self.CCDebito = ""
-    self.ProjetoDebito = ""
-    self.Owner = "BRQ"
-    self.notificacao = ""
-    save!
-  end
+  # def libera_estacao
+  #   self.statusci_id = 8
+  #   self.CCDebito = ""
+  #   self.ProjetoDebito = ""
+  #   self.Owner = "BRQ"
+  #   self.notificacao = ""
+  #   save!
+  # end
 
-  def desaloca_licenca
-    self.statusci_id = 8
-    self.CCDebito = ""
-    self.ProjetoDebito = ""
-    self.Owner = "BRQ"
-    self.notificacao = ""
-    save!
-  end
+  # def desaloca_licenca
+  #   self.statusci_id = 8
+  #   self.CCDebito = ""
+  #   self.ProjetoDebito = ""
+  #   self.Owner = "BRQ"
+  #   self.notificacao = ""
+  #   save!
+  # end
 
 
   define_index do

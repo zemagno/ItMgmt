@@ -30,7 +30,7 @@
 <a href="<%='/tasks?&search='+@ci.chave%>" >[Alertas com este CI]</a>
 
 <% if can? :manage, Audit %>
-   <a href="<%='/audits?&search=@auditable_type=ci @auditable_id='+@ci.id.to_s%>" >[Auditoria deste CI]</a>
+   <a href="<%='/audits?&search=(@auditable_type=ci @auditable_id='+@ci.id.to_s+') | (@auditable_type=atributo @associated_id='+@ci.id.to_s+')'%>" >[Auditoria deste CI]</a>
 <% end %>
 <div id="enviar_email_ci_old"></div>
- 
+

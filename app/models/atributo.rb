@@ -1,4 +1,5 @@
 class Atributo < ActiveRecord::Base
+   audited associated_with: :ci
   belongs_to :ci
   belongs_to :dicdado
   
