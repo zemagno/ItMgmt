@@ -55,17 +55,17 @@
 <label>Custo
 <span class="small">Mensal ou Anual</span>
 </label>
-<%= f.text_field :CustoMensal %>
+<%= f.text_field :CustoMensal ,:disabled => ! (can? :manage, :financeiro)  %>
 
 <label>Custo Mensal Capex
 <span class="small"></span>
 </label>
-<%= f.text_field :CustoMensalCapex %>
+<%= f.text_field :CustoMensalCapex ,:disabled => ! (can? :manage, :financeiro)%>
 
 <label>Custo Mensal Opex
 <span class="small"></span>
 </label>
-<%= f.text_field :CustoMensalOpex %>
+<%= f.text_field :CustoMensalOpex ,:disabled => ! (can? :manage, :financeiro)%>
 
 <div class="spacer"></div>
 
