@@ -3,7 +3,7 @@ class AddViewCarga < ActiveRecord::Migration
   
     
 execute %Q{ 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vwcargaativosportal` AS 
+CREATE VIEW `vwcargaativosportal` AS 
 
 SELECT `cis`.`chave` AS `Patrimonio`,
        `cis`.`notificacao` AS `usuario`,
