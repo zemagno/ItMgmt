@@ -8,7 +8,7 @@ class AuditsController < ApplicationController
   
     
     begin
-      @audits = Audit.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page], :order => 'created_at DESC'
+      @audits = Audit.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page] #, :order => 'created_at DESC'
       @audits.length
       @audits.compact!
     rescue 

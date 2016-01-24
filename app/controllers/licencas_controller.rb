@@ -13,20 +13,24 @@ class LicencasController < ApplicationController
     @gestor=GestaoLicenciamento.new(usr)
     @licencas=@gestor.niceSoftwareEmUsoEquipeGestor(false)
     #@licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
-   
+
+    begin
       @lic1 = @licencas[1].transpose
       i = 2
-        begin
-         if @lic1[i].last.to_i == 0
-            puts "vou apagar #{i} - #{@lic1.count-2}"
-            @lic1.delete_at(i)
-         else 
-            i = i + 1
-         end
-        end while i < @lic1.count-2
-        @licencas[1] = @lic1.transpose
+      begin
+        if @lic1[i].last.to_i == 0
+          puts "vou apagar #{i} - #{@lic1.count-2}"
+          @lic1.delete_at(i)
+        else
+          i = i + 1
+        end
+      end while i < @lic1.count-2
+      @licencas[1] = @lic1.transpose
+    rescue
+      @licencas=@gestor.niceSoftwareEmUsoEquipeGestor(false)
     end
- 
+  end
+
   def porUsuario
     authorize! :read, :licencas, :message => "Voce nao tem permissao para visuzalizar isso."
     usr = params[:id]
@@ -45,5 +49,3 @@ class LicencasController < ApplicationController
   end
 
 end
-
-
