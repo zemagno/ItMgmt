@@ -8,7 +8,7 @@ class GestaoEstacao
       c.ProjetoDebito = ""
       c.Owner = "BRQ"
       c.notificacao = ""
-      save!
+      c.save!
     end
   end
 

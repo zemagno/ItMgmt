@@ -87,10 +87,10 @@ $(document).ready( function(){
 	<div id="page">
 			<div id="page-bgtop">
 				<div >
-          <div class="notification"></div>   
-				<% flash.each do |name, msg| %>
-                        <%= content_tag :div, msg, id: "flash_#{name}" %>
-                <% end %>
+                <div class="notification"></div>   
+					<% flash.each do |name, msg| %>
+	                        <%= content_tag :div, msg, id: "flash_#{name}" %>
+	                <% end %>
 				</div>
 				
 				<div id="enviar_email"></div>
