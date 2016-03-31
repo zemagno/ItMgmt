@@ -63,6 +63,7 @@ gem "nifty-generators", :group => :development
 
 # gem 'omniauth-google-apps'
 
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-google-oauth2'
 #gem 'omniauth-office365', github: 'simi/omniauth-office365'
 gem 'cancan' ,  '~> 1.6'

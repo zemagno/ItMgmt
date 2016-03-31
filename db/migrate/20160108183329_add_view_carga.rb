@@ -1,7 +1,7 @@
 class AddViewCarga < ActiveRecord::Migration
  def up
   
-    
+# execute %Q{ DROP VIEW vwcargaativosportal ; }
 execute %Q{ 
 CREATE VIEW `vwcargaativosportal` AS 
 

@@ -108,7 +108,7 @@ class GestaoUsuario
     def PlacaDados
        @placadados ||= Ci.where(notificacao: @login, tipoci_id: 36, statusci_id: 1).map do |x| 
             detalhes = "Placa Dados "
-            detalhes << "#{x._Operadora}" unless x._Operadora.blank?
+            detalhes << "#{x._fornecedor}" unless x._fornecedor.blank?
             detalhes << " ICCID:#{x._ICCID}" unless x._ICCID.blank?
             detalhes << " IMEI:#{x._IMEI}" unless x._IMEI.blank?
             detalhes << " Modelo:#{x._Modelo}" unless x._Modelo.blank?
@@ -132,7 +132,7 @@ class GestaoUsuario
         
         @celulares ||= Ci.where(notificacao: @login, tipoci_id: 37, statusci_id: 1).map do |x|
             detalhes = ""
-            detalhes << "Chip #{x._Operadora}" unless x._Operadora.blank?
+            detalhes << "Chip #{x._fornecedor}" unless x._fornecedor.blank?
             detalhes << " ICCID:#{x._ICCID}" unless x._ICCID.blank?
             detalhes << " IMEI:#{x._IMEI}" unless x._IMEI.blank?
             detalhes << " Modelo:#{x._Modelo}" unless x._Modelo.blank?

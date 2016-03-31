@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160108183329) do
+ActiveRecord::Schema.define(:version => 20160203144418) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -92,13 +92,11 @@ ActiveRecord::Schema.define(:version => 20160108183329) do
     t.string   "comment"
     t.string   "remote_address"
     t.datetime "created_at"
-    t.string   "request_uuid"
   end
 
   add_index "audits", ["associated_id", "associated_type"], :name => "associated_index"
   add_index "audits", ["auditable_id", "auditable_type"], :name => "auditable_index"
   add_index "audits", ["created_at"], :name => "index_audits_on_created_at"
-  add_index "audits", ["request_uuid"], :name => "index_audits_on_request_uuid"
   add_index "audits", ["user_id", "user_type"], :name => "user_index"
 
   create_table "authors", :force => true do |t|
@@ -183,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20160108183329) do
     t.string   "codigorateio",      :limit => 20
     t.decimal  "CustoMensalCapex",                      :precision => 10, :scale => 2
     t.decimal  "CustoMensalOpex",                       :precision => 10, :scale => 2
+    t.integer  "tipoCobranca"
   end
 
   add_index "cis", ["Owner"], :name => "index_cis_on_Owner"
@@ -336,9 +335,9 @@ ActiveRecord::Schema.define(:version => 20160108183329) do
   create_table "identities", :force => true do |t|
     t.string   "login",                       :limit => 30
     t.string   "ADUser",                      :limit => 30
-    t.date     "ADCriadoEm"
+    t.date     "ADCriadoem"
     t.date     "ADLastLogon"
-    t.date     "ADExpiraEm"
+    t.date     "ADExpiraem"
     t.date     "ADDataDesligamento"
     t.string   "ADUsuarioTipo",               :limit => 30
     t.string   "GoogleprimaryEmail",          :limit => 30
@@ -364,6 +363,7 @@ ActiveRecord::Schema.define(:version => 20160108183329) do
     t.datetime "ZimbraUltimologon"
     t.string   "ZimbraRedirect"
     t.string   "ZimbraLocalDeliveryDisabled"
+    t.string   "GoogleFlag",                  :limit => 10
     t.string   "O365DisplayName",             :limit => 50
     t.string   "O365UserPrincipalName",       :limit => 50
     t.string   "O365AccountSku",              :limit => 50
@@ -411,6 +411,19 @@ ActiveRecord::Schema.define(:version => 20160108183329) do
   end
 
   add_index "inventario_sws", ["hostname"], :name => "index_inventario_sws_on_hostname"
+
+  create_table "inventario_sws_0", :id => false, :force => true do |t|
+    t.integer "Id"
+    t.string  "hostname"
+    t.string  "software"
+  end
+
+  create_table "inventario_user_0", :id => false, :force => true do |t|
+    t.string "hostname"
+    t.string "login"
+    t.string "nomprofissional", :limit => 50
+    t.string "ramal"
+  end
 
   create_table "inventario_users", :force => true do |t|
     t.string   "hostname"
@@ -566,6 +579,7 @@ ActiveRecord::Schema.define(:version => 20160108183329) do
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "estado",     :limit => 2
   end
 
   create_table "snippets", :force => true do |t|
@@ -667,7 +681,7 @@ ActiveRecord::Schema.define(:version => 20160108183329) do
   end
 
   create_table "temp", :id => false, :force => true do |t|
-    t.string "chave"
+    t.string "f1"
   end
 
   create_table "temp1", :id => false, :force => true do |t|

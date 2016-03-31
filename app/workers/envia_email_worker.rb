@@ -45,8 +45,10 @@ class EnviaEmailWorker
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{task.id}] em #{Time.now}"  
     when "MAILING"
          params[:to] = ListaEmail.acerta(params[:to],"@brq.com")
+         params[:to] = ListaEmail.blacklist(params[:to])
          params[:from] = ListaEmail.acerta(params[:from],"@brq.com")
          params[:cc] = ListaEmail.acerta(params[:cc],"@brq.com")
+         params[:cc] = ListaEmail.blacklist(params[:cc])
         
          CiMailer.enviar(template.template,params[:body],params[:subject],params[:to],params[:cc],params[:from]).deliver
          # TODO se isso acima funcionar, alterar as duas linhas abaixo e o from acima

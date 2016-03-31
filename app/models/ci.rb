@@ -10,7 +10,7 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex
 
   belongs_to :site
   belongs_to :tipoci
@@ -115,8 +115,27 @@ class Ci < ActiveRecord::Base
     '%10.2f' % (self.CustoMensal.nil? ? 0 : self.CustoMensal)
   end
 
+  # def nice_cobrar
+  #   cobrar ? "Cobrar" : "Nao Cobrar"
+  # end 
+
+
+  def self.tipoCobrancas
+    [["Nao Cobrar", 0], ["Cobrar do Projeto", 1], ["Cobrar do Usuario", 2]]
+  end
+
+
   def nice_cobrar
-    cobrar ? "Cobrar" : "Nao Cobrar"
+    case tipoCobranca
+     when 0 
+        "Nao Cobrar"
+     when 1
+        "Cobrar do Projeto (#{self.descricaocobranca}/#{self.codigocobranca})"
+     when 2
+        "Cobrar do Usuario"
+     else
+        "Nao Cobrar"
+     end 
   end
 
   def nice_provisionar
@@ -321,7 +340,7 @@ class Ci < ActiveRecord::Base
     indexes :codigocobranca
     indexes :codigorateio
     indexes :provisionar
-    indexes :cobrar
+    indexes :tipoCobranca
     indexes jira
     indexes site(:nome), :as => :localidade
     indexes statusci(:status), as => :status

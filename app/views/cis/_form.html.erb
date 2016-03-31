@@ -16,7 +16,7 @@
 
 
 </br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
-- <%= @ci.cobrar ? "Cobrar do Projeto (#{@ci.descricaocobranca}/#{@ci.codigocobranca})" : 'Nao Cobrado' %>
+- <%= @ci.nice_cobrar %>
 - <%= @ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado' %>
 <%= render :partial => 'docs2url', :locals => {:title => "Documentacao: ", :documentos => @ci.url } %>
 

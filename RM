@@ -1,0 +1,26 @@
+RM
+
+func e RM
+
+se esta no RM e nao esta no func --> funcionario novo
+
+se rm tem data demissao e func nao --> funcionario demitido
+
+se rm nao tem data demissao e func tem --> funcionario readmitido
+
+se local rm <> local func --> funcionario mudou
+se interno rm <> interno func --> funcionario mudou.
+
+navego pelo RM
+  procuro no Func
+     se nao achou --> novo
+     se data demissao <> --> 
+     se local <> --->
+  fim
+fim
+
+
+
+func   = Hash[Funcionario.all.map { |f| [f.Login,f] }]
+funcRm = Hash[FuncionarioRm.all.map { |f| [f.Login,f] }]
+

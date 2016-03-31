@@ -81,11 +81,12 @@
 </label>
 <%= f.text_field :codigocobranca %>
 
-<label>Cobrar Gerencialmente ?
+<label>Cobrar ?
 <span class="small">Incluir na cobranca mensal ? </span>
 </label>
 <div class="field">
-    <%= f.check_box :cobrar %>
+    <%= f.select :tipoCobranca, Ci.tipoCobrancas  %>
+    <!-- <%= f.check_box :cobrar %> -->
 </div>
 
 
