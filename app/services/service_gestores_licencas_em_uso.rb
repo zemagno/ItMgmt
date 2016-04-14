@@ -12,7 +12,7 @@ class ServiceGestoresLicencasEmUso
 		gestores.each do |g|
 			p = Hash[:gestor => g] 
 			job = JobEnviarEmail.criar(params[:template_email_id], p.to_yaml)
-            EnviaEmailWorker.perform_async(job.id)
+            # EnviaEmailWorker.perform_async(job.id)
             puts "Enviar email para #{g} - template #{params[:template_email_id]} - #{p}"
             totalEnviado = totalEnviado + 1
 		end

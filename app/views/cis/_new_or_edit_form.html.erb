@@ -47,7 +47,7 @@
 <label>Codigo Rateio
 <span class="small"></span>
 </label>
-<%= f.text_field :codigorateio %>
+<%= f.text_field :codigorateio ,:disabled => ! (can? :manage, CanHelperFinanceiro) %>
 
 <div class="spacer"></div>
 
@@ -55,17 +55,17 @@
 <label>Custo
 <span class="small">Mensal ou Anual</span>
 </label>
-<%= f.text_field :CustoMensal ,:disabled => ! (can? :manage, :financeiro)  %>
+<%= f.text_field :CustoMensal ,:disabled => ! (can? :manage, CanHelperFinanceiro)  %>
 
 <label>Custo Mensal Capex
 <span class="small"></span>
 </label>
-<%= f.text_field :CustoMensalCapex ,:disabled => ! (can? :manage, :financeiro)%>
+<%= f.text_field :CustoMensalCapex ,:disabled => ! (can? :manage, CanHelperFinanceiro)%>
 
 <label>Custo Mensal Opex
 <span class="small"></span>
 </label>
-<%= f.text_field :CustoMensalOpex ,:disabled => ! (can? :manage, :financeiro)%>
+<%= f.text_field :CustoMensalOpex ,:disabled => ! (can? :manage, CanHelperFinanceiro)%>
 
 <div class="spacer"></div>
 
@@ -74,18 +74,27 @@
 <label>Descricao Cobranca
 <span class="small"></span>
 </label>
-<%= f.text_field :descricaocobranca %>
+<%= f.text_field :descricaocobranca, :disabled => ! (can? :manage, CanHelperFinanceiroTi)  %>
 
 <label>Codigo Cobranca
 <span class="small"></span>
 </label>
-<%= f.text_field :codigocobranca %>
+<%= f.text_field :codigocobranca, :disabled => ! (can? :manage, CanHelperFinanceiroTi) %>
+<% 
+   puts "**********************"
+   puts can? :manage, CanHelperFinanceiro
+   puts can? :manage, Audit
+   puts can? :manage, Scheduler
+
+   puts "**********************"
+   %>
+
 
 <label>Cobrar ?
 <span class="small">Incluir na cobranca mensal ? </span>
 </label>
 <div class="field">
-    <%= f.select :tipoCobranca, Ci.tipoCobrancas  %>
+    <%= f.select :tipoCobranca, Ci.tipoCobrancas, {}, :disabled => ! (can? :manage, CanHelperFinanceiroTi)  %>
     <!-- <%= f.check_box :cobrar %> -->
 </div>
 
@@ -121,7 +130,7 @@
 <span class="small">Incluir na provisao mensal ? </span>
 </label>
 <div class="field">
-    <%= f.check_box :provisionar %>
+    <%= f.check_box :provisionar, :disabled => ! (can? :manage, CanHelperFinanceiroTi)  %>
 </div>
 
 <div class="spacer"></div>

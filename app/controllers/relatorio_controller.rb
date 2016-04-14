@@ -47,15 +47,21 @@ class RelatorioController < ApplicationController
 
 
   def index
+    puts params
+    regexParams = /\{([a-z]+)}/
     authorize!(:index, "relatorio")   
     @relatorio = Cadrelatorio.find_by_nome(params[:id])
     @relatorio.AtualizaEstatisticas
     sql = @relatorio.consulta
-    #if sql.match(/(delete|insert|update)/)
-    #  flash[:notice] = "SQL Invalido"
-    #  redirect_to tasks_url and return
-    #  
-    #end 
+    sql.gsub!(regexParams) {|s| params[s[1..-2]]}
+    puts sql
+    if sql.match(/{/)
+      flash[:notice] = "SQL Invalido"
+      redirect_to tasks_url and return
+    end 
+    # se sql tiver parametros e esses parametros nao estiverem no params do http, desviar para pagina de perguntar parametros
+    # faco replace do sql com os params recebidos
+    # 
     @NomeRelatorio = @relatorio.descricao
   
     begin

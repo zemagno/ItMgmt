@@ -1,3 +1,19 @@
+<%= javascript_include_tag "jquery" %>
+<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.css" %>
+<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.js" %>
+
+<%= csrf_meta_tag %>
+
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+      pageLength: 100,
+      pagingType: "full_numbers"
+      
+    })
+});
+</script>
+
 
 <h1>Parametros</h1>
 

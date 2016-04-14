@@ -48,7 +48,7 @@ class CiImpactado
 	        i.send(direcao).map { |x| enqueue([x,nivel+1])}
 	      end
 	    end
-	    email_impactados = ListaEmail.acerta(email_impactados,"@brq.com")
+	    email_impactados = ListaEmail.acerta({listaEmails:email_impactados,sufixo:"@brq.com"})
 	    [fila_resultado, email_impactados]
 	end
 
@@ -102,7 +102,7 @@ class CiImpactado
 	        i.send(direcao).map { |x| enqueue([x,nivel+1])}
 	      end
 	    end
-	    email_impactados = ListaEmail.acerta(email_impactados,"@brq.com")
+	    email_impactados = ListaEmail.acerta({listaEmails:email_impactados,sufixo:"@brq.com"})
 	    [fila_resultado, email_impactados]
 	end
 end

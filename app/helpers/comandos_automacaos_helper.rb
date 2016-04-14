@@ -1,0 +1,2 @@
+module ComandosAutomacaosHelper
+end

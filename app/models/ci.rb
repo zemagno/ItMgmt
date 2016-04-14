@@ -67,6 +67,7 @@ class Ci < ActiveRecord::Base
   validates :descricao, :presence => {:message => " eh mandatorio"}
 
   after_save :atualiza_chave
+  after_create :post_create_processing
 
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
@@ -355,8 +356,19 @@ class Ci < ActiveRecord::Base
 
   private
   def atualiza_chave
+    puts "______________________________________________________________"
+    puts "pos save #{self.chave} #{self.statusci_id} #{self.statusci_id_changed?} #{self.statusci_id_was}"
+    puts "_______________________________________________________________"
     nova_chave = self.chave.gsub "<ID>", id.to_s
     self.update_attributes(:chave => nova_chave) if self.chave != nova_chave
+  end
+
+  def post_create_processing
+    puts "_______________________________________________________________"
+    puts "pos save #{self.chave} #{self.statusci_id}"
+    puts "_______________________________________________________________"
+    BreEvent.register(:criar,self)
+    
   end
 
 end

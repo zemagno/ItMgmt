@@ -1,15 +1,8 @@
 class LicencasController < ApplicationController
   # load_and_authorize_resource
 
-
-  def porGestor
-
-    puts "_____________________________________________________________________________"
-    puts params
-    puts "_____________________________________________________________________________"
-
-    authorize! :read, :licencas, :message => "Voce nao tem permissao para visualizar isso."
-    usr = params[:id]
+  def getLicencasPorGestor(usr)
+    
     @gestor=GestaoLicenciamento.new(usr)
     @licencas=@gestor.niceSoftwareEmUsoEquipeGestor(false)
     #@licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
@@ -29,6 +22,19 @@ class LicencasController < ApplicationController
     rescue
       @licencas=@gestor.niceSoftwareEmUsoEquipeGestor(false)
     end
+    
+  end
+
+  def porGestor
+
+    puts "_____________________________________________________________________________"
+    puts params
+    puts "_____________________________________________________________________________"
+
+    authorize! :read, :licencas, :message => "Voce nao tem permissao para visualizar isso."
+    usr = params[:id]
+
+    getLicencasPorGestor(usr)
   end
 
   def porUsuario

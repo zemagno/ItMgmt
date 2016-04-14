@@ -83,7 +83,7 @@ class TasksController < ApplicationController
     p = Hash[:alerta => task.id]
     #TODO - mudar o 3 para um search (alerta, subtipo)
     job = JobEnviarEmail.criar(3, p.to_yaml)
-    EnviaEmailWorker.perform_async(job.id)
+    # EnviaEmailWorker.perform_async(job.id)
     # usar o sidekiq para distribuir email..
     
   end    

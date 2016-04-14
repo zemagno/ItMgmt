@@ -1,0 +1,2 @@
+class CanHelperFinanceiro
+end

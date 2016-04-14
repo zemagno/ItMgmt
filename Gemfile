@@ -27,6 +27,8 @@ gem 'foreman'
 
 gem 'nokogiri'
 
+gem 'axlsx_rails'
+
 #gem 'pusher'
 
 gem 'wisper' # publish/subscriber

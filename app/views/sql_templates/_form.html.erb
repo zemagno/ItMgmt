@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :path %><br />
-    <%= f.select :path, (templates_async),:disabled => ! @edit_mode %>
+    <%= f.select :path, (templates_async), {},  :disabled => ! @edit_mode %>
   </div>
   <div class="field">
     <%= f.label :format %><br />

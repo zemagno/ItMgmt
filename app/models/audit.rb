@@ -22,5 +22,7 @@ class Audit < ActiveRecord::Base
       indexes auditable_id, as => :onde
       indexes auditable_type, as => :tipoci
       indexes associated_id, as => :relacionado
+      indexes audited_changes, as => :detalhe
+
   end
 end

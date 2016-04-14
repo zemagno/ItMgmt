@@ -35,9 +35,9 @@ class GestaoLicenciamento
   end
 
   def softwareEmUsoPorEstacao
-    
+
     # montar a matriz a partir das licencas - se nao tiver estacao, paciencia..
-    
+
     licencasAlocadas = []
     Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 13).each do |ci|
       licencasAlocadas << [ci._hostname,ci.descricao]
@@ -49,6 +49,7 @@ class GestaoLicenciamento
     # @softwareEmUsoPorEstacao = InventarioSw.LicencasPorEstacao(estacoesUsuario) #KPMG
     @softwareEmUsoPorEstacao
   end
+
 
 
   def estacoesEmUsoEquipeGestor
@@ -70,11 +71,44 @@ class GestaoLicenciamento
     @sw
   end
 
+  def geraExcel
 
-  def niceSoftwareEmUsoEquipeGestor(reduzido = false)
+    puts @dadosGestor
+    puts @dadosGestor[0]
+    puts "login: [#{@dadosGestor[0][1]}]"
+    path = File.expand_path('../../../tmp', __FILE__)
+    filename = "#{path}/ExtratoSoftware_#{@dadosGestor[0][1]}.xlsx"
+
+    p = Axlsx::Package.new
+
+    wb = p.workbook
+
+    wb.styles do |style|
+      highlight_cell = style.add_style(bg_color: "EFC376",
+                                       border: Axlsx::STYLE_THIN_BORDER,
+                                       alignment: { horizontal: :center },
+                                       :format_code => '# ###.##')
+      date_cell = style.add_style(format_code: "yyyy-mm-dd", border: Axlsx::STYLE_THIN_BORDER)
+      highlight_text = wb.styles.add_style( :bg_color => "FF0000", :type => :dxf )
+
+      wb.add_worksheet(name: "Por Funcionario") do |sheet|
+        @matrixUserSw.each do |licenca |
+          sheet.add_row licenca
+        end
+      end
+    end
+
+    s = p.to_stream()
+    File.open(filename, 'w') { |f| f.write(s.read) }
+    @dadosGestor[1] = filename
+
+  end
+
+
+  def niceSoftwareEmUsoEquipeGestor(flagReduzido = false, flagGeraExcel = false)
     @matrixUserSw = []
 
-    @dadosGestor = [[@funcionario.NomProfissional]]
+    @dadosGestor = [[@funcionario.NomProfissional,@funcionario.Login]]
 
 
     @custoSoftware = @custoSoftware || Software.licencasExistentes
@@ -129,7 +163,7 @@ class GestaoLicenciamento
     end
     @matrixSw << ["Total Geral", "", '%.2f' % totalGeralSw]
 
-    if reduzido
+    if flagReduzido
       @lic1 = @matrixUserSw.transpose
       i = 2
       begin
@@ -142,7 +176,8 @@ class GestaoLicenciamento
       end while i < @lic1.count
       @matrixUserSw = @lic1.transpose
     end
-
+   
+    geraExcel if flagGeraExcel
 
 
     [@dadosGestor, @matrixUserSw, @matrixSw]

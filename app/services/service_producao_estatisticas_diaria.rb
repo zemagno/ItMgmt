@@ -8,11 +8,11 @@ class ServiceProducaoEstatisticasDiaria
     detalhe << "Acerta Licencas - total de #{totalUpdated} licencas atualizadas"
 
     params = Hash[JSON.parse Parametro.get(:tipo => "Alerta", :subtipo => "GESTAO")]
-    params[:to] = ListaEmail.acerta(params[:to],"@brq.com")
-    params[:to] = ListaEmail.blacklist(params[:to])
-    params[:from] = ListaEmail.acerta(params[:from],"@brq.com")
-    params[:cc] = ListaEmail.acerta(params[:cc],"@brq.com")
-    params[:cc] = ListaEmail.blacklist(params[:cc])
+    params[:to] = ListaEmail.acerta({listaEmails:params[:to],sufixo:"@brq.com",blacklist:true})
+    params[:from] = ListaEmail.acerta({listaEmails:params[:from],sufixo:"@brq.com",blacklist:false})
+    params[:cc] = ListaEmail.acerta({listaEmails:params[:cc],sufixo:"@brq.com",blacklist:true})
+    # params[:to] = ListaEmail.blacklist({params[:to]})
+    # params[:cc] = ListaEmail.blacklist({params[:cc]})
         
     CiMailer.enviar(template.template,params[:body],params[:subject],params[:to],params[:cc],params[:from]).deliver
          # TODO se isso acima funcionar, alterar as duas linhas abaixo e o from acima

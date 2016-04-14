@@ -8,6 +8,9 @@ class JobEnviarEmail < ActiveRecord::Base
       job.parametro = _parametro
       job.status = "Criado"
       job.save!
+      puts "JobEnviarEmail criado !!"
+      EnviaEmailWorker.perform_async(job.id)
+      
       job
     end
 

@@ -2,12 +2,10 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="Rails ItMgmt: instant" uuid="9c830c67-3cbb-4b40-a2fd-8409e7b56156">
-      <first-sync>true</first-sync>
       <user-name>brq-infra</user-name>
       <user-password>dfc8dfd8dfdbdfeadfc3dfc4dfccdfd8dfcb</user-password>
     </data-source>
     <data-source name="Rails ItMgmt: ura" uuid="47d3e392-e7ee-49c0-84d3-af7c4bf01b40">
-      <first-sync>true</first-sync>
       <user-name>brqura</user-name>
       <user-password>dfc8dfd8dfdbdfdadfcbdfd9dfd9dfdddfc5dfd8dfce</user-password>
     </data-source>

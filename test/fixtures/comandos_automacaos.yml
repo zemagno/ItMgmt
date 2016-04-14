@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  comando: MyString
+  parametro: MyString
+  resultado: MyText
+  status: 1
+  target: MyString
+
+two:
+  comando: MyString
+  parametro: MyString
+  resultado: MyText
+  status: 1
+  target: MyString

@@ -14,7 +14,7 @@
 
 <%= @cis.class %>
 
-<%= will_paginate @cis %> <%= "#{@cis.total_entries} CIs achados"%>
+<%= will_paginate @cis %> <%= "#{@cis.size} CIs achado(s)"%>
 
 <%= form_tag(cis_path, :method => "get") do %>
  
@@ -45,36 +45,6 @@
 <% end %>
 </table> 
 
-<!--
-
-<table>
-  <tr>
-    <th></th>
-    <th>Chave CI</th>
-    <th>Descricao</th>
-    <th>Tipo</th>
-    <th>Localidade</th>
-    <th>Gestor</th>
-    <th>Usuario(s)</th>
-    <th>Ult ChgMgmt</th>
-  </tr>
-
-<% @cis.each do |ci| %>
-  <tr>
-    <td><img src="/icons/<%=ci.status_icon%>" alt=" " height="16" width="16"></td>
-    <td><%= link_to ci.chave, ci %></td>
-    <td><%= ci.descricao %></td>
-    <td><%= ci.nice_tipoci %></td>
-    <td><%= ci.site.nome %></td>
-    <td><%= ci.Owner %></td>
-    <td><%= ci.notificacao %></td>
-    <td><%= ci.dataChange %></td>
-    
-  </tr>
-<% end %>
-</table>
-
--->
 
 <%= will_paginate @cis %>
 

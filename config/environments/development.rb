@@ -1,3 +1,12 @@
+# CUIDADO !!!
+# Esse arquivo NAO é copiado para a BRQ. Ele é sobreposto pelo script atualiza.bash
+#
+# QQ alteração tem que ser feito diretamente la.
+#
+#
+#
+
+
 ItMgmt::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -40,15 +49,14 @@ ItMgmt::Application.configure do
     domain: 'localhost',
     enable_starttls_auto: false
     }
-  config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
-    :port                 => 587,
-    #:domain               => 'baci.lindsaar.net',
-    :user_name            => 'zemagno@gmail.com',
-    :password             => 'Kjcmnvsf!!1',
-    :authentication       => 'plain',
-    :enable_starttls_auto => true  
-  }
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "smtp.gmail.com",
+  #   :port                 => 587,
+  #   :user_name            => 'zemagno@gmail.com',
+  #   :password             => 'Mmp1bk!!1',
+  #   :authentication       => 'plain',
+  #   :enable_starttls_auto => true  
+  # }
 
   # specify what domain to use for mailer URLs
   config.action_mailer.default_url_options = {host: "localhost:3000"}

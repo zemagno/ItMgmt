@@ -1,0 +1,31 @@
+<h1>Listing comandos_automacaos</h1>
+
+<table>
+  <tr>
+    <th>Comando</th>
+    <th>Parametro</th>
+    <th>Resultado</th>
+    <th>Status</th>
+    <th>Target</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @comandos_automacaos.each do |comandos_automacao| %>
+  <tr>
+    <td><%= comandos_automacao.comando %></td>
+    <td><%= comandos_automacao.parametro %></td>
+    <td><%= comandos_automacao.resultado %></td>
+    <td><%= comandos_automacao.status %></td>
+    <td><%= comandos_automacao.target %></td>
+    <td><%= link_to 'Show', comandos_automacao %></td>
+    <td><%= link_to 'Edit', edit_comandos_automacao_path(comandos_automacao) %></td>
+    <td><%= link_to 'Destroy', comandos_automacao, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Comandos automacao', new_comandos_automacao_path %>

@@ -3,14 +3,17 @@ require 'sidekiq/web'
 ItMgmt::Application.routes.draw do
 
 
+  resources :comandos_automacaos
+
+
   resources :softwares
 
 
-  # get "Licencas/PorGestor/:id", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /.*/ }
   get "Licencas/PorGestor/:id(/:versao)", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /[a-zA-z0-9.]*/ }
-  # get "Licencas/EstacoesPorGestor/:id", to: "Licencas#estacoesEquipeGestor", as: "EstacoesEquipeGestor" , :constraints => { :id => /.*/ }
+ 
   get "Licencas/PorUsuario/:id", to: "Licencas#porUsuario", as: "LicencasPorUsuario" , :constraints => { :id => /.*/ }
-
+ 
+  
 
   get "identities/:id", to: "Identities#show", as: "identities" , :constraints => { :id => /.*/ }
 

@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Nome</th>
+    <th>Estado</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,6 +12,7 @@
 <% @sites.each do |site| %>
   <tr>
     <td><%= site.nome %></td>
+    <td><%= site.estado %></td>
     <td><%= link_to 'Vizualizar', site %></td>
     <td><%= link_to 'Editar', edit_site_path(site) %></td>
     <td><%= link_to 'Apagar', site, :confirm => 'Voce confirma?', :method => :delete %></td>

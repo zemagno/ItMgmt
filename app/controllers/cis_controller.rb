@@ -5,7 +5,7 @@ class CisController < ApplicationController
   include Queueable
   authorize_resource #cancan
 
-  #layout 'application_novolyaout'
+  # @layout 'application_novolyaout'
 
   # Variaveis geradas por esse controller
   # @fila_impactados
@@ -61,10 +61,17 @@ class CisController < ApplicationController
   end
 
   def show
-
+     @ci, @atributos = Ci.find_com_atributos(params[:id])
+    if ! finalAuth[:view].include? (@ci.tipoci_id)
+      flash[:error] = "Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
+      redirect_to "/cis"
+    
+    end
     @search = session[:search_cis]
-    @ci, @atributos = Ci.find_com_atributos(params[:id])
-    # if @ci.tipo
+
+    # @ci sendo carregado no filtro..
+   
+    
     if @ci
       cache(@ci)
     else
@@ -74,7 +81,13 @@ class CisController < ApplicationController
   end
 
   def edit
+    # @ci sendo carregado no filtro..
     @ci, @atributos = Ci.find_com_atributos(params[:id])
+    if ! finalAuth[:edit].include? (@ci.tipoci_id)
+      flash[:error] = "Voce nao tem autorizacao para editar CI do tipo #{@ci.tipoci.tipo}"
+      render :show
+    
+    end
     carrega_agregadas
     begin
       @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
@@ -127,7 +140,7 @@ class CisController < ApplicationController
     else
       p = Hash[:id => params[:id]]
       job = JobEnviarEmail.criar(params[:template_id], p.to_yaml)
-      EnviaEmailWorker.perform_async(job.id)
+      # EnviaEmailWorker.perform_async(job.id)
       #EnviaEmailWorker.perform_in(1.hour,job.id)
       flash[:info] = "INFO: Email enfileirado para envio"
       respond_to do |format|
@@ -194,11 +207,11 @@ class CisController < ApplicationController
 
     # TODO filtro de tipos aqui...
 
-    if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
-      # @ci = @cis[0]
-      @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
-      render :show and return
-    end
+    # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
+    #   # @ci = @cis[0]
+    #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
+    #   render :show and return
+    # end
 
 
     #@fields =
@@ -206,7 +219,7 @@ class CisController < ApplicationController
     # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
     @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-
+    @cis.reject! { |c| ! finalAuth[:view].include? (c.tipoci_id) }
     respond_to do |format|
       format.html { render :html => @cis }
       format.json { render :json => @cis }
@@ -386,7 +399,14 @@ class CisController < ApplicationController
           i.send(direcao).map { |x| enqueue([x,nivel+1]) unless edges_visitado[x.chave]}
         end
       end
-      @email_impactados = ListaEmail.acerta(@email_impactados,"@brq.com")
+      puts "*******************************************************"
+      puts @email_impactados
+      puts "*******************************************************"
+
+      @email_impactados = ListaEmail.acerta({listaEmails:@email_impactados,sufixo:"@brq.com"})
+      puts "**2*****************************************************"
+      puts @email_impactados
+      puts "*******************************************************"
       Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado.to_json, expires_in: 5.minute)
       Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
     end
@@ -575,5 +595,8 @@ class CisController < ApplicationController
     render :dependentes
   end
 
+
+
+   
 
 end

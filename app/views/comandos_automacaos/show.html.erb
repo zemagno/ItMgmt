@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Comando:</b>
+  <%= @comandos_automacao.comando %>
+</p>
+
+<p>
+  <b>Parametro:</b>
+  <%= @comandos_automacao.parametro %>
+</p>
+
+<p>
+  <b>Resultado:</b>
+  <%= @comandos_automacao.resultado %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @comandos_automacao.status %>
+</p>
+
+<p>
+  <b>Target:</b>
+  <%= @comandos_automacao.target %>
+</p>
+
+
+<%= link_to 'Edit', edit_comandos_automacao_path(@comandos_automacao) %> |
+<%= link_to 'Back', comandos_automacaos_path %>

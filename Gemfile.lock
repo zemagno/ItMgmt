@@ -50,6 +50,13 @@ GEM
     audited-activerecord (3.0.0)
       activerecord (~> 3.0)
       audited (= 3.0.0)
+    axlsx (2.0.1)
+      htmlentities (~> 4.3.1)
+      nokogiri (>= 1.4.1)
+      rubyzip (~> 1.0.0)
+    axlsx_rails (0.4.0)
+      axlsx (>= 2.0.1)
+      rails (>= 3.1)
     bcrypt (3.1.10)
     bourbon (3.2.4)
       sass (~> 3.2)
@@ -95,6 +102,7 @@ GEM
     hashie (3.4.3)
     hike (1.2.3)
     hirb (0.7.3)
+    htmlentities (4.3.4)
     i18n (0.7.0)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
@@ -206,6 +214,7 @@ GEM
       railties (>= 3.2, < 4.2)
     riddle (1.5.12)
     ruby-graphviz (1.2.2)
+    rubyzip (1.0.0)
     sass (3.4.18)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -272,6 +281,7 @@ DEPENDENCIES
   activeadmin
   activerecord-sqlserver-adapter
   audited-activerecord (~> 3.0)
+  axlsx_rails
   bunny (~> 1.7.0)
   cancan (~> 1.6)
   coffee-rails (~> 3.2.1)

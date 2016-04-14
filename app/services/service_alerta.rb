@@ -22,7 +22,7 @@ def go(nome_alerta)
 	    params[:body] = resultado
 
 	    job = JobEnviarEmail.criar(params[:template_email_id], params.to_yaml)
-	    EnviaEmailWorker.perform_async(job.id)
+	    # EnviaEmailWorker.perform_async(job.id)
 		detalhe = "Alerta [#{nome_alerta}] - Email enviado para #{params[:to]}"
 	end
 	[status,detalhe]

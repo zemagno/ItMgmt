@@ -1,0 +1,37 @@
+<%= form_for(@comandos_automacao) do |f| %>
+  <% if @comandos_automacao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comandos_automacao.errors.count, "error") %> prohibited this comandos_automacao from being saved:</h2>
+
+      <ul>
+      <% @comandos_automacao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :comando %><br />
+    <%= f.text_field :comando %>
+  </div>
+  <div class="field">
+    <%= f.label :parametro %><br />
+    <%= f.text_field :parametro %>
+  </div>
+  <div class="field">
+    <%= f.label :resultado %><br />
+    <%= f.text_area :resultado %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.number_field :status %>
+  </div>
+  <div class="field">
+    <%= f.label :target %><br />
+    <%= f.text_field :target %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

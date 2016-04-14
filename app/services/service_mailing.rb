@@ -15,7 +15,7 @@ class ServiceMailing
 		mailing.each do |m|
 			p = Hash[ :id => m.id, :to => m.to, :cc => m.cc, :subject => m.subject, :from => m.from, :body => m.body ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
 			job = JobEnviarEmail.criar(m.templates_email_id, p.to_yaml)
-			EnviaEmailWorker.perform_async(job.id)
+			# EnviaEmailWorker.perform_async(job.id)
 		end
 		Event.register("email","mailing - #{_tag}","resumo","Enfileirados #{mailing.count} emails para envio.")
 	end
@@ -52,7 +52,7 @@ private
         mailing.each do |m|
 			p = Hash[ :to => m[to], :cc => m[cc], :subject => m[subject], :from => m[from], :body => m[body] ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
 			job = JobEnviarEmail.criar(m[template_email_id], p.to_yaml)
-			EnviaEmailWorker.perform_async(job.id)
+			# EnviaEmailWorker.perform_async(job.id)
 		end
 		Event.register("email","mailing - #{tag}","resumo","Enfileirados #{mailing.count} emails para envio.")
 

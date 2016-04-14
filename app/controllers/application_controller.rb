@@ -1,3 +1,4 @@
+
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -11,7 +12,7 @@ class ApplicationController < ActionController::Base
   #   end
   #   true
   # end
-  
+
   def access_denied(exception)
     redirect_to admin_organizations_path, :alert => exception.message
   end
@@ -22,19 +23,47 @@ class ApplicationController < ActionController::Base
       redirect_to session[:return_to], :alert => exception.message
     else
       redirect_to root_path, :alert => exception.message
-    end   
+    end
   end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
+
+  def finalAuth
+    finalauth = {}
+    finalauth[:view] = []
+    finalauth[:edit] = []
+
+    if session[:user_id]
+
+      finalauth = Rails.cache.read("ability/#{current_user.name}") if current_user
+      if finalauth.nil?
+        finalauth = {}
+        auth = Tipoci.all.map { |t| [t.id,t.perfil] }
+        finalauthView = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[view]","")) } }.map { |x| x[0]}.sort
+        finalauthEdit = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[edit]","")) } }.map { |x| x[0]}.sort
+        finalauth[:view] = finalauthView
+        finalauth[:edit] = finalauthEdit
+        Rails.cache.write("ability/#{current_user.name}",finalauth)
+        puts "************************************************************************"
+        puts "ability/#{current_user.name} --> #{finalauth}"
+      end
+    end
+
+    finalauth
+  end
+
+
+  helper_method :finalAuth
   helper_method :current_user
 
-  
-def remote_ip
+
+
+  def remote_ip
     request.remote_ip
-end
+  end
 
 
-  
+
 end

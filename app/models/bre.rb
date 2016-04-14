@@ -9,36 +9,45 @@ class Bre
   end
 
   def incluir(_whom,_obj)
-    puts "  Incluir: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipo}"
+    puts "BRE:  Incluir: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipo}"
+  end
+
+  def criarEmailExterno(_obj)
+    ComandosAutomacao.create(:comando => "CriarEmailExterno", :target => "LINUX", :parametro => "#{_obj.chave},#{_obj.descricao}", :status => 0 )
   end
 
 
   def abrir_alerta(_whom,_obj)
-    puts "  abrir alerta: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipo}"
+    puts "BRE:  abrir alerta: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipo}"
   end
 
   def mudarStatusEstacao(_whom,_obj)
-    puts "  mudarStatusStacao: [#{_whom}]  #{_obj.class.name} #{_obj} "
+    puts "BRE:  mudarStatusStacao: [#{_whom}]  #{_obj.class.name} #{_obj} "
   end
 
   def abrirJira(_tipo,_subject,_obj)
-    puts "  abrir Jira: [#{_tipo}] #{_subject} #{_obj.class.name} #{_obj} "
+    puts "BRE:  abrir Jira: [#{_tipo}] #{_subject} #{_obj.class.name} #{_obj} "
   end
 
   def criar(_whom,_obj)
-    puts "  criar: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipoci.tipo}"
+    puts "BRE:  criar: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipoci.tipo}"
   end
 
   def liberarLicencas(_obj)
-    puts "  liberarLicencas: #{_obj.class.name} #{_obj} "
+    puts "BRE:  liberarLicencas: #{_obj.class.name} #{_obj} "
   end
 
   def notificar(_whom,_oque,_obj)
+    puts "BRE:  Notificar alerta2: [#{_whom}] #{_obj} #{_obj.class.name} #{_obj}"
+    # esse notificar so aceita CI"
+    p = Hash[ :to => "zemagno@gmail.com", :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.chave}; #{_obj.descricao}"  ]
+    job = JobEnviarEmail.criar(79, p.to_yaml)
+    # TODO hardcoded...
     puts "  Notificar alerta2: [#{_whom}] #{_obj} #{_obj.class.name} #{_obj}"
   end
 
   def quando(_action, _target, _domain, &block)
-    # puts "armazenando block #{_action}:#{_target}:#{_domain}"
+    # puts "BRE:armazenando block #{_action}:#{_target}:#{_domain}"
     @bre["#{_action}:#{_target}:#{_domain}"] = block
   end
 
@@ -47,6 +56,7 @@ class Bre
   end
 
   def go(_action, _target, _domain,*args)
+    puts "BRE:Bre.go #{_action}:#{_target}:#{_domain}"
     _block = @bre["#{_action}:#{_target}:#{_domain}"]
     _realTarget = *args[0]
     _block.call(_realTarget[0]) if _block
@@ -66,7 +76,7 @@ end
 
 # bre = Bre.instance
 #
-# puts "Registrando BRE..."
+# puts "BRE:Registrando BRE..."
 #
 # bre.adicionaRegra "Criacao de Servidor" do
 #   quando :criar, :ci, "Servidor Virtual" do |servidor|

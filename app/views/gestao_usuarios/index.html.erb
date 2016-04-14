@@ -15,7 +15,7 @@
 </br><%= "Login:  #{@usuario.login} - Nome: #{@nomecompleto}" %>
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
       <%= "- Matricula: #{@funcionario.Matricula}" %>
-      <br><%= "CPF: #{@funcionario.CPF} - Identidade: #{@funcionario.Identidade}" %>
+      <br><%= "CPF: #{@funcionario.CPF} - Identidade: #{@funcionario.Identidade}" if ! @funcionario.demitido? %>
       <br><%= "Admissao: #{@funcionario.DataAdmissao} - Demissao: #{@funcionario.DataRemocaoAcesso}" %>
       <br><%= "É Gestor ? #{@usuario.Status['gestor?']} "%>
       <br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
@@ -33,6 +33,7 @@
       <%= link_to '[Identidades]', identities_path(@usuario.login), :target => "_blank" %>
       <%= link_to '[Inventario SW]', LicencasPorUsuario_path(@usuario.login), :target => "_blank" %>
       <%= link_to '[Inventario SW Equipe]', LicencasPorGestor_path(@usuario.login), :target => "_blank" %>
+      
 
 
       </br>

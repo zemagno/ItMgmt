@@ -8,7 +8,7 @@ class EmailController < ApplicationController
     logger.debug "EmailController#enviar_email"
     p = Hash[:id => params[:id]]
     job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
-    EnviaEmailWorker.perform_async(job.id)
+    # EnviaEmailWorker.perform_async(job.id)
     #EnviaEmailWorker.perform_in(1.hour,job.id)
     flash[:info] = "INFO: Email enfileirado para envio"
     respond_to :js
