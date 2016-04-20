@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160408225745) do
+ActiveRecord::Schema.define(:version => 20160418092605) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -334,6 +334,20 @@ ActiveRecord::Schema.define(:version => 20160408225745) do
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"
   add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
+
+  create_table "grupos", :force => true do |t|
+    t.string   "nome",         :limit => 50
+    t.text     "membros",      :limit => 16777215
+    t.string   "solicitante",  :limit => 50
+    t.string   "descricao"
+    t.date     "dataCriacao"
+    t.date     "dataValidade"
+    t.string   "chamado",      :limit => 50
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "grupos", ["nome"], :name => "index_grupos_on_nome"
 
   create_table "heranca_checklists", :force => true do |t|
     t.integer  "pai_id"
@@ -783,4 +797,3 @@ ActiveRecord::Schema.define(:version => 20160408225745) do
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
-end

@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @grupo.nome %>
+</p>
+
+<p>
+  <b>Membros:</b>
+  <%= @grupo.membros %>
+</p>
+
+<p>
+  <b>Solicitante:</b>
+  <%= @grupo.solicitante %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @grupo.descricao %>
+</p>
+
+<p>
+  <b>Datacriacao:</b>
+  <%= @grupo.dataCriacao %>
+</p>
+
+<p>
+  <b>Datavalidade:</b>
+  <%= @grupo.dataValidade %>
+</p>
+
+<p>
+  <b>Chamado:</b>
+  <%= @grupo.chamado %>
+</p>
+
+
+<%= link_to 'Edit', edit_grupo_path(@grupo) %> |
+<%= link_to 'Back', grupos_path %>

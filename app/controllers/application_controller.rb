@@ -41,6 +41,8 @@ class ApplicationController < ActionController::Base
       if finalauth.nil?
         finalauth = {}
         auth = Tipoci.all.map { |t| [t.id,t.perfil] }
+        # perfil --> "compras admin[edit]" 
+        # perfil --> "compras admin[edit] admin[view]" 
         finalauthView = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[view]","")) } }.map { |x| x[0]}.sort
         finalauthEdit = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[edit]","")) } }.map { |x| x[0]}.sort
         finalauth[:view] = finalauthView

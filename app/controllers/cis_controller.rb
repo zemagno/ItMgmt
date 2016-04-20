@@ -61,17 +61,14 @@ class CisController < ApplicationController
   end
 
   def show
-     @ci, @atributos = Ci.find_com_atributos(params[:id])
+    @ci, @atributos = Ci.find_com_atributos(params[:id])
     if ! finalAuth[:view].include? (@ci.tipoci_id)
       flash[:error] = "Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
       redirect_to "/cis"
-    
+
     end
     @search = session[:search_cis]
 
-    # @ci sendo carregado no filtro..
-   
-    
     if @ci
       cache(@ci)
     else
@@ -86,7 +83,7 @@ class CisController < ApplicationController
     if ! finalAuth[:edit].include? (@ci.tipoci_id)
       flash[:error] = "Voce nao tem autorizacao para editar CI do tipo #{@ci.tipoci.tipo}"
       render :show
-    
+
     end
     carrega_agregadas
     begin
@@ -597,6 +594,6 @@ class CisController < ApplicationController
 
 
 
-   
+
 
 end

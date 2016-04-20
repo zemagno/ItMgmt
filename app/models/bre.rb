@@ -33,10 +33,18 @@ class Bre
     puts "BRE:  criar: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipoci.tipo}"
   end
 
+  def adicionaGrupo(_whom,_obj)
+      puts "adicionaGrupo #{_whom}"
+      Grupo.addMembro(_whom,_obj.Login) if _obj.is_a? Funcionario
+      Grupo.addMembro(_whom,_obj.notificacao) if _obj.is_a? Ci
+  end
+
   def liberarLicencas(_obj)
     puts "BRE:  liberarLicencas: #{_obj.class.name} #{_obj} "
   end
 
+
+  # notificar "noc",  "Criacao de Terceiro", terceiro
   def notificar(_whom,_oque,_obj)
     puts "BRE:  Notificar alerta2: [#{_whom}] #{_obj} #{_obj.class.name} #{_obj}"
     # esse notificar so aceita CI"
