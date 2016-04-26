@@ -83,18 +83,35 @@ class GestaoLicenciamento
 
     wb = p.workbook
 
+    
+
     wb.styles do |style|
       highlight_cell = style.add_style(bg_color: "EFC376",
                                        border: Axlsx::STYLE_THIN_BORDER,
-                                       alignment: { horizontal: :center },
+                                       alignment: { horizontal: :left },
                                        :format_code => '# ###.##')
       date_cell = style.add_style(format_code: "yyyy-mm-dd", border: Axlsx::STYLE_THIN_BORDER)
-      highlight_text = wb.styles.add_style( :bg_color => "FF0000", :type => :dxf )
+      format_valor = style.add_style(:format_code => "#,##0.00")
+      format_inteiro = style.add_style(:format_code => "#,##0")
+      highlight_text = style.add_style( :bg_color => "FF0000", :type => :dxf )
 
       wb.add_worksheet(name: "Por Funcionario") do |sheet|
+        format_linha = [highlight_cell,highlight_cell] << [format_valor]*(@matrixUserSw.count-2)
+        format_linha.flatten!
         @matrixUserSw.each do |licenca |
-          sheet.add_row licenca
+          sheet.add_row licenca , :style => format_linha
         end
+      end
+      wb.add_worksheet(name: "Total Por Sw") do |sheet|
+        format_linha = [highlight_cell,format_inteiro] << [format_valor]*(@matrixSw.count-1)
+        format_linha.flatten!
+        @matrixSw.each do |licenca |
+          sheet.add_row licenca, :style => format_linha
+        end
+        # sheet.rows.last.cells[0].sz = 14
+        # sheet.rows.last.cells[0].b = true
+        # sheet.rows.last.cells[2].sz = 14
+        # sheet.rows.last.cells[2].b = true
       end
     end
 
