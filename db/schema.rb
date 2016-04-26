@@ -337,14 +337,14 @@ ActiveRecord::Schema.define(:version => 20160418092605) do
 
   create_table "grupos", :force => true do |t|
     t.string   "nome",         :limit => 50
-    t.text     "membros",      :limit => 16777215
+    t.text     "membros"
     t.string   "solicitante",  :limit => 50
     t.string   "descricao"
     t.date     "dataCriacao"
     t.date     "dataValidade"
     t.string   "chamado",      :limit => 50
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "grupos", ["nome"], :name => "index_grupos_on_nome"

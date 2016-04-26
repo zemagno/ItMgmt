@@ -4,11 +4,11 @@ class Cadrelatorio < ActiveRecord::Base
   belongs_to :tipoci
 
   define_index do
-      indexes nome
-      indexes descricao
-      indexes categoria
-      indexes dashboard
-      indexes tipoci(:tipo), :as => :tipo
+    indexes nome
+    indexes descricao
+    indexes categoria
+    indexes dashboard
+    indexes tipoci(:tipo), :as => :tipo
   end
 
 
@@ -20,12 +20,25 @@ class Cadrelatorio < ActiveRecord::Base
 
   def getPainel
     r = Cadrelatorio.find_all_by_painel(1)
+
+  end
+
+  def self.find_gen(param)
     
+    begin
+      if param =~ /^[1-9]\d*$/
+        Cadrelatorio.find(param)
+      else
+        Cadrelatorio.find_by_nome(param)
+      end
+    rescue ActiveRecord::RecordNotFound
+      Cadrelatorio.find_by_nome(param)
+    end
   end
 
 
 
   def nome_tipoci
-  	tipoci_id.nil? || tipoci_id==0 ? "" : tipoci.tipo
+    tipoci_id.nil? || tipoci_id==0 ? "" : tipoci.tipo
   end
 end

@@ -1,5 +1,9 @@
 class Grupo < ActiveRecord::Base
   attr_accessible :chamado, :dataCriacao, :dataValidade, :descricao, :membros, :nome, :solicitante
+
+  def to_s
+    "#{id}: #{nome} - #{membros}"
+  end
   # set_primary_key :nome
 
   # def self.getMembrosGrupo(grupo)
@@ -19,33 +23,22 @@ class Grupo < ActiveRecord::Base
     # se grupo nao existir, cria
 
     # _grupo = Grupo.find_or_create_by_nome(grupo)
-    _grupo = Grupo.find_by_nome(nomeGrupo)
+    _grupo = Grupo.find_or_create_by_nome(nomeGrupo)
     _membros = _grupo.membros || ""
-    _grupo.membros = adicionaMembroGrupo(_membros,membro)
+    _membros << ",#{membro}"
+    puts _membros
+    _membros = _membros.split(",").compact.uniq.delete_if { |c| c == ""}.sort.join(",")
+    _grupo.membros = _membros
     _grupo.save!
- 
   end
 
   def self.delMembro(grupo,membro)
-  	g = Grupo.find_or_create_by_nome(grupo)
-    membros = g.membros || ""
-    membros = eliminaMembroGrupo(membros,membro)
-    g.membros = membros
-    g.save!
+    _grupo = Grupo.find_or_create_by_nome(nomeGrupo)
+    _membros = _grupo.membros || ""
+    _membros << ",#{membro}"
+    puts _membros
+    _membros = _membros.split(",").compact.uniq.delete_if { |c| c == "" || c == membro}.sort.join(",")
+    _grupo.membros = _membros
+    _grupo.save!
   end
-
-  private
-
-
-  def self.eliminaMembroGrupo(lista,membro)
-    lista = lista.split(",").compact.uniq.delete_if { |c| c == "" || c == membro}.sort.join(",")
-    lista
-  end
-
-  def self.adicionaMembroGrupo(lista,membro)
-    lista << ",#{membro}"
-    lista = eliminaMembroGrupo(lista,"") # para limpar, compactar a lista
-    lista
-  end
-
 end

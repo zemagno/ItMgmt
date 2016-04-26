@@ -16,8 +16,15 @@ class Bre
     ComandosAutomacao.create(:comando => "CriarEmailExterno", :target => "LINUX", :parametro => "#{_obj.chave},#{_obj.descricao}", :status => 0 )
   end
 
+  def confirmaCC(_obj)
+    # esperar 1 hora, pois o primeiro save do CI nao tem os detalhes...
+  end
 
-  def abrir_alerta(_whom,_obj)
+  def iniciarChecklist(_obj)
+    # esperar 1 hora, pois o primeiro save do CI nao tem os detalhes...
+  end
+
+  def abrirAlerta(_whom,_obj)
     puts "BRE:  abrir alerta: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipo}"
   end
 
@@ -43,13 +50,17 @@ class Bre
     puts "BRE:  liberarLicencas: #{_obj.class.name} #{_obj} "
   end
 
+  def notificarGestor(_oque,_obj)
+  end
 
   # notificar "noc",  "Criacao de Terceiro", terceiro
   def notificar(_whom,_oque,_obj)
     puts "BRE:  Notificar alerta2: [#{_whom}] #{_obj} #{_obj.class.name} #{_obj}"
     # esse notificar so aceita CI"
-    p = Hash[ :to => "zemagno@gmail.com", :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.chave}; #{_obj.descricao}"  ]
-    job = JobEnviarEmail.criar(79, p.to_yaml)
+    
+    params = Hash[JSON.parse Parametro.get(:tipo => "BRE", :subtipo => "Notificacao")]
+    p = Hash[ :to => params["to"], :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.chave}; #{_obj.descricao}"  ]
+    job = JobEnviarEmail.criar(params["template"], p.to_yaml)
     # TODO hardcoded...
     puts "  Notificar alerta2: [#{_whom}] #{_obj} #{_obj.class.name} #{_obj}"
   end

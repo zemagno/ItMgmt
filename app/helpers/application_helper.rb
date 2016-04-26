@@ -20,7 +20,6 @@ def docs_to_url(doc)
 	@URLs
 end
 
-
 def jira_to_docs(jira)
 	@docs = ""
 	return if jira.blank?

@@ -14,7 +14,7 @@
 <% @schedulers.each do |scheduler| %>
   <tr>
     <td><%= scheduler.ordem %></td>
-    <td><%= scheduler.job %></td>
+    <td><%= SchedulerGenField(scheduler.job) %></td>
     <td><%= scheduler.when %></td>
     <td><%= link_to 'Mostrar', scheduler %></td>
     <% if (can? :manage, Scheduler)  %>

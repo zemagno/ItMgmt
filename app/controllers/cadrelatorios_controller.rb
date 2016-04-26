@@ -45,7 +45,7 @@ class CadrelatoriosController < ApplicationController
   # GET /cadrelatorios/1
   # GET /cadrelatorios/1.json
   def show
-    @cadrelatorio = Cadrelatorio.find(params[:id])
+    @cadrelatorio = Cadrelatorio.find_gen(params[:id])
     carrega_agregadas
     respond_to do |format|
       format.html # show.html.erb
