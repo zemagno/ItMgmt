@@ -1,9 +1,18 @@
 
 require "queueable"
+require "csv"
+
 include ApplicationHelper
 class CisController < ApplicationController
   include Queueable
   authorize_resource #cancan
+
+
+
+  ActionController.add_renderer :csv do |csv, options|
+    self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
+  end
+
 
   # @layout 'application_novolyaout'
 
@@ -29,6 +38,25 @@ class CisController < ApplicationController
 
 
   end
+
+  def to_csv (titulo, fields, cis)
+    csv_string = CSV.generate do |csv|
+      puts fields[0]
+      puts fields[1]
+
+      csv << fields[0]
+      cis.each do |ci|
+        linha = []
+        fields[1].each do |f|
+          linha << ci.send(f)
+        end
+        csv << linha
+      end
+    end
+    csv_string
+
+  end
+
 
   def cache(ci)
     session[:oldCI] = ci.id
@@ -221,6 +249,8 @@ class CisController < ApplicationController
       format.html { render :html => @cis }
       format.json { render :json => @cis }
       format.xml  { render :xml => @cis }
+      # format.xml { render :xml => to_xml(params[:id],@campos,@resultado) }
+      format.csv { render :csv => to_csv("Cis",@fields,@cis) }
     end
   end
 

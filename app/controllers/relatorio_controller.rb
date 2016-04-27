@@ -39,8 +39,8 @@ class RelatorioController < ApplicationController
 
   def to_csv (titulo, header, _fields)
     csv_string = CSV.generate do |csv|
-      csv << @campos
-      @resultado.each { |res| csv << res }
+      csv << header
+      _fields.each { |res| csv << res }
     end
     csv_string
   end

@@ -76,7 +76,7 @@ class EnviaEmailWorker
              destinatario = "magno@brq.com"
              from = "magno@brq.com"
              cc =  ""
-             # CiMailer.enviar_anexo(template.template,licencas,"Extrato Mensal: Uso de Software",destinatario,cc,from,licencas[0][1]).deliver
+             CiMailer.enviar_anexo(template.template,licencas,"Extrato Mensal: Uso de Software",destinatario,cc,from,licencas[0][1]).deliver
              job.status = "Email enviado para #{destinatario}. Extrato Mensal de Uso de Software em #{Time.now}"  
              Event.register("email","Gestao Licenca","detalhe","Gestao Licenca - email direto - #{template.nome} - #{gestor}")
           end
