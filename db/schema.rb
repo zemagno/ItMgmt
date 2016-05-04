@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160418092605) do
+ActiveRecord::Schema.define(:version => 20160503223904) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -177,6 +177,7 @@ ActiveRecord::Schema.define(:version => 20160418092605) do
     t.decimal  "CustoMensalCapex",                      :precision => 10, :scale => 2
     t.decimal  "CustoMensalOpex",                       :precision => 10, :scale => 2
     t.integer  "tipoCobranca"
+    t.integer  "oldStatusci_id"
   end
 
   add_index "cis", ["Owner"], :name => "index_cis_on_Owner"
@@ -330,6 +331,7 @@ ActiveRecord::Schema.define(:version => 20160418092605) do
     t.boolean  "ramalSendoExterno"
     t.datetime "DataInicioAfastamento"
     t.datetime "DataFinalAfastamento"
+    t.boolean  "customPossuiVariasEstacoes"
   end
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"

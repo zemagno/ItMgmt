@@ -10,7 +10,7 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id
 
   belongs_to :site
   belongs_to :tipoci
@@ -67,6 +67,7 @@ class Ci < ActiveRecord::Base
   validates :descricao, :presence => {:message => " eh mandatorio"}
 
   after_save :atualiza_chave
+  before_save :atualiza_statusci
   after_create :post_create_processing
 
 
@@ -361,6 +362,11 @@ class Ci < ActiveRecord::Base
     puts "_______________________________________________________________"
     nova_chave = self.chave.gsub "<ID>", id.to_s
     self.update_attributes(:chave => nova_chave) if self.chave != nova_chave
+  end
+
+  def atualiza_statusci
+    self.oldStatusci_id = self.statusci_id_was if self.statusci_id_changed?
+    BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
   end
 
   def post_create_processing

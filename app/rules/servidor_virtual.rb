@@ -11,3 +11,9 @@ bre.adicionaRegra "Criacao de Servidor" do
     end
     
 end
+
+bre.adicionaRegra "Manutencao Servidor" do
+	quando :mudar_status, :ci, "Servidor Virtual" do |servidor|
+   		notificar "DC", "Servidor Virtual: Mudanca de Status", servidor
+   	end
+end

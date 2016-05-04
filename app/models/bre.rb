@@ -4,6 +4,12 @@ class Bre
     @bre = Hash.new
   end
 
+  def to_s
+    @bre.each do |k,v|
+       puts "BRE : #{k}"
+    end
+  end
+
   def self.instance
     @instance ||= new
   end
@@ -40,6 +46,7 @@ class Bre
     puts "BRE:  criar: [#{_whom}]  #{_obj.class.name} #{_obj} #{_obj.tipoci.tipo}"
   end
 
+
   def adicionaGrupo(_whom,_obj)
       puts "adicionaGrupo #{_whom}"
       Grupo.addMembro(_whom,_obj.Login) if _obj.is_a? Funcionario
@@ -74,6 +81,12 @@ class Bre
     Gestores.invalidate
   end
 
+  # BreEvent.register(:criar,self)
+  # def self.register(oque,_obj)   ,*params)
+  # Bre.instance.go(oque,:ci,_obj.tipoci.tipo,_obj,*params)
+
+  # quando :criar, :ci, "Servidor Virtual" do |servidor|
+
   def go(_action, _target, _domain,*args)
     puts "BRE:Bre.go #{_action}:#{_target}:#{_domain}"
     _block = @bre["#{_action}:#{_target}:#{_domain}"]
@@ -83,7 +96,7 @@ class Bre
 
 
   def addRule(comentario,&block)
-    instance_eval &block
+    instance_exec  &block
   end
 
   def adicionaRegra(comentario,&block)

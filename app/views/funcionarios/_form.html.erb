@@ -58,6 +58,25 @@
 
 <div class="spacer"></div>
 
+
+
+<% @attrs.each do |attr| %>
+  <label><%= attr[1] %>?
+  </label>
+  <div class="field">
+<!--    <input name="funcionario[<%= attr[0]%>]" type="hidden" value="0" />   
+   <input id="funcionario_<%= attr[0]%>" name="funcionario[<%= attr[0]%>]" type="checkbox" value="<%= attr[2] ? 1 : 0 %>" <%= "checked" if attr[2] %> />
+ -->  
+   <div class="field">
+    <%= f.check_box(attr[0]) %>
+</div>
+
+
+  </div>
+  <div class="spacer"></div>
+<% end %>
+
+
 <div class="actions">
     <%= f.submit %>
 </div>

@@ -60,6 +60,14 @@
 </p>
 
 
+<% @attrs.each do |attr| %>
+<p>
+  <b><%= attr[1] %> : </b>
+  <%= attr[2] ? "Sim" : "Nao" %>
+
+<% end %>
+
+<p>
 
   
 <%= link_to 'Volta', funcionarios_path %>

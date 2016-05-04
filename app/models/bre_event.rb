@@ -1,10 +1,11 @@
 class BreEvent
-    def self.register(oque,_obj)
+    def self.register(oque,_obj,*params)
       puts "register. Chamar go #{_obj.class.name}"
       case _obj.class.name
         when "Ci"
           puts "BreEvent:Ci..."
-          Bre.instance.go(oque,:ci,_obj.tipoci.tipo,_obj)
+          puts "parametros #{params}"
+          Bre.instance.go(oque,:ci,_obj.tipoci.tipo,_obj,*params)
         when "Alerta"
           Bre.instance.go(oque,:alerta,"nada",_obj)
         when "Funcionario"
