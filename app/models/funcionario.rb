@@ -55,10 +55,14 @@ class Funcionario < ActiveRecord::Base
   end
 
 
-  def gestores
+  # colocar navegacao sem precisar ir no bd. 
+  # self
+  # e gestores chama com (login)
+
+  def self.gestores (login)
     f = Funcionario._all
     gestores = []
-    gestor = self.Login
+    gestor = login
     fim = false
     while not fim
       gestores << [gestor,f[gestor].NomProfissional, "#{f[gestor].NomeTipoCC}/#{f[gestor].DescCCTorre}"]
@@ -69,11 +73,20 @@ class Funcionario < ActiveRecord::Base
     gestores
   end
 
-  def funcionarios
+  def gestores
+    Funcionario.gestores(self.Login)
+
+  end
+
+  def self.funcionarios(login)
     f = Funcionario._all
     funcionarios = []
-    f.each { |k,v| funcionarios << [v.Login,v.NomProfissional] if v.NomEmailGestorProfissional == self.Login }
+    f.each { |k,v| funcionarios << [v.Login,v.NomProfissional] if v.NomEmailGestorProfissional == login }
     funcionarios
+  end
+
+  def funcionarios
+    Funcionario.funcionarios(self.Login)
   end
 
 
