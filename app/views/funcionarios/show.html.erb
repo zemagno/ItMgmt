@@ -1,73 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div id="stylized" class="myform">
+  <p id="notice"><%= notice %><br>
 
-<p>
+
   <b>Login:</b>
   <%= @funcionario.Login %>
-</p>
+<br>
 
-<p>
+
   <b>Matricula:</b>
   <%= @funcionario.Matricula %>
-</p>
+<br>
 
-<p>
+
   <b>Nome:</b>
   <%= @funcionario.Nome %>
-</p>
+<br>
 
-<p>
+
   <b>Cipa:</b>
   <%= @funcionario.cipa ? "Sim" : "Nao" %>
-</p>
+<br>
 
-<p>
+
   <b>Brigadista:</b>
   <%= @funcionario.brigadista ? "Sim" : "Nao" %>
-</p>
 
-<p>
+
   <b>Sem Estacao:</b>
   <%= @funcionario.semEstacao ? "Sim" : "Nao" %>
-</p>
+<br>
 
 
-<p>
+
   <b>Afastado:</b>
   <%= @funcionario.afastado ? "Sim" : "Nao" %>
-</p>
+<br>
 
-<p>
+
   <b>Data Inicio Afastamento:</b>
   <%= @funcionario.DataInicioAfastamento  %>
-</p>
+<br>
 
-<p>
+
   <b>Data Final Afastamento:</b>
   <%= @funcionario.DataFinalAfastamento  %>
-</p>
+<br>
 
 
 
-<p>
+
   <b>Observacao:</b>
   
   <b><%= @funcionario.observacao%> </b> 
-</p>
+<br>
 
-<p>
+
   <b>Tem Ramal sendo externo:</b>
   <%= @funcionario.ramalSendoExterno ? "Sim" : "Nao" %>
-</p>
+<br>
 
 
 <% @attrs.each do |attr| %>
-<p>
+
   <b><%= attr[1] %> : </b>
   <%= attr[2] ? "Sim" : "Nao" %>
 
 <% end %>
 
-<p>
 
+</div>
   
-<%= link_to 'Volta', funcionarios_path %>
+<%= link_to 'Listagem', funcionarios_path %> |
+<%= link_to 'Editar', edit_funcionario_path(@funcionario) %>

@@ -1,0 +1,47 @@
+<div id="stylized" class="myform">
+<h1>Equipe e Gestores</h1>
+
+
+Gestores
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Nome</th>
+    <th>Identidades</th>
+    <th>Atributos Especiais</th>
+   
+  </tr>
+
+<% @gestores.reverse_each do |funcionario| %>
+  <tr>
+        <td><%= link_to funcionario[0], equipe_path(funcionario[0])  %></td> 
+    <td><%= link_to funcionario[1], "/GestaoUsuarios?search=#{funcionario[0]}", :target => "_blank"  %></td>
+    <td><%= link_to 'Identidades', identities_path(funcionario[0]), :target => "_blank" %></td>
+    <td><%= link_to 'Atributos Especiais', funcionario_path(funcionario[0]), :target => "_blank" %></td>
+  </tr>
+<% end %>
+</table>
+
+
+Equipe
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Nome</th>
+   
+    <th>Identidades</th>
+    <th>Atributos Especiais</th>
+  </tr>
+
+<% @equipe.each do |funcionario| %>
+  <tr>
+    <td><%= link_to funcionario[0], equipe_path(funcionario[0])  %></td> 
+    <td><%= link_to funcionario[1], "/GestaoUsuarios?search=#{funcionario[0]}", :target => "_blank"  %></td>
+    <td><%= link_to 'Identidades', identities_path(funcionario[0]), :target => "_blank" %></td>
+    <td><%= link_to 'Atributos Especiais', funcionario_path(funcionario[0]), :target => "_blank" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+</div>

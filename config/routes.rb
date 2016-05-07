@@ -60,6 +60,7 @@ ItMgmt::Application.routes.draw do
 # match '/422' => 'errors#server_error'
 
   resources :funcionarios , :constraints => { :id => /.*/ }
+  get 'equipe/:id', to: "funcionarios#equipe", :constraints => { :id => /.*/ }, as: "equipe"
 
 
   resources :template_surveys

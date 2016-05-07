@@ -24,7 +24,7 @@ class GestaoLicenciamento
   # estacoes de um usuario, segundo o inventario, nao o CIS
   def estacoesUsuario
     # @estacoes = @estacoes || InventarioUser.estacoes(@login) # KPMG
-    @estacoes = @estacoes || Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 46).pluck(:chave)
+    @estacoes = @estacoes || Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 46).pluck(:descricao)
 
   end
 
@@ -73,6 +73,8 @@ class GestaoLicenciamento
 
   def geraExcel
 
+    estacoes = self.estacoesEmUsoEquipeGestor
+
     puts @dadosGestor
     puts @dadosGestor[0]
     puts "login: [#{@dadosGestor[0][1]}]"
@@ -95,7 +97,7 @@ class GestaoLicenciamento
       format_inteiro = style.add_style(:format_code => "#,##0")
       highlight_text = style.add_style( :bg_color => "FF0000", :type => :dxf )
 
-      wb.add_worksheet(name: "Por Funcionario") do |sheet|
+      wb.add_worksheet(name: "Sw Por Funcionario") do |sheet|
         format_linha = [highlight_cell,highlight_cell] << [format_valor]*(@matrixUserSw.count-2)
         format_linha.flatten!
         @matrixUserSw.each do |licenca |
@@ -107,6 +109,17 @@ class GestaoLicenciamento
         format_linha.flatten!
         @matrixSw.each do |licenca |
           sheet.add_row licenca, :style => format_linha
+        end
+        # sheet.rows.last.cells[0].sz = 14
+        # sheet.rows.last.cells[0].b = true
+        # sheet.rows.last.cells[2].sz = 14
+        # sheet.rows.last.cells[2].b = true
+      end
+      wb.add_worksheet(name: "Estacoes por Usuario") do |sheet|
+        format_linha = [highlight_cell,highlight_cell]
+        estacoes.each do |estacao |
+
+          sheet.add_row estacao.flatten, :style => format_linha 
         end
         # sheet.rows.last.cells[0].sz = 14
         # sheet.rows.last.cells[0].b = true

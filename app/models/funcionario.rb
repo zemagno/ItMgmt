@@ -1,51 +1,80 @@
 class Funcionario < ActiveRecord::Base
   set_primary_key :Login
   attr_accessible  :Login,  :NumMatrProfissional,:NomProfissional,:DtaAdmissao,:DtaDemissao,:NomEmailBRQ,:IdtCPF,:IdtRG,:IdtCodigoCentroCusto,:NomCentroCusto,:NomTipoCentroCusto,:IdtCodigoSecao,:NomLocalTrabalho,:NomCidadeLocalTrabalho, :IdtCentroCustoTorre,:DscCentroCustoTorre, :NomAlocacao, :IdLocalTrabalho, :cipa, :semEstacao, :observacao, :brigadista, :afastado,
-                   :DtaRemocaoAcesso, :FlgIndicaRetorno, :NomGestorProfissional, :NomEmailGestorProfissional, :NomEstadoLocalTrabalho,
-                   :ramalSendoExterno, :customPossuiVariasEstacoes
+    :DtaRemocaoAcesso, :FlgIndicaRetorno, :NomGestorProfissional, :NomEmailGestorProfissional, :NomEstadoLocalTrabalho,
+    :ramalSendoExterno, :customPossuiVariasEstacoes
 
 
-  alias_attribute :CCTorre ,			:IdtCentroCustoTorre
-  alias_attribute :CPF,				:IdtCPF
-  alias_attribute :CodigoCC,			:IdtCodigoCentroCusto
-  alias_attribute :CodigoSecao, 		:IdtCodigoSecao
-  alias_attribute :DataAdmissao, 	:DtaAdmissao
-  alias_attribute :DataDemissao, 	:DtaDemissao
+  alias_attribute :CCTorre ,      :IdtCentroCustoTorre
+  alias_attribute :CPF,       :IdtCPF
+  alias_attribute :CodigoCC,      :IdtCodigoCentroCusto
+  alias_attribute :CodigoSecao,     :IdtCodigoSecao
+  alias_attribute :DataAdmissao,  :DtaAdmissao
+  alias_attribute :DataDemissao,  :DtaDemissao
   alias_attribute :DataRemocaoAcesso,  :DtaRemocaoAcesso
-  alias_attribute :DescCCTorre, 		:DscCentroCustoTorre
+  alias_attribute :DescCCTorre,     :DscCentroCustoTorre
   alias_attribute :Email,     :NomEmailBRQ
   alias_attribute :LoginGestor,     :NomEmailGestorProfissional
-  alias_attribute :NomeGestor,			:NomGestorProfissional
-  alias_attribute :Identidade,		:IdtRG
-  alias_attribute :Matricula, 		:NumMatrProfissional
-  alias_attribute :Nome,				:NomProfissional
-  alias_attribute :NomeCC,			:NomCentroCusto
+  alias_attribute :NomeGestor,      :NomGestorProfissional
+  alias_attribute :Identidade,    :IdtRG
+  alias_attribute :Matricula,     :NumMatrProfissional
+  alias_attribute :Nome,        :NomProfissional
+  alias_attribute :NomeCC,      :NomCentroCusto
   alias_attribute :NomeCidadeTrabalho,:NomCidadeLocalTrabalho
   alias_attribute :NomeLocalTrabalho,:NomLocalTrabalho
   alias_attribute :NomeTipoCC,      :NomTipoCentroCusto
-  alias_attribute :gestor,  		:NomEmailGestorProfissional
+  alias_attribute :gestor,      :NomEmailGestorProfissional
 
-def status
-  status_func = ""
-  status_func << "Afastado - " if self.afastado
-  status_func << "Sem Estacao - " if self.semEstacao
-  status_func << (self.observacao || "" ) if  self.semEstacao || self.afastado
-  status_func
+  @@funcionarios  = nil
+
+  def status
+    status_func = ""
+    status_func << "Afastado - " if self.afastado
+    status_func << "Sem Estacao - " if self.semEstacao
+    status_func << (self.observacao || "" ) if  self.semEstacao || self.afastado
+    status_func
+  end
+
+  def demitido?
+    ! self.DataRemocaoAcesso.nil? and self.DataRemocaoAcesso < DateTime.now
+  end
+
+  @@funcionarios = nil
+
+  def self._all
+    if not @@funcionarios
+      puts "vou reler funcionarios e montar hash"
+      @@funcionarios = {}
+      Funcionario.where(DtaDemissao: nil).each { |f| @@funcionarios[f.Login] = f}
+    end
+    @@funcionarios
+  end
+
+  def self.invalidate
+    @@funcionarios = nil
+  end
+
+
+  def gestores
+    f = Funcionario._all
+    gestores = []
+    gestor = self.Login
+    fim = false
+    while not fim
+      gestores << [gestor,f[gestor].NomProfissional, "#{f[gestor].NomeTipoCC}/#{f[gestor].DescCCTorre}"]
+      gestor = f[gestor].NomEmailGestorProfissional
+      fim = gestor =="benjamin" || gestor.nil?
+    end
+    gestores << [gestor,f[gestor].NomProfissional]
+    gestores
+  end
+
+  def funcionarios
+    f = Funcionario._all
+    funcionarios = []
+    f.each { |k,v| funcionarios << [v.Login,v.NomProfissional] if v.NomEmailGestorProfissional == self.Login }
+    funcionarios
+  end
+
+
 end
-
-def demitido?
-  ! self.DataRemocaoAcesso.nil? and self.DataRemocaoAcesso < DateTime.now
-end
-
-end
-
-
-
-
-
-
-
-
-
-
-

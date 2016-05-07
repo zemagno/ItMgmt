@@ -38,4 +38,11 @@ class FuncionariosController < InheritedResources::Base
     # puts @attr
   end
 
+  def equipe
+    f = Funcionario.find_by_Login(params[:id])
+    @gestores = f.gestores
+    @equipe = f.funcionarios
+
+  end
+
 end

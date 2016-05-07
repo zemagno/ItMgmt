@@ -164,6 +164,7 @@ class ServiceCargaRm
 
     #TODO mudar para BRE....
     Gestores.invalidate
+    Funcionario.invalidate
 
     depois = Funcionario.count * 1.0
 
