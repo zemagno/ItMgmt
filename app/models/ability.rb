@@ -51,6 +51,7 @@ class Ability
     cannot :manage, Scheduler
     cannot :manage, User
     cannot :manage, Audit
+    cannot :manage, Grupo
 
     # ATENCAO ---> SEMPRE DESAUTORIZAR NO SUPORTE !!!! OU inverter condicao
 
@@ -78,6 +79,7 @@ class Ability
       can    :index, Software
       cannot :manage, User
       can    :index, User
+      can    :index, Grupo
 
 
       can    :manage, :usuarios
@@ -94,6 +96,9 @@ class Ability
     if user and user.is_a :financeiroTI
       can :manage, CanHelperFinanceiro
       can :manage, CanHelperFinanceiroTi
+    end
+    if user and user.is_a :grupoAdmin
+      can :manage, Grupo
     end
 
     if user and user.is_a :compras
@@ -117,6 +122,8 @@ class Ability
 
     cannot :manager, User
     #can :manage, :all
+
+    # cannot :manage, Grupo
 
   end
 end

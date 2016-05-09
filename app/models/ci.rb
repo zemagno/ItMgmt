@@ -85,7 +85,7 @@ class Ci < ActiveRecord::Base
   end
 
   def to_hash
-    {"chave" => chave, "descricao" => descricao, "tipoci" => nice_tipoci, "Owner" => self.Owner, "id" => id, "status" => status.upcase}
+    {"chave" => chave, "descricao" => descricao, "tipoci" => nice_tipoci, "Owner" => self.Owner, "id" => id, "status" => status.upcase, "dataChange" => self.dataChange}
   end
 
   def chave_sanitizada

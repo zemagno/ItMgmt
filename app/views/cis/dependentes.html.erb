@@ -20,6 +20,12 @@
      
      &nbsp;&nbsp;&nbsp;Depende<%= " #{ci[1]["tipoci"]} " %>&nbsp;<%= link_to ci[1]["chave"], ci_path(ci[1]["id"]) %> <%= " - #{ci[1]["descricao"]} - #{ci[1]["Owner"]}" %>
      <font color="red"><%= " - #{ci[1]["status"]}" if ci[1]["status"] != "ATIVO" %></font>
+  
+    <% if ci[1]["dataChange"] and ci[1]["dataChange"].to_time >= 7.days.ago %>
+       <font color="red">
+     <% end %> 
+     <%= "- #{ci[1]["dataChange"]}"  %></font>
+
      </br>
   <% end %>
 

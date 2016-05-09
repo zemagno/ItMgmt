@@ -1,3 +1,4 @@
 class GruposController < InheritedResources::Base
-end
 
+  load_and_authorize_resource
+end

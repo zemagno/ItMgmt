@@ -1,4 +1,4 @@
-class ServiceGestoresLicencasEmUso
+class ServiceProducaoEnviaCobrancaLicencas
 	def go
 		status = "ok"
 		detalhe = ""

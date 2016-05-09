@@ -26,17 +26,15 @@ class Grupo < ActiveRecord::Base
     _grupo = Grupo.find_or_create_by_nome(nomeGrupo)
     _membros = _grupo.membros || ""
     _membros << ",#{membro}"
-    puts _membros
+    puts "__Grupo.addMembro: [#{nomeGrupo}] [#{membro}] ___________ "
     _membros = _membros.split(",").compact.uniq.delete_if { |c| c == ""}.sort.join(",")
     _grupo.membros = _membros
     _grupo.save!
   end
 
-  def self.delMembro(grupo,membro)
+  def self.delMembro(nomeGrupo,membro)
     _grupo = Grupo.find_or_create_by_nome(nomeGrupo)
     _membros = _grupo.membros || ""
-    _membros << ",#{membro}"
-    puts _membros
     _membros = _membros.split(",").compact.uniq.delete_if { |c| c == "" || c == membro}.sort.join(",")
     _grupo.membros = _membros
     _grupo.save!

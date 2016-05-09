@@ -1,3 +1,4 @@
+<div id="stylized" class="myform">
 <%= form_for(@grupo) do |f| %>
   <% if @grupo.errors.any? %>
     <div id="error_explanation">
@@ -11,14 +12,22 @@
     </div>
   <% end %>
 
+
+ <div class="spacer"></div>
+
+
+<label>Nome ?
+<span class="small">É brigadista? </span>
+</label>
+<div class="field">
+    <%= f.check_box :brigadista %>
+</div>
+
   <div class="field">
     <%= f.label :nome %><br />
     <%= f.text_field :nome %>
   </div>
-  <div class="field">
-    <%= f.label :membros %><br />
-    <%= f.text_field :membros %>
-  </div>
+  
   <div class="field">
     <%= f.label :solicitante %><br />
     <%= f.text_field :solicitante %>
@@ -39,7 +48,14 @@
     <%= f.label :chamado %><br />
     <%= f.text_field :chamado %>
   </div>
+
+<div class="field">
+    <%= f.label :membros %><br />
+    <%= @grupo.membros %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
