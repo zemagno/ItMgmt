@@ -42,6 +42,7 @@ class FuncionariosController < InheritedResources::Base
     f = Funcionario.find_by_Login(params[:id])
     @gestores = f.gestores
     @equipe = f.funcionarios
+    @logins = f.funcionarios.map{ |x| x[0]}.join(",")
 
   end
 

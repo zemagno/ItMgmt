@@ -6,6 +6,23 @@ class SqlTemplate < ActiveRecord::Base
 	validates :handler, :inclusion =>
            ActionView::Template::Handlers.extensions.map(&:to_s)
 
+
+  def self.find_gen(param)
+    puts "[#{param}]"
+    begin
+      if param =~ /^[1-9]*$/
+      	puts "1"
+        SqlTemplate.find(param)
+      else
+      	puts "2"
+      	SqlTemplate.find_by_path(param)
+      end
+    rescue ActiveRecord::RecordNotFound
+      puts "3"
+      SqlTemplate.find_by_path(param)
+    end
+  end       
+
 	class Resolver < ActionView::Resolver 
 	   protected
 		def find_templates(name, prefix, partial, details)

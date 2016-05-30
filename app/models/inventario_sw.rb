@@ -7,7 +7,13 @@ class InventarioSw < ActiveRecord::Base
            :primary_key => :hostname,
            :class_name => "InventarioUser"
 
+  after_create :post_create_processing
+
   default_scope where(:versao => 0)
+
+  alias_attribute :srcSccm ,      :sccm
+  alias_attribute :srcAuditor ,      :auditor
+  alias_attribute :srcScriptLogin ,      :script
 
   def self.quemUsa
 
@@ -23,6 +29,12 @@ class InventarioSw < ActiveRecord::Base
 
   def self.licencaEstacao(estacoes)
   	self.where("hostname IN (?)", estacoes).pluck(:software)
+  end
+
+  private
+  
+  def post_create_processing
+    self.total= 0
   end
 
   

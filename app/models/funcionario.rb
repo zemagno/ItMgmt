@@ -2,7 +2,7 @@ class Funcionario < ActiveRecord::Base
   set_primary_key :Login
   attr_accessible  :Login,  :NumMatrProfissional,:NomProfissional,:DtaAdmissao,:DtaDemissao,:NomEmailBRQ,:IdtCPF,:IdtRG,:IdtCodigoCentroCusto,:NomCentroCusto,:NomTipoCentroCusto,:IdtCodigoSecao,:NomLocalTrabalho,:NomCidadeLocalTrabalho, :IdtCentroCustoTorre,:DscCentroCustoTorre, :NomAlocacao, :IdLocalTrabalho, :cipa, :semEstacao, :observacao, :brigadista, :afastado,
     :DtaRemocaoAcesso, :FlgIndicaRetorno, :NomGestorProfissional, :NomEmailGestorProfissional, :NomEstadoLocalTrabalho,
-    :ramalSendoExterno, :customPossuiVariasEstacoes
+    :ramalSendoExterno, :customPossuiVariasEstacoes, :customExternoComOffice365
 
 
   alias_attribute :CCTorre ,      :IdtCentroCustoTorre
@@ -23,7 +23,7 @@ class Funcionario < ActiveRecord::Base
   alias_attribute :NomeCidadeTrabalho,:NomCidadeLocalTrabalho
   alias_attribute :NomeLocalTrabalho,:NomLocalTrabalho
   alias_attribute :NomeTipoCC,      :NomTipoCentroCusto
-  alias_attribute :gestor,      :NomEmailGestorProfissional
+  # alias_attribute :gestor,      :NomEmailGestorProfissional
 
   @@funcionarios  = nil
 
@@ -40,6 +40,10 @@ class Funcionario < ActiveRecord::Base
   end
 
   @@funcionarios = nil
+
+  def gestor
+    self.NomEmailGestorProfissional.gsub(/@brq.com/,"")
+  end
 
   def self._all
     if not @@funcionarios
@@ -65,6 +69,7 @@ class Funcionario < ActiveRecord::Base
     gestor = login
     fim = false
     while not fim
+      puts gestor
       gestores << [gestor,f[gestor].NomProfissional, "#{f[gestor].NomeTipoCC}/#{f[gestor].DescCCTorre}"]
       gestor = f[gestor].NomEmailGestorProfissional
       fim = gestor =="benjamin" || gestor.nil?

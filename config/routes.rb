@@ -12,22 +12,24 @@ ItMgmt::Application.routes.draw do
   resources :softwares
 
 
-  get "Licencas/PorGestor/:id(/:versao)", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /[a-zA-z0-9.]*/ }
- 
-  get "Licencas/PorUsuario/:id", to: "Licencas#porUsuario", as: "LicencasPorUsuario" , :constraints => { :id => /.*/ }
- 
+  get "Inventario/PorHostname/:id", to: "Inventario#porHostname", as: "InventarioPorHostname"
   
+  get "Licencas/PorGestor/:id(/:versao)", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /[a-zA-z0-9.]*/ }
+
+  get "Licencas/PorUsuario/:id", to: "Licencas#porUsuario", as: "LicencasPorUsuario" , :constraints => { :id => /.*/ }
+
+
 
   get "identities/:id", to: "Identities#show", as: "identities" , :constraints => { :id => /.*/ }
 
-  post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento" 
+  post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento"
   resources :users
 
 
   resources :schedulers
   get "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
   post "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
-   
+
 
 
   resources :producaos
@@ -39,25 +41,25 @@ ItMgmt::Application.routes.draw do
 
 
 
-   match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
+  match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
 
-   get 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#email", :constraints => { :id => /.*/ },  :as => :email_gestao_usuario
-   post 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#enviar_email", :constraints => { :id => /.*/ },  :as => :enviar_email_gestao_usuario
- 
+  get 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#email", :constraints => { :id => /.*/ },  :as => :email_gestao_usuario
+  post 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#enviar_email", :constraints => { :id => /.*/ },  :as => :enviar_email_gestao_usuario
 
-   post "GestaoUsuarios/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
-   get "GestaoUsuarios/EscolherLicencaAlocar",  to: "GestaoUsuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
-   get "GestaoUsuarios/EscolherEstacaoAlocar",  to: "GestaoUsuarios#escolher_estacao_alocar", as: "escolher_estacao_alocar"
-   get "GestaoUsuarios/:id/confirmardesalocarestacao/:estacao", to: "GestaoUsuarios#confirmar_desalocar_estacao", as: "confirmar_desalocar_estacao", :constraints => { :id => /.*/ }
-   get "GestaoUsuarios/:id/imprimirtermoentrega/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_entrega", as: "imprimir_termo_entrega", :constraints => { :id => /.*/ }
-   get "GestaoUsuarios/:id/imprimirtermodevolucao/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_devolucao", as: "imprimir_termo_devolucao", :constraints => { :id => /.*/ }
-   get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca", :constraints => { :id => /.*/ }
-   post "GestaoUsuarios/AlocarLicenca", to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
-   post "GestaoUsuarios/deletelicenca", to: "GestaoUsuarios#remover_licenca", as: "remover_licenca"
-   post "GestaoUsuarios/DesalocarEstacao", to: "GestaoUsuarios#desalocar_estacao", as: "desalocar_estacao"
 
-# match '/404' => 'errors#not_found'
-# match '/422' => 'errors#server_error'
+  post "GestaoUsuarios/AlocarEstacao",  to: "GestaoUsuarios#alocar_estacao", as: "alocar_estacao"
+  get "GestaoUsuarios/EscolherLicencaAlocar",  to: "GestaoUsuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
+  get "GestaoUsuarios/EscolherEstacaoAlocar",  to: "GestaoUsuarios#escolher_estacao_alocar", as: "escolher_estacao_alocar"
+  get "GestaoUsuarios/:id/confirmardesalocarestacao/:estacao", to: "GestaoUsuarios#confirmar_desalocar_estacao", as: "confirmar_desalocar_estacao", :constraints => { :id => /.*/ }
+  get "GestaoUsuarios/:id/imprimirtermoentrega/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_entrega", as: "imprimir_termo_entrega", :constraints => { :id => /.*/ }
+  get "GestaoUsuarios/:id/imprimirtermodevolucao/:tipo/:ativo", to: "GestaoUsuarios#imprimir_termo_devolucao", as: "imprimir_termo_devolucao", :constraints => { :id => /.*/ }
+  get "GestaoUsuarios/:id/confirmarremocaolicenca/:licenca", to: "GestaoUsuarios#confirmar_remocao_licenca", as: "confirmar_remocao_licenca", :constraints => { :id => /.*/ }
+  post "GestaoUsuarios/AlocarLicenca", to: "GestaoUsuarios#alocar_licenca", as: "alocar_licenca"
+  post "GestaoUsuarios/deletelicenca", to: "GestaoUsuarios#remover_licenca", as: "remover_licenca"
+  post "GestaoUsuarios/DesalocarEstacao", to: "GestaoUsuarios#desalocar_estacao", as: "desalocar_estacao"
+
+  # match '/404' => 'errors#not_found'
+  # match '/422' => 'errors#server_error'
 
   resources :funcionarios , :constraints => { :id => /.*/ }
   get 'equipe/:id', to: "funcionarios#equipe", :constraints => { :id => /.*/ }, as: "equipe"
@@ -82,7 +84,7 @@ ItMgmt::Application.routes.draw do
 
   resources :events, :only => [:index]
 
-resources :fornecedores
+  resources :fornecedores
 
   resources :mailings
   match "mailings/enviar_email", to: "mailings#enviar_email"
@@ -123,7 +125,7 @@ resources :fornecedores
 
 
   resources :checklists do
-      resources :init_checklists, :only => [:create, :new, :delete]
+    resources :init_checklists, :only => [:create, :new, :delete]
   end
 
 
@@ -144,7 +146,7 @@ resources :fornecedores
   # match "ramais/new", to: "ramal_login#new"
   # match "tel_ramal_login", to: "ramal_login#index"
   # match "tel_ramal_logins", to: "ramal_login#index" #TODO limpar esse lixo..
-  
+
   resources :tipotasks
   resources :tipo_tasks
   resources :atributos
@@ -159,16 +161,16 @@ resources :fornecedores
 
   resources :cadrelatorios
   resources :statuscis
-   
-    # para todos nao ser confundido com ID
+
+  # para todos nao ser confundido com ID
 
 
   match 'relatorio/:id', to: "relatorio#index", as: "relatorio"
   match 'email/:acao/:id', to: "email#enviar"
   match 'email/enviar_email/:id', to: "email#enviar+email"
 
-  match '/tasks/todos', to: 'tasks#todos'  
-  match '/cis/todos', to: 'cis#todos'  
+  match '/tasks/todos', to: 'tasks#todos'
+  match '/cis/todos', to: 'cis#todos'
   match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci"
 
   resources :parametros #, :only => [:index,:edit,:update,:new]
@@ -177,17 +179,17 @@ resources :fornecedores
 
   #match '/admin/massiveupdate', to: 'massiveupdate#index', as: "massiveupdate"
 
- 
 
-  
+
+
   # :as --> criar o help ci_path
   # gera uma entrada no rake routes
   # ci        /CMDB/:id(.:format)                   {:controller=>"ci", :action=>"show"}
-  
+
   get 'cis/:id/email', to: "cis#email",  :as => :email
   post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email
-  
-  
+
+
   match 'cis/:id/impactados', to: "cis#impactados",  :as => :impactados
   match 'cis/:id/dependentes', to: "cis#dependentes",  :as => :dependentes
   match 'cis/:id/dependentes_all', to: "cis#dependentes_all",  :as => :dependentes_all
@@ -195,20 +197,20 @@ resources :fornecedores
   match 'cis/:id/impactados_h', to: "cis#impactados_h", :as => :impactados_h
   match 'cis/:id/dependentes_h', to: "cis#dependentes_h", :as => :dependentes_h
   #match 'cis/:id/abrir_alerta', to: "cis#abrir_alerta", :as => :abrir_alerta
- 
+
   post 'cis/:id/novo_dependente', to: "cis#gera_novo_dependente", :as => :gera_novo_dependente
   match 'cis/:id/novo_dependente', to: "cis#novo_dependente", :as => :novo_dependente
   post 'cis/:id/novo_impactado', to: "cis#gera_novo_impactado", :as => :gera_novo_impactado
   match 'cis/:id/novo_impactado', to: "cis#novo_impactado", :as => :novo_impactado
- 
+
   post 'cis/:id/elimina_dependente', to: "cis#elimina_dependente", :as => :elimina_dependente
   match 'cis/:id/elimina_dependente', to: "cis#ask_elimina_dependente", :as => :ask_elimina_dependente
   post 'cis/:id/elimina_impactado', to: "cis#elimina_impactado", :as => :elimina_impactado
   match 'cis/:id/elimina_impactado', to: "cis#ask_elimina_impactado", :as => :ask_elimina_impactado
- 
+
   post 'cis/:id/duplicar_ci', to: "cis#duplicar_ci", :as => :duplicar_ci
   match 'cis/:id/duplicar_ci', to: "cis#ask_duplicar_ci", :as => :ask_duplicar_ci
-  
+
 
   match 'cis/:id/confirmar_eliminacao', to: "cis#confirmar_eliminacao", :as => :confirmar_eliminacao
   post 'cis/:id/cis_eliminar', to: "cis#eliminar", :as => :eliminar_ci
@@ -219,9 +221,9 @@ resources :fornecedores
 
   match 'cis/search', to: "cis#search"
   match 'CMDB', to: "cis#index"
-  
+
   resources :cis
-    resources :criticidades
+  resources :criticidades
 
   resources :sites
 
@@ -230,11 +232,11 @@ resources :fornecedores
   resources :categories
 
   resources :authors
-  
+
   resources :console
-  
+
   resources :tipocis
-  
+
 
   match '/404' => 'errors#not_found'
   match '/422' => 'errors#server_error'

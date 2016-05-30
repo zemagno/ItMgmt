@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160506230812) do
+ActiveRecord::Schema.define(:version => 20160529233948) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -192,12 +192,12 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
 
   create_table "comandos_automacaos", :force => true do |t|
     t.string   "comando",    :limit => 30
-    t.string   "parametro",  :limit => 30
+    t.string   "parametro",  :limit => 100
     t.text     "resultado"
     t.integer  "status"
     t.string   "target",     :limit => 30
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "criticidades", :force => true do |t|
@@ -296,7 +296,7 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
 
   create_table "funcionarios", :primary_key => "Login", :force => true do |t|
     t.integer  "NumMatrProfissional"
-    t.string   "NomProfissional",            :limit => 50
+    t.string   "NomProfissional"
     t.date     "DtaAdmissao"
     t.date     "DtaDemissao"
     t.string   "NomEmailBRQ",                :limit => 50
@@ -306,7 +306,7 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
     t.string   "NomCentroCusto"
     t.string   "NomTipoCentroCusto"
     t.string   "IdtCodigoSecao",             :limit => 10
-    t.string   "NomLocalTrabalho",           :limit => 50
+    t.string   "NomLocalTrabalho"
     t.string   "NomCidadeLocalTrabalho",     :limit => 50
     t.string   "IdtCentroCustoTorre",        :limit => 10
     t.string   "DscCentroCustoTorre",        :limit => 50
@@ -320,7 +320,7 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
     t.boolean  "afastado"
     t.date     "DtaRemocaoAcesso"
     t.boolean  "FlgIndicaRetorno"
-    t.string   "NomGestorProfissional",      :limit => 50
+    t.string   "NomGestorProfissional"
     t.string   "NomEmailGestorProfissional", :limit => 30
     t.string   "NomEstadoLocalTrabalho",     :limit => 10
     t.string   "DscCentroCustoBU",           :limit => 30
@@ -332,6 +332,7 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
     t.datetime "DataInicioAfastamento"
     t.datetime "DataFinalAfastamento"
     t.boolean  "customPossuiVariasEstacoes"
+    t.boolean  "customExternoComOffice365"
   end
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"
@@ -347,6 +348,9 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
     t.string   "chamado",      :limit => 50
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
+    t.string   "owner"
+    t.string   "tipoGrupo"
+    t.string   "parametros"
   end
 
   add_index "grupos", ["nome"], :name => "index_grupos_on_nome"
@@ -432,9 +436,13 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
   create_table "inventario_sws", :force => true do |t|
     t.string   "hostname"
     t.string   "software"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.integer  "versao",     :default => 0
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "versao",                  :default => 0
+    t.string   "srcSccm",    :limit => 5
+    t.string   "srcScript",  :limit => 5
+    t.string   "srcAuditor", :limit => 5
+    t.integer  "total"
   end
 
   add_index "inventario_sws", ["hostname"], :name => "index_inventario_sws_on_hostname"
@@ -448,7 +456,7 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
   create_table "inventario_user_0", :id => false, :force => true do |t|
     t.string "hostname"
     t.string "login"
-    t.string "nomprofissional", :limit => 50
+    t.string "nomprofissional"
     t.string "ramal"
   end
 
@@ -482,6 +490,14 @@ ActiveRecord::Schema.define(:version => 20160506230812) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "status"
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.string   "job_class"
+    t.string   "job_scheduler_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "cron"
   end
 
   create_table "licenciamento_ms_de_paras", :force => true do |t|

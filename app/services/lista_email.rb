@@ -24,14 +24,14 @@ class ListaEmail
     # espaco adicionado pois montagem de email no outlook nao permite campo nulo na URL: &cc=&bcc=&body...tem que ser &cc=
     listaEmails = listaEmails.downcase.gsub(/@brq.com/,"").
       gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+((s.include? '@' ) ? "" : sufixo)  }.join(";")+" "
-    # listaEmails = self.blacklist({listaEmails:lista}) if blacklist
+    listaEmails = self.blacklist({listaEmails:lista}) if blacklist
     listaEmails
   end
 
   def self.blacklist(parametros)
     lista = parametros[:listaEmails]
     blacklist = Parametro.get(:tipo => "Email", :subtipo => "Blacklist").split(",")
-    lista = lista.split(";").delete_if { |c| blacklist.include?(c) }.join(";")+" "
+    lista = lista.gsub(/\s+/, "").lista.split(";").delete_if { |c| blacklist.include?(c) }.join(";")+" "
     lista
   end
 

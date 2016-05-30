@@ -25,6 +25,7 @@
   <b>Brigadista:</b>
   <%= @funcionario.brigadista ? "Sim" : "Nao" %>
 
+<br>
 
   <b>Sem Estacao:</b>
   <%= @funcionario.semEstacao ? "Sim" : "Nao" %>
@@ -47,11 +48,9 @@
 <br>
 
 
-
-
-  <b>Observacao:</b>
+<b>Observacao:</b>
   
-  <b><%= @funcionario.observacao%> </b> 
+<b><%= @funcionario.observacao%> </b> 
 <br>
 
 
@@ -60,11 +59,12 @@
 <br>
 
 
+
 <% @attrs.each do |attr| %>
 
   <b><%= attr[1] %> : </b>
   <%= attr[2] ? "Sim" : "Nao" %>
-
+  <br>
 <% end %>
 
 

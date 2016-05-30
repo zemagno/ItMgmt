@@ -62,6 +62,7 @@ class Bre
   # notificar "noc",  "Criacao de Terceiro", terceiro
   # esse notificar so aceita CI"
   def notificar(_whom,_oque,_obj)
+    # TODO delay de 1 hora, para pode terminar criacao de CI e todos os campos estarem armazenados.
     puts "BRE:  Notificar alerta2: [#{_whom}] #{_obj} #{_obj.class.name} #{_obj}"
   
     
