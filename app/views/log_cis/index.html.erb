@@ -1,0 +1,59 @@
+<div id="stylized" class="myform">
+<h1>Log CI</h1>
+
+
+Gestores
+<table>
+  <tr>
+    <th>Login</th>
+    <th>Nome</th>
+    <th>Identidades</th>
+    <th>Atributos Especiais</th>
+   
+  </tr>
+
+<% @gestores.reverse_each do |funcionario| %>
+  <tr>
+        <td><%= link_to funcionario[0], equipe_path(funcionario[0])  %></td> 
+    <td><%= link_to funcionario[1], "/GestaoUsuarios?search=#{funcionario[0]}", :target => "_blank"  %></td>
+    <td><%= link_to 'Identidades', identities_path(funcionario[0]), :target => "_blank" %></td>
+    <td><%= link_to 'Atributos Especiais', funcionario_path(funcionario[0]), :target => "_blank" %></td>
+  </tr>
+<% end %>
+</table>
+
+
+Equipe
+<table id="coolTable" class="display">>
+  <tr>
+    <th>Login</th>
+    <th>Nome</th>
+   
+    <th>Identidades</th>
+    <th>Atributos Especiais</th>
+  </tr>
+
+<% @equipe.each do |funcionario| %>
+  <tr>
+    <td><%= link_to funcionario[0], equipe_path(funcionario[0])  %></td> 
+    <td><%= link_to funcionario[1], "/GestaoUsuarios?search=#{funcionario[0]}", :target => "_blank"  %></td>
+    <td><%= link_to 'Identidades', identities_path(funcionario[0]), :target => "_blank" %></td>
+    <td><%= link_to 'Atributos Especiais', funcionario_path(funcionario[0]), :target => "_blank" %></td>
+  </tr>
+<% end %>
+</table>
+
+<style>
+#sampleDiv{
+  width: 80%;
+  word-wrap:break-word;
+}
+</style>
+
+Logins:
+<div id="sampleDiv">
+
+<%= @logins %>
+</div>
+<br />
+</div>

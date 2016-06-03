@@ -17,6 +17,7 @@ class Ci < ActiveRecord::Base
   belongs_to :statusci
   has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
   has_many :task
+  has_many :log_ci
 
 
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...

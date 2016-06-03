@@ -8,7 +8,7 @@ def run
 	Producao.dispatcherJob(job.job)
 	flash[:info] = "INFO: Job [#{job.job}] enfileirado para execucao"
 	@schedulers = Scheduler.all
-	render :index and return
+	redirect_to :controller => 'schedulers', :action => 'index'
 end
 end
 

@@ -70,7 +70,7 @@ class Bre
     p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.chave}; #{_obj.descricao}"  ]
     job = JobEnviarEmail.criar(params["template"], p.to_yaml)
 
-    puts "  Notificar alerta2: [#{_whom}] #{_obj} #{_obj.class.name} #{_obj}"
+    puts "  Notificar alerta2: [#{_whom}] [#{_obj.class.name}] [#{_obj}"
   end
 
   def quando(_action, _target, _domain, &block)

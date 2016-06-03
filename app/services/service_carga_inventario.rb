@@ -34,7 +34,7 @@ class ServiceCargaInventario
           puts "achei"
           total_replaced = total_replaced + 1
         end
-        if inv.respond_to?("#{provider}") && ! dados[1].nil?
+        if inv.respond_to?("src#{provider}") && ! dados[1].nil?
           inv.send("src#{provider}=", "SIM")
           inv.total = inv.total+1
         end

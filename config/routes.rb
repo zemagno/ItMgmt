@@ -12,6 +12,8 @@ ItMgmt::Application.routes.draw do
   resources :softwares
 
 
+
+
   get "Inventario/PorHostname/:id", to: "Inventario#porHostname", as: "InventarioPorHostname"
   
   get "Licencas/PorGestor/:id(/:versao)", to: "Licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /[a-zA-z0-9.]*/ }
@@ -41,7 +43,7 @@ ItMgmt::Application.routes.draw do
 
 
 
-  match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios"
+  match "GestaoUsuarios", to: "GestaoUsuarios#index", as: "gestao_usuarios", :constraints => { :id => /.*/ }
 
   get 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#email", :constraints => { :id => /.*/ },  :as => :email_gestao_usuario
   post 'GestaoUsuarios/:id/email', to: "GestaoUsuarios#enviar_email", :constraints => { :id => /.*/ },  :as => :enviar_email_gestao_usuario
@@ -188,7 +190,8 @@ ItMgmt::Application.routes.draw do
 
   get 'cis/:id/email', to: "cis#email",  :as => :email
   post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email
-
+  get "cis/:id/log", to: "cis#log", as: "log_ci"
+  post 'cis/:id/log', to: "cis#register_log",  :as => :register_log
 
   match 'cis/:id/impactados', to: "cis#impactados",  :as => :impactados
   match 'cis/:id/dependentes', to: "cis#dependentes",  :as => :dependentes

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160529233948) do
+ActiveRecord::Schema.define(:version => 20160602224003) do
+
+  create_table "CobrancaMensalUsoSoftware", :id => false, :force => true do |t|
+    t.string  "login"
+    t.string  "softwares",   :limit => 341
+    t.decimal "customensal",                :precision => 32, :scale => 2
+  end
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -24,6 +30,11 @@ ActiveRecord::Schema.define(:version => 20160529233948) do
     t.integer "NumMatrProfissional"
     t.string  "LoginProfissional",      :limit => 30
     t.string  "LoginGestor",            :limit => 30
+  end
+
+  create_table "UsoUnicoSoftware", :id => false, :force => true do |t|
+    t.string "Login"
+    t.string "Software"
   end
 
   create_table "active_admin_comments", :force => true do |t|
@@ -183,12 +194,6 @@ ActiveRecord::Schema.define(:version => 20160529233948) do
   add_index "cis", ["Owner"], :name => "index_cis_on_Owner"
   add_index "cis", ["chave"], :name => "index_cis_on_chave"
   add_index "cis", ["notificacao"], :name => "index_cis_on_notificacao"
-
-  create_table "cobrancamensalusosoftware", :id => false, :force => true do |t|
-    t.string  "login"
-    t.text    "softwares"
-    t.decimal "customensal", :precision => 32, :scale => 2
-  end
 
   create_table "comandos_automacaos", :force => true do |t|
     t.string   "comando",    :limit => 30
@@ -508,6 +513,15 @@ ActiveRecord::Schema.define(:version => 20160529233948) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "log_cis", :force => true do |t|
+    t.integer  "ci_id"
+    t.string   "userid"
+    t.date     "data"
+    t.string   "historico"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "log_desligamentos", :force => true do |t|
     t.string   "ip"
     t.string   "login"
@@ -800,11 +814,6 @@ ActiveRecord::Schema.define(:version => 20160529233948) do
     t.string "Usuario",      :limit => 200
   end
 
-  create_table "usounicosoftware", :id => false, :force => true do |t|
-    t.string "Login"
-    t.string "Software"
-  end
-
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false
     t.integer  "item_id",    :null => false
@@ -816,3 +825,12 @@ ActiveRecord::Schema.define(:version => 20160529233948) do
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
 
+  create_table "vwcargaativosportal", :id => false, :force => true do |t|
+    t.string "Patrimonio"
+    t.string "usuario"
+    t.text   "ativo"
+    t.string "DataEntrega"
+    t.string "DataDevolucao"
+  end
+
+end

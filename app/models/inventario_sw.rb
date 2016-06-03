@@ -11,10 +11,6 @@ class InventarioSw < ActiveRecord::Base
 
   default_scope where(:versao => 0)
 
-  alias_attribute :srcSccm ,      :sccm
-  alias_attribute :srcAuditor ,      :auditor
-  alias_attribute :srcScriptLogin ,      :script
-
   def self.quemUsa
 
   end

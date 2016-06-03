@@ -1,0 +1,103 @@
+<%= javascript_include_tag "jquery" %>
+<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.css" %>
+<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.js" %>
+
+
+<%= csrf_meta_tag %>
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+      pageLength: 10,
+      pagingType: "full_numbers"
+      
+    })
+});
+</script>
+
+
+</br>
+
+<!--%= link_to("[Anterior]", @ci.anterior,  :id => "SetaEsquerda") if @ci.anterior %-->  
+<!--%= link_to("[Proximo]", @ci.proximo, :id => "SetaDireita") if @ci.proximo %-->
+<!--%= link_to '[Retrocede Navegacao]', cis_sobe_path, :id => "SetaCima" %-->
+<!--%= link_to '[Avanca Navegacao]', cis_desce_path, :id => "SetaBaixo"%-->
+
+<%= form_tag(cis_path, :method => "get") do %>
+   <%= text_field_tag(:search, @search, :size => 50) %>
+  <%= submit_tag("Filtrar") %>
+  
+<% end %>
+
+</br>
+<%= render :partial => "menu_top"%>
+
+</br>
+
+<% [:info, :error].each do |key| %>
+   <% if flash[key] %>
+   <div class="flash <%= key %>" id="flash">
+     <%= flash[key] %>
+   </div>
+   <% end %>
+ <% end %>
+
+
+</br>
+<div id="stylized" class="myform">
+	<%= render :partial => "form" %>
+</div>
+
+</br>
+
+<%= form_tag(register_log_path, :method => "post") do %>
+
+
+<label>Data Evento</label>
+<%= text_field_tag :data, Time.now(), :id => "datepicker" %>
+
+<label>Historico</label>
+<%= text_field_tag :historico, "",  :size => "100"  %>
+
+
+<%= submit_tag("Registrar") %>
+
+<% end %>  
+
+
+<div>  
+  <!-- <id="stylized" class="myform"> -->
+<h1>Historico</h1><br>
+
+
+<table id="coolTable" data-order='[[ 0, "desc" ]]' class="display">
+<thead>
+  <tr>
+    <th>Quando</th>
+   
+    <th>Userid</th>
+    <th>Historico</th>
+    <th>Quando Registrado</th>
+  </tr>
+</thead>
+<tbody>
+<% @logs.each do |log| %>
+  <tr>
+   
+    <td><%= log.data %></td>
+    <td><%= log.userid %></td> 
+     <td><%= log.historico %></td>
+    <td><%= log.created_at %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+<style>
+
+</div>
+<br />
+</div>
+
+
+
+

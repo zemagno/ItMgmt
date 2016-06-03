@@ -9,6 +9,8 @@ def load
 
   @login = params[:search] || session[:search_gestao_usuario]
 
+  @login.strip! if ! @login.nil?
+
   # se for um ramal, recupero o @login
   if @login =~ /^\d{6}$/
     @mode = :login
@@ -155,8 +157,6 @@ def index
      render :search and return
   end
 
-  
-  
   respond_to do |format|
       format.html # index.html.erb
   end

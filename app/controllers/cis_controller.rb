@@ -27,6 +27,30 @@ class CisController < ApplicationController
   # @tiposci
 
   # TODO colocar carrega agregadas no before_action/before_filter para alguns metodos abaixo..
+
+  def log
+    puts "vou entrar no log #{params[:id]}"
+    id = params[:id]
+    @ci = Ci.find(id)
+    @logs = @ci.log_ci
+
+  end
+
+  def register_log
+    data = params[:data]
+    id = params[:id]
+    puts current_user.login
+    puts current_user.name
+    log = LogCi.new(ci_id: params[:id], data: params[:data], userid: current_user.login || current_user.name , historico: params[:historico])
+    log.save!
+
+    @ci = Ci.find(id)
+    @logs = @ci.log_ci
+
+    render :log and return
+    
+  end
+
   def carrega_agregadas
     @sites = Site.all
     @tiposci = Tipoci.all
