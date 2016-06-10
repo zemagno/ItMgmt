@@ -7,7 +7,7 @@ class ServiceProducaoEnviaCobrancaLicencas
 
 		totalEnviado = 0
 
-		gestores = Gestores.all.reject{ |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
+		gestores = Gestores.deFuncionarios.reject{ |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
 
 		gestores.each do |g|
 			p = Hash[:gestor => g] 
@@ -22,28 +22,28 @@ class ServiceProducaoEnviaCobrancaLicencas
 
 	end
 
-	def test
-		status = "ok"
-		detalhe = ""
-		total = 0
-		gestores = gestores || Funcionario.where(DtaDemissao: nil).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
-		totalEnviado = 0
-		totalGestores =  0
+	# def test
+	# 	status = "ok"
+	# 	detalhe = ""
+	# 	total = 0
+	# 	gestores = gestores || Funcionario.where(DtaDemissao: nil).map{|f| f.NomEmailGestorProfissional.downcase}.uniq
+	# 	totalEnviado = 0
+	# 	totalGestores =  0
 		
-		# gestores.reject! { |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
+	# 	# gestores.reject! { |s| params[:naoEnviar].include? s } unless params[:naoEnviar].nil?
 
-		gestores.each do |g|
-			f = GestaoLicenciamento.new(g)
-			l = f.niceSoftwareEmUsoEquipeGestor
-			totalGestores = totalGestores + 1
-			total = total + l[2].last[2].to_i
-		end
+	# 	gestores.each do |g|
+	# 		f = GestaoLicenciamento.new(g)
+	# 		l = f.niceSoftwareEmUsoEquipeGestor
+	# 		totalGestores = totalGestores + 1
+	# 		total = total + l[2].last[2].to_i
+	# 	end
 
 		 
 
-        detalhe << "Total a ser cobrado #{total} de #{totalGestores} gestores"
-		[status,detalhe]
-	end
+ #        detalhe << "Total a ser cobrado #{total} de #{totalGestores} gestores"
+	# 	[status,detalhe]
+	# end
 
 
 

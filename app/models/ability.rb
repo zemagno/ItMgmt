@@ -75,6 +75,7 @@ class Ability
       cannot :manage, Software
       cannot :manage, CanHelperFinanceiro
       cannot :manage, CanHelperFinanceiroTi
+      cannot :manage, CanHelperLicenciamento
 
       can    :index, Software
       cannot :manage, User
@@ -91,6 +92,10 @@ class Ability
 
     if user and user.is_a :financeiro
       can :manage, CanHelperFinanceiro
+    end
+
+    if user and user.is_a :licenciamento
+      can :manage, CanHelperLicenciamento
     end
 
     if user and user.is_a :financeiroTI
@@ -121,6 +126,7 @@ class Ability
     end
 
     cannot :manager, User
+    # cannot :manage, CanHelperLicenciamento
     #can :manage, :all
 
     # cannot :manage, Grupo

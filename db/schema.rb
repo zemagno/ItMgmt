@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160602224003) do
+ActiveRecord::Schema.define(:version => 20160610211926) do
 
   create_table "CobrancaMensalUsoSoftware", :id => false, :force => true do |t|
     t.string  "login"
@@ -336,12 +336,21 @@ ActiveRecord::Schema.define(:version => 20160602224003) do
     t.boolean  "ramalSendoExterno"
     t.datetime "DataInicioAfastamento"
     t.datetime "DataFinalAfastamento"
-    t.boolean  "customPossuiVariasEstacoes"
-    t.boolean  "customExternoComOffice365"
   end
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"
   add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
+
+  create_table "gestores", :force => true do |t|
+    t.string   "LoginUsuario"
+    t.string   "NomeProfissional"
+    t.string   "LocalTrabalho"
+    t.string   "ESTADO"
+    t.string   "CIDADE"
+    t.integer  "Filial"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
   create_table "grupos", :force => true do |t|
     t.string   "nome",         :limit => 50

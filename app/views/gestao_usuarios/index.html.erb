@@ -41,7 +41,7 @@
       </br>
 <% if ! @usuario.login.nil? && ! @funcionario.afastado %>
 <%= link_to '[Alocar Estacao]', escolher_estacao_alocar_path, :id => "zNovo" %>
-<%= link_to '[Alocar Licenca]', escolher_licenca_alocar_path, :id => "zNovo" %>
+<%= link_to '[Alocar Licenca]', escolher_licenca_alocar_path, :id => "zNovo" if can? :manager, CanHelperLicenciamento %>
 <%= link_to '[Termo Entrega de Tudo]', imprimir_termo_entrega_path(@usuario.login,"__ALL__",:all) , :target => "_blank" %>
 <%= link_to '[Termo Devolucao de Tudo]', imprimir_termo_devolucao_path(@usuario.login,"__ALL__",:all) , :target => "_blank" %>
 <% end %>
@@ -171,7 +171,7 @@
     <td><%= licenca[:gestor] %></td>
     <td><%= "#{licenca[:CCDebito]}/#{licenca[:ProjetoDebito]}" %></td>
     
-    <td><%= link_to '[Remover Licenca]', confirmar_remocao_licenca_path(@usuario.login,licenca[:chave]) %></td> 
+    <td><%= link_to '[Remover Licenca]', confirmar_remocao_licenca_path(@usuario.login,licenca[:chave]) if can? :manager, CanHelperLicenciamento %></td> 
   </tr>
 <% end %>
 </table>

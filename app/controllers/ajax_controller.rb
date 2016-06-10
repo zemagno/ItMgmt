@@ -19,7 +19,7 @@ class AjaxController < ApplicationController
 
 
     puts "Ops..gestores.."
-    gestores = Gestores.all
+    gestores = Gestores.deFuncionarios
 
     if params[:term] # && params[:term].size > 3
       gestores = gestores.select{ |v| v.include?(params[:term]) }
