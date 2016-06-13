@@ -12,6 +12,8 @@ gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter'
 gem 'will_paginate', '~> 3.0'
 
+# gem 'pg'
+
 #gem 'jira-ruby'
 
 gem 'oauth', '~> 0.4.7' # exigido pelo JIRA, que agora esta dentro do lib

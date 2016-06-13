@@ -1,6 +1,23 @@
-<h1>Listing custom_de_paras</h1>
+<%= javascript_include_tag "jquery" %>
+<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.css" %>
+<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.js" %>
 
-<table>
+<%= csrf_meta_tag %>
+
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+      pageLength: 100,
+      pagingType: "full_numbers"
+      
+    })
+});
+</script>
+
+<h1>De Para</h1>
+
+<table id="coolTable" class="display">
+<thead>  
   <tr>
     <th>De</th>
     <th>Para</th>
@@ -9,7 +26,8 @@
     <th></th>
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @custom_de_paras.each do |custom_de_para| %>
   <tr>
     <td><%= custom_de_para.de %></td>
@@ -20,6 +38,7 @@
     <td><%= link_to 'Destroy', custom_de_para, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />
