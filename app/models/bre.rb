@@ -66,17 +66,17 @@ class Bre
     puts "BRE:  Notificar alerta2: [#{_whom}] #{_obj} #{_obj.class.name} #{_obj}"
   
     
-    params = Hash[JSON.parse Parametro.get(:tipo => "BRE", :subtipo => "Notificacao")]
-    if _obj.is_a? Ci 
-       template_id = params[_obj.tipoci_id]
-       template_id = params[0] if template_id.nil?
-       p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.chave}; #{_obj.descricao}"  ]
-    end
-    if _obj.is_a? Funcionario
-      template_id = params[0]
-      p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.Login}; #{_obj.NomProfissional}"  ]
-    end
-    job = JobEnviarEmail.criar(template_id, p.to_yaml)
+    # params = Hash[JSON.parse Parametro.get(:tipo => "BRE", :subtipo => "Notificacao")]
+    # if _obj.is_a? Ci 
+    #    template_id = params[_obj.tipoci_id]
+    #    template_id = params[0] if template_id.nil?
+    #    p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.chave}; #{_obj.descricao}"  ]
+    # end
+    # if _obj.is_a? Funcionario
+    #   template_id = params[0]
+    #   p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.Login}; #{_obj.NomProfissional}"  ]
+    # end
+    # job = JobEnviarEmail.criar(template_id, p.to_yaml)
 
     puts "  Notificar alerta2: [#{_whom}] [#{_obj.class.name}] [#{_obj}"
   end
