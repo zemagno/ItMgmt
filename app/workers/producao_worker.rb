@@ -21,6 +21,10 @@ class ProducaoWorker
     # end
    
 
+    if job.job =~ /^CargaGenerica_([a-zA-Z0-9]+)$/
+       status,detalhes = ServiceCargaGenerico.new().go("#{$1}")
+    end
+
     if job.job =~ /^Carga_([a-zA-Z0-9]+)$/
        status,detalhes = Object::const_get("ServiceCarga#{$1}").new().go
     end

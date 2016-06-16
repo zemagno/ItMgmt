@@ -3,6 +3,9 @@ require 'sidekiq/web'
 ItMgmt::Application.routes.draw do
 
 
+  resources :incidentes
+
+
   resources :grupos
 
 
@@ -173,6 +176,7 @@ ItMgmt::Application.routes.draw do
 
   match '/tasks/todos', to: 'tasks#todos'
   match '/cis/todos', to: 'cis#todos'
+
   match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci"
 
   resources :parametros #, :only => [:index,:edit,:update,:new]
@@ -220,6 +224,7 @@ ItMgmt::Application.routes.draw do
   match 'cis/checkChave', to: "cis#check_chave"
 
   match 'cis/massiveupdate', to: "cis#massiveupdate"
+  match '/cis2', to: 'cis#index2'
 
 
   match 'cis/search', to: "cis#search"

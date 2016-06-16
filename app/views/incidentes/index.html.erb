@@ -1,0 +1,67 @@
+<h1>Listing incidentes</h1>
+
+<table>
+  <tr>
+    <th>Descricao</th>
+    <th>Descricao solucao</th>
+    <th>Info restrita</th>
+    <th>Data inicio evento</th>
+    <th>Data fim evento</th>
+    <th>Evento publico</th>
+    <th>Ci</th>
+    <th>Tipo incidente</th>
+    <th>Status</th>
+    <th>Criticidade</th>
+    <th>Solicitante</th>
+    <th>Usuario</th>
+    <th>Site</th>
+    <th>Chamados</th>
+    <th>Tempo target sla</th>
+    <th>Tempo dentro sla</th>
+    <th>Impactados</th>
+    <th>Total impactados</th>
+    <th>Perc impactados</th>
+    <th>Incidente tipo impacto</th>
+    <th>Perda sla</th>
+    <th>Ci</th>
+    <th>Ci descricao</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @incidentes.each do |incidente| %>
+  <tr>
+    <td><%= incidente.descricao %></td>
+    <td><%= incidente.descricao_solucao %></td>
+    <td><%= incidente.info_restrita %></td>
+    <td><%= incidente.data_inicio_evento %></td>
+    <td><%= incidente.data_fim_evento %></td>
+    <td><%= incidente.evento_publico %></td>
+    <td><%= incidente.ci_id %></td>
+    <td><%= incidente.tipo_incidente %></td>
+    <td><%= incidente.status %></td>
+    <td><%= incidente.criticidade %></td>
+    <td><%= incidente.solicitante %></td>
+    <td><%= incidente.usuario %></td>
+    <td><%= incidente.site %></td>
+    <td><%= incidente.chamados %></td>
+    <td><%= incidente.tempo_target_sla %></td>
+    <td><%= incidente.tempo_dentro_sla %></td>
+    <td><%= incidente.impactados %></td>
+    <td><%= incidente.total_impactados %></td>
+    <td><%= incidente.perc_impactados %></td>
+    <td><%= incidente.incidente_tipo_impacto_id %></td>
+    <td><%= incidente.perda_sla %></td>
+    <td><%= incidente.ci %></td>
+    <td><%= incidente.ci_descricao %></td>
+    <td><%= link_to 'Show', incidente %></td>
+    <td><%= link_to 'Edit', edit_incidente_path(incidente) %></td>
+    <td><%= link_to 'Destroy', incidente, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Incidente', new_incidente_path %>

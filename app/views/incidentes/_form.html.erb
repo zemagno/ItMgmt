@@ -1,0 +1,108 @@
+
+
+<%= form_for(@incidente) do |f| %>
+  <% if @incidente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@incidente.errors.count, "error") %> prohibited this incidente from being saved:</h2>
+
+      <ul>
+      <% @incidente.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="spacer"></div>
+    <label>Nome
+    <span class="small"></span>
+    </label>
+    <%= f.text_field :nome, :size => 70 %>
+
+
+  <div class="spacer"></div>
+
+
+  <div class="spacer"></div>
+    <label>Descricao
+    <span class="small">Descricao do Evento</span>
+
+    </label>
+    <%= f.text_area :descricao, :cols => 100, :rows => 10 %>
+  <div class="spacer"></div>
+    <label>Solucao
+    <span class="small">Descricao da Solucao</span>
+    </label>
+    <%= f.text_area :descricao_solucao , :cols => 100, :rows => 10%>
+
+
+  <div class="spacer"></div>
+    <label>Info Restrita
+    <span class="small">Comentarios Internos de Infra</span>
+    </label>
+    <%= f.text_area :info_restrita, :cols => 100, :rows => 10 %>
+
+  <div class="spacer"></div>
+    <label>Data Inicio do Evento
+    <span class="small"></span>
+    </label>
+
+    <%= text_field_tag :data_inicio_evento, Time.now(), :size => 30, :id => "datetimepicker"%>
+
+   <div class="spacer"></div>
+    <label>Publica?
+    <span class="small">Esse alerta pode ser mostrados para os gestores</span>
+    </label>
+    <%= f.check_box :evento_publico %>
+
+  <div class="spacer"></div>
+    <label>tipo_incidente
+    <span class="small"></span>
+    </label>
+    <%= f.text_field :tipo_incidente %>
+
+  <div class="spacer"></div>
+    <label>status
+    <span class="small"></span>
+    </label>
+    <%= f.text_field :status %>
+
+  <div class="spacer"></div>
+    <label>criticidade
+    <span class="small"></span>
+    </label>
+    <%= f.text_field :criticidade %>
+
+  <div class="spacer"></div>
+    <label>solicitante
+    <span class="small"></span>
+    </label>
+    <%= f.text_field :solicitante %>
+
+  <div class="spacer"></div>
+    <label>usuario
+    <span class="small"></span>
+    </label>
+    <%= f.text_field :usuario %>
+  <div class="spacer"></div>
+    <label>site
+    <span class="small"></span>
+    </label>
+    <%= f.text_field :site %>
+  <div class="spacer"></div>
+    <label>chamados
+    <span class="small"></span>
+    </label>
+    <%= f.text_field :chamados %>
+
+  <div class="spacer"></div>
+    <label>incidente_tipo_impacto_id
+    <span class="small"></span>
+    </label>
+    <%= f.number_field :incidente_tipo_impacto_id %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

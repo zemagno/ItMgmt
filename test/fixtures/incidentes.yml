@@ -1,0 +1,51 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descricao: MyText
+  descricao_solucao: MyText
+  info_restrita: MyText
+  data_inicio_evento: 2016-06-15 14:23:45
+  data_fim_evento: 2016-06-15 14:23:45
+  evento_publico: false
+  ci_id: 1
+  tipo_incidente: MyString
+  status: MyString
+  criticidade: MyString
+  solicitante: MyString
+  usuario: MyString
+  site: MyString
+  chamados: MyString
+  tempo_target_sla: 1
+  tempo_dentro_sla: 1
+  impactados: 1
+  total_impactados: 1
+  perc_impactados: 9.99
+  incidente_tipo_impacto_id: 1
+  perda_sla: 9.99
+  ci: MyString
+  ci_descricao: MyString
+
+two:
+  descricao: MyText
+  descricao_solucao: MyText
+  info_restrita: MyText
+  data_inicio_evento: 2016-06-15 14:23:45
+  data_fim_evento: 2016-06-15 14:23:45
+  evento_publico: false
+  ci_id: 1
+  tipo_incidente: MyString
+  status: MyString
+  criticidade: MyString
+  solicitante: MyString
+  usuario: MyString
+  site: MyString
+  chamados: MyString
+  tempo_target_sla: 1
+  tempo_dentro_sla: 1
+  impactados: 1
+  total_impactados: 1
+  perc_impactados: 9.99
+  incidente_tipo_impacto_id: 1
+  perda_sla: 9.99
+  ci: MyString
+  ci_descricao: MyString

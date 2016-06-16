@@ -1,0 +1,120 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @incidente.descricao %>
+</p>
+
+<p>
+  <b>Descricao solucao:</b>
+  <%= @incidente.descricao_solucao %>
+</p>
+
+<p>
+  <b>Info restrita:</b>
+  <%= @incidente.info_restrita %>
+</p>
+
+<p>
+  <b>Data inicio evento:</b>
+  <%= @incidente.data_inicio_evento %>
+</p>
+
+<p>
+  <b>Data fim evento:</b>
+  <%= @incidente.data_fim_evento %>
+</p>
+
+<p>
+  <b>Evento publico:</b>
+  <%= @incidente.evento_publico %>
+</p>
+
+<p>
+  <b>Ci:</b>
+  <%= @incidente.ci_id %>
+</p>
+
+<p>
+  <b>Tipo incidente:</b>
+  <%= @incidente.tipo_incidente %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @incidente.status %>
+</p>
+
+<p>
+  <b>Criticidade:</b>
+  <%= @incidente.criticidade %>
+</p>
+
+<p>
+  <b>Solicitante:</b>
+  <%= @incidente.solicitante %>
+</p>
+
+<p>
+  <b>Usuario:</b>
+  <%= @incidente.usuario %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%= @incidente.site %>
+</p>
+
+<p>
+  <b>Chamados:</b>
+  <%= @incidente.chamados %>
+</p>
+
+<p>
+  <b>Tempo target sla:</b>
+  <%= @incidente.tempo_target_sla %>
+</p>
+
+<p>
+  <b>Tempo dentro sla:</b>
+  <%= @incidente.tempo_dentro_sla %>
+</p>
+
+<p>
+  <b>Impactados:</b>
+  <%= @incidente.impactados %>
+</p>
+
+<p>
+  <b>Total impactados:</b>
+  <%= @incidente.total_impactados %>
+</p>
+
+<p>
+  <b>Perc impactados:</b>
+  <%= @incidente.perc_impactados %>
+</p>
+
+<p>
+  <b>Incidente tipo impacto:</b>
+  <%= @incidente.incidente_tipo_impacto_id %>
+</p>
+
+<p>
+  <b>Perda sla:</b>
+  <%= @incidente.perda_sla %>
+</p>
+
+<p>
+  <b>Ci:</b>
+  <%= @incidente.ci %>
+</p>
+
+<p>
+  <b>Ci descricao:</b>
+  <%= @incidente.ci_descricao %>
+</p>
+
+
+<%= link_to 'Edit', edit_incidente_path(@incidente) %> |
+<%= link_to 'Back', incidentes_path %>
