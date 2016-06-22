@@ -55,18 +55,18 @@ $(document).ready( function(){
 <label>Data Evento</label>
 <%= text_field_tag :data, Time.now(), :id => "datepicker" %>
 
-<label>Historico</label>
+<label>Comentario</label>
 <%= text_field_tag :historico, "",  :size => "100"  %>
 
 
-<%= submit_tag("Registrar") %>
+<%= submit_tag("Registrar Comentario") %>
 
 <% end %>  
 
 
 <div>  
   <!-- <id="stylized" class="myform"> -->
-<h1>Historico</h1><br>
+<h1>Comentarios</h1><br>
 
 
 <table id="coolTable" data-order='[[ 0, "desc" ]]' class="display">
@@ -75,7 +75,7 @@ $(document).ready( function(){
     <th>Quando</th>
    
     <th>Userid</th>
-    <th>Historico</th>
+    <th>Comentario</th>
     <th>Quando Registrado</th>
   </tr>
 </thead>

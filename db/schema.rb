@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160615172345) do
+ActiveRecord::Schema.define(:version => 20160622182800) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -647,6 +647,25 @@ ActiveRecord::Schema.define(:version => 20160615172345) do
     t.text     "detalhe"
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
+  end
+
+  create_table "projetos_brqs", :force => true do |t|
+    t.string   "Projeto",                      :limit => 50
+    t.string   "IdtCodigoCentroCusto",         :limit => 20
+    t.string   "NomCentroCusto",               :limit => 100
+    t.string   "IdtCodigoCentroCustoPai",      :limit => 20
+    t.string   "NomCentroCustoPai",            :limit => 100
+    t.string   "NomTipoCentroCusto",           :limit => 100
+    t.string   "NomProfissionalGestorProjeto", :limit => 100
+    t.string   "NomTipoOferta",                :limit => 100
+    t.string   "NomCliente",                   :limit => 100
+    t.date     "DtaFimPrevistoProjeto"
+    t.date     "DtaInicioProjeto"
+    t.date     "DthFimProjeto"
+    t.string   "NomStatusProjeto",             :limit => 100
+    t.string   "NomFilial",                    :limit => 100
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   create_table "relacionamentos", :force => true do |t|

@@ -70,7 +70,7 @@ class Ci < ActiveRecord::Base
   after_save :atualiza_chave
   before_save :atualiza_statusci
   after_create :post_create_processing
-
+  after_destroy :post_destroy_processing
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
   default_scope order('chave ASC')
@@ -117,10 +117,6 @@ class Ci < ActiveRecord::Base
   def nice_custo_mensal
     '%10.2f' % (self.CustoMensal.nil? ? 0 : self.CustoMensal)
   end
-
-  # def nice_cobrar
-  #   cobrar ? "Cobrar" : "Nao Cobrar"
-  # end 
 
 
   def self.tipoCobrancas
@@ -375,6 +371,14 @@ class Ci < ActiveRecord::Base
     puts "pos save #{self.chave} #{self.statusci_id}"
     puts "_______________________________________________________________"
     BreEvent.register(:criar,self)
+    
+  end
+
+  def post_destroy_processing
+    puts "_______________________________________________________________"
+    puts "pos destroy #{self.chave} #{self.statusci_id}"
+    puts "_______________________________________________________________"
+    BreEvent.register(:eliminar,self)
     
   end
 
