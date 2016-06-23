@@ -14,7 +14,9 @@
   <b>CI Tipo:</b>
   <%= @cadrelatorio.nome_tipoci %>
 
-
+<br>
 <%= link_to '[Editar Consulta]', edit_cadrelatorio_path(@cadrelatorio) %> |
 <%= link_to '[Relatorio Existentes]', cadrelatorios_path %> |
 <%= link_to '[Exibir resultado do relatorio]', relatorio_path(@cadrelatorio.nome) %>
+
+<%= link_to '[Novo Relatorio]', new_cadrelatorio_path unless cannot? :manage, @Cadrelatorio %>
