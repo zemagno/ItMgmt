@@ -20,14 +20,48 @@ module ApplicationHelper
     @URLs
   end
 
-  def tela_ajuda #(content, options = {}, html_options = {}, *parameters_for_method_reference)
-  	id_help = nil
-    if ! @ci.nil?
-  	     id_help = "CI_#{@ci.tipoci.tipo}" 
-         txt_help = "Ajuda #{@ci.tipoci.tipo}"
-    end
 
-     link_to txt_help , "http://192.168.0.110/wiki/index.php/#{id_help.gsub!(/ /,'_')}", :target => "_blank" if ! id_help.nil?
+  def tela_ajuda_geral
+    url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")
+    txt_help = "Ajuda Geral"
+    link_to txt_help , "#{url}", :target => "_blank" 
+  end
+
+  def tela_ajuda(id = nil) #(content, options = {}, html_options = {}, *parameters_for_method_reference)
+    puts "HELP ===> #{id}"
+  	id_help = nil
+
+    url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")
+
+    case request.fullpath
+    when "/cis"
+      id_help = "CIs"   
+
+    when /^\/cadrelatorios/
+      id_help = "Relatorios"
+    when /^\/parametros/
+      id_help = "Parametros"
+    when /^\/GestaoUsuarios/
+      id_help = "Gestao Usuarios"
+    when /^\/identities/
+      id_help = "Identidades"
+    when /^\/painel_producao/
+      id_help = "Producao"
+    when /^\/schedulers/
+      id_help = id
+      txt_help = "Ajuda"  
+    when /^\/templates_emails/
+      id_help = "Templates de Email"
+    end  
+    txt_help = "Ajuda #{id_help}" if txt_help.nil?
+
+    if ! @ci.nil? && ! @ci.tipoci.nil?
+  	     id_help = "CI #{@ci.tipoci.tipo}" 
+         txt_help = "Ajuda #{@ci.tipoci.tipo}" 
+         
+    end
+   
+    link_to txt_help , "#{url}/#{id_help.tr(" ", "_")}", :target => "_blank" if ! id_help.nil?
 
 
   end

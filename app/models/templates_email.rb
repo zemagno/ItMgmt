@@ -1,5 +1,5 @@
 class TemplatesEmail < ActiveRecord::Base
-  attr_accessible :nome, :subtipo, :template, :tipo, :sync
+  attr_accessible :nome, :subtipo, :template, :tipo, :sync, :from, :subject, :cc
   after_create :criar_parametros
   after_destroy :apagar_parametros
   before_save :renomear_parametros

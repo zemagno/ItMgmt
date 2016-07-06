@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160622182800) do
+ActiveRecord::Schema.define(:version => 20160706161246) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -363,7 +363,7 @@ ActiveRecord::Schema.define(:version => 20160622182800) do
     t.string   "tipoGrupo"
     t.string   "parametros"
     t.string   "para",         :limit => 100
-    t.string   "tipo",         :limit => 30
+    t.string   "tipo",         :limit => 40
   end
 
   add_index "grupos", ["nome"], :name => "index_grupos_on_nome"
@@ -512,6 +512,30 @@ ActiveRecord::Schema.define(:version => 20160622182800) do
 
   add_index "inventario_users", ["hostname"], :name => "index_inventario_users_on_hostname"
   add_index "inventario_users", ["login"], :name => "index_inventario_users_on_login"
+
+  create_table "invhosts", :id => false, :force => true do |t|
+    t.integer   "id_hosts",                             :default => 0, :null => false
+    t.string    "Equipamento",    :limit => 20
+    t.string    "Nome",           :limit => 50
+    t.text      "Usuario",        :limit => 2147483647
+    t.integer   "QntLogin"
+    t.string    "Os",             :limit => 100
+    t.string    "ProductKey",     :limit => 100
+    t.string    "Serial",         :limit => 100
+    t.string    "Fabricante",     :limit => 30
+    t.string    "DataFab",        :limit => 45
+    t.text      "Modelo",         :limit => 2147483647
+    t.string    "Processador",    :limit => 50
+    t.integer   "Memoria"
+    t.integer   "HD"
+    t.string    "MACLoc",         :limit => 30
+    t.string    "NomeMACLoc",     :limit => 100
+    t.string    "MACWi",          :limit => 30
+    t.string    "NomeMacWi",      :limit => 100
+    t.timestamp "DataUltimoExec",                                      :null => false
+    t.string    "Site",           :limit => 10
+    t.integer   "VidaEmMeses",    :limit => 8
+  end
 
   create_table "itens_checklists", :force => true do |t|
     t.integer  "checklist_id"
@@ -666,6 +690,7 @@ ActiveRecord::Schema.define(:version => 20160622182800) do
     t.string   "NomFilial",                    :limit => 100
     t.datetime "created_at",                                  :null => false
     t.datetime "updated_at",                                  :null => false
+    t.string   "IdtUsuarioGestorCentroCusto"
   end
 
   create_table "relacionamentos", :force => true do |t|
@@ -816,6 +841,9 @@ ActiveRecord::Schema.define(:version => 20160622182800) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.boolean  "sync"
+    t.string   "from"
+    t.string   "subject"
+    t.string   "cc"
   end
 
   create_table "tipo_chamados", :force => true do |t|

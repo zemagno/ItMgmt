@@ -59,10 +59,13 @@ class EnviaEmailWorker
          # TODO simplificar isso aqui..
          login = params[:id]
          usr = GestaoUsuario.new(login: login )
+
          destinatario = ListaEmail.acerta({listaEmails:login,sufixo:"@brq.com"})
-         from = "servicedesk@brq.com"
-         cc =  ""
-         CiMailer.enviar(template.template,usr,"Service Desk - #{template.nome}",destinatario,cc,from).deliver
+         subject = template.subject.blank? ? "Service Desk - #{template.nome}" : template.subject
+         from = template.from.blank? ? "servicedesk@brq.com" : ListaEmail.acerta({listaEmails:template.from,sufixo:"@brq.com", blacklist:true})
+         cc = template.cc.blank? ? "" : ListaEmail.acerta({listaEmails:template.cc,sufixo:"@brq.com", blacklist:true})
+
+         CiMailer.enviar(template.template,usr,subject,destinatario,cc,from).deliver
          job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{usr.login}] em #{Time.now}"  
          Event.register("email","Gestao Usuario","detalhe","Gestao Usuario - email direto - #{template.nome} - #{usr.login}")
     
@@ -72,9 +75,10 @@ class EnviaEmailWorker
          if ! gestor.nil?
              licencas=gestor.niceSoftwareEmUsoEquipeGestor(true,true)
              licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
-             destinatario = ListaEmail.acerta({listaEmails:loginGestor,sufixo:"@brq.com"})
-             destinatario = "magno@brq.com"
-             from = "magno@brq.com"
+             destinatario = ListaEmail.acerta({listaEmails:loginGestor,sufixo:"@brq.com"}) 
+             # destinatario = ListaEmail.acerta(loginGestor,"@brq.com")
+             # destinatario = "aroldojunior@brq.com,rbleckmann@brq.com,zemagno@gmail.com"
+             from = "licenciamentobrq@brq.com"
              cc =  ""
              CiMailer.enviar_anexo(template.template,licencas,"Extrato Mensal: Uso de Software",destinatario,cc,from,licencas[0][1]).deliver
              job.status = "Email enviado para #{destinatario}. Extrato Mensal de Uso de Software em #{Time.now}"  
