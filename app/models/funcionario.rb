@@ -70,7 +70,7 @@ class Funcionario < ActiveRecord::Base
     fim = false
     while not fim
       puts gestor
-      gestores << [gestor,f[gestor].NomProfissional, "#{f[gestor].NomeTipoCC}/#{f[gestor].DescCCTorre}"]
+      gestores << [gestor,f[gestor].NomProfissional, "#{f[gestor].NomeTipoCC}/#{f[gestor].DescCCTorre}", f[gestor].ramal]
       gestor = f[gestor].NomEmailGestorProfissional
       fim = gestor =="benjamin" || gestor.nil?
     end
@@ -86,7 +86,7 @@ class Funcionario < ActiveRecord::Base
   def self.funcionarios(login)
     f = Funcionario._all
     funcionarios = []
-    f.each { |k,v| funcionarios << [v.Login,v.NomProfissional] if v.NomEmailGestorProfissional == login }
+    f.each { |k,v| funcionarios << [v.Login,v.NomProfissional,v.ramal] if v.NomEmailGestorProfissional == login }
     funcionarios
   end
 

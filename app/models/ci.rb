@@ -64,6 +64,7 @@ class Ci < ActiveRecord::Base
   #validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
   validates :chave, :presence => {:message => " eh mandatorio"}
   validates :chave, :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB"}
+  validates :chave, format: { with: /^[a-zA-Z0-9\_\-]+$/, message: "deve conter somente caracteres alphanumericos" }
 
   validates :descricao, :presence => {:message => " eh mandatorio"}
 
@@ -345,6 +346,7 @@ class Ci < ActiveRecord::Base
     indexes statusci(:status), as => :status
     indexes tipoci(:tipo), :as => :tipo
     indexes atributo(:valor), :as => :valoratributo
+    indexes site(:estado), as => :estado
 
 
     #has site_id  # se eu quiser quiser filtrar..

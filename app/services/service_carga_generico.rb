@@ -10,6 +10,9 @@ class ServiceCargaGenerico
 
     total_replaced = 0
     total_created = 0
+    total_readed = 0
+    erros = "CIs Nao achados:"
+
 
     arquivo = Parametro.get(:tipo => "PATH_Generic_Import", :subtipo => paramfile)
 
@@ -21,7 +24,7 @@ class ServiceCargaGenerico
 
     dados = CSV.read(arquivo, headers: true)
     dados.each do |linha|
-
+      total_readed = total_readed + 1
       chave = linha[:chave.to_s].gsub("\t","").strip
 
       c = Ci.find_by_chave(chave)
@@ -36,11 +39,14 @@ class ServiceCargaGenerico
 
 
         c.save!
+      else
+        erros << " #{chave}"
 
       end
 
     end
-    detalhe << "Total de registros atualizados #{total_replaced}"
+    detalhe << "Total de registros Lidos: #{total_readed} - Total de registros atualizados #{total_replaced} " 
+    detalhe << erros if total_readed != total_replaced
     Event.register("CargaGenerica", paramfile, "detalhe", "#{status} - #{detalhe}")
     [status, detalhe]
 

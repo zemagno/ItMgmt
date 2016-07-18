@@ -1,5 +1,51 @@
 class GestaoEstacao
 
+  attr_accessor :hostname
+  # attr_accessor :licencasemuso
+  # attr_accessor :estacoes
+
+
+  def initialize(attributes = {})
+    attributes.each do |name, value|
+      send("#{name}=", value) if respond_to?(name)
+    end
+  end
+
+
+  def CIs
+    # devolve todos os CIs que tem esse hostname
+    # id, status, chave, descricao, owner, notificacao, 
+  end
+
+  def Owner
+    # procura o owner dessa estacao. Pode ter varios CIs se tiver hostname duplicado
+    #
+  end
+
+  def Atributos
+    # atributos do CI estacao (status, usuario, descricao)
+  end
+
+  def Erros 
+    # erros possiveis --> 
+    # (1) - mais de um CI estacao com o mesmo hostname
+  end
+
+
+  def HistoricoLogin
+    # tem que importar dados do denis para o itmgmt
+    # pesquisar nos dados do Script do Denis
+  end
+
+  def SoftwaresInstalados
+    # pesquisa em todas as bases de inventario (denis, auditor, CMDB)
+  end
+
+  def Log
+    # ler dos logs dos CIs.
+  end
+
+
   def self.LiberaEstacao(attributes = {})
     c = Ci.find_by_chave(attributes[:estacao])
     if ! c.nil?
@@ -46,5 +92,7 @@ class GestaoEstacao
     end
     estacao_disponivel
   end
+
+
 
 end

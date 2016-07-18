@@ -10,3 +10,12 @@ bre.adicionaRegra "Criacao Acesso Terceiro" do
     end
     
 end
+
+bre.adicionaRegra "Retirar acesso Terceiro" do
+	quando :mudar_status, :ci, "Acesso Terceiros" do |terceiro|
+   		if terceiro.oldStatusci_id == 1 
+			puts "BRE.adicionaregra -> CI mudou de status"
+			notificar "microinformatica", "Remover Estacao e softwares", terceiro
+		end
+   	end
+end
