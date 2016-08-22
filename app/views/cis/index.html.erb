@@ -47,6 +47,14 @@
 
 
 <%= will_paginate @cis %>
+# <% if can? :admin, :all %>
+    #    <%= form_tag(cis_massiveupdate_path, :method => "get") do %>
+
+    #   <%= text_field_tag(:massiveupdate, @massiveupdate, :size => 50) %>
+    #   <%= submit_tag("Atualizar") %>
+
+
+    # <% end %>
 
 
 <br />

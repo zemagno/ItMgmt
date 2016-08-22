@@ -17,7 +17,7 @@ Gestores
   <tr>
         <td><%= link_to funcionario[0], equipe_path(funcionario[0])  %></td> 
     <td><%= link_to funcionario[1], "/GestaoUsuarios?search=#{funcionario[0]}", :target => "_blank"  %></td>
-    <td><%= funcionario[3] %>
+    <td><%= ramal_to_sip(funcionario[3]).html_safe %>
     <td><%= link_to 'Identidades', identities_path(funcionario[0]), :target => "_blank" %></td>
     <td><%= link_to 'Atributos Especiais', funcionario_path(funcionario[0]), :target => "_blank" %></td>
   </tr>
@@ -39,7 +39,7 @@ Equipe
   <tr>
     <td><%= link_to funcionario[0], equipe_path(funcionario[0])  %></td> 
     <td><%= link_to funcionario[1], "/GestaoUsuarios?search=#{funcionario[0]}", :target => "_blank"  %></td>
-    <td><%= funcionario[2] %>
+    <td><%= ramal_to_sip(funcionario[2]).html_safe %></td>
     <td><%= link_to 'Identidades', identities_path(funcionario[0]), :target => "_blank" %></td>
     <td><%= link_to 'Atributos Especiais', funcionario_path(funcionario[0]), :target => "_blank" %></td>
   </tr>

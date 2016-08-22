@@ -16,6 +16,8 @@ module RelatoriosHelper
             res = valor.blank? ? "" : link_to(valor,"/GestaoUsuarios?search=#{valor}",:target => "_blank" ) 
         when "Identity", "Identidade"
             res = valor.blank? ? "" : link_to(valor,"/identities/#{valor}",:target => "_blank" )
+        when "ramal","Ramal"
+            res = ramal_to_sip(valor)
         when "Email"
             res = valor
             #criar um template de email...colocar em banco de dados em memoria

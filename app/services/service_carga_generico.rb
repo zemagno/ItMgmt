@@ -41,6 +41,7 @@ class ServiceCargaGenerico
         c.save!
       else
         erros << " #{chave}"
+        status="Warning"
 
       end
 

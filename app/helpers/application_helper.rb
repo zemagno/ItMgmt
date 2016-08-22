@@ -20,6 +20,21 @@ module ApplicationHelper
     @URLs
   end
 
+  def ramal_to_sip(ramal)
+    doc = " "
+    ramal = "" if ramal.nil?
+
+    ramal.scan(/\d{6}/).each do |sip|
+      doc << "<a href=\"sip:#{sip}\">#{sip}</a> "
+      # doc << link_to (sip, "sip:#{sip}")
+    end
+    ramal.scan(/\(\d\d\d\).?\d\d\d\d.?\d\d\d\d/).each do |sip|
+      doc << "<a href=\"sip:#{sip.gsub(/\s+/, "")}\">#{sip}</a> "
+      # doc << link_to (sip, "sip:#{sip}")
+    end
+    doc
+  end
+
 
   def tela_ajuda_geral
     url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")

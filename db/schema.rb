@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160707094702) do
+ActiveRecord::Schema.define(:version => 20160822164244) do
 
   create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
     t.string  "NomSite",                :limit => 30
@@ -104,14 +104,15 @@ ActiveRecord::Schema.define(:version => 20160707094702) do
   create_table "cadrelatorios", :force => true do |t|
     t.string   "nome",         :limit => 30
     t.text     "consulta"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "descricao"
     t.string   "categoria",    :limit => 50
     t.integer  "tipoci_id"
     t.date     "ultimoacesso"
     t.integer  "qtdeacessos"
     t.string   "dashboard"
+    t.integer  "ordem",                      :default => 0
   end
 
   create_table "cadsurveys", :force => true do |t|
@@ -134,20 +135,36 @@ ActiveRecord::Schema.define(:version => 20160707094702) do
     t.datetime "updated_at"
   end
 
-  create_table "checklists", :force => true do |t|
-    t.text     "descricao"
-    t.string   "users"
-    t.integer  "tipoci_id"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-    t.integer  "tipo_checklist_id"
-    t.integer  "area_responsabilidade_id"
-    t.string   "alias"
-    t.boolean  "abrir_ticket"
-    t.string   "titulo"
+  create_table "checklist_items", :force => true do |t|
+    t.integer  "checklist_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "checklist_item_type"
+    t.integer  "period"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "value"
+    t.integer  "parent_checklist_id"
+    t.string   "default_executor",         :limit => 30
+    t.string   "jira_id",                  :limit => 50
+    t.string   "parent_checklist_jira_id", :limit => 50
   end
 
-  add_index "checklists", ["tipoci_id"], :name => "index_checklists_on_tipoci_id"
+  add_index "checklist_items", ["checklist_id"], :name => "index_checklist_items_on_checklist_id"
+
+  create_table "checklists", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "checklist_type"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "ci_key"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "state_flag",       :limit => 15
+    t.string   "jira_id",          :limit => 50
+    t.string   "default_executor"
+  end
 
   create_table "cis", :force => true do |t|
     t.string   "chave"
@@ -620,6 +637,17 @@ ActiveRecord::Schema.define(:version => 20160707094702) do
 
   add_index "mapa_posicaos", ["LoginGestor"], :name => "index_mapa_posicaos_on_LoginGestor"
   add_index "mapa_posicaos", ["LoginProfissional"], :name => "index_mapa_posicaos_on_LoginProfissional"
+
+  create_table "new_users", :force => true do |t|
+    t.string   "email"
+    t.string   "roles"
+    t.text     "auth_token",    :limit => 2147483647
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.string   "user_ip"
+    t.string   "jira_username"
+    t.string   "name"
+  end
 
   create_table "notes", :force => true do |t|
     t.text     "notes"

@@ -64,7 +64,7 @@ class Ci < ActiveRecord::Base
   #validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
   validates :chave, :presence => {:message => " eh mandatorio"}
   validates :chave, :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB"}
-  validates :chave, format: { with: /^[a-zA-Z0-9\_\-]+$/, message: "deve conter somente caracteres alphanumericos" }
+  validates :chave, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/, message: "deve conter somente caracteres alphanumericos" }
 
   validates :descricao, :presence => {:message => " eh mandatorio"}
 

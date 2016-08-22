@@ -21,9 +21,9 @@
       <br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
       <%= " - Posicao: #{@posicaoFacilities} "  %>   
       <br>Gestor Direto: <%= link_to(@funcionario.NomeGestor,"/GestaoUsuarios?search=#{@funcionario.gestor}") %></td>
-      <br><%= "Ramais: #{@ramais}" %> - <%= @funcionario.status %>
+      <br>Ramais:<%= ramal_to_sip(@ramais).html_safe %> - <%= @funcionario.status %>
 
-      <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true)%>
+      <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true) if ! @funcionario.demitido? %>
 
 
 </b>      
@@ -32,7 +32,7 @@
       </br>
       <%= link_to '[Identidades]', identities_path(@usuario.login), :target => "_blank" %>
       <%= link_to '[Atributos Especificos]', funcionario_path(@usuario.login), :target => "_blank" %>
-      <%= link_to '[Gestores e Equipe]', equipe_path(@usuario.login), :target => "_blank" %>
+      <%= link_to '[Gestores e Equipe]', equipe_path(@usuario.login), :target => "_blank" if ! @funcionario.demitido? %>
       <%= link_to '[Inventario SW]', LicencasPorUsuario_path(@usuario.login), :target => "_blank" %>
       <%= link_to '[Inventario SW Equipe]', LicencasPorGestor_path(@usuario.login), :target => "_blank" %>
       
