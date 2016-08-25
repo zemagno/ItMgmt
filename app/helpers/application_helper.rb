@@ -28,8 +28,8 @@ module ApplicationHelper
       doc << "<a href=\"sip:#{sip}\">#{sip}</a> "
       # doc << link_to (sip, "sip:#{sip}")
     end
-    ramal.scan(/\(\d\d\d\).?\d\d\d\d.?\d\d\d\d/).each do |sip|
-      doc << "<a href=\"sip:#{sip.gsub(/\s+/, "")}\">#{sip}</a> "
+    ramal.scan(/(\w+ \(\d?(\d\d)\).?\d\d\d\d.?(\d\d\d\d))/).each do |sip|
+      doc << "<a href=\"sip:#{sip[1]}#{sip[2]}\">#{sip[0]}</a> / "
       # doc << link_to (sip, "sip:#{sip}")
     end
     doc

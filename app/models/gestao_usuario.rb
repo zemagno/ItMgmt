@@ -57,7 +57,7 @@ class GestaoUsuario
           ddd = $1
           ddd = "11" if ddd=="12"
           # se for 6 digitos, tranformo prefixo+ramal em ddd+prefixo+ramal
-          "#{x.IdtLocalidade} - (#{ddd.rjust(3, "0")}) #{x.Ramal.NumPrefixo}-#{$2}"
+          "#{x.IdtLocalidade} (#{ddd.rjust(3, "0")}) #{x.Ramal.NumPrefixo}-#{$2}"
         else
           "#{x.IdtLocalidade} - #{x.NumRamal.to_s}"
         end
