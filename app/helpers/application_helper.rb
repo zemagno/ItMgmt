@@ -43,7 +43,6 @@ module ApplicationHelper
   end
 
   def tela_ajuda(id = nil) #(content, options = {}, html_options = {}, *parameters_for_method_reference)
-    puts "HELP ===> #{id}"
   	id_help = nil
 
     url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")

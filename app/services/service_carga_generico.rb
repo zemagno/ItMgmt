@@ -1,9 +1,6 @@
 require 'csv'
 class ServiceCargaGenerico
 
-
-
-
   def go(paramfile)
     detalhe = ""
     status = "ok"
@@ -11,8 +8,7 @@ class ServiceCargaGenerico
     total_replaced = 0
     total_created = 0
     total_readed = 0
-    erros = "CIs Nao achados:"
-
+    erros = " - ERROS:"
 
     arquivo = Parametro.get(:tipo => "PATH_Generic_Import", :subtipo => paramfile)
 
@@ -28,29 +24,30 @@ class ServiceCargaGenerico
       chave = linha[:chave.to_s].gsub("\t","").strip
 
       c = Ci.find_by_chave(chave)
+
       if ! c.nil?
-        total_replaced = total_replaced + 1
-
-
-        dados.headers.each do |h|
-          puts "atualizando #{h} - #{linha[h].gsub("\t","").strip} - #{c.respond_to?(h)} - #{(c.respond_to?(h))  && (! linha[h].nil?) && (h != "chave")}"
-          c.send("#{h}=",linha[h].gsub("\t","").strip) if (c.respond_to?(h))  && (! linha[h].nil?) && (h != "chave")
+        begin
+          dados.headers.each do |h|
+            puts "atualizando #{h} - #{linha[h].gsub("\t","").strip} - #{c.respond_to?(h)} - #{(c.respond_to?(h))  && (! linha[h].nil?) && (h != "chave")}"
+            c.send("#{h}=",linha[h].gsub("\t","").strip) if (c.respond_to?(h))  && (! linha[h].nil?) && (h != "chave")
+          end
+          c.save!
+          total_replaced = total_replaced + 1
+        rescue Exception => e
+          status = "Warning"
+          erros << "#{chave} #{e.message}"
         end
 
-
-        c.save!
       else
+        status = "Warning"
         erros << " #{chave}"
-        status="Warning"
 
       end
 
     end
-    detalhe << "Total de registros Lidos: #{total_readed} - Total de registros atualizados #{total_replaced} " 
+    detalhe << "Total de registros Lidos: #{total_readed} - Total de registros atualizados #{total_replaced} "
     detalhe << erros if total_readed != total_replaced
     Event.register("CargaGenerica", paramfile, "detalhe", "#{status} - #{detalhe}")
     [status, detalhe]
-
   end
-
 end

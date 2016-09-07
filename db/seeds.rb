@@ -1,7 +1,9 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
-#   Mayor.create(:name => 'Daley', :city => cities.first)
+# ALTER TABLE statuscis AUTO_INCREMENT = 1
+# statuscis
+# site --> brasil
+# testar criar CI sem tipo padrao
+# tipo: fornecedor, contrato
+
+Statusci.create([{:status => 'Ativo', :icon => "001_06.png" }, {:status => "Desativado", :icon => "001_05.png"}])
+Site.create([{:nome => "Brasil", :estado => "BR"}])
+Tipocis.create([{:tipo => "Contrato"}],[{:tipo => "Fornecedor"}])
