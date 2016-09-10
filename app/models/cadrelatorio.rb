@@ -3,6 +3,10 @@ class Cadrelatorio < ActiveRecord::Base
 
   belongs_to :tipoci
 
+  # validates :nome, :presence => {:message => " eh mandatorio"}
+  # validates :nome, :uniqueness => {:case_sensitive => false, :message => " jah existe."}
+  # validates :nome, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/, message: "deve conter somente caracteres alphanumericos" }
+
   default_scope order('ordem ASC')
 
   define_index do
@@ -23,6 +27,13 @@ class Cadrelatorio < ActiveRecord::Base
   def getPainel
     r = Cadrelatorio.find_all_by_painel(1)
 
+  end
+
+  def duplicar(novoNome)
+    newCad = dup 
+    newCad.nome  = novoNome
+    newCad.save
+    newCad
   end
 
   def self.find_gen(param)

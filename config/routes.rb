@@ -24,7 +24,6 @@ ItMgmt::Application.routes.draw do
   get "Licencas/PorUsuario/:id", to: "Licencas#porUsuario", as: "LicencasPorUsuario" , :constraints => { :id => /.*/ }
 
 
-
   get "identities/:id", to: "Identities#show", as: "identities" , :constraints => { :id => /.*/ }
 
   post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento"
@@ -165,6 +164,8 @@ ItMgmt::Application.routes.draw do
   match 'destroy_admin_user_session', to: 'sessions#destroy'
 
   resources :cadrelatorios
+  match 'cadrelatorios/:id/duplicar', to: "cadrelatorios#duplicar", :as => :duplicar_relatorio
+
   resources :statuscis
 
   # para todos nao ser confundido com ID
@@ -217,7 +218,7 @@ ItMgmt::Application.routes.draw do
 
   post 'cis/:id/duplicar_ci', to: "cis#duplicar_ci", :as => :duplicar_ci
   match 'cis/:id/duplicar_ci', to: "cis#ask_duplicar_ci", :as => :ask_duplicar_ci
-
+  
 
   match 'cis/:id/confirmar_eliminacao', to: "cis#confirmar_eliminacao", :as => :confirmar_eliminacao
   post 'cis/:id/cis_eliminar', to: "cis#eliminar", :as => :eliminar_ci

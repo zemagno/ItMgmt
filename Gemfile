@@ -5,6 +5,8 @@ gem 'rails', '3.2.16'
 
 gem 'hirb'
 
+# gem 'simpleconfig', '~> 2.0', '>= 2.0.1'
+
 gem 'bunny', '~> 1.7.0'
 
 
