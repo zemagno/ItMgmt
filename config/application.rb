@@ -70,6 +70,7 @@ module ItMgmt
     config.assets.version = '1.0'
 
     config.exceptions_app = self.routes
+    
 
     config.before_configuration do
         env_file = File.join(Rails.root, 'config', 'local_env.yml')
