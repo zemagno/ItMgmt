@@ -33,7 +33,7 @@ def go
 	# status sempre sera OK ate acertar. Pode ter dados expurios na URA e essa carga nao apaga.
 	status = "Ok"
 		
-	detalhe << " - Antes: #{antes} - Carga: #{carga} - Depois: #{depois}"
+	detalhe << " / Antes: #{antes} / Carga: #{carga} / Depois: #{depois}"
 
 	Event.register("Carga","URA","detalhe","#{status} - #{detalhe}")
 	

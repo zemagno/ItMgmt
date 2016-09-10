@@ -43,8 +43,10 @@ module ApplicationHelper
     doc
   end
 
-  def print_nice_detalhe(detalhe)
-    detalhe.gsub " / " , "<BR>"
+  def print_nice_detalhe(detalhes)
+    det = detalhes || ""
+    det.gsub! " / " , "<BR>" 
+    det
   end
 
 

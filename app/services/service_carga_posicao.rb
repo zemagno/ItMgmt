@@ -31,7 +31,7 @@ def go
 		detalhe = "Carga efetuado com sucesso."
 	end
 		
-	detalhe << " - Antes: #{antes} - Carga: #{carga} - Depois: #{depois}"
+	detalhe << " / Antes: #{antes} / Carga: #{carga} / Depois: #{depois}"
 
 	Event.register("Carga","Posicao","detalhe","#{status} - #{detalhe}")
 	

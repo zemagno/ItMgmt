@@ -28,7 +28,7 @@ class ServiceCargaGenerico
       if ! c.nil?
         begin
           dados.headers.each do |h|
-            puts "atualizando #{h} - #{linha[h].gsub("\t","").strip} - #{c.respond_to?(h)} - #{(c.respond_to?(h))  && (! linha[h].nil?) && (h != "chave")}"
+            # puts "atualizando #{h} - #{linha[h].gsub("\t","").strip} - #{c.respond_to?(h)} - #{(c.respond_to?(h))  && (! linha[h].nil?) && (h != "chave")}"
             c.send("#{h}=",linha[h].gsub("\t","").strip) if (c.respond_to?(h))  && (! linha[h].nil?) && (h != "chave")
           end
           c.save!
@@ -45,7 +45,7 @@ class ServiceCargaGenerico
       end
 
     end
-    detalhe << "Total de registros Lidos: #{total_readed} - Total de registros atualizados #{total_replaced} "
+    detalhe << "Total de registros Lidos: #{total_readed} / Total de registros atualizados #{total_replaced} "
     detalhe << erros if total_readed != total_replaced
     Event.register("CargaGenerica", paramfile, "detalhe", "#{status} - #{detalhe}")
     [status, detalhe]

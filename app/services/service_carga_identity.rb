@@ -51,9 +51,10 @@ class ServiceCargaIdentity
       end
       detalhe << "Total de registros criado #{total_created} - "
       detalhe << "Total de registros atualizados #{total_replaced}"
+      detalhe << " / "
     end
 
-    detalhe << "Provider: Funcionario"
+    detalhe << "Provider: Funcionario - "
     Funcionario.all.each do |f|
       idt = Identity.find_or_initialize_by_login(f.Login)
       if idt.id.nil?
