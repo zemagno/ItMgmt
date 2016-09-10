@@ -42,6 +42,17 @@ class CadrelatoriosController < ApplicationController
 
   end
 
+  def duplicar
+    cad = Cadrelatorio.find(params[:id])
+    @newcad = cad.duplicar("Dup#{cad.nome}")
+    puts @newcad
+    puts @newcad.id
+    respond_to do |format|
+      format.html {redirect_to(:action => 'edit', :id => @newcad.id) }
+    end
+
+  end
+
   # GET /cadrelatorios/1
   # GET /cadrelatorios/1.json
   def show

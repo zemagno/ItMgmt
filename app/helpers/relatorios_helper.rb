@@ -6,7 +6,7 @@ module RelatoriosHelper
             valor.split(",").each do |c|
                 res << link_to(c,"/cis/#{c}",:target => "_blank" )+ " "
             end
-            puts resposta
+            
 
         when "SearchCIS"
             res = valor.blank? ? "" : link_to(valor,"/cis?search=#{valor}",:target => "_blank" )
