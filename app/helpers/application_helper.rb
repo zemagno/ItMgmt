@@ -35,6 +35,18 @@ module ApplicationHelper
     doc
   end
 
+  def listDashboards
+    doc = " "
+    Cadrelatorio.getDashboards.each do |d|
+      doc << "<li><a href=\"/painel_producao/#{d}/NONZERO\">#{d.capitalize}</a></li>"
+    end
+    doc
+  end
+
+  def print_nice_detalhe(detalhe)
+    detalhe.gsub " / " , "<BR>"
+  end
+
 
   def tela_ajuda_geral
     url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")

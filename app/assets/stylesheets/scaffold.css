@@ -193,3 +193,28 @@ table td.actions a {
 	margin: 0px 6px;
 	padding:2px 5px;
 }
+
+.navbar-main{
+
+}
+.navbar-main .sub-menu{
+   position: absolute;
+    display: none;
+    width: 175px;
+        background: #2aa1cc;
+}
+.navbar-main .sub-menu li{
+	display: block;
+	width: 100%;
+	color: white;
+}
+.navbar-main .sub-menu li a{
+	    text-align: left !Important;
+    padding: 10px 10px !Important;
+}
+.navbar-main .sub-menu li a:hover{
+    background: #1582ab !Important;
+}
+  .navbar-main li:hover .sub-menu {
+    display: block;
+}

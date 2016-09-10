@@ -1,117 +1,125 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>BRQ IT Services - Gestão de TI</title>
-
-
-<!--%= stylesheet_link_tag :all %-->
-<%= stylesheet_link_tag "jquery-ui.css" %>
-<%= stylesheet_link_tag "chavecis.css" %>
-<%= stylesheet_link_tag "CMDBstyle.css" %>
-<%= stylesheet_link_tag "scaffold.css" %>
-<%= stylesheet_link_tag "jquery-ui-timepicker-addon.css" %>
-<%= stylesheet_link_tag "jquery.datetimepicker.css" %>
-
-
-<%= javascript_include_tag "jquery", "jquery-ujs", "application" , "angular", "jquery.datetimepicker.js"%>
-<%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
-
-<%= javascript_include_tag "utils.js" %>
-
-<%= javascript_include_tag "ajax.js.coffee" %>
-
-<!-- %= javascript_include_tag "clipboard.min.js" %-->
- 
-<%= csrf_meta_tag %>
-
-<script type="text/javascript">
-$(function() {
+  <head>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>BRQ IT Services - Gestão de TI</title>
+    <!--%= stylesheet_link_tag :all %-->
+    <%= stylesheet_link_tag "jquery-ui.css" %>
+    <%= stylesheet_link_tag "chavecis.css" %>
+    <%= stylesheet_link_tag "CMDBstyle.css" %>
+    <%= stylesheet_link_tag "scaffold.css" %>
+    <%= stylesheet_link_tag "jquery-ui-timepicker-addon.css" %>
+    <%= stylesheet_link_tag "jquery.datetimepicker.css" %>
+    <%= javascript_include_tag "jquery", "jquery-ujs", "application" , "angular", "jquery.datetimepicker.js"%>
+    <%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
+    <%= javascript_include_tag "utils.js" %>
+    <%= javascript_include_tag "ajax.js.coffee" %>
+    <!-- %= javascript_include_tag "clipboard.min.js" %-->
+    
+    <%= csrf_meta_tag %>
+    <script type="text/javascript">
+    $(function() {
     $('.datepick').each(function(){
-      $(this).datepicker({ dateFormat: "yy-mm-dd" });;
-      $(this).datepicker();
+    $(this).datepicker({ dateFormat: "yy-mm-dd" });;
+    $(this).datepicker();
     });
-});
-</script>
-<script type="text/javascript">
-$(document).ready( function(){
-	$('#coolTable').dataTable({
-    	pageLength: 100,
-    	pagingType: "full_numbers"
-    	
+    });
+    </script>
+    <script type="text/javascript">
+    $(document).ready( function(){
+      $('#coolTable').dataTable({
+      pageLength: 100,
+      pagingType: "full_numbers"
+      
     })
-});
-</script>
-</head>
-<body>
-<div id="wrapper">
-	<div id="header-wrapper">
-		<div id="header">
-			<div id="logo">
-				<h3><%= link_to 'BRQ Operacao', tasks_path %></h3>
-			</div>
-			<div id="user_nav">
-        		<% if current_user %>
-        		  	Logado como <%= current_user.name %>!
-          			<%= link_to "Deslogar", signout_path %>
-        		<% else %>
-          			<%= link_to "Se logar com Google", "/auth/google_oauth2" %>
-        		<% end %>
-            </div>
-
-               
-         
-			<div id="menu">
-				<ul>
-					<li><%= link_to 'Alertas', tasks_path %></li>
-					<li><%= link_to 'Executores', authors_path %></li>
-					<li><%= link_to 'CMDB', cis_path %></li>
-                    <li><%= link_to 'Relatorios', cadrelatorios_path %></li>				
+    });
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header-wrapper">
+        <div id="header">
+          <div id="logo">
+            <h3><%= link_to 'BRQ Operacao', tasks_path %></h3>
+          </div>
+          <div id="user_nav">
+            <% if current_user %>
+            Logado como <%= current_user.name %>!
+            <%= link_to "Deslogar", signout_path %>
+            <% else %>
+            <%= link_to "Se logar com Google", "/auth/google_oauth2" %>
+            <% end %>
+          </div>
+          
+          
+          <div id="menu">
+            <ul class="navbar-main">
+              <li><%= link_to 'Alertas', tasks_path %></li>
+              <li><%= link_to 'Ativos', cis_path %>
+                <ul class="sub-menu">
+                  <li><%= link_to 'Listagem', cis_path %></li>
+                  <li><%= link_to 'Novo Ativo', new_ci_path %></li>
                   
-                    <% if can? :manage, TemplatesEmail %>
-                       <li><%= link_to 'Templates Email', templates_emails_path %></li>	
-                       <li><%= link_to 'Parametros', parametros_path %></li>	
-                    <% end %>
-                    <% if can? :manage, :usuarios %>
-                       <li><%= link_to 'Gestao de Usuarios', gestao_usuarios_path %></li>	
-                    <% end %>  
-                    <li><%= link_to 'Producao', painel_producao_path("PRODUCAO/NONZERO") %></li>	
-                    <li><%= tela_ajuda %></li>
-                    <li><%= tela_ajuda_geral %></li>
-                   
-
-                    
-                                    
-
-
-				</ul>
-			</div>
-		</div>
-	</div>
-    	<br>
-	<!-- end #header -->
-	<div id="page">
-			<div id="page-bgtop">
-				<div >
-                <div class="notification"></div>   
-					<% flash.each do |name, msg| %>
-	                        <%= content_tag :div, msg, id: "flash_#{name}" %>
-	                <% end %>
-				</div>
-				
-				<div id="enviar_email"></div>
-				
-			    <div id="page-dbgbtm">
-					
-					<%= yield %>
-					<div style="clear: both;"> </div>
-				</div>
-			</div>
-	</div>
-	<!-- end #page -->
-
-</div>
-</body>
-</html>
+                </ul>
+              </li>
+              <li><%= link_to 'Relatorios', cadrelatorios_path %></li>
+              
+              <% if can? :manage, :usuarios %>
+              <li><%= link_to 'Gestao de Usuarios', gestao_usuarios_path %></li>
+              <% end %>
+              <li><%= link_to 'Producao' %>
+                <ul class="sub-menu">
+                  <li><%= link_to 'Schedulers', schedulers_path %></li>
+                  <li><%= link_to 'Jobs executados', producaos_path %></li>
+                 </ul>
+                <li>
+                  <li><%= link_to 'Dashboards'   %>
+                    <ul class="sub-menu">
+                      <%= listDashboards.html_safe %>
+                    </ul>
+                  </li>
+                  <li><%= link_to 'Parametros', parametros_path %>
+                    <ul class="sub-menu">
+                      <li><%= link_to 'Parametros', parametros_path %></li>
+                      <li><%= link_to 'Tipos de Ativos', tipocis_path %></li>
+                      <li><%= link_to 'Dicionario de dados', dicdados_path %></li>
+                      <li><%= link_to 'Status dos Ativos', "/statuscis" %></li>
+                      <% if can? :manage, TemplatesEmail %>
+                      <li><%= link_to 'Emails', templates_emails_path %></li>
+                      <li><%= link_to 'Templates de Emails', sql_templates_path %></li>
+                      <% end %>
+                    </ul>
+                  </li>
+                  <li><%= tela_ajuda %></li>
+                  <li><%= tela_ajuda_geral %></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <br>
+          <!-- end #header -->
+          <div id="page">
+            <div id="page-bgtop">
+              <div >
+                <div class="notification"></div>
+                <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, id: "flash_#{name}" %>
+                <% end %>
+              </div>
+              
+              <div id="enviar_email"></div>
+              
+              <div id="page-dbgbtm">
+                
+                <%= yield %>
+                <div style="clear: both;"> </div>
+              </div>
+            </div>
+          </div>
+          <!-- end #page -->
+        </div>
+      </body>
+    </html>

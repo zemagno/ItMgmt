@@ -37,7 +37,7 @@ ItMgmt::Application.routes.draw do
 
 
 
-  resources :producaos
+  resources :producaos , :only => [:index]
 
 
 

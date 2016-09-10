@@ -38,6 +38,10 @@ class Cadrelatorio < ActiveRecord::Base
     end
   end
 
+  def self.getDashboards
+    Cadrelatorio.pluck(:dashboard).join(" ").split(" ").uniq.sort
+  end
+
 
 
   def nome_tipoci

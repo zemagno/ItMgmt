@@ -1,4 +1,6 @@
-<h1>Jobs que executaram</h1>
+<h1>Jobs Executados</h1>
+
+<%= will_paginate @producaos %>
 
 <table>
   <tr>
@@ -18,8 +20,8 @@
     <td><%= producao.id %></td>
     <td><%= producao.status %></td>
     <td><%= producao.data %></td>
-    <td><%= producao.detalhe %></td>
-    <!-- <td><%= link_to 'Show', producao %></td> -->
+    <td><%= print_nice_detalhe(producao.detalhe).html_safe %></td>
+    
   </tr>
 <% end %>
 </table>
