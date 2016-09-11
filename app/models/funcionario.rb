@@ -47,7 +47,6 @@ class Funcionario < ActiveRecord::Base
 
   def self._all
     if not @@funcionarios
-      puts "vou reler funcionarios e montar hash"
       @@funcionarios = {}
       Funcionario.where(DtaDemissao: nil).each { |f| @@funcionarios[f.Login] = f}
     end
@@ -69,7 +68,6 @@ class Funcionario < ActiveRecord::Base
     gestor = login
     fim = false
     while not fim
-      puts gestor
       gestores << [gestor,f[gestor].NomProfissional, "#{f[gestor].NomeTipoCC}/#{f[gestor].DescCCTorre}", f[gestor].ramal]
       gestor = f[gestor].NomEmailGestorProfissional
       fim = gestor =="benjamin" || gestor.nil?

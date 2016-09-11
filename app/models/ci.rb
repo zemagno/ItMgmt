@@ -148,7 +148,6 @@ class Ci < ActiveRecord::Base
     cmd_expandido = _command.split(",").map { |x| x.split("=") }
 
     cis.each do |x|
-      puts x
       cmd_expandido.each { |k, v| x.send("#{k}=", v) if x.respond_to?(k) }
       x.save!
     end
@@ -235,9 +234,7 @@ class Ci < ActiveRecord::Base
 
   def setatributo(key, value)
     k = atributos.select { |k, v| v[5] == key }
-    # puts "k: #{k} #{k.blank?}"
     if !k.blank?
-      # puts "vou salvar atributos"
       a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, k.keys[0])
       a.valor=value
       a.save!
@@ -268,7 +265,7 @@ class Ci < ActiveRecord::Base
         atr.valor = novos_atributos[attr[1][0]]
         atr.save
       rescue
-        puts "deu merda...."
+        # TODO Log
       end
     end
 
@@ -288,14 +285,11 @@ class Ci < ActiveRecord::Base
   def self.find_gen(param)
     begin
       if param =~ /^[1-9]\d*$/
-        puts "vou procurar pelo ID."
         Ci.includes(:atributo => :dicdado).find(param)
       else
-        puts "match numero de serie: vou procurar pela chave."
         Ci.includes(:atributo => :dicdado).find_by_chave(param)
       end
     rescue ActiveRecord::RecordNotFound
-      #   puts "vou procurar pela chave."
       Ci.includes(:atributo => :dicdado).find_by_chave(param)
     end
   end
@@ -356,9 +350,9 @@ class Ci < ActiveRecord::Base
 
   private
   def atualiza_chave
-    puts "______________________________________________________________"
-    puts "pos save #{self.chave} #{self.statusci_id} #{self.statusci_id_changed?} #{self.statusci_id_was}"
-    puts "_______________________________________________________________"
+    # puts "______________________________________________________________"
+    # puts "pos save #{self.chave} #{self.statusci_id} #{self.statusci_id_changed?} #{self.statusci_id_was}"
+    # puts "_______________________________________________________________"
     nova_chave = self.chave.gsub "<ID>", id.to_s
     self.update_attributes(:chave => nova_chave) if self.chave != nova_chave
   end
@@ -369,17 +363,17 @@ class Ci < ActiveRecord::Base
   end
 
   def post_create_processing
-    puts "_______________________________________________________________"
-    puts "pos save #{self.chave} #{self.statusci_id}"
-    puts "_______________________________________________________________"
+    # puts "_______________________________________________________________"
+    # puts "pos save #{self.chave} #{self.statusci_id}"
+    # puts "_______________________________________________________________"
     BreEvent.register(:criar,self)
     
   end
 
   def post_destroy_processing
-    puts "_______________________________________________________________"
-    puts "pos destroy #{self.chave} #{self.statusci_id}"
-    puts "_______________________________________________________________"
+    # puts "_______________________________________________________________"
+    # puts "pos destroy #{self.chave} #{self.statusci_id}"
+    # puts "_______________________________________________________________"
     BreEvent.register(:eliminar,self)
     
   end

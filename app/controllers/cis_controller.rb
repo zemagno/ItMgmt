@@ -30,7 +30,6 @@ class CisController < ApplicationController
   # TODO colocar carrega agregadas no before_action/before_filter para alguns metodos abaixo..
 
   def log
-    puts "vou entrar no log #{params[:id]}"
     id = params[:id]
     @ci = Ci.find(id)
     @logs = @ci.log_ci
@@ -40,8 +39,6 @@ class CisController < ApplicationController
   def register_log
     data = params[:data]
     id = params[:id]
-    puts current_user.login
-    puts current_user.name
     log = LogCi.new(ci_id: params[:id], data: params[:data], userid: current_user.login || current_user.name , historico: params[:historico])
     log.save!
 
@@ -66,8 +63,6 @@ class CisController < ApplicationController
 
   def to_csv (titulo, fields, cis)
     csv_string = CSV.generate do |csv|
-      puts fields[0]
-      puts fields[1]
 
       csv << fields[0]
       cis.each do |ci|
@@ -106,9 +101,6 @@ class CisController < ApplicationController
     # render :
     @modo = :confirmar_atualizacao_massiva
     @massiveupdate = params[:massiveupdate]
-    puts params
-    puts @massiveupdate
-    #redirect_to :controller => 'cis', :action => 'index'
     index
     render :index and return
   end
@@ -164,7 +156,6 @@ class CisController < ApplicationController
     @controller="cis"
     t = Ci.find(@id).nice_tipoci
     @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
-    puts "Templates --> #{@templates_email}"
     respond_to do |format|
       format.js {
         render :action => "../common/email", :format => [:js]
@@ -504,14 +495,9 @@ class CisController < ApplicationController
           i.send(direcao).map { |x| enqueue([x,nivel+1]) unless edges_visitado[x.chave]}
         end
       end
-      puts "*******************************************************"
-      puts @email_impactados
-      puts "*******************************************************"
 
       @email_impactados = ListaEmail.acerta({listaEmails:@email_impactados,sufixo:"@brq.com"})
-      puts "**2*****************************************************"
-      puts @email_impactados
-      puts "*******************************************************"
+
       Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado.to_json, expires_in: 5.minute)
       Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)
     end

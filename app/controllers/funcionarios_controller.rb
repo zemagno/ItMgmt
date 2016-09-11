@@ -8,7 +8,6 @@ class FuncionariosController < InheritedResources::Base
     funcionario.attribute_names.each do |attr|
       @attrs << [attr,"#{$1}".underscore.humanize,funcionario.attributes[attr]] if attr =~ /^custom(\w+)$/
     end
-    puts @attrs
   end
 
   def index
@@ -39,7 +38,6 @@ class FuncionariosController < InheritedResources::Base
   end
 
   def equipe
-    puts "[#{params[:id]}"
     f = Funcionario.find_by_Login(params[:id])
     @gestores = f.gestores
     @equipe = f.funcionarios

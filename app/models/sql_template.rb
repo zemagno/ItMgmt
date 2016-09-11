@@ -8,17 +8,13 @@ class SqlTemplate < ActiveRecord::Base
 
 
   def self.find_gen(param)
-    puts "[#{param}]"
     begin
       if param =~ /^[1-9]*$/
-      	puts "1"
         SqlTemplate.find(param)
       else
-      	puts "2"
       	SqlTemplate.find_by_path(param)
       end
     rescue ActiveRecord::RecordNotFound
-      puts "3"
       SqlTemplate.find_by_path(param)
     end
   end       

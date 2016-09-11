@@ -2,8 +2,6 @@ class AjaxController < ApplicationController
   
   def cis
 
-    puts "ops..."
-
     if params[:term] # && params[:term].size > 3
       like= "%".concat(params[:term].concat("%"))
       cis = Ci.where("chave like ?", like)
@@ -18,7 +16,7 @@ class AjaxController < ApplicationController
   def gestores
 
 
-    puts "Ops..gestores.."
+   
     gestores = Gestores.deFuncionarios
 
     if params[:term] # && params[:term].size > 3

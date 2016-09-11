@@ -48,8 +48,8 @@ class ApplicationController < ActionController::Base
         finalauth[:view] = finalauthView
         finalauth[:edit] = finalauthEdit
         Rails.cache.write("ability/#{current_user.name}",finalauth)
-        puts "************************************************************************"
-        puts "ability/#{current_user.name} --> #{finalauth}"
+        # puts "************************************************************************"
+        # puts "ability/#{current_user.name} --> #{finalauth}"
       end
     end
 

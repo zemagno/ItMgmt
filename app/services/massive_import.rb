@@ -12,15 +12,12 @@ def self.go(configfile)
 
     if configfile.kind_of? Rake::TaskArguments    	
     	
-    	puts "Config file [#{configfile[:configfile]}]"
     	config = JSON.parse(File.read(configfile[:configfile]))
     	arquivo = config["arquivo"]
-    	puts config
     end
 
     if configfile.kind_of? String
     	arquivo = configfile
-    	puts "Config file #{arquivo}" 
     end
 
     log = config["log"]==1

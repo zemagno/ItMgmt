@@ -14,7 +14,6 @@ def load
   # se for um ramal, recupero o @login
   if @login =~ /^\d{6}$/
     @mode = :login
-    puts "Pesquisando pelo ramal #{@login}"
     usr = TelRamalLogin.find_by_NumRamal(@login)
     if ! usr.nil?
        @login = usr.IdtLogin.strip if ! usr.nil? 
@@ -25,7 +24,6 @@ def load
   
   # tento ir direto no login, se digitou uma unica palavra ou se login veio do Ramal
   if @login =~ /^[a-zA-z._]+$/
-     puts "mode :login"
      @mode = :login
      # @usuario = GestaoUsuario.new(:login => @login)
   end
@@ -54,11 +52,9 @@ def load
     end
   end
 
-  puts "mode :#{@mode} - #{@login}"
   @usuario = GestaoUsuario.new(:login => @login)
   # se eu estou em modo de apresentar um usuario 
   if @mode == :login
-    puts "vou montar usuario com licencas..."
     # tenho que deixar o login na sessao, pois ela será usada para alocacao de licencas, etc. Nao posso deixar o criterio de busca
     session[:search_gestao_usuario] = @login
     @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
@@ -183,9 +179,7 @@ end
 
 def alocar_estacao
     @modo = :vizualizacao
-    puts params
     if (@estacaoalocada = GestaoEstacao.AlocarEstacao(params))
-       puts @estacaoalocada
        flash[:info] = "INFO: Alocada estacao #{@estacaoalocada.chave} - #{@estacaoalocada.descricao} "
     else
       flash[:error] = "Erro: estacao nao foi alocada. Verifique se ela esta em estoque"
@@ -200,7 +194,6 @@ end
 def carrega_ativos_termo
   load
 
- puts params
   @ativos_termo = []
   
 
