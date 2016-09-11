@@ -440,7 +440,6 @@ class CisController < ApplicationController
         end # nivel <= nivel_max
       end
       g.output( :svg => apath+"/imagens/#{@ci.chave_sanitizada}-#{direcao}.svg" )
-      logger.debug "gravei grafico no cache"
       Rails.cache.write("#{direcao}-#{@ci.id}-grafico", "Existe",   expires_in: 5.minute)
     end
 
@@ -450,12 +449,9 @@ class CisController < ApplicationController
   def gera_relaciomentos (direcao)
     @ci = Ci.find(params[:id])
     if Rails.cache.exist?("#{direcao}-#{@ci.id}")
-      logger.debug "vou ler do cache [#{direcao}-#{@ci.id}]"
       @fila_resultado = JSON.load Rails.cache.read("#{direcao}-#{@ci.id}")
       @email_impactados = Rails.cache.read("#{direcao}-#{@ci.id}-email")
-      logger.debug  "Ops... li do cache"
     else
-      logger.debug "vou ler do db"
       @email_impactados = ""
       init_queue
 
@@ -591,7 +587,6 @@ class CisController < ApplicationController
   def ask_duplicar_ci
     @dependente = ""
     @idci = params[:id]
-    logger.debug "Ops....estou no caminho certo..."
     respond_to :js
   end
 

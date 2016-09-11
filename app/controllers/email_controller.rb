@@ -5,7 +5,6 @@ class EmailController < ApplicationController
 
 
   def enviar_email
-    logger.debug "EmailController#enviar_email"
     p = Hash[:id => params[:id]]
     job = JobEnviarEmail.criar(params[:enviar_email][:template_id], p.to_yaml)
     # EnviaEmailWorker.perform_async(job.id)

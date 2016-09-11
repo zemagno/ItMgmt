@@ -3,7 +3,10 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.16'
 #gem 'rack-cache', '1.2'
 
-gem 'hirb'
+group :test, :development do
+  gem 'hirb'
+end
+
 
 # gem 'simpleconfig', '~> 2.0', '>= 2.0.1'
 
@@ -27,7 +30,7 @@ gem 'thin'
 
 gem 'log4r'
 
-gem 'foreman'
+# gem 'foreman'
 
 gem 'nokogiri'
 
@@ -35,9 +38,8 @@ gem 'axlsx_rails'
 
 #gem 'pusher'
 
-gem 'wisper' # publish/subscriber
+# gem 'wisper' # publish/subscriber
 
-gem 'activeadmin'
 gem 'sass-rails',   '~> 3.2.3'	
 #gem "meta_search",    '>= 1.1.0.pre'   # TODO preciso dessa GEM ??
 
@@ -80,7 +82,7 @@ gem 'whenever', :require => false # crontab like
 gem 'sidekiq', '~> 2'
 gem 'sidekiq-failures'
 gem 'sinatra', require: false
-gem 'slim'
+# gem 'slim'
 
 gem 'quiet_assets'
 

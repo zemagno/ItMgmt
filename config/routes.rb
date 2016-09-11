@@ -113,7 +113,6 @@ ItMgmt::Application.routes.draw do
 
   root :to => "tasks#index"
 
-  ActiveAdmin.routes(self)
 
   #resources :init_checklists
 

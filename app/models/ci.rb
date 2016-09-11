@@ -220,7 +220,6 @@ class Ci < ActiveRecord::Base
   end
 
   def limpa_atributos_outros_tipo
-    logger.debug ">>>> vou limpar atributos"
     atributo.each do |attr|
       if attr.dicdado.tipoci_id != tipoci_id
         attr.delete
@@ -244,7 +243,6 @@ class Ci < ActiveRecord::Base
 
 
   def atributos=(novos_atributos = {})
-    logger.debug(">>>>> atributos=")
     # Descriptions.find_or_create_by_my_id(data["my_id"]).update_attributes(data)
     # Atributo (ci_id, dicdado_id, valor)
     # c.atributo[1].dicdado.nome =  "Contrat"
@@ -295,7 +293,6 @@ class Ci < ActiveRecord::Base
   end
 
   def self.find_com_atributos(id)
-    logger.debug(">>>>> find_com_atributos")
     @c = Ci.find_gen(id)
     attr = (@c ? @c.atributos : nil)
     [@c, attr]

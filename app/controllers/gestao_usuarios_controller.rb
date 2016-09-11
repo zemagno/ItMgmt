@@ -107,7 +107,6 @@ def email
     
     respond_to do |format|
       format.js { 
-        logger.debug  "Gestao::email - #{params}"
         render :action => "../common/email", :format => [:js]        
       }
     end
@@ -118,7 +117,6 @@ end
 def enviar_email
     #testar se email é sync ou nao.. se for async, chamar abaixo, senao desviar para /email/{template}/:ci
     #aqui tem um problema...o controller que responde ao /email/template ja esta rodando numa nova tela...ele so responde um href.
-    logger.debug  "Gestao::enviar_email - #{params}"
     template_email = TemplatesEmail.find(params[:template_id])
 
     if template_email.sync

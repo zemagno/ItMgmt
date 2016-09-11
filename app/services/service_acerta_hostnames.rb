@@ -7,7 +7,7 @@ class ServiceAcertaHostnames
 
 
 
-	ActiveRecord::Base.logger.level = 1
+	# ActiveRecord::Base.logger.level = 1
 	def go
 		total_atualizacoes = [0,0,0,0,0]
 		estacoes = InventarioSw.all

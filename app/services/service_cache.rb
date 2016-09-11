@@ -37,5 +37,4 @@ end
 # if Rails.cache.exist?("#{direcao}-#{@ci.id}")
 #        @fila_resultado = Rails.cache.read("#{direcao}-#{@ci.id}")
 #        @email_impactados = Rails.cache.read("#{direcao}-#{@ci.id}-email")
-#        logger.debug  "Ops... li do cache"
 # else

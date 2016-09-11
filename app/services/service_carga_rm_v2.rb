@@ -44,7 +44,7 @@ class ServiceCargaRmV2
 
   def go
 
-    ActiveRecord::Base.logger.level = 1
+    # ActiveRecord::Base.logger.level = 1
 
     init()
 

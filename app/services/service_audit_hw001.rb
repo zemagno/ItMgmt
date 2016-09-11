@@ -18,7 +18,7 @@ class ServiceAuditHw001
 
 	def go
 		AuditHw.update_all(:inventario => 0, :cmdb => 0, :kpmg => 0)
-		ActiveRecord::Base.logger.level = 1
+		# ActiveRecord::Base.logger.level = 1
 		InventarioHw.all.each do |hw|
 			puts hw
 			update(hw.userid,hw.hostname) do |inv| 
