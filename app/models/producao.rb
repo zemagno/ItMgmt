@@ -4,7 +4,7 @@ class Producao < ActiveRecord::Base
   default_scope order('created_at DESC')
 
   def self.dispatcherJob(_job)
-  	j = self.create(:job => _job, :status => "Scheduled")
+  	j = self.create(:job => _job.split("-").join(" "), :status => "Scheduled")
   	ProducaoWorker.perform_async(j.id)
   end
 
@@ -13,5 +13,13 @@ class Producao < ActiveRecord::Base
   	self.status = _status
   	self.data = DateTime.now
   	save!
+  end
+
+  define_index do
+    indexes detalhe
+    indexes status
+    indexes job
+    indexes id
+    indexes data
   end
 end

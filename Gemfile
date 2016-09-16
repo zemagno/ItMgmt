@@ -40,6 +40,7 @@ gem 'axlsx_rails'
 
 # gem 'wisper' # publish/subscriber
 
+gem 'activeadmin' # TODO - se eu tirar isso, o InheritedResources::Base” SOME !!
 gem 'sass-rails',   '~> 3.2.3'	
 #gem "meta_search",    '>= 1.1.0.pre'   # TODO preciso dessa GEM ??
 
