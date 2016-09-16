@@ -1,5 +1,6 @@
 <h1>Templates de Email</h1>
 
+<%= link_to '[Novo Template]', new_sql_template_path %>
 <table>
   <tr>
     <th>Path</th>
@@ -19,7 +20,7 @@
     <td><%= sql_template.locale %></td>
     <td><%= sql_template.handler %></td>
     <td><%= sql_template.partial %></td>
-    <td><%= link_to 'Mostrar', sql_template %></td>
+    <td><%= link_to 'Vizualizar', sql_template %></td>
     <td><%= link_to 'Editar', edit_sql_template_path(sql_template) %></td>
     <td><%= link_to 'Apagar', sql_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
@@ -28,4 +29,4 @@
 
 <br />
 
-<%= link_to 'Novo Template', new_sql_template_path %>
+<%= link_to '[Novo Template]', new_sql_template_path %>

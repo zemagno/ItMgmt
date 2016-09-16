@@ -1,5 +1,7 @@
 <h1>Jobs Agendados</h1>
 
+<%= link_to '[Novo Job]', new_scheduler_path %>
+
 <table>
   <tr>
     <th>Ordem</th>
@@ -18,7 +20,7 @@
     <td><%= scheduler.ordem %></td>
     <td><%= SchedulerGenField(scheduler.job) %></td>
     <td><%= scheduler.when %></td>
-    <td><%= link_to 'Mostrar', scheduler %></td>
+    <td><%= link_to 'Vizualizar', scheduler %></td>
 
     <% if (can? :manage, Scheduler)  %>
     
@@ -36,4 +38,4 @@
 
 <br />
 
-<%= link_to 'Novo Job', new_scheduler_path %>
+<%= link_to '[Novo Job]', new_scheduler_path %>

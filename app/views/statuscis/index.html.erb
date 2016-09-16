@@ -13,7 +13,7 @@
     <td><img src="/icons/<%=statusci.icon%>" alt=" " height="16" width="16"></td>
 
     <td><%= statusci.status %></td>
-    <td><%= link_to 'Alterar', edit_statuscis_path(statusci) %></td>
+    <td><%= link_to 'Alterar', edit_statusci_path(statusci) %></td>
   
   </tr>
 <% end %>
@@ -21,4 +21,4 @@
 
 <br />
 
-<%= link_to 'Novo Status', new_statuscis_path %>
+<%= link_to '[Novo Status]', new_statusci_path %>

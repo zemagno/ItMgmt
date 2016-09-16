@@ -37,8 +37,9 @@ $(document).ready( function(){
 <% end %>
 </tbody>
 
-<% if can? :admin, :all 
-   link_to "Novo Parametro", new_parametro_path 
-  end %>
+
+<% if can? :admin, :all %>
+   <%= link_to "[Novo Parametro]", new_parametro_path %>
+<% end %>
 </table>
 

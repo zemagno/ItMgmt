@@ -61,9 +61,9 @@
     <td><%= mailing.from %></td>
     <td><%= mailing.subject %></td>
     <td><%= mailing.body %></td>
-    <td><%= link_to 'Mostrar', mailing %></td>
+    <td><%= link_to 'Vizualizar', mailing %></td>
     <td><%= link_to 'Editar', edit_mailing_path(mailing) %></td>
-    <td><%= link_to 'Deletar', mailing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Apagar', mailing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>
