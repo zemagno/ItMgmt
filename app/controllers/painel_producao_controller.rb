@@ -5,7 +5,7 @@ class PainelProducaoController < ApplicationController
     _scope = params[:scope] || "ALL"
     # Cadrelatorio.all.each do |c|
 		begin
-
+            mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
             sql_res = ActiveRecord::Base.connection.execute(c.consulta)
             puts _scope
             puts sql_res.count

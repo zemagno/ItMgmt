@@ -63,6 +63,7 @@ class RelatorioController < ApplicationController
     @NomeRelatorio = @relatorio.descricao
   
     begin
+      mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
       mysql_res = ActiveRecord::Base.connection.execute(sql)
       @resultado = []
       mysql_res.each{ |res| @resultado << res }

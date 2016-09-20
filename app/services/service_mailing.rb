@@ -35,21 +35,21 @@ class ServiceMailing
 
 private
 	def real_enviar_por_sql(sql)
-        
+		mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
 		mysql_res = ActiveRecord::Base.connection.execute(sql)
-        mailing = []
-        mysql_res.each{ |res| mailing << res }
-        fields= Hash[mysql_res.fields.map.with_index.to_a]
-        tag = fields["tag"]
-        template_email_id = fields["template_mail_id"]
-        from = fields["from"]
-        to = fields["to"]
-        cc = fields["cc"]
+		mailing = []
+		mysql_res.each{ |res| mailing << res }
+		fields= Hash[mysql_res.fields.map.with_index.to_a]
+		tag = fields["tag"]
+		template_email_id = fields["template_mail_id"]
+		from = fields["from"]
+		to = fields["to"]
+		cc = fields["cc"]
 
-        
-        subject = fields["subject"]
-        body = fields["body"]
-        mailing.each do |m|
+		
+		subject = fields["subject"]
+		body = fields["body"]
+		mailing.each do |m|
 			p = Hash[ :to => m[to], :cc => m[cc], :subject => m[subject], :from => m[from], :body => m[body] ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
 			job = JobEnviarEmail.criar(m[template_email_id], p.to_yaml)
 			# EnviaEmailWorker.perform_async(job.id)
