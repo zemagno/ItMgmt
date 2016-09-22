@@ -46,7 +46,7 @@ class CisController < ApplicationController
     @logs = @ci.log_ci
 
     render :log and return
-    
+
   end
 
   def carrega_agregadas
@@ -107,14 +107,16 @@ class CisController < ApplicationController
 
   def show
     @ci, @atributos = Ci.find_com_atributos(params[:id])
-    if ! finalAuth[:view].include? (@ci.tipoci_id)
-      flash[:error] = "Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
-      redirect_to "/cis"
+    # TODO - se nao achar CI, tela de erro
 
-    end
-    @search = session[:search_cis]
 
     if @ci
+      if ! finalAuth[:view].include? (@ci.tipoci_id)
+        flash[:error] = "Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
+        redirect_to "/cis"
+
+      end
+      @search = session[:search_cis]
       cache(@ci)
     else
       flash[:error] = "CI Invalido"
@@ -125,17 +127,26 @@ class CisController < ApplicationController
   def edit
     # @ci sendo carregado no filtro..
     @ci, @atributos = Ci.find_com_atributos(params[:id])
-    if ! finalAuth[:edit].include? (@ci.tipoci_id)
-      flash[:error] = "Voce nao tem autorizacao para editar CI do tipo #{@ci.tipoci.tipo}"
-      render :show
-
-    end
-    carrega_agregadas
     begin
+      if @ci
+      if ! finalAuth[:edit].include? (@ci.tipoci_id)
+        flash[:error] = "Voce nao tem autorizacao para editar CI do tipo #{@ci.tipoci.tipo}"
+        render :show
+      end
+      carrega_agregadas
+
       @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
 
       @statusci.reject! { |s| ! @st.include? s.status }
+    else
+      flash[:error] = "CI Invalido"
+      redirect_to "/cis"
+    end
+
     rescue
+      flash[:error] = "CI Invalido"
+      redirect_to "/cis"
+      # TODO tenho que direcionar para pagina de erro.
 
     end
     #@ci.chave.gsub! '<ID>', @ci.id.to_s

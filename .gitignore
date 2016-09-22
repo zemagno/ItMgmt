@@ -4,15 +4,14 @@ Procfile
 db/*.sqlite3
 log/
 log/*
-tmp/**/*
 public/imagens/*
 apoio/*
 apoio/**
 apoio
 id_rsa/*
 db/sphinx/**
-tmp/**
 tmp/
+tmp/**
 apoio/
 apoio/*
 apoio/**
