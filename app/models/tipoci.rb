@@ -1,5 +1,6 @@
+# Encoding: utf-8
 class Tipoci < ActiveRecord::Base
-  attr_accessible :Descricao, :defCampo1, :defCampo2, :defCampo3, :defCampo4, :tipo, :Owner, :perfil
+  attr_accessible :Descricao, :tipo, :Owner, :perfil
   has_many :dicdados
 
   default_scope order('tipo ASC')
@@ -8,6 +9,8 @@ class Tipoci < ActiveRecord::Base
   OWNER_MAX_LENGTH = 20
 
   after_save :limpa_cache
+
+  validates :tipo, :uniqueness => {:case_sensitive => false, :message => " já existe no CMDB"}
 
   #def to_s
   #		puts "#{tipo}:#{Owner}"

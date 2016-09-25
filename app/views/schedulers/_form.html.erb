@@ -1,31 +1,45 @@
 <%= form_for(@scheduler) do |f| %>
-  <% if @scheduler.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@scheduler.errors.count, "error") %> prohibited this scheduler from being saved:</h2>
-
-      <ul>
-      <% @scheduler.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :ordem %><br />
-    <%= f.text_field :ordem %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :job %><br />
-    <%= f.text_field :job %>
-  </div>
-  <div class="field">
-    <%= f.label :when %><br />
-    <%= f.text_field :when, :size=>100  %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<% if @scheduler.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@scheduler.errors.count, "error") %> prohibited this scheduler from being saved:</h2>
+  <ul>
+    <% @scheduler.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
+
+<label>Job a ser executado
+  <span class="small">Job</span>
+</label>
+<%= f.text_field :job, :size => 50   %>
+<div class="spacer"></div>
+<!--
+<div class="field">
+  <%= f.label :job %><br />
+  <%= f.text_field :job %>
+</div> -->
+<label>Quando Executar
+</label>
+<%= f.text_field :when, :size => 100   %>
+<div class="spacer"></div>
+<!--   <div class="field">
+  <%= f.label :when %><br />
+  <%= f.text_field :when, :size=>100  %>
+</div> -->
+<label>Ordem de Apresetnacao
+  <span class="small">Ordem no Painel</span>
+</label>
+<%= f.text_field :ordem, :size => 10   %>
+<div class="spacer"></div>
+<!--   <div class="field">
+  <%= f.label :ordem %><br />
+  <%= f.text_field :ordem %>
+</div> -->
+<div class="spacer"></div>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+<div class="spacer"></div>

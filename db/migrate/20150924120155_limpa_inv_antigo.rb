@@ -1,12 +1,36 @@
 class LimpaInvAntigo < ActiveRecord::Migration
   def change
-		drop_table :inventario_hws                
-		drop_table :inventario_kpmg_sws           
-		drop_table :inventario_kpmg_userids       
-		drop_table :inventario_splunks_userids    
-		drop_table :inventario_sws  
-		drop_table :audit_hws    
-		drop_table :audit_sws 
-		drop_table :inventario_hostnames   
+    begin
+      drop_table :inventario_hws
+    rescue
+    end
+    begin
+      drop_table :inventario_kpmg_sws
+    rescue
+    end
+    begin
+      drop_table :inventario_kpmg_userids
+    rescue
+    end
+    begin
+      drop_table :inventario_splunks_userids
+    rescue
+    end
+    begin
+      drop_table :inventario_sws
+    rescue
+    end
+    begin
+      drop_table :audit_hws
+    rescue
+    end
+    begin
+      drop_table :audit_sws
+    rescue
+    end
+    begin
+      drop_table :inventario_hostnames
+    rescue
+    end
   end
 end

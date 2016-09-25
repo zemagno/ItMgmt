@@ -1,8 +1,8 @@
-<h1>Editando Perfil</h1>
+<div id="stylized" class="myform">
+<h1>Editando Perfil: <%= @user.name %></h1>
 
 <%= render 'form' %>
 
+<%= link_to '[Cancelar]', users_path %>
 
-
-<%= link_to 'Cancelar', @user %> |
-
+</div>

@@ -1,24 +1,28 @@
 <%= form_for(@parametro) do |f| %>
-  <% if @parametro.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@parametro.errors.count, "error") %> prohibited this parametro from being saved:</h2>
-
-      <ul>
-      <% @parametro.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-    <%= "Tipo    : #{@parametro.tipo}" %></br	>
-    <%= "SubTipo : #{@parametro.subtipo}" %>
-     
-  <div class="field">
-    <%= f.label :valor %>
-    <%= f.text_area :valor, :cols => 200, :rows => 40 %>
-  </div>
-  <div class="actions">
-     <%= f.submit %>
-  </div>
+<% if @parametro.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@parametro.errors.count, "error") %> prohibited this parametro from being saved:</h2>
+  <ul>
+    <% @parametro.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
+
+<h1>
+<%= "Tipo    : #{@parametro.tipo}" %></br >
+<div class="spacer"></div>
+<%= "SubTipo : #{@parametro.subtipo}" %>
+<h1>
+<div class="spacer"></div>
+
+<div class="spacer"></div>
+<%= f.text_area :valor, :cols => 200, :rows => 40   %>
+<div class="spacer"></div>
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+<div class="spacer"></div>

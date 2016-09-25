@@ -129,19 +129,21 @@ class CisController < ApplicationController
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     begin
       if @ci
-      if ! finalAuth[:edit].include? (@ci.tipoci_id)
-        flash[:error] = "Voce nao tem autorizacao para editar CI do tipo #{@ci.tipoci.tipo}"
-        render :show
+        if ! finalAuth[:edit].include? (@ci.tipoci_id)
+          flash[:error] = "Voce nao tem autorizacao para editar CI do tipo #{@ci.tipoci.tipo}"
+          render :show
+        end
+        carrega_agregadas
+        begin # se nao tiver parametro com filtro de status, ele mantem todos os status possiveis.
+          
+          @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
+          @statusci.reject! { |s| ! @st.include? s.status }
+        rescue
+        end
+      else
+        flash[:error] = "CI Invalido"
+        redirect_to "/cis"
       end
-      carrega_agregadas
-
-      @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
-
-      @statusci.reject! { |s| ! @st.include? s.status }
-    else
-      flash[:error] = "CI Invalido"
-      redirect_to "/cis"
-    end
 
     rescue
       flash[:error] = "CI Invalido"

@@ -1,7 +1,5 @@
 <h1>Jobs Agendados</h1>
-
 <%= link_to '[Novo Job]', new_scheduler_path %>
-
 <table>
   <tr>
     <th>Ordem</th>
@@ -10,32 +8,25 @@
     <th></th>
     <th></th>
     <th></th>
-     <th></th>
-     <th></th>
-     
+    <th></th>
+    
   </tr>
-
-<% @schedulers.each do |scheduler| %>
+  <% @schedulers.each do |scheduler| %>
   <tr>
     <td><%= scheduler.ordem %></td>
     <td><%= SchedulerGenField(scheduler.job) %></td>
     <td><%= scheduler.when %></td>
-    <td><%= link_to 'Vizualizar', scheduler %></td>
-
-    <% if (can? :manage, Scheduler)  %>
     
-    
-   
+<% if (can? :manage, Scheduler)  %>
     <td><%= link_to 'Editar', edit_scheduler_path(scheduler) %></td>
     <td><%= link_to 'Apagar', scheduler, method: :delete, data: { confirm: 'Tem Certeza?' } %></td>
     <td><%= link_to 'Rodar', scheduler_run_path(scheduler) ,method: :post, data: { confirm: 'Confirma executar esse job agora ?' } %></td>
-     <td><%= tela_ajuda(scheduler.job) %></td>
-    <% end %>
+    <td><%= tela_ajuda(scheduler.job) %></td>
+<% end %>
+
 
   </tr>
-<% end %>
+  <% end %>
 </table>
-
 <br />
-
 <%= link_to '[Novo Job]', new_scheduler_path %>

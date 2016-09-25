@@ -1,76 +1,100 @@
 <%= form_for(@dicdado) do |f| %>
-  <% if @dicdado.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@dicdado.errors.count, "error") %> prohibited this dicdado from being saved:</h2>
+<% if @dicdado.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@dicdado.errors.count, "error") %> prohibited this dicdado from being saved:</h2>
+  <ul>
+    <% @dicdado.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-      <ul>
-      <% @dicdado.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<label>Tipo de Ativo
+</label>
+<%= f.select :tipoci_id, @tipocis.collect { |c| [ c.tipo, c.id ] } %>
 
- 
-  <div class="field">
-    <%= f.label "Tipo CI: " %>
- <%= f.select :tipoci_id, @tipocis.collect { |c| [ c.tipo, c.id ] } %>
-  </div>
+<div class="spacer"></div>
 
- <div class="field">
-    <%= f.label "Nome do Campo: " %>
-    <%= f.text_field :nome %>
-  </div> 
 
-  <div class="field">
-    <%= f.label "Apelido: " %>
-    <%= f.text_field :apelido %>
-  </div> 
+<label>Nome do Campo
+<span class="small">Titulo do campo na tela de Ativo</span>
+</label>
+<%= f.text_field :nome %>
 
-  <div class="field">
-    <%= f.label "Descricao: " %>
-    <%= f.text_field :descricao %>
-  </div> 
+<div class="spacer"></div>
 
-<div class="field">
-    <%= f.label "Valores padrao (combobox): " %>
-    <br>
-    <%= f.text_area :valores, :size => "100x6" %>
-  </div> 
 
-<div class="field">
-    <%= f.label "Ordem de Apresentacao: " %>
-    <%= f.text_field :ordem %>
-  </div>
+<label>Descricao
+<span class="small">Subtitulo da tela de edição </span>
+</label>
+<%= f.text_field :descricao %>
+<div class="spacer"></div>
 
-  <div class="field">
-    <%= f.label "regex: " %>
-    <%= f.text_field :regex, :size=>100 %>
-  </div>
 
-<div class="field">
-    <%= f.label "Mandorio?" %>
-    <%= f.check_box :mandatorio %>
-  </div>
+<label>Apelido
+<span class="small">Somente caracteres - a ser usado em emails </span>
+</label>
+<%= f.text_field :apelido %>
+<div class="spacer"></div>
 
-<div class="field">
-    <%= f.label "URL: " %>
-    <%= f.text_field :url, :size=>100 %>
-  </div>
 
-  <div class="field">
-    <%= f.label "Ajuda: " %>
-     <br>
-    <%= f.text_area :tooltip, :size => "50x6" %>
-  </div>
 
-  <div class="field">
-    <%= f.label "Comentario " %>
-     <br>
-    <%= f.text_area :comentarios, :size => "50x6" %>
-  </div>
 
-  <div class="actions">
-     <%= f.submit %>
-  </div>
+<label>Valores padrao (combobox):
+<span class="small">Opcional</span>
+</label>
+<%= f.text_area :valores, :size => "100x6" %>
+<div class="spacer"></div>
+
+
+<label>Ordem de Apresentacao:
+<span class="small">Na tela de Ativos </span>
+</label>
+
+<%= f.text_field :ordem %>
+<div class="spacer"></div>
+
+
+<label>Regex
+<span class="small">Opcional</span>
+</label>
+<%= f.text_field :regex, :size=>100 %>
+<div class="spacer"></div>
+
+
+<label>Campo é mandatório
+</label>
+<%= f.check_box :mandatorio %>
+<div class="spacer"></div>
+
+
+<label>URL
+<span class="small">Opcional </span>
+</label>
+<%= f.text_field :url, :size=>100 %>
+<div class="spacer"></div>
+
+
+<label>Dica de Ajuda
+<span class="small">Tooltip na tela de edição </span>
+</label>
+<br>
+<%= f.text_area :tooltip, :size => "50x6" %>
+<div class="spacer"></div>
+
+
+<label>Comentarios
+<span class="small">Usado internamente</span>
+</label>
+<br>
+<%= f.text_area :comentarios, :size => "50x6" %>
+<div class="spacer"></div>
+
+
+<div class="actions">
+<%= f.submit %>
+<div class="spacer"></div>
+
+
 <% end %>

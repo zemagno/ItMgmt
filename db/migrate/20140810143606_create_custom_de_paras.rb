@@ -9,4 +9,3 @@ class CreateCustomDeParas < ActiveRecord::Migration
     end
   end
 end
-~   

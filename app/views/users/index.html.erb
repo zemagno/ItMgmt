@@ -4,7 +4,7 @@
   <tr>
     <th>Usuario</th>
     <th>Login</th>
-    <th>Role</th>
+    <th>Perfil</th>
     <th></th>
     <th></th>
     
@@ -17,7 +17,7 @@
     <td><%= user.roles %> </td>
    <% if (can? :manage, User)  %>
     <td><%= link_to 'Editar', edit_user_path(user) %></td>
-    <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Confirma apagar?' } %></td>
+    <td><%= link_to 'Apagar', user, method: :delete, data: { confirm: 'Confirma apagar?' } %></td>
     <% end %>
   </tr>
 <% end %>

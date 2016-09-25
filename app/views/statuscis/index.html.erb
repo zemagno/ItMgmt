@@ -1,10 +1,10 @@
-<h1>Status Possiveis dos CIs</h1>
+<h1>Posiveis Status dos Ativos</h1>
 
 <table>
   <tr>
-    <th></th>
+    <th>Icone</th>
     <th>Status</th>
-    <th></th>
+    <th>Parametro Grafico Dependencia</th>
     <th></th>
   </tr>
 
@@ -13,6 +13,7 @@
     <td><img src="/icons/<%=statusci.icon%>" alt=" " height="16" width="16"></td>
 
     <td><%= statusci.status %></td>
+    <td><%= statusci.parametro %></td>
     <td><%= link_to 'Alterar', edit_statusci_path(statusci) %></td>
   
   </tr>

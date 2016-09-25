@@ -9,12 +9,15 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: tasklist_development
+  database: appi
+  # database: tasklist_development
   # database: homes
   pool: 10
   username: root
   password:
   socket: /tmp/mysql.sock
+
+
 
 # development:
 #   adapter: postgresql
@@ -77,7 +80,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: tasklist_test
+  database: appi
   pool: 5
   username: root
   password:

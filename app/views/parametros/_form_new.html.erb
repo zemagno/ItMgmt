@@ -11,20 +11,24 @@
     </div>
   <% end %>
 
-   <div class="field">
-    <%= f.label :Tipo %>
-    <%= f.text_field :tipo %>
-  </div>   
+<label>Tipo
+</label>
+<%= f.text_field :tipo, :size => 50   %>
+<div class="spacer"></div>
 
-   <div class="field">
-    <%= f.label :SubTipo %>
-    <%= f.text_field :subtipo %>
-  </div>   
-  <div class="field">
-    <%= f.label :valor %>
-    <%= f.text_area :valor, :cols => 200, :rows => 40 %>
-  </div>
-  <div class="actions">
+<label>Subtipo
+</label>
+<%= f.text_field :subtipo, :size => 50   %>
+<div class="spacer"></div>
+
+<label>Parametros
+</label>
+<%= f.text_area :valor, :cols => 200, :rows => 40   %>
+<div class="spacer"></div>
+
+
+<div class="actions">
     <%= f.submit %>
-  </div>
+</div>
 <% end %>
+<div class="spacer"></div>

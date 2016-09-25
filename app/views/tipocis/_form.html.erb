@@ -11,25 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :"Tipo" %><br />
-    <%= f.text_field :tipo %>
-  </div>
-  <div class="field">
-    <%= f.label :Descricao %><br />
-    <%= f.text_field :Descricao %>
-  </div>
-  <div class="field">
-    <%= f.label :Perfil %><br />
-    <%= f.text_field :perfil, :size => 100 %>
-  </div>
-  <div class="field">
-    <%= f.label :"Owner" %><br />
-    <%= f.text_field :Owner,
+
+<label>Tipo
+</label>
+<%= f.text_field :tipo %>
+<div class="spacer"></div>
+
+<label>Descricao
+</label>
+<%= f.text_field :Descricao %>
+<div class="spacer"></div>
+
+<label>Perfil
+<span class="small">Usuarios autorizados</span>
+</label>
+<%= f.text_field :perfil, :size => 100 %>
+<div class="spacer"></div>
+
+<label>Owner
+</label>
+<%= f.text_field :Owner,
 	    :size => Tipoci::OWNER_SCREEN_SIZE,
 	    :maxlength => Tipoci::OWNER_MAX_LENGTH %>
-  </div-->
+<div class="spacer"></div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<div class="spacer"></div>

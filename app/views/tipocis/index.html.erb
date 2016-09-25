@@ -1,4 +1,4 @@
-<h1>Tipos de CI</h1>
+<h1>Tipos de Ativos</h1>
 
 <%= link_to '[Novo Tipo]', new_tipoci_path %>
 
@@ -7,7 +7,7 @@
     <th>Tipo</th>
     <th>Descricao</th>
     <th>Owner</th>
-    <th>Perfil</th>
+    <th>Perfis Autorizados</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,7 +15,7 @@
 
 <% @tipocis.each do |tipoci| %>
   <tr>
-    <td><%= link_to tipoci.tipo, tipoci %></td>
+    <td><%= tipoci.tipo %></td>
     <td><%= tipoci.Descricao %></td>
     <td><%= tipoci.Owner%></td>
     <td><%= tipoci.perfil%></td>
