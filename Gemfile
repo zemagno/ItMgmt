@@ -13,7 +13,7 @@ end
 gem 'bunny', '~> 1.7.0'
 
 
-gem 'tiny_tds'
+gem 'tiny_tds', '0.7.0'
 gem 'activerecord-sqlserver-adapter'
 gem 'will_paginate', '~> 3.0'
 
@@ -54,7 +54,7 @@ gem 'jquery-rails'
 
 gem "audited-activerecord", "~> 3.0"
 
-gem 'rake' #, '0.9.2.2'
+gem 'rake', '11.2.2'
 # gem "therubyracer"
 #gem "less-rails"
 #
@@ -73,7 +73,7 @@ gem "nifty-generators", :group => :development
 # gem 'omniauth-google-apps'
 
 gem 'omniauth-oauth2', '~> 1.3.1'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', '0.2.6'
 #gem 'omniauth-office365', github: 'simi/omniauth-office365'
 gem 'cancan' ,  '~> 1.6'
 gem 'dalli', '2.7.4'    #high performance pure Ruby client for accessing memcached servers
