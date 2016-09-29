@@ -47,16 +47,27 @@ module ApplicationHelper
     det = detalhes || ""
     det.gsub! " / " , "<BR>" 
     det
+  end 
+
+  def print_nice_identity(detalhes,sep,size)
+    det = detalhes.to_s || ""
+    # det.split(sep).sort.join(";").scan(/.{1,#{size}}/).join("<BR>")
+    det = det.split(sep).sort.join("<BR>")
+    det = "<span class=\"hidden\">#{det}</span>"
+    det = "<div class=\"content\">.....<BR>#{det}</div>" if det.include? "<BR>"
+    det
   end
 
 
   def tela_ajuda_geral
+    return if ! Features.has? "help"
     url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")
     txt_help = "Ajuda Geral"
     link_to txt_help , "#{url}", :target => "_blank" 
   end
 
   def tela_ajuda(id = nil) #(content, options = {}, html_options = {}, *parameters_for_method_reference)
+    return if ! Features.has? "help" 
   	id_help = nil
 
     url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")

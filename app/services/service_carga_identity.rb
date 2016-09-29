@@ -17,6 +17,8 @@ class ServiceCargaIdentity
       detalhe << "Provider #{provider} - "
       dados.each do |linha|
 
+        
+        provider = provider.split("-")[0]
         case provider
           when "AD","GruposAD"
             chave = linha[:User.to_s]

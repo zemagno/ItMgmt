@@ -111,7 +111,7 @@ ItMgmt::Application.routes.draw do
   resources :sql_templates
 
 
-  root :to => "tasks#index"
+  root :to => "cis#index"
 
 
   #resources :init_checklists

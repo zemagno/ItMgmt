@@ -5,8 +5,8 @@ require "csv"
 include ApplicationHelper
 class CisController < ApplicationController
   include Queueable
-  authorize_resource #cancan
-  skip_authorize_resource :only => :index2
+  # authorize_resource #cancan
+  # skip_authorize_resource :only => :index2
 
 
 

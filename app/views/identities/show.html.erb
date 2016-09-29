@@ -1,12 +1,47 @@
+<!-- http://jsfiddle.net/4h75G/13/ -->
 <p id="notice"><%= notice %></p>
+<style>
+body,table{
+    font-family:verdana,arial,sans-serif;
+    font-size:12px;
+    border-collapse:collapse;
+}
 
-<table style="table-layout:fixed">
+td,th{
+    padding:3px 3px;
+    margin:0px;
+    border:1px solid #BBB;
+    white-space:nowrap;
+}
+
+.content{
+    height:15px;
+    width:500px;
+    overflow:hidden;
+    background-color: #ffcccc;
+    text-overflow:ellipsis
+}
+
+input[type='checkbox']{ visibility: hidden; position: absolute; }
+input[type='checkbox']:checked + .content { height: auto; width: auto; background-color: #ffffff;}
+
+</style>
+
+<table> <!-- style="table-layout:fixed"-->
 <col style="width:16%" span="6" />
    <tr>
     <th>Identidades</th> 
     <th></th>
    </tr>
    <% @idts.each do |idt| %>
-      <tr><td><%=idt[0]%></td><td><%=idt[1]%></td></tr>
+      <tr>
+      	   <td width="30%"><%=idt[0]%></td>
+      	   <td width="70%">
+      	   	   <label>
+      	   	   	   <input type="checkbox" />
+    	   	   	      <%= print_nice_identity(idt[1],";",100).html_safe %>
+      	   	   </label>
+      	    </td>
+      	</tr>
    <% end %>   
 </table> 
