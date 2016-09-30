@@ -1,0 +1,1 @@
+CONFIG = YAML.load_file("#{Rails.root.to_s}/config/itam.yml")[Rails.env]

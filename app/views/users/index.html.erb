@@ -1,6 +1,24 @@
+<%= javascript_include_tag "jquery" %>
+<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.min.css" %>
+<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.min.js" %>
+
+<%= csrf_meta_tag %>
+
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+      pageLength: 100,
+      pagingType: "full_numbers"
+      
+    })
+});
+</script>
+
+
 <h1>Usuarios Cadastrados</h1>
 
-<table>
+<table id="coolTable" class="display">
+  <thead>
   <tr>
     <th>Usuario</th>
     <th>Login</th>
@@ -9,6 +27,8 @@
     <th></th>
     
   </tr>
+  </thead>
+<tbody>
 
 <% @users.each do |user| %>
   <tr> 
@@ -21,7 +41,7 @@
     <% end %>
   </tr>
 <% end %>
+</tbody>
 </table>
-
 <br />
 

@@ -6,7 +6,7 @@
 #
 #
 
-Rails.configuration.hidden_features = "alertas help"
+# Rails.configuration.hidden_features = "alertas help"
 
 
 
