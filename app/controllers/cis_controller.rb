@@ -505,7 +505,7 @@ class CisController < ApplicationController
         end
       end
 
-      @email_impactados = ListaEmail.acerta({listaEmails:@email_impactados,sufixo:"@brq.com"})
+      @email_impactados = ListaEmail.acerta({listaEmails:@email_impactados,sufixo:CONFIG["mail"]["domain"]})
 
       Rails.cache.write("#{direcao}-#{@ci.id}", @fila_resultado.to_json, expires_in: 5.minute)
       Rails.cache.write("#{direcao}-#{@ci.id}-email",@email_impactados,  expires_in: 5.minute)

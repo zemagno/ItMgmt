@@ -6,9 +6,9 @@ class ServiceProducaoEstatisticasDiaria
     detalhe = "Processed: #{stats.processed} \n Failed: #{stats.failed} \n Queues: #{stats.queues.to_s} \n: Retries: #{rs.size} "
     
     params = Hash[JSON.parse Parametro.get(:tipo => "Alerta", :subtipo => "GESTAO")]
-    params[:to] = ListaEmail.acerta({listaEmails:params[:to],sufixo:"@brq.com",blacklist:true})
-    params[:from] = ListaEmail.acerta({listaEmails:params[:from],sufixo:"@brq.com",blacklist:false})
-    params[:cc] = ListaEmail.acerta({listaEmails:params[:cc],sufixo:"@brq.com",blacklist:true})
+    params[:to] = ListaEmail.acerta({listaEmails:params[:to],sufixo:CONFIG["mail"]["domain"],blacklist:true})
+    params[:from] = ListaEmail.acerta({listaEmails:params[:from],sufixo:CONFIG["mail"]["domain"],blacklist:false})
+    params[:cc] = ListaEmail.acerta({listaEmails:params[:cc],sufixo:CONFIG["mail"]["domain"],blacklist:true})
     # params[:to] = ListaEmail.blacklist({params[:to]})
     # params[:cc] = ListaEmail.blacklist({params[:cc]})
         

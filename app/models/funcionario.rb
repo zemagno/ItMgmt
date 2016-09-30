@@ -42,7 +42,7 @@ class Funcionario < ActiveRecord::Base
   @@funcionarios = nil
 
   def gestor
-    self.NomEmailGestorProfissional.gsub(/@brq.com/,"")
+    self.NomEmailGestorProfissional.gsub(CONFIG["mail"]["domain"],"")
   end
 
   def self._all

@@ -21,7 +21,7 @@ module RelatoriosHelper
         when "Email"
             res = valor
             #criar um template de email...colocar em banco de dados em memoria
-            res  = "<a href=\"mailto:"+ListaEmail.acerta({listaEmails:valor,sufixo:"@brq.com"})+"?subject=Atencao&body="+URI.encode(fields.join("\n"))+"\">"+valor+"</a>"
+            res  = "<a href=\"mailto:"+ListaEmail.acerta({listaEmails:valor,sufixo:CONFIG["mail"]["domain"]})+"?subject=Atencao&body="+URI.encode(fields.join("\n"))+"\">"+valor+"</a>"
         when "Descricao" 
             res  = content_tag('pre',valor)
         else 
