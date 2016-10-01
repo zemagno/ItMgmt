@@ -28,7 +28,7 @@ class EnviaEmailWorker
     when "CI"
       # TODO simplificar isso aqui..
       ci = Ci.includes(:atributo => :dicdado).find(params[:id])
-      destinatario = ListaEmail.acerta({listaEmails:ci.Owner+","+ci.notificacao,sufixo:"@brq.com"})
+      destinatario = ListaEmail.acerta({listaEmails:ci.Owner+","+ci.notificacao,sufixo:EstacaoExFuncSP})
 
       _params = Parametro.get(:tipo => "EMAIL_CI", :subtipo => template.id)
       if _params.blank? # se nao achar from/cc do template, usara o padrao
@@ -50,16 +50,16 @@ class EnviaEmailWorker
 
     when "ALERTAS"
       task = Task.find(params[:alerta])
-      destinatario = "rbleckmann@brq.com,dacarvalho@brq.com,aroldojunior@brq.com,magno@brq.com"
+      destinatario = "zemagno@gmail.com"
       from = Parametro.get(:tipo => "EMAIL_ALERTA", :subtipo => "FROM")
       cc = Parametro.get(:tipo => "EMAIL_ALERTA", :subtipo => "CC")
       CiMailer.enviar(template.template,task,"NOC - #{template.nome} - #{task.id}",destinatario,cc,from).deliver
       job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{task.id}] em #{Time.now}"
 
     when "MAILING"
-      params[:to] = ListaEmail.acerta({listaEmails:params[:to],sufixo:"@brq.com", blacklist:true})
-      params[:from] = ListaEmail.acerta({listaEmails:params[:from],sufixo:"@brq.com", blacklist:false})
-      params[:cc] = ListaEmail.acerta({listaEmails:params[:cc],sufixo:"@brq.com", blacklist:true})
+      params[:to] = ListaEmail.acerta({listaEmails:params[:to],sufixo:CONFIG["mail"]["domain"], blacklist:true})
+      params[:from] = ListaEmail.acerta({listaEmails:params[:from],sufixo:CONFIG["mail"]["domain"], blacklist:false})
+      params[:cc] = ListaEmail.acerta({listaEmails:params[:cc],sufixo:CONFIG["mail"]["domain"], blacklist:true})
 
       CiMailer.enviar(template.template,params[:body],params[:subject],params[:to],params[:cc],params[:from]).deliver
       # TODO se isso acima funcionar, alterar as duas linhas abaixo e o from acima
@@ -71,10 +71,10 @@ class EnviaEmailWorker
       login = params[:id]
       usr = GestaoUsuario.new(login: login )
 
-      destinatario = ListaEmail.acerta({listaEmails:login,sufixo:"@brq.com"})
+      destinatario = ListaEmail.acerta({listaEmails:login,sufixo:CONFIG["mail"]["domain"]})
       subject = template.subject.blank? ? "Service Desk - #{template.nome}" : template.subject
-      from = template.from.blank? ? "servicedesk@brq.com" : ListaEmail.acerta({listaEmails:template.from,sufixo:"@brq.com", blacklist:true})
-      cc = template.cc.blank? ? "" : ListaEmail.acerta({listaEmails:template.cc,sufixo:"@brq.com", blacklist:true})
+      from = template.from.blank? ? "servicedesk#{CONFIG["mail"]["domain"]}" : ListaEmail.acerta({listaEmails:template.from,sufixo:CONFIG["mail"]["domain"], blacklist:true})
+      cc = template.cc.blank? ? "" : ListaEmail.acerta({listaEmails:template.cc,sufixo:CONFIG["mail"]["domain"], blacklist:true})
 
       CiMailer.enviar(template.template,usr,subject,destinatario,cc,from).deliver
       job.status = "Email enviado para #{destinatario}. #{job.templates_email.template}: [#{usr.login}] em #{Time.now}"
@@ -86,11 +86,11 @@ class EnviaEmailWorker
       if ! gestor.nil?
         licencas=gestor.niceSoftwareEmUsoEquipeGestor(true,true)
         licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
-        destinatario = ListaEmail.acerta({listaEmails:loginGestor,sufixo:"@brq.com"})
-        # destinatario = ListaEmail.acerta(loginGestor,"@brq.com")
-        # destinatario = "aroldojunior@brq.com,rbleckmann@brq.com,zemagno@gmail.com"
-        from = "licenciamentobrq@brq.com"
+        destinatario = ListaEmail.acerta({listaEmails:loginGestor,sufixo:CONFIG["mail"]["domain"]})
+        
+        from = Parametro.get(:tipo => "EMAIL_LICENCIAMENTO", :subtipo => "FROM")
         cc =  ""
+        
         CiMailer.enviar_anexo(template.template,licencas,"Extrato Mensal: Uso de Software",destinatario,cc,from,licencas[0][1]).deliver
         job.status = "Email enviado para #{destinatario}. Extrato Mensal de Uso de Software em #{Time.now}"
         Event.register("email","Gestao Licenca","detalhe","Gestao Licenca - email direto - #{template.nome} - #{gestor}")

@@ -9,8 +9,11 @@
     <th>Owner</th>
     <th>Perfis Autorizados</th>
     <th></th>
+
+    <% if (can? :manage, Tipoci)  %>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
 
 <% @tipocis.each do |tipoci| %>
@@ -19,8 +22,10 @@
     <td><%= tipoci.Descricao %></td>
     <td><%= tipoci.Owner%></td>
     <td><%= tipoci.perfil%></td>
+       <% if (can? :manage, Tipoci)  %>
     <td><%= link_to 'Editar', edit_tipoci_path(tipoci) %></td>
     <td><%= link_to 'Apagar', tipoci, method: :delete, data: { confirm: 'Voce tem certeza ?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

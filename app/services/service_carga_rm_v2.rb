@@ -121,7 +121,7 @@ class ServiceCargaRmV2
 
     #   fnew.FlgIndicaRetorno  = f.FlgIndicaRetorno.nil? ? "" : f.FlgIndicaRetorno
     #   fnew.NomGestorProfissional  = f.NomGestorProfissional.nil? ? "" : f.NomGestorProfissional
-    #   fnew.NomEmailGestorProfissional  = f.NomEmailGestorProfissional.nil? ? "" : f.NomEmailGestorProfissional.gsub(/@brq.com/,"")
+    #   fnew.NomEmailGestorProfissional  = f.NomEmailGestorProfissional.nil? ? "" : f.NomEmailGestorProfissional.gsub(CONFIG["mail"]["domain"],"")
     #   fnew.NomEstadoLocalTrabalho  = f.NomEstadoLocalTrabalho.nil? ? "" : f.NomEstadoLocalTrabalho
 
     #   fnew.DscCentroCustoBU        = f.DscCentroCustoBU.nil?        ? "" : f.DscCentroCustoBU

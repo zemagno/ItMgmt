@@ -46,12 +46,12 @@ ItMgmt::Application.configure do
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'mail.brq.com',
-    port: 25,
-    domain: 'localhost',
-    enable_starttls_auto: false
-    }
+  # config.action_mailer.smtp_settings = {
+  #   address: 'mail.com',
+  #   port: 25,
+  #   domain: 'localhost',
+  #   enable_starttls_auto: false
+  #   }
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
 

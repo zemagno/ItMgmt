@@ -5,9 +5,9 @@ class JiraHelper
 	    if jira != nil then 
 	        jira.split(',').each do |c|
 	      	if c.include? "INFRA"
-                   @URLs << [c,"http://jiracorp.brq.com/browse/#{c}"]
+                   @URLs << [c,"http://#{CONFIG["jira"]["url"]}/browse/#{c}"]
             elsif c.include? "INFR-"
-                   @URLs << [c,"http://jira.brq.com/browse/#{c}"]
+                   @URLs << [c,"http://#{CONFIG["jira"]["url"]}/browse/#{c}"]
             end
 	    end
 	    end
@@ -19,9 +19,9 @@ class JiraHelper
       if jira != nil then 
           jira.split(',').each do |c|
           if c.include? "INFRA"
-                   @URLs << [c,"http://jiracorp.brq.com/browse/#{c}"]
+                   @URLs << [c,"#{CONFIG["jira"]["url"]}/browse/#{c}"]
             elsif c.include? "INFR-"
-                   @URLs << [c,"http://jira.brq.com/browse/#{c}"]
+                   @URLs << [c,"#{CONFIG["jira"]["url"]}/browse/#{c}"]
             end
       end
       end

@@ -106,10 +106,3 @@ end
 
 end
 
-
-# filtro = Regexp.union(/Update\ for/,/Hotfix/,/Update\ for/,/Windows\ Phone/,/Driver/,/Service\ Pack/,/Pacote\ de\ Idiomas/)
-
-# BRQ\zadmbrq
-# BRQ.COM\zadmbrq
-
-# se tiver shdw no final, esquece

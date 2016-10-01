@@ -1,4 +1,9 @@
-<h1>Posiveis Status dos Ativos</h1>
+<h1>Status dos Ativos</h1>
+
+
+<% if (can? :manage, Statusci)  %>
+<%= link_to '[Novo Status]', new_statusci_path %>
+<% end %>
 
 <table>
   <tr>
@@ -14,12 +19,15 @@
 
     <td><%= statusci.status %></td>
     <td><%= statusci.parametro %></td>
-    <td><%= link_to 'Alterar', edit_statusci_path(statusci) %></td>
+    <% if (can? :manage, Statusci)  %>
+    <td><%= link_to 'Editar', edit_statusci_path(statusci) %></td>
+    <% end %> 
   
   </tr>
 <% end %>
 </table>
 
 <br />
-
+<% if (can? :manage, Statusci)  %>
 <%= link_to '[Novo Status]', new_statusci_path %>
+<% end %>

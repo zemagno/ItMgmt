@@ -22,7 +22,10 @@
 $(document).ready( function(){
     $('#coolTable').DataTable({
     	pageLength: 100,
-    	pagingType: "full_numbers"
+    	pagingType: "full_numbers",      
+    	language: {
+          search: "Filtrar:"
+        }
     	
     })
 });

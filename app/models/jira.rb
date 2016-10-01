@@ -8,12 +8,12 @@ class Jira
    class << self
      	def server
 	       	@server ||= JIRA::Client.new({
-	            :username => 'magno',
-	            :password => 'Jcmnkl##3', 
-	            :site     => 'http://jiracorp.brq.com',
-	            :context_path => '',
-	            :use_ssl=>false, 
-	            :auth_type => :basic
+	            :username     => CONFIG["jira"]["username"],
+	            :password     => CONFIG["jira"]["password"], 
+	            :site         => CONFIG["jira"]["url"],
+	            :context_path => CONFIG["jira"]["context_path"],
+	            :use_ssl      => CONFIG["jira"]["use_ssl"], 
+	            :auth_type    => CONFIG["jira"]["auth_type"]
 	          })
      	end
 
