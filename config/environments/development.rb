@@ -47,7 +47,7 @@ ItMgmt::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
   # config.action_mailer.smtp_settings = {
-  #   address: 'mail.brq.com',
+  #   address: 'mail.com',
   #   port: 25,
   #   domain: 'localhost',
   #   enable_starttls_auto: false
@@ -56,7 +56,7 @@ ItMgmt::Application.configure do
   # #   :address              => "smtp.gmail.com",
   # #   :port                 => 587,
   # #   :user_name            => 'zemagno@gmail.com',
-  # #   :password             => 'Mmp1bk!!1',
+  # #   :password             => 'xxx',
   # #   :authentication       => 'plain',
   # #   :enable_starttls_auto => true  
   # # }

@@ -87,11 +87,10 @@ class EnviaEmailWorker
         licencas=gestor.niceSoftwareEmUsoEquipeGestor(true,true)
         licencas[1][0].each{|s| s.gsub!(/Microsoft |Embarcadero |Sybase |IBM |MicroFocus /,'')}
         destinatario = ListaEmail.acerta({listaEmails:loginGestor,sufixo:CONFIG["mail"]["domain"]})
-        # destinatario = ListaEmail.acerta(loginGestor,CONFIG["mail"]["domain"])
-        # destinatario = "aroldojunior@brq.com,rbleckmann@brq.com,zemagno@gmail.com"
-        from = "licenciamentobrq@brq.com"
-        # TODO --> colocar esse from nos parametros
+        
+        from = Parametro.get(:tipo => "EMAIL_LICENCIAMENTO", :subtipo => "FROM")
         cc =  ""
+        
         CiMailer.enviar_anexo(template.template,licencas,"Extrato Mensal: Uso de Software",destinatario,cc,from,licencas[0][1]).deliver
         job.status = "Email enviado para #{destinatario}. Extrato Mensal de Uso de Software em #{Time.now}"
         Event.register("email","Gestao Licenca","detalhe","Gestao Licenca - email direto - #{template.nome} - #{gestor}")

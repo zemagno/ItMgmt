@@ -20,6 +20,11 @@ module ApplicationHelper
     @URLs
   end
 
+  def logo
+    Parametro.get(:tipo => "Config", :subtipo => "Logo")
+  end
+
+
   def ramal_to_sip(ramal)
     doc = " "
     ramal = "" if ramal.nil?
