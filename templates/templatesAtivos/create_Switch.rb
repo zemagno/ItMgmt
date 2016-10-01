@@ -1,0 +1,25 @@
+# Encoding: utf-8
+begin
+  tipoci = Tipoci.create({:tipo => "Switch"})
+  tipoci.dicdados.create({nome: "Local",tipoci_id: tipoci.id,ordem: "4",url: "",descricao: "Tipo de Local (shaft/dc) e Andar",valores: "",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Fabricante",tipoci_id: tipoci.id,ordem: "5",url: "",descricao: "",valores: " , Juniper, 3Com, Planet, Force10,Enterasys",apelido: "fabricante",tipo: "",regex: "",mandatorio: "false",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Modelo",tipoci_id: tipoci.id,ordem: "6",url: "",descricao: "",valores: "Super Stack 3 4200,Baseline 2250,Baseline 2948,EX2200,EX4200,2952-SFP,2948-SFP,2250,4250t,4200,2024,4300,3300,3C16465B,3C16465B,3C8L5G48,Super Stack II,FNSW-4800,3C16465B,3C8L5G48,FNSW-4800,4210,2948,S20,S25, S25 Mod Fibra, S50V, S50V Mod Fibra,A4H124-48P",apelido: "modelo",tipo: "",regex: "",mandatorio: "false",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Ativo",tipoci_id: tipoci.id,ordem: "7",url: "",descricao: "",valores: "",apelido: "ativo",tipo: "",regex: "\d{6}[a-zA-Z]{0,1}",mandatorio: "false",tooltip: "Se o patrimonio tiver 5 digitos, coloque um zero na frente",comentarios: ""})
+  tipoci.dicdados.create({nome: "Portas Qtd",tipoci_id: tipoci.id,ordem: "8",url: "",descricao: "",valores: "",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Portas Velocidade",tipoci_id: tipoci.id,ordem: "9",url: "",descricao: "",valores: " , 10, 10/100, 10/100/1000",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "IP Gerencia",tipoci_id: tipoci.id,ordem: "10",url: "",descricao: "",valores: "",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Fibra Portas S/N",tipoci_id: tipoci.id,ordem: "11",url: "",descricao: "",valores: " , Sim, Não",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Fibra Tipo de Porta",tipoci_id: tipoci.id,ordem: "12",url: "",descricao: "",valores: "",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Fibra Quantidade de portas",tipoci_id: tipoci.id,ordem: "13",url: "",descricao: "",valores: "",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Fibra Velocidade da porta",tipoci_id: tipoci.id,ordem: "14",url: "",descricao: "",valores: "",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Data Compra",tipoci_id: tipoci.id,ordem: "15",url: "",descricao: "DD/MM/AAAA",valores: "",apelido: "datacompra",tipo: "",regex: "(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/20\d\d",mandatorio: "false",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Data Venc Garantia",tipoci_id: tipoci.id,ordem: "16",url: "",descricao: "DD/MM/AAAA",valores: "",apelido: "datavencgarantia",tipo: "",regex: "(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/20\d\d",mandatorio: "false",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Observação",tipoci_id: tipoci.id,ordem: "17",url: "",descricao: "",valores: "",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Monitoracao",tipoci_id: tipoci.id,ordem: "20",url: "%s",descricao: "",valores: "",apelido: "",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "CAPEX",tipoci_id: tipoci.id,ordem: "100",url: "",descricao: "Custo de Aquisicao",valores: "",apelido: "capex",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "OPEX",tipoci_id: tipoci.id,ordem: "100",url: "",descricao: "Opex anual",valores: "",apelido: "opex",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Validade da Garantia",tipoci_id: tipoci.id,ordem: "100",url: "",descricao: "DD/MM/AAAA",valores: "",apelido: "garantia",tipo: "",regex: "(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/20\d\d",mandatorio: "false",tooltip: "",comentarios: ""})
+  tipoci.dicdados.create({nome: "Vida Util",tipoci_id: tipoci.id,ordem: "100",url: "",descricao: "(em anos)",valores: "",apelido: "vidautil",tipo: "",regex: "",mandatorio: "",tooltip: "",comentarios: ""})
+rescue
+end
+tipoci = Tipoci.find_by_tipo("Switch")
