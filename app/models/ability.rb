@@ -52,12 +52,17 @@ class Ability
     cannot :manage, User
     cannot :manage, Audit
     cannot :manage, Grupo
+    cannot :manage, Parametro
+    cannot :manage, SqlTemplate
+    cannot :manage, TemplatesEmail 
+    cannot :manage, Tipoci
+    cannot :manage, Dicdado
 
     # ATENCAO ---> SEMPRE DESAUTORIZAR NO SUPORTE !!!! OU inverter condicao
 
 
     if user and user.is_a :suporte
-      can :manage, :all
+      # can :manage, :all   # AROLDO 
       cannot :manage, Dicdado
       cannot :manage, @Dicdado
       cannot :manage, Cadrelatorio
@@ -76,18 +81,25 @@ class Ability
       cannot :manage, CanHelperFinanceiro
       cannot :manage, CanHelperFinanceiroTi
       cannot :manage, CanHelperLicenciamento
-
+      cannot :manage, Parametro
+      can    :index,  Parametro   
+      cannot :manage, Site
+      can    :index,  Site   
+      can    :index,  Tipoci
+      can    :index, Dicdado
+      can    :show,  Dicdado
       can    :index, Software
       cannot :manage, User
       can    :index, User
       can    :index, Grupo
-
-
+      can    :index, Statusci
       can    :manage, :usuarios
     end
 
     if user and user.is_a :producao
       can :manage, Scheduler
+      can :manage, SqlTemplate
+      can :manage, TemplatesEmail
     end
 
     if user and user.is_a :financeiro
@@ -125,7 +137,7 @@ class Ability
       can :manage, Audit
     end
 
-    cannot :manager, User
+
     # cannot :manage, CanHelperLicenciamento
     #can :manage, :all
 

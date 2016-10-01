@@ -17,9 +17,10 @@
 <tr><td>Comentario Interno:</td><td><b><%= @dicdado.comentarios %></b></td></tr>
 <table>
 
-
+<% if (can? :manage, Dicdado)  %>
 <%= link_to '[Editar]', edit_dicdado_path(@dicdado) %> |
 <%= link_to '[Novo]', new_dicdado_path %> |
+<% end %>
 <%= link_to '[Listagem]', dicdados_path %>
 
 </div>

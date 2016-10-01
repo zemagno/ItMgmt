@@ -1,4 +1,4 @@
-<h1>Campos dos CIs</h1>
+<h1>Dicionario de Dados - Campos dos Ativos</h1>
 
 <% [:info, :error].each do |key| %>
    <% if flash[key] %>
@@ -8,8 +8,9 @@
    <% end %>
  <% end %>
 
+<% if (can? :manage, Dicdado)  %>
 <%= link_to '[Novo Campo]', new_dicdado_path %>
-
+<% end %>
 
 <%= will_paginate(@dicdados) %>
 <%= form_tag(dicdados_path, :method => "get") do %>
@@ -26,8 +27,10 @@
     <th>Regex</th>
     <th>Mandatorio</th>
     <th>Ordem</th>
+    <% if (can? :manage, Dicdado)  %>
     <th></th>
     <th></th>
+    <% end %>
   </tr>
 
 <% @dicdados.each do |dicdado| %>
@@ -38,8 +41,10 @@
     <td><%= dicdado.regex %></th>  
     <td><%= dicdado.mandatorio ? "Sim" : "" %></td>   
     <td><%= dicdado.ordem %></td>
+    <% if (can? :manage, Dicdado)  %>
     <td><%= link_to 'Editar', edit_dicdado_path(dicdado) %></td>
     <td><%= link_to 'Apagar', dicdado, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
@@ -47,4 +52,7 @@
 <br />
 
 <%= will_paginate(@dicdados) %>
+<% if (can? :manage, Dicdado)  %>
+<%= link_to '[Novo Campo]', new_dicdado_path %>
+<% end %>
 

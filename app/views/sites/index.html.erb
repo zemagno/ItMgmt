@@ -1,24 +1,31 @@
 <h1>Sites</h1>
-
+<% if (can? :manage, Site)  %>
+<%= link_to '[Novo Site]', new_site_path %>
+<% end %>
 <table>
   <tr>
     <th>Nome</th>
     <th>Estado</th>
-
+    <% if (can? :manage, Site)  %>
     <th></th>
     <th></th>
+        <% end %>
   </tr>
 
 <% @sites.each do |site| %>
   <tr>
     <td><%= site.nome %></td>
     <td><%= site.estado %></td>
+    <% if (can? :manage, Site)  %>
     <td><%= link_to 'Editar', edit_site_path(site) %></td>
     <td><%= link_to 'Apagar', site, :confirm => 'Voce confirma?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br />
 
+<% if (can? :manage, Site)  %>
 <%= link_to '[Novo Site]', new_site_path %>
+<% end %>

@@ -1,7 +1,26 @@
+
+<%= javascript_include_tag "jquery" %>
+<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.min.css" %>
+<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.min.js" %>
+<%= csrf_meta_tag %>
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+      pageLength: 100,
+      pagingType: "full_numbers",
+      language: {
+        search: "Filtrar:"
+      }
+    })
+});
+</script>
+
+
 <h1>Emails Existentes</h1>
 
 <%= link_to '[Criar novo email]', new_templates_email_path %>
-<table>
+<table id="coolTable" class="display">
+<thead>
   <tr>
     <th>Nome</th>
     <th>Enviar email</th>
@@ -12,7 +31,8 @@
     
     <th></th>
   </tr>
-
+</thead>
+<tbody>
 <% @templates_emails.each do |templates_email| %>
   <tr>
     
@@ -27,6 +47,7 @@
     <td><%= link_to 'Apagar', templates_email, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
 
 <br />

@@ -1,5 +1,5 @@
 <h1>Relatorios Disponiveis</h1>
-
+<%= link_to '[Novo Relatorio]', new_cadrelatorio_path unless cannot? :manage, @Cadrelatorio %>
 <%= will_paginate @cadrelatorios %>
 <%= form_tag(cadrelatorios_path, :method => "get") do %>
  
@@ -22,7 +22,7 @@
     <td><%= cadrelatorio.descricao %></td>
     <td><%= cadrelatorio.dashboard %></td>
     <% if can? :manage, @Cadrelatorio %>
-    <td><%= link_to 'Alterar', edit_cadrelatorio_path(cadrelatorio) %></td>
+    <td><%= link_to 'Editar', edit_cadrelatorio_path(cadrelatorio) %></td>
     <td><%= link_to 'Apagar', cadrelatorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tr>
