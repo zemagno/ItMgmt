@@ -1,5 +1,5 @@
-load("templates/tmp/create_Fornecedor.rb")
-load("templates/tmp/create_Link.rb")
+load("templates/templatesAtivos/create_Fornecedor.rb")
+load("templates/templatesAtivos/create_Link.rb")
 
 tipoFornecedor = Tipoci.create({:tipo => "Fornecedor"})
 forn1 = Ci.new(:chave => "Embratel",

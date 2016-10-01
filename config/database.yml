@@ -12,7 +12,7 @@ development:
   # database: appi
   database: tasklist_development
   # database: homes
-  # database: 4mstech.com 
+  # database: 4mstech
   pool: 10
   username: root
   password:
