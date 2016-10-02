@@ -28,7 +28,7 @@ class EnviaEmailWorker
     when "CI"
       # TODO simplificar isso aqui..
       ci = Ci.includes(:atributo => :dicdado).find(params[:id])
-      destinatario = ListaEmail.acerta({listaEmails:ci.Owner+","+ci.notificacao,sufixo:EstacaoExFuncSP})
+      destinatario = ListaEmail.acerta({listaEmails:ci.Owner+","+ci.notificacao,sufixo:CONFIG["mail"]["domain"]})
 
       _params = Parametro.get(:tipo => "EMAIL_CI", :subtipo => template.id)
       if _params.blank? # se nao achar from/cc do template, usara o padrao

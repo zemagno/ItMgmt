@@ -54,7 +54,7 @@ gem 'jquery-rails'
 
 gem "audited-activerecord", "~> 3.0"
 
-gem 'rake', '11.2.2'
+gem 'rake', '10.4.2'
 # gem "therubyracer"
 #gem "less-rails"
 #

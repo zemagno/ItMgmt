@@ -1,0 +1,40 @@
+development:
+   hidden_features: "alertas help"
+   smtp:
+     address: "mail.com"
+     port: 25
+     enable_starttls_auto: false
+   mail:
+     domain: "@brq.com"
+     separator: ";"
+     default_from: "noc@brq.com"
+   jira:
+     url: "jiracorp.brq.com"
+     username: "magno"
+     password: "Jcmnkl##3"
+     context_path: ""
+     use_ssl: false 
+     auth_type: :basic
+
+production:
+   foo:
+     bar: "blah blah"
+     baz: "blah blah"
+     qux: "blah blah"
+
+test:
+   foo:
+     bar: "blah blah"
+     baz: "blah blah"
+     qux: "blah blah"
+
+
+ # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   address: 'mail.com',
+  #   port: 25,
+  #   domain: 'localhost',
+  #   enable_starttls_auto: false
+  #   }
+
+# htps://4mstech.zendesk.com 
