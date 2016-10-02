@@ -17,7 +17,7 @@ development:
      password: "Jcmnkl##3"
      context_path: ""
      use_ssl: false 
-     auth_type: :basic
+     auth_type: :basic 
 
 production:
    foo:
