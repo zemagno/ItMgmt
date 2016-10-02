@@ -220,12 +220,12 @@ table td.actions a {
 }
 
 
-.field_with_errors {
-/*  padding: 1px;
+/*.field_with_errors {
+  padding: 1px;
   background-color: red;
-  display: table;*/
+  display: table;
 }
- 
+*/ 
 #error_explanation {
  /* width: 800px;*/
   border: 2px solid red;
