@@ -1,1 +1,0 @@
-curl -D- -u magno:Jcmnkl##3 -X POST -H "Content-Type: application/json" --data "{ \"type\" : { \"name\" : \"Relates\" }, \"inwardIssue\" : { \"key\" : \"INFRAII-6\" }, \"outwardIssue\" : { \"key\" : \"INFRAII-8\" } }" http://jiracorp.brq.com/rest/api/2/issuelink
