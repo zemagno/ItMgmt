@@ -55,13 +55,20 @@
 <span class="small">Ou direto</span>
 </label>
 <%= f.check_box :sync , :onclick=>"showMe('EmailsParams', this)"%>
+
+<!--%= f.select_tag(:sync, options_for_select([
+         ['Via Browser', 1], 
+         ['Direto', 0]], @templates_email.sync ))   %-->
+
+
+
 <div class="spacer"></div>
 
 <div class="spacer"></div>
 
 <div id="EmailsParams">
 
-<h3>Somente para emails diretos.</h3><br>  
+<!--h3>Somente para emails diretos.</h3><br>  
  
 <label>Subject
 <span class="small">subject do email</span>
@@ -84,7 +91,7 @@
 <%= f.text_field :from %>
 <div class="spacer"></div>
  
-<div class="spacer"></div>
+<div class="spacer"></div-->
 
 
 </div>
