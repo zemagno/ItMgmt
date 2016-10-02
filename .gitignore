@@ -14,4 +14,5 @@ db/sphinx/development/**
 config/local_env.yml
 *.sql
 config/itam*
-config/itam**
+itam.*.yml
+itam.yml
