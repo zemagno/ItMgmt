@@ -10,7 +10,8 @@ class Tipoci < ActiveRecord::Base
 
   after_save :limpa_cache
 
-  validates :tipo, :uniqueness => {:case_sensitive => false, :message => " já existe no CMDB"}
+  validates :tipo, :uniqueness => {:case_sensitive => false, :message => "Ja existe esse tipo."}
+
 
   #def to_s
   #		puts "#{tipo}:#{Owner}"

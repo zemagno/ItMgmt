@@ -1,3 +1,4 @@
+# Encoding: utf-8
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
@@ -8,3 +9,19 @@ en:
     submit:
       create: "Criar"
       update: "Salvar"
+
+en:
+  errors:
+    format: "%{message}" 
+    site: 
+        presence: "Nome do site é mandatorio"
+        uniqueness: "Já existe site com esse nome"
+    ci:
+      Owner:
+        format: "Gestor tem que ser um ID de rede (somente caracteres)"
+      descricao:
+        presence: "Descrição é mandatoria"
+      chave:
+        presence: "Chave é mandatorio"
+        uniqueness: "Ja existe um ativo com a mesma chave"
+        format: "Chave deve conter somente caracteres alphanumericos"    

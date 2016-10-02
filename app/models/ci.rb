@@ -1,3 +1,4 @@
+# Encoding: utf-8
 require "jiraable"
 require "statusable"
 class Ci < ActiveRecord::Base
@@ -59,14 +60,17 @@ class Ci < ActiveRecord::Base
            :through => :relacao_impacto,
            :include => "tipoci"
 
-  validates :Owner, :format => {:with => /^[a-zA-z.]+$/,
-                                :message => "Gestor: um unico ID de rede"}
-  #validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
-  validates :chave, :presence => {:message => " eh mandatorio"}
-  validates :chave, :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB"}
-  validates :chave, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/, message: "deve conter somente caracteres alphanumericos" }
+  validates :Owner, :format => {:with => /^[a-zA-z.]+$/,                 message: I18n.t("errors.ci.Owner.format")}
+  validates :chave, :presence =>  {                                      message: I18n.t("errors.ci.chave.presence")}
+  validates :chave, :uniqueness => {:case_sensitive => false,            message: I18n.t("errors.ci.chave.uniqueness")}
+  validates :chave, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/,        message: I18n.t("errors.ci.chave.format") }
+  validates :descricao, :presence => {                                   message: I18n.t("errors.ci.descricao.presence")}
 
-  validates :descricao, :presence => {:message => " eh mandatorio"}
+  # validates :Owner, :format => {:with => /^[a-zA-z.]+$/,                 message: "Gestor tem que ser um ID de rede (somente caracteres)"}
+  # validates :chave, :presence =>                                         message: "Chave é mandatorio"}
+  # validates :chave, :uniqueness => {:case_sensitive => false,            message: "Ja existe um ativo com a mesma chave"}
+  # validates :chave, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/,        message: "Chave deve conter somente caracteres alphanumericos" }
+  # validates :descricao, :presence => {:message => "Descrição é mandatoria"}
 
   after_save :atualiza_chave
   before_save :atualiza_statusci

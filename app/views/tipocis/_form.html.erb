@@ -1,7 +1,7 @@
 <%= form_for(@tipoci) do |f| %>
   <% if @tipoci.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@tipoci.errors.count, "error") %> prohibited this tipoci from being saved:</h2>
+      <h2><%= pluralize(@tipoci.errors.count, "erro") %> ao salvar esse tipo de ativo</h2>
 
       <ul>
       <% @tipoci.errors.full_messages.each do |msg| %>
