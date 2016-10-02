@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component name="dataSourceStorage">
-  <data-source name="Rails ItMgmt: instant" uuid="9c830c67-3cbb-4b40-a2fd-8409e7b56156">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-  <data-source name="Rails ItMgmt: ura" uuid="47d3e392-e7ee-49c0-84d3-af7c4bf01b40">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-</component>
