@@ -32,7 +32,7 @@ gem 'log4r'
 
 # gem 'foreman'
 
-gem 'nokogiri'
+gem 'nokogiri', '1.6.6.2'
 
 gem 'axlsx_rails'
 
