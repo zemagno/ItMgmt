@@ -14,3 +14,9 @@ config/local_env.yml
 *.sql
 /config/itam**
 /.idea
+/carga
+/CargaInventarios
+/JSON
+getsql.sh
+
+
