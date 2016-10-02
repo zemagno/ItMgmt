@@ -27,15 +27,17 @@ $(document).ready( function(){
     <th>Tipo</th>
     <th>Subtipo</th>
     <th>Valor</th>
+    <th></th>
    </tr>
 </thead>
 <tbody>
 <% @parametros.each do |parametro| %>
   <tr>
    
-    <td><%= link_to parametro.tipo, edit_parametro_path(parametro) %></td>
+    <td><%= link_to parametro.tipo, parametro_path(parametro) %></td>
     <td><%= parametro.subtipo %></td>
     <td><%= parametro.valor[0,400] if ! parametro.valor.blank? %></td>
+    <td><%= link_to "Editar", edit_parametro_path(parametro) %></td>
     
   </tr>
 <% end %>
