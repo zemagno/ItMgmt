@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160925135301) do
+ActiveRecord::Schema.define(:version => 20161002235957) do
+
+  create_table "MapeamentoLocalTrabalho", :id => false, :force => true do |t|
+    t.string  "NomSite",                :limit => 30
+    t.string  "NomAndarSite",           :limit => 30
+    t.string  "NomTipoPosicao",         :limit => 30
+    t.string  "FlgContabilizaAlocacao", :limit => 1
+    t.integer "QtdTotalTipoPosicao"
+    t.integer "NomPosicaoAndarSite"
+    t.integer "FlgReserva"
+    t.integer "NumMatrProfissional"
+    t.string  "LoginProfissional",      :limit => 30
+    t.string  "LoginGestor",            :limit => 30
+  end
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -28,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
+  create_table "area_de_responsabilidades", :force => true do |t|
+    t.string   "area"
+    t.string   "responsaveis"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "area_responsabilidades", :force => true do |t|
     t.string   "area"
     t.string   "responsaveis"
@@ -35,15 +55,23 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "areafornecedores", :force => true do |t|
+    t.string   "area"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "atributos", :force => true do |t|
     t.integer  "ci_id"
     t.integer  "dicdado_id"
     t.string   "valor"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "atributos", ["ci_id"], :name => "index_atributos_on_ci_id"
+  add_index "atributos", ["dicdado_id"], :name => "dicdado_atributo"
+  add_index "atributos", ["valor"], :name => "valor_atributo"
 
   create_table "audits", :force => true do |t|
     t.integer  "auditable_id"
@@ -68,23 +96,25 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
 
   create_table "authors", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "Logon"
   end
 
   create_table "cadrelatorios", :force => true do |t|
-    t.string   "nome",         :limit => 30
+    t.string   "nome",          :limit => 30
     t.text     "consulta"
-    t.datetime "created_at",                                :null => false
-    t.datetime "updated_at",                                :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.string   "descricao"
-    t.string   "categoria",    :limit => 50
+    t.string   "categoria",     :limit => 50
     t.integer  "tipoci_id"
     t.date     "ultimoacesso"
     t.integer  "qtdeacessos"
     t.string   "dashboard"
-    t.integer  "ordem",                      :default => 0
+    t.integer  "ordem",                       :default => 0
+    t.string   "justificativa"
+    t.string   "solicitante"
   end
 
   create_table "cadsurveys", :force => true do |t|
@@ -103,32 +133,48 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  create_table "checklist_items", :force => true do |t|
+    t.integer  "checklist_id"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "checklist_item_type"
+    t.integer  "period"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "value"
+    t.integer  "parent_checklist_id"
+    t.string   "default_executor",         :limit => 30
+    t.string   "jira_id",                  :limit => 50
+    t.string   "parent_checklist_jira_id", :limit => 50
+  end
+
+  add_index "checklist_items", ["checklist_id"], :name => "index_checklist_items_on_checklist_id"
 
   create_table "checklists", :force => true do |t|
-    t.text     "descricao"
-    t.string   "users"
-    t.integer  "tipoci_id"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-    t.integer  "tipo_checklist_id"
-    t.integer  "area_responsabilidade_id"
-    t.string   "alias"
-    t.boolean  "abrir_ticket"
-    t.string   "titulo"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "checklist_type"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.string   "ci_key"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "state_flag",       :limit => 15
+    t.string   "jira_id",          :limit => 50
+    t.string   "default_executor"
   end
-
-  add_index "checklists", ["tipoci_id"], :name => "index_checklists_on_tipoci_id"
 
   create_table "cis", :force => true do |t|
     t.string   "chave"
     t.string   "descricao"
     t.integer  "site_id"
     t.integer  "tipoci_id"
-    t.datetime "created_at",                                                           :null => false
-    t.datetime "updated_at",                                                           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "Owner"
     t.text     "url",               :limit => 16777215
     t.date     "dataChange"
@@ -175,18 +221,9 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
 
   create_table "criticidades", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "alertacor"
-  end
-
-  create_table "custo_softwares", :force => true do |t|
-    t.string   "software"
-    t.string   "fabricante"
-    t.decimal  "custoMensal", :precision => 10, :scale => 0
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
-    t.integer  "status"
   end
 
   create_table "custom_de_paras", :force => true do |t|
@@ -200,8 +237,8 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
   create_table "dicdados", :force => true do |t|
     t.string   "nome"
     t.integer  "tipoci_id"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "ordem"
     t.string   "url"
     t.string   "descricao"
@@ -239,16 +276,18 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.string   "users"
     t.date     "inicioexec"
     t.date     "fimexec"
+    t.integer  "tipoci_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
     t.string   "tickets"
     t.integer  "status_checklist_id"
     t.integer  "checklist_id"
-    t.text     "params"
     t.string   "alias"
     t.boolean  "abrir_ticket"
     t.string   "titulo"
   end
+
+  add_index "exec_checklists", ["tipoci_id"], :name => "index_exec_checklists_on_tipoci_id"
 
   create_table "exec_itens_checklists", :force => true do |t|
     t.string   "descricao"
@@ -261,9 +300,22 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.string   "tickets"
   end
 
+  create_table "fornecedores", :force => true do |t|
+    t.string   "nome"
+    t.string   "nomecompleto"
+    t.string   "cnpj"
+    t.text     "endereco"
+    t.text     "contatos"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "anotacoes"
+    t.integer  "areafornecedor_id"
+    t.text     "enderecos"
+  end
+
   create_table "funcionarios", :primary_key => "Login", :force => true do |t|
     t.integer  "NumMatrProfissional"
-    t.string   "NomProfissional",            :limit => 50
+    t.string   "NomProfissional"
     t.date     "DtaAdmissao"
     t.date     "DtaDemissao"
     t.string   "NomEmailBRQ",                :limit => 50
@@ -273,7 +325,7 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.string   "NomCentroCusto"
     t.string   "NomTipoCentroCusto"
     t.string   "IdtCodigoSecao",             :limit => 10
-    t.string   "NomLocalTrabalho",           :limit => 50
+    t.string   "NomLocalTrabalho"
     t.string   "NomCidadeLocalTrabalho",     :limit => 50
     t.string   "IdtCentroCustoTorre",        :limit => 10
     t.string   "DscCentroCustoTorre",        :limit => 50
@@ -287,7 +339,7 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.boolean  "afastado"
     t.date     "DtaRemocaoAcesso"
     t.boolean  "FlgIndicaRetorno"
-    t.string   "NomGestorProfissional",      :limit => 50
+    t.string   "NomGestorProfissional"
     t.string   "NomEmailGestorProfissional", :limit => 30
     t.string   "NomEstadoLocalTrabalho",     :limit => 10
     t.string   "DscCentroCustoBU",           :limit => 30
@@ -303,6 +355,7 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
   end
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], :name => "index_funcionarios_on_NomEmailGestorProfissional"
+  add_index "funcionarios", ["NomProfissional"], :name => "NomProffunc"
 
   create_table "gestores", :force => true do |t|
     t.string   "LoginUsuario"
@@ -328,6 +381,8 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.string   "owner"
     t.string   "tipoGrupo"
     t.string   "parametros"
+    t.string   "para",         :limit => 100
+    t.string   "tipo",         :limit => 40
   end
 
   add_index "grupos", ["nome"], :name => "index_grupos_on_nome"
@@ -359,6 +414,7 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.string   "RMLogin",                     :limit => 30
     t.datetime "RMDataAdmissao"
     t.datetime "RMDataDemissao"
+    t.string   "RMInterno",                   :limit => 30
     t.string   "ADDN"
     t.string   "ZMailUser",                   :limit => 30
     t.string   "ZMailStatus"
@@ -370,6 +426,7 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.datetime "ZimbraUltimologon"
     t.string   "ZimbraRedirect"
     t.string   "ZimbraLocalDeliveryDisabled"
+    t.string   "GoogleFlag",                  :limit => 10
     t.string   "O365DisplayName",             :limit => 50
     t.string   "O365UserPrincipalName",       :limit => 50
     t.string   "O365AccountSku",              :limit => 50
@@ -416,6 +473,27 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.datetime "updated_at",                                               :null => false
   end
 
+  create_table "indicadores_financeiros", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventario_hws", :id => false, :force => true do |t|
+    t.string "source",   :limit => 20
+    t.string "hostname", :limit => 30
+  end
+
+  create_table "inventario_kpmg_sw", :id => false, :force => true do |t|
+    t.string "software", :limit => 50
+    t.string "hostname", :limit => 20
+  end
+
+  create_table "inventario_kpmg_user", :id => false, :force => true do |t|
+    t.string "hostname", :limit => 20
+    t.string "login",    :limit => 30
+  end
+
   create_table "inventario_sws", :force => true do |t|
     t.string   "hostname"
     t.string   "software"
@@ -430,6 +508,19 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
 
   add_index "inventario_sws", ["hostname"], :name => "index_inventario_sws_on_hostname"
 
+  create_table "inventario_sws_0", :id => false, :force => true do |t|
+    t.integer "Id",       :default => 0, :null => false
+    t.string  "hostname"
+    t.string  "software"
+  end
+
+  create_table "inventario_user_0", :id => false, :force => true do |t|
+    t.string "hostname"
+    t.string "login"
+    t.string "nomprofissional"
+    t.string "ramal"
+  end
+
   create_table "inventario_users", :force => true do |t|
     t.string   "hostname"
     t.string   "login"
@@ -440,6 +531,30 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
 
   add_index "inventario_users", ["hostname"], :name => "index_inventario_users_on_hostname"
   add_index "inventario_users", ["login"], :name => "index_inventario_users_on_login"
+
+  create_table "invhosts", :id => false, :force => true do |t|
+    t.integer   "id_hosts",                             :default => 0, :null => false
+    t.string    "Equipamento",    :limit => 20
+    t.string    "Nome",           :limit => 50
+    t.text      "Usuario",        :limit => 2147483647
+    t.integer   "QntLogin"
+    t.string    "Os",             :limit => 100
+    t.string    "ProductKey",     :limit => 100
+    t.string    "Serial",         :limit => 100
+    t.string    "Fabricante",     :limit => 30
+    t.string    "DataFab",        :limit => 45
+    t.text      "Modelo",         :limit => 2147483647
+    t.string    "Processador",    :limit => 50
+    t.integer   "Memoria"
+    t.integer   "HD"
+    t.string    "MACLoc",         :limit => 30
+    t.string    "NomeMACLoc",     :limit => 100
+    t.string    "MACWi",          :limit => 30
+    t.string    "NomeMacWi",      :limit => 100
+    t.timestamp "DataUltimoExec",                                      :null => false
+    t.string    "Site",           :limit => 10
+    t.integer   "VidaEmMeses",    :limit => 8
+  end
 
   create_table "itens_checklists", :force => true do |t|
     t.integer  "checklist_id"
@@ -460,6 +575,14 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "status"
+  end
+
+  create_table "jobs", :force => true do |t|
+    t.string   "job_class"
+    t.string   "job_scheduler_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "cron"
   end
 
   create_table "licenciamento_ms_de_paras", :force => true do |t|
@@ -517,18 +640,37 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
   add_index "mapa_posicaos", ["LoginGestor"], :name => "index_mapa_posicaos_on_LoginGestor"
   add_index "mapa_posicaos", ["LoginProfissional"], :name => "index_mapa_posicaos_on_LoginProfissional"
 
+  create_table "new_users", :force => true do |t|
+    t.string   "email"
+    t.string   "roles"
+    t.text     "auth_token",    :limit => 2147483647
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+    t.string   "user_ip"
+    t.string   "jira_username"
+    t.string   "name"
+  end
+
   create_table "notes", :force => true do |t|
     t.text     "notes"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
+  create_table "notificacaos", :force => true do |t|
+    t.string   "evento"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status"
+  end
+
   create_table "parametros", :force => true do |t|
     t.string   "tipo"
     t.string   "subtipo"
-    t.text     "valor"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "valor",      :limit => 16777215
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "producao_ads", :force => true do |t|
@@ -540,6 +682,16 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.datetime "updated_at",   :null => false
     t.string   "cmd"
     t.date     "dataExecucao"
+  end
+
+  create_table "producao_cis", :force => true do |t|
+    t.string   "job",        :limit => 30
+    t.integer  "ci_id"
+    t.string   "status",     :limit => 10
+    t.datetime "date"
+    t.string   "detalhe"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "producaos", :force => true do |t|
@@ -575,8 +727,8 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
   create_table "relacionamentos", :force => true do |t|
     t.integer  "impactado_id"
     t.integer  "dependente_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "tipo"
   end
 
@@ -594,9 +746,26 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
 
   create_table "sites", :force => true do |t|
     t.string   "nome"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "estado",     :limit => 2
+  end
+
+  create_table "snippets", :force => true do |t|
+    t.string   "language"
+    t.string   "plain_code"
+    t.string   "highlighted_code"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "softwares", :force => true do |t|
+    t.string   "software"
+    t.string   "fabricante"
+    t.decimal  "custoMensal", :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "status"
   end
 
   create_table "sql_templates", :force => true do |t|
@@ -608,6 +777,12 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.boolean  "partial",    :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "status_chamados", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "status_checklists", :force => true do |t|
@@ -625,6 +800,12 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "status_pedidos", :force => true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "statuscis", :force => true do |t|
     t.string   "status"
     t.datetime "created_at", :null => false
@@ -633,16 +814,27 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.string   "parametro"
   end
 
+  create_table "surveys", :force => true do |t|
+    t.string   "key"
+    t.text     "formulario"
+    t.text     "perguntas"
+    t.text     "respostas"
+    t.boolean  "bloqueado"
+    t.boolean  "processado"
+    t.string   "chave"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "tasks", :force => true do |t|
     t.text     "description"
     t.integer  "author_id"
     t.integer  "category_id"
     t.integer  "criticidade_id"
     t.integer  "site_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.boolean  "Ativo"
-    t.datetime "Expiracao"
     t.boolean  "sucesso"
     t.string   "DocChange"
     t.string   "nome"
@@ -655,6 +847,14 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.integer  "ci_id"
     t.string   "solicitante"
     t.integer  "status_incidente_id"
+  end
+
+  create_table "temp", :id => false, :force => true do |t|
+    t.string "f1"
+  end
+
+  create_table "temp1", :id => false, :force => true do |t|
+    t.integer "id"
   end
 
   create_table "template_surveys", :force => true do |t|
@@ -677,6 +877,12 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.string   "cc"
   end
 
+  create_table "tipo_chamados", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tipo_checklists", :force => true do |t|
     t.string   "tipo"
     t.datetime "created_at", :null => false
@@ -685,11 +891,17 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
 
   create_table "tipocis", :force => true do |t|
     t.string   "tipo"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "Descricao"
     t.string   "Owner"
     t.string   "perfil"
+  end
+
+  create_table "tipocontratos", :force => true do |t|
+    t.string   "descricao"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -702,6 +914,26 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
     t.string   "login"
   end
 
+  create_table "uso_licencas", :force => true do |t|
+    t.string "Item",         :limit => 45
+    t.string "Descricao",    :limit => 200
+    t.string "Software",     :limit => 45
+    t.string "LoginGestor",  :limit => 45
+    t.string "Site",         :limit => 45
+    t.string "LoginUsuario", :limit => 45
+    t.string "CC",           :limit => 45
+    t.string "Torre",        :limit => 45
+    t.string "TipoSoftware", :limit => 45
+    t.string "CustoAnual",   :limit => 45
+    t.string "Gestor",       :limit => 200
+    t.string "Usuario",      :limit => 200
+  end
+
+  create_table "usounicosoftware", :id => false, :force => true do |t|
+    t.string "Login"
+    t.string "Software"
+  end
+
   create_table "versions", :force => true do |t|
     t.string   "item_type",  :null => false
     t.integer  "item_id",    :null => false
@@ -712,6 +944,12 @@ ActiveRecord::Schema.define(:version => 20160925135301) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  create_table "viewrelatusuariocomvariasestacoes", :id => false, :force => true do |t|
+    t.string "Usuario"
+    t.text   "Estacoes"
+    t.string "Estado",   :limit => 10
+  end
 
   create_table "vwcargaativosportal", :id => false, :force => true do |t|
     t.string "Patrimonio"

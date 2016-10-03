@@ -35,7 +35,12 @@ class ParametrosController < ApplicationController
 
   # GET /parametros/1/edit
   def edit
+    begin
     @parametro = Parametro.find(params[:id])
+    rescue
+    end
+     flash[:error] = "Error[PA0001] - Parametro #{[params[:id]]} Invalido"
+     redirect_to "/parametros" and return
   end
 
   # POST /parametros

@@ -250,7 +250,7 @@ ItMgmt::Application.routes.draw do
   match '/422' => 'errors#server_error'         , :via => :all
   match '/500' => 'errors#internal_server_error', :via => :all
 
-  match '*a', :to => 'tasks#index'
+  match '*a', :to => 'cis#index'
 
   # The priority is beed upon order of creation:
   # first created -> highest priority.

@@ -1,5 +1,5 @@
 <% if can? :manage, :all %>
-  <%= link_to '[Relatorio]', edit_cadrelatorio_path(@relatorio)%>
+  <%= link_to '[Relatorio]', edit_cadrelatorio_path(@relatorio) if ! @relatorio.nil? %>
 <% end %>
 <table id="coolTable" class="display">
 <thead>

@@ -112,14 +112,14 @@ class CisController < ApplicationController
 
     if @ci
       if ! finalAuth[:view].include? (@ci.tipoci_id)
-        flash[:error] = "Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
+        flash[:error] = "Error[CI0005] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
         redirect_to "/cis"
 
       end
       @search = session[:search_cis]
       cache(@ci)
     else
-      flash[:error] = "CI Invalido"
+      flash[:error] = "Error[CI0002] - CI #{[params[:id]]} Invalido"
       redirect_to "/cis"
     end
   end
@@ -130,23 +130,23 @@ class CisController < ApplicationController
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)
-          flash[:error] = "Voce nao tem autorizacao para editar CI do tipo #{@ci.tipoci.tipo}"
+          flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
           render :show
         end
         carrega_agregadas
         begin # se nao tiver parametro com filtro de status, ele mantem todos os status possiveis.
-          
+
           @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
           @statusci.reject! { |s| ! @st.include? s.status }
         rescue
         end
       else
-        flash[:error] = "CI Invalido"
+        flash[:error] = "Error[CI0003] - CI #{[params[:id]]} Invalido"
         redirect_to "/cis"
       end
 
     rescue
-      flash[:error] = "CI Invalido"
+      flash[:error] = "Error[CI0004] - CI #{[params[:id]]} Invalido"
       redirect_to "/cis"
       # TODO tenho que direcionar para pagina de erro.
 

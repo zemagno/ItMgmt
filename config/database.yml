@@ -91,8 +91,11 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
+  # database: appi
   database: tasklist_development
-  pool: 5
+  # database: homes
+  # database: 4mstech
+  pool: 10
   username: root
   password:
   socket: /tmp/mysql.sock

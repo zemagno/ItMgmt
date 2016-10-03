@@ -25,9 +25,11 @@
 <%= link_to "[Duplicar esse CI]" , duplicar_ci_path(@ci), :remote => true, :id => "duplicar_ci"%>
 </br>
 
+<% if Features.has? "alertas" %> 
 <%= link_to "[Abrir Alerta]", tasks_new_from_ci_path(@ci) , :target => '_blank' %>
 <a href="<%='/tasks?&search=@CI='+@ci.chave%>" >[Alertas deste CI]</a>
 <a href="<%='/tasks?&search='+@ci.chave%>" >[Alertas com este CI]</a>
+<% end %>
 
 <% if can? :manage, Audit %>
    <a href="<%='/audits?&search=(@auditable_type=ci @auditable_id='+@ci.id.to_s+') | (@auditable_type=atributo @associated_id='+@ci.id.to_s+')'%>" >[Auditoria deste CI]</a>

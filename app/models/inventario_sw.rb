@@ -1,5 +1,4 @@
 class InventarioSw < ActiveRecord::Base
-  # set_primary_key :hostname
   attr_accessible :hostname, :software
 
   has_many :logins,

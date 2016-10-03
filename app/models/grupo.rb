@@ -1,24 +1,6 @@
 class Grupo < ActiveRecord::Base
   attr_accessible :chamado, :dataCriacao, :dataValidade, :descricao, :membros, :nome, :solicitante
 
-  # def to_s
-  #   "#{id}: #{nome} - #{membros}"
-  # end
-  # set_primary_key :nome
-
-  # def self.getMembrosGrupo(grupo)
-  #   g = Grupo.find_or_create(nome)
-  #   g.membros  
-  # end
-
-  # def self.gestaoMembro (grupo)
-  # 	g = Grupo.find_or_create(grupo)
-  #   membros = g.membros
-  #   yield
-  #   g.membros = membros
-  #   g.save!
-  # end
-
   def self.addMembro(nomeGrupo,membro)
     ActiveRecord::Base.partial_updates = false
     # se grupo nao existir, cria

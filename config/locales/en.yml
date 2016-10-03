@@ -14,8 +14,15 @@ en:
   errors:
     format: "%{message}" 
     site: 
-        presence: "Nome do site é mandatorio"
-        uniqueness: "Já existe site com esse nome"
+      presence: "Nome do site é mandatorio"
+      uniqueness: "Já existe site com esse nome"
+    cadrelatorio: 
+      nome:
+        presence: "Nome do relatório é mandatorio"
+        uniqueness: "Já existe relatório com esse nome"
+        format: "Nome do relatório deve conter somente caracteres alfanumericos"
+      descricao:
+        presence: "Descricao do relatório é mandatorio"
     ci:
       Owner:
         format: "Gestor tem que ser um ID de rede (somente caracteres)"
@@ -24,4 +31,10 @@ en:
       chave:
         presence: "Chave é mandatorio"
         uniqueness: "Ja existe um ativo com a mesma chave"
-        format: "Chave deve conter somente caracteres alphanumericos"    
+        format: "Chave deve conter somente caracteres alanumericos" 
+    dicdado: 
+      nome:
+        presence: "Nome do campo é mandatorio"
+      apelido:
+        presence: "Apelido do campo é mandatorio"
+        format: "Apelido deve conter somente caracteres alanumericos" 
