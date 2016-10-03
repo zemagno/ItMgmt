@@ -54,7 +54,7 @@ class Ability
     cannot :manage, Grupo
     cannot :manage, Parametro
     cannot :manage, SqlTemplate
-    cannot :manage, TemplatesEmail 
+    cannot :manage, TemplatesEmail
     cannot :manage, Tipoci
     cannot :manage, Dicdado
 
@@ -62,7 +62,7 @@ class Ability
 
 
     if user and user.is_a :suporte
-      # can :manage, :all   # AROLDO 
+      # can :manage, :all   # AROLDO
       cannot :manage, Dicdado
       cannot :manage, @Dicdado
       cannot :manage, Cadrelatorio
@@ -82,9 +82,9 @@ class Ability
       cannot :manage, CanHelperFinanceiroTi
       cannot :manage, CanHelperLicenciamento
       cannot :manage, Parametro
-      can    :index,  Parametro   
+      can    :index,  Parametro
       cannot :manage, Site
-      can    :index,  Site   
+      can    :index,  Site
       can    :index,  Tipoci
       can    :index, Dicdado
       can    :show,  Dicdado
@@ -94,6 +94,8 @@ class Ability
       can    :index, Grupo
       can    :index, Statusci
       can    :manage, :usuarios
+      can    :manage, Task
+      can    :manage, "tasks"
     end
 
     if user and user.is_a :producao
