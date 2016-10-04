@@ -1,7 +1,7 @@
 class ParametrosController < ApplicationController
   # GET /parametros
   # GET /parametros.xml
-  authorize_resource 
+  authorize_resource
   def index
     @parametros = Parametro.all
 
@@ -36,11 +36,12 @@ class ParametrosController < ApplicationController
   # GET /parametros/1/edit
   def edit
     begin
-    @parametro = Parametro.find(params[:id])
+      @parametro = Parametro.find(params[:id])
     rescue
+
+      flash[:error] = "Error[PA0001] - Parametro #{[params[:id]]} Invalido"
+      redirect_to "/parametros" and return
     end
-     flash[:error] = "Error[PA0001] - Parametro #{[params[:id]]} Invalido"
-     redirect_to "/parametros" and return
   end
 
   # POST /parametros

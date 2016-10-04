@@ -57,6 +57,7 @@ class Ability
     cannot :manage, TemplatesEmail 
     cannot :manage, Tipoci
     cannot :manage, Dicdado
+    cannot :manage, Ci
 
     # ATENCAO ---> SEMPRE DESAUTORIZAR NO SUPORTE !!!! OU inverter condicao
 

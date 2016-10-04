@@ -38,11 +38,16 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
 
       finalauth = Rails.cache.read("ability/#{current_user.name}") if current_user
+      puts "current_user : #{current_user.name}"
+      puts "finalauth: #{finalauth}"
       if finalauth.nil?
         finalauth = {}
         auth = Tipoci.all.map { |t| [t.id,t.perfil] }
+        puts "auth : #{auth}"
         # perfil --> "compras admin[edit]" 
-        # perfil --> "compras admin[edit] admin[view]" 
+        # perfil --> "compras admin[edit] admin[view]" b = admin[edit] .. b = compras
+        # perfil --> "licenciamento"
+        # current_roles = "suporte admin" 
         finalauthView = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[view]","")) } }.map { |x| x[0]}.sort
         finalauthEdit = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[edit]","")) } }.map { |x| x[0]}.sort
         finalauth[:view] = finalauthView
@@ -52,6 +57,8 @@ class ApplicationController < ActionController::Base
         # puts "ability/#{current_user.name} --> #{finalauth}"
       end
     end
+    puts "return: auth  #{auth}"
+    puts "return: final #{finalauth}"
 
     finalauth
   end
