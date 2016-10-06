@@ -274,7 +274,8 @@ class CisController < ApplicationController
     # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
     @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-    @cis.reject! { |c| ! finalAuth[:view].include? (c.tipoci_id) }
+    cache_finalAuth = finalAuth[:view]
+    @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
     respond_to do |format|
       format.html { render :action => "index" ,:html => @cis }
       format.xml { render :xml => @cis }
@@ -294,12 +295,15 @@ class CisController < ApplicationController
 
     begin
       if @search.blank?
-
         @cis = Ci.paginate(:page => params[:page])
       elsif @search[0] =="%"
+        # TODO documentar isso ..
         @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
       else
-        @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
+        # TODO colocar o finalAuth[view] nesse search.
+        @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page] , :with => {
+          :tipoci_id => finalAuth[:view]
+        }
         @cis.length
         @cis.compact!
       end
@@ -326,7 +330,8 @@ class CisController < ApplicationController
     # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
     @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-    @cis.reject! { |c| ! finalAuth[:view].include? (c.tipoci_id) }
+    # cache_finalAuth = finalAuth[:view]
+    # @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
     respond_to do |format|
       format.html { render :html => @cis }
       format.json { render :json => @cis }

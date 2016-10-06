@@ -6,11 +6,15 @@
 #
 #
 
-# Rails.configuration.hidden_features = "alertas help"
-
-
 
 ItMgmt::Application.configure do
+
+  config.lograge.enabled = true
+
+  config.lograge.custom_options = lambda do |event|
+    # capture some specific timing values you are interested in
+    {:user => event.payload[:user_id]}
+  end
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on

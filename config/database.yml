@@ -10,8 +10,8 @@ development:
   encoding: utf8
   reconnect: false
   # database: appi
-  database: tasklist_development
-  # database: homes
+  # database: tasklist_development
+  database: itmgmt
   # database: 4mstech
   pool: 10
   username: root
@@ -35,9 +35,9 @@ instant:
   reconnect: false
   database: instantvoice
   pool: 5
-  username: brq-infra
-  password: brq@infra
-  host: 10.3.57.100
+  username: root
+  password: 
+  host: 127.0.0.1
   port: 3306
 # 
 
@@ -69,9 +69,9 @@ ura:
   reconnect: false
   database: brq
   pool: 5
-  username: brqura
-  password: brqpassword
-  host: sp.iv.brq.com
+  username: root
+  password: 
+  host: 127.0.0.1
 
 
 # Warning: The database defined as "test" will be erased and
@@ -81,8 +81,11 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: appi
-  pool: 5
+  # database: appi
+  # database: tasklist_development
+  database: itmgmt_test
+  # database: 4mstech
+  pool: 10
   username: root
   password:
   socket: /tmp/mysql.sock

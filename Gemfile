@@ -7,6 +7,8 @@ group :test, :development do
   gem 'hirb'
 end
 
+gem "lograge"
+
 
 # gem 'simpleconfig', '~> 2.0', '>= 2.0.1'
 
@@ -71,6 +73,8 @@ end
 
 gem "nifty-generators", :group => :development
 
+
+gem "rspec", :group => :test
 # gem 'omniauth-google-apps'
 
 gem 'omniauth-oauth2', '~> 1.3.1'

@@ -63,6 +63,7 @@ GEM
     dalli (2.7.4)
     deep_cloneable (1.5.5)
       activerecord (>= 3.1.0)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.2.0.1)
     execjs (2.7.0)
@@ -93,6 +94,10 @@ GEM
       actionpack (>= 3.1)
       less (~> 2.6.0)
     log4r (1.1.10)
+    lograge (0.3.6)
+      actionpack (>= 3)
+      activesupport (>= 3)
+      railties (>= 3)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -176,6 +181,19 @@ GEM
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     riddle (2.0.0)
+    rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+    rspec-core (3.5.4)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
     ruby-graphviz (1.2.2)
     rubyzip (1.0.0)
     sass (3.4.22)
@@ -244,6 +262,7 @@ DEPENDENCIES
   inherited_resources (= 1.6.0)
   jquery-rails
   log4r
+  lograge
   mocha
   mysql2 (= 0.3.20)
   nifty-generators
@@ -255,6 +274,7 @@ DEPENDENCIES
   rails (= 3.2.16)
   rake (= 10.4.2)
   redis-rails (~> 3.2)
+  rspec
   ruby-graphviz
   sass-rails (~> 3.2.3)
   sidekiq (~> 2)
@@ -269,4 +289,4 @@ DEPENDENCIES
   will_paginate (~> 3.0)
 
 BUNDLED WITH
-   1.10.6
+   1.12.0

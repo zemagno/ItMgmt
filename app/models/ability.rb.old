@@ -57,6 +57,7 @@ class Ability
     cannot :manage, TemplatesEmail 
     cannot :manage, Tipoci
     cannot :manage, Dicdado
+    cannot :manage, Ci
 
     # ATENCAO ---> SEMPRE DESAUTORIZAR NO SUPORTE !!!! OU inverter condicao
 
@@ -98,7 +99,7 @@ class Ability
       can    :manage, Note
       can    :manage, "tasks"
       can    :manage, Funcionario
-      
+      # can    :manage, @funcionarios
     end
 
     if user and user.is_a :producao

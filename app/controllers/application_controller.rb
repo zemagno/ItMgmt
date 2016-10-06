@@ -13,6 +13,16 @@ class ApplicationController < ActionController::Base
   #   true
   # end
 
+  def append_info_to_payload(payload)
+    super
+    payload[:remote_ip] = request.remote_ip
+    payload[:user_id] = if current_user
+      "#{current_user.name}[#{current_user.roles}]"
+    else
+      :guest
+    end
+  end
+
   def access_denied(exception)
     redirect_to admin_organizations_path, :alert => exception.message
   end
@@ -38,16 +48,16 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
 
       finalauth = Rails.cache.read("ability/#{current_user.name}") if current_user
-      puts "current_user : #{current_user.name}"
-      puts "finalauth: #{finalauth}"
+      Rails.logger.debug "ApplicationController:finalAuth: current_user : #{current_user.name}"
+      Rails.logger.debug "ApplicationController:finalAuth: finalauth: #{finalauth}"
       if finalauth.nil?
         finalauth = {}
         auth = Tipoci.all.map { |t| [t.id,t.perfil] }
         puts "auth : #{auth}"
-        # perfil --> "compras admin[edit]" 
+        # perfil --> "compras admin[edit]"
         # perfil --> "compras admin[edit] admin[view]" b = admin[edit] .. b = compras
         # perfil --> "licenciamento"
-        # current_roles = "suporte admin" 
+        # current_roles = "suporte admin"
         finalauthView = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[view]","")) } }.map { |x| x[0]}.sort
         finalauthEdit = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[edit]","")) } }.map { |x| x[0]}.sort
         finalauth[:view] = finalauthView
@@ -57,8 +67,8 @@ class ApplicationController < ActionController::Base
         # puts "ability/#{current_user.name} --> #{finalauth}"
       end
     end
-    puts "return: auth  #{auth}"
-    puts "return: final #{finalauth}"
+    Rails.logger.debug "ApplicationController:finalAuth: return: auth  #{auth}"
+    Rails.logger.debug "ApplicationController:finalAuth: return: final #{finalauth}"
 
     finalauth
   end
