@@ -97,6 +97,7 @@ class Ability
       can    :manage, Note
       can    :manage, Funcionario
 
+
     end
 
     if user and user.is_a :producao
