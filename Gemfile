@@ -45,7 +45,7 @@ gem 'axlsx_rails'
 
 # gem 'activeadmin' # TODO - se eu tirar isso, o InheritedResources::Base” SOME !!
 gem 'inherited_resources', '1.6.0'
-gem 'sass-rails',   '~> 3.2.3'	
+# gem 'sass-rails',   '~> 3.2.3'	
 #gem "meta_search",    '>= 1.1.0.pre'   # TODO preciso dessa GEM ??
 
 # colocar tag de desenvolvimento TODO
@@ -90,8 +90,8 @@ gem 'dalli', '2.7.4'    #high performance pure Ruby client for accessing memcach
 
 
 gem 'whenever', :require => false # crontab like
-gem 'sidekiq', '~> 2'
-gem 'sidekiq-failures'
+gem 'sidekiq', '2.17.8'
+gem 'sidekiq-failures', '0.4.5'
 gem 'sinatra', require: false
 # gem 'slim'
 

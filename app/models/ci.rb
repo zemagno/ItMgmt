@@ -339,7 +339,7 @@ class Ci < ActiveRecord::Base
     indexes jira
     indexes site(:nome), :as => :localidade
     indexes statusci(:status), as => :status
-    indexes :tipoci_id
+    # indexes :tipoci_id
     indexes tipoci(:tipo), :as => :tipo
     indexes atributo(:valor), :as => :valoratributo
     indexes site(:estado), as => :estado
