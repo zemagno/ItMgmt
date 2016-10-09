@@ -7,6 +7,9 @@ group :test, :development do
   gem 'hirb'
 end
 
+gem "lograge"
+gem 'logstash-event'
+
 
 # gem 'simpleconfig', '~> 2.0', '>= 2.0.1'
 
@@ -61,6 +64,8 @@ gem 'rake', '10.4.2'
 #
 gem 'redis-rails',  '~> 3.2'
 
+
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -71,6 +76,10 @@ end
 
 gem "nifty-generators", :group => :development
 
+
+gem "rspec", :group => :test
+
+gem "awesome_print", require:"ap", :group => :development
 # gem 'omniauth-google-apps'
 
 gem 'omniauth-oauth2', '~> 1.3.1'

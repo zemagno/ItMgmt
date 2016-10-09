@@ -55,12 +55,6 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
     t.datetime "updated_at",   :null => false
   end
 
-  create_table "areafornecedores", :force => true do |t|
-    t.string   "area"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "atributos", :force => true do |t|
     t.integer  "ci_id"
     t.integer  "dicdado_id"
@@ -252,13 +246,6 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
   end
 
   add_index "dicdados", ["tipoci_id"], :name => "index_dicdados_on_tipoci_id"
-
-  create_table "email_externos", :force => true do |t|
-    t.string   "login"
-    t.string   "provedor"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "events", :force => true do |t|
     t.string   "tipo",       :limit => 20
@@ -509,7 +496,7 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
   add_index "inventario_sws", ["hostname"], :name => "index_inventario_sws_on_hostname"
 
   create_table "inventario_sws_0", :id => false, :force => true do |t|
-    t.integer "Id",       :default => 0, :null => false
+    t.integer "Id"
     t.string  "hostname"
     t.string  "software"
   end
@@ -531,30 +518,6 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
 
   add_index "inventario_users", ["hostname"], :name => "index_inventario_users_on_hostname"
   add_index "inventario_users", ["login"], :name => "index_inventario_users_on_login"
-
-  create_table "invhosts", :id => false, :force => true do |t|
-    t.integer   "id_hosts",                             :default => 0, :null => false
-    t.string    "Equipamento",    :limit => 20
-    t.string    "Nome",           :limit => 50
-    t.text      "Usuario",        :limit => 2147483647
-    t.integer   "QntLogin"
-    t.string    "Os",             :limit => 100
-    t.string    "ProductKey",     :limit => 100
-    t.string    "Serial",         :limit => 100
-    t.string    "Fabricante",     :limit => 30
-    t.string    "DataFab",        :limit => 45
-    t.text      "Modelo",         :limit => 2147483647
-    t.string    "Processador",    :limit => 50
-    t.integer   "Memoria"
-    t.integer   "HD"
-    t.string    "MACLoc",         :limit => 30
-    t.string    "NomeMACLoc",     :limit => 100
-    t.string    "MACWi",          :limit => 30
-    t.string    "NomeMacWi",      :limit => 100
-    t.timestamp "DataUltimoExec",                                      :null => false
-    t.string    "Site",           :limit => 10
-    t.integer   "VidaEmMeses",    :limit => 8
-  end
 
   create_table "itens_checklists", :force => true do |t|
     t.integer  "checklist_id"
@@ -657,14 +620,6 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "notificacaos", :force => true do |t|
-    t.string   "evento"
-    t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "status"
-  end
-
   create_table "parametros", :force => true do |t|
     t.string   "tipo"
     t.string   "subtipo"
@@ -682,16 +637,6 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
     t.datetime "updated_at",   :null => false
     t.string   "cmd"
     t.date     "dataExecucao"
-  end
-
-  create_table "producao_cis", :force => true do |t|
-    t.string   "job",        :limit => 30
-    t.integer  "ci_id"
-    t.string   "status",     :limit => 10
-    t.datetime "date"
-    t.string   "detalhe"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
   end
 
   create_table "producaos", :force => true do |t|
@@ -751,14 +696,6 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
     t.string   "estado",     :limit => 2
   end
 
-  create_table "snippets", :force => true do |t|
-    t.string   "language"
-    t.string   "plain_code"
-    t.string   "highlighted_code"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-  end
-
   create_table "softwares", :force => true do |t|
     t.string   "software"
     t.string   "fabricante"
@@ -779,12 +716,6 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
     t.datetime "updated_at",                    :null => false
   end
 
-  create_table "status_chamados", :force => true do |t|
-    t.string   "descricao"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "status_checklists", :force => true do |t|
     t.string   "status"
     t.string   "icon"
@@ -800,30 +731,12 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "status_pedidos", :force => true do |t|
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "statuscis", :force => true do |t|
     t.string   "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "icon"
     t.string   "parametro"
-  end
-
-  create_table "surveys", :force => true do |t|
-    t.string   "key"
-    t.text     "formulario"
-    t.text     "perguntas"
-    t.text     "respostas"
-    t.boolean  "bloqueado"
-    t.boolean  "processado"
-    t.string   "chave"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "tasks", :force => true do |t|
@@ -851,10 +764,6 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
 
   create_table "temp", :id => false, :force => true do |t|
     t.string "f1"
-  end
-
-  create_table "temp1", :id => false, :force => true do |t|
-    t.integer "id"
   end
 
   create_table "template_surveys", :force => true do |t|
@@ -954,7 +863,7 @@ ActiveRecord::Schema.define(:version => 20161002235957) do
   create_table "vwcargaativosportal", :id => false, :force => true do |t|
     t.string "Patrimonio"
     t.string "usuario"
-    t.text   "ativo"
+    t.text   "ativo",         :limit => 2147483647
     t.string "DataEntrega"
     t.string "DataDevolucao"
   end

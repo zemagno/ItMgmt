@@ -1,4 +1,8 @@
 # Encoding: utf-8
+
+limpar url brq, label brq e cnpjs.
+
+
 begin
   tipoci = Tipoci.create({:tipo => "Link"})
   tipoci.dicdados.create({nome: "Data Ativacao",tipoci_id: tipoci.id,ordem: "1",url: "",descricao: "DD/MM/AAAA",valores: "",apelido: "DataAtivacaoLink",tipo: "",regex: "(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/20\d\d",mandatorio: "true",tooltip: "",comentarios: ""})

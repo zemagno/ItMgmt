@@ -1,6 +1,8 @@
 load("templates/templatesAtivos/create_Fornecedor.rb")
 load("templates/templatesAtivos/create_Link.rb")
 
+como vou criar o codigo ruby dentro do link apontando para o fornecedores, ao inves do dropbox ?
+
 tipoFornecedor = Tipoci.create({:tipo => "Fornecedor"})
 forn1 = Ci.new(:chave => "Embratel",
 			:Owner => "default",
@@ -52,7 +54,7 @@ db:reset
 apagar tipocis
 carregar esse script. 
 
-TODO se o tipo ja existir, crio os dicdados ou nao ?
+TODO se o tipo ja existir, crio os dicdados ou nao ? se abendar no .new(), ele nao roda nenhum create dicdados
 
 
 

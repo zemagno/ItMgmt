@@ -72,7 +72,6 @@ class GestaoEstacao
 
   def self.AlocarEstacao(attributes = {})
 
-    puts attributes
     estacao_disponivel = Ci.find_by_chave(attributes[:estacao])
     if estacao_disponivel and estacao_disponivel.tipoci_id==46 and estacao_disponivel.statusci_id == 8
 

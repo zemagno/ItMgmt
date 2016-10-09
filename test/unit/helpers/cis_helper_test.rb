@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LogCiControllerTest < ActionController::TestCase
+class CiTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
