@@ -44,7 +44,6 @@ class Ability
     # can [:index,:show], Ci
 
     cannot :manage, Funcionario
-    cannot :manage, @Funcionario
     cannot :manage, CanHelperFinanceiro
     cannot :manage, CanHelperFinanceiroTi
 
@@ -95,6 +94,9 @@ class Ability
       can    :index, Grupo
       can    :index, Statusci
       can    :manage, :usuarios
+      can    :manage, Note
+      can    :manage, Funcionario
+
     end
 
     if user and user.is_a :producao
