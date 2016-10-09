@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   def append_info_to_payload(payload)
     super
     payload[:remote_ip] = request.remote_ip
+    payload[:uri] = request.url.gsub(/[^\s]+\?/,"")
     payload[:user_id] = if current_user
       "#{current_user.name}[#{current_user.roles}]"
     else

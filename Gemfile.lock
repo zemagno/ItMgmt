@@ -36,6 +36,7 @@ GEM
     audited-activerecord (3.0.0)
       activerecord (~> 3.0)
       audited (= 3.0.0)
+    awesome_print (1.7.0)
     axlsx (2.0.1)
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.4.1)
@@ -98,6 +99,7 @@ GEM
       actionpack (>= 3)
       activesupport (>= 3)
       railties (>= 3)
+    logstash-event (1.2.02)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -252,6 +254,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-sqlserver-adapter
   audited-activerecord (~> 3.0)
+  awesome_print
   axlsx_rails
   bunny (~> 1.7.0)
   cancan (~> 1.6)
@@ -263,6 +266,7 @@ DEPENDENCIES
   jquery-rails
   log4r
   lograge
+  logstash-event
   mocha
   mysql2 (= 0.3.20)
   nifty-generators

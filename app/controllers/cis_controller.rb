@@ -301,6 +301,7 @@ class CisController < ApplicationController
         @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
       else
         # TODO colocar o finalAuth[view] nesse search.
+        Rails.logger.debug "#{request.fullpath}: search : [#{@search}]"
         @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page] , :with => {
           :tipoci_id => finalAuth[:view]
         }
@@ -312,23 +313,7 @@ class CisController < ApplicationController
       @cis = Ci.paginate(:page => params[:page])
     end
 
-    #if @cis.size==0 then
-    #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
-    #end
-
-    # TODO filtro de tipos aqui...
-
-    # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
-    #   # @ci = @cis[0]
-    #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
-    #   render :show and return
-    # end
-
-
-    #@fields =
-
-    # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
-    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
+   @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
     # cache_finalAuth = finalAuth[:view]
     # @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
@@ -349,7 +334,6 @@ class CisController < ApplicationController
   end
 
   def create
-    #  "ci"=>{"chave"=>"mamae"
 
     @ci = Ci.new(params[:ci])
     case params[:dependencia]
