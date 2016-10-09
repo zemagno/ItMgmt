@@ -44,7 +44,7 @@ class Ability
     # can [:index,:show], Ci
 
     cannot :manage, Funcionario
-    cannot :manage, @Funcionario
+
     cannot :manage, CanHelperFinanceiro
     cannot :manage, CanHelperFinanceiroTi
 
