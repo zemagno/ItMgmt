@@ -10,8 +10,8 @@ development:
   encoding: utf8
   reconnect: false
   # database: appi
-  database: tasklist_development
-  # database: itmgmt
+  # database: tasklist_development
+  database: itmgmt
   # database: 4mstech
   pool: 10
   username: root
@@ -81,10 +81,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  # database: appi
-  # database: tasklist_development
-  database: itmgmt_test
-  # database: 4mstech
+  database: itmgmttest
   pool: 10
   username: root
   password:
@@ -95,7 +92,7 @@ production:
   encoding: utf8
   reconnect: false
   # database: appi
-  database: tasklist_development
+  database: itmgmt
   # database: homes
   # database: 4mstech
   pool: 10

@@ -31,13 +31,13 @@ en:
       chave:
         presence: "Chave é mandatorio"
         uniqueness: "Ja existe um ativo com a mesma chave"
-        format: "Chave deve conter somente caracteres alanumericos" 
+        format: "Chave deve conter somente caracteres alfanumericos" 
     dicdado: 
       nome:
         presence: "Nome do campo é mandatorio"
       apelido:
         presence: "Apelido do campo é mandatorio"
-        format: "Apelido deve conter somente caracteres alanumericos" 
+        format: "Apelido deve conter somente caracteres alfanumericos" 
   msg:
     statusci:
       updated: "Status foi atualizado com sucesso"

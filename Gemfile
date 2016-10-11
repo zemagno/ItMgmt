@@ -63,6 +63,7 @@ gem 'sass-rails'
 gem "nifty-generators", :group => :development
 
 gem "rspec", :group => :test
+gem "rspec-rails", :group => [:development, :test]
 
 gem "awesome_print", require:"ap", :group => :development
 # gem 'omniauth-google-apps'
