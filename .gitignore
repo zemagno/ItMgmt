@@ -19,5 +19,6 @@ config/local_env.yml
 /JSON
 getsql.sh
 /log
-
+/spec
+/test
 

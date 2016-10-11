@@ -10,7 +10,7 @@ development:
   encoding: utf8
   reconnect: false
   # database: appi
-  database: tasklist_development
+  database: itmgmt
   # database: homes
   # database: 4mstech
   pool: 10
