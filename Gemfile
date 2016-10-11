@@ -23,7 +23,7 @@ gem 'will_paginate' #, '~> 3.0'
 
 gem 'oauth' #, '~> 0.4.7' # exigido pelo JIRA, que agora esta dentro do lib
 
-gem 'mysql2' , '0.3.20'
+gem 'mysql2' #, '0.3.20'
 
 
 gem 'thin' # web server
@@ -50,7 +50,7 @@ gem 'ruby-graphviz'
 gem 'jquery-rails'
 
 # gem "audited-activerecord" #, "~> 3.0"
-gem "audited", "~> 4.3"
+gem "audited"
 
 gem 'rake' #, '10.4.2'
 # gem "therubyracer"

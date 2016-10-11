@@ -2,7 +2,7 @@
 require "jiraable"
 require "statusable"
 class Ci < ActiveRecord::Base
-  # audited
+  audited
   self.per_page = 20
 
   #has_associated_audits
@@ -222,8 +222,10 @@ class Ci < ActiveRecord::Base
   end
 
   def limpa_atributos_outros_tipo
+    Rails.logger.debug "[DEBUG] Ci.limpa_atributos_outros_tipo: id:[#{self.id}]:#{self.chave} tipoci_id:[#{tipoci_id}]"
     atributo.each do |attr|
       if attr.dicdado.tipoci_id != tipoci_id
+        Rails.logger.debug "[DEBUG]     apagando atributo:[#{attr.dicdado_id}]"
         attr.delete
         attr.save
       end
@@ -270,7 +272,6 @@ class Ci < ActiveRecord::Base
         # TODO Log
       end
     end
-
 
     limpa_atributos_outros_tipo
 

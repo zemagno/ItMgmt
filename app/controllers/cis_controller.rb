@@ -373,7 +373,6 @@ class CisController < ApplicationController
     respond_to do |format|
       if @ci.update_attributes(params[:ci])
         @ci.atributos = params[:atributos]
-        @ci.limpa_atributos_outros_tipo
         format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
         format.json { head :no_content }
       else
