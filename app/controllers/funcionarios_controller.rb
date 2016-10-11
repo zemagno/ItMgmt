@@ -6,17 +6,12 @@ class FuncionariosController  < InheritedResources::Base
     puts "FuncionariosController::load_custom_attributes"
     @attrs = []
     begin
-      puts "1"
       @funcionario = Funcionario.find(params[:id])
-          puts "2"
       @funcionario.attribute_names.each do |attr|
-        puts "3"
         @attrs << [attr,"#{$1}".underscore.humanize,@funcionario.attributes[attr]] if attr =~ /^custom(\w+)$/
       end
-      puts "4"
     rescue => error
-      puts "5"
-       puts error.backtrace
+      puts error.backtrace
       flash[:error] = "Error[DB0002] - Funcionario nao encontrato"
     end
     puts "Func: ==> #{@funcionario}"

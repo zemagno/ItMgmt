@@ -2,7 +2,7 @@
 require "jiraable"
 require "statusable"
 class Ci < ActiveRecord::Base
-  audited
+  # audited
   self.per_page = 20
 
   #has_associated_audits
@@ -22,25 +22,23 @@ class Ci < ActiveRecord::Base
 
 
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
-  has_many :relacao_dependencia,
+  has_many :relacao_dependencia, -> { where 'tipo=0'},
            :class_name => "Relacionamento",
            :foreign_key => "impactado_id",
-           :dependent => :delete_all,
-           :conditions => "tipo = 0"
+           :dependent => :delete_all
 
   has_many :dependentes,
-           :through => :relacao_dependencia,
-           :include => "tipoci"
+           :through => :relacao_dependencia 
+           # :include => "tipoci"
 
-  has_many :relacao_composto_de,
+  has_many :relacao_composto_de, -> { where 'tipo=1'},
            :class_name => "Relacionamento",
            :foreign_key => "impactado_id",
-           :dependent => :delete_all,
-           :conditions => "tipo = 1"
+           :dependent => :delete_all
 
   has_many :composto_de,
-           :through => :relacao_composto_de,
-           :include => "tipoci"
+           :through => :relacao_composto_de 
+           # :include => "tipoci"
 
   has_many :relacao_dependencia_all,
            :class_name => "Relacionamento",
@@ -48,8 +46,8 @@ class Ci < ActiveRecord::Base
            :dependent => :delete_all
 
   has_many :dependentes_all,
-           :through => :relacao_dependencia_all,
-           :include => "tipoci"
+           :through => :relacao_dependencia_all 
+           # :include => "tipoci"
 
   has_many :relacao_impacto,
            :class_name => "Relacionamento",
@@ -57,13 +55,13 @@ class Ci < ActiveRecord::Base
            :dependent => :delete_all
 
   has_many :impactados,
-           :through => :relacao_impacto,
-           :include => "tipoci"
+           :through => :relacao_impacto
+           # :include => "tipoci"
 
-  validates :Owner, :format => {:with => /^[a-zA-z.]+$/,                 message: I18n.t("errors.ci.Owner.format")}
+  validates :Owner, :format => {:with => /\A[a-zA-z.]+\z/,                 message: I18n.t("errors.ci.Owner.format")}
   validates :chave, :presence =>  {                                      message: I18n.t("errors.ci.chave.presence")}
   validates :chave, :uniqueness => {:case_sensitive => false,            message: I18n.t("errors.ci.chave.uniqueness")}
-  validates :chave, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/,        message: I18n.t("errors.ci.chave.format") }
+  validates :chave, format: { with: /\A[a-zA-Z0-9\_\-\<\>\.\/]+\z/,        message: I18n.t("errors.ci.chave.format") }
   validates :descricao, :presence => {                                   message: I18n.t("errors.ci.descricao.presence")}
 
   # validates :Owner, :format => {:with => /^[a-zA-z.]+$/,                 message: "Gestor tem que ser um ID de rede (somente caracteres)"}
@@ -78,7 +76,7 @@ class Ci < ActiveRecord::Base
   after_destroy :post_destroy_processing
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
-  default_scope order('chave ASC')
+  default_scope { order('chave ASC') }
   #sphinx_scope order('chave ASC')
 
 
@@ -238,7 +236,8 @@ class Ci < ActiveRecord::Base
   def setatributo(key, value)
     k = atributos.select { |k, v| v[5] == key }
     if !k.blank?
-      a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, k.keys[0])
+      # a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, k.keys[0])
+      a = Atributo.find_or_create_by(ci_id: id, dicdado_id: k.keys[0])
       a.valor=value
       a.save!
     end
@@ -261,7 +260,8 @@ class Ci < ActiveRecord::Base
 
     attr_default.each do |attr|
 
-      atr = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, attr[0])
+      # atr = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, attr[0])
+      atr = Atributo.find_or_create_by(ci_id: id , dicdado_id: attr[0])
 
       begin #posso nao ter recebido parametro nenhum
         atr.valor = novos_atributos[attr[1][0]]
@@ -300,52 +300,6 @@ class Ci < ActiveRecord::Base
     @c = Ci.find_gen(id)
     attr = (@c ? @c.atributos : nil)
     [@c, attr]
-  end
-
-
-  # def libera_estacao
-  #   self.statusci_id = 8
-  #   self.CCDebito = ""
-  #   self.ProjetoDebito = ""
-  #   self.Owner = "BRQ"
-  #   self.notificacao = ""
-  #   save!
-  # end
-
-  # def desaloca_licenca
-  #   self.statusci_id = 8
-  #   self.CCDebito = ""
-  #   self.ProjetoDebito = ""
-  #   self.Owner = "BRQ"
-  #   self.notificacao = ""
-  #   save!
-  # end
-
-
-  define_index do
-    indexes chave
-    indexes descricao
-    indexes :Owner, :as => :gestor
-    indexes notificacao, :as => :usuario
-    indexes :CCCredito
-    indexes :ProjetoCredito
-    indexes :CCDebito
-    indexes :ProjetoDebito
-    indexes :descricaocobranca
-    indexes :codigocobranca
-    indexes :codigorateio
-    indexes :provisionar
-    indexes :tipoCobranca
-    indexes jira
-    indexes site(:nome), :as => :localidade
-    indexes statusci(:status), as => :status
-    # indexes :tipoci_id
-    indexes tipoci(:tipo), :as => :tipo
-    indexes atributo(:valor), :as => :valoratributo
-    indexes site(:estado), as => :estado
-    has :tipoci_id
-    #has site_id  # se eu quiser quiser filtrar..
-    #has tipoci_id
   end
 
 

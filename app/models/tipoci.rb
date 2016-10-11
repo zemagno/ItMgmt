@@ -3,7 +3,8 @@ class Tipoci < ActiveRecord::Base
   attr_accessible :Descricao, :tipo, :Owner, :perfil
   has_many :dicdados
 
-  default_scope order('tipo ASC')
+  default_scope { order('tipo ASC') }
+  
 
   OWNER_SCREEN_SIZE = 20
   OWNER_MAX_LENGTH = 20

@@ -4,7 +4,7 @@ class MailingsController < InheritedResources::Base
 
 
 	def templates 
-    	TemplatesEmail.find_all_by_tipo("MAILING")
+    	TemplatesEmail.where(tipo: "MAILING")
     end
 
     def campanhas

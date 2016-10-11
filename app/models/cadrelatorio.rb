@@ -6,19 +6,10 @@ class Cadrelatorio < ActiveRecord::Base
 
   validates :nome, :presence => {:message => I18n.t("errors.cadrelatorio.nome.presence")}
   validates :nome, :uniqueness => {:case_sensitive => false, :message => I18n.t("errors.cadrelatorio.nome.uniqueness")}
-  validates :nome, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/, message: I18n.t("errors.cadrelatorio.nome.format") }
+  validates :nome, format: { with: /\A[a-zA-Z0-9\_\-\<\>\.\/]+\z/, message: I18n.t("errors.cadrelatorio.nome.format") }
   validates :descricao, :presence => {:message => I18n.t("errors.cadrelatorio.descricao.presence")}
 
-  default_scope order('ordem ASC')
-
-  define_index do
-    indexes nome
-    indexes descricao
-    indexes categoria
-    indexes dashboard
-    indexes tipoci(:tipo), :as => :tipo
-  end
-
+  default_scope { order('ordem ASC') }
 
   def AtualizaEstatisticas
     self.ultimoacesso = DateTime.now.to_date
@@ -26,10 +17,10 @@ class Cadrelatorio < ActiveRecord::Base
     save!
   end
 
-  def getPainel
-    r = Cadrelatorio.find_all_by_painel(1)
+  # def getPainel
+  #   r = Cadrelatorio.find_ all_by_painel(1)
 
-  end
+  # end
 
   def duplicar(novoNome)
     newCad = dup 

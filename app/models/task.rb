@@ -65,14 +65,6 @@ class Task < ActiveRecord::Base
     status_incidente.blank? ? "" : status_incidente.status 
   end
 
-  define_index do
-      indexes nome
-      indexes description
-      indexes chamado
-      indexes tipotask
-      indexes ci(:chave), :as => :CI
-      indexes ci_id
-      indexes :Ativo
-  end
+
      
 end

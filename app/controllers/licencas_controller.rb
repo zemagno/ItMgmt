@@ -31,14 +31,14 @@ class LicencasController < ApplicationController
     puts params
     puts "_____________________________________________________________________________"
 
-    authorize! :read, :licencas, :message => "Voce nao tem permissao para visualizar isso."
+    authorize! :show, CanHelperLicenciamento, :message => "Voce nao tem permissao para visualizar isso."
     usr = params[:id]
 
     getLicencasPorGestor(usr)
   end
 
   def porUsuario
-    authorize! :read, :licencas, :message => "Voce nao tem permissao para visuzalizar isso."
+    authorize! :show, CanHelperLicenciamento, :message => "Voce nao tem permissao para visuzalizar isso."
     usr = params[:id]
     @usuario = GestaoUsuario.new(:login => usr)
     usuario=GestaoLicenciamento.new(usr)
@@ -47,7 +47,7 @@ class LicencasController < ApplicationController
 
 
   def estacoesEquipeGestor
-    authorize! :read, :licencas, :message => "Voce nao tem permissao para visuzalizar isso."
+    authorize! :show, CanHelperLicenciamento, :message => "Voce nao tem permissao para visuzalizar isso."
     usr = params[:id]
     @gestor=GestaoLicenciamento.new(usr)
     @usuario = GestaoUsuario.new(:login => usr)

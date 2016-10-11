@@ -1,15 +1,19 @@
 class Parametro < ActiveRecord::Base
 
-  default_scope order('Tipo ASC')
+attr_accessible :tipo, :subtipo, :valor
+
+  default_scope { order('Tipo ASC') }
   
   def self.get(options)
-      p = Parametro.find_by_tipo_and_subtipo(options[:tipo],options[:subtipo])
+      Rails.logger.debug "[DEBUG]Parametro.get(#{options})"
+      p = Parametro.where(tipo: options[:tipo],subtipo: options[:subtipo]).first
       p.blank? ? "" : p.valor
   end
 
   def self.list(options)
+      Rails.logger.debug "[DEBUG]Parametro.list(#{options})"
       r = []
-      Parametro.find_all_by_tipo(options[:tipo]).each  { |p| r << [p.tipo,p.subtipo,p.valor] }
+      Parametro.where(tipo: options[:tipo]).each  { |p| r << [p.tipo,p.subtipo,p.valor] }
       r
   end
 

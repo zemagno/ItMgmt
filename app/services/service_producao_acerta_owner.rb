@@ -9,8 +9,8 @@ class ServiceProducaoAcertaOwner
     totalUpdated = 0
 
 
-    Ci.find_all_by_tipoci_id(filtroCi).each do |ci|
-      # Ci.find_all_by_id([14457]).each do |ci|
+    Ci.where(tipoci_id: filtroCi).each do |ci|
+      
       if ci.Owner =~ /^[a-zA-z.]+$/ and ci.notificacao =~ /^[a-zA-z.]+$/
         gestor = Funcionario.find_by_Login(ci.Owner)
         usuario = Funcionario.find_by_Login(ci.notificacao)

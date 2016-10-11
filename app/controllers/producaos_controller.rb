@@ -17,7 +17,6 @@ class ProducaosController < InheritedResources::Base
         @producaos = Producao.paginate(:page => params[:page])
       else
         @producaos = Producao.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-        @producaos.length #TODO rever essa linha
         @producaos.compact!
       end
     rescue  => error

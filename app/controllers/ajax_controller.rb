@@ -14,8 +14,6 @@ class AjaxController < ApplicationController
 
 
   def gestores
-
-
    
     gestores = Gestores.deFuncionarios
 

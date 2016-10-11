@@ -1,10 +1,17 @@
+<div id="stylized" class="myform">
+<b><h1>Status dos Ativos</h1><b>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Status:</b>
-  <%= @statusci.status %>
-</p>
+<table>
+  <col width="130">
+<tr><td>Status:</td><td><b><%= @statusci.status  %></b></td></tr>
+<tr><td>Parametro:</td><td><b> <%= @statusci.parametro %></b></td></tr>
+<tr><td>Icone:</td><td><b><%= @statusci.icon %></b></td></tr>
+<tr><td>Icone:</td><td><img src="/icons/<%=@statusci.icon%>" alt=" " height="16" width="16"></td></tr>
 
+</table>
 
-<%= link_to '[Editar]', edit_statuscis_path(@statusci) %> |
+<% if (can? :manage, Statusci)  %>
+<%= link_to '[Editar]', edit_statusci_path(@statusci) %> |
+<% end %>
 <%= link_to '[Listagem]', "/statuscis" %>

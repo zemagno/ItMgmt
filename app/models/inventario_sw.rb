@@ -8,7 +8,7 @@ class InventarioSw < ActiveRecord::Base
 
   after_create :post_create_processing
 
-  default_scope where(:versao => 0)
+  default_scope { where(:versao => 0) }
 
   def self.quemUsa
 

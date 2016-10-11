@@ -43,7 +43,7 @@
     <td><%= dicdado.ordem %></td>
     <% if (can? :manage, Dicdado)  %>
     <td><%= link_to 'Editar', edit_dicdado_path(dicdado) %></td>
-    <td><%= link_to 'Apagar', dicdado, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Apagar', dicdado, data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete %></td>
     <% end %>
   </tr>
 <% end %>

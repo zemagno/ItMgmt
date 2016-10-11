@@ -1,6 +1,6 @@
 <h1>Tipos de Ativos</h1>
 
-<%= link_to '[Novo Tipo]', new_tipoci_path %>
+<%= link_to '[Novo Tipo]', new_tipoci_path if (can? :manage, Tipoci) %>
 
 <table>
   <tr>
@@ -32,4 +32,4 @@
 
 <br />
 
-<%= link_to '[Novo Tipo]', new_tipoci_path %>
+<%= link_to '[Novo Tipo]', new_tipoci_path if (can? :manage, Tipoci) %>

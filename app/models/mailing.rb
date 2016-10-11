@@ -1,7 +1,7 @@
 class Mailing < ActiveRecord::Base
   belongs_to :templates_email
   attr_accessible :body, :cc, :subject, :tag, :to, :from, :templates_email_id
-  default_scope order('tag ASC')
+  default_scope { order('tag ASC') }
 
   def templates_email_nome 
     templates_email.nil? ? "" : templates_email.nome

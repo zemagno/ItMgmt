@@ -9,7 +9,7 @@ class InventarioController < ApplicationController
 
   def porHostname
 
-    authorize! :read, :licencas, :message => "Voce nao tem permissao para visualizar isso."
+    authorize! :read, Licenca, :message => "Voce nao tem permissao para visualizar isso."
     usr = params[:id]
 
     softwares = ""

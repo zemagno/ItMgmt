@@ -46,7 +46,7 @@ class StatuscisController < ApplicationController
 
     respond_to do |format|
       if @statusci.save
-        format.html { redirect_to @statusci, notice: 'Statusci was successfully created.' }
+        format.html { redirect_to @statusci, notice: I18n.t("msg.statusci.created") }
         format.json { render json: @statusci, status: :created, location: @statusci }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class StatuscisController < ApplicationController
 
     respond_to do |format|
       if @statusci.update_attributes(params[:statusci])
-        format.html { redirect_to @statusci, notice: 'Statusci was successfully updated.' }
+        format.html { redirect_to @statusci, notice: I18n.t("msg.statusci.updated")  }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

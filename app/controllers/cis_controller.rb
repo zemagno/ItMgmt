@@ -8,12 +8,15 @@ class CisController < ApplicationController
   # authorize_resource #cancan
   # skip_authorize_resource :only => :index2
 
-
-
+  
   ActionController.add_renderer :csv do |csv, options|
     self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
   end
 
+  respond_to :html, :xml, :json, :csv
+
+
+# estava testanto renderizacao de todas as telas pois fiz upgrade para o 4.2
 
   # @layout 'application_novolyaout'
 
@@ -27,7 +30,7 @@ class CisController < ApplicationController
   # @sites
   # @tiposci
 
-  # TODO colocar carrega agregadas no before_action/before_filter para alguns metodos abaixo..
+  # TODO colocar carrega agregadas no before_ action/before_f ilter para alguns metodos abaixo..
 
   def log
     id = params[:id]
@@ -168,7 +171,7 @@ class CisController < ApplicationController
     @id = params[:id]
     @controller="cis"
     t = Ci.find(@id).nice_tipoci
-    @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
+    @templates_email = TemplatesEmail.get_all_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
     respond_to do |format|
       format.js {
         render :action => "../common/email", :format => [:js]
@@ -284,7 +287,7 @@ class CisController < ApplicationController
   end
 
   def index
-
+    Rails.logger.debug "1"
 
     @search = params[:search] || session[:search_cis]
 
@@ -293,19 +296,21 @@ class CisController < ApplicationController
     session[:oldCI] = nil
     session[:view_default_ci] = @view_default_ci
 
+    Rails.logger.debug "2"
     begin
       if @search.blank?
-        @cis = Ci.paginate(:page => params[:page])
+        Rails.logger.debug "[DEBUG]CisController:index procurando por tudo (sem parametro de search)"
+        @cis = Ci.includes(:tipoci).paginate(:page => params[:page])
       elsif @search[0] =="%"
         # TODO documentar isso ..
         @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
       else
         # TODO colocar o finalAuth[view] nesse search.
-        Rails.logger.debug "#{request.fullpath}: search : [#{@search}]"
+        Rails.logger.debug "[DEBUG]#{request.fullpath}: search : [#{@search}]"
         @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page] , :with => {
           :tipoci_id => finalAuth[:view]
         }
-        @cis.length
+        # @cis.length
         @cis.compact!
       end
     rescue
@@ -313,17 +318,21 @@ class CisController < ApplicationController
       @cis = Ci.paginate(:page => params[:page])
     end
 
-   @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
+    Rails.logger.debug "[DEBUG]CisController:@view_default_ci: #{@view_default_ci}"
+
+    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
     # cache_finalAuth = finalAuth[:view]
     # @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
-    respond_to do |format|
-      format.html { render :html => @cis }
-      format.json { render :json => @cis }
-      format.xml  { render :xml => @cis }
-      # format.xml { render :xml => to_xml(params[:id],@campos,@resultado) }
-      format.csv { render :csv => to_csv("Cis",@fields,@cis) }
-    end
+
+    Rails.logger.debug "3"
+    respond_with @cis
+    # respond_to do |format|
+    #   format.html { render :html => @cis }
+    #   format.json { render :json => @cis }
+    #   format.xml  { render :xml => @cis }
+    #   format.csv { render :csv => to_csv("Cis",@fields,@cis) }
+    # end
   end
 
 

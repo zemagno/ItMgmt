@@ -101,10 +101,10 @@ end
 def email
     # so seleciono os templates do tipo de ci sendo visualizado
     @id = params[:id]
-    @controller="GestaoUsuarios"
+    @controller="gestao_usuarios"
     
-    @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("GESTAO USUARIO","xxxx") #  esse metodo ta no Templates e nao pertence ao Rails
-    
+    @templates_email = TemplatesEmail.get_all_by_tipo_and_subtipo("GESTAO USUARIO","xxxx") #  esse metodo ta no Templates e nao pertence ao Rails
+    Rails.logger.debug "[DEBUG]GestaoUsuarios:email Templates: [#{@templates_email}]"  
     respond_to do |format|
       format.js { 
         render :action => "../common/email", :format => [:js]        

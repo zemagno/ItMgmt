@@ -3,7 +3,7 @@ class TemplatesEmail < ActiveRecord::Base
   after_create :criar_parametros
   after_destroy :apagar_parametros
   before_save :renomear_parametros
-  default_scope order('tipo ASC, subtipo ASC')
+  default_scope { order('tipo ASC, subtipo ASC') }
 
   # TODO se mudar o tipo fica orfao de parametro..
 
@@ -11,9 +11,9 @@ class TemplatesEmail < ActiveRecord::Base
   	  "#{nome} - #{sync ? 'Browse' : 'Direto'}"
   end
 
-  def self.find_by_tipo_and_subtipo(_tipo,_subtipo)
-      templates_email = TemplatesEmail.find_all_by_tipo_and_subtipo(_tipo,"")
-      templates_email.concat(TemplatesEmail.find(:all, :conditions => ["tipo = ? AND subtipo like ?", _tipo, "%#{_subtipo}%"]))
+  def self.get_all_by_tipo_and_subtipo(_tipo,_subtipo)
+      templates_email = TemplatesEmail.where(tipo: _tipo,subtipo:"")
+      templates_email.concat(TemplatesEmail.where("tipo = :tipo AND subtipo like :subtipo", tipo: _tipo, subtipo: "%#{_subtipo}%"))
       templates_email
   end
 

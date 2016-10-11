@@ -1,6 +1,6 @@
 
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+protect_from_forgery with: :exception
 
   # rescue_from Exception, :with => :error_render_method
 
@@ -49,8 +49,8 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
 
       finalauth = Rails.cache.read("ability/#{current_user.name}") if current_user
-      Rails.logger.debug "ApplicationController:finalAuth: current_user : #{current_user.name}"
-      Rails.logger.debug "ApplicationController:finalAuth: finalauth: #{finalauth}"
+      Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: current_user : #{current_user.name}"
+      Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: finalauth: #{finalauth}"
       if finalauth.nil?
         finalauth = {}
         auth = Tipoci.all.map { |t| [t.id,t.perfil] }
@@ -68,8 +68,8 @@ class ApplicationController < ActionController::Base
         # puts "ability/#{current_user.name} --> #{finalauth}"
       end
     end
-    Rails.logger.debug "ApplicationController:finalAuth: return: auth  #{auth}"
-    Rails.logger.debug "ApplicationController:finalAuth: return: final #{finalauth}"
+    Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: return: auth  #{auth}"
+    Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: return: final #{finalauth}"
 
     finalauth
   end

@@ -1,5 +1,7 @@
 class Atributo < ActiveRecord::Base
-  audited associated_with: :ci
+  # audited associated_with: :ci
+  attr_accessible  :ci_id ,:dicdado_id,:valor
+  
   belongs_to :ci
   belongs_to :dicdado
 

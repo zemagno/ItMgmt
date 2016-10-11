@@ -1,7 +1,7 @@
 class Scheduler < ActiveRecord::Base
   attr_accessible :job, :when, :ordem
 
-  default_scope order('ordem ASC')
+  default_scope { order('ordem ASC') }
 
   def self.go
   	hoje = Time.now()

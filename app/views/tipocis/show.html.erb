@@ -1,21 +1,19 @@
+<div id="stylized" class="myform">
+<b><h1>Tipos de Ativos</h1><b>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Tipo:</b>
-  <%= @tipoci.tipo %>
-</p>
+<table>
+  <col width="130">
+<tr><td>Tipo:</td><td><b><%= @tipoci.tipo  %></b></td></tr>
+<tr><td>Descricao:</td><td><b> <%= @tipoci.Descricao %></b></td></tr>
+<tr><td>Owner:</td><td><b><%= @tipoci.Owner %></b></td></tr>
 
-<p>
-  <b>Descricao:</b>
-  <%= @tipoci.Descricao %>
-</p>
-
-<p>
-  <b>Owner:</b>
-  <%= @tipoci.Owner %>
-</p>
+</table>
 
 
+
+
+<% if (can? :manage, Tipoci)  %>
 <%= link_to 'Editar', edit_tipoci_path(@tipoci) %> |
+<% end %>
 <%= link_to 'Voltar', tipocis_path %>
-

@@ -38,3 +38,7 @@ en:
       apelido:
         presence: "Apelido do campo é mandatorio"
         format: "Apelido deve conter somente caracteres alanumericos" 
+  msg:
+    statusci:
+      updated: "Status foi atualizado com sucesso"
+      created: "Status foi criado com sucesso"

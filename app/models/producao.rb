@@ -1,7 +1,7 @@
 class Producao < ActiveRecord::Base
   attr_accessible :data, :detalhe, :id, :job, :status
 
-  default_scope order('created_at DESC')
+  default_scope { order('created_at DESC') }
 
   def self.dispatcherJob(_job)
   	j = self.create(:job => _job, :status => "Scheduled")
@@ -16,11 +16,5 @@ class Producao < ActiveRecord::Base
   	save!
   end
 
-  define_index do
-    indexes detalhe
-    indexes status
-    indexes job
-    indexes id
-    indexes data
-  end
+
 end

@@ -84,19 +84,20 @@ class Ability
       can    :index,  Parametro   
       cannot :manage, Site
       can    :index,  Site   
-      can    :index,  Tipoci
-      can    :index, Dicdado
-      can    :show,  Dicdado
+      can    [:show, :index],  Tipoci
+      can    [:show, :index], Dicdado
+      # can    :show,  Dicdado
       can    :index, Software
       cannot :manage, User
       can    :index, User
       can    :index, Grupo
-      can    :index, Statusci
+      can    [:show, :index], Statusci
       can    :manage, :usuarios
       can    :manage, Task
       can    :manage, Note
       can    :manage, "tasks"
       can    :manage, Funcionario
+      can    :show, CanHelperLicenciamento
 
     end
 
@@ -143,7 +144,7 @@ class Ability
 
 
     # cannot :manage, CanHelperLicenciamento
-    #can :manage, :all
+    # can :manage, :all
 
     # cannot :manage, Grupo
 

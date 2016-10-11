@@ -1,6 +1,6 @@
 class InventarioUser < ActiveRecord::Base
   attr_accessible :hostname, :login
-  default_scope where(:versao => 0)
+  default_scope { where(:versao => 0) }
 
   # has_many :sofwaresEmUso, through: : :attribute_key => 'issueTypes'
 

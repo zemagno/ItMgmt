@@ -2,7 +2,7 @@ class CadrelatoriosController < ApplicationController
 
   authorize_resource
 
-  before_filter :carrega_agregadas
+  before_action :carrega_agregadas
 
   # helper_method :categoria_relatorios
 
@@ -16,6 +16,7 @@ class CadrelatoriosController < ApplicationController
 
 
   def carrega_agregadas
+    Rails.logger.debug "[DEBUG] CadrelatoriosController: carrega_agregadas"
     @tiposci = Tipoci.all
   end
 

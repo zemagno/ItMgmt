@@ -1,10 +1,10 @@
 class SqlTemplatesController < InheritedResources::Base
-before_filter :which_mode
+before_action :which_mode
 authorize_resource
 
 def templates_async
 	arr = []
-	TemplatesEmail.find_all_by_sync(false).each do |t|
+	TemplatesEmail.where(sync: false).each do |t|
 		arr << "ci_mailer/#{t.template}"
 	end
 	arr	
