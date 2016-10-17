@@ -316,6 +316,7 @@ DEPENDENCIES
   redis-rails
   responders
   rspec
+  rspec-expectations
   rspec-rails
   ruby-graphviz
   sass-rails

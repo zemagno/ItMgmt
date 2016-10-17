@@ -89,5 +89,6 @@ group :test do
   gem 'capybara'
   gem 'rspec'
   gem 'mocha'
+  gem 'rspec-expectations'
     gem "selenium-webdriver"
 end
