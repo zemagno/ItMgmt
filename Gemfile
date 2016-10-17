@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 gem 'railties'
 gem 'rails', '4.2.7'
 gem 'protected_attributes'
-gem 'responders' #, '~> 2.0' 
+gem 'responders' #, '~> 2.0'
 
 group :test, :development do
   gem 'hirb'
@@ -40,7 +40,7 @@ gem 'axlsx_rails' # gerador de Excel via nokogiri
 
 # gem 'wisper' # publish/subscriber
 
-gem 'inherited_resources' 
+gem 'inherited_resources'
 
 
 gem 'thinking-sphinx' #, '2.0.13'
@@ -62,8 +62,7 @@ gem 'sass-rails'
 
 gem "nifty-generators", :group => :development
 
-gem "rspec", :group => :test
-gem "rspec-rails", :group => [:development, :test]
+
 
 gem "awesome_print", require:"ap", :group => :development
 # gem 'omniauth-google-apps'
@@ -75,12 +74,20 @@ gem 'dalli', '2.7.4'   # cache no redis
 
 
 gem 'whenever', :require => false # crontab like
-gem 'sidekiq' 
-gem 'sidekiq-failures' 
+gem 'sidekiq'
+gem 'sidekiq-failures'
 gem 'sinatra', require: false
 
-# gem 'quiet_assets' # suppresses output of asset requests 
+# gem 'quiet_assets' # suppresses output of asset requests
 
-gem 'deep_cloneable' 
+gem 'deep_cloneable'
 
-gem "mocha", :group => :test
+gem "rspec-rails", :group => [:development, :test]
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'rspec'
+  gem 'mocha'
+    gem "selenium-webdriver"
+end

@@ -233,61 +233,61 @@ class CisController < ApplicationController
   end
 
 
-  def index2
+  # def index2
 
 
-    @search = params[:search] || session[:search_cis]
+  #   @search = params[:search] || session[:search_cis]
 
-    @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
-    session[:search_cis] = @search
-    session[:oldCI] = nil
-    session[:view_default_ci] = @view_default_ci
+  #   @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
+  #   session[:search_cis] = @search
+  #   session[:oldCI] = nil
+  #   session[:view_default_ci] = @view_default_ci
 
-    begin
-      if @search.blank?
+  #   begin
+  #     if @search.blank?
 
-        @cis = Ci.paginate(:page => params[:page])
-      elsif @search[0] =="%"
-        @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
-      else
-        @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-        @cis.length
-        @cis.compact!
-      end
-    rescue
-      flash[:error] = "Error[DB0001] - Erro no mecanismo de busca. Listando tudo !"
-      @cis = Ci.paginate(:page => params[:page])
-    end
+  #       @cis = Ci.paginate(:page => params[:page])
+  #     elsif @search[0] =="%"
+  #       @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
+  #     else
+  #       @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
+  #       @cis.length
+  #       @cis.compact!
+  #     end
+  #   rescue
+  #     flash[:error] = "Error[DB0001] - Erro no mecanismo de busca. Listando tudo !"
+  #     @cis = Ci.paginate(:page => params[:page])
+  #   end
 
-    #if @cis.size==0 then
-    #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
-    #end
+  #   #if @cis.size==0 then
+  #   #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
+  #   #end
 
-    # TODO filtro de tipos aqui...
+  #   # TODO filtro de tipos aqui...
 
-    # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
-    #   # @ci = @cis[0]
-    #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
-    #   render :show and return
-    # end
+  #   # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
+  #   #   # @ci = @cis[0]
+  #   #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
+  #   #   render :show and return
+  #   # end
 
 
-    #@fields =
+  #   #@fields =
 
-    # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
-    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
-    @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-    cache_finalAuth = finalAuth[:view]
-    @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
-    respond_to do |format|
-      format.html { render :action => "index" ,:html => @cis }
-      format.xml { render :xml => @cis }
-      format.csv { render :action => "index" , :csv => to_csv("Cis",@fields,@cis) }
-    end
-  end
+  #   # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
+  #   @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
+  #   @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
+  #   cache_finalAuth = finalAuth[:view]
+  #   @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
+  #   respond_to do |format|
+  #     format.html { render :action => "index" ,:html => @cis }
+  #     format.xml { render :xml => @cis }
+  #     format.csv { render :action => "index" , :csv => to_csv("Cis",@fields,@cis) }
+  #   end
+  # end
 
   def index
-    Rails.logger.debug "1"
+
 
     @search = params[:search] || session[:search_cis]
 
@@ -296,7 +296,7 @@ class CisController < ApplicationController
     session[:oldCI] = nil
     session[:view_default_ci] = @view_default_ci
 
-    Rails.logger.debug "2"
+
     begin
       if @search.blank?
         Rails.logger.debug "[DEBUG]CisController:index procurando por tudo (sem parametro de search)"
@@ -322,10 +322,10 @@ class CisController < ApplicationController
 
     @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-    # cache_finalAuth = finalAuth[:view]
+    # cache_finalAuth = finalAuth[:view] # nao preciso pois o search ja esta com :with
     # @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
 
-    Rails.logger.debug "3"
+
     respond_with @cis
     # respond_to do |format|
     #   format.html { render :html => @cis }

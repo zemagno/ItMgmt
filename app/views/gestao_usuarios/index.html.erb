@@ -263,8 +263,8 @@
   <%= submit_tag("Remover") %>
 </br></br>
 </div>
-<% end %>
-<% end %>
+<% end %> <!-- form -->
+<% end %> <!-- if modo == remocao_licenca -->
 
 <% if @modo == :alocar_licenca %>
 <div id="stylized" class="myform">
@@ -310,8 +310,8 @@
 </br></br>
 </div>
 
-<% end %>
-<% end %>
+<% end %> <!-- form -->
+<% end %> <!-- if @modo == alocar_licenca -->
 <% else %>
   <br><b><p>Voce nao tem autorizacao para vizualizar...</b>
 <% end %>

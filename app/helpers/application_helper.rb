@@ -57,9 +57,9 @@ module ApplicationHelper
   def print_nice_identity(detalhes,sep,size)
     det = detalhes.to_s || ""
     # det.split(sep).sort.join(";").scan(/.{1,#{size}}/).join("<BR>")
-    det = det.split(sep).sort.join("<BR>")
+    det = det.split(sep).sort.join("<BR>")  # se tiver mais de una linha, tera um <BR> no codigo
     det = "<span class=\"hidden\">#{det}</span>"
-    det = "<div class=\"content\">.....<BR>#{det}</div>" if det.include? "<BR>"
+    det = "<div class=\"colapsado\">.....<BR>#{det}</div>" if det.include? "<BR>" # se tiver mais de una linha, tera um <BR> no codigo e com isso, ganhara a class content
     det
   end
 
