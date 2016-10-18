@@ -25,9 +25,6 @@
 
       <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true) if ! @funcionario.demitido? %>
 
-
-</b>      
-      
       </br>
       </br>
       <%= link_to '[Identidades]', identities_path(@usuario.login), :target => "_blank" %>

@@ -2,68 +2,56 @@
   <p id="notice"><%= notice %><br>
 
 
-  <b>Login:</b>
-  <%= @funcionario.Login %>
+  <b>Login: </b><%= @funcionario.Login %>
 <br>
 
 
-  <b>Matricula:</b>
-  <%= @funcionario.Matricula %>
+  <b>Matricula: </b><%= @funcionario.Matricula %>
 <br>
 
 
-  <b>Nome:</b>
-  <%= @funcionario.Nome %>
+  <b>Nome: </b><%= @funcionario.Nome %>
 <br>
 
 
-  <b>Cipa:</b>
-  <%= @funcionario.cipa ? "Sim" : "Nao" %>
+  <b>Cipa: </b><%= @funcionario.cipa ? "Sim" : "Nao" %>
 <br>
 
 
-  <b>Brigadista:</b>
-  <%= @funcionario.brigadista ? "Sim" : "Nao" %>
+  <b>Brigadista: </b><%= @funcionario.brigadista ? "Sim" : "Nao" %>
 
 <br>
 
-  <b>Sem Estacao:</b>
-  <%= @funcionario.semEstacao ? "Sim" : "Nao" %>
+  <b>Sem Estacao: </b><%= @funcionario.semEstacao ? "Sim" : "Nao" %>
 <br>
 
 
 
-  <b>Afastado:</b>
-  <%= @funcionario.afastado ? "Sim" : "Nao" %>
+  <b>Afastado: </b><%= @funcionario.afastado ? "Sim" : "Nao" %>
 <br>
 
 
-  <b>Data Inicio Afastamento:</b>
-  <%= @funcionario.DataInicioAfastamento  %>
+  <b>Data Inicio Afastamento: </b><%= @funcionario.DataInicioAfastamento  %>
 <br>
 
 
-  <b>Data Final Afastamento:</b>
-  <%= @funcionario.DataFinalAfastamento  %>
+  <b>Data Final Afastamento: </b><%= @funcionario.DataFinalAfastamento  %>
 <br>
 
 
-<b>Observacao:</b>
-  
+<b>Observacao: </b>
 <b><%= @funcionario.observacao%> </b> 
 <br>
 
 
-  <b>Tem Ramal sendo externo:</b>
-  <%= @funcionario.ramalSendoExterno ? "Sim" : "Nao" %>
+  <b>Tem Ramal sendo externo: </b><%= @funcionario.ramalSendoExterno ? "Sim" : "Nao" %>
 <br>
 
 
 
 <% @attrs.each do |attr| %>
 
-  <b><%= attr[1] %> : </b>
-  <%= attr[2] ? "Sim" : "Nao" %>
+  <b><%= attr[1] %> : </b><%= attr[2] ? "Sim" : "Nao" %>
   <br>
 <% end %>
 
