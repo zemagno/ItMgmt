@@ -199,6 +199,7 @@ table td.actions a {
 }
 .navbar-main .sub-menu{
    position: absolute;
+   z-index: 5;
     display: none;
     width: 175px;
         background: #2aa1cc;
