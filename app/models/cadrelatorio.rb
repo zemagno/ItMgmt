@@ -24,6 +24,11 @@ class Cadrelatorio < ActiveRecord::Base
 
   # end
 
+  def nice_tipoci
+    tipoci.nil? ? "" : tipoci.tipo
+    
+  end
+
   def duplicar(novoNome)
     newCad = dup 
     newCad.nome  = novoNome

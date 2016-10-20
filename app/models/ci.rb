@@ -13,6 +13,8 @@ class Ci < ActiveRecord::Base
 
   attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id
 
+
+
   belongs_to :site
   belongs_to :tipoci
   belongs_to :statusci
@@ -74,6 +76,7 @@ class Ci < ActiveRecord::Base
   before_save :atualiza_statusci
   after_create :post_create_processing
   after_destroy :post_destroy_processing
+  after_save ThinkingSphinx::RealTime.callback_for(:cadrelatorio)
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
   default_scope { order('chave ASC') }
@@ -108,6 +111,10 @@ class Ci < ActiveRecord::Base
     tipoci.nil? ? "" : tipoci.tipo
   end
 
+  def nice_status
+    statusci.nil? ? "" : statusci.status
+  end
+
 
   def data_ultima_alteracao
     dataChange.blank? ? dataChange : ""
@@ -115,6 +122,14 @@ class Ci < ActiveRecord::Base
 
   def nome_localidade
     site.nil? ? "" : site.nome
+  end
+
+  def nome_estado
+    site.nil? ? "" : site.estado
+  end
+
+  def nice_atributos
+    atributo.collect(&:valor).join(' ')
   end
 
   def nice_custo_mensal
