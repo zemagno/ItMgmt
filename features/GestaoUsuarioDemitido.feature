@@ -32,7 +32,7 @@ Funcionalidade: GestaoUsuarios
     Entao eu NAO deveria ver o link "[Termo Devolucao]"
     Entao eu NAO deveria ver o link "[Remover Licenca]"
     Entao eu NAO deveria ver o link "[link errado]"
-    E clico "[Identidades]"
+    E clico em "[Identidades]"
     Entao eu NAO deveria ver o texto "DC=BRQ,DC=COM"
     Entao eu NAO deveria ver o texto "Google-Vault-Former-Employee"
     Entao eu deveria ver o texto "2014-05-30 00:00:00 -0300"

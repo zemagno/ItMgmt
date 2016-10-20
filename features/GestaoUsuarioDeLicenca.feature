@@ -30,7 +30,7 @@ Funcionalidade: GestaoUsuarios
     Entao eu deveria ver o link "[Termo Devolucao]"
     Entao eu deveria ver o link "[Remover Licenca]"
     Entao eu NAO deveria ver o link "[link errado]"
-    E clico "[Atributos Especificos]"
+    E clico em "[Atributos Especificos]"
     Entao eu deveria ver o texto "<b>Afastado: </b>Sim"
     Entao eu deveria ver o texto "<b>Data Inicio Afastamento: </b>2016-07-17"
   # Entao eu volto para a pagina atual

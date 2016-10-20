@@ -23,15 +23,16 @@ end
 
 def click_button (button)
   @browser.find_element(:name, button).click
+  sleep(2)
 end
 
 def click_button2 (button)
-  old = @browser.window_handles
+  # ERRO - se nao mudar da pagina, o codigo abaixo da erro..
+  # old = @browser.window_handles
   @browser.find_element(:link_text, button).click
   sleep(1)
-  @currentPage=(@browser.window_handles-old)[0]
-  @browser.switch_to.window(@currentPage)
-  @pagina = @browser.page_source
+  # @currentPage=(@browser.window_handles-old)[0]
+  # @browser.switch_to.window(@currentPage)
 end
 
 
@@ -74,24 +75,21 @@ E(/^preencho "([^"]*)" com "([^"]*)"$/) do |campo, valor|
   fill_in campo, :with => valor
 end
 
+
 E(/^pressiono "([^"]*)"$/) do |botao|
   click_button botao
-  sleep(2)
 end
 
-E(/^clico "([^"]*)"$/) do |botao|
+E(/^clico em "([^"]*)"$/) do |botao|
   click_button2 botao
-  sleep(1)
 end
 
 Entao(/^eu deveria ver o texto "([^"]*)"$/) do |texto|
-  @pagina = @pagina ||  @browser.page_source
-  expect(@pagina).to include(texto)
+  expect(@browser.page_source).to include(texto)
 end
 
 Entao(/^eu NAO deveria ver o texto "([^"]*)"$/) do |texto|
-  @pagina = @pagina ||  @browser.page_source
-  expect(@pagina).not_to include(texto)
+  expect(@browser.page_source).not_to include(texto)
 end
 
 Entao(/^eu volto para a pagina atual$/) do 

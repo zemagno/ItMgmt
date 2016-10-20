@@ -4,7 +4,7 @@
 <%= form_tag(gestao_usuarios_path, :method => "get") do %>
  
   <%= text_field_tag(:search, @login, :size => 50) %>
-  <%= submit_tag("Procurar") %>
+  <%= submit_tag "Procurar" , :name => "Procurar" %>
   
 <% end %>
 
@@ -204,7 +204,7 @@
   <%= text_field_tag("confirmacao", @confirmacao, :size => 50) %>
   <%= hidden_field_tag 'token_confirmacao',@estacao %>
   <%= hidden_field_tag 'id', @login%>
-  <%= submit_tag("Desalocar") %>
+  <%= submit_tag "Desalocar", :name => "Desalocar" %>
 </br></br>
 </div>
 <% end %>
@@ -239,7 +239,7 @@
         <br><br>
         <%= hidden_field_tag :id, @login%>
         <div class="spacer"></div>
-        <%= submit_tag("Alocar") %>
+        <%= submit_tag "Alocar", :name => "Alocar" %>
     <% end %>
     </br></br>
   </div>
@@ -257,7 +257,7 @@
   <%= text_field_tag("confirmacao", @confirmacao, :size => 50) %>
   <%= hidden_field_tag 'token_confirmacao',@licenca %>
   <%= hidden_field_tag 'id', @login%>
-  <%= submit_tag("Remover") %>
+  <%= submit_tag "Remover", :name => "Remover" %>
 </br></br>
 </div>
 <% end %> <!-- form -->
@@ -303,7 +303,7 @@
 
   <%= hidden_field_tag :id, @login%>
   <div class="spacer"></div>
-  <%= submit_tag("Alocar") %>
+  <%= submit_tag "Alocar" , :name => "Alocar" %>
 </br></br>
 </div>
 

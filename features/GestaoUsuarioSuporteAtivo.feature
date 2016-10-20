@@ -1,15 +1,15 @@
 # language:pt
 # 
 Funcionalidade: GestaoUsuarios
-	'Ao Pesquisar por um usuario ativo e com plenos poderes,
+	'Ao Pesquisar por um usuario ativo e com poder de suporte,
 	     devo ver os dados de estacao e licencas,
-         e ver todas opcoes (links)
+         e ver todas opcoes (links), exceto o de alocar licenca
 
 Cenario:
     Dado que eu abri um browser
 	Dado que o usuario é "zemagno@gmail.com" e a senha é "xxxx"
 	Dado que me loguei no sistema na URL "http://127.0.0.1:3000"
-	Dado que o perfil do usuario é "suporte admin licenciamento"
+	Dado que o perfil do usuario é "suporte"
 	Dado que estou na pagina de gestao de usuarios
 	E preencho "search" com "magno"
 	E pressiono "commit"
@@ -38,13 +38,13 @@ Cenario:
 	Entao eu deveria ver o link "[Inventario SW Equipe]"
 	Entao eu deveria ver o link "[Identidades]"
 	Entao eu deveria ver o link "[Alocar Estacao]"
-	Entao eu deveria ver o link "[Alocar Licenca]"
+	Entao eu NAO deveria ver o link "[Alocar Licenca]"
 	Entao eu deveria ver o link "[Termo Entrega de Tudo]"
 	Entao eu deveria ver o link "[Termo Devolucao de Tudo]"
 	Entao eu deveria ver o link "[Desalocar Estacao]"
 	Entao eu deveria ver o link "[Termo Entrega]"
 	Entao eu deveria ver o link "[Termo Devolucao]"
-	Entao eu deveria ver o link "[Remover Licenca]"
+	Entao eu NAO deveria ver o link "[Remover Licenca]"
 	Entao eu NAO deveria ver o link "[link errado]"
 	E clico em "[Identidades]"
 	Entao eu deveria ver o texto "CN=magno,OU=Users,OU=INFRA,OU=VARGAS,DC=BRQ,DC=COM"

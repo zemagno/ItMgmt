@@ -11,6 +11,8 @@ class Cadrelatorio < ActiveRecord::Base
 
   default_scope { order('ordem ASC') }
 
+  after_save ThinkingSphinx::RealTime.callback_for(:cadrelatorio)
+
   def AtualizaEstatisticas
     self.ultimoacesso = DateTime.now.to_date
     self.qtdeacessos = self.qtdeacessos.to_i + 1

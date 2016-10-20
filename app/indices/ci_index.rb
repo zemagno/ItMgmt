@@ -1,3 +1,4 @@
+# ThinkingSphinx::Index.define :ci, :with => :active_record do
 ThinkingSphinx::Index.define :ci, :with => :active_record do
   indexes chave
   indexes descricao
@@ -25,5 +26,5 @@ ThinkingSphinx::Index.define :ci, :with => :active_record do
   # indexes site(:estado), as => :estado
   has :tipoci_id
 
-  group_by "ci_id"
+  # group_by "cis.id"
 end
