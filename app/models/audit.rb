@@ -7,6 +7,8 @@ class Audit < ActiveRecord::Base
 
   default_scope { order('created_at DESC') }
 
+  after_save ThinkingSphinx::RealTime.callback_for(:audit)
+
   def user_name
      (user.blank? ? "Indefinido" : user.name)
   end

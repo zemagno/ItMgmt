@@ -13,14 +13,14 @@ ThinkingSphinx::Index.define :ci, :with => :real_time do
   indexes :provisionar, :type => :string
   indexes :tipoCobranca, :type => :string
   indexes jira, :type => :string
-  indexes nome_localidade #, :as => :site
-  indexes nice_status #, :as => :status
-  indexes nice_tipoci #, :as => :tipo
-  indexes nome_estado #, :as => :estado
+  indexes nome_localidade , :as => :site, :type => :strings
+  indexes nice_status     , :as => :status, :type => :strings
+  indexes nice_tipoci     , :as => :tipo, :type => :strings
+  indexes nome_estado     , :as => :estado, :type => :strings
   indexes nice_atributos
 
-  # has :tipoci_id
-  has tipoci.id, :type => :integer
+  has :tipoci_id, :type => :integer
+  # has tipoci.id, :type => :integer
 
   # group_by "cis.id"
 end

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :nomes, :roles, :login
+  attr_accessible :nome, :roles, :login
   def self.from_omniauth(auth)
     puts "Auth --> #{auth}"
     where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)

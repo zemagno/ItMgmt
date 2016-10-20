@@ -72,11 +72,11 @@ class Ci < ActiveRecord::Base
   # validates :chave, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/,        message: "Chave deve conter somente caracteres alphanumericos" }
   # validates :descricao, :presence => {:message => "Descrição é mandatoria"}
 
-  after_save :atualiza_chave
+  after_save :atualiza_chave, ThinkingSphinx::RealTime.callback_for(:ci)
   before_save :atualiza_statusci
   after_create :post_create_processing
   after_destroy :post_destroy_processing
-  after_save ThinkingSphinx::RealTime.callback_for(:cadrelatorio)
+  # after_save 
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
   default_scope { order('chave ASC') }
@@ -271,8 +271,11 @@ class Ci < ActiveRecord::Base
     #  3=>["Designacao", "001a-98/97"], 
     #  2=>["Endereco", "Av Boa Vista"], 
     #  1=>["Capacidade", "4mb"]} 
+    Rails.logger.debug "[DEBUG] - Vou iniciar atualizacaos dos atributos #{nice_atributos}"
 
     attr_default = atributos
+
+    Rails.logger.debug "[DEBUG] - Li Atributos"
 
 
     attr_default.each do |attr|
@@ -289,6 +292,8 @@ class Ci < ActiveRecord::Base
     end
 
     limpa_atributos_outros_tipo
+    Rails.logger.debug "[DEBUG] - Finalizei atualizacaos dos atributos #{nice_atributos}"
+    # ThinkingSphinx::RealTime.callback_for(:ci,[:ci])
 
   end
 

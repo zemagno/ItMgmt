@@ -5,6 +5,8 @@ class Atributo < ActiveRecord::Base
   belongs_to :ci
   belongs_to :dicdado
 
+  after_save  ThinkingSphinx::RealTime.callback_for(:ci,[:ci])
+
 
   def self.esta_em_uso?(iddic)
     self.where(:dicdado_id => iddic).exists?

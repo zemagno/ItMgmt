@@ -1,3 +1,3 @@
-ThinkingSphinx::Index.define :note, :with => :active_record do
-  indexes :notes
+ThinkingSphinx::Index.define :note, :with => :real_time do
+  indexes :notes, :type => :string
 end

@@ -12,6 +12,8 @@ class Dicdado < ActiveRecord::Base
 
   self.per_page = 20
 
+  after_save ThinkingSphinx::RealTime.callback_for(:dicdado)
+
   def nice_tipoci
     tipoci.nil? ? "" : tipoci.tipo
   end
