@@ -1,4 +1,5 @@
 ItMgmt::Application.configure do
+  # Settings specified here will take precedence over those in config/application.rb.
 
   # ITAM::CONFIG
   config.lograge.enabled = true
@@ -41,11 +42,10 @@ ItMgmt::Application.configure do
 
   #config.log_level = :debug
 
-  # Only use best-standards-support built into browsers
-  config.action_dispatch.best_standards_support = :builtin
-
+  
   # Raise exception on mass assignment protection for Active Record models
   config.active_record.mass_assignment_sanitizer = :strict
+  # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.raise_delivery_errors = true
 
@@ -54,6 +54,7 @@ ItMgmt::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+  # config.assets.compile = true
 
   # Expands the lines which load the assets
   config.assets.debug = true

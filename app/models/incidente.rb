@@ -11,17 +11,17 @@ class Incidente < ActiveRecord::Base
     updated_at.in_time_zone("Brasilia").strftime("%d/%m-%H:%M")
   end
 
-  define_index do
-    indexes nome
-    indexes descricao
-    indexes descricao_solucao
-    indexes tipo_incidente
-    indexes status
-    indexes criticidade
-    indexes solicitante
-    indexes ci(:chave), :as => :CI
-    indexes ci_id
-    indexes :Ativo
-  end
+  # define_index do
+  #   indexes nome
+  #   indexes descricao
+  #   indexes descricao_solucao
+  #   indexes tipo_incidente
+  #   indexes status
+  #   indexes criticidade
+  #   indexes solicitante
+  #   indexes ci(:chave), :as => :CI
+  #   indexes ci_id
+  #   indexes :Ativo
+  # end
 
 end
