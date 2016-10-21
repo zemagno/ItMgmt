@@ -1,7 +1,7 @@
 class AddViewCarga < ActiveRecord::Migration
  def up
   
-# execute %Q{ DROP VIEW vwcargaativosportal ; }
+execute %Q{ DROP VIEW if exists vwcargaativosportal ; }
 execute %Q{ 
 CREATE VIEW `vwcargaativosportal` AS 
 
@@ -60,7 +60,7 @@ GROUP BY `cis`.`chave`
 
   def down
   
- execute %Q{ DROP VIEW vwcargaativosportal ; }
+ execute %Q{ DROP VIEW if exists vwcargaativosportal ; }
   
   end
 end

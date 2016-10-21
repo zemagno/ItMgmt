@@ -1,6 +1,8 @@
 class Cadrelatorio < ActiveRecord::Base
   attr_accessible :consulta, :nome, :descricao, :categoria, :tipoci_id, :ultimoacesso, :qtdeacessos, :dashboard, :ordem, :justificativa, :solicitante
 
+  @@dashboards = nil
+
   belongs_to :tipoci
 
 
@@ -11,7 +13,7 @@ class Cadrelatorio < ActiveRecord::Base
 
   default_scope { order('ordem ASC') }
 
-  after_save ThinkingSphinx::RealTime.callback_for(:cadrelatorio)
+  after_save :invalidate_caches, ThinkingSphinx::RealTime.callback_for(:cadrelatorio)
 
   def AtualizaEstatisticas
     self.ultimoacesso = DateTime.now.to_date
@@ -50,12 +52,22 @@ class Cadrelatorio < ActiveRecord::Base
   end
 
   def self.getDashboards
-    Cadrelatorio.pluck(:dashboard).join(" ").split(" ").uniq.sort
+    Rails.logger.debug "[DEBUG] Cadrelatorio.getDashboards - Recuperando lista de dashboards"
+    # Rails.logger.debug "[DEBUG]     [@@dashboards]" if ! @@dashboards.nil?
+    @@dashboards = @@dashboards || Cadrelatorio.pluck(:dashboard).join(" ").split(" ").uniq.sort
+    @@dashboards
   end
 
 
 
   def nome_tipoci
     tipoci_id.nil? || tipoci_id==0 ? "" : tipoci.tipo
+  end
+
+  private
+  def invalidate_caches
+    Rails.logger.debug "[DEBUG] Cadrelatorio.invalidate_caches"
+    # Rails.logger.debug "[DEBUG]     [@@dashboards]" if @@dashboards
+    @@dashboards = nil
   end
 end
