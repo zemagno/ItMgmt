@@ -18,6 +18,8 @@
 </br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
 - <%= @ci.nice_cobrar %>
 - <%= @ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado' %>
+</br>
+<%= "Descricao e Codigo de Cobranca: #{@ci.descricaocobranca}/#{@ci.codigocobranca}" %>
 <%= render :partial => 'docs2url', :locals => {:title => "Documentacao: ", :documentos => @ci.url } %>
 
 <%= render :partial => 'docs2url', :locals => {:title => "Jira", :documentos => jira_to_docs(@ci.jira) } %>

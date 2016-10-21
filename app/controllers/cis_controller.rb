@@ -353,11 +353,6 @@ class CisController < ApplicationController
     end
     respond_to do |format|
       if @ci.save
-
-        # FIXME
-        #@ci.limpa_atributos_outros_tipo
-        #format.html { redirect_to(@ci, :notice => 'CI criada com sucesso.') }
-
         format.html {redirect_to(:action => 'edit', :id => @ci.id) }
       else
         carrega_agregadas

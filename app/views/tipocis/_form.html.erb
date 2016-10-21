@@ -1,41 +1,35 @@
 <%= form_for(@tipoci) do |f| %>
-  <% if @tipoci.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tipoci.errors.count, "erro") %> ao salvar esse tipo de ativo</h2>
-
-      <ul>
-      <% @tipoci.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-
+<% if @tipoci.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@tipoci.errors.count, "erro") %> ao salvar esse tipo de ativo</h2>
+  <ul>
+    <% @tipoci.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 <label>Tipo
 </label>
 <%= f.text_field :tipo %>
 <div class="spacer"></div>
-
 <label>Descricao
 </label>
 <%= f.text_field :Descricao %>
 <div class="spacer"></div>
-
 <label>Perfil
-<span class="small">Usuarios autorizados</span>
+  <span class="small">Usuarios autorizados</span>
 </label>
 <%= f.text_field :perfil, :size => 100 %>
 <div class="spacer"></div>
-
 <label>Owner
 </label>
 <%= f.text_field :Owner,
-	    :size => Tipoci::OWNER_SCREEN_SIZE,
-	    :maxlength => Tipoci::OWNER_MAX_LENGTH %>
+:size => Tipoci::OWNER_SCREEN_SIZE,
+:maxlength => Tipoci::OWNER_MAX_LENGTH %>
 <div class="spacer"></div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="actions">
+  <button type="submit" id="SalvarTipoAtivo">Salvar Tipo Ativo</button>
+</div>
 <% end %>
 <div class="spacer"></div>

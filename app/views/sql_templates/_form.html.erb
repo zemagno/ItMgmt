@@ -35,7 +35,9 @@
     <%= f.label :partial %><br />
     <%= f.check_box :partial ,:disabled => ! @edit_mode%>
   </div>
+  <% if @edit_mode %>
   <div class="actions">
-    <%= f.submit %>
+         <button type="submit" id="SalvarTemplate">Salvar </button>
   </div>
+  <% end %>
 <% end %>

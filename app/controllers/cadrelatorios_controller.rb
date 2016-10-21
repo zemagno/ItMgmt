@@ -4,17 +4,6 @@ class CadrelatoriosController < ApplicationController
 
   before_action :carrega_agregadas
 
-  # helper_method :categoria_relatorios
-
-  # def categoria_relatorios
-  #   # TODO - transferir a logica do Model para o model e deixar uma chamada generica, ja devolvendo o array
-  #   Parametro.get(:tipo => "relatorios", :subtipo => "categorias").split
-  # #testar isso..colocar combo no forma
-  # #colocar pesquisa sphinx
-  # #colocar will paginate
-  # end
-
-
   def carrega_agregadas
     Rails.logger.debug "[DEBUG] CadrelatoriosController: carrega_agregadas"
     @tiposci = Tipoci.all

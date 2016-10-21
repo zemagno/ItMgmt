@@ -14,6 +14,7 @@ class Cadrelatorio < ActiveRecord::Base
   default_scope { order('ordem ASC') }
 
   after_save :invalidate_caches, ThinkingSphinx::RealTime.callback_for(:cadrelatorio)
+  after_destroy :invalidate_caches
 
   def AtualizaEstatisticas
     self.ultimoacesso = DateTime.now.to_date
