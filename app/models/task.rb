@@ -36,11 +36,11 @@ class Task < ActiveRecord::Base
   end
 
   def self.abertas
-    Task.includes(:status_incidente).where('status_incidentes.tipo="ABERTO" and ativo=1').order("criticidade_id, tasks.created_at DESC")
+    Task.joins(:status_incidente).where('status_incidentes.tipo="ABERTO" and ativo=1').order("criticidade_id, tasks.created_at DESC")
   end
 
   def self.ativas_nao_abertas
-    Task.includes(:status_incidente).where('status_incidentes.tipo<>"ABERTO" and ativo=1').order("criticidade_id, tasks.created_at DESC")
+    Task.joins(:status_incidente).where('status_incidentes.tipo<>"ABERTO" and ativo=1').order("criticidade_id, tasks.created_at DESC")
   end
 
   def self.publicas

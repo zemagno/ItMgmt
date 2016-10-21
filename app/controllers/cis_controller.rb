@@ -300,10 +300,10 @@ class CisController < ApplicationController
     begin
       if @search.blank?
         Rails.logger.debug "[DEBUG]CisController:index procurando por tudo (sem parametro de search)"
-        @cis = Ci.includes(:tipoci).paginate(:page => params[:page])
+        @cis = Ci.joins(:tipoci).paginate(:page => params[:page])
       elsif @search[0] =="%"
         # TODO documentar isso ..
-        @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
+        @cis = Ci.joins(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
       else
         # TODO colocar o finalAuth[view] nesse search.
         Rails.logger.debug "[DEBUG]#{request.fullpath}: search : [#{@search}]"

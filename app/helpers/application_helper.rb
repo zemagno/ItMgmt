@@ -66,7 +66,8 @@ module ApplicationHelper
 
   def tela_ajuda_geral
     return if ! Features.has? "help"
-    url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")
+    # url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")
+    url = CONFIG["wikiHelp"]
     txt_help = "Ajuda Geral"
     link_to txt_help , "#{url}", :target => "_blank" 
   end
@@ -75,7 +76,8 @@ module ApplicationHelper
     return if ! Features.has? "help" 
   	id_help = nil
 
-    url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")
+    # url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")
+    url = CONFIG["wikiHelp"]
 
     case request.fullpath
     when "/cis"
