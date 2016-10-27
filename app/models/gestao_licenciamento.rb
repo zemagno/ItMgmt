@@ -23,8 +23,6 @@ class GestaoLicenciamento
 
   # estacoes de um usuario, segundo o inventario, nao o CIS
   def estacoesUsuario
-    # @estacoes = @estacoes || InventarioUser.estacoes(@login) # KPMG
-    # @estacoes = @estacoes || Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 46).pluck(:descricao)
     @estacoes = @estacoes || Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 46).map { |p| "#{p.descricao} (#{p.chave})" }
 
   end

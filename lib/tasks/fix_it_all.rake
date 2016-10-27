@@ -13,12 +13,14 @@ namespace :fix_it_all do
     puts "Reindexando Sphinx. Sistema ficara instavel"
     Rake::Task["ts:stop"].invoke
     %{'rm -rf db/sphinx'}
-    %{'rm -rf tmp/binlog'}
+    %{'rm -rf tmp'} # apos apagar tmp, tem que rodar o ts:configura para criar o diretorio tmp/binlog/.....
     %{'rm  config/development.sphinx.conf'}
     Rake::Task["ts:clear_rt"].invoke
     Rake::Task["ts:clear"].invoke
     Rake::Task["ts:configure"].invoke
     Rake::Task["ts:regenerate"].invoke
+    # TODO - parar todas as instancias de sidekiq 
+    
   end
 
 

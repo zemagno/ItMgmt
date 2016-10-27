@@ -13,6 +13,15 @@ protect_from_forgery with: :exception
   #   true
   # end
 
+  # around_action :collect_metrics
+
+  # def collect_metrics
+  #   start = Time.now
+  #   yield
+  #   duration = Time.now - start
+  #   Rails.logger.info "[APMI] - #{controller_name}##{action_name}: #{duration}s"
+  # end
+
   def append_info_to_payload(payload)
     super
     payload[:remote_ip] = request.remote_ip

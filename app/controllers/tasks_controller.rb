@@ -76,7 +76,6 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     carrega_agregados
-    #@tipotasks = Tipotask.all
   end
   
   def distribui(task)
@@ -102,7 +101,6 @@ class TasksController < ApplicationController
         @categories = Category.all
         @sites = Site.all
         @criticidades = Criticidade.all
-        #@tipotasks = Tipotask.all
         @fornecedores = Fornecedor.all
         @task = Task.new(params[:task])
         format.html { render :action => "new" }

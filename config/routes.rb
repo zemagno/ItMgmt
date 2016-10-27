@@ -4,20 +4,10 @@ ItMgmt::Application.routes.draw do
 
 
   resources :incidentes
-
-
   resources :grupos
-
-
-  resources :comandos_automacaos
-
-
+  # resources :comandos_automacaos
   resources :softwares
 
-
-
-
-  get "Inventario/PorHostname/:id", to: "inventario#porHostname", as: "InventarioPorHostname"
   
   get "Licencas/PorGestor/:id(/:versao)", to: "licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /[a-zA-z0-9.]*/ }
 
@@ -26,30 +16,18 @@ ItMgmt::Application.routes.draw do
 
   get "identities/:id", to: "identities#show", as: "identities" , :constraints => { :id => /.*/ }
 
-  post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento"
+  # post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento"
   resources :users , except: :new
-
-
   resources :schedulers
-  # get "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
   post "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
-
-
-
   resources :producaos , :only => [:index]
 
-
-
   get "painel_producao/:id/(:scope)" , to:"painel_producao#index", as: "painel_producao"
-  # get "painel_producao/:id" , to:"painel_producao#index", as: "painel_producao"
 
-
-
- get "GestaoUsuarios", to: "gestao_usuarios#index", as: "gestao_usuarios", :constraints => { :id => /.*/ }
+  get "GestaoUsuarios", to: "gestao_usuarios#index", as: "gestao_usuarios", :constraints => { :id => /.*/ }
 
   get 'GestaoUsuarios/:id/email', to: "gestao_usuarios#email", :constraints => { :id => /.*/ },  :as => :email_gestao_usuario
   post 'GestaoUsuarios/:id/email', to: "gestao_usuarios#enviar_email", :constraints => { :id => /.*/ },  :as => :enviar_email_gestao_usuario
-
 
   post "GestaoUsuarios/AlocarEstacao",  to: "gestao_usuarios#alocar_estacao", as: "alocar_estacao"
   get "GestaoUsuarios/EscolherLicencaAlocar",  to: "gestao_usuarios#escolher_licenca_alocar", as: "escolher_licenca_alocar"
@@ -62,30 +40,13 @@ ItMgmt::Application.routes.draw do
   post "GestaoUsuarios/deletelicenca", to: "gestao_usuarios#remover_licenca", as: "remover_licenca"
   post "GestaoUsuarios/DesalocarEstacao", to: "gestao_usuarios#desalocar_estacao", as: "desalocar_estacao"
 
-  # match '/404' => 'errors#not_found'
-  # match '/422' => 'errors#server_error'
-
   resources :funcionarios , :constraints => { :id => /.*/ }
   get 'equipe/:id', to: "funcionarios#equipe", :constraints => { :id => /.*/ }, as: "equipe"
-
-
-  resources :template_surveys
-
-
-  resources :cadsurveys
-
-
-  # match "survey/:id", to: "survey#show"
 
   get "ajax/cis"
   get "ajax/gestores"
 
-  resources :area_responsabilidades
-
-
   resources :custom_de_paras
-
-
   resources :events, :only => [:index]
 
   resources :mailings
@@ -94,60 +55,32 @@ ItMgmt::Application.routes.draw do
   get "mailings/confirma_enviar_email", to: "mailings#confirma_enviar_email"
   get "mailings/confirma_enviar_email_sql", to: "mailings#confirma_enviar_email_sql"
 
-
-
-
   resources :notes
-
 
   resources :status_incidentes
 
-
   resources :templates_emails
-
 
   resources :sql_templates
 
-
   root :to => "cis#index"
 
-
-  #resources :init_checklists
-
-
   mount Sidekiq::Web, at: '/sidekiq'
-  resources :snippets
-  #match 'mailer(/:action(/:id(.:format)))' => 'mailer#:action'
 
   resources :ramal, :only => [:index]
-  resources :exec_checklists, :only => [:show, :index]
-
-
-  resources :checklists do
-    resources :init_checklists, :only => [:create, :new, :delete]
-  end
-
-
+ 
   resources :audits
-  resources :tipotasks
-  resources :tipo_tasks
-  resources :atributos
+  # resources :atributos
 
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
   match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 
-  match 'destroy_admin_user_session_path', to: 'sessions#destroy', via: [:get, :post]
-  match 'destroy_admin_user_session', to: 'sessions#destroy', via: [:get, :post]
-
   resources :cadrelatorios
   match 'cadrelatorios/:id/duplicar', to: "cadrelatorios#duplicar", :as => :duplicar_relatorio, via: [:get, :post]
 
   resources :statuscis
-
-  # para todos nao ser confundido com ID
-
 
   match 'relatorio/:id', to: "relatorio#index", as: "relatorio", via: [:get, :post]
   match 'email/:acao/:id', to: "email#enviar", via: [:get, :post]
@@ -162,14 +95,6 @@ ItMgmt::Application.routes.draw do
 
   resources :dicdados
 
-  #match '/admin/massiveupdate', to: 'massiveupdate#index', as: "massiveupdate"
-
-
-
-
-  # :as --> criar o help ci_path
-  # gera uma entrada no rake routes
-  # ci        /CMDB/:id(.:format)                   {:controller=>"ci", :action=>"show"}
 
   get 'cis/:id/email', to: "cis#email",  :as => :email
   post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email

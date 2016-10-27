@@ -1,4 +1,5 @@
 class Task < ActiveRecord::Base
+  attr_accessible :Ativo, :author_id , :category_id , :chamado, :ci_id, :comentario , :criticidade_id, :Descricaorestrita, :description, :DocChange, :fornecedor_id, :nome, :publica, :site_id, :solicitante, :status_incidente_id, :sucesso, :tipotask  
   belongs_to :author
   belongs_to :category
   belongs_to :site

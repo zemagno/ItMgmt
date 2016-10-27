@@ -1,11 +1,6 @@
 class InventarioSw < ActiveRecord::Base
   attr_accessible :hostname, :software
 
-  has_many :logins,
-           :foreign_key => :hostname,
-           :primary_key => :hostname,
-           :class_name => "InventarioUser"
-
   after_create :post_create_processing
 
   default_scope { where(:versao => 0) }
