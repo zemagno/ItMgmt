@@ -6,7 +6,7 @@ ItMgmt::Application.configure do
   config.lograge.formatter = Lograge::Formatters::Logstash.new
   config.lograge.custom_options = lambda do |event|
     # capture some specific timing values you are interested in
-    {:user => event.payload[:user_id], :uri => event.payload[:uri]}
+    {:user => event.payload[:user_id], :uri => event.payload[:uri], :remote_ip => event.payload[:remote_ip]}
   end
 
   # Code is not reloaded between requests.
@@ -35,7 +35,9 @@ ItMgmt::Application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  # config.public_file_server.enabled = true
+  config.serve_static_files = true
+  # config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -43,7 +45,7 @@ ItMgmt::Application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   # TODO
-  config.assets.compile = false # FIXME - se colocar como true, da erro de compilacao no css
+  config.assets.compile = true # FIXME - se colocar como true, da erro de compilacao no css
   # FIXME config.assets.css_compressor = :yui
   config.assets.js_compressor = :uglifier
 

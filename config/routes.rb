@@ -1,4 +1,5 @@
 require 'sidekiq/web'
+require "admin_constraint"
 
 ItMgmt::Application.routes.draw do
 
@@ -65,7 +66,11 @@ ItMgmt::Application.routes.draw do
 
   root :to => "cis#index"
 
-  mount Sidekiq::Web, at: '/sidekiq'
+  mount Sidekiq::Web, at: '/sidekiq',  :constraints => AdminConstraint.new
+
+  # authenticate :user, lambda { |u| u.has_role? :admin } do
+  #   mount Sidekiq::Web => '/sidekiq'
+  # end
 
   resources :ramal, :only => [:index]
  

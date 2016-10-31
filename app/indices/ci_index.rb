@@ -9,7 +9,6 @@ ThinkingSphinx::Index.define :ci, :with => :real_time do
   indexes :ProjetoDebito, :type => :string
   indexes :descricaocobranca, :type => :string
   indexes :codigocobranca, :type => :string
-  indexes :codigorateio, :type => :string
   indexes :provisionar, :type => :string
   indexes :tipoCobranca, :type => :string
   indexes jira, :type => :string

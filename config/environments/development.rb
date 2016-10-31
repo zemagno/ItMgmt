@@ -6,7 +6,7 @@ ItMgmt::Application.configure do
   config.lograge.formatter = Lograge::Formatters::Logstash.new
   config.lograge.custom_options = lambda do |event|
     # capture some specific timing values you are interested in
-    {:user => event.payload[:user_id], :uri => event.payload[:uri]}
+    {:user => event.payload[:user_id], :uri => event.payload[:uri], :remote_ip => event.payload[:remote_ip]}
   end
   # Settings specified here will take precedence over those in config/application.rb
 

@@ -21,7 +21,7 @@ class SqlTemplate < ActiveRecord::Base
 
 	class Resolver < ActionView::Resolver 
 	   protected
-		def find_templates(name, prefix, partial, details)
+		def find_templates(name, prefix, partial, details,dump)
 
 			conditions = { 
 				:path => normalize_path(name, prefix),

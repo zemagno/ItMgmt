@@ -11,7 +11,7 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id
 
 
 

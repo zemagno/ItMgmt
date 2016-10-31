@@ -47,18 +47,9 @@
 </label>
 <%= f.text_field :dataChange, :id => "datepicker" %>
 
-<label>Codigo Rateio
-<span class="small"></span>
-</label>
-<%= f.text_field :codigorateio ,:disabled => ! (can? :manage, CanHelperFinanceiro) %>
-
 <div class="spacer"></div>
 
 
-<label>Custo
-<span class="small">Mensal ou Anual</span>
-</label>
-<%= f.text_field :CustoMensal ,:disabled => ! (can? :manage, CanHelperFinanceiro)  %>
 
 <label>Custo Mensal Capex
 <span class="small"></span>
@@ -69,6 +60,11 @@
 <span class="small"></span>
 </label>
 <%= f.text_field :CustoMensalOpex ,:disabled => ! (can? :manage, CanHelperFinanceiro)%>
+
+<label>Custo
+<span class="small">Custo de Cobranca Mensal</span>
+</label>
+<%= f.text_field :CustoMensal ,:disabled => ! (can? :manage, CanHelperFinanceiro)  %>
 
 <div class="spacer"></div>
 

@@ -1,3 +1,4 @@
+
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -111,7 +112,6 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.string   "descricaocobranca", limit: 255
     t.boolean  "provisionar"
     t.string   "codigocobranca",    limit: 255
-    t.string   "codigorateio",      limit: 20
     t.decimal  "CustoMensalCapex",                   precision: 10, scale: 2
     t.decimal  "CustoMensalOpex",                    precision: 10, scale: 2
     t.integer  "tipoCobranca",      limit: 4

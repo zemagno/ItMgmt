@@ -22,5 +22,6 @@ getsql.sh
 /spec
 /features
 /test
+/public/assets/**
 
 
