@@ -1,6 +1,6 @@
 #!/bin/bash
 redis-cli flushdb
-ts:stop
+rake ts:stop
 sleep 2
 pkill searchd
 rm -rf db/sphinx
