@@ -6,6 +6,7 @@ namespace :fix_it_all do
   	puts "Limpando abilities...."
   	Rails.cache.delete_matched("ability*")
   end
+  
   task :panic => :environment  do
   	puts "Panic Mode..."
     Rake::Task["fix_it_all:consertar"].invoke

@@ -10,7 +10,7 @@ class Mailing < ActiveRecord::Base
 
 
   def self.campanhas
-  	  find(:all).map(&:tag).uniq
+  	  self.all.map(&:tag).uniq
   end
 
   def self.erros(_parametros)

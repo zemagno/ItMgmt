@@ -52,9 +52,9 @@ ItMgmt::Application.routes.draw do
 
   resources :mailings
   get  "mailings/enviar_email", to: "mailings#enviar_email"
-  get "mailings/enviar_email_sql", to: "mailings#enviar_email_sql"
-  get "mailings/confirma_enviar_email", to: "mailings#confirma_enviar_email"
-  get "mailings/confirma_enviar_email_sql", to: "mailings#confirma_enviar_email_sql"
+  post "mailings/enviar_email_sql", to: "mailings#enviar_email_sql"
+  post "mailings/confirma_enviar_email", to: "mailings#confirma_enviar_email"
+  post "mailings/confirma_enviar_email_sql", to: "mailings#confirma_enviar_email_sql"
 
   resources :notes
 
@@ -66,7 +66,7 @@ ItMgmt::Application.routes.draw do
 
   root :to => "cis#index"
 
-  mount Sidekiq::Web, at: '/sidekiq',  :constraints => AdminConstraint.new
+  mount Sidekiq::Web, at: '/sidekiq' #,  :constraints => AdminConstraint.new
 
   # authenticate :user, lambda { |u| u.has_role? :admin } do
   #   mount Sidekiq::Web => '/sidekiq'

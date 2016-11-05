@@ -37,6 +37,7 @@ class ServiceMailing
 
 private
 	def real_enviar_por_sql(sql)
+		# TODO separar isso. Muita atribuicao nesse metodo..
 		@total_enviado = 0
 		mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
 		mysql_res = ActiveRecord::Base.connection.execute(sql)

@@ -1,4 +1,3 @@
-
 # encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
@@ -14,6 +13,18 @@
 
 ActiveRecord::Schema.define(version: 20161011152508) do
 
+  create_table "MapeamentoLocalTrabalho", id: false, force: :cascade do |t|
+    t.string  "NomSite",                limit: 30
+    t.string  "NomAndarSite",           limit: 30
+    t.string  "NomTipoPosicao",         limit: 30
+    t.string  "FlgContabilizaAlocacao", limit: 1
+    t.integer "QtdTotalTipoPosicao",    limit: 4
+    t.integer "NomPosicaoAndarSite",    limit: 4
+    t.integer "FlgReserva",             limit: 4
+    t.integer "NumMatrProfissional",    limit: 4
+    t.string  "LoginProfissional",      limit: 30
+    t.string  "LoginGestor",            limit: 30
+  end
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "resource_id",   limit: 255,   null: false
@@ -29,6 +40,26 @@ ActiveRecord::Schema.define(version: 20161011152508) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_admin_notes_on_resource_type_and_resource_id", using: :btree
+
+  create_table "area_de_responsabilidades", force: :cascade do |t|
+    t.string   "area",         limit: 255
+    t.string   "responsaveis", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "area_responsabilidades", force: :cascade do |t|
+    t.string   "area",         limit: 255
+    t.string   "responsaveis", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "areafornecedores", force: :cascade do |t|
+    t.string   "area",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "atributos", force: :cascade do |t|
     t.integer  "ci_id",      limit: 4
@@ -88,6 +119,57 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.string   "solicitante",   limit: 255
   end
 
+  create_table "cadsurveys", force: :cascade do |t|
+    t.string   "key",        limit: 255
+    t.text     "formulario", limit: 65535
+    t.text     "perguntas",  limit: 65535
+    t.text     "respostas",  limit: 65535
+    t.boolean  "bloqueado"
+    t.boolean  "processado"
+    t.string   "chave",      limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "cadsurveys", ["key"], name: "index_cadsurveys_on_key", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "checklist_items", force: :cascade do |t|
+    t.integer  "checklist_id",             limit: 4
+    t.string   "title",                    limit: 255
+    t.text     "description",              limit: 65535
+    t.integer  "checklist_item_type",      limit: 4
+    t.integer  "period",                   limit: 4
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "value",                    limit: 4
+    t.integer  "parent_checklist_id",      limit: 4
+    t.string   "default_executor",         limit: 30
+    t.string   "jira_id",                  limit: 50
+    t.string   "parent_checklist_jira_id", limit: 50
+  end
+
+  add_index "checklist_items", ["checklist_id"], name: "index_checklist_items_on_checklist_id", using: :btree
+
+  create_table "checklists", force: :cascade do |t|
+    t.string   "title",            limit: 255
+    t.text     "description",      limit: 65535
+    t.integer  "checklist_type",   limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "ci_key",           limit: 255
+    t.date     "start_date"
+    t.date     "end_date"
+    t.string   "state_flag",       limit: 15
+    t.string   "jira_id",          limit: 50
+    t.string   "default_executor", limit: 255
+  end
+
   create_table "cis", force: :cascade do |t|
     t.string   "chave",             limit: 255
     t.string   "descricao",         limit: 255
@@ -112,6 +194,7 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.string   "descricaocobranca", limit: 255
     t.boolean  "provisionar"
     t.string   "codigocobranca",    limit: 255
+    t.string   "codigorateio",      limit: 20
     t.decimal  "CustoMensalCapex",                   precision: 10, scale: 2
     t.decimal  "CustoMensalOpex",                    precision: 10, scale: 2
     t.integer  "tipoCobranca",      limit: 4
@@ -172,6 +255,13 @@ ActiveRecord::Schema.define(version: 20161011152508) do
 
   add_index "dicdados", ["tipoci_id"], name: "index_dicdados_on_tipoci_id", using: :btree
 
+  create_table "email_externos", force: :cascade do |t|
+    t.string   "login",      limit: 255
+    t.string   "provedor",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.string   "tipo",       limit: 20
     t.string   "subtipo",    limit: 40
@@ -180,6 +270,36 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.boolean  "processado"
+  end
+
+  create_table "exec_checklists", force: :cascade do |t|
+    t.text     "descricao",           limit: 65535
+    t.string   "cis",                 limit: 255
+    t.string   "users",               limit: 255
+    t.date     "inicioexec"
+    t.date     "fimexec"
+    t.integer  "tipoci_id",           limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "tickets",             limit: 255
+    t.integer  "status_checklist_id", limit: 4
+    t.integer  "checklist_id",        limit: 4
+    t.string   "alias",               limit: 255
+    t.boolean  "abrir_ticket"
+    t.string   "titulo",              limit: 255
+  end
+
+  add_index "exec_checklists", ["tipoci_id"], name: "index_exec_checklists_on_tipoci_id", using: :btree
+
+  create_table "exec_itens_checklists", force: :cascade do |t|
+    t.string   "descricao",           limit: 255
+    t.string   "users",               limit: 255
+    t.string   "cis",                 limit: 255
+    t.integer  "exec_checklist_id",   limit: 4
+    t.integer  "status_checklist_id", limit: 4
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.string   "tickets",             limit: 255
   end
 
   create_table "fornecedores", force: :cascade do |t|
@@ -269,7 +389,13 @@ ActiveRecord::Schema.define(version: 20161011152508) do
 
   add_index "grupos", ["nome"], name: "index_grupos_on_nome", using: :btree
 
-
+  create_table "heranca_checklists", force: :cascade do |t|
+    t.integer  "pai_id",       limit: 4
+    t.integer  "filho_id",     limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "tipo_heranca", limit: 4
+  end
 
   create_table "identities", force: :cascade do |t|
     t.string   "login",                       limit: 30
@@ -349,6 +475,27 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.datetime "updated_at",                                                       null: false
   end
 
+  create_table "indicadores_financeiros", force: :cascade do |t|
+    t.string   "nome",       limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "inventario_hws", id: false, force: :cascade do |t|
+    t.string "source",   limit: 20
+    t.string "hostname", limit: 30
+  end
+
+  create_table "inventario_kpmg_sw", id: false, force: :cascade do |t|
+    t.string "software", limit: 50
+    t.string "hostname", limit: 20
+  end
+
+  create_table "inventario_kpmg_user", id: false, force: :cascade do |t|
+    t.string "hostname", limit: 20
+    t.string "login",    limit: 30
+  end
+
   create_table "inventario_sws", force: :cascade do |t|
     t.string   "hostname",   limit: 255
     t.string   "software",   limit: 255
@@ -362,6 +509,67 @@ ActiveRecord::Schema.define(version: 20161011152508) do
   end
 
   add_index "inventario_sws", ["hostname"], name: "index_inventario_sws_on_hostname", using: :btree
+
+  create_table "inventario_sws_0", id: false, force: :cascade do |t|
+    t.integer "Id",       limit: 4,   default: 0, null: false
+    t.string  "hostname", limit: 255
+    t.string  "software", limit: 255
+  end
+
+  create_table "inventario_user_0", id: false, force: :cascade do |t|
+    t.string "hostname",        limit: 255
+    t.string "login",           limit: 255
+    t.string "nomprofissional", limit: 255
+    t.string "ramal",           limit: 255
+  end
+
+  create_table "inventario_users", force: :cascade do |t|
+    t.string   "hostname",   limit: 255
+    t.string   "login",      limit: 255
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "versao",     limit: 4,   default: 0
+  end
+
+  add_index "inventario_users", ["hostname"], name: "index_inventario_users_on_hostname", using: :btree
+  add_index "inventario_users", ["login"], name: "index_inventario_users_on_login", using: :btree
+
+  create_table "invhosts", id: false, force: :cascade do |t|
+    t.integer  "id_hosts",       limit: 4,          default: 0, null: false
+    t.string   "Equipamento",    limit: 20
+    t.string   "Nome",           limit: 50
+    t.text     "Usuario",        limit: 4294967295
+    t.integer  "QntLogin",       limit: 4
+    t.string   "Os",             limit: 100
+    t.string   "ProductKey",     limit: 100
+    t.string   "Serial",         limit: 100
+    t.string   "Fabricante",     limit: 30
+    t.string   "DataFab",        limit: 45
+    t.text     "Modelo",         limit: 4294967295
+    t.string   "Processador",    limit: 50
+    t.integer  "Memoria",        limit: 4
+    t.integer  "HD",             limit: 4
+    t.string   "MACLoc",         limit: 30
+    t.string   "NomeMACLoc",     limit: 100
+    t.string   "MACWi",          limit: 30
+    t.string   "NomeMacWi",      limit: 100
+    t.datetime "DataUltimoExec",                                null: false
+    t.string   "Site",           limit: 10
+    t.integer  "VidaEmMeses",    limit: 8
+  end
+
+  create_table "itens_checklists", force: :cascade do |t|
+    t.integer  "checklist_id",       limit: 4
+    t.string   "descricao",          limit: 255
+    t.string   "users",              limit: 255
+    t.string   "cis",                limit: 255
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "TipoAberturaTicket", limit: 20
+    t.integer  "tipo_checklist_id",  limit: 4
+  end
+
+  add_index "itens_checklists", ["checklist_id"], name: "index_itens_checklists_on_checklist_id", using: :btree
 
   create_table "job_enviar_emails", force: :cascade do |t|
     t.integer  "templates_email_id", limit: 4
@@ -377,6 +585,14 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.string   "cron",             limit: 255
+  end
+
+  create_table "licenciamento_ms_de_paras", force: :cascade do |t|
+    t.string   "licencaOrig", limit: 255
+    t.string   "licenca",     limit: 255
+    t.string   "catLicenca",  limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "log_cis", force: :cascade do |t|
@@ -426,7 +642,18 @@ ActiveRecord::Schema.define(version: 20161011152508) do
   add_index "mapa_posicaos", ["LoginGestor"], name: "index_mapa_posicaos_on_LoginGestor", using: :btree
   add_index "mapa_posicaos", ["LoginProfissional"], name: "index_mapa_posicaos_on_LoginProfissional", using: :btree
 
-   create_table "notes", force: :cascade do |t|
+  create_table "new_users", force: :cascade do |t|
+    t.string   "email",         limit: 255
+    t.string   "roles",         limit: 255
+    t.text     "auth_token",    limit: 4294967295
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "user_ip",       limit: 255
+    t.string   "jira_username", limit: 255
+    t.string   "name",          limit: 255
+  end
+
+  create_table "notes", force: :cascade do |t|
     t.text     "notes",      limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
@@ -526,6 +753,14 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.string   "estado",     limit: 2
   end
 
+  create_table "snippets", force: :cascade do |t|
+    t.string   "language",         limit: 255
+    t.string   "plain_code",       limit: 255
+    t.string   "highlighted_code", limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "softwares", force: :cascade do |t|
     t.string   "software",    limit: 255
     t.string   "fabricante",  limit: 255
@@ -552,6 +787,12 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.datetime "updated_at"
   end
 
+  create_table "status_checklists", force: :cascade do |t|
+    t.string   "status",     limit: 255
+    t.string   "icon",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "status_incidentes", force: :cascade do |t|
     t.string   "status",     limit: 255
@@ -573,6 +814,18 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.datetime "updated_at",             null: false
     t.string   "icon",       limit: 255
     t.string   "parametro",  limit: 255
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.string   "key",        limit: 255
+    t.text     "formulario", limit: 65535
+    t.text     "perguntas",  limit: 65535
+    t.text     "respostas",  limit: 65535
+    t.boolean  "bloqueado"
+    t.boolean  "processado"
+    t.string   "chave",      limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -598,6 +851,20 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.integer  "status_incidente_id", limit: 4
   end
 
+  create_table "temp", id: false, force: :cascade do |t|
+    t.string "f1", limit: 255
+  end
+
+  create_table "temp1", id: false, force: :cascade do |t|
+    t.integer "id", limit: 4
+  end
+
+  create_table "template_surveys", force: :cascade do |t|
+    t.string   "nome",       limit: 255
+    t.text     "formulario", limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "templates_emails", force: :cascade do |t|
     t.string   "tipo",       limit: 255
@@ -618,6 +885,11 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.datetime "updated_at"
   end
 
+  create_table "tipo_checklists", force: :cascade do |t|
+    t.string   "tipo",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "tipocis", force: :cascade do |t|
     t.string   "tipo",       limit: 255
@@ -626,6 +898,12 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.string   "Descricao",  limit: 255
     t.string   "Owner",      limit: 255
     t.string   "perfil",     limit: 255
+  end
+
+  create_table "tipocontratos", force: :cascade do |t|
+    t.string   "descricao",  limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -658,6 +936,17 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.string "Software", limit: 255
   end
 
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",  limit: 255,   null: false
+    t.integer  "item_id",    limit: 4,     null: false
+    t.string   "event",      limit: 255,   null: false
+    t.string   "whodunnit",  limit: 255
+    t.text     "object",     limit: 65535
+    t.datetime "created_at"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
   create_table "viewrelatusuariocomvariasestacoes", id: false, force: :cascade do |t|
     t.string "Usuario",  limit: 255
     t.text   "Estacoes", limit: 65535
@@ -672,4 +961,5 @@ ActiveRecord::Schema.define(version: 20161011152508) do
     t.string "DataDevolucao", limit: 255
   end
 
+  add_foreign_key "checklist_items", "checklists"
 end

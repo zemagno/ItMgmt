@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+# gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 gem 'railties'
 gem 'rails', '4.2.7'

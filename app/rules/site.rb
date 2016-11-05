@@ -1,6 +1,6 @@
 bre = Bre.instance
 
-puts "Registrando BRE..."
+Rails.logger.info "[INFO] Registrando BRE..."
 
 bre.adicionaRegra "Criacao de Servidor" do
   quando :criar, :ci, :site do |site|

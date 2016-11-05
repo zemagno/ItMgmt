@@ -32,6 +32,17 @@ class Cadrelatorio < ActiveRecord::Base
     
   end
 
+  def self.execute(sql)
+    mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
+    mysql_res = ActiveRecord::Base.connection.execute(sql)
+    mysql_res
+  end
+
+  def self.execute_amostra(sql,size)
+    sql = "#{sql} limit #{size}"
+    self.execute(sql)
+  end
+
   def duplicar(novoNome)
     newCad = dup 
     newCad.nome  = novoNome

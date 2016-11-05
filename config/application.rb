@@ -1,3 +1,6 @@
+
+
+
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
@@ -11,6 +14,9 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
+# CONFIG = YAML.load_file("#{Rails.root.to_s}/config/itam.yml")[Rails.env]
+CONFIG = YAML.load_file("#{File.expand_path("../..",__FILE__)}/config/itam.yml")[Rails.env]
+
 module ItMgmt 
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -21,8 +27,10 @@ module ItMgmt
     # config.autoload_paths += %W(
     #     #{config.root}/app/controllers/custom
     # )
+    
+    # config.cache_store = :redis_store , 'redis://127.0.0.1:6379/0/cache', { expires_in: 90.minutes }
+    config.cache_store = :redis_store , "redis://#{CONFIG['redis_server']}/#{CONFIG['tenant']}/cache", { expires_in: 90.minutes }
 
-    config.cache_store = :redis_store #, 'redis://10.0.2.2:6379/0/cache', { expires_in: 90.minutes }
     # config.cache_classes = true
     # # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
