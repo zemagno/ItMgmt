@@ -1,4 +1,3 @@
-
 # CONFIG = YAML.load_file("#{Rails.root.to_s}/config/itam.yml")[Rails.env]
 
 Rails.logger.info "[INFO] Initializer:itam.rb ENV:#{Rails.env}"

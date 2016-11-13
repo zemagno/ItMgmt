@@ -8,11 +8,14 @@ class AuditsController < ApplicationController
   
     
     begin
+      Rails.logger.debug "[DEBUG] AuditsController:index search:[#{@search}] params:[#{params}]"
       @audits = Audit.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page] #, :order => 'created_at DESC'
       @audits.length
       @audits.compact!
-    rescue 
-      flash[:error] = "Error[DB0001] - Search Engine desligado"
+    rescue => error
+      error.backtrace
+      Rails.logger.debug "[DEBUG] Error[DB0001]"
+      flash[:error] = "Error[DB0001] - Search Engine com Problema"
       @audits = Audit.paginate(:page => params[:page])
     end 
 

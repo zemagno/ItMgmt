@@ -1,6 +1,7 @@
 class Cadrelatorio < ActiveRecord::Base
   attr_accessible :consulta, :nome, :descricao, :categoria, :tipoci_id, :ultimoacesso, :qtdeacessos, :dashboard, :ordem, :justificativa, :solicitante
-
+  audited
+  
   @@dashboards = nil
 
   belongs_to :tipoci

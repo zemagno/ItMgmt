@@ -11,7 +11,7 @@ def index
       @atributos.length
       @atributos.compact!
     rescue 
-      flash[:error] = "Error[DB0001] - Search Engine desligado ou com problemas"
+      flash[:error] = "Error[DB0001] - Search Engine com Problema"
       @atributos = Atributo.where("valor is not null and valor <> ''").paginate(:page => params[:page])
     end 
 

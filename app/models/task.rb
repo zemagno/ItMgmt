@@ -19,13 +19,15 @@ class Task < ActiveRecord::Base
 
   after_save ThinkingSphinx::RealTime.callback_for(:task)
 
+
   def criado_em
-    created_at.in_time_zone("Brasilia").strftime("%d/%m-%H:%M")
+        created_at.in_time_zone("Brasilia").strftime("%d/%m/%y-%H:%M")
   end
 
   def alterado_em
-    updated_at.in_time_zone("Brasilia").strftime("%d/%m-%H:%M")
+        updated_at.in_time_zone("Brasilia").strftime("%d/%m/%y:-%H:%M")
   end
+
 
 
   def self.ativos

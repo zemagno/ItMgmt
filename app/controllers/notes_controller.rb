@@ -8,7 +8,7 @@ def index
       @notes = Note.search @search, :match_mode => :boolean, :per_page => 15 , :page => params[:page]
       @notes.compact!
     rescue 
-      flash[:error] = "Error[DB0001] - Search Engine desligado"
+      flash[:error] = "Error[DB0001] - Search Engine com Problema"
       @notes = Note.paginate(:page => params[:page])
     end
 

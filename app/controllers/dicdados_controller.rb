@@ -18,7 +18,7 @@ class DicdadosController < ApplicationController
       @dicdados = Dicdado.search @search, :match_mode => :boolean, :per_page => 15 , :page => params[:page], :sort_mode => :extended , :order => "sort_tipoci_id ASC, sort_ordem ASC"
       @dicdados.compact!
     rescue 
-      flash[:error] = "Error[DB0001] - Search Engine desligado ou com problema"
+      flash[:error] = "Error[DB0001] - Search Engine com Problema"
       @dicdados = Dicdado.paginate(:page => params[:page])
  end
 
