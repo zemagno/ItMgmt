@@ -1,0 +1,87 @@
+    nav.navbar.navbar-default
+          .container-fluid
+            .navbar-header
+              a.navbar-brand[href="/"]
+                | Gestao de Ativos
+            .collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  = link_to 'Alertas', tasks_path if Features.has? "alertas"
+                li.dropdown
+                  a.dropdown-toggle[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]
+                    | Ativos 
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a[href="#"]
+                        = link_to 'Listagem', cis_path
+                    li
+                      a[href="#"]
+                        = link_to 'Novo Ativo', new_ci_path
+                li
+                  = link_to 'Relatorios', cadrelatorios_path
+                - if can? :manage, :usuarios
+                  li 
+                    = link_to 'Gestao de Usuarios', gestao_usuarios_path
+                li.dropdown
+                  a.dropdown-toggle[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]
+                    | Producao 
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a[href="#"]
+                        = link_to 'Jobs Agendados', schedulers_path
+                    li
+                      a[href="#"]
+                        = link_to 'Jobs Executados', producaos_path
+                li.dropdown
+                  a.dropdown-toggle[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]
+                    | Dashboard 
+                    span.caret
+                  ul.dropdown-menu
+                    = listDashboards.html_safe
+                li.dropdown
+                  a.dropdown-toggle[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]
+                    | Parametros
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a[href="#"]
+                        = link_to 'Parametros', parametros_path
+                    li
+                      a[href="#"]
+                        = link_to 'Sites', sites_path
+                    li
+                      a[href="#"]
+                        = link_to 'Usuarios', users_path
+                    li
+                      a[href="#"]
+                        = link_to 'Dicionario de dados', dicdados_path
+                    li
+                      a[href="#"]
+                        = link_to 'Status dos Ativos', "/statuscis"  
+                    - if can? :manage, TemplatesEmail                   
+                      li
+                        a[href="#"]
+                          = link_to 'Emails', templates_emails_path                  
+                      li
+                        a[href="#"]
+                          = link_to 'Templates de Emails', sql_templates_path
+
+              ul.nav.navbar-nav.navbar-right
+                  li.dropdown
+                    a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+                      | Usuario
+                      span.caret
+                    ul.dropdown-menu
+                      li
+                        a[href="#"]
+                          | Ver Perfil
+                      li.divider[role="separator"]
+                      li
+                        = link_to "Deslogar", signout_path
+              = form_tag cis_path, class:'navbar-form navbar-right', method: :get do
+                .form-group
+                  = text_field_tag :search, @search, class:'form-control', placeholder: 'procurar por um ativo...', :size => 50
+                button.btn.btn-default[type="submit" name="commit"]
+                  | Procurar

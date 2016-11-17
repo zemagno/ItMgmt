@@ -1,5 +1,7 @@
 <!-- onchange="location.reload() -->
-<h1>Ativos</h1>
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Ativos</div>
 <!-- 
 <% [:info, :error].each do |key| %>
    <% if flash[key] %>
@@ -24,7 +26,9 @@
 
 <% end %>
 
-<table>
+
+
+<table class='table'>
   <tr>
     <th></th>
     <th>Chave CI</th>
@@ -43,6 +47,8 @@
   </tr>
 <% end %>
 </table> 
+</div>
+</div>
 
 
 <%= will_paginate @cis %>

@@ -1,8 +1,5 @@
-
-<%= javascript_include_tag "jquery" %>
-<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.min.css" %>
-<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.min.js" %>
 <%= csrf_meta_tag %>
+
 <script type="text/javascript">
 $(document).ready( function(){
     $('#coolTable').DataTable({
@@ -21,9 +18,9 @@ $(document).ready( function(){
    <%= link_to "[Novo Parametro]", new_parametro_path %>
 <% end %>
 
-<table id="coolTable" class="display">
+<table id="coolTable" class="generalTable">
 <thead>
-  <tr>
+  <tr class="head">
     <th>Tipo</th>
     <th>Subtipo</th>
     <th>Valor</th>

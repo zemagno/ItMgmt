@@ -1,8 +1,5 @@
-<%= javascript_include_tag "jquery" %>
-<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.min.css" %>
-<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.min.js" %>
-
 <%= csrf_meta_tag %>
+
 
 <script type="text/javascript">
 $(document).ready( function(){
@@ -12,17 +9,13 @@ $(document).ready( function(){
       language: {
         search: "Filtrar:"
       }
-      
     })
 });
 </script>
 
-
-<h1>Usuarios Cadastrados</h1>
-
-<table id="coolTable" class="display">
+<table id="coolTable" class="generalTable">  <!-- coolTable faz os filtros, ordem...generalTable faz o layout visual -->
   <thead>
-  <tr>
+  <tr class="head">
     <th>Usuario</th>
     <th>Login</th>
     <th>Perfil</th>
