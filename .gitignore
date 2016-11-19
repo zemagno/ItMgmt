@@ -2,7 +2,7 @@ Procfile
 .DS_Store
 .bundle
 /db/*.sqlite3
-/public/imagens/*
+*.svg
 /id_rsa/*
 /db/sphinx/**
 /tmp

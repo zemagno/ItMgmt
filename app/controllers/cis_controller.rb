@@ -13,7 +13,7 @@ class CisController < ApplicationController
     self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
   end
 
-  respond_to :html, :xml, :json, :csv
+  respond_to :html, :xml, :json, :csv, :js
 
 
 # estava testanto renderizacao de todas as telas pois fiz upgrade para o 4.2

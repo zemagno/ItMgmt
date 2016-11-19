@@ -1,56 +1,32 @@
-<!-- onchange="location.reload() -->
+<%= csrf_meta_tag %>
 <div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Ativos</div>
-<!-- 
-<% [:info, :error].each do |key| %>
-   <% if flash[key] %>
-   <div class="flash <%= key %>" id="flash">
-     <%= flash[key] %>
-   </div>
-   <% end %>
- <% end %>
-
- -->
-<%= link_to '[Novo CI]', new_ci_path, :id => "zNovo" %>
-
-<%= will_paginate @cis %> <%= "#{@cis.total_entries} itens achados"%>
-
-<%= form_tag(cis_path, :method => "get") do %>
-
- 
+  <div class="panel-heading">Ativos - <%= "#{@cis.total_entries} itens achados"%></div>
+  <%= will_paginate @cis %>
+  <%= form_tag(cis_path, :method => "get") do %>
+  
   <%= text_field_tag(:search, @search, :size => 50) %>
   <%= submit_tag("Filtrar") %>
-  <!--%= submit_tag("Estou com sorte") % -->
   <%= select_tag :view_default_ci, options_for_select(@views_ci, @view_default_ci), :onchange => "this.form.submit();"  %>
-
-<% end %>
-
-
-
-<table class='table'>
-  <tr>
-    <th></th>
-    <th>Chave CI</th>
-<% @fields[0].each do |f| %>
-   <th><%= f %> </th>
-<% end %>
-  </tr> 
-
-<% @cis.each do |ci| %>
-  <tr>
-    <td><img src="/icons/<%=ci.status_icon%>" alt=" " height="16" width="16"></td>
-    <td><%= link_to ci.chave, ci %></td>
-    <% @fields[1].each do |f| %>
-       <td><%= ci.send(f) %> </td>
+  <%= link_to '[Novo CI]', new_ci_path, :id => "zNovo" %>
+  <% end %>
+  <table class="generalTable">
+    <tr class="head">
+      <th></th>
+      <th>Chave CI</th>
+      <% @fields[0].each do |f| %>
+      <th><%= f %> </th>
+      <% end %>
+    </tr>
+    <% @cis.each do |ci| %>
+    <tr>
+      <td><img src="/icons/<%=ci.status_icon%>" alt=" " height="16" width="16"></td>
+      <td><%= link_to ci.chave, ci %></td>
+      <% @fields[1].each do |f| %>
+      <td><%= ci.send(f) %> </td>
+      <% end %>
+    </tr>
     <% end %>
-  </tr>
-<% end %>
-</table> 
+  </table>
 </div>
 </div>
-
-
 <%= will_paginate @cis %>
-
- <br />

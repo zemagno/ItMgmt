@@ -68,7 +68,7 @@ module ApplicationHelper
     return if ! Features.has? "help"
     # url = Parametro.get(:tipo => "GLOBAL", :subtipo => "wikiUrl")
     url = CONFIG["wikiHelp"]
-    txt_help = "Ajuda Geral"
+    txt_help = "Geral"
     link_to txt_help , "#{url}", :target => "_blank" 
   end
 
@@ -99,11 +99,11 @@ module ApplicationHelper
     when /^\/templates_emails/
       id_help = "Templates de Email"
     end  
-    txt_help = "Ajuda #{id_help}" if txt_help.nil?
+    txt_help = "#{id_help}" if txt_help.nil?
 
     if ! @ci.nil? && ! @ci.tipoci.nil?
   	     id_help = "CI #{@ci.tipoci.tipo}" 
-         txt_help = "Ajuda #{@ci.tipoci.tipo}" 
+         txt_help = "#{@ci.tipoci.tipo}" 
          
     end
    

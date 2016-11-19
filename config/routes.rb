@@ -102,7 +102,7 @@ ItMgmt::Application.routes.draw do
 
 
   get 'cis/:id/email', to: "cis#email",  :as => :email
-  post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email
+  post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email  #, defaults: { format: 'js' }
   get "cis/:id/log", to: "cis#log", as: "log_ci"
   post 'cis/:id/log', to: "cis#register_log",  :as => :register_log
 

@@ -10,6 +10,10 @@ body {
     position: fixed;
 }
 
+.vertical-center {
+  text-align: center;
+}
+
 .form-login {
     background-color: #EDEDED;
     padding-top: 10px;

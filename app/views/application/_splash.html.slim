@@ -1,0 +1,24 @@
+    nav.navbar.navbar-default
+          .container-fluid
+            .navbar-header
+              a.navbar-brand[href="/"]
+                | Gestao de Ativos
+            .collapse.navbar-collapse
+              ul.nav.navbar-nav.navbar-right
+                  li.dropdown
+                    a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+                      | Usuario
+                      span.caret
+                    ul.dropdown-menu
+                      li
+                        a[href="#"]
+                          | Ver Perfil
+                      li.divider[role="separator"]
+                      li
+                        = link_to "Deslogar", signout_path
+    .jumbotron.vertical-center
+      h1 Bem vindo ao sistema de Gestão de Ativos
+      p Que bom... 
+      p Voce já está logado. Porem, não tem acesso a nenhuma funcionalida. Ainda !!
+      p Peça para o administrador lhe conceder acesso.
+    

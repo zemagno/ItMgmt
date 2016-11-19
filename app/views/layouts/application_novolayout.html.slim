@@ -16,12 +16,18 @@ html
     = javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.min.js"
     = stylesheet_link_tag "itam.css"
   body
-    - if current_user
+    - if current_user and ! current_user.is_a :usuario
         = render :partial => "menu_principal" 
         .painel
+            / para tela de cis e de gestao de usuario poder abrir o 'enviar email'
+            #enviar_email 
             = yield 
-    - else 
-        = render :partial => "tela_login" if ! current_user
+    - if ! current_user
+        = render :partial => "tela_login" 
+    - if current_user and current_user.is_a :usuario
+        = render :partial => "splash"    
   footer
+
+
 
   
