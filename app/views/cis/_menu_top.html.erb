@@ -1,9 +1,9 @@
-<%= link_to '[Novo CI]', new_ci_path, :id => "ZNovo" %>
-<%= link_to '[Alterar CI]', edit_ci_path(@ci), :id => "ZEdit"%>
-<%= link_to '[Listagem CI]', cis_path, :id => "ZListagem" %>
-<%= link_to '[Eliminar CI]', confirmar_eliminacao_path(@ci) %>
+<%= link_to 'Novo CI', new_ci_path, {:id => "ZNovo" ,:class => "btn btn-default btn-xs"} %>
+<%= link_to 'Alterar CI', edit_ci_path(@ci), {:id => "ZEdit",:class => "btn btn-default btn-xs"}%>
+<%= link_to 'Listagem CI', cis_path, {:id => "ZListagem" ,:class => "btn btn-default btn-xs"}%>
+<%= link_to 'Eliminar CI', confirmar_eliminacao_path(@ci) , {:class => "btn btn-default btn-xs"}%>
 
 
-<%= link_to("[Enviar Email]", email_path(@ci), :id => "enviar_email_ci", :remote => true)%>
-<%= link_to '[Comentarios]', log_ci_path(@ci), :target => "_blank" %>
+<%= link_to "Enviar Email", email_path(@ci), {:remote => true, :class => "btn btn-default btn-xs"}  %>
+<%= link_to 'Comentarios', log_ci_path(@ci),  {:target => "_blank", :class => "btn btn-default btn-xs"} %>
 
