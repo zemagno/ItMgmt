@@ -1,0 +1,26 @@
+.container
+  .row
+    p#notice
+      = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        |  Parametro: 
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Parametro
+            p.list-group-item-text
+              = @parametro.tipo
+          .list-group-item
+            h4.list-group-item-heading
+              | Sub-tipo
+            p.list-group-item-text
+              = @parametro.subtipo
+          .list-group-item
+            h4.list-group-item-heading
+              | Valor
+            textarea.list-group-item-text style="min-width: 100%" rows="20"
+              = @parametro.valor
+          
+    = link_to 'Editar', edit_parametro_path(@parametro), :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Listagem', parametros_path , :class => "btn btn-primary btn-md margin-left"

@@ -70,7 +70,7 @@ class DicdadosController < ApplicationController
 
     respond_to do |format|
       if @dicdado.save
-        format.html { redirect_to(@dicdado, :notice => 'Dicdado was successfully created.') }
+        format.html { redirect_to(@dicdado, :notice => 'Dicdado foi criado com sucesso !') }
         format.xml  { render :xml => @dicdado, :status => :created, :location => @dicdado }
       else
         carrega_agregadas
@@ -87,7 +87,7 @@ class DicdadosController < ApplicationController
 
     respond_to do |format|
       if @dicdado.update_attributes(params[:dicdado])
-        format.html { redirect_to(@dicdado, :notice => 'Dicdado was successfully updated.') }
+        format.html { redirect_to(@dicdado, :notice => 'Dicdado foi atualizado com sucesso !.') }
         format.xml  { head :ok }
       else
         carrega_agregadas

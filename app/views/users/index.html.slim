@@ -1,0 +1,30 @@
+= csrf_meta_tag
+script[type="text/javascript"]
+  |  $(document).ready( function(){ $('#coolTable').DataTable({ pageLength: 100, "paging": false, pagingType: "full_numbers", language: { search: "Filtrar:" } }) }); 
+table#coolTable.generalTable
+  thead
+    tr.head
+      th
+        | Usuario
+      th
+        | Login
+      th
+        | Perfil
+      - if (can? :manage, User)
+        th
+        th
+  tbody
+    - @users.each do |user|
+      tr
+        td
+          = user.name
+        td
+          = user.login
+        td
+          = user.roles
+        - if (can? :manage, User)
+          td
+            = link_to 'Editar', edit_user_path(user)
+          td
+            = link_to 'Apagar', user, method: :delete, data: { confirm: 'Confirma apagar?' }
+br

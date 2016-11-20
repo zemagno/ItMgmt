@@ -23,11 +23,13 @@ html
             #enviar_email 
             
             = yield 
+            footer
+              img[src="/logo_4mstech-64x64.jpg"]
+              spam Sistema de Gestao de Ativos - 
+              spam = "Ver: #{CONFIG['system_version']}" 
     - if ! current_user
+      div
         = render :partial => "tela_login" 
     - if current_user and current_user.is_a :usuario
         = render :partial => "splash"    
-  footer
-    img[src="/logo_4mstech-64x64.jpg"]
-     spam Sistema de Gestao de Ativos - 
-     spam = "Ver: #{CONFIG['system_version']}" 
+  

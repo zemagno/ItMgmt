@@ -8,18 +8,19 @@
   <%= form_tag(cis_path, :method => "get", :class => "panel-body") do %>
     <%= select_tag :view_default_ci, options_for_select(@views_ci, @view_default_ci), :onchange => "this.form.submit();"  %>
     <%= text_field_tag(:search, @search, :size => 50) %>
-    <%= button_tag(type: "submit", class: "btn btn-default btn-xs") do %>
+    <%= button_tag(type: "submit", class: "btn btn-primary btn-xs") do %>
     Procurar
   <% end %>
   
-  <%= link_to 'Novo CI',  new_ci_path, {:id => "zNovo", :class => "btn btn-default btn-xs"} %>
+  <%= link_to 'Novo CI',  new_ci_path, {:id => "zNovo", :class => "btn btn-primary btn-xs"} %>
+
   
   <% end %>
   <div class="panel-body">
     <table class="generalTable">
       <tr class="head">
         <th></th>
-        <th>Chave CI</th>
+        <th>Chave</th>
         <% @fields[0].each do |f| %>
         <th><%= f %> </th>
         <% end %>

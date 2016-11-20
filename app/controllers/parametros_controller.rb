@@ -51,7 +51,7 @@ class ParametrosController < ApplicationController
 
     respond_to do |format|
       if @parametro.save
-        format.html { redirect_to(@parametro, :notice => 'Parametro was successfully created.') }
+        format.html { redirect_to @parametro, notice: 'Parametro foi criado com sucesso !' }
         format.xml  { render :xml => @parametro, :status => :created, :location => @parametro }
       else
         format.html { render :action => "new" }
@@ -67,7 +67,7 @@ class ParametrosController < ApplicationController
 
     respond_to do |format|
       if @parametro.update_attributes(params[:parametro])
-        format.html { redirect_to(parametros_path, :notice => 'Parametro was successfully updated.') }
+        format.html { redirect_to @parametro, :notice => 'Parametro foi atualizado com sucesso !' }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

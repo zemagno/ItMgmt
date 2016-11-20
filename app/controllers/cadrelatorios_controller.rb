@@ -97,7 +97,7 @@ class CadrelatoriosController < ApplicationController
 
     respond_to do |format|
       if @cadrelatorio.save
-        format.html { redirect_to @cadrelatorio, notice: 'Cadrelatorio was successfully created.' }
+        format.html { redirect_to @cadrelatorio, notice: 'Cadrelatorio foi criado com sucesso !' }
         format.json { render json: @cadrelatorio, status: :created, location: @cadrelatorio }
       else
         format.html { render action: "new" }
@@ -113,7 +113,7 @@ class CadrelatoriosController < ApplicationController
 
     respond_to do |format|
       if @cadrelatorio.update_attributes(params[:cadrelatorio])
-        format.html { redirect_to @cadrelatorio, notice: 'Cadrelatorio was successfully updated.' }
+        format.html { redirect_to @cadrelatorio, notice: 'Cadrelatorio foi atualizado com sucesso !.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
