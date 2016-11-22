@@ -1,62 +1,72 @@
-
-<%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.nice_tipoci}) "%>
-</br>Status: <%= @ci.status%>
-
-</br>Localidade: <%= @ci.nome_localidade%>
-</br>Gestor: <%= helper_login_to_url(@ci.Owner)%>
-</br>Usuario(s): <%= helper_login_to_url(@ci.notificacao)%>
-</br>Data Ultimo Change: <%= @ci.dataChange%>
-
-<%= render :partial => 'docs2url', :locals => {:title => "Doc. Ultima Mudanca: ", :documentos => @ci.DocChange } %>
-
-</br> CC/Proj Debito: <%= "#{@ci.CCDebito}/#{@ci.ProjetoDebito}" %>
-</br> CC/Proj Credito: <%= "#{@ci.CCCredito}/#{@ci.ProjetoCredito}" %>
-</br>Custo Capex Mensal: <%= number_to_currency(@ci.CustoMensalCapex) %> - Custo Opex Mensal: <%= number_to_currency(@ci.CustoMensalOpex) %>
-
-
-</br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
-- <%= @ci.nice_cobrar %>
-- <%= @ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado' %>
-</br>
-<%= "Descricao e Codigo de Cobranca: #{@ci.descricaocobranca}/#{@ci.codigocobranca}" %>
-<%= render :partial => 'docs2url', :locals => {:title => "Documentacao: ", :documentos => @ci.url } %>
-
-<%= render :partial => 'docs2url', :locals => {:title => "Jira", :documentos => jira_to_docs(@ci.jira) } %>
-
-<% @atributos ||= [] %>
-<% @atributos.map do |dicdado,attr| %>
-     <% if attr[2].blank? || attr[1].blank? %>
-        </br><%="#{attr[0]} : #{attr[1]}"%>
-     <% else %>
-        <%= render :partial => 'docs2url', :locals => {:title => attr[0], :documentos => atributos_to_docs(attr[1],attr[2]) } %>
-     <% end %>
-<% end %>
-
-<!--     </br><a href="javascript: void(0)" onclick="window.open('','').location.href='<!--%=attr[2] % attr[1] %>'">
-            <!%="[#{attr[0]}]" %></a>
- -->
-
-
-<!-- 
-attr[0] = Nome
-attr[1] = valor
-attr[2] = URL
-attr[3] = Valores (combobos)
-attr[4] = descricao
-attr[5] = apelido
-attr[6] = regex
-attr[7] = Mandatorio
- -->
-
-
-
-</br>
-
-<!--
-URL
-Texto
-Checkbox
-Dropbox
-Date
-
--->
+ <!-- <div class="contaiener">  -->
+	<!-------->
+	<div id="content">
+		<div class="panel with-nav-tabs panel-primary">
+			<div class="panel-heading">
+				<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+					<li class="active"><a href="#<%=@tabs[0]%>" data-toggle="tab"><%=@tabs[0]%></a></li>
+					<% @tabs[1..-1].each do |t| %>
+					<li><a href="#<%=t%>" data-toggle="tab"><%= t%></a></li>
+					<% end %>
+				</ul>
+			</div>
+			
+			<div class="panel-body">
+				<div id="my-tab-content" class="tab-content">
+					<div class="tab-pane active" id="<%=@tabs[0]%>">
+						<%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.nice_tipoci}) "%>
+						</br>Status: <%= @ci.status%>
+						</br>Localidade: <%= @ci.nome_localidade%>
+						</br>Gestor: <%= helper_login_to_url(@ci.Owner)%>
+						</br>Usuario(s): <%= helper_login_to_url(@ci.notificacao)%>
+						</br>Data Ultimo Change: <%= @ci.dataChange%>
+						<%= render :partial => 'docs2url', :locals => {:title => "Doc. Ultima Mudanca: ", :documentos => @ci.DocChange } %>
+						</br> CC/Proj Debito: <%= "#{@ci.CCDebito}/#{@ci.ProjetoDebito}" %>
+						</br> CC/Proj Credito: <%= "#{@ci.CCCredito}/#{@ci.ProjetoCredito}" %>
+						</br>Custo Capex Mensal: <%= number_to_currency(@ci.CustoMensalCapex) %> - Custo Opex Mensal: <%= number_to_currency(@ci.CustoMensalOpex) %>
+						</br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
+						- <%= @ci.nice_cobrar %>
+						- <%= @ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado' %>
+						</br>
+						<%= "Descricao e Codigo de Cobranca: #{@ci.descricaocobranca}/#{@ci.codigocobranca}" %>
+						<%= render :partial => 'docs2url', :locals => {:title => "Documentacao: ", :documentos => @ci.url } %>
+						<%= render :partial => 'docs2url', :locals => {:title => "Jira", :documentos => jira_to_docs(@ci.jira) } %>
+					</div>
+					<% @tabs[1..-1].each do |t| %>
+					<div class="tab-pane" id="<%=t%>">
+						<% @atributos2.find_all { |x| x[11]==t}.each do |attr| %>
+						
+						<br>
+						<% if attr[3].blank? || attr[2].blank? %>
+						<%="#{attr[1]} : #{attr[2]}"%>
+						<% else %>
+						<%= render :partial => 'docs2url', :locals => {:title => attr[1], :documentos => atributos_to_docs(attr[2],attr[3]) } %>
+						<% end %>
+						
+						
+						<!-- <h4><%=attr[1]%></h4> -->
+						<!-- <p><%=attr[2]%></p> -->
+						<% end %>
+					</div>
+					<% end %>
+					
+				</div>
+			</div>
+		</div>
+	<!-- </div> <--></-->
+	<script type="text/javascript">
+	jQuery(document).ready(function ($) {
+	$('#tabs').tab();
+	});
+	</script>
+	</div> <!-- container -->
+	<!--
+	attr[0] = Nome
+	attr[1] = valor
+	attr[2] = URL
+	attr[3] = Valores (combobos)
+	attr[4] = descricao
+	attr[5] = apelido
+	attr[6] = regex
+	attr[7] = Mandatorio
+	

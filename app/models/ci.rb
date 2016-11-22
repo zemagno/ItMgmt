@@ -25,40 +25,40 @@ class Ci < ActiveRecord::Base
 
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
   has_many :relacao_dependencia, -> { where 'tipo=0'},
-           :class_name => "Relacionamento",
-           :foreign_key => "impactado_id",
-           :dependent => :delete_all
+    :class_name => "Relacionamento",
+    :foreign_key => "impactado_id",
+    :dependent => :delete_all
 
   has_many :dependentes,
-           :through => :relacao_dependencia 
-           # :include => "tipoci"
+    :through => :relacao_dependencia
+  # :include => "tipoci"
 
   has_many :relacao_composto_de, -> { where 'tipo=1'},
-           :class_name => "Relacionamento",
-           :foreign_key => "impactado_id",
-           :dependent => :delete_all
+    :class_name => "Relacionamento",
+    :foreign_key => "impactado_id",
+    :dependent => :delete_all
 
   has_many :composto_de,
-           :through => :relacao_composto_de 
-           # :include => "tipoci"
+    :through => :relacao_composto_de
+  # :include => "tipoci"
 
   has_many :relacao_dependencia_all,
-           :class_name => "Relacionamento",
-           :foreign_key => "impactado_id",
-           :dependent => :delete_all
+    :class_name => "Relacionamento",
+    :foreign_key => "impactado_id",
+    :dependent => :delete_all
 
   has_many :dependentes_all,
-           :through => :relacao_dependencia_all 
-           # :include => "tipoci"
+    :through => :relacao_dependencia_all
+  # :include => "tipoci"
 
   has_many :relacao_impacto,
-           :class_name => "Relacionamento",
-           :foreign_key => "dependente_id",
-           :dependent => :delete_all
+    :class_name => "Relacionamento",
+    :foreign_key => "dependente_id",
+    :dependent => :delete_all
 
   has_many :impactados,
-           :through => :relacao_impacto
-           # :include => "tipoci"
+    :through => :relacao_impacto
+  # :include => "tipoci"
 
   validates :Owner, :format => {:with => /\A[a-zA-z.]+\z/,                 message: I18n.t("errors.ci.Owner.format")}
   validates :chave, :presence =>  {                                      message: I18n.t("errors.ci.chave.presence")}
@@ -76,7 +76,7 @@ class Ci < ActiveRecord::Base
   before_save :atualiza_statusci
   after_create :post_create_processing
   after_destroy :post_destroy_processing
-  # after_save 
+  # after_save
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
   default_scope { order('chave ASC') }
@@ -144,15 +144,15 @@ class Ci < ActiveRecord::Base
 
   def nice_cobrar
     case tipoCobranca
-     when 0 
-        "Nao Cobrar"
-     when 1
-        "Cobrar do Projeto (#{self.descricaocobranca}/#{self.codigocobranca})"
-     when 2
-        "Cobrar do Usuario"
-     else
-        "Nao Cobrar"
-     end 
+    when 0
+      "Nao Cobrar"
+    when 1
+      "Cobrar do Projeto (#{self.descricaocobranca}/#{self.codigocobranca})"
+    when 2
+      "Cobrar do Usuario"
+    else
+      "Nao Cobrar"
+    end
   end
 
   def nice_provisionar
@@ -207,28 +207,43 @@ class Ci < ActiveRecord::Base
   # TODO colocar todo servicos de atributos numa services. Nao deixar no model do CI.
   # TODO --> isso aqui é lento...tem que colocar num variavel e se chamar de novo, retorna tud
   # TODO --> testar se eu chamo varias vezes, ele monta sempre, sempre..
-  # 
+  #
+
+  def atributos2
+    @attr_existentes2 = []
+
+    tipoci.dicdados.map { |x| @attr_existentes2 << [x.id,x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab.nil? ? "Caracteristicas" : x.tab] }
+
+    atributo.map do |x|
+      idx = @attr_existentes2.index { |elem| elem[0]==x.dicdado.id}
+      @attr_existentes2[idx][2] = x.valor if idx
+    end
+
+    @attr_existentes2
+
+  end
+
   def atributos
 
     # pegar todos os atributos possiveis (tipoci.dicdado)
     # dicdados.id => [Label,valor]
-    #{ 5=>["Contrat", "Link Citi"], 
-    #  3=>["Designacao", "001a-98/97"], 
-    #  2=>["Endereco", "Av Boa Vista"], 
-    #  1=>["Capacidade", "4mb"]} 
+    #{ 5=>["Contrat", "Link Citi"],
+    #  3=>["Designacao", "001a-98/97"],
+    #  2=>["Endereco", "Av Boa Vista"],
+    #  1=>["Capacidade", "4mb"]}
     return @attr_existentes unless @attr_existentes.blank?
 
     @attr_existentes = Hash.new
 
     # monto um hash com todos atributos que esse CI deve ter
-    tipoci.dicdados.map { |x| @attr_existentes[x.id] = [x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip] }
+    tipoci.dicdados.map { |x| @attr_existentes[x.id] = [x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab] }
 
     # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
     atributo.map do |x|
       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
       # entao eu crio esse atributo no hash
       if !@attr_existentes[x.dicdado.id] then
-        @attr_existentes[x.dicdado.id] = [x.dicdado.nome, nil, x.dicdado.url, x.dicdado.valores, x.dicdado.descricao, x.dicdado.apelido, x.dicdado.tipo, x.dicdado.regex, x.dicdado.mandatorio, x.dicdado.tooltip]
+        @attr_existentes[x.dicdado.id] = [x.dicdado.nome, nil, x.dicdado.url, x.dicdado.valores, x.dicdado.descricao, x.dicdado.apelido, x.dicdado.tipo, x.dicdado.regex, x.dicdado.mandatorio, x.dicdado.tooltip,x.tab]
       end
       @attr_existentes[x.dicdado.id][1] = x.valor
     end
@@ -258,7 +273,7 @@ class Ci < ActiveRecord::Base
       a.valor=value
       a.save!
     end
-# TODO fazer um set atributo com um valor, para poder
+    # TODO fazer um set atributo com um valor, para poder
   end
 
 
@@ -267,10 +282,10 @@ class Ci < ActiveRecord::Base
     # Atributo (ci_id, dicdado_id, valor)
     # c.atributo[1].dicdado.nome =  "Contrat"
     # atributos : dicdados.id => [Label do dicdados,valor]
-    #{ 5=>["Contrat", "Link Citi"], 
-    #  3=>["Designacao", "001a-98/97"], 
-    #  2=>["Endereco", "Av Boa Vista"], 
-    #  1=>["Capacidade", "4mb"]} 
+    #{ 5=>["Contrat", "Link Citi"],
+    #  3=>["Designacao", "001a-98/97"],
+    #  2=>["Endereco", "Av Boa Vista"],
+    #  1=>["Capacidade", "4mb"]}
     Rails.logger.debug "[DEBUG] - Vou iniciar atualizacaos dos atributos #{nice_atributos}"
 
     attr_default = atributos
@@ -343,7 +358,7 @@ class Ci < ActiveRecord::Base
     # puts "pos save #{self.chave} #{self.statusci_id}"
     # puts "_______________________________________________________________"
     BreEvent.register(:criar,self)
-    
+
   end
 
   def post_destroy_processing
@@ -351,7 +366,7 @@ class Ci < ActiveRecord::Base
     # puts "pos destroy #{self.chave} #{self.statusci_id}"
     # puts "_______________________________________________________________"
     BreEvent.register(:eliminar,self)
-    
+
   end
 
 end

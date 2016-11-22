@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161106083337) do
+ActiveRecord::Schema.define(version: 20161121220541) do
 
   create_table "MapeamentoLocalTrabalho", id: false, force: :cascade do |t|
     t.string  "NomSite",                limit: 30
@@ -251,6 +251,7 @@ ActiveRecord::Schema.define(version: 20161106083337) do
     t.boolean  "mandatorio"
     t.text     "tooltip",     limit: 65535
     t.text     "comentarios", limit: 65535
+    t.string   "tab",         limit: 255
   end
 
   add_index "dicdados", ["tipoci_id"], name: "index_dicdados_on_tipoci_id", using: :btree
@@ -899,6 +900,7 @@ ActiveRecord::Schema.define(version: 20161106083337) do
     t.string   "Descricao",  limit: 255
     t.string   "Owner",      limit: 255
     t.string   "perfil",     limit: 255
+    t.string   "tab",        limit: 255
   end
 
   create_table "tipocontratos", force: :cascade do |t|

@@ -112,6 +112,10 @@ class CisController < ApplicationController
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     # TODO - se nao achar CI, tela de erro
 
+    tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}"
+    @tabs = tabs.split(";").uniq
+    @atributos2 = @ci.atributos2
+
 
     if @ci
       if ! finalAuth[:view].include? (@ci.tipoci_id)
@@ -322,6 +326,7 @@ class CisController < ApplicationController
 
     @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
+
     # cache_finalAuth = finalAuth[:view] # nao preciso pois o search ja esta com :with
     # @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
 
