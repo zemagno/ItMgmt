@@ -16,8 +16,6 @@ class CisController < ApplicationController
   respond_to :html, :xml, :json, :csv, :js
 
 
-# estava testanto renderizacao de todas as telas pois fiz upgrade para o 4.2
-
   # @layout 'application_novolyaout'
 
   # Variaveis geradas por esse controller
@@ -30,7 +28,7 @@ class CisController < ApplicationController
   # @sites
   # @tiposci
 
-  # TODO colocar carrega agregadas no before_ action/before_f ilter para alguns metodos abaixo..
+  # TODO colocar carrega agregadas no before_ action/before_filter para alguns metodos abaixo..
 
   def log
     id = params[:id]
