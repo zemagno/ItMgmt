@@ -1,28 +1,30 @@
  <!-- <div class="contaiener">  -->
-	<!-------->
+
 	<div id="content">
 		<div class="panel with-nav-tabs panel-primary">
-			<div class="panel-heading">
+			
+			<div class="panel-heading"> <!-- Imprimo os tabs  -->
 				<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
 					<li class="active"><a href="#<%=@tabs[0]%>" data-toggle="tab"><%=@tabs[0]%></a></li>
 					<% @tabs[1..-1].each do |t| %>
-					<li><a href="#<%=t%>" data-toggle="tab"><%= t%></a></li>
+						<li><a href="#<%=t%>" data-toggle="tab"><%= t%></a></li>
 					<% end %>
 				</ul>
 			</div>
 			
 			<div class="panel-body">
+				<!-- primeiro conteudo, da primeira tab, é o padrao de todo cis -->
 				<div id="my-tab-content" class="tab-content">
 					<div class="tab-pane active" id="<%=@tabs[0]%>">
 						<%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.nice_tipoci}) "%>
-						</br>Status: <%= @ci.status%>
-						</br>Localidade: <%= @ci.nome_localidade%>
-						</br>Gestor: <%= helper_login_to_url(@ci.Owner)%>
-						</br>Usuario(s): <%= helper_login_to_url(@ci.notificacao)%>
-						</br>Data Ultimo Change: <%= @ci.dataChange%>
+						<%= render :partial => 'item', :locals => { :title => "Status", :value =>  @ci.status }%>
+						<%= render :partial => 'item', :locals => { :title => "Localidade", :value => @ci.nome_localidade} %>
+						<%= render :partial => 'item', :locals => { :title => "Gestor", :value => helper_login_to_url(@ci.Owner)} %>
+						<%= render :partial => 'item', :locals => { :title => "Usuario(s)", :value => helper_login_to_url(@ci.notificacao)} %>
+						<%= render :partial => 'item', :locals => { :title => "Data Ultimo Change", :value => @ci.dataChange} %>
 						<%= render :partial => 'docs2url', :locals => {:title => "Doc. Ultima Mudanca: ", :documentos => @ci.DocChange } %>
-						</br> CC/Proj Debito: <%= "#{@ci.CCDebito}/#{@ci.ProjetoDebito}" %>
-						</br> CC/Proj Credito: <%= "#{@ci.CCCredito}/#{@ci.ProjetoCredito}" %>
+						<%= render :partial => 'item', :locals => { :title => "CC/Proj Debito", :value => "#{@ci.CCDebito}/#{@ci.ProjetoDebito}"  } %>
+						<%= render :partial => 'item', :locals => { :title => "CC/Proj Credito", :value => "#{@ci.CCCredito}/#{@ci.ProjetoCredito}"} %>
 						</br>Custo Capex Mensal: <%= number_to_currency(@ci.CustoMensalCapex) %> - Custo Opex Mensal: <%= number_to_currency(@ci.CustoMensalOpex) %>
 						</br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
 						- <%= @ci.nice_cobrar %>
@@ -31,42 +33,33 @@
 						<%= "Descricao e Codigo de Cobranca: #{@ci.descricaocobranca}/#{@ci.codigocobranca}" %>
 						<%= render :partial => 'docs2url', :locals => {:title => "Documentacao: ", :documentos => @ci.url } %>
 						<%= render :partial => 'docs2url', :locals => {:title => "Jira", :documentos => jira_to_docs(@ci.jira) } %>
-					</div>
+					</div> <!-- class="tab-pane active" -->
+
+					<!-- o restante das tabs vem dos atributos -->
 					<% @tabs[1..-1].each do |t| %>
-					<div class="tab-pane" id="<%=t%>">
-						<% @atributos2.find_all { |x| x[11]==t}.each do |attr| %>
-						
-						<br>
-						<% if attr[3].blank? || attr[2].blank? %>
-						<%="#{attr[1]} : #{attr[2]}"%>
-						<% else %>
-						<%= render :partial => 'docs2url', :locals => {:title => attr[1], :documentos => atributos_to_docs(attr[2],attr[3]) } %>
-						<% end %>
-						
-						
-						<!-- <h4><%=attr[1]%></h4> -->
-						<!-- <p><%=attr[2]%></p> -->
-						<% end %>
-					</div>
-					<% end %>
+						<div class="tab-pane" id="<%=t%>">
+							<% @atributos2.find_all { |x| x[11]==t}.each do |attr| %>
+							
+								<% if attr[3].blank? || attr[2].blank? %>
+									<%= render :partial => 'item', :locals => { :title => attr[1], :value => attr[2]} %>									
+								<% else %>
+									<%= render :partial => 'docs2url', :locals => {:title => attr[1], :documentos => atributos_to_docs(attr[2],attr[3]) } %>
+								<% end %>
+							
+							<% end %>
+						</div> <!-- class="tab-pane" -->
+					<% end %> <!-- @tabs[1..-1].each do -->
 					
-				</div>
-			</div>
-		</div>
-	<!-- </div> <--></-->
-	<script type="text/javascript">
-	jQuery(document).ready(function ($) {
-	$('#tabs').tab();
-	});
-	</script>
-	</div> <!-- container -->
-	<!--
-	attr[0] = Nome
-	attr[1] = valor
-	attr[2] = URL
-	attr[3] = Valores (combobos)
-	attr[4] = descricao
-	attr[5] = apelido
-	attr[6] = regex
-	attr[7] = Mandatorio
+				</div> <!-- class=tab content -->
+			</div> <!-- class=panel body -->
+		</div> <!-- class=panel -->
+	</div> <!-- id=content -->
+<!-- </div> <-->
 	
+
+<script type="text/javascript">
+jQuery(document).ready(function ($) {
+$('#tabs').tab();
+});
+</script>
+ 

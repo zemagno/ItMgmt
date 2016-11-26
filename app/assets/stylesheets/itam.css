@@ -5,7 +5,7 @@
   font-weight: 400;
   src: url('../fonts/roboto-slab-v6-latin/roboto-slab-v6-latin-regular.eot'); /* IE9 Compat Modes */
   src: local('Roboto Slab Regular'), local('RobotoSlab-Regular'),
-       url('../fonts/roboto-slab-v6-latin/roboto-slab-v6-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/roboto-slab-v6-latin/roboto-slab-v6-latin-regular.eot?#iefix ') format('embedded-opentype'), /* IE6-IE8 */
        url('../fonts/roboto-slab-v6-latin/roboto-slab-v6-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
        url('../fonts/roboto-slab-v6-latin/roboto-slab-v6-latin-regular.woff') format('woff'), /* Modern Browsers */
        url('../fonts/roboto-slab-v6-latin/roboto-slab-v6-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
@@ -34,6 +34,12 @@ color:#a8a8a8;
 .margin-left{
     margin-left: 5px !important;
 }
+
+.margin-botton{
+    margin-top: 5px;
+}
+
+
 
 header {
   position: relative; /* irei posicionar os elementos dentro desse block "absolute" 
@@ -156,7 +162,8 @@ table.generalTable {
 .generalTable tr.head th:last-child {
   -webkit-border-top-right-radius: 5px;
   -moz-border-radius-topright: 5px;
-  border-top-right-radius: 5px;}
+  border-top-right-radius: 5px;
+}
 
 
 
