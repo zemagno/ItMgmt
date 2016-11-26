@@ -15,7 +15,7 @@
 <% end %>
 
 <% if @email_impactados then %>
-   <a href="mailto:?bcc=<%=@email_impactados%>&subject=Alerta - <%=@ci.chave%>" onclick="window.open(this.href,'');return false";\>Email Impactados/Dependentes/Notificacao</a> 
+   <a href="mailto:?bcc=<%=@email_impactados%>&subject=Alerta - <%=@ci.chave%>" class="btn btn-primary btn-xs margin-botton" onclick="window.open(this.href,'');return false";\>Email Impactados/Dependentes/Notificacao</a> 
 <% end %>
 </br>
 <%= link_to "Adiciona Dependente", novo_dependente_path(@ci), :remote => true, :id => "novo_dependente" , :class => "btn btn-primary btn-xs margin-botton"%>
@@ -27,8 +27,8 @@
 
 <% if Features.has? "alertas" %> 
 <%= link_to "Abrir Alerta", tasks_new_from_ci_path(@ci) , :target => '_blank', :class => "btn btn-primary btn-xs margin-botton" %>
-<a href="<%='/tasks?&search=@CI='+@ci.chave%>" , :class => "btn btn-primary btn-xs margin-botton">Alertas deste CI</a>
-<a href="<%='/tasks?&search='+@ci.chave%>" , :class => "btn btn-primary btn-xs margin-botton">Alertas com este CI</a>
+<a href="<%='/tasks?&search=@CI='+@ci.chave%>" class="btn btn-primary btn-xs margin-botton">Alertas deste CI</a>
+<a href="<%='/tasks?&search='+@ci.chave%>" class="btn btn-primary btn-xs margin-botton">Alertas com este CI</a>
 <% end %>
 
 <% if can? :manage, Audit %>

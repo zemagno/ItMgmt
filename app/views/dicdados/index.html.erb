@@ -1,58 +1,62 @@
-<h1>Dicionario de Dados - Campos dos Ativos</h1>
+<div class="panel panel-default">
 
-<% [:info, :error].each do |key| %>
-   <% if flash[key] %>
-   <div class="flash <%= key %>" id="flash">
-     <%= flash[key] %>
-   </div>
-   <% end %>
- <% end %>
+  <% [:info, :error].each do |key| %>
+     <% if flash[key] %>
+     <div class="flash <%= key %>" id="flash">
+       <%= flash[key] %>
+     </div>
+     <% end %>
+  <% end %>
 
-<% if (can? :manage, Dicdado)  %>
-<%= link_to '[Novo Campo]', new_dicdado_path %>
-<% end %>
 
-<%= will_paginate(@dicdados) %>
-<%= form_tag(dicdados_path, :method => "get") do %>
- 
+  <!-- <div class="panel-heading"><h1>Dicionario de Dados - Campos dos Ativos</h1></div> -->
+
+  <%= form_tag(dicdados_path, :method => "get", :class => "panel-body") do %>
   <%= text_field_tag(:search, @search, :size => 50) %>
-  <%= submit_tag("Filtrar") %>
-<% end %>
+  <%= button_tag(type: "submit", class: "btn btn-primary btn-xs") { "Filtrar" }%>
+  <%= link_to 'Novo Campo', new_dicdado_path, class: "btn btn-primary btn-xs" if (can? :manage, Dicdado) %>
+  <% end %> <!-- form -->
 
-<table>
-  <tr>
-    <th>Tipo CI</th>
-    <th>Campo</th>
-    <th>Apelido</th>
-    <th>Regex</th>
-    <th>Mandatorio</th>
-    <th>Ordem</th>
-    <% if (can? :manage, Dicdado)  %>
-    <th></th>
-    <th></th>
-    <% end %>
-  </tr>
 
-<% @dicdados.each do |dicdado| %>
-  <tr>
-    <td><%= link_to dicdado.nice_tipoci, dicdado %></td>
-    <td><%= link_to dicdado.nome, dicdado %></td>
-    <td><%= dicdado.apelido %></th>
-    <td><%= dicdado.regex %></th>  
-    <td><%= dicdado.mandatorio ? "Sim" : "" %></td>   
-    <td><%= dicdado.ordem %></td>
-    <% if (can? :manage, Dicdado)  %>
-    <td><%= link_to 'Editar', edit_dicdado_path(dicdado) %></td>
-    <td><%= link_to 'Apagar', dicdado, data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
 
-<br />
+  <div class="panel-body">
+    <table class="generalTable">
+      <thead>
+        <tr class="head">
+          <th>Tipo CI</th>
+          <th>Campo</th>
+          <th>Apelido</th>
+          <th>Regex</th>
+          <th>Mandatorio</th>
+          <th>Ordem</th>
+          <% if (can? :manage, Dicdado)  %>
+            <th></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @dicdados.each do |dicdado| %>
+          <tr>
+            <td><%= link_to dicdado.nice_tipoci, dicdado %></td>
+            <td><%= link_to dicdado.nome, dicdado %></td>
+            <td><%= dicdado.apelido %></th>
+            <td><%= dicdado.regex %></th>  
+            <td><%= dicdado.mandatorio ? "Sim" : "" %></td>   
+            <td><%= dicdado.ordem %></td>
+            <% if (can? :manage, Dicdado)  %>
+              <td>
+                  <%= link_to 'Editar', edit_dicdado_path(dicdado), class: "btn btn-primary btn-xs" %>
+                  <%= link_to 'Apagar', dicdado, data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete, class: "btn btn-danger btn-xs" %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br/>
 
-<%= will_paginate(@dicdados) %>
-<% if (can? :manage, Dicdado)  %>
-<%= link_to '[Novo Campo]', new_dicdado_path %>
-<% end %>
+    <%= will_paginate(@dicdados) %>
+
+  </div> <!-- class panel-body -->
+</div> <!-- panel panel-default -->
 

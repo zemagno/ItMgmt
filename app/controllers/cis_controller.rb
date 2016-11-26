@@ -627,7 +627,6 @@ class CisController < ApplicationController
   end
 
   def dependentes
-
     @fila_dependentes = gera_relaciomentos(:dependentes)
     gera_grafico_relacionamento(params[:id],:dependentes)
     @imagem_dependentes = true

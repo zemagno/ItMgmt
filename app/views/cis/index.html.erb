@@ -10,7 +10,7 @@
     <%= text_field_tag(:search, @search, :size => 50) %>
     <%= button_tag(type: "submit", class: "btn btn-primary btn-xs") do %>
     Procurar
-  <% end %>
+    <% end %>
   
   <%= link_to 'Novo CI',  new_ci_path, {:id => "zNovo", :class => "btn btn-primary btn-xs"} %>
 
@@ -35,6 +35,7 @@
       </tr>
       <% end %>
     </table>
+    <%= will_paginate @cis %>
   </div> <!-- panel-body -->
+
 </div> <!-- panel panel-default -->
-<%= will_paginate @cis %>

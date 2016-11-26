@@ -12,39 +12,48 @@ $(document).ready( function(){
 });
 </script>
 
+<div id="content">
+  <div class="panel panel-default">
 
-<h1>Parametros</h1>
-<% if can? :admin, :all %>
-   <%= link_to "[Novo Parametro]", new_parametro_path %>
-<% end %>
-
-<table id="coolTable" class="generalTable">
-<thead>
-  <tr class="head">
-    <th>Parametro</th>
-    <th>Subtipo</th>
-    <th>Valor</th>
-    <th></th>
-   </tr>
-</thead>
-<tbody>
-<% @parametros.each do |parametro| %>
-  <tr>
-   <% if can? :admin, :all %>
-    <td><%= link_to parametro.tipo, parametro_path(parametro) %></td>
-   <% else %>
-    <td><%= parametro.tipo %></td>
-   <% end %> 
-    <td><%= parametro.subtipo %></td>
-    <td><%= parametro.valor[0,400] if ! parametro.valor.blank? %></td>
-    <td><%= link_to "Editar", edit_parametro_path(parametro) if can? :admin, :all %></td>
+    <div class="panel-heading">
+      <% if can? :admin, :all %>
+      <%= link_to "Novo Parametro", new_parametro_path, class: "btn btn-primary btn-xs" %>
+      <% end %>
+    </div>
     
-  </tr>
-<% end %>
-</tbody>
-</table>
-
-<% if can? :admin, :all %>
-   <%= link_to "[Novo Parametro]", new_parametro_path %>
-<% end %>
-
+    <div class="panel-body">
+      <table id="coolTable" class="generalTable">
+        <thead>
+          <tr class="head">
+            <th>Parametro</th>
+            <th>Subtipo</th>
+            <th>Valor</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @parametros.each do |parametro| %>
+          <tr>
+            <% if can? :admin, :all %>
+            <td><%= link_to parametro.tipo, parametro_path(parametro) %></td>
+            <% else %>
+            <td><%= parametro.tipo %></td>
+            <% end %>
+            <td><%= parametro.subtipo %></td>
+            <td><%= parametro.valor[0,400] if ! parametro.valor.blank? %></td>
+            <td><%= link_to "Editar", edit_parametro_path(parametro), class: "btn btn-primary btn-xs" if can? :admin, :all %></td>
+            
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="panel-heading">
+      <% if can? :admin, :all %>
+      <%= link_to "Novo Parametro", new_parametro_path, class: "btn btn-primary btn-xs" %>
+      <% end %>
+    </div>
+  
+  </div>
+</div>

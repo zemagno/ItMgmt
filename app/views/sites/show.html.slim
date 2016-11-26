@@ -1,0 +1,22 @@
+.container
+  .row
+    p#notice
+      = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        |  Site: 
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Site
+            p.list-group-item-text
+              = @site.nome
+          .list-group-item
+            h4.list-group-item-heading
+              | Estado
+            p.list-group-item-text
+              = @site.estado
+          
+          
+    = link_to 'Editar', edit_site_path(@site), :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Listagem', sites_path , :class => "btn btn-primary btn-md margin-left"

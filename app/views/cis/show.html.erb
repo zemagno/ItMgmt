@@ -1,42 +1,39 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 
-<%= form_tag(cis_path, :method => "get") do %>
-   <%= text_field_tag(:search, @search, :size => 50) %>
-  <%= submit_tag("Procurar", class: "btn btn-primary btn-xs") %>
-  
-<% end %>
+  <%= form_tag(cis_path, :method => "get") do %>
+     <%= text_field_tag(:search, @search, :size => 50) %>
+    <%= submit_tag("Procurar", class: "btn btn-primary btn-xs") %>
+    
+  <% end %>
 
-</br>
-<%= render :partial => "menu_top"%>
+  <div class="panel-body">
+  <%= render :partial => "menu_top"%>
+  </div>
 
-</br>
-</br>
 
-<% [:info, :error].each do |key| %>
-   <% if flash[key] %>
-   <div class="flash <%= key %>" id="flash">
-     <%= flash[key] %>
-   </div>
+  <% [:info, :error].each do |key| %>
+     <% if flash[key] %>
+     <div class="flash <%= key %>" id="flash">
+       <%= flash[key] %>
+     </div>
+     <% end %>
    <% end %>
- <% end %>
 
-<%= render :partial => 'edges', :locals => {:title => "Impactados", :cis => @ci.impactados } %>
+  <%= render :partial => 'edges', :locals => {:title => "Impactados", :cis => @ci.impactados } %>
 
-</br>
-<!-- <div id="stylized" class="myform"> -->
-	<%= render :partial => "form" %>
+  </br>
+  <%= render :partial => "form" %>
   <%= render :partial => "menu_ci"%>
-<!-- </div> -->
 
-</br>
-<%= render :partial => "edges", :locals => {:title => "Dependentes",  :cis => @ci.dependentes } %>
-</br>
+  </br>
+  <%= render :partial => "edges", :locals => {:title => "Dependentes",  :cis => @ci.dependentes } %>
+  </br>
 
-</br>
+  </br>
 
-</div>
-</div>
+  </div> <!-- panel-body -->
+</div> <!-- panel panel-default -->
 
 
 
