@@ -111,8 +111,13 @@ class CisController < ApplicationController
   def show
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     # TODO - se nao achar CI, tela de erro
-    @tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
-    @atributos2 = @ci.atributos2
+    if @ci
+      @tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
+      @atributos2 = @ci.atributos2
+    else
+      @tabs = "Principal;Caracteristicas"
+      @atributos2 = []
+    end
 
 
     if @ci
@@ -383,6 +388,7 @@ class CisController < ApplicationController
   end
 
   def search
+    Rails.logger.debug "[DEBUG] CisController::search - params: #{params}"
     @ci = Ci.find_by_chave(params[:search])
 
     if @ci == nil then

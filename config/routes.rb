@@ -136,7 +136,7 @@ ItMgmt::Application.routes.draw do
   # match '/cis2', to: 'cis#index2'
 
 
-  get 'cis/search', to: "cis#search"
+  # get 'cis/search', to: "cis#search"
   get 'CMDB', to: "cis#index"
 
   resources :cis
