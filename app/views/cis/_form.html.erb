@@ -15,29 +15,29 @@
 			<div class="panel-body">
 				<!-- primeiro conteudo, da primeira tab, é o padrao de todo cis -->
 				<div id="my-tab-content" class="tab-content">
-					<div class="tab-pane active" id="<%=@tabs[0]%>">
-						<%= link_to @ci.chave, @ci %><%= " - #{@ci.descricao} (#{@ci.nice_tipoci}) "%>
+					<div class="tab-pane itam_cis_panel active" id="<%=@tabs[0]%>">
+
+						<%= render :partial => 'item', :locals => { :title => @ci.chave, :value =>  "#{@ci.descricao} (#{@ci.nice_tipoci}) " }%>
 						<%= render :partial => 'item', :locals => { :title => "Status", :value =>  @ci.status }%>
 						<%= render :partial => 'item', :locals => { :title => "Localidade", :value => @ci.nome_localidade} %>
 						<%= render :partial => 'item', :locals => { :title => "Gestor", :value => helper_login_to_url(@ci.Owner)} %>
 						<%= render :partial => 'item', :locals => { :title => "Usuario(s)", :value => helper_login_to_url(@ci.notificacao)} %>
 						<%= render :partial => 'item', :locals => { :title => "Data Ultimo Change", :value => @ci.dataChange} %>
-						<%= render :partial => 'docs2url', :locals => {:title => "Doc. Ultima Mudanca: ", :documentos => @ci.DocChange } %>
+						<%= render :partial => 'docs2url', :locals => {:title => "Doc. Ultima Mudanca", :documentos => @ci.DocChange } %>
 						<%= render :partial => 'item', :locals => { :title => "CC/Proj Debito", :value => "#{@ci.CCDebito}/#{@ci.ProjetoDebito}"  } %>
 						<%= render :partial => 'item', :locals => { :title => "CC/Proj Credito", :value => "#{@ci.CCCredito}/#{@ci.ProjetoCredito}"} %>
-						</br>Custo Capex Mensal: <%= number_to_currency(@ci.CustoMensalCapex) %> - Custo Opex Mensal: <%= number_to_currency(@ci.CustoMensalOpex) %>
-						</br>Custo Mensal: <%= number_to_currency(@ci.CustoMensal) %>
-						- <%= @ci.nice_cobrar %>
-						- <%= @ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado' %>
-						</br>
-						<%= "Descricao e Codigo de Cobranca: #{@ci.descricaocobranca}/#{@ci.codigocobranca}" %>
-						<%= render :partial => 'docs2url', :locals => {:title => "Documentacao: ", :documentos => @ci.url } %>
+						<%= render :partial => 'item_2cols', :locals => { :title => ["Custo Capex Mensal","Custo Opex Mensal:"], :value => ["#{@ci.CCCredito}/#{@ci.ProjetoCredito}","xx"]} %>
+						
+						<%= render :partial => 'item_2cols', :locals => { :title => ["Custo Mensal","Provisionar: "], :value => [
+						     "#{number_to_currency(@ci.CustoMensal)}","#{@ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado'}"]} %>
+						<%= render :partial => 'item_2cols', :locals => { :title => ["Descricao Cobrança","Codigo de Cobranca"], :value => [@ci.descricaocobranca,@ci.codigocobranca]} %>
+						<%= render :partial => 'docs2url', :locals => {:title => "Documentacao", :documentos => @ci.url } %>
 						<%= render :partial => 'docs2url', :locals => {:title => "Jira", :documentos => jira_to_docs(@ci.jira) } %>
 					</div> <!-- class="tab-pane active" -->
 
 					<!-- o restante das tabs vem dos atributos -->
 					<% @tabs[1..-1].each do |t| %>
-						<div class="tab-pane" id="<%=t%>">
+						<div class="tab-pane itam_cis_panel" id="<%=t%>">
 							<% @atributos2.find_all { |x| x[11]==t}.each do |attr| %>
 							
 								<% if attr[3].blank? || attr[2].blank? %>

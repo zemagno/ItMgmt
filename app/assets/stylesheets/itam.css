@@ -39,6 +39,22 @@ color:#a8a8a8;
     margin-top: 5px;
 }
 
+.itam_btn_hyperlink_cis {
+      line-height: 1.2;
+}
+
+.itam_cis_title {
+  background-color: #aacfef;
+}
+
+.itam_cis_value {
+   background-color: #c4e3ff;
+}
+.itam_cis_panel {
+   background-color: #c4e3ff;
+}
+
+
 
 
 header {

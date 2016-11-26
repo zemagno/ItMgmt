@@ -111,9 +111,7 @@ class CisController < ApplicationController
   def show
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     # TODO - se nao achar CI, tela de erro
-
-    tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}"
-    @tabs = tabs.split(";").uniq
+    @tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
     @atributos2 = @ci.atributos2
 
 

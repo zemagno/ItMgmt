@@ -172,7 +172,7 @@ class Ci < ActiveRecord::Base
 
 
   def duplicar(nova_chave)
-    newci = dup :include => :atributo
+    newci = deep_clone :include => :atributo
     newci.chave = nova_chave
     newci.save
     newci
