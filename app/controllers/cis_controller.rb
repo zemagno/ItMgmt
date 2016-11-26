@@ -57,11 +57,6 @@ class CisController < ApplicationController
     @tiposci = Tipoci.all
     @statusci = Statusci.all
 
-    # l =Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})
-    # a = JSON.parse l
-    # a.select { |x| x[0] == "estacao" }[0][1]
-
-
   end
 
   def to_csv (titulo, fields, cis)
@@ -110,7 +105,7 @@ class CisController < ApplicationController
 
   def show
     @ci, @atributos = Ci.find_com_atributos(params[:id])
-    # TODO - se nao achar CI, tela de erro
+
     if @ci
       @tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
       @atributos2 = @ci.atributos2
@@ -129,7 +124,7 @@ class CisController < ApplicationController
       @search = session[:search_cis]
       cache(@ci)
     else
-      flash[:error] = "Error[CI0002] - CI #{[params[:id]]} Invalido"
+      flash[:error] = "Error[CI0002] - CI \"#{params[:id]}\" Inexistente"
       redirect_to "/cis"
     end
   end
@@ -240,62 +235,7 @@ class CisController < ApplicationController
   end
 
 
-  # def index2
-
-
-  #   @search = params[:search] || session[:search_cis]
-
-  #   @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
-  #   session[:search_cis] = @search
-  #   session[:oldCI] = nil
-  #   session[:view_default_ci] = @view_default_ci
-
-  #   begin
-  #     if @search.blank?
-
-  #       @cis = Ci.paginate(:page => params[:page])
-  #     elsif @search[0] =="%"
-  #       @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
-  #     else
-  #       @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-  #       @cis.length
-  #       @cis.compact!
-  #     end
-  #   rescue
-  #     flash[:error] = "Error[DB0001] - Erro no mecanismo de busca. Listando tudo !"
-  #     @cis = Ci.paginate(:page => params[:page])
-  #   end
-
-  #   #if @cis.size==0 then
-  #   #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
-  #   #end
-
-  #   # TODO filtro de tipos aqui...
-
-  #   # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
-  #   #   # @ci = @cis[0]
-  #   #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
-  #   #   render :show and return
-  #   # end
-
-
-  #   #@fields =
-
-  #   # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
-  #   @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
-  #   @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-  #   cache_finalAuth = finalAuth[:view]
-  #   @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
-  #   respond_to do |format|
-  #     format.html { render :action => "index" ,:html => @cis }
-  #     format.xml { render :xml => @cis }
-  #     format.csv { render :action => "index" , :csv => to_csv("Cis",@fields,@cis) }
-  #   end
-  # end
-
   def index
-
-
     @search = params[:search] || session[:search_cis]
 
     @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
@@ -380,6 +320,10 @@ class CisController < ApplicationController
         format.json { head :no_content }
       else
         @atributos = @ci.atributos
+       
+@tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
+@atributos2 = @ci.atributos2
+      
         carrega_agregadas
         format.html { render action: "edit" }
         format.json { render json: @ci.errors, status: :unprocessable_entity }
@@ -396,9 +340,13 @@ class CisController < ApplicationController
       # @ci = Ci.find(session[:oldCI])
       # @atributos = @ci.atributos
       @ci, @atributos = Ci.find_com_atributos(session[:oldCI])
+@tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
+@atributos2 = @ci.atributos2
       redirect_to(@ci) and return
     end
     @atributos = @ci.atributos
+@tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
+@atributos2 = @ci.atributos2
     cache(@ci)
     render :show
   end
@@ -577,6 +525,8 @@ class CisController < ApplicationController
 
   def confirmar_eliminacao
     @ci, @atributos = Ci.find_com_atributos(params[:id])
+    @tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
+@atributos2 = @ci.atributos2
 
   end
 
@@ -658,9 +608,6 @@ class CisController < ApplicationController
     #redirect_to :controller => 'cis', :action => 'show', :id => params[:id],
   end
 
-
-
-
   def gera_novo_impactado
     ci = Ci.find(params[:idci])
     dep = Ci.find_by_chave(params[:inclusao][:impactado])
@@ -694,9 +641,6 @@ class CisController < ApplicationController
     @imagem_dependentes_all = true
     render :dependentes
   end
-
-
-
 
 
 end

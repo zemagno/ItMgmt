@@ -1,10 +1,5 @@
-<!--link rel="stylesheet" type="text/css" href="/stylesheets/CMDBstyle.css" media="all" /-->
-</br>
-
-<!--%= link_to("[Anterior]", @ci.anterior,  :id => "SetaEsquerda") if @ci.anterior %-->  
-<!--%= link_to("[Proximo]", @ci.proximo, :id => "SetaDireita") if @ci.proximo %-->
-<!--%= link_to '[Retrocede Navegacao]', cis_sobe_path, :id => "SetaCima" %-->
-<!--%= link_to '[Avanca Navegacao]', cis_desce_path, :id => "SetaBaixo"%-->
+<div class="panel panel-default">
+	<div class="panel-body">
 
 <%= form_tag(cis_path, :method => "get") do %>
    <%= text_field_tag(:search, @search, :size => 50) %>
@@ -39,6 +34,9 @@
 </br>
 
 </br>
+
+</div>
+</div>
 
 
 

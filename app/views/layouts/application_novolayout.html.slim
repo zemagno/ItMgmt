@@ -22,6 +22,8 @@ html
         = render :partial => "menu_principal" 
         .painel
             / para tela de cis e de gestao de usuario poder abrir o 'enviar email'
+            = render :partial => "mostra_erros"
+   
             #enviar_email 
             
             = yield 
