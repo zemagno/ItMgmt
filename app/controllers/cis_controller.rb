@@ -33,6 +33,7 @@ class CisController < ApplicationController
   def log
     id = params[:id]
     @ci = Ci.find(id)
+    carrega_atributos2
     @logs = @ci.log_ci
 
   end
@@ -101,9 +102,7 @@ class CisController < ApplicationController
     render :index and return
   end
 
-  def show
-    @ci, @atributos = Ci.find_com_atributos(params[:id])
-
+  def carrega_atributos2
     if @ci
       @tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
       @atributos2 = @ci.atributos2
@@ -111,7 +110,12 @@ class CisController < ApplicationController
       @tabs = "Principal;Caracteristicas"
       @atributos2 = []
     end
+  end
 
+  def show
+    @ci, @atributos = Ci.find_com_atributos(params[:id])
+
+    carrega_atributos2
 
     if @ci
       if ! finalAuth[:view].include? (@ci.tipoci_id)
@@ -318,9 +322,7 @@ class CisController < ApplicationController
         format.json { head :no_content }
       else
         @atributos = @ci.atributos
-       
-@tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
-@atributos2 = @ci.atributos2
+        carrega_atributos2
       
         carrega_agregadas
         format.html { render action: "edit" }
@@ -338,13 +340,11 @@ class CisController < ApplicationController
       # @ci = Ci.find(session[:oldCI])
       # @atributos = @ci.atributos
       @ci, @atributos = Ci.find_com_atributos(session[:oldCI])
-@tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
-@atributos2 = @ci.atributos2
+      carrega_atributos2
       redirect_to(@ci) and return
     end
     @atributos = @ci.atributos
-@tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
-@atributos2 = @ci.atributos2
+    carrega_atributos2
     cache(@ci)
     render :show
   end
@@ -408,6 +408,7 @@ class CisController < ApplicationController
 
   def gera_relaciomentos (direcao)
     @ci = Ci.find(params[:id])
+    carrega_atributos2
     if Rails.cache.exist?("#{direcao}-#{@ci.id}")
       @fila_resultado = JSON.load Rails.cache.read("#{direcao}-#{@ci.id}")
       @email_impactados = Rails.cache.read("#{direcao}-#{@ci.id}-email")
@@ -466,6 +467,7 @@ class CisController < ApplicationController
   def gera_relaciomentos_com_composto_de
     # TODO colocar cache no gera_relaciomentos_com_composto_de
     @ci = Ci.find(params[:id])
+    carrega_atributos2
     init_queue
 
     enqueue([@ci,0])
@@ -523,8 +525,7 @@ class CisController < ApplicationController
 
   def confirmar_eliminacao
     @ci, @atributos = Ci.find_com_atributos(params[:id])
-    @tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
-@atributos2 = @ci.atributos2
+    carrega_atributos2
 
   end
 
