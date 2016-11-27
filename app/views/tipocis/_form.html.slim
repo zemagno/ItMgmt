@@ -6,7 +6,7 @@
           #error_explanation
             h2
               = pluralize(@tipoci.errors.count, "error")
-              |  prohibited this tipoci from being saved:
+              |  ao tentar salvar esse tipo de Ativo:
             ul
               - @tipoci.errors.full_messages.each do |msg|
                 li
@@ -18,7 +18,7 @@
         .form-group
           label[for="Descricao"]
             | Descricao:
-          = f.text_field :tipo, :size=>100,  class: "form-control"        
+          = f.text_field :Descricao, :size=>100,  class: "form-control"        
         .form-group
           label[for="Owner"]
             | Owner:
