@@ -1,0 +1,33 @@
+.container
+  .row
+    p#notice
+      = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        h4  
+           = "Email: #{@templates_email.nome }"
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Enviar Email
+            p.list-group-item-text
+              = @templates_email.sync ? "via Browser" : "Direto" 
+          .list-group-item
+            h4.list-group-item-heading
+              | Tipo
+            p.list-group-item-text
+              = @templates_email.tipo
+          .list-group-item
+            h4.list-group-item-heading
+              | Sub Tipo
+            p.list-group-item-text
+              = @templates_email.subtipo
+          .list-group-item
+            h4.list-group-item-heading
+              | Template
+            p.list-group-item-text
+              = @templates_email.template
+          
+
+    = link_to 'Editar', edit_templates_email_path(@templates_email), :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Listagem', templates_emails_path , :class => "btn btn-primary btn-md margin-left"
