@@ -13,9 +13,9 @@ html
     = javascript_include_tag "bootstrap.min.js"
     = stylesheet_link_tag "scaffold.css" 
     = stylesheet_link_tag "CMDBstyle.css" 
-    = stylesheet_link_tag "itam.css"
     = stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.min.css"
     = javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.min.js"
+    = stylesheet_link_tag "itam.css"
     = csrf_meta_tag
   body.condtainer
     - if current_user and ! current_user.is_a :usuario
