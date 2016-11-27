@@ -20,7 +20,7 @@ class DicdadosController < ApplicationController
     rescue 
       flash[:error] = "Error[DB0001] - Search Engine com Problema"
       @dicdados = Dicdado.paginate(:page => params[:page])
- end
+    end
 
     
     session[:search_dicdados_tipoci] = @dicdados[0].tipoci_id unless @dicdados[0].nil?
@@ -67,6 +67,7 @@ class DicdadosController < ApplicationController
   # POST /dicdados.xml
   def create
     @dicdado = Dicdado.new(params[:dicdado])
+    carrega_agregadas
 
     respond_to do |format|
       if @dicdado.save
@@ -84,6 +85,7 @@ class DicdadosController < ApplicationController
   # PUT /dicdados/1.xml
   def update
     @dicdado = Dicdado.find(params[:id])
+    carrega_agregadas
 
     respond_to do |format|
       if @dicdado.update_attributes(params[:dicdado])

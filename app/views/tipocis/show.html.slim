@@ -1,0 +1,48 @@
+.container
+  .row
+    p#notice
+      = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        h4  
+           = "Ativo tipo: #{@tipoci.tipo}"
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Descricao
+            p.list-group-item-text
+              = @tipoci.Descricao
+          .list-group-item
+            h4.list-group-item-heading
+              | Onwer
+            p.list-group-item-text
+              = @tipoci.Owner
+          .list-group-item
+            h4.list-group-item-heading
+              | Perfis Autorizados
+            p.list-group-item-text
+              = @tipoci.perfil
+          .list-group-item
+            h4.list-group-item-heading
+              | Tabs da tela de Ativo
+            p.list-group-item-text
+              = @tipoci.tab
+          
+    - if (can? :manage, Tipoci)
+      = link_to 'Editar', edit_tipoci_path(@tipoci), :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Listagem', tipocis_path , :class => "btn btn-primary btn-md margin-left"
+
+
+
+/     <tr><td>Tipo de Ativo:</td><td><b><%= @tipoci.nice_tipoci %></b></td></tr>
+/ <tr><td>Campo:</td><td><b> <%= @tipoci.nome %></b></td></tr>
+/ <tr><td>Apelido:</td><td><b><%= @tipoci.apelido %></b></td></tr>
+/ <tr><td>Descricao:</td><td><b><%= @tipoci.descricao %></b></td></tr>
+/ <tr><td>Valores:</td><td><b><%= @tipoci.valores %></b></td></tr>
+/ <tr><td>Ordem de Apresentacao</td><td><b><%= @dicdado.ordem %></b></td></tr>
+/ <tr><td>regex:</td><td><b><%= @dicdado.regex %></b></td></tr>
+/ <tr><td>É Mandatorio:</td><td><b><%= @dicdado.mandatorio ? "Sim" : "Nao" %></b></td></tr>
+/ <tr><td>URL:</td><td><b><%= @dicdado.url %></b></td></tr>
+/ <tr><td>Ajuda:</td><td><b><%= @dicdado.tooltip %></b></td></tr>
+/ <tr><td>Comentario Interno:</td><td><b><%= @dicdado.comentarios %></b></td></tr>
+/ </table>

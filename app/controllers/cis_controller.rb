@@ -104,7 +104,7 @@ class CisController < ApplicationController
 
   def carrega_atributos2
     if @ci
-      @tabs = "Principal;Caracteristicas;#{@ci.tipoci.tab}".split(";").uniq
+      @tabs = "Principal,Caracteristicas,#{@ci.tipoci.tab}".split(",").uniq
       @atributos2 = @ci.atributos2
     else
       @tabs = "Principal;Caracteristicas"

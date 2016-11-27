@@ -1,0 +1,58 @@
+.container
+  .row
+    div
+      = form_for(@dicdado, :html => {:class => "panel-body #{controller.action_name}_user"}) do |f|
+        - if @dicdado.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@user.errors.count, "error")
+              |  prohibited this dicdado from being saved:
+            ul
+              - @dicdado.errors.full_messages.each do |msg|
+                li
+                  = msg
+        .form-group
+          label[for="tipoci_id"]
+            | Tipo do Ativo:  
+          .br
+          = f.select :tipoci_id, @tipocis.collect { |c| [ c.tipo, c.id ] }, autofocus: "",  class: "form-control"
+        .form-group
+          label[for="nome"]
+            | Nome:
+          = f.text_field :nome,  class: "form-control", placeholder: "Nome do campo a ser vizualizado na tela de ativos"
+        .form-group
+          label[for="descricao"]
+            | Descricao/PlaceHolder
+          = f.text_field :descricao, placeholder: "Descricao",  class: "form-control"
+        .form-group
+          label[for="apelido"]
+            | Apelido
+          = f.text_field :apelido, placeholder: "Apelido interno para parametrizacao",  class: "form-control"
+        .form-group
+          label[for="valores"]
+            | Valores Possiveis
+          = f.text_area :valores, :size => "150x6", placeholder: "Opcional: Valores possiveis para dropbox separados por ,",  class: "form-control"
+        .form-group
+          label[for="ordem"]
+            | Ordem de Apresentacao na tela de ativos
+          = f.text_field :ordem, placeholder: "Ordem de apresentacao na tela de ativos",  class: "form-control"
+        .form-group
+          label[for="regex"]
+            | Expressao Regular
+          = f.text_field :regex, placeholder: "Opcional: regex para validacao do campo",  class: "form-control"
+        .form-group
+          label[for="mandatorio"]
+            | Campo é mandatório ?
+          = f.check_box :mandatorio
+        .form-group
+          label[for="url"]
+            | URL
+          = f.text_field :url, placeholder: "Opcional: URL",  class: "form-control"
+        .form-group
+          label[for="comentarios"]
+            | Comentarios
+          = f.text_area :comentarios, :size => "150x6", placeholder: "Opcional: Comentarios internos",  class: "form-control"
+        button.btn.btn-primary.btn-md[type="submit"]
+          |  Salvar Campo 
+        = link_to 'Cancelar', dicdados_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}
+

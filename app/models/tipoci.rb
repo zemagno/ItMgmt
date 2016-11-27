@@ -1,6 +1,6 @@
 # Encoding: utf-8
 class Tipoci < ActiveRecord::Base
-  attr_accessible :Descricao, :tipo, :Owner, :perfil
+  attr_accessible :Descricao, :tipo, :Owner, :perfil, :tab
   has_many :dicdados
 
   default_scope { order('tipo ASC') }
