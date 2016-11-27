@@ -23,7 +23,7 @@ color:#a8a8a8;
  
 .form-control::-moz-placeholder { /* Firefox 19+ */
   font-family: 'Times New Roman';
-color:#a8a8a8;
+  color:#a8a8a8;
 }
  
 .form-control:-ms-input-placeholder {
@@ -53,9 +53,6 @@ color:#a8a8a8;
 .itam_cis_panel {
    background-color: #c4e3ff;
 }
-
-
-
 
 header {
   position: relative; /* irei posicionar os elementos dentro desse block "absolute" 
@@ -159,12 +156,12 @@ table.generalTable {
   border-right: 1px solid #749abe;
   border-top: 1px solid #90b4d6;
   text-align: left;
-  text-shadow: -1px -1px 1px #666666;
+    text-shadow: -1px -1px 1px #666666;
   letter-spacing: 0.15em;
   font-size: 1.2em;
 }
 .generalTable td {
-  text-shadow: 1px 1px 1px #ffffff;
+  /*text-shadow: 1px 1px 1px #ffffff;*/
 }
 .generalTable tr.even td, 
 .generalTable tr.even th {
