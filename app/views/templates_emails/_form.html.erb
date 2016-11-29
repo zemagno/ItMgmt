@@ -13,7 +13,7 @@
   <%= form_for(@templates_email) do |f| %>
   <% if @templates_email.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@templates_email.errors.count, "error") %> prohibited this templates_email from being saved:</h2>
+    <h2><%= pluralize(@templates_email.errors.count, "error") %> ao tentar salvar esse email</h2>
     <ul>
       <% @templates_email.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>

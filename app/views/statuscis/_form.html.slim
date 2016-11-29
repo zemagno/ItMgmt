@@ -6,7 +6,7 @@
           #error_explanation
             h2
               = pluralize(@statusci.errors.count, "error")
-              |  prohibited this statusci from being saved:
+              |  ao tentar salvar esse status:
             ul
               - @statusci.errors.full_messages.each do |msg|
                 li

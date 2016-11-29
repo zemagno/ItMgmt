@@ -12,7 +12,7 @@ class FuncionariosController  < InheritedResources::Base
       end
     rescue => error
       puts error.backtrace
-      flash[:error] = "Error[DB0002] - Funcionario nao encontrato"
+      flash[:error] = "Error[DB0002] - Funcionario nao encontrado"
     end
     puts "Func: ==> #{@funcionario}"
   end
