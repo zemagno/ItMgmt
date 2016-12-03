@@ -14,23 +14,23 @@
         .form-group
           label[for="tipo"]
             | Tipo Ativo:
-          = f.text_field :tipo, :size=>100,  class: "form-control", autofocus: ""       
+          = f.text_field :tipo, :maxlength=>30,  class: "form-control", autofocus: ""       
         .form-group
           label[for="Descricao"]
             | Descricao:
-          = f.text_field :Descricao, :size=>100,  class: "form-control"        
+          = f.text_field :Descricao, :maxlength=>50,  class: "form-control"        
         .form-group
           label[for="Owner"]
             | Owner:
-          = f.text_field :Owner, :size=>100,  class: "form-control"        
+          = f.text_field :Owner, :maxlength=>30,  class: "form-control"        
         .form-group
           label[for="perfil"]
             | Perfis Autorizados:
-          = f.text_field :perfil, :size=>100,  class: "form-control" 
+          = f.text_field :perfil, :maxlength=>200,  class: "form-control" , placeholder: "perfil perfil perfil[view] perfil" 
         .form-group
           label[for="Tabs"]
             | Tabs da tela de Ativo:
-          = f.text_field :tab, :size=>100,  class: "form-control", :pattern => "[a-zA-Z0-9,]*" 
+          = f.text_field :tab, :maxlength=>200,  class: "form-control", :pattern => "[a-zA-Z0-9,]*" , placeholder: "token,token,token (sem espacos ou caracter especiais)" 
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Tipo Ativo
         = link_to 'Cancelar', tipocis_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}

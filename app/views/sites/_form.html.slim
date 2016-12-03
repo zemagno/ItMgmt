@@ -14,7 +14,7 @@
         .form-group
           label[for="nome"]
             | Site:
-          = f.text_field :nome, :size=>100,  class: "form-control", autofocus: ""
+          = f.text_field :nome, :maxlength=>30,  class: "form-control", autofocus: ""
         .form-group
           label[for="login"]
             | Estado

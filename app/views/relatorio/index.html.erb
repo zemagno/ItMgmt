@@ -1,23 +1,50 @@
-<% if can? :manage, :all %>
-  <%= link_to '[Relatorio]', edit_cadrelatorio_path(@relatorio) if ! @relatorio.nil? %>
-<% end %>
-<table id="coolTable" class="display">
-<thead>
-	<tr>
-	<% @campos.each do |titulo| %>   
-	    <th><%= titulo %></th>
-	<% end %> 
-	</tr>
-</thead>
-<tbody>
-<% @resultado.each do |fields| %>
-  <tr>
-    <% fields.each_with_index do |valor,i| %>
-       <td><%= genField(valor,@campos[i],0,fields).html_safe %></td>       
-  <% end %> 
-  </tr>
-<% end %>
-</tbody>
-</table>
-<br/>
 
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+      pageLength: 100,
+      pagingType: "full_numbers",
+      language: {
+        search: "Filtrar:"
+      }      
+    });
+});
+</script>
+<div class="panel panel-default">
+   <% if ! @publico %>
+      <div class="panel-heading">
+           <%= link_to 'Relatorios', cadrelatorios_path, class: "btn btn-primary btn-xs"  %>
+           <% if can? :manage, :all %>
+               <%= link_to 'Edit Relatorio', edit_cadrelatorio_path(@relatorio), class: "btn btn-primary btn-xs" if ! @relatorio.nil? %>
+           <% end %>
+           <%= link_to 'Link Relatorio Publico', relatorio_publico_path(@relatorio.nome), class: "btn btn-primary btn-xs" if (! @relatorio.nil?) && (current_user) %>
+           Relatorio: <%= @NomeRelatorio %>
+      </div>
+   <% else %>
+      <div class="panel-heading">
+        <h3><%= @NomeRelatorio %></h3>
+      </div>
+   <% end %> <!-- if publico -->
+
+  <div class="panel-body">
+    <table id="coolTable" class="generalTable">
+      <thead>
+        <tr class="head">
+          <% @campos.each do |titulo| %>
+          <th><%= titulo %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @resultado.each do |fields| %>
+        <tr>
+          <% fields.each_with_index do |valor,i| %>
+          <td><%= genField(valor,@campos[i],0,fields).html_safe %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br/>
+  </div> <!-- panel-body -->
+</div> <!-- panel panel-default -->

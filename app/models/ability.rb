@@ -55,7 +55,8 @@ class Ability
     cannot :manage, SqlTemplate
     cannot :manage, TemplatesEmail 
     cannot :manage, Tipoci
-    cannot :manage, Dicdado
+    cannot :manage, Dicdado 
+    cannot :manage, Cadrelatorio
 
     # ATENCAO ---> SEMPRE DESAUTORIZAR NO SUPORTE !!!! OU inverter condicao
 
@@ -65,7 +66,7 @@ class Ability
       cannot :manage, Dicdado
       cannot :manage, @Dicdado
       cannot :manage, Cadrelatorio
-      cannot :manage, @Cadrelatorio
+      cannot :manage, Cadrelatorio
       can    :index, Cadrelatorio
       can    :index, @Cadrelatorio
       cannot :manage, Tipoci

@@ -1,5 +1,5 @@
-  require 'action_controller/metal/renderers'
-  require 'csv'
+require 'action_controller/metal/renderers'
+require 'csv'
 
 
 ActionController.add_renderer :csv do |csv, options|
@@ -8,8 +8,8 @@ end
 
 #require 'nokogiri'
 class RelatorioController < ApplicationController
-  layout 'relatorio' 
-   #authorize_resource
+  # layout 'relatorio'
+  #authorize_resource
 
   def to_xml (titulo, header, _fields)
     builder = Nokogiri::XML::Builder.new do |xml|
@@ -27,13 +27,13 @@ class RelatorioController < ApplicationController
         _fields.size.times do |f|
           xml.send(titulo) {
             header.size.times do |h|
-              xml.send(header[h],_fields[f][h]) 
+              xml.send(header[h],_fields[f][h])
             end
           }
         end
       }
     end
-    
+
     builder.to_xml
   end
 
@@ -46,41 +46,58 @@ class RelatorioController < ApplicationController
   end
 
 
-  def index
+  def executa_relatorio
     begin
       regexParams = /\{([a-z]+)}/
-    authorize!(:index, "relatorio")   
-    @relatorio = Cadrelatorio.find_by_nome(params[:id])
-    @relatorio.AtualizaEstatisticas
-    sql = @relatorio.consulta
-    sql.gsub!(regexParams) {|s| params[s[1..-2]]}
-    # if sql.match(/{/)
-    #   flash[:notice] = "SQL Invalido"
-    #   redirect_to tasks_url and return
-    # end 
-    # se sql tiver parametros e esses parametros nao estiverem no params do http, desviar para pagina de perguntar parametros
-    # faco replace do sql com os params recebidos
-    # 
-    @NomeRelatorio = @relatorio.descricao
-  
-    
+      authorize!(:index, "relatorio")
+      @relatorio = Cadrelatorio.find_by_nome(params[:id])
+      @relatorio.AtualizaEstatisticas
+      sql = @relatorio.consulta
+      sql.gsub!(regexParams) {|s| params[s[1..-2]]}
+      # if sql.match(/{/)
+      #   flash[:notice] = "SQL Invalido"
+      #   redirect_to tasks_url and return
+      # end
+      # se sql tiver parametros e esses parametros nao estiverem no params do http, desviar para pagina de perguntar parametros
+      # faco replace do sql com os params recebidos
+      #
+      @NomeRelatorio = @relatorio.descricao
+
+
       mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
       mysql_res = ActiveRecord::Base.connection.execute(sql)
       @resultado = []
       mysql_res.each{ |res| @resultado << res }
       @campos = mysql_res.fields
-    rescue
+    rescue => error
+      puts error.backtrace
       @resultado = [["Consulta com erro de SQL..."]]
       @campos = ["Status"]
-    ensure 
+    ensure
       # this_code_will_execute_always()
     end
-    
+  end
+
+  def index_publico
+    executa_relatorio
     to_xml(params[:id],@campos,@resultado)
+    @publico = true
     respond_to do |format|
-      format.html # index.html.erb
-      format.xml { render :xml => to_xml(params[:id],@campos,@resultado) }  
-      format.csv { render :csv => to_csv(params[:id],@campos,@resultado) }  
+      format.html { render :index, layout: 'relatorio'}
+      format.xml { render :xml => to_xml(params[:id],@campos,@resultado) }
+      format.csv { render :csv => to_csv(params[:id],@campos,@resultado) }
+    end
+  end
+
+
+  def index
+    executa_relatorio
+    to_xml(params[:id],@campos,@resultado)
+    @publico = false
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => to_xml(params[:id],@campos,@resultado) }
+      format.csv  { render :csv => to_csv(params[:id],@campos,@resultado) }
     end
   end
 end

@@ -14,11 +14,11 @@
         .form-group
           label[for="tipo"]
             | Parametro:
-          = f.text_field :tipo, :size=>30,  class: "form-control"
+          = f.text_field :tipo, :maxlength=>50,  class: "form-control"
         .form-group
           label[for="subtipo"]
             | Subtipo:
-          = f.text_field :subtipo, :size=>30,  class: "form-control"
+          = f.text_field :subtipo, :maxlength=>50,  class: "form-control"
         .form-group
           label[for="valor"]
             | Valor

@@ -14,15 +14,15 @@
         .form-group
           label[for="status"]
             | Status:
-          = f.text_field :status, :size=>100,  class: "form-control", autofocus: ""           
+          = f.text_field :status, :maxlength=>20,  class: "form-control", autofocus: ""           
         .form-group
           label[for="icon"]
             | Icone:
-          = f.text_field :icon, :size=>100,  class: "form-control", autofocus: ""       
+          = f.text_field :icon, :maxlength=>200,  class: "form-control", autofocus: ""       
         .form-group
           label[for="parametro"]
             | Parametros do Grafico de Dependentes:
-          = f.text_field :parametro, :size=>100,  class: "form-control"        
+          = f.text_field :parametro, :maxlength=>200,  class: "form-control"        
 
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Tipo Ativo

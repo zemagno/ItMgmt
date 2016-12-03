@@ -88,6 +88,7 @@ ItMgmt::Application.routes.draw do
   resources :statuscis
 
   match 'relatorio/:id', to: "relatorio#index", as: "relatorio", via: [:get, :post]
+  match 'relatorio_publico/:id', to: "relatorio#index_publico", as: "relatorio_publico", via: [:get, :post]
   match 'email/:acao/:id', to: "email#enviar", via: [:get, :post]
   match 'email/enviar_email/:id', to: "email#enviar+email", via: [:get, :post]
 

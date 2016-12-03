@@ -17,11 +17,11 @@
         .form-group
           label[for="roles"]
             | Perfil:
-          = f.text_field :roles, :size=>100,  class: "form-control", autofocus: ""
+          = f.text_field :roles, :maxlength=>200,  class: "form-control", autofocus: ""
         .form-group
           label[for="login"]
             | Login
-          = f.text_field :login, :size=>30,  class: "form-control", placeholder: "Login interno..."
+          = f.text_field :login, :maxlength=>30,  class: "form-control", placeholder: "Login interno..."
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Usuario 
         = link_to 'Cancelar', users_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}

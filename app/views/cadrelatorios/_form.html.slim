@@ -1,0 +1,29 @@
+.container
+  .row
+    div
+      = form_for(@cadrelatorio, :html => {:class => "panel-body #{controller.action_name}_user"}) do |f|
+        - if @cadrelatorio.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@user.errors.count, "error")
+              | ao tentar salvar esse cadrelatorio:
+            ul
+              - @cadrelatorio.errors.full_messages.each do |msg|
+                li
+                  = msg
+        .form-group
+          label[for="nome"]
+            | Nome
+          = f.text_field :nome, :maxlength=>40,  class: "form-control", autofocus: ""
+        .form-group
+          label[for="descricao"]
+            | Descricao
+          = f.text_field :descricao, :maxlength=>100,  class: "form-control"
+        .form-group
+          label[for="valor"]
+            | Valor
+          = f.text_area :valor, :cols => 200, :rows => 20,  class: "form-control", placeholder: "valores..."
+        button.btn.btn-primary.btn-md[type="submit"]
+          |  Salvar cadrelatorio 
+        = link_to 'Cancelar', cadrelatorios_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}
+
