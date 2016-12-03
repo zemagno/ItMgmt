@@ -54,6 +54,13 @@ color:#a8a8a8;
    background-color: #c4e3ff;
 }
 
+.itam_edit_sql {
+  font-family:monospace;
+  /*background: #4f4f4f;*/
+  font-size: 0.8em;
+
+}
+
 header {
   position: relative; /* irei posicionar os elementos dentro desse block "absolute" 
                          senao, os elementos 'absolutes' serão relativos ao BODY */

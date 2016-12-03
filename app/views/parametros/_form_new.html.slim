@@ -5,7 +5,7 @@
         - if @parametro.errors.any?
           #error_explanation
             h2
-              = pluralize(@user.errors.count, "error")
+              = pluralize(@parametro.errors.count, "error")
               | ao tentar salvar esse parametro:
             ul
               - @parametro.errors.full_messages.each do |msg|

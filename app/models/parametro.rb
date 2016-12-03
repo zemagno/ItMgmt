@@ -2,6 +2,9 @@ class Parametro < ActiveRecord::Base
 
   attr_accessible :tipo, :subtipo, :valor
 
+  validates :tipo, :presence =>  {    message: I18n.t("errors.parametro.tipo.presence")}
+  validates :subtipo, :presence =>  {    message: I18n.t("errors.parametro.subtipo.presence")}
+
   default_scope { order('Tipo ASC') }
 
   def self.get(options)

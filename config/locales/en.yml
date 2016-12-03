@@ -38,6 +38,11 @@ en:
       apelido:
         presence: "Apelido do campo é mandatorio"
         format: "Apelido deve conter somente caracteres alfanumericos" 
+    parametro: 
+      tipo:
+        presence: "Parametro é mandatorio"
+      subtipo:
+        presence: "Subtipo é mandatorio"
   msg:
     statusci:
       updated: "Status foi atualizado com sucesso"
