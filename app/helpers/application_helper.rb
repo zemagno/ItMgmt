@@ -72,7 +72,11 @@ module ApplicationHelper
     link_to txt_help , "#{url}", :target => "_blank" 
   end
 
-  def tela_ajuda(id = nil) #(content, options = {}, html_options = {}, *parameters_for_method_reference)
+  def botao_ajuda(id = nil) 
+    res = tela_ajuda(id)
+  end
+
+  def tela_ajuda(id = nil, _class = nil) #(content, options = {}, html_options = {}, *parameters_for_method_reference)
     return if ! Features.has? "help" 
   	id_help = nil
 
@@ -107,7 +111,7 @@ module ApplicationHelper
          
     end
    
-    link_to txt_help , "#{url}/#{id_help.tr(" ", "_")}", :target => "_blank" if ! id_help.nil?
+    link_to txt_help , "#{url}/#{id_help.tr(" ", "_")}", :target => "_blank" , :class => _class if ! id_help.nil?
 
 
   end
