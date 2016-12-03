@@ -1,0 +1,47 @@
+.container
+  .row
+    p#notice
+      = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        h4 
+          = "Relatorio: #{@cadrelatorio.nome} "
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Descricao:
+            p.list-group-item-text
+              = @cadrelatorio.descricao
+          .list-group-item
+            h4.list-group-item-heading
+              | Dashboard:
+            p.list-group-item-text
+              = @cadrelatorio.dashboard
+          .list-group-item
+            h4.list-group-item-heading
+              | Ordem:
+            p.list-group-item-text
+              = @cadrelatorio.ordem          
+          .list-group-item
+            h4.list-group-item-heading
+              | Categoria:
+            p.list-group-item-text   
+              = @cadrelatorio.categoria      
+          .list-group-item
+            h4.list-group-item-heading
+              | Justificativa:
+            p.list-group-item-text   
+              = @cadrelatorio.justificativa      
+          .list-group-item
+            h4.list-group-item-heading
+              | Soliticitante:
+            p.list-group-item-text   
+              = @cadrelatorio.solicitante      
+          .list-group-item
+            h4.list-group-item-heading
+              | SQL
+            textarea.list-group-item-text.itam_edit_sql style="min-width: 100%" rows="20"
+              = @cadrelatorio.consulta
+          
+    = link_to 'Editar', edit_cadrelatorio_path(@cadrelatorio), :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Listagem', cadrelatorios_path , :class => "btn btn-primary btn-md margin-left"
