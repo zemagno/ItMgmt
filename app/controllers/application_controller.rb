@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout 'application_novolayout'     
+  layout 'application'     
   protect_from_forgery with: :exception
 
   # rescue_from Exception, :with => :error_render_method

@@ -22,7 +22,7 @@
       <br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
       <%= " - Posicao: #{@posicaoFacilities} "  %>   
       <br>Gestor Direto: <%= link_to(@funcionario.NomeGestor,"/GestaoUsuarios?search=#{@funcionario.gestor}") %></td>
-      <br>Ramais:<%= ramal_to_sip(@ramais).html_safe %> - <%= @funcionario.status %>
+      <br>Ramais:<%= ramal_to_sip(@ramais).html_safe %> - <span style="color:red"><%= @funcionario.status %></spam>
 
       <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true) if ! @funcionario.demitido? %>
 
