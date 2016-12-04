@@ -1,4 +1,4 @@
-/* roboto-slab-regular - latin */
+/*/*/* roboto-slab-regular - latin */
 @font-face {
   font-family: 'Roboto Slab';
   font-style: normal;
@@ -239,3 +239,12 @@ table.generalTable {
     background-color: #4a9fe9;
     }
     }
+
+
+/*ul.nav a:hover { color: #000 !important; }*/
+
+
+/*.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #FFFF00;
+    color: #FFC0CB;
+} */   */*/

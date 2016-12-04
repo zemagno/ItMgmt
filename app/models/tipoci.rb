@@ -11,7 +11,9 @@ class Tipoci < ActiveRecord::Base
 
   after_save :limpa_cache
 
-  validates :tipo, :uniqueness => {:case_sensitive => false, :message => "Ja existe esse tipo."}
+  validates :tipo, :presence => {:message => I18n.t("errors.tipoci.presence") }
+  validates :tipo, :uniqueness => {:case_sensitive => false, :message => I18n.t("errors.tipoci.uniqueness") }
+
 
 
   #def to_s

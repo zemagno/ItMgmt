@@ -16,6 +16,12 @@ en:
     site: 
       presence: "Nome do site é mandatorio"
       uniqueness: "Já existe site com esse nome"
+    statusci: 
+      presence: "Status do Ativo é mandatorio"
+      uniqueness: "Já existe um status com esse nome"    
+    tipoci: 
+      presence: "Tipo do Ativo é mandatorio"
+      uniqueness: "Já existe um Tipo de Ativo com esse nome"
     cadrelatorio: 
       nome:
         presence: "Nome do relatório é mandatorio"

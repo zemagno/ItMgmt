@@ -4,6 +4,10 @@ class Statusci < ActiveRecord::Base
 
   attr_accessible :status, :icon, :parametro
 
+  validates :status, :presence => {:message => I18n.t("errors.statusci.presence") }
+  validates :status, :uniqueness => {:case_sensitive => false, :message => I18n.t("errors.statusci.uniqueness") }
+
+
   belongs_to :ci
 
   def self.cached_find(id)

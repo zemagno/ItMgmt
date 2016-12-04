@@ -5,8 +5,8 @@
         - if @site.errors.any?
           #error_explanation
             h2
-              = pluralize(@site.errors.count, "error")
-              |  prohibited this site from being saved:
+              = pluralize(@site.errors.count, "erro")
+              |  ao tentar salvar esse site
             ul
               - @site.errors.full_messages.each do |msg|
                 li
@@ -17,7 +17,7 @@
           = f.text_field :nome, :maxlength=>30,  class: "form-control", autofocus: ""
         .form-group
           label[for="login"]
-            | Estado
+            | Estado:
           .br
           = f.select :estado, (["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"] )
         button.btn.btn-primary.btn-md[type="submit"]

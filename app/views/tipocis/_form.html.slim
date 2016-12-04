@@ -5,15 +5,15 @@
         - if @tipoci.errors.any?
           #error_explanation
             h2
-              = pluralize(@tipoci.errors.count, "error")
-              |  ao tentar salvar esse tipo de Ativo:
+              = pluralize(@tipoci.errors.count, "erro")
+              |  ao tentar salvar esse tipo de Ativo
             ul
               - @tipoci.errors.full_messages.each do |msg|
                 li
                   = msg
         .form-group
           label[for="tipo"]
-            | Tipo Ativo:
+            | Tipo do Ativo:
           = f.text_field :tipo, :maxlength=>30,  class: "form-control", autofocus: ""       
         .form-group
           label[for="Descricao"]

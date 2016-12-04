@@ -21,9 +21,9 @@ html
     - if current_user and ! current_user.is_a :usuario
         = render :partial => "menu_principal" 
         .painel
-            / para tela de cis e de gestao de usuario poder abrir o 'enviar email'
+            
             = render :partial => "mostra_erros"
-   
+            / para tela de cis e de gestao de usuario poder abrir o 'enviar email'
             #enviar_email 
             
             = yield 

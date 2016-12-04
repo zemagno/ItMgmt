@@ -5,8 +5,8 @@
         - if @statusci.errors.any?
           #error_explanation
             h2
-              = pluralize(@statusci.errors.count, "error")
-              |  ao tentar salvar esse status:
+              = pluralize(@statusci.errors.count, "erro")
+              |  ao tentar salvar esse Status:
             ul
               - @statusci.errors.full_messages.each do |msg|
                 li
@@ -18,7 +18,7 @@
         .form-group
           label[for="icon"]
             | Icone:
-          = f.text_field :icon, :maxlength=>200,  class: "form-control", autofocus: ""       
+          = f.text_field :icon, :maxlength=>200,  class: "form-control"
         .form-group
           label[for="parametro"]
             | Parametros do Grafico de Dependentes:

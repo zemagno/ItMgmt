@@ -5,15 +5,15 @@
         - if @cadrelatorio.errors.any?
           #error_explanation
             h2
-              = pluralize(@cadrelatorio.errors.count, "error")
-              | ao tentar salvar esse cadrelatorio:
+              = pluralize(@cadrelatorio.errors.count, "erro")
+              |  ao tentar salvar esse Relatório:
             ul
               - @cadrelatorio.errors.full_messages.each do |msg|
                 li
                   = msg
         .form-group
           label[for="nome"]
-            | Nome
+            | Nome:
           = f.text_field :nome, :maxlength=>40,  class: "form-control", autofocus: "", placeholder: "Identificador Unico sem espacos ou caracteres especiais"
         .form-group
           label[for="descricao"]
@@ -41,7 +41,7 @@
           = f.text_field :solicitante, :maxlength=>50,  class: "form-control", placeholder: "quem pediu esse relatorio - uso interno, para revalidação eventual"
         .form-group
           label[for="consulta"]
-            | Consulta
+            | Consulta:
           = f.text_area :consulta, :cols => 200, :rows => 20,  class: "form-control itam_edit_sql", placeholder: "Sql...."
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar cadrelatorio 

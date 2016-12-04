@@ -5,8 +5,8 @@
         - if @user.errors.any?
           #error_explanation
             h2
-              = pluralize(@user.errors.count, "error")
-              |  prohibited this user from being saved:
+              = pluralize(@user.errors.count, "erro")
+              |  ao tentar salver esse Usuario:
             ul
               - @user.errors.full_messages.each do |msg|
                 li
@@ -20,7 +20,7 @@
           = f.text_field :roles, :maxlength=>200,  class: "form-control", autofocus: ""
         .form-group
           label[for="login"]
-            | Login
+            | Login:
           = f.text_field :login, :maxlength=>30,  class: "form-control", placeholder: "Login interno..."
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Usuario 

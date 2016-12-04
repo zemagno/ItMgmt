@@ -5,8 +5,8 @@
         - if @dicdado.errors.any?
           #error_explanation
             h2
-              = pluralize(@dicdado.errors.count, "error")
-              |  ao tentar salvar esse campo:
+              = pluralize(@dicdado.errors.count, "erro")
+              |  ao tentar salvar esse Campo:
             ul
               - @dicdado.errors.full_messages.each do |msg|
                 li
@@ -14,7 +14,7 @@
         .form-group
           label[for="tipoci_id"]
             | Tipo do Ativo:  
-          .br
+          .bC
           = f.select :tipoci_id, @tipocis.collect { |c| [ c.tipo, c.id ] }, autofocus: "",  class: "form-control"
         .form-group
           label[for="nome"]
@@ -22,23 +22,23 @@
           = f.text_field :nome, :maxlength=>50, class: "form-control", placeholder: "Nome do campo a ser vizualizado na tela de ativos"
         .form-group
           label[for="descricao"]
-            | Descricao/PlaceHolder
-          = f.text_field :descricao, :maxlength=>50,placeholder: "Descricao",  class: "form-control"
+            | PlaceHolder:
+          = f.text_field :descricao, :maxlength=>50,placeholder: "placeholder a ser mostrado nos campos da tela de edição de ativos",  class: "form-control"
         .form-group
           label[for="apelido"]
-            | Apelido
+            | Apelido:
           = f.text_field :apelido, :maxlength=>50,placeholder: "Apelido interno para parametrizacao",  class: "form-control"
         .form-group
           label[for="valores"]
-            | Valores Possiveis
+            | Valores Possiveis:
           = f.text_area :valores, :size => "150x6", placeholder: "Opcional: Valores possiveis para dropbox separados por ,",  class: "form-control"
         .form-group
           label[for="ordem"]
-            | Ordem de Apresentacao na tela de ativos
+            | Ordem de Apresentacao na tela de ativos:
           = f.text_field :ordem, :maxlength=>6, placeholder: "Ordem de apresentacao na tela de ativos",  class: "form-control"
         .form-group
           label[for="regex"]
-            | Expressao Regular
+            | Expressao Regular:
           = f.text_field :regex, :maxlength=>200, placeholder: "Opcional: regex para validacao do campo",  class: "form-control"
         .form-group
           label[for="mandatorio"]
@@ -46,11 +46,11 @@
           = f.check_box :mandatorio
         .form-group
           label[for="url"]
-            | URL
+            | URL:
           = f.text_field :url, :maxlength=>100, placeholder: "Opcional: URL",  class: "form-control"
         .form-group
           label[for="comentarios"]
-            | Comentarios
+            | Comentarios:
           = f.text_area :comentarios, :size => "150x6", placeholder: "Opcional: Comentarios internos",  class: "form-control"
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Campo 

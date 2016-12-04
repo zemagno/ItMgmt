@@ -5,7 +5,7 @@
         - if @scheduler.errors.any?
           #error_explanation
             h2
-              = pluralize(@scheduler.errors.count, "error")
+              = pluralize(@scheduler.errors.count, "erro" )
               |  ao tentar salvar esse Job:
             ul
               - @scheduler.errors.full_messages.each do |msg|
