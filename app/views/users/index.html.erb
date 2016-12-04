@@ -24,7 +24,7 @@ $(document).ready( function(){ $('#coolTable').DataTable({ pageLength: 100,  pag
 							<% if (can? :manage, User) %>
 								<td>
 									<%= link_to 'Editar', edit_user_path(user),   class: "btn btn-primary btn-xs" %>
-									<%= link_to 'Apagar', user, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: 'Confirma apagar?' } %>
+									<%= link_to 'Apagar', user, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja apagar o usuario #{user.name} ?" } %>
 								</td>
 							<% end %>
 						</tr>

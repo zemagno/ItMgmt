@@ -33,7 +33,7 @@
             <% if (can? :manage, Cadrelatorio) %>
             <td>
               <%= link_to 'Editar', edit_cadrelatorio_path(cadrelatorio), class: "btn btn-primary btn-xs" %>
-              <%= link_to 'Apagar', cadrelatorio,   class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Apagar', cadrelatorio,   class: "btn btn-danger btn-xs", method: :delete, data: { confirm: "Voce realmente deseja apagar o relatorio #{cadrelatorio.nome} ?" } %>
             </td>
             <% end %>
           </tr>

@@ -40,7 +40,7 @@ $(document).ready( function(){
             </td>
             <td>
                 <%= link_to 'Editar', edit_templates_email_path(templates_email), class: "btn btn-primary btn-xs" %>
-                <%= link_to 'Apagar', templates_email, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: 'Voce tem certeza ?' } %>
+                <%= link_to 'Apagar', templates_email, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja apagar o email #{templates_email.nome} ?" } %>
             </td>
             </td>
           </tr>

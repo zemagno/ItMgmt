@@ -43,7 +43,7 @@ $(document).ready( function(){
           <% if (can? :manage, Tipoci)  %>
             <td>
                 <%= link_to 'Editar', edit_tipoci_path(tipoci), class: "btn btn-primary btn-xs" %>
-                <%= link_to 'Apagar', tipoci, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: 'Voce tem certeza ?' } %>
+                <%= link_to 'Apagar', tipoci, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja apagar o tipo de ativo #{tipoci.tipo} ?" } %>
             </td>
           <% end %>
         </tr>

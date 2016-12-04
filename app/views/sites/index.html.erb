@@ -26,7 +26,7 @@
               <% if (can? :manage, Site)  %>
               <td>
                 <%= link_to 'Editar', edit_site_path(site), class: "btn btn-primary btn-xs" %>
-                <%= link_to 'Apagar', site,  class: "btn btn-danger btn-xs", data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete %>
+                <%= link_to 'Apagar', site,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja apagar o site #{site.nome} ?"} , :method => :delete %>
               </td>
               <% end %>
             </tr>
