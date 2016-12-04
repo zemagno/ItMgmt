@@ -24,14 +24,14 @@ class ServiceCargaInventario
         software = dados[1]
         software = software.rstrip.lstrip if ! software.nil?
 
-        puts "Vou procurar por #{hostname} #{software}"
-        inv = InventarioSw.find_or_initialize_by_hostname_and_software(hostname,software)
+        # puts "Vou procurar por #{hostname} #{software}"
+        inv = InventarioSw.find_or_initialize_by(hostname: hostname,software: software)
         if inv.id.nil?
-          puts "nao achei"
+          # puts "nao achei"
           total_created = total_created + 1
           inv.total = 0
         else
-          puts "achei"
+          # puts "achei"
           total_replaced = total_replaced + 1
         end
         if inv.respond_to?("src#{provider}") && ! dados[1].nil?
