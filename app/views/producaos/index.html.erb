@@ -1,38 +1,35 @@
-<h1>Jobs Executados</h1>
-
-<%= will_paginate @producaos %>
-<%= form_tag(producaos_path, :method => "get") do %>
- 
-  <%= text_field_tag(:search, @search, :size => 50) %>
-  <%= submit_tag("Filtrar") %>
-<% end %>
-
-
-
-<table>
-  <tr>
-    <th>Job</th>
-    <th>Id</th>
-    <th>Status</th>
-    <th>Data Execucao</th>
-    <th>Detalhe</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @producaos.each do |producao| %>
-  <tr>
-    <td><%= producao.job %></td>
-    <td><%= producao.id %></td>
-    <td><%= producao.status %></td>
-    <td><%= producao.data %></td>
-    <td><%= print_nice_detalhe(producao.detalhe).html_safe %></td>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1>Jobs Executados</h1>
+    <%= will_paginate @producaos %>
+    <%= form_tag(producaos_path, :method => "get") do %>
     
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-
+    <%= text_field_tag(:search, @search, :size => 50) %>
+    <%= submit_tag("Filtrar") %>
+    <% end %>
+  </div>
+  <div class="panel-body">
+    <table id="coolTable" class="generalTable">
+      <thead>
+        <tr class="head">
+          <th>Job</th>
+          <th>Id</th>
+          <th>Status</th>
+          <th>Data Execucao</th>
+          <th>Detalhe</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @producaos.each do |producao| %>
+        <tr>
+          <td><%= producao.job %></td>
+          <td><%= producao.id %></td>
+          <td><%= producao.status %></td>
+          <td><%= producao.data %></td>
+          <td><%= print_nice_detalhe(producao.detalhe).html_safe %></td>
+          
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br />

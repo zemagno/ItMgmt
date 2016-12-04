@@ -137,22 +137,28 @@ class CisController < ApplicationController
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)
+          Rails.logger.debug "Error[CI0001] - Usuario #{current_user.name} nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
+          puts "d"
           flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
-          render :show
+          puts "e"
+          redirect_to "/cis"
         end
         carrega_agregadas
         begin # se nao tiver parametro com filtro de status, ele mantem todos os status possiveis.
 
           @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
           @statusci.reject! { |s| ! @st.include? s.status }
-        rescue
+        rescue=> error
+      puts error.backtrace
         end
       else
+        Rails.logger.debug  "Error[CI0003] - CI #{[params[:id]]} Invalido"
         flash[:error] = "Error[CI0003] - CI #{[params[:id]]} Invalido"
         redirect_to "/cis"
       end
 
-    rescue
+    rescue => error
+      puts error.backtrace
       flash[:error] = "Error[CI0004] - CI #{[params[:id]]} Invalido"
       redirect_to "/cis"
       # TODO tenho que direcionar para pagina de erro.
@@ -220,6 +226,7 @@ class CisController < ApplicationController
     respond_to do |format|
       if @ci == nil then
         format.json { render :json => "inexistente"}
+        format.json { render :json => "inexistente"}
       else
         format.json { render :json => "existente"}
       end
@@ -238,6 +245,7 @@ class CisController < ApplicationController
 
 
   def index
+    puts "ops..vim para index"
     @search = params[:search] || session[:search_cis]
 
     @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
@@ -303,6 +311,7 @@ class CisController < ApplicationController
     end
     respond_to do |format|
       if @ci.save
+        flash[:Info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
         format.html {redirect_to(:action => 'edit', :id => @ci.id) }
       else
         carrega_agregadas
