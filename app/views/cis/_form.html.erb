@@ -27,8 +27,8 @@
 						<%= render :partial => 'docs2url', :locals => {:title => "Doc. Ultima Mudanca", :documentos => @ci.DocChange } %>
 						<%= render :partial => 'item', :locals => { :title => "CC/Proj Debito", :value => "#{@ci.CCDebito}/#{@ci.ProjetoDebito}"  } %>
 						<%= render :partial => 'item', :locals => { :title => "CC/Proj Credito", :value => "#{@ci.CCCredito}/#{@ci.ProjetoCredito}"} %>
-						<%= render :partial => 'item_2cols', :locals => { :title => ["Cobrar ?","Provisionar: "], :value => [
-						     "#{@ci.nice_cobrar}","#{@ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado'}"]} %>
+						<%= render :partial => 'item', :locals => { :title => "Cobrar ?", :value => "#{@ci.nice_cobrar}"} %>
+						<%= render :partial => 'item', :locals => { :title => "Provisionar: ", :value => "#{@ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado'}"} %>
 						<%= render :partial => 'item_2cols', :locals => { :title => ["Custo Capex Mensal","Custo Opex Mensal:"], :value => ["#{number_to_currency(@ci.CustoMensalCapex)}","#{number_to_currency(@ci.CustoMensalOpex)}"]} %>
 	
 						<%= render :partial => 'item', :locals => { :title => "Custo Mensal Cobranca", :value => "#{number_to_currency(@ci.CustoMensal)}"} %>
