@@ -350,14 +350,15 @@ class Ci < ActiveRecord::Base
 
   def atualiza_statusci
     self.oldStatusci_id = self.statusci_id_was if self.statusci_id_changed?
-    BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
+    # BRE SUSPENSO BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
   end
 
   def post_create_processing
     # puts "_______________________________________________________________"
     # puts "pos save #{self.chave} #{self.statusci_id}"
     # puts "_______________________________________________________________"
-    BreEvent.register(:criar,self)
+    
+    # BRE SUSPENSO BreEvent.register(:criar,self)
 
   end
 
@@ -365,7 +366,7 @@ class Ci < ActiveRecord::Base
     # puts "_______________________________________________________________"
     # puts "pos destroy #{self.chave} #{self.statusci_id}"
     # puts "_______________________________________________________________"
-    BreEvent.register(:eliminar,self)
+    # BRE SUSPENSO BreEvent.register(:eliminar,self)
 
   end
 

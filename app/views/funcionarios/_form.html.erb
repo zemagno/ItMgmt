@@ -1,7 +1,7 @@
 <%= form_for(@funcionario) do |f| %>
   <% if @funcionario.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@funcionario.errors.count, "error") %> prohibited this funcionario from being saved:</h2>
+      <h2><%= pluralize(@funcionario.errors.count, "erro") %> ao tentar salver os atributos do funcionario </h2>
 
       <ul>
       <% @funcionario.errors.full_messages.each do |msg| %>

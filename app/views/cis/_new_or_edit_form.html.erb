@@ -1,7 +1,7 @@
 <%= form_for(@ci) do |f| %>
   <% if @ci.errors.any? %>
     <div id="error_explanation">
-      <h1><%= pluralize(@ci.errors.count, "erro")%> ao tentar registrar esse Ativo. </h1>
+      <h1><%= pluralize(@ci.errors.count, "erro")%> ao tentar salvar esse Ativo. </h1>
 
       <ul>
       <% @ci.errors.full_messages.each do |msg| %>

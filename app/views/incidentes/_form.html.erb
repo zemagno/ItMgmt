@@ -3,7 +3,7 @@
 <%= form_for(@incidente) do |f| %>
   <% if @incidente.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@incidente.errors.count, "error") %> prohibited this incidente from being saved:</h2>
+      <h2><%= pluralize(@incidente.errors.count, "erro") %> ao tentar salver o incidente </h2>
 
       <ul>
       <% @incidente.errors.full_messages.each do |msg| %>

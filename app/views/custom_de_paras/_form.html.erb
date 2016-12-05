@@ -1,7 +1,7 @@
 <%= form_for(@custom_de_para) do |f| %>
   <% if @custom_de_para.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@custom_de_para.errors.count, "error") %> prohibited this custom_de_para from being saved:</h2>
+      <h2><%= pluralize(@custom_de_para.errors.count, "erro") %> ao tentar salver o custom_de_para </h2>
 
       <ul>
       <% @custom_de_para.errors.full_messages.each do |msg| %>

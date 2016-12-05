@@ -1,7 +1,7 @@
 <%= form_for(@comandos_automacao) do |f| %>
   <% if @comandos_automacao.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@comandos_automacao.errors.count, "error") %> prohibited this comandos_automacao from being saved:</h2>
+      <h2><%= pluralize(@comandos_automacao.errors.count, "erro") %> ao tentar salver o comandos_automacao </h2>
 
       <ul>
       <% @comandos_automacao.errors.full_messages.each do |msg| %>
