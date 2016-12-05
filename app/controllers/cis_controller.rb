@@ -147,7 +147,7 @@ class CisController < ApplicationController
         begin # se nao tiver parametro com filtro de status, ele mantem todos os status possiveis.
 
           @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
-          @statusci.reject! { |s| ! @st.include? s.status }
+          @statusci = @statusci.reject { |s| ! @st.include? s.status }
         rescue=> error
       puts error.backtrace
         end
