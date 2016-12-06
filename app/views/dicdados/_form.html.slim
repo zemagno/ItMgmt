@@ -15,7 +15,7 @@
           label[for="tipoci_id"]
             | Tipo do Ativo:  
           .bC
-          = f.select :tipoci_id, @tipocis.collect { |c| [ c.tipo, c.id ] }, autofocus: "",  class: "form-control"
+          = f.select :tipoci_id, @tabs.collect { |c| [ c[1],c[0] ] }, autofocus: "",  class: "form-control"
         .form-group
           label[for="nome"]
             | Nome:

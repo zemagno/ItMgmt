@@ -6,6 +6,7 @@ class DicdadosController < ApplicationController
 
   def carrega_agregadas
     @tipocis = Tipoci.all
+    @tabs = @tipocis.map { |x| [x.id,x.tipo,x.tab] }
   end
 
   def index

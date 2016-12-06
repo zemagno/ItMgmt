@@ -15,6 +15,12 @@
     <%= f.label :nome %><br />
     <%= f.text_field :name %>
   </div>
+
+  <% cities = {
+  'USA'      => ['Washington', 'New York'],
+  'Bulgaria' => ['Sofia', 'Svishtov']
+} %>
+<%= select_tag :city, grouped_options_for_select(cities) %>
   <div class="actions">
     <%= f.submit %>
   </div>
