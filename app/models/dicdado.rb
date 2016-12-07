@@ -10,6 +10,7 @@ class Dicdado < ActiveRecord::Base
   validates :apelido, :presence => {                       :message => I18n.t("errors.dicdado.apelido.presence") }
   validates :apelido, :format => { :with => /\A[a-zA-Z0-9]+\z/, :message => I18n.t("errors.dicdado.apelido.format") }
 
+
   self.per_page = 20
 
   after_save ThinkingSphinx::RealTime.callback_for(:dicdado)
