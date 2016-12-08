@@ -64,6 +64,23 @@ class DicdadosController < ApplicationController
     carrega_agregadas
   end
 
+
+  def duplicar
+    begin
+      dicdado_orig = Dicdado.find(params[:id])
+      @dicdado = dicdado_orig.deep_clone
+      carrega_agregadas
+      respond_to do |format|
+        format.html { render :action => 'new' }
+      end
+    rescue Exception => error
+      puts error
+      puts error.backtrace
+      flash[:error] = "Error[DD0001] - Dicionario de ativos #{[params[:id]]} Invalido"
+      redirect_to "/dicdados" and return
+    end
+  end
+
   # POST /dicdados
   # POST /dicdados.xml
   def create

@@ -37,7 +37,7 @@ class CadrelatoriosController < ApplicationController
   def duplicar
     begin
       cad = Cadrelatorio.find(params[:id])
-      @newcad = cad.duplicar("Dup#{cad.nome}")
+      @newcad = cad.duplicar("Dup_#{cad.nome}")
       # puts @newcad
       # puts @newcad.id
       respond_to do |format|

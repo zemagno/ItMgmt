@@ -100,6 +100,7 @@ ItMgmt::Application.routes.draw do
   resources :parametros #, :only => [:index,:edit,:update,:new]
 
   resources :dicdados
+  match 'dicdados/:id/duplicar', to: "dicdados#duplicar", :as => :duplicar_dicdado, via: [:get, :post]
 
 
   get 'cis/:id/email', to: "cis#email",  :as => :email

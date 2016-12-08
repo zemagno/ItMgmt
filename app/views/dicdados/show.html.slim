@@ -59,6 +59,8 @@
               = @dicdado.comentarios
     - if (can? :manage, Dicdado)
       = link_to 'Editar', edit_dicdado_path(@dicdado), :class => "btn btn-primary btn-md margin-left"
+      = link_to 'Novo Campo', new_dicdado_path, class: "btn btn-primary btn-md margin-left" 
+      = link_to 'Duplicar', duplicar_dicdado_path(@dicdado), class: "btn btn-primary btn-md margin-left" 
     = link_to 'Listagem', dicdados_path , :class => "btn btn-primary btn-md margin-left"
 
 

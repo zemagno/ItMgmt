@@ -9,6 +9,7 @@ class Dicdado < ActiveRecord::Base
   validates :tipoci_id, :presence => {                     :message => " eh mandatorio" }
   validates :apelido, :presence => {                       :message => I18n.t("errors.dicdado.apelido.presence") }
   validates :apelido, :format => { :with => /\A[a-zA-Z0-9]+\z/, :message => I18n.t("errors.dicdado.apelido.format") }
+  validates :nome, uniqueness: { scope: [:tipoci_id] , :message => I18n.t("errors.dicdado.nome.uniqueness") }
 
 
   self.per_page = 20

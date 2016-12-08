@@ -44,6 +44,7 @@ en:
     dicdado: 
       nome:
         presence: "Nome do campo é mandatorio"
+        uniqueness: "Já existe um campo com o mesmo nome para esse tipo de ativo"
       apelido:
         presence: "Apelido do campo é mandatorio"
         format: "Apelido deve conter somente caracteres alfanumericos" 
