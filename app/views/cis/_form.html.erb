@@ -17,9 +17,8 @@
 				<div id="my-tab-content" class="tab-content">
 					<div class="tab-pane itam_cis_panel active" id="<%=@tabs[0]%>">
 
-						<%= render :partial => 'item', :locals => { :title => "Chave", :value => link_to(@ci.chave, @ci) } %>
+						<%= render :partial => 'item', :locals => { :title => "Chave ", :value => link_to("#{@ci.chave} - #{@ci.status}", @ci) } %>
 						<%= render :partial => 'item', :locals => { :title => "Descricao", :value =>  "#{@ci.descricao} (#{@ci.nice_tipoci}) " }%>
-						<%= render :partial => 'item', :locals => { :title => "Status", :value =>  @ci.status }%>
 						<%= render :partial => 'item', :locals => { :title => "Localidade", :value => @ci.nome_localidade} %>
 						<%= render :partial => 'item', :locals => { :title => "Gestor", :value => helper_login_to_url(@ci.Owner)} %>
 						<%= render :partial => 'item', :locals => { :title => "Usuario(s)", :value => helper_login_to_url(@ci.notificacao)} %>
