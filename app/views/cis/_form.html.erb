@@ -32,7 +32,7 @@
 						<%= render :partial => 'item', :locals => { :title => "Custo Mensal Cobranca", :value => "#{number_to_currency(@ci.CustoMensal)}"} %>
 						<%= render :partial => 'item', :locals => { :title => "CC/Proj Debito", :value => "#{@ci.CCDebito}/#{@ci.ProjetoDebito}"  } %>
 						<%= render :partial => 'item', :locals => { :title => "CC/Proj Credito", :value => "#{@ci.CCCredito}/#{@ci.ProjetoCredito}"} %>
-						<%= render :partial => 'item_2cols', :locals => { :title => ["Descricao Cobrança","Codigo de Cobranca"], :value => [@ci.descricaocobranca,@ci.codigocobranca]} %>
+						<%= render :partial => 'item_2cols', :locals => { :title => ["Codigo de Cobranca","Descricao Cobrança"], :value => [@ci.codigocobranca,@ci.descricaocobranca]} %>
 						<%= render :partial => 'item', :locals => { :title => "Provisionar: ", :value => "#{@ci.provisionar ? "Provisionar Mensalmente" : 'Nao Provisionado'}"} %>
 					</div> <!-- class="tab-pane active" -->
 

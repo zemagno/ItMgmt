@@ -48,7 +48,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     begin
-      puts "current user #{@current_user}"
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     rescue Exception => error
       Rails.logger.debug "[DEBUG] ApplicationControole::current_user: #{error}"

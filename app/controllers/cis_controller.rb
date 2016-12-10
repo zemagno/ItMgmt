@@ -134,6 +134,7 @@ class CisController < ApplicationController
   def edit
     # @ci sendo carregado no filtro..
     @ci, @atributos = Ci.find_com_atributos(params[:id])
+    carrega_atributos2
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)

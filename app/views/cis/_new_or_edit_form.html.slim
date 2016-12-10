@@ -18,7 +18,23 @@
             .form-group.col-xs-4
               label[for="chave"]
                 | Chave:
-              = f.text_field :chave, :maxlength=>20, class: "form-control", placeholder: "Defina uma chave única, sem espaços ou caracteres especiais"   
+              = f.text_field :chave, :maxlength=>20, class: "form-control", placeholder: "Defina uma chave única, sem espaços ou caracteres especiais"   ,autofocus: ""
+            .row
+            .form-group.col-xs-4
+              label[for="tipoci_id"]
+                | Tipo de Ativo:
+              .input-container
+                = f.select :tipoci_id, @tiposci.collect { |c| [ c.tipo, c.id ] }, {}, { class: "form-control" }
+            .form-group.col-xs-4
+              label[for="statusci_id"]
+                | Status:
+              .input-container
+                = f.select :statusci_id, @statusci.collect { |c| [ c.status, c.id ] }, {}, { class: "form-control" }
+            .form-group.col-xs-4
+              label[for="localidade"]
+                | Localidade:
+              .input-container
+                = f.select :site_id, @sites.collect { |c| [ c.nome, c.id ] }, {}, { class: "form-control" }
             .form-group.col-xs-12
                 label[for="descricao"]
                   | Descricao:
@@ -29,13 +45,9 @@
               = f.text_field :Owner, :maxlength=>50, class: "form-control", placeholder: "Login de rede do Gestor"
             .form-group.col-xs-4
               label[for="notificacao"]
-                | Usuarios:
-              = f.text_field :notificacao, :maxlength=>150, class: "form-control", placeholder: "Email ou login dos usuarios"
-            .form-group.col-xs-4
-              label[for="localidade"]
-                | Localidade:
-              .input-container
-                = f.select :site_id, @sites.collect { |c| [ c.nome, c.id ] }, {}, { class: "form-control" }
+                | Usuários:
+              = f.text_field :notificacao, :maxlength=>150, class: "form-control", placeholder: "Email ou login dos usuários"
+            .row
             .form-group.col-xs-4
               label[for="dataChange"]
                 | Data Última Alteração:
@@ -44,16 +56,18 @@
               label[for="DocChange"]
                 | Documento Última Alteração:
               = f.text_field :DocChange,  class: "form-control", placeholder: "URL para documento ultima mudança"
-            .form-group.col-xs-6
+            .form-group.col-xs-12
               label[for="url"]
                 | Documentacao:
               = f.text_field :url,  class: "form-control", placeholder: "URL para documentação. Formato: apelido|url,apelido|url,..."
-            .form-group.col-xs-6
+            .form-group.col-xs-12
               label[for="jira"]
                 | Jira:
-              = f.text_field :jira,  class: "form-control", placeholder: "codigo jira. Format: apelido|codigo,apelido|codigo,..."
-            
-
+              = f.text_field :jira,  class: "form-control", placeholder: "Códigos dos chamado do jira. Formato: apelido|codigo,apelido|codigo,..."
+            .form-group.col-xs-4
+              label[for="CustoMensal"]
+                | Custo Mensal para Cobrança:
+              = f.text_field :CustoMensal , :disabled => ! (can? :manage, CanHelperFinanceiro), placeholder: "Custo Mensal (para provisão e/ou cobrança gerencial",  class: "form-control"
             .form-group.col-xs-4
               label[for="CustoMensalCapex"]
                 | Custo Mensal Capex:
@@ -62,21 +76,43 @@
               label[for="CustoMensalOpex"]
                 | Custo Mensal Opex:
               = f.text_field :CustoMensalOpex , :disabled => ! (can? :manage, CanHelperFinanceiro), placeholder: "Custo Mensal Opex, somente para informação",  class: "form-control"
-            .form-group.col-xs-4
-              label[for="CustoMensal"]
-                | Custo Mensal para Cobrança:
-              = f.text_field :CustoMensal , :disabled => ! (can? :manage, CanHelperFinanceiro), placeholder: "Custo Mensal para Cobrança Gerencial",  class: "form-control"
-        .panel.panel-default 
-          .panel-heading
-            .h1 Caracteristicas
-          .panel-body
             .row
-              .form-group.col-xs-12
-                label[for="chave"]
-                  | Chave:
-                = f.text_field :chave, :maxlength=>20, class: "form-control", placeholder: "Defina uma chave única, sem espaços ou caracteres especiais" 
-            .row      
+            .form-group.col-xs-4
+              label[for="CCDebito"]
+                | Custo de Custo de Debito:
+              = f.text_field :CCDebito , placeholder: "Custo de Custo para Debito Mensal",  class: "form-control"
+            .form-group.col-xs-8
+              label[for="ProjetoDebito"]
+                | Projeto de Debito:
+              = f.text_field :ProjetoDebito , placeholder: "Projeto para Debito Mensal",  class: "form-control"
+            .row
+            .form-group.col-xs-4
+              label[for="CCCredito"]
+                | Custo de Custo de Credito:
+              = f.text_field :CCCredito , placeholder: "Custo de Custo para Credito Mensal",  class: "form-control"
+            .form-group.col-xs-8
+              label[for="ProjetoCredito"]
+                | Projeto de Credito:
+              = f.text_field :ProjetoCredito , placeholder: "Projeto para Debito Mensal",  class: "form-control"
+            .row
+            .form-group.col-xs-4
+              label[for="codigocobranca"]
+                | Codigo de Cobrança:
+              = f.text_field :codigocobranca , placeholder: "Codigo adicional a ser utilizada na cobranca mensal",  class: "form-control",:disabled => ! (can? :manage, CanHelperFinanceiro)
+            .form-group.col-xs-8
+              label[for="descricaocobranca"]
+                | Descrição da Cobrança:
+              = f.text_field :descricaocobranca , placeholder: "Descrição a ser utilizada na cobrança mensal",  class: "form-control", :disabled => ! (can? :manage, CanHelperFinanceiro)
+            .row
+            .form-group.col-xs-8
+              label[for="provisionar"]
+                | Provisionar ? 
+              = f.check_box :provisionar, :disabled => ! (can? :manage, CanHelperFinanceiroTi)  
+
+
+        = render :partial => 'edit_atributos' 
+        .row      
         button.btn.btn-primary.btn-md[type="submit"]
-          |  Salvar Campo 
+          |  Salvar Ativo 
         = link_to 'Cancelar', cis_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}
 

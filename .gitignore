@@ -3,6 +3,8 @@ Procfile
 .bundle
 /db/*.sqlite3
 *.svg
+*.rdb
+nohup.out
 /id_rsa/*
 /db/sphinx/**
 /tmp
