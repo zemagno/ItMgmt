@@ -19,6 +19,10 @@
               label[for="chave"]
                 | Chave:
               = f.text_field :chave, :maxlength=>20, class: "form-control", placeholder: "Defina uma chave única, sem espaços ou caracteres especiais"   
+            .form-group.col-xs-12
+                label[for="descricao"]
+                  | Descricao:
+                = f.text_field :descricao, :maxlength=>250, class: "form-control", placeholder: "Descriçao desse CI"
             .form-group.col-xs-4
               label[for="Owner"]
                 | Gestor:
@@ -27,19 +31,29 @@
               label[for="notificacao"]
                 | Usuarios:
               = f.text_field :notificacao, :maxlength=>150, class: "form-control", placeholder: "Email ou login dos usuarios"
-            .form-group.col-xs-8
-              label[for="descricao"]
-                | Descricao:
-              = f.text_field :descricao, :maxlength=>250, class: "form-control", placeholder: "Descriçao desse CI"
             .form-group.col-xs-4
               label[for="localidade"]
                 | Localidade:
               .input-container
                 = f.select :site_id, @sites.collect { |c| [ c.nome, c.id ] }, {}, { class: "form-control" }
-            .form-group.col-xs-12
+            .form-group.col-xs-4
               label[for="dataChange"]
                 | Data Última Alteração:
-              = f.text_field :dataChange, :id => "datepicker",  class: "form-control"
+              = f.text_field :dataChange, :id => "datepicker",  class: "form-control"            
+            .form-group.col-xs-8
+              label[for="DocChange"]
+                | Documento Última Alteração:
+              = f.text_field :DocChange,  class: "form-control", placeholder: "URL para documento ultima mudança"
+            .form-group.col-xs-6
+              label[for="url"]
+                | Documentacao:
+              = f.text_field :url,  class: "form-control", placeholder: "URL para documentação. Formato: apelido|url,apelido|url,..."
+            .form-group.col-xs-6
+              label[for="jira"]
+                | Jira:
+              = f.text_field :jira,  class: "form-control", placeholder: "codigo jira. Format: apelido|codigo,apelido|codigo,..."
+            
+
             .form-group.col-xs-4
               label[for="CustoMensalCapex"]
                 | Custo Mensal Capex:
