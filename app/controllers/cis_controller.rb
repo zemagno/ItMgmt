@@ -277,7 +277,12 @@ class CisController < ApplicationController
 
     Rails.logger.debug "[DEBUG]CisController:@view_default_ci: #{@view_default_ci}"
 
-    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
+    begin
+      @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
+    rescue
+      Rails.logger.error "[ERROR]CisController:index - CI0006 - Nao achei parametros [views_ci]"
+      @fields = JSON.parse('[["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],["descricao","tipo_ci","nome_localidade","Owner","notificacao","data_ultima_alteracao"]]')
+    end
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
 
     # cache_finalAuth = finalAuth[:view] # nao preciso pois o search ja esta com :with

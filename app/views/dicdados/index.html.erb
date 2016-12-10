@@ -48,7 +48,7 @@
               <td>
                   <%= link_to 'Editar', edit_dicdado_path(dicdado), class: "btn btn-primary btn-xs" %>
                   <%= link_to 'Duplicar', duplicar_dicdado_path(dicdado), class: "btn btn-primary btn-xs" %>
-                  <%= link_to 'Apagar', dicdado, data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete, class: "btn btn-danger btn-xs" %>
+                  <%= link_to 'Apagar', dicdado, data: { confirm: "Voce realmente deseja apagar o campo '#{dicdado.nome}'' do tipo '#{dicdado.nice_tipoci}'  ?"} , :method => :delete, class: "btn btn-danger btn-xs" %>
               </td>
             <% end %>
           </tr>

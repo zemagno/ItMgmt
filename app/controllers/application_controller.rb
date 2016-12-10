@@ -47,7 +47,13 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    begin
+      puts "current user #{@current_user}"
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue Exception => error
+      Rails.logger.debug "[DEBUG] ApplicationControole::current_user: #{error}"
+      @current_user = nil
+    end
   end
 
   def finalAuth
