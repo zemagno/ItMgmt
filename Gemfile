@@ -97,5 +97,17 @@ group :test do
   gem 'rspec'
   gem 'mocha'
   gem 'rspec-expectations'
-    gem "selenium-webdriver"
+  gem "selenium-webdriver"
+end
+
+group :test do
+  gem "capybara"
+  gem "connection_pool"
+  gem "launchy"
+  gem "minitest-reporters"
+  gem "mocha"
+  gem "poltergeist"
+  gem "shoulda-context"
+  gem "shoulda-matchers", ">= 3.0.1"
+  gem "test_after_commit"
 end
