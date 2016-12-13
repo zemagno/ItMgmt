@@ -303,6 +303,7 @@ class CisController < ApplicationController
   def new
     @ci = Ci.new
     carrega_agregadas
+    @tabs = "Principal,Caracteristicas".split(",").uniq
     @oldci = session[:oldCI]==nil ? nil : Ci.find(session[:oldCI])
   end
 
