@@ -5,7 +5,7 @@ class Atributo < ActiveRecord::Base
   belongs_to :ci
   belongs_to :dicdado
 
-  after_save  ThinkingSphinx::RealTime.callback_for(:ci,[:ci])
+  after_commit ThinkingSphinx::RealTime.callback_for(:ci,[:ci])
 
 
   def self.esta_em_uso?(iddic)
@@ -25,5 +25,10 @@ class Atributo < ActiveRecord::Base
   #    indexes valor as :valor
   #    indexes dicdado(:nome)
   #end
+
+  private
+  def debug_atributo
+     Rails.logger.info "Info[I00100] - after_update #{ci_id} - #{ci.chave} - #{ci.nice_atributos}"
+  end
 
 end

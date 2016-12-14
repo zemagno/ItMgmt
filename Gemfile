@@ -29,6 +29,8 @@ gem 'will_paginate' #, '~> 3.0'
 
 gem 'oauth' #, '~> 0.4.7' # exigido pelo JIRA, que agora esta dentro do lib
 
+gem 'libv8', '3.16.14.15'
+
 gem 'mysql2' #, '0.3.20'
 
 
