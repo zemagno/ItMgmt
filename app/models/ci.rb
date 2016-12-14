@@ -18,9 +18,11 @@ class Ci < ActiveRecord::Base
   belongs_to :site
   belongs_to :tipoci
   belongs_to :statusci
-  has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
+  has_many :atributo, :dependent => :destroy #, touch: true  #destroy ==> instancio e chamo o destroy do atributo
   has_many :task
   has_many :log_ci
+  after_touch :clear_association_cache
+
 
 
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
@@ -315,6 +317,7 @@ class Ci < ActiveRecord::Base
       rescue
         # TODO Log
       end
+      Rails.logger.info "Info[I00200] - apos salver um atributo [#{novos_atributos[attr[1][0]]}] #{id} - #{chave} - #{nice_atributos}"
     end
 
     limpa_atributos_outros_tipo
