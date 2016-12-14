@@ -147,7 +147,7 @@ class CisController < ApplicationController
           @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
           @statusci = @statusci.reject { |s| ! @st.include? s.status }
         rescue=> error
-           Rails.logger.debug "Error[CI0007] - Erro ao ler parametros CI:FiltroStatys - #{error.backtrace}"
+           Rails.logger.info "Info[CI0007] - CI:FiltroStatus nao esta customizado"
         end
       else
         Rails.logger.debug  "Error[CI0003] - CI #{[params[:id]]} Invalido"

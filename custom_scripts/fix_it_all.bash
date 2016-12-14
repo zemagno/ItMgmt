@@ -1,5 +1,5 @@
 #!/bin/bash
-redis-cli flushdb
+redis-cli flushall
 rake ts:stop
 sleep 2
 pkill searchd
