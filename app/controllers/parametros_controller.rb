@@ -22,6 +22,22 @@ class ParametrosController < ApplicationController
     end
   end
 
+  def duplicar
+    begin
+      parametro_orig = Parametro.find(params[:id])
+      @parametro = parametro_orig.deep_clone
+      @parametro.subtipo = ""
+      respond_to do |format|
+        format.html { render :action => 'new' }
+      end
+    rescue Exception => error
+      puts error
+      puts error.backtrace
+      flash[:error] = "Error[PA0001] - Parametro #{[params[:id]]} Invalido"
+      redirect_to "/parametros" and return
+    end
+  end
+
   # GET /parametros/new
   # GET /parametros/new.xml
   def new

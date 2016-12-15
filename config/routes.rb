@@ -98,6 +98,7 @@ ItMgmt::Application.routes.draw do
   match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci", via: [:get, :post]
 
   resources :parametros #, :only => [:index,:edit,:update,:new]
+  match 'parametros/:id/duplicar', to: "parametros#duplicar", :as => :duplicar_parametro, via: [:get, :post]
 
   resources :dicdados
   match 'dicdados/:id/duplicar', to: "dicdados#duplicar", :as => :duplicar_dicdado, via: [:get, :post]

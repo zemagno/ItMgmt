@@ -26,10 +26,12 @@ $(document).ready( function(){
       <table id="coolTable" class="generalTable"> <!-- class="generalTable" -->
         <thead>
           <tr class="head">
-            <th>Parametro</th>
-            <th>Subtipo</th>
-            <th>Valor</th>
-            <th></th>
+            <th class="col-md-1">Parametro</th>
+            <th class="col-md-1">Subtipo</th>
+            <th class="col-md-7">Valor</th>
+            <% if can? :admin, :all %>
+            <th class="col-md-1"></th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -41,8 +43,12 @@ $(document).ready( function(){
             <td><%= parametro.tipo %></td>
             <% end %>
             <td><%= parametro.subtipo %></td>
-            <td><%= parametro.valor[0,400] if ! parametro.valor.blank? %></td>
-            <td><%= link_to "Editar", edit_parametro_path(parametro), class: "btn btn-primary btn-xs" if can? :admin, :all %></td>
+            <td><%= parametro.valor[0,150] if ! parametro.valor.blank? %></td>
+            <% if can? :admin, :all %>
+              <td><%= link_to "Editar", edit_parametro_path(parametro), class: "btn btn-primary btn-xs"%> 
+                  <%= link_to 'Duplicar', duplicar_parametro_path(parametro), class: "btn btn-primary btn-xs" %>
+              </td>
+            <% end %>
             
           </tr>
           <% end %>

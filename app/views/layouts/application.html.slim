@@ -3,7 +3,7 @@ html
   header
     meta[charset="utf-8"]
     title
-      | Gestão de Ativos
+      = content_for?(:title) ? content_for(:title) : 'Gestão de Ativos'
 
     = stylesheet_link_tag "bootstrap.min.css"
 
