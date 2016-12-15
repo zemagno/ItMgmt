@@ -25,6 +25,7 @@ en:
         uniqueness: "Já existe um Tipo de Ativo com esse nome"
       perfil:
         format: "regex deve seguir o format \"perfil perfil[view] perfil[edit] \""
+      tipo_em_uso: "Não é possivel apagar esse Tipo de Ativo, pois ele está em uso por algum Ativo"
     cadrelatorio: 
       nome:
         presence: "Nome do relatório é mandatorio"

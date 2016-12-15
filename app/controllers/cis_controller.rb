@@ -315,7 +315,7 @@ class CisController < ApplicationController
     end
     respond_to do |format|
       if @ci.save
-        flash[:Info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
+        flash[:info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
         format.html {redirect_to(:action => 'edit', :id => @ci.id) }
       else
         carrega_agregadas
