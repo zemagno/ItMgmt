@@ -2,6 +2,8 @@ doctype html
 html
   header
     meta[charset="utf-8"]
+    meta[name="viewport" content="width=device-width"]
+
     title
       = content_for?(:title) ? content_for(:title) : 'Gestão de Ativos'
 
@@ -21,9 +23,7 @@ html
     = csrf_meta_tag
   body.container
     - if current_user and ! current_user.is_a :usuario
-        .painel       
-            = render :partial => "mostra_erros"
-            = yield 
+      = yield 
     - if ! current_user
       .container
         .row
@@ -32,5 +32,5 @@ html
                 a[href="/auth/google_oauth2"]
                   | Login with Google 
     - if current_user and current_user.is_a :usuario
-        = render :partial => "splash"    
+          = render :partial => "splash"    
   

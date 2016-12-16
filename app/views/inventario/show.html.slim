@@ -1,13 +1,17 @@
-  = form_tag(inventario_path, :method => "post", :action => "confirmar_inventario", :class => "panel-body") do
-    = text_field_tag(:Login, @login, :size => 12)
-    = text_field_tag(:Hostname, @hostname, :size => 12)
-    = hidden_field_tag 'id', @ci.id
-    = button_tag(type: "submit", class: "btn btn-primary btn-xs") do
-    	| Confirmar
- 
-  = link_to acao_inventario_path(@ci.id,"Desalocar"), :data => {:confirm => "Confirma desalocar #{@hostname} ?"}, :class => "btn btn-danger btn-xs margin-left" do
-  	| Desalocar
-  = link_to acao_inventario_path(@ci.id,"Inventariar"), :data => {:confirm => "Confirma mudar status de inventario do #{@hostname} para 'ANALISAR' ?"}, :class => "btn btn-danger btn-xs margin-left" do
-  	| Nao esta com funcionario
+.container
+  .row
+    .col-sm-8
+      .panel.panel-default
+        .fieldset.col-md-6
+          = form_tag(inventario_path, :method => "post", :action => "confirmar_inventario", :class => "panel-body") do
+            = text_field_tag :login, @login, class:'form-control' , autofocus: ""
+            = text_field_tag :hostname, @hostname, class:'form-control'
+            = hidden_field_tag 'id', @ci.id
+            = button_tag(type: "submit", class: "btn btn-primary btn-xs center-block margin-botton") do
+            	| Confirmar
+          = link_to acao_inventario_path(@ci.id,"Desalocar"), :data => {:confirm => "Confirma desalocar #{@hostname} ?"}, :class => "btn btn-danger btn-xs center-block margin-botton" do
+          	| Desalocar
+          = link_to acao_inventario_path(@ci.id,"Inventariar"), :data => {:confirm => "Confirma mudar status de inventario do #{@hostname} para 'ANALISAR' ?"}, :class => "btn btn-danger btn-xs center-block margin-botton" do
+          	| Nao esta com funcionario
   
   

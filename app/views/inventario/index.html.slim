@@ -1,12 +1,20 @@
-.panel.panel-default
-  = form_tag(inventario_path, :method => "get", :class => "panel-body") do
-    = text_field_tag(:search, @search, :size => 50)
-    = button_tag(type: "submit", class: "btn btn-primary btn-xs") do
-      |  Procurar 
-  .panel-body
-    table.generalTable
-      - @cis.each do |ci|
-        tr
-          td
-            = link_to "#{ci.chave} - #{ci._hostname} - #{ci.descricao} - #{ci.nice_status} - #{ci._inventariado}", get_inventario_path(ci.id)
-  
+.container
+  .row
+    .panel.panel-default
+        .panel-heading
+          h2.panel-title Pesquisa:
+    = render :partial => "mostra_erros"
+    = form_tag(inventario_path, :method => "get", :class => "panel-body") do
+        .row
+          fieldset
+            .form-group   
+              = text_field_tag :search, @search,  class:'form-control', autofocus: ""
+              br
+              = button_tag(type: "submit", class: "btn btn-primary btn-md center-block") do
+                |  Procurar 
+    .panel.panel-default
+      table.generalTable
+        - @cis.each do |ci|
+          tr
+            td
+              = link_to "#{ci.chave} - #{ci._hostname} - #{ci.notificacao} - #{ci.descricao} - #{ci.nice_status} - #{ci._inventariado}", get_inventario_path(ci.id)

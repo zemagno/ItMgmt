@@ -14,8 +14,15 @@ class InventarioController < ApplicationController
     @search = params[:search]
     @cis = []
     if ! @search.blank?
-      @search_especifico = "#{@search} @tipo=estacao"
-      Rails.logger.debug "[DEBUG] Inventario:index. Procurando por #{@search_especifico}"
+      @search_especifico = "\"#{@search}\" @tipo=estacao"
+      @search_especifico = "#{@search} @tipo=estacao" if @search =~ /\A[a-zA-Z]{2,4}\d{3,9}[a-zA-Z]?\z/
+      @search_especifico = "@usuario=#{@search} @tipo=estacao" if @search =~ /\A[a-zA-z.]+\z/
+      @search_especifico = "@chave=#{@search} @tipo=estacao" if @search =~ /\A\d{3,9}\z/
+      @search_especifico = "#{@search[1..-1]} @tipo=estacao" if @search[0]=="?"
+
+      
+
+      Rails.logger.debug "[DEBUG] Inventario:index. Procurando por #{@search}-#{@search_especifico}"
       @cis = Ci.search @search_especifico, :match_mode => :boolean, :with => { :tipoci_id => finalAuth[:view] }
       @cis.compact!
     end
@@ -37,8 +44,18 @@ class InventarioController < ApplicationController
 
   def confirma
     Rails.logger.debug "[DEBUG} InventarioControoller:confirma. Params: #{params}"
-    respond_to do |format|
+    login = params[:login]
+    if Funcionario.find_by_Login(login).nil?
+      flash[:erro] = "#{login} não existe. Nao atualizado !"
+    else
+      @ci = Ci.find(params[:id])
+      @ci.notificacao = params[:login]
+      @ci._hostname = params[:hostname]
+      @ci.save!
       flash[:Info] = "Atualizado !"
+    end
+    respond_to do |format|
+      
       format.html {redirect_to(:action => 'index', :search => session[:search_inventario], :notice => 'Atualizado') }
     end
   end
