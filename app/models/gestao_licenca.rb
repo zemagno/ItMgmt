@@ -1,18 +1,25 @@
 class GestaoLicenca
 
+  def self.RealLiberaLicenca(ci)
+    ci.statusci_id = 8
+    ci.CCDebito = ""
+    ci.ProjetoDebito = ""
+    ci.Owner = "BRQ"
+    ci.notificacao = ""
+    ci._hostname = ""
+    ci.save!
+  end
+
   def self.LiberaLicenca(attributes = {})
 
     c = Ci.find_by_chave(attributes[:licenca])
 
-    if ! c.nil?
-      c.statusci_id = 8
-      c.CCDebito = ""
-      c.ProjetoDebito = ""
-      c.Owner = "BRQ"
-      c.notificacao = ""
-      c._hostname = ""
-      c.save!
-    end
+    self.RealLiberaLicenca(c) if ! c.nil?
+
+  end
+
+  def self.LiberaLicencaEstacao(estacao)
+    
   end
 
   def self.AlocarLicenca(attributes = {})

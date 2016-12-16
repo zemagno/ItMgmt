@@ -1,0 +1,13 @@
+  = form_tag(inventario_path, :method => "post", :action => "confirmar_inventario", :class => "panel-body") do
+    = text_field_tag(:Login, @login, :size => 12)
+    = text_field_tag(:Hostname, @hostname, :size => 12)
+    = hidden_field_tag 'id', @ci.id
+    = button_tag(type: "submit", class: "btn btn-primary btn-xs") do
+    	| Confirmar
+ 
+  = link_to acao_inventario_path(@ci.id,"Desalocar"), :data => {:confirm => "Confirma desalocar #{@hostname} ?"}, :class => "btn btn-danger btn-xs margin-left" do
+  	| Desalocar
+  = link_to acao_inventario_path(@ci.id,"Inventariar"), :data => {:confirm => "Confirma mudar status de inventario do #{@hostname} para 'ANALISAR' ?"}, :class => "btn btn-danger btn-xs margin-left" do
+  	| Nao esta com funcionario
+  
+  

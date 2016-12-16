@@ -1,0 +1,12 @@
+.panel.panel-default
+  = form_tag(inventario_path, :method => "get", :class => "panel-body") do
+    = text_field_tag(:search, @search, :size => 50)
+    = button_tag(type: "submit", class: "btn btn-primary btn-xs") do
+      |  Procurar 
+  .panel-body
+    table.generalTable
+      - @cis.each do |ci|
+        tr
+          td
+            = link_to "#{ci.chave} - #{ci._hostname} - #{ci.descricao} - #{ci.nice_status} - #{ci._inventariado}", get_inventario_path(ci.id)
+  
