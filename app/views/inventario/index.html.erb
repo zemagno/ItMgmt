@@ -1,0 +1,22 @@
+<div class="container">
+<div class="row">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h2 class="panel-title">Pesquisa:</h2>
+</div></div><%= render :partial => "mostra_erros" %>
+<%= form_tag(inventario_path, :method => "get", :class => "panel-body") do %>
+<div class="row">
+<fieldset>
+<div class="form-group">
+<%= text_field_tag :search, @search,  class:'form-control', autofocus: "" %>
+<br />
+<%= button_tag(type: "submit", class: "btn btn-primary btn-md center-block") do %>
+ Procurar 
+<% end %>
+</div></fieldset></div><% end %>
+<div class="panel panel-default">
+<table class="generalTable">
+<% @cis.each do |ci| %> <tr>
+<td>
+<%= link_to "#{ci.chave} - #{ci._hostname} - #{ci.notificacao} - #{ci.descricao} - #{ci.nice_status} - #{ci._inventariado}", get_inventario_path(ci.id) %>
+</td></tr><% end %></table></div></div></div>
