@@ -12,7 +12,7 @@ development:
   # database: appi
   # database: tasklist_development
   # database: itmgmt
-  database: itmgmt_fake
+  database: itmgmt
   # database: 4mstech
   pool: 10
   username: root
