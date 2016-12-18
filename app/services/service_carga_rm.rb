@@ -73,57 +73,9 @@ class ServiceCargaRm
     demitidos.count
     mudaram.count
 
-    if comandoAdMudaram != "N/A" && ! comandoAdMudaram.nil?
-      mudaram.each do |m|
-        cmd = comandoAdMudaram.dup
-        cmd.sub! "{{userid}}", m[0]
-        cmd.sub! "{{local_depois}}", m[1][0][1].to_s
-        cmd.sub! "{{local_antes}}", m[1][1][1].to_s
-        puts cmd
-        ProducaoAd.create(:userid => m[0], :parametro => m[1][0][1], :cmd => cmd, :acao => "MudancaLocal", :processado => false )
-      end
-    end
-
-    if comandoAdMudaramInterno != "N/A" && ! comandoAdMudaramInterno.nil?
-      mudaramInterno.each do |m|
-        cmd1 = comandoAdMudaramInterno.dup
-        m1 = m.flatten
-        cmd1.sub! "{{userid}}", m1[0]
-        cmd1.sub! "{{local_depois}}", m1[1][0][2]
-        cmd1.sub! "{{local_antes}}", m1[1][1][2]
-        puts cmd1
-        ProducaoAd.create(:userid => m1[0], :parametro => m1[1][0][2], :cmd => cmd1, :acao => "MudancaIntExt", :processado => false )
-      end
-    end
-
-    if comandoAdNovos != "N/A" && ! comandoAdNovos.nil?
-      novos.each do |m|
-        cmd2 = comandoAdNovos.dup
-        m1 = m.flatten
-        cmd2.sub! "{{userid}}", m1[0]
-        cmd2.sub! "{{local_depois}}", m1[1][0][1].to_s
-        cmd2.sub! "{{extint_depois}}", m1[1][0][2]
-        ProducaoAd.create(:userid => m1[0], :parametro => m1[1][0][1], :cmd => cmd2, :acao => "Novo", :processado => false  , :dataExecucao => m1[1][0][0] )
-      end
-    end
-
-    if comandoAdDemitidos != "N/A" &&  ! comandoAdDemitidos.nil?
-      demitidos.each do |m|
-        
-       
-        cmd3 = comandoAdDemitidos.dup
-        m1 = m.flatten
-        puts "Demitito #{m1}"
-        cmd3.sub! "{{userid}}", m1[0]
-        cmd3.sub! "{{local_antes}}", m1[1][0][1].to_s
-        ProducaoAd.create(:userid => m1[0], :parametro => m1[1][0][1], :cmd => cmd3, :acao => "Demissao", :processado => false , :dataExecucao => m1[1][0][0] )
-      end
-    end
-
-
 
     funcRm.each do |f|
-      fnew = Funcionario.find_or_create_by_Login(:Login => f.Login)
+      fnew = Funcionario.find_or_create_by(:Login => f.Login)
       fnew.NumMatrProfissional= f.NumMatrProfissional
       fnew.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional
       fnew.DtaAdmissao = f.DtaAdmissao
