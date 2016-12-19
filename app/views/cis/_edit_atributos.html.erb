@@ -10,39 +10,40 @@
       <% @atributos2 ||= [] %>
       <% @atributos2.find_all { |x| x[11]==t}.each do |attr| %>
 
-          <div class="form-group col-xs-12">
+          <div class="form-group required col-xs-12">
         
             <label><%= attr[1] %></label>
       
             <% if ! attr[4].blank? %> <!-- se nao tiver valores no campo Valores Possivel, nao é combobox -->
               <br>
-              <select name="atributos[<%= attr[1]%>]" class="form-control">
-                  <%= helper_gen_combobox(attr[4],attr[2]).html_safe %>
-                  
+              <select name="atributos[<%= attr[1]%>]" 
+                      class="form-control">
+                      <%= helper_gen_combobox(attr[4],attr[2]).html_safe %>  
               </select> 
             <% elsif attr[7] && attr[7]=="checkbox" %>
               <input name="atributos[<%= attr[0]%>]" 
-                type="checkbox"  
-                class="form-control"
-                placeholder="<%= attr[7] %>"
-                value="<%=attr[1]%>" 
-                <%= "checked" if attr[2]=="1" %> />
+                     type="checkbox"  
+                     class="form-control"
+                     placeholder="<%= attr[7] %>"
+                     value="<%=attr[1]%>" 
+                     <%= "checked" if attr[2]=="1" %> />
             <% elsif attr[7] && attr[7]=="data" %>
               <input name="atributos[<%= attr[0]%>]"
-                class="datepick form-control"
-                placeholder="<%= attr[5] %>"
-                value="<%=attr[2]%>" />
+                     class="datepick form-control"
+                     placeholder="<%= attr[5] %>"
+                     value="<%=attr[2]%>" />
             <% else %>
               <input name="atributos[<%= attr[1]%>]" 
-                id='<%= attr[6]%>'
-                size="50" 
-                class="form-control"
-                placeholder="<%= attr[5] %>"
-                type="text" 
-                <%= attr[9] ? "required" : "" %> 
-                pattern="<%= attr[8].blank? ? "[\\s\\S]+" : attr[8] %>" 
-                value="<%=attr[2]%>" />
-                <%= attr[9] ? "Mandatorio" : "" %>
+                     type="text" 
+                     id='<%= attr[6]%>'
+                     size="50" 
+                     class="form-control"
+                     placeholder="<%= attr[5] %>"
+                     <%= attr[9] ? "required" : "" %> 
+                     pattern="<%= attr[8].blank? ? "[\\s\\S]+" : attr[8] %>" 
+                     value="<%=attr[2]%>" 
+              />
+              <%= attr[9] ? "Mandatorio" : "" %>
             <% end %> 
             <% # if !attr[10].blank? %>
               <%# = tooltip "(?)", { :tooltip => attr[10] }, :class => 'mytooltip' %>

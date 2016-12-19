@@ -31,6 +31,12 @@ color:#a8a8a8;
 color:#a8a8a8;
 }
 
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+
+
 .margin-left{
     margin-left: 5px !important;
 }

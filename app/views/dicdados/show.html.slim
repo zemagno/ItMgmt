@@ -50,6 +50,11 @@
               = @dicdado.mandatorio ? "Sim" : "Nao"           
           .list-group-item
             h4.list-group-item-heading
+              | Campo Bloqueado para edição ? 
+            p.list-group-item-text
+              = @dicdado.bloqueado ? "Sim" : "Nao"           
+          .list-group-item
+            h4.list-group-item-heading
               | URL  
             p.list-group-item-text
               = @dicdado.url          
