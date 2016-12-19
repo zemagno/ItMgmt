@@ -51,6 +51,8 @@
    <tr>
     <th>Estacao</th>
      <th>Descricao</th> 
+     <th>Hostname</th> 
+
     <th>Gestor</th>
     <th>CC/Projeto Debito</th>
     <th></th>
@@ -63,6 +65,8 @@
           <td><%= link_to estacao[:chave], ci_path(estacao[:chave]), :target => '_blank' %></td>
         <% end%> 
         <td><%= estacao[:detalhes] %></td>
+        <td><%= estacao[:hostname] %></td>
+
         <td><%= estacao[:gestor] %></td>
         <td><%= "#{estacao[:CCDebito]}/#{estacao[:ProjetoDebito]}" %></td>
         <% if estacao[:chave]!="Sem Estacao" %>
