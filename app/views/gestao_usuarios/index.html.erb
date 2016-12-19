@@ -12,6 +12,7 @@
 
 <b>
 <font color="red"><%= "ATENCAO: Funcionario Afastado !!" if @funcionario && @funcionario.afastado %></font>
+<font color="red"><%= "ATENCAO: NAO CONCEDER ACESSO, LIBERAR SENHA, NADA !!" if @funcionario && @funcionario.suspenso %></font>
 
 </br><%= "Login:  #{@usuario.login} - Nome: #{@nomecompleto}" %>
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
