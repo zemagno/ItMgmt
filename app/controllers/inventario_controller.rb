@@ -50,7 +50,11 @@ class InventarioController < ApplicationController
     else
       @ci = Ci.find(params[:id])
       @ci.notificacao = params[:login]
+      _desc = @ci.descricao.gsub(@ci._hostname,params[:hostname])
+      @ci.descricao = _desc
       @ci._hostname = params[:hostname]
+      @ci._inventariado = "INVENTARIADO"
+ 
       @ci.save!
       flash[:Info] = "Atualizado !"
     end

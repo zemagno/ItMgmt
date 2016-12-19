@@ -10,7 +10,7 @@
             .form-group   
               = text_field_tag :search, @search,  class:'form-control', autofocus: ""
               br
-              = button_tag(type: "submit", class: "btn btn-primary btn-md center-block") do
+              = button_tag(type: "submit", class: "btn btn-primary btn-lg center-block") do
                 |  Procurar 
     .panel.panel-default
       table.generalTable

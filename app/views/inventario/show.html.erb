@@ -10,10 +10,10 @@
 <%= button_tag(type: "submit", class: "btn btn-primary btn-xs center-block margin-botton") do %>
 Confirmar
 <% end %><% end %>
-<%= link_to acao_inventario_path(@ci.id,"Desalocar"), :data => {:confirm => "Confirma desalocar #{@hostname} ?"}, :class => "btn btn-danger btn-xs center-block margin-botton" do %>
+<%= link_to acao_inventario_path(@ci.id,"Desalocar"), :data => {:confirm => "Confirma desalocar #{@hostname} ?"}, :class => "btn btn-danger btn-lg center-block margin-botton" do %>
 Desalocar
 <% end %>
-<%= link_to acao_inventario_path(@ci.id,"Inventariar"), :data => {:confirm => "Confirma mudar status de inventario do #{@hostname} para 'ANALISAR' ?"}, :class => "btn btn-danger btn-xs center-block margin-botton" do
+<%= link_to acao_inventario_path(@ci.id,"Inventariar"), :data => {:confirm => "Confirma mudar status de inventario do #{@hostname} para 'ANALISAR' ?"}, :class => "btn btn-danger btn-lg center-block margin-botton" do
  %>Nao esta com funcionario
 
 
