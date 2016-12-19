@@ -45,6 +45,10 @@
             | Campo é mandatório ?
           = f.check_box :mandatorio, class: "itam_checkbox_margin-left"
         .form-group
+          label[for="readonly"]
+            | Campo é bloqueado para edição ?
+          = f.check_box :bloqueado, class: "itam_checkbox_margin-left"
+        .form-group
           label[for="url"]
             | URL:
           = f.text_field :url, :maxlength=>100, placeholder: "Opcional: URL",  class: "form-control"
