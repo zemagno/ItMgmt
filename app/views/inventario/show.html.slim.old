@@ -10,8 +10,8 @@
             = button_tag(type: "submit", class: "btn btn-primary btn-xs center-block margin-botton") do
             	| Confirmar
           = link_to acao_inventario_path(@ci.id,"Desalocar"), :data => {:confirm => "Confirma desalocar #{@hostname} ?"}, :class => "btn btn-danger btn-xs center-block margin-botton" do
-          	| Desalocar
+          	| Desalocar/Func. Devolverá
           = link_to acao_inventario_path(@ci.id,"Inventariar"), :data => {:confirm => "Confirma mudar status de inventario do #{@hostname} para 'ANALISAR' ?"}, :class => "btn btn-danger btn-xs center-block margin-botton" do
-          	| Nao esta com funcionario
+          	| Não está com funcionário
   
   
