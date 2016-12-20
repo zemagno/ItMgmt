@@ -54,10 +54,6 @@ class InventarioController < ApplicationController
       @ci.descricao = _desc
       @ci._hostname = params[:hostname]
       @ci._inventariado = "INVENTARIADO"
-<<<<<<< HEAD
- 
-=======
->>>>>>> V6
       @ci.save!
       flash[:Info] = "Atualizado !"
     end
