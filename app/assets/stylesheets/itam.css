@@ -31,13 +31,31 @@ color:#a8a8a8;
 color:#a8a8a8;
 }
 
+.campo_obrigatorio:after {
+  content:" (OBRIGATORIO)";
+  color:red;
+  font-size: 9px;
+}
+
+.campo_readonly:after {
+  content:" (BLOQUEADO PARA EDIÇÃO)";
+  color:red;
+  font-size: 9px;
+}
+
+
 .margin-left{
+    margin-left: 5px !important;
+}
+
+.itam_checkbox_margin-left{
     margin-left: 5px !important;
 }
 
 .margin-botton{
     margin-top: 5px;
 }
+
 
 .itam_btn_hyperlink_cis {
       line-height: 1.2;

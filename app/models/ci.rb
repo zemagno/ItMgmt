@@ -216,7 +216,7 @@ class Ci < ActiveRecord::Base
 
     @attr_existentes2 = []
 
-    tipoci.dicdados.map { |x| @attr_existentes2 << [x.id,x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab.nil? ? "Caracteristicas" : x.tab] }
+    tipoci.dicdados.map { |x| @attr_existentes2 << [x.id,x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab.nil? ? "Caracteristicas" : x.tab, x.bloqueado] }
 
     atributo.map do |x|
       idx = @attr_existentes2.index { |elem| elem[0]==x.dicdado.id}
@@ -244,7 +244,7 @@ class Ci < ActiveRecord::Base
     @attr_existentes = Hash.new
 
     # monto um hash com todos atributos/dicdados que esse CI deve ter
-    tipoci.dicdados.map { |x| @attr_existentes[x.id] = [x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab] }
+    tipoci.dicdados.map { |x| @attr_existentes[x.id] = [x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab, x.bloqueado] }
 
     # populo o @attr_existentes com os valores dos atributos EXISTENTE na base de dados
     atributo.map do |x|
@@ -256,7 +256,7 @@ class Ci < ActiveRecord::Base
       #          ERRO: na verdade estou carregando so para poder atribuir o valor (logo depois do IF)
       #
       if !@attr_existentes[x.dicdado.id] then
-        @attr_existentes[x.dicdado.id] = [x.dicdado.nome, nil, x.dicdado.url, x.dicdado.valores, x.dicdado.descricao, x.dicdado.apelido, x.dicdado.tipo, x.dicdado.regex, x.dicdado.mandatorio, x.dicdado.tooltip,x.dicdado.tab]
+        @attr_existentes[x.dicdado.id] = [x.dicdado.nome, nil, x.dicdado.url, x.dicdado.valores, x.dicdado.descricao, x.dicdado.apelido, x.dicdado.tipo, x.dicdado.regex, x.dicdado.mandatorio, x.dicdado.tooltip,x.dicdado.tab,x.dicdado.bloqueado]
       end
       @attr_existentes[x.dicdado.id][1] = x.valor
     end

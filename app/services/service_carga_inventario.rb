@@ -44,6 +44,7 @@ class ServiceCargaInventario
       end
       detalhe << "Total de registros criado #{total_created} - "
       detalhe << "Total de registros atualizados #{total_replaced}"
+      detalhe << " / "
     end
 
 

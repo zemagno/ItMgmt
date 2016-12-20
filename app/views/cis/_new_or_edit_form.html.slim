@@ -1,3 +1,6 @@
+script
+  | $( function() { $( "#datepicker" ).datepicker(); } );
+
 .container
   .row
     div
@@ -107,7 +110,7 @@
             .form-group.col-xs-8
               label[for="provisionar"]
                 | Provisionar ? 
-              = f.check_box :provisionar, :disabled => ! (can? :manage, CanHelperFinanceiroTi)  
+              = f.check_box :provisionar, :disabled => ! (can? :manage, CanHelperFinanceiroTi) ,  class: "itam_checkbox_margin-left"
 
 
         = render :partial => 'edit_atributos' 
