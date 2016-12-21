@@ -40,13 +40,7 @@
     <%= f.check_box :semEstacao %>
 </div>
 
-<div class="spacer"></div>
 
-
-<label>
-<span class="small">Observacao</span>
-</label>
-<%= f.text_field :observacao, :size => 70 %>
 <div class="spacer"></div>
 
 <label>É externo e possui ramal ?
@@ -70,14 +64,35 @@
     <%= f.check_box(attr[0]) %>
 </div>
 
-
   </div>
   <div class="spacer"></div>
 <% end %>
 
+<div class="spacer"></div>
+
+
+<label>
+<span class="small">Observacao</span>
+</label>
+<%= f.text_field :observacao, :size => 70 %>
+
+
+<div class="spacer"></div>
+
+<label>Justificativa para Externo com Ramal ?
+
+</label>
+<div class="field">
+    <%= f.text_field :justificativaExtComOffice365, :size => 70 %>
+</div>
+
+
+<div class="spacer"></div>
+
 
 <div class="actions">
-    <%= f.submit %>
+    
+<button type="submit" id="SalvarAtributos">Salvar Atributos</button>
 </div>
 <div class="spacer"></div>
 <% end %>

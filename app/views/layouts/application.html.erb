@@ -5,7 +5,6 @@
     <meta name="description" content="" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>Gestão de Ativos</title>
-    <!--%= stylesheet_link_tag :all %-->
     <%= stylesheet_link_tag "jquery-ui.css" %>
     <%= stylesheet_link_tag "chavecis.css" %>
     <%= stylesheet_link_tag "CMDBstyle.css" %>
@@ -15,7 +14,7 @@
     <%= javascript_include_tag "jquery", "jquery-ujs", "application" , "jquery.datetimepicker.js"%>
     <%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
     <%= javascript_include_tag "utils.js" %>
-    <%= javascript_include_tag "ajax.js.coffee" %>
+<!--     <%= javascript_include_tag "ajax.js.coffee" %> # ERRO: esse ajax estava indo para todas as paginas...-->
     <!-- %= javascript_include_tag "clipboard.min.js" %-->
     
     <%= csrf_meta_tag %>
@@ -53,9 +52,8 @@
             <%= link_to "Se logar com Google", "/auth/google_oauth2" %>
             <% end %>
           </div>
-
           
-          <% if current_user %>
+          <% if current_user and ! current_user.is_a :usuario %>
           <div id="menu">
             <ul class="navbar-main">
               <li><%= link_to 'Alertas', tasks_path if Features.has? "alertas" %></li>
@@ -120,8 +118,31 @@
               <div id="enviar_email"></div>
               
               <div id="page-dbgbtm">
-                
+
+
+                <% if current_user.is_a :usuario %>
+                <style type="text/css">
+                body { background-color: #fff; color: #666;font-size: 100%;  font-family: arial, sans-serif; }
+                div.dialog {
+                    border: 1px solid black;
+                    background-color: lightblue;
+                    padding-top: 150px;
+                    padding-right: 30px;
+                    padding-bottom: 50px;
+                    padding-left: 80px;
+                }
+                h1 { font-size: 200%; color: #fff; text-align: left ;line-height: 1.5em; }
+              </style>
+              <div class="dialog">
+
+                  <h1>Bem vindo ao Sistema de Gestao de Ativos</h1>
+                  <p>Que bom... Voce já está logado. Porem, não tem acesso a nenhuma funcionalida. Ainda !!
+                  <p>Peça para o administrador lhe conceder acesso...</p>
+                </div>
+
+                <% else %> 
                 <%= yield %>
+                <% end %>
                 <div style="clear: both;"> </div>
               </div>
             </div>

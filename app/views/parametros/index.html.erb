@@ -33,11 +33,14 @@ $(document).ready( function(){
 <tbody>
 <% @parametros.each do |parametro| %>
   <tr>
-   
+   <% if can? :admin, :all %>
     <td><%= link_to parametro.tipo, parametro_path(parametro) %></td>
+   <% else %>
+    <td><%= parametro.tipo %></td>
+   <% end %> 
     <td><%= parametro.subtipo %></td>
     <td><%= parametro.valor[0,400] if ! parametro.valor.blank? %></td>
-    <td><%= link_to "Editar", edit_parametro_path(parametro) %></td>
+    <td><%= link_to "Editar", edit_parametro_path(parametro) if can? :admin, :all %></td>
     
   </tr>
 <% end %>

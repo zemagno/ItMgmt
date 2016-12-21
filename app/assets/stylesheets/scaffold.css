@@ -199,6 +199,7 @@ table td.actions a {
 }
 .navbar-main .sub-menu{
    position: absolute;
+   z-index: 5;
     display: none;
     width: 175px;
         background: #2aa1cc;
@@ -218,3 +219,32 @@ table td.actions a {
   .navbar-main li:hover .sub-menu {
     display: block;
 }
+
+
+/*.field_with_errors {
+  padding: 1px;
+  background-color: red;
+  display: table;
+}
+*/ 
+#error_explanation {
+ /* width: 800px;*/
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }

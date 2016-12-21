@@ -1,5 +1,5 @@
 <!-- onchange="location.reload() -->
-<h1>CMDB</h1>
+<h1>Ativos</h1>
 <!-- 
 <% [:info, :error].each do |key| %>
    <% if flash[key] %>
@@ -12,9 +12,10 @@
  -->
 <%= link_to '[Novo CI]', new_ci_path, :id => "zNovo" %>
 
-<%= will_paginate @cis %> 
+<%= will_paginate @cis %> <%= "#{@cis.total_entries} itens achados"%>
 
 <%= form_tag(cis_path, :method => "get") do %>
+
  
   <%= text_field_tag(:search, @search, :size => 50) %>
   <%= submit_tag("Filtrar") %>

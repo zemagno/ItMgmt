@@ -1,8 +1,7 @@
 <%= form_for(@cadrelatorio) do |f| %>
   <% if @cadrelatorio.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@cadrelatorio.errors.count, "error") %> prohibited this cadrelatorio from being saved:</h2>
-
+      <h2><%= pluralize(@cadrelatorio.errors.count, "erro") %> ao salvar esse Realtorio</h2>
       <ul>
       <% @cadrelatorio.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -44,15 +43,27 @@
 <span class="small">Tipo de CI para Email automatico </span>
 </label>
 <%= f.select :tipoci_id, @tiposci.collect { |c| [ c.tipo, c.id ] } %>
-
 <br>   
 <div class="spacer"></div>
+<br>
+
+<label>Justificativa
+</label>
+<%= f.text_field :justificativa, :size => 50   %>
+<div class="spacer"></div>
+
+
+<label>Solicitante
+</label>
+<%= f.text_field :solicitante, :size => 50   %>
+<div class="spacer"></div>
+
 <br>
 <div class="field">
   <%= f.text_area :consulta, :size => "150x30" %>
 </div>
 <div class="spacer1"></div>
 <div class="actions">
-    <%= f.submit %>
+    <button type="submit" id="SalvarRelatorio">Salvar Relatorio</button>
 </div>
 <% end %>

@@ -1,6 +1,6 @@
 <h1>Tipos de Ativos</h1>
 
-<%= link_to '[Novo Tipo]', new_tipoci_path %>
+<%= link_to '[Novo Tipo]', new_tipoci_path if (can? :manage, Tipoci) %>
 
 <table>
   <tr>
@@ -18,7 +18,7 @@
 
 <% @tipocis.each do |tipoci| %>
   <tr>
-    <td><%= tipoci.tipo %></td>
+    <td><%= link_to tipoci.tipo , tipoci_path(tipoci)%></td>
     <td><%= tipoci.Descricao %></td>
     <td><%= tipoci.Owner%></td>
     <td><%= tipoci.perfil%></td>
@@ -32,4 +32,4 @@
 
 <br />
 
-<%= link_to '[Novo Tipo]', new_tipoci_path %>
+<%= link_to '[Novo Tipo]', new_tipoci_path if (can? :manage, Tipoci) %>

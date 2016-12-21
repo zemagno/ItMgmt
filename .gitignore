@@ -20,5 +20,12 @@ config/local_env.yml
 getsql.sh
 /log
 /spec
+<<<<<<< HEAD
 /test
+=======
+/features
+/test
+/public/assets/**
+
+>>>>>>> V3
 

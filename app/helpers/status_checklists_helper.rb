@@ -1,2 +1,0 @@
-module StatusChecklistsHelper
-end

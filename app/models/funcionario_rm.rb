@@ -1,4 +1,4 @@
 class FuncionarioRm < RmDb
-      	# set_table_name "VW_DadoPessoalInfra"
-      	set_table_name "VW_InfraDadosProfissionais"
+      	# self.table_name =  "VW_DadoPessoalInfra"
+      	self.table_name =  "VW_InfraDadosProfissionais"
 end

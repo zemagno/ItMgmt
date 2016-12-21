@@ -18,7 +18,7 @@
     <td><%= site.estado %></td>
     <% if (can? :manage, Site)  %>
     <td><%= link_to 'Editar', edit_site_path(site) %></td>
-    <td><%= link_to 'Apagar', site, :confirm => 'Voce confirma?', :method => :delete %></td>
+    <td><%= link_to 'Apagar', site, data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete %></td>
     <% end %>
   </tr>
 <% end %>

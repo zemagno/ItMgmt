@@ -1,6 +1,6 @@
 class CreateViewCobrancaSw < ActiveRecord::Migration
   def up
-
+    execute %Q{ drop view if exists CobrancaMensalUsoSoftware }
     execute %Q{
       Create view CobrancaMensalUsoSoftware AS
 
@@ -21,6 +21,6 @@ class CreateViewCobrancaSw < ActiveRecord::Migration
   end
 
   def down
-    execute %Q{ drop view CobrancaMensalUsoSoftware }
+    execute %Q{ drop view if exists CobrancaMensalUsoSoftware }
   end
 end

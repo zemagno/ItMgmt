@@ -1,6 +1,9 @@
 <div id="stylized" class="myform">
-
+<b><h1>Dicionario de Dados</h1><b>
 <p id="notice"><%= notice %></p>
+
+
+
 
 <table>
   <col width="130">
@@ -15,7 +18,7 @@
 <tr><td>URL:</td><td><b><%= @dicdado.url %></b></td></tr>
 <tr><td>Ajuda:</td><td><b><%= @dicdado.tooltip %></b></td></tr>
 <tr><td>Comentario Interno:</td><td><b><%= @dicdado.comentarios %></b></td></tr>
-<table>
+</table>
 
 <% if (can? :manage, Dicdado)  %>
 <%= link_to '[Editar]', edit_dicdado_path(@dicdado) %> |

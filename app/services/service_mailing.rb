@@ -11,11 +11,12 @@ class ServiceMailing
 	
 
 	def enviar_por_tag(_tag)
-		mailing = Mailing.find_all_by_tag(_tag)
+		@total_enviado = 0
+		mailing = Mailing.where(tag: _tag)
 		mailing.each do |m|
 			p = Hash[ :id => m.id, :to => m.to, :cc => m.cc, :subject => m.subject, :from => m.from, :body => m.body ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
 			job = JobEnviarEmail.criar(m.templates_email_id, p.to_yaml)
-			# EnviaEmailWorker.perform_async(job.id)
+			@total_enviado = @total_enviado + 1
 		end
 		Event.register("email","mailing - #{_tag}","resumo","Enfileirados #{mailing.count} emails para envio.")
 	end
@@ -24,7 +25,8 @@ class ServiceMailing
 	# usado para producao_workers
 	def go(nome_relatorio)
 		enviar_por_relatorio("nome='#{nome_relatorio}'")
-		["Ok",""]
+		@total_enviado = @total_enviado || "Indefinido"
+		["Ok","Total de Emails enviados: #{@total_enviado}"]
 	end
 
 	def enviar_por_relatorio(filtro)
@@ -35,6 +37,8 @@ class ServiceMailing
 
 private
 	def real_enviar_por_sql(sql)
+		# TODO separar isso. Muita atribuicao nesse metodo..
+		@total_enviado = 0
 		mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
 		mysql_res = ActiveRecord::Base.connection.execute(sql)
 		mailing = []
@@ -52,7 +56,7 @@ private
 		mailing.each do |m|
 			p = Hash[ :to => m[to], :cc => m[cc], :subject => m[subject], :from => m[from], :body => m[body] ] #body nao é passado no CiMailer.enviar. É acessado via objeto dentro do template
 			job = JobEnviarEmail.criar(m[template_email_id], p.to_yaml)
-			# EnviaEmailWorker.perform_async(job.id)
+			@total_enviado = @total_enviado + 1
 		end
 		Event.register("email","mailing - #{tag}","resumo","Enfileirados #{mailing.count} emails para envio.")
 

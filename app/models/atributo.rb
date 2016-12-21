@@ -1,8 +1,12 @@
 class Atributo < ActiveRecord::Base
-   audited associated_with: :ci
+  audited associated_with: :ci
+  attr_accessible  :ci_id ,:dicdado_id,:valor
+  
   belongs_to :ci
   belongs_to :dicdado
-  
+
+  after_save  ThinkingSphinx::RealTime.callback_for(:ci,[:ci])
+
 
   def self.esta_em_uso?(iddic)
     self.where(:dicdado_id => iddic).exists?
@@ -13,14 +17,13 @@ class Atributo < ActiveRecord::Base
   # end
 
   def to_s
-      "#{id} : #{ci_id}/#{ci.chave} : #{dicdado.nome} : #{valor} : #{ci.nice_tipoci}<>#{dicdado.nice_tipoci}"  
+    "#{id} : #{ci_id}/#{ci.chave} : #{dicdado.nome} : #{valor} : #{ci.nice_tipoci}<>#{dicdado.nice_tipoci}"
   end
 
 
   #define_index do
   #    indexes valor as :valor
-  #    indexes dicdado(:nome)      
+  #    indexes dicdado(:nome)
   #end
-  
-end
 
+end

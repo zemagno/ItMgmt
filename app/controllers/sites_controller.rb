@@ -1,9 +1,14 @@
 class SitesController < ApplicationController
+
+  respond_to :html #, :json
   
   authorize_resource 
   def index
+    puts "0"
     @sites = Site.all
-
+    # puts "1"
+    # respond_with @sites
+    # puts "2"
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sites }

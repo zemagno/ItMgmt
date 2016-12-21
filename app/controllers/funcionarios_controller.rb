@@ -1,43 +1,41 @@
-class FuncionariosController < InheritedResources::Base
+class FuncionariosController  < InheritedResources::Base
+  # actions :index, :edit
   load_and_authorize_resource
 
   def load_custom_attributes
-
-    funcionario = Funcionario.find(params[:id])
+    puts "FuncionariosController::load_custom_attributes"
     @attrs = []
-    funcionario.attribute_names.each do |attr|
-      @attrs << [attr,"#{$1}".underscore.humanize,funcionario.attributes[attr]] if attr =~ /^custom(\w+)$/
+    begin
+      @funcionario = Funcionario.find(params[:id])
+      @funcionario.attribute_names.each do |attr|
+        @attrs << [attr,"#{$1}".underscore.humanize,@funcionario.attributes[attr]] if attr =~ /^custom(\w+)$/
+      end
+    rescue => error
+      puts error.backtrace
+      flash[:error] = "Error[DB0002] - Funcionario nao encontrato"
     end
+    puts "Func: ==> #{@funcionario}"
   end
 
   def index
-
+    puts "FuncionariosController::index"
     @funcionarios = Funcionario.paginate(:page => params[:page])
-
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.xml  { render :xml => @notes }
-    # end
-
 
   end
 
   def edit
-  	load_custom_attributes
-  	
+    load_custom_attributes
+
   end
 
   def show
-  	load_custom_attributes
-    # funcionario = Funcionario.find(params[:id])
-    # @attr = []
-    # funcionario.attribute_names.each do |attr|
-    #   @attr << [attr,"#{$1} ?".underscore.humanize,funcionario.attributes[attr]] if attr =~ /^custom(\w+)$/
-    # end
-    # puts @attr
+    puts "FuncionariosController::Show"
+
+    load_custom_attributes
   end
 
   def equipe
+    puts "FuncionariosController::equipe"
     f = Funcionario.find_by_Login(params[:id])
     @gestores = f.gestores
     @equipe = f.funcionarios

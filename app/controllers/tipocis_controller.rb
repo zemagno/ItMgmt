@@ -3,7 +3,7 @@ class TipocisController < ApplicationController
   # GET /tipocis.json
   authorize_resource 
   def index
-    @tipocis = Tipoci.all( :order => "tipo ASC")
+    @tipocis = Tipoci.all
 
     respond_to do |format|
       format.html # index.html.erb

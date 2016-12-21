@@ -1,6 +1,6 @@
 
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+protect_from_forgery with: :exception
 
   # rescue_from Exception, :with => :error_render_method
 
@@ -12,6 +12,26 @@ class ApplicationController < ActionController::Base
   #   end
   #   true
   # end
+
+  # around_action :collect_metrics
+
+  # def collect_metrics
+  #   start = Time.now
+  #   yield
+  #   duration = Time.now - start
+  #   Rails.logger.info "[APMI] - #{controller_name}##{action_name}: #{duration}s"
+  # end
+
+  def append_info_to_payload(payload)
+    super
+    payload[:remote_ip] = request.remote_ip
+    payload[:uri] = request.url.gsub(/[^\s]+\?/,"")
+    payload[:user_id] = if current_user
+      "#{current_user.name}[#{current_user.roles}]"
+    else
+      :guest
+    end
+  end
 
   def access_denied(exception)
     redirect_to admin_organizations_path, :alert => exception.message
@@ -38,11 +58,16 @@ class ApplicationController < ActionController::Base
     if session[:user_id]
 
       finalauth = Rails.cache.read("ability/#{current_user.name}") if current_user
+      Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: current_user : #{current_user.name}"
+      Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: finalauth: #{finalauth}"
       if finalauth.nil?
         finalauth = {}
         auth = Tipoci.all.map { |t| [t.id,t.perfil] }
-        # perfil --> "compras admin[edit]" 
-        # perfil --> "compras admin[edit] admin[view]" 
+        puts "auth : #{auth}"
+        # perfil --> "compras admin[edit]"
+        # perfil --> "compras admin[edit] admin[view]" b = admin[edit] .. b = compras
+        # perfil --> "licenciamento"
+        # current_roles = "suporte admin"
         finalauthView = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[view]","")) } }.map { |x| x[0]}.sort
         finalauthEdit = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[edit]","")) } }.map { |x| x[0]}.sort
         finalauth[:view] = finalauthView
@@ -52,6 +77,8 @@ class ApplicationController < ActionController::Base
         # puts "ability/#{current_user.name} --> #{finalauth}"
       end
     end
+    Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: return: auth  #{auth}"
+    Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: return: final #{finalauth}"
 
     finalauth
   end

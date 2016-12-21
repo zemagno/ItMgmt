@@ -1,3 +1,4 @@
+# Encoding: utf-8
 require "jiraable"
 require "statusable"
 class Ci < ActiveRecord::Base
@@ -10,7 +11,9 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :codigorateio, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id
+
+
 
   belongs_to :site
   belongs_to :tipoci
@@ -21,25 +24,23 @@ class Ci < ActiveRecord::Base
 
 
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
-  has_many :relacao_dependencia,
+  has_many :relacao_dependencia, -> { where 'tipo=0'},
            :class_name => "Relacionamento",
            :foreign_key => "impactado_id",
-           :dependent => :delete_all,
-           :conditions => "tipo = 0"
+           :dependent => :delete_all
 
   has_many :dependentes,
-           :through => :relacao_dependencia,
-           :include => "tipoci"
+           :through => :relacao_dependencia 
+           # :include => "tipoci"
 
-  has_many :relacao_composto_de,
+  has_many :relacao_composto_de, -> { where 'tipo=1'},
            :class_name => "Relacionamento",
            :foreign_key => "impactado_id",
-           :dependent => :delete_all,
-           :conditions => "tipo = 1"
+           :dependent => :delete_all
 
   has_many :composto_de,
-           :through => :relacao_composto_de,
-           :include => "tipoci"
+           :through => :relacao_composto_de 
+           # :include => "tipoci"
 
   has_many :relacao_dependencia_all,
            :class_name => "Relacionamento",
@@ -47,8 +48,8 @@ class Ci < ActiveRecord::Base
            :dependent => :delete_all
 
   has_many :dependentes_all,
-           :through => :relacao_dependencia_all,
-           :include => "tipoci"
+           :through => :relacao_dependencia_all 
+           # :include => "tipoci"
 
   has_many :relacao_impacto,
            :class_name => "Relacionamento",
@@ -56,25 +57,29 @@ class Ci < ActiveRecord::Base
            :dependent => :delete_all
 
   has_many :impactados,
-           :through => :relacao_impacto,
-           :include => "tipoci"
+           :through => :relacao_impacto
+           # :include => "tipoci"
 
-  validates :Owner, :format => {:with => /^[a-zA-z.]+$/,
-                                :message => "Gestor: um unico ID de rede"}
-  #validates :Owner, :presence => { :message => "Gestor eh mandatorio" }
-  validates :chave, :presence => {:message => " eh mandatorio"}
-  validates :chave, :uniqueness => {:case_sensitive => false, :message => " jah existe no CMDB"}
-  validates :chave, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/, message: "deve conter somente caracteres alphanumericos" }
+  validates :Owner, :format => {:with => /\A[a-zA-z.]+\z/,                 message: I18n.t("errors.ci.Owner.format")}
+  validates :chave, :presence =>  {                                      message: I18n.t("errors.ci.chave.presence")}
+  validates :chave, :uniqueness => {:case_sensitive => false,            message: I18n.t("errors.ci.chave.uniqueness")}
+  validates :chave, format: { with: /\A[a-zA-Z0-9\_\-\<\>\.\/]+\z/,        message: I18n.t("errors.ci.chave.format") }
+  validates :descricao, :presence => {                                   message: I18n.t("errors.ci.descricao.presence")}
 
-  validates :descricao, :presence => {:message => " eh mandatorio"}
+  # validates :Owner, :format => {:with => /^[a-zA-z.]+$/,                 message: "Gestor tem que ser um ID de rede (somente caracteres)"}
+  # validates :chave, :presence =>                                         message: "Chave é mandatorio"}
+  # validates :chave, :uniqueness => {:case_sensitive => false,            message: "Ja existe um ativo com a mesma chave"}
+  # validates :chave, format: { with: /^[a-zA-Z0-9\_\-\<\>\.\/]+$/,        message: "Chave deve conter somente caracteres alphanumericos" }
+  # validates :descricao, :presence => {:message => "Descrição é mandatoria"}
 
-  after_save :atualiza_chave
+  after_save :atualiza_chave, ThinkingSphinx::RealTime.callback_for(:ci)
   before_save :atualiza_statusci
   after_create :post_create_processing
   after_destroy :post_destroy_processing
+  # after_save 
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
-  default_scope order('chave ASC')
+  default_scope { order('chave ASC') }
   #sphinx_scope order('chave ASC')
 
 
@@ -106,6 +111,10 @@ class Ci < ActiveRecord::Base
     tipoci.nil? ? "" : tipoci.tipo
   end
 
+  def nice_status
+    statusci.nil? ? "" : statusci.status
+  end
+
 
   def data_ultima_alteracao
     dataChange.blank? ? dataChange : ""
@@ -113,6 +122,14 @@ class Ci < ActiveRecord::Base
 
   def nome_localidade
     site.nil? ? "" : site.nome
+  end
+
+  def nome_estado
+    site.nil? ? "" : site.estado
+  end
+
+  def nice_atributos
+    atributo.collect(&:valor).join(' ')
   end
 
   def nice_custo_mensal
@@ -155,7 +172,7 @@ class Ci < ActiveRecord::Base
 
 
   def duplicar(nova_chave)
-    newci = dup :include => :atributo
+    newci = deep_clone :include => :atributo
     newci.chave = nova_chave
     newci.save
     newci
@@ -220,8 +237,10 @@ class Ci < ActiveRecord::Base
   end
 
   def limpa_atributos_outros_tipo
+    Rails.logger.debug "[DEBUG] Ci.limpa_atributos_outros_tipo: id:[#{self.id}]:#{self.chave} tipoci_id:[#{tipoci_id}]"
     atributo.each do |attr|
       if attr.dicdado.tipoci_id != tipoci_id
+        Rails.logger.debug "[DEBUG]     apagando atributo:[#{attr.dicdado_id}]"
         attr.delete
         attr.save
       end
@@ -234,7 +253,8 @@ class Ci < ActiveRecord::Base
   def setatributo(key, value)
     k = atributos.select { |k, v| v[5] == key }
     if !k.blank?
-      a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, k.keys[0])
+      # a = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, k.keys[0])
+      a = Atributo.find_or_create_by(ci_id: id, dicdado_id: k.keys[0])
       a.valor=value
       a.save!
     end
@@ -251,13 +271,17 @@ class Ci < ActiveRecord::Base
     #  3=>["Designacao", "001a-98/97"], 
     #  2=>["Endereco", "Av Boa Vista"], 
     #  1=>["Capacidade", "4mb"]} 
+    Rails.logger.debug "[DEBUG] - Vou iniciar atualizacaos dos atributos #{nice_atributos}"
 
     attr_default = atributos
+
+    Rails.logger.debug "[DEBUG] - Li Atributos"
 
 
     attr_default.each do |attr|
 
-      atr = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, attr[0])
+      # atr = Atributo.find_or_create_by_ci_id_and_dicdado_id(id, attr[0])
+      atr = Atributo.find_or_create_by(ci_id: id , dicdado_id: attr[0])
 
       begin #posso nao ter recebido parametro nenhum
         atr.valor = novos_atributos[attr[1][0]]
@@ -267,8 +291,9 @@ class Ci < ActiveRecord::Base
       end
     end
 
-
     limpa_atributos_outros_tipo
+    Rails.logger.debug "[DEBUG] - Finalizei atualizacaos dos atributos #{nice_atributos}"
+    # ThinkingSphinx::RealTime.callback_for(:ci,[:ci])
 
   end
 
@@ -296,52 +321,6 @@ class Ci < ActiveRecord::Base
     @c = Ci.find_gen(id)
     attr = (@c ? @c.atributos : nil)
     [@c, attr]
-  end
-
-
-  # def libera_estacao
-  #   self.statusci_id = 8
-  #   self.CCDebito = ""
-  #   self.ProjetoDebito = ""
-  #   self.Owner = "BRQ"
-  #   self.notificacao = ""
-  #   save!
-  # end
-
-  # def desaloca_licenca
-  #   self.statusci_id = 8
-  #   self.CCDebito = ""
-  #   self.ProjetoDebito = ""
-  #   self.Owner = "BRQ"
-  #   self.notificacao = ""
-  #   save!
-  # end
-
-
-  define_index do
-    indexes chave
-    indexes descricao
-    indexes :Owner, :as => :gestor
-    indexes notificacao, :as => :usuario
-    indexes :CCCredito
-    indexes :ProjetoCredito
-    indexes :CCDebito
-    indexes :ProjetoDebito
-    indexes :descricaocobranca
-    indexes :codigocobranca
-    indexes :codigorateio
-    indexes :provisionar
-    indexes :tipoCobranca
-    indexes jira
-    indexes site(:nome), :as => :localidade
-    indexes statusci(:status), as => :status
-    indexes tipoci(:tipo), :as => :tipo
-    indexes atributo(:valor), :as => :valoratributo
-    indexes site(:estado), as => :estado
-
-
-    #has site_id  # se eu quiser quiser filtrar..
-    #has tipoci_id
   end
 
 

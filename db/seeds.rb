@@ -20,5 +20,7 @@ Tipoci.create([{:tipo => "Fornecedor"}])
 Parametro.create({:tipo => "views_ci", :subtipo => "TI", :valor => '[["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],["descricao","tipo_ci","nome_localidade","Owner","notificacao","data_ultima_alteracao"]]'})
 Parametro.create({:tipo => "Config", :subtipo => "Logo", :valor => 'logo.png'})
 
+puts "\n\n\nATENCAO: Rodar tarefa do ThinksSphinx (parar, ts:configure, ts:regenerate, reiniciar)"
+
 
 

@@ -44,7 +44,6 @@ class Ability
     # can [:index,:show], Ci
 
     cannot :manage, Funcionario
-    cannot :manage, @Funcionario
     cannot :manage, CanHelperFinanceiro
     cannot :manage, CanHelperFinanceiroTi
 
@@ -84,18 +83,33 @@ class Ability
       cannot :manage, Parametro
       can    :index,  Parametro
       cannot :manage, Site
+<<<<<<< HEAD
       can    :index,  Site
       can    :index,  Tipoci
       can    :index, Dicdado
       can    :show,  Dicdado
+=======
+      can    :index,  Site   
+      can    [:show, :index],  Tipoci
+      can    [:show, :index], Dicdado
+      # can    :show,  Dicdado
+>>>>>>> V3
       can    :index, Software
       cannot :manage, User
       can    :index, User
       can    :index, Grupo
-      can    :index, Statusci
+      can    [:show, :index], Statusci
       can    :manage, :usuarios
       can    :manage, Task
+<<<<<<< HEAD
       can    :manage, "tasks"
+=======
+      can    :manage, Note
+      can    :manage, "tasks"
+      can    :manage, Funcionario
+      can    :show, CanHelperLicenciamento
+
+>>>>>>> V3
     end
 
     if user and user.is_a :producao
@@ -141,7 +155,7 @@ class Ability
 
 
     # cannot :manage, CanHelperLicenciamento
-    #can :manage, :all
+    # can :manage, :all
 
     # cannot :manage, Grupo
 

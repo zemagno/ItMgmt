@@ -1,0 +1,82 @@
+doctype html
+html
+  header
+    meta[charset="utf-8"]
+    title
+      | Checkout Mirror Fashion
+    <meta name="viewport" content="width=device-width" %>
+    = stylesheet_link_tag "bootstrap.css"
+    = stylesheet_link_tag "checkout.css"
+
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          a.navbar-brand[href="/"]
+            | Mirror Fashion
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              = link_to 'Alertas', tasks_path if Features.has? "alertas"
+            li
+              a[href="public/sobre.html"]
+                |  Sobre
+            li
+              a[href="public/sobre.html"]
+                |  Ajuda
+            li.dropdown
+              a.dropdown-toggle[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]
+                | Dropdown 
+                span.caret
+              ul.dropdown-menu
+                li
+                  a[href="#"]
+                    | Action
+                li
+                  a[href="#"]
+                    | Another action
+                li
+                  a[href="#"]
+                    | Something else here
+                li.divider[role="separator"]
+                li
+                  a[href="#"]
+                    | Separated link
+                li.divider[role="separator"]
+                li
+                  a[href="#"]
+                    | One more separated link
+
+          ul.nav.navbar-nav.navbar-right
+              li
+                a[href="#"]
+                  | Link
+              li.dropdown
+                a.dropdown-toggle[href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"]
+                  | Dropdown 
+                  span.caret
+                ul.dropdown-menu
+                  li
+                    a[href="#"]
+                      | Action
+                  li
+                    a[href="#"]
+                      | Another action
+                  li
+                    a[href="#"]
+                      | Something else here
+                  li.divider[role="separator"]
+                  li
+                    a[href="#"]
+                      | Separated link  
+
+          form.navbar-form.navbar-right
+              .form-group
+                input.form-control[type="text" placeholder="procurar por um ativo.." id="searchCI"]
+              button.btn.btn-default[type="submit"]
+                | Procurar
+    = yield
+    = javascript_include_tag "jquery.js"
+    = javascript_include_tag "bootstrap.min.js"
+    = javascript_include_tag "inputmask-plugin.js"
+

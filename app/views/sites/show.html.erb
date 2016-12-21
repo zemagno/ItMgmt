@@ -1,10 +1,16 @@
+<div id="stylized" class="myform">
+<b><h1>Tipos de Ativos</h1><b>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Nome:</b>
-  <%= @site.nome %>
-</p>
+<table>
+  <col width="130">
+<tr><td>Site:</td><td><b><%= @site.nome  %></b></td></tr>
+<tr><td>Estado:</td><td><b> <%= @site.estado %></b></td></tr>
 
 
+</table>
+
+<% if (can? :manage, Site)  %>
 <%= link_to 'Editar', edit_site_path(@site) %> |
+<% end %>
 <%= link_to 'Voltar', sites_path %>

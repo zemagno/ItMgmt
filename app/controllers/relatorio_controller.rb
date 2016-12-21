@@ -47,7 +47,8 @@ class RelatorioController < ApplicationController
 
 
   def index
-    regexParams = /\{([a-z]+)}/
+    begin
+      regexParams = /\{([a-z]+)}/
     authorize!(:index, "relatorio")   
     @relatorio = Cadrelatorio.find_by_nome(params[:id])
     @relatorio.AtualizaEstatisticas
@@ -62,7 +63,7 @@ class RelatorioController < ApplicationController
     # 
     @NomeRelatorio = @relatorio.descricao
   
-    begin
+    
       mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
       mysql_res = ActiveRecord::Base.connection.execute(sql)
       @resultado = []

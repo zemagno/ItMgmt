@@ -4,7 +4,7 @@
 <%= form_tag(gestao_usuarios_path, :method => "get") do %>
  
   <%= text_field_tag(:search, @login, :size => 50) %>
-  <%= submit_tag("Procurar") %>
+  <%= submit_tag "Procurar" , :name => "Procurar" %>
   
 <% end %>
 
@@ -25,9 +25,6 @@
 
       <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true) if ! @funcionario.demitido? %>
 
-
-</b>      
-      
       </br>
       </br>
       <%= link_to '[Identidades]', identities_path(@usuario.login), :target => "_blank" %>
@@ -207,7 +204,7 @@
   <%= text_field_tag("confirmacao", @confirmacao, :size => 50) %>
   <%= hidden_field_tag 'token_confirmacao',@estacao %>
   <%= hidden_field_tag 'id', @login%>
-  <%= submit_tag("Desalocar") %>
+  <%= submit_tag "Desalocar", :name => "Desalocar" %>
 </br></br>
 </div>
 <% end %>
@@ -238,12 +235,11 @@
         </label>
         <%= text_field_tag :projeto  %>
 
-        <%= javascript_include_tag "validador_atributos.js" %>
         <%= render :partial => 'cis/edit_atributos' %>
         <br><br>
         <%= hidden_field_tag :id, @login%>
         <div class="spacer"></div>
-        <%= submit_tag("Alocar") %>
+        <%= submit_tag "Alocar", :name => "Alocar" %>
     <% end %>
     </br></br>
   </div>
@@ -261,11 +257,11 @@
   <%= text_field_tag("confirmacao", @confirmacao, :size => 50) %>
   <%= hidden_field_tag 'token_confirmacao',@licenca %>
   <%= hidden_field_tag 'id', @login%>
-  <%= submit_tag("Remover") %>
+  <%= submit_tag "Remover", :name => "Remover" %>
 </br></br>
 </div>
-<% end %>
-<% end %>
+<% end %> <!-- form -->
+<% end %> <!-- if modo == remocao_licenca -->
 
 <% if @modo == :alocar_licenca %>
 <div id="stylized" class="myform">
@@ -307,12 +303,12 @@
 
   <%= hidden_field_tag :id, @login%>
   <div class="spacer"></div>
-  <%= submit_tag("Alocar") %>
+  <%= submit_tag "Alocar" , :name => "Alocar" %>
 </br></br>
 </div>
 
-<% end %>
-<% end %>
+<% end %> <!-- form -->
+<% end %> <!-- if @modo == alocar_licenca -->
 <% else %>
   <br><b><p>Voce nao tem autorizacao para vizualizar...</b>
 <% end %>

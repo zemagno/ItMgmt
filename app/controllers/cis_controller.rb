@@ -8,12 +8,15 @@ class CisController < ApplicationController
   # authorize_resource #cancan
   # skip_authorize_resource :only => :index2
 
-
-
+  
   ActionController.add_renderer :csv do |csv, options|
     self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
   end
 
+  respond_to :html, :xml, :json, :csv
+
+
+# estava testanto renderizacao de todas as telas pois fiz upgrade para o 4.2
 
   # @layout 'application_novolyaout'
 
@@ -27,7 +30,7 @@ class CisController < ApplicationController
   # @sites
   # @tiposci
 
-  # TODO colocar carrega agregadas no before_action/before_filter para alguns metodos abaixo..
+  # TODO colocar carrega agregadas no before_ action/before_f ilter para alguns metodos abaixo..
 
   def log
     id = params[:id]
@@ -112,14 +115,14 @@ class CisController < ApplicationController
 
     if @ci
       if ! finalAuth[:view].include? (@ci.tipoci_id)
-        flash[:error] = "Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
+        flash[:error] = "Error[CI0005] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
         redirect_to "/cis"
 
       end
       @search = session[:search_cis]
       cache(@ci)
     else
-      flash[:error] = "CI Invalido"
+      flash[:error] = "Error[CI0002] - CI #{[params[:id]]} Invalido"
       redirect_to "/cis"
     end
   end
@@ -130,23 +133,23 @@ class CisController < ApplicationController
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)
-          flash[:error] = "Voce nao tem autorizacao para editar CI do tipo #{@ci.tipoci.tipo}"
+          flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
           render :show
         end
         carrega_agregadas
         begin # se nao tiver parametro com filtro de status, ele mantem todos os status possiveis.
-          
+
           @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
           @statusci.reject! { |s| ! @st.include? s.status }
         rescue
         end
       else
-        flash[:error] = "CI Invalido"
+        flash[:error] = "Error[CI0003] - CI #{[params[:id]]} Invalido"
         redirect_to "/cis"
       end
 
     rescue
-      flash[:error] = "CI Invalido"
+      flash[:error] = "Error[CI0004] - CI #{[params[:id]]} Invalido"
       redirect_to "/cis"
       # TODO tenho que direcionar para pagina de erro.
 
@@ -168,7 +171,7 @@ class CisController < ApplicationController
     @id = params[:id]
     @controller="cis"
     t = Ci.find(@id).nice_tipoci
-    @templates_email = TemplatesEmail.find_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
+    @templates_email = TemplatesEmail.get_all_by_tipo_and_subtipo("CI",t) #  esse metodo ta no Templates e nao pertence ao Rails
     respond_to do |format|
       format.js {
         render :action => "../common/email", :format => [:js]
@@ -230,57 +233,58 @@ class CisController < ApplicationController
   end
 
 
-  def index2
+  # def index2
 
 
-    @search = params[:search] || session[:search_cis]
+  #   @search = params[:search] || session[:search_cis]
 
-    @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
-    session[:search_cis] = @search
-    session[:oldCI] = nil
-    session[:view_default_ci] = @view_default_ci
+  #   @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
+  #   session[:search_cis] = @search
+  #   session[:oldCI] = nil
+  #   session[:view_default_ci] = @view_default_ci
 
-    begin
-      if @search.blank?
+  #   begin
+  #     if @search.blank?
 
-        @cis = Ci.paginate(:page => params[:page])
-      elsif @search[0] =="%"
-        @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
-      else
-        @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-        @cis.length
-        @cis.compact!
-      end
-    rescue
-      flash[:error] = "Error[DB0001] - Erro no mecanismo de busca. Listando tudo !"
-      @cis = Ci.paginate(:page => params[:page])
-    end
+  #       @cis = Ci.paginate(:page => params[:page])
+  #     elsif @search[0] =="%"
+  #       @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
+  #     else
+  #       @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
+  #       @cis.length
+  #       @cis.compact!
+  #     end
+  #   rescue
+  #     flash[:error] = "Error[DB0001] - Erro no mecanismo de busca. Listando tudo !"
+  #     @cis = Ci.paginate(:page => params[:page])
+  #   end
 
-    #if @cis.size==0 then
-    #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
-    #end
+  #   #if @cis.size==0 then
+  #   #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
+  #   #end
 
-    # TODO filtro de tipos aqui...
+  #   # TODO filtro de tipos aqui...
 
-    # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
-    #   # @ci = @cis[0]
-    #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
-    #   render :show and return
-    # end
+  #   # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
+  #   #   # @ci = @cis[0]
+  #   #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
+  #   #   render :show and return
+  #   # end
 
 
-    #@fields =
+  #   #@fields =
 
-    # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
-    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
-    @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-    @cis.reject! { |c| ! finalAuth[:view].include? (c.tipoci_id) }
-    respond_to do |format|
-      format.html { render :action => "index" ,:html => @cis }
-      format.xml { render :xml => @cis }
-      format.csv { render :action => "index" , :csv => to_csv("Cis",@fields,@cis) }
-    end
-  end
+  #   # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
+  #   @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
+  #   @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
+  #   cache_finalAuth = finalAuth[:view]
+  #   @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
+  #   respond_to do |format|
+  #     format.html { render :action => "index" ,:html => @cis }
+  #     format.xml { render :xml => @cis }
+  #     format.csv { render :action => "index" , :csv => to_csv("Cis",@fields,@cis) }
+  #   end
+  # end
 
   def index
 
@@ -292,15 +296,21 @@ class CisController < ApplicationController
     session[:oldCI] = nil
     session[:view_default_ci] = @view_default_ci
 
+
     begin
       if @search.blank?
-
-        @cis = Ci.paginate(:page => params[:page])
+        Rails.logger.debug "[DEBUG]CisController:index procurando por tudo (sem parametro de search)"
+        @cis = Ci.joins(:tipoci).paginate(:page => params[:page])
       elsif @search[0] =="%"
-        @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
+        # TODO documentar isso ..
+        @cis = Ci.joins(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
       else
-        @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-        @cis.length
+        # TODO colocar o finalAuth[view] nesse search.
+        Rails.logger.debug "[DEBUG]#{request.fullpath}: search : [#{@search}]"
+        @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page] , :with => {
+          :tipoci_id => finalAuth[:view]
+        }
+        # @cis.length
         @cis.compact!
       end
     rescue
@@ -308,32 +318,21 @@ class CisController < ApplicationController
       @cis = Ci.paginate(:page => params[:page])
     end
 
-    #if @cis.size==0 then
-    #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
-    #end
+    Rails.logger.debug "[DEBUG]CisController:@view_default_ci: #{@view_default_ci}"
 
-    # TODO filtro de tipos aqui...
-
-    # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
-    #   # @ci = @cis[0]
-    #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
-    #   render :show and return
-    # end
-
-
-    #@fields =
-
-    # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
     @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-    @cis.reject! { |c| ! finalAuth[:view].include? (c.tipoci_id) }
-    respond_to do |format|
-      format.html { render :html => @cis }
-      format.json { render :json => @cis }
-      format.xml  { render :xml => @cis }
-      # format.xml { render :xml => to_xml(params[:id],@campos,@resultado) }
-      format.csv { render :csv => to_csv("Cis",@fields,@cis) }
-    end
+    # cache_finalAuth = finalAuth[:view] # nao preciso pois o search ja esta com :with
+    # @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
+
+
+    respond_with @cis
+    # respond_to do |format|
+    #   format.html { render :html => @cis }
+    #   format.json { render :json => @cis }
+    #   format.xml  { render :xml => @cis }
+    #   format.csv { render :csv => to_csv("Cis",@fields,@cis) }
+    # end
   end
 
 
@@ -344,7 +343,6 @@ class CisController < ApplicationController
   end
 
   def create
-    #  "ci"=>{"chave"=>"mamae"
 
     @ci = Ci.new(params[:ci])
     case params[:dependencia]
@@ -355,11 +353,6 @@ class CisController < ApplicationController
     end
     respond_to do |format|
       if @ci.save
-
-        # FIXME
-        #@ci.limpa_atributos_outros_tipo
-        #format.html { redirect_to(@ci, :notice => 'CI criada com sucesso.') }
-
         format.html {redirect_to(:action => 'edit', :id => @ci.id) }
       else
         carrega_agregadas
@@ -375,7 +368,6 @@ class CisController < ApplicationController
     respond_to do |format|
       if @ci.update_attributes(params[:ci])
         @ci.atributos = params[:atributos]
-        @ci.limpa_atributos_outros_tipo
         format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
         format.json { head :no_content }
       else

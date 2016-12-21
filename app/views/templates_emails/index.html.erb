@@ -40,7 +40,7 @@ $(document).ready( function(){
     <td><%= templates_email.sync ? "via Browser" : "Direto"  %></td>
     <td><%= templates_email.tipo %></td>
     <td><%= templates_email.subtipo %></td>
-    <td><%= link_to templates_email.template , templates_email%></td>
+    <td><%= link_to templates_email.template , sql_template_path(templates_email.template) if ! templates_email.sync %></td>
 
     
  

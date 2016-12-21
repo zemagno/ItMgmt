@@ -1,7 +1,7 @@
 <%= form_for(@site) do |f| %>
   <% if @site.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@site.errors.count, "error") %> prohibited this site from being saved:</h2>
+      <h2><%= pluralize(@site.errors.count, "erro") %> ao salvar esse Site</h2>
 
       <ul>
       <% @site.errors.full_messages.each do |msg| %>
@@ -22,7 +22,8 @@
 <div class="spacer"></div>  
 
   <div class="actions">
-     <%= f.submit %>
+  
+         <button type="submit" id="SalvarSite">Salvar Site</button>
   </div>
 <% end %>
 <div class="spacer"></div>  

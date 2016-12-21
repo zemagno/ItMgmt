@@ -1,8 +1,8 @@
 class Funcionario < ActiveRecord::Base
-  set_primary_key :Login
+  self.primary_key = "Login"
   attr_accessible  :Login,  :NumMatrProfissional,:NomProfissional,:DtaAdmissao,:DtaDemissao,:NomEmailBRQ,:IdtCPF,:IdtRG,:IdtCodigoCentroCusto,:NomCentroCusto,:NomTipoCentroCusto,:IdtCodigoSecao,:NomLocalTrabalho,:NomCidadeLocalTrabalho, :IdtCentroCustoTorre,:DscCentroCustoTorre, :NomAlocacao, :IdLocalTrabalho, :cipa, :semEstacao, :observacao, :brigadista, :afastado,
     :DtaRemocaoAcesso, :FlgIndicaRetorno, :NomGestorProfissional, :NomEmailGestorProfissional, :NomEstadoLocalTrabalho,
-    :ramalSendoExterno, :customPossuiVariasEstacoes, :customExternoComOffice365
+    :ramalSendoExterno, :customPossuiVariasEstacoes, :customExternoComOffice365, :justificativaExtComOffice365
 
 
   alias_attribute :CCTorre ,      :IdtCentroCustoTorre

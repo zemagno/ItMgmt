@@ -102,6 +102,6 @@
  
 
 <%= link_to '[Editar]', edit_task_path(@task) unless cannot? :manage, "tasks" %> 
-<%= link_to '[Apagar]', @task, :confirm => 'Are you sure?', :method => :delete %></td>
+<%= link_to '[Apagar]', @task, data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete %></td>
 <%= link_to '[Voltar]', tasks_path %>
  </div>
