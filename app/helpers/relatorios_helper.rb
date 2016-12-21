@@ -1,6 +1,6 @@
 module RelatoriosHelper
 	def genField(valor,field,i,fields)
-        res = "" 
+        res = ""
         case field
         when "CIs"
             res = ""
@@ -14,9 +14,9 @@ module RelatoriosHelper
 		when "CI" , "ID", "Chave"
             res = link_to valor, ci_path(valor) 
         when "Usuario" , "Login", "Gestor"
-            res = valor.blank? ? "" : link_to(valor,"/GestaoUsuarios?search=#{valor}",:target => "_blank" ) 
+            res = (valor.blank? or ! Features.has?("gestaousuario")) ? valor : link_to(valor,"/GestaoUsuarios?search=#{valor}",:target => "_blank" ) 
         when "Identity", "Identidade"
-            res = valor.blank? ? "" : link_to(valor,"/identities/#{valor}",:target => "_blank" )
+            res = (valor.blank? or ! Features.has?("gestaousuario")) ? valor : link_to(valor,"/identities/#{valor}",:target => "_blank" )
         when "ramal","Ramal"
             res = ramal_to_sip(valor)
         when "Email"

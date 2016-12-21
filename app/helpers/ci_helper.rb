@@ -17,7 +17,7 @@ module CiHelper
 	 end
 
 	 def helper_login_to_url(login)
-	 	if (login =~ /^[a-zA-z.]+$/) && (! CONFIG["hidden_features"].include? "gestaousuarios")
+	 	if (login =~ /^[a-zA-z.]+$/) && ( Features.has? "gestaousuarios")
 	 	   res = link_to(login,"/GestaoUsuarios?search=#{login}",:target => "_blank" )
 	 	else 
 	 	   res = login
