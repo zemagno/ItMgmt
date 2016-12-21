@@ -3,6 +3,9 @@ Procfile
 .bundle
 /db/*.sqlite3
 *.svg
+*.rdb
+*.old
+nohup.out
 /id_rsa/*
 /db/sphinx/**
 /tmp
@@ -26,6 +29,10 @@ getsql.sh
 /features
 /test
 /public/assets/**
+<<<<<<< HEAD
 
 >>>>>>> V3
 
+=======
+Gemfile.lock
+>>>>>>> V5

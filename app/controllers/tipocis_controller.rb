@@ -74,8 +74,12 @@ class TipocisController < ApplicationController
   # DELETE /tipocis/1
   # DELETE /tipocis/1.json
   def destroy
-    @tipoci = Tipoci.find(params[:id])
-    @tipoci.destroy
+    if Tipoci.esta_em_uso?(params[:id])
+      flash[:error] = I18n.t("errors.tipoci.tipo_em_uso") #{}"Nao é possivel apagar esse Campo. Existem atributos de Ativos com esse campo"
+    else
+      @tipoci = Tipoci.find(params[:id])
+      @tipoci.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to tipocis_url }
@@ -83,3 +87,4 @@ class TipocisController < ApplicationController
     end
   end
 end
+

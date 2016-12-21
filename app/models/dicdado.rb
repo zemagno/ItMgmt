@@ -1,7 +1,7 @@
 class Dicdado < ActiveRecord::Base
   belongs_to :tipoci
 
-  attr_accessible :nome, :ordem, :url, :tipoci_id, :descricao ,:valores ,:apelido  ,:tipo , :regex, :mandatorio  ,:tooltip     ,:comentarios, :tab
+  attr_accessible :nome, :ordem, :url, :tipoci_id, :descricao ,:valores ,:apelido  ,:tipo , :regex, :mandatorio  ,:tooltip     ,:comentarios, :tab, :bloqueado
 
   default_scope { order('tipoci_id ASC, ordem ASC') }
 

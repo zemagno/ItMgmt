@@ -18,9 +18,11 @@ class Ci < ActiveRecord::Base
   belongs_to :site
   belongs_to :tipoci
   belongs_to :statusci
-  has_many :atributo, :dependent => :destroy #destroy ==> instancio e chamo o destroy do atributo
+  has_many :atributo, :dependent => :destroy #, touch: true  #destroy ==> instancio e chamo o destroy do atributo
   has_many :task
   has_many :log_ci
+  after_touch :clear_association_cache
+
 
 
   # nos relacionamento, vou chamar delete_all para so apagar da tabela de relacionamento...
@@ -210,9 +212,11 @@ class Ci < ActiveRecord::Base
   #
 
   def atributos2
+    return @attr_existentes2 unless @attr_existentes2.blank?
+
     @attr_existentes2 = []
 
-    tipoci.dicdados.map { |x| @attr_existentes2 << [x.id,x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab.nil? ? "Caracteristicas" : x.tab] }
+    tipoci.dicdados.map { |x| @attr_existentes2 << [x.id,x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab.nil? ? "Caracteristicas" : x.tab, x.bloqueado] }
 
     atributo.map do |x|
       idx = @attr_existentes2.index { |elem| elem[0]==x.dicdado.id}
@@ -231,19 +235,28 @@ class Ci < ActiveRecord::Base
     #  3=>["Designacao", "001a-98/97"],
     #  2=>["Endereco", "Av Boa Vista"],
     #  1=>["Capacidade", "4mb"]}
+    Rails.logger.debug "[DEBUG] Ci.atributos: lendo atributos do db e montando hash"
+
     return @attr_existentes unless @attr_existentes.blank?
+    
+    Rails.logger.debug "[DEBUG] Ci.atributos:  Nao estava no cache. Vou ler realmente do DB"
 
     @attr_existentes = Hash.new
 
-    # monto um hash com todos atributos que esse CI deve ter
-    tipoci.dicdados.map { |x| @attr_existentes[x.id] = [x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab] }
+    # monto um hash com todos atributos/dicdados que esse CI deve ter
+    tipoci.dicdados.map { |x| @attr_existentes[x.id] = [x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab, x.bloqueado] }
 
-    # populo o hash com os valores dos atributos a partir do ci.atributo[].valor
+    # populo o @attr_existentes com os valores dos atributos EXISTENTE na base de dados
     atributo.map do |x|
+      
       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
       # entao eu crio esse atributo no hash
+      #
+      # TODO --> ERRO: isso podera ser inutil. Se mudou de tipo, para que carregar a partir da tabela atributos ??? nao vou usar mais esse campo mesmo...
+      #          ERRO: na verdade estou carregando so para poder atribuir o valor (logo depois do IF)
+      #
       if !@attr_existentes[x.dicdado.id] then
-        @attr_existentes[x.dicdado.id] = [x.dicdado.nome, nil, x.dicdado.url, x.dicdado.valores, x.dicdado.descricao, x.dicdado.apelido, x.dicdado.tipo, x.dicdado.regex, x.dicdado.mandatorio, x.dicdado.tooltip,x.tab]
+        @attr_existentes[x.dicdado.id] = [x.dicdado.nome, nil, x.dicdado.url, x.dicdado.valores, x.dicdado.descricao, x.dicdado.apelido, x.dicdado.tipo, x.dicdado.regex, x.dicdado.mandatorio, x.dicdado.tooltip,x.dicdado.tab,x.dicdado.bloqueado]
       end
       @attr_existentes[x.dicdado.id][1] = x.valor
     end
@@ -304,6 +317,7 @@ class Ci < ActiveRecord::Base
       rescue
         # TODO Log
       end
+      Rails.logger.info "Info[I00200] - apos salver um atributo [#{novos_atributos[attr[1][0]]}] #{id} - #{chave} - #{nice_atributos}"
     end
 
     limpa_atributos_outros_tipo

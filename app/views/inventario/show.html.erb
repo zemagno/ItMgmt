@@ -1,0 +1,20 @@
+<div class="container">
+<div class="row">
+<div class="col-sm-8">
+<div class="panel panel-default">
+<div class="fieldset col-md-6">
+<%= form_tag(inventario_path, :method => "post", :action => "confirmar_inventario", :class => "panel-body") do %>
+<%= text_field_tag :login, @login, class:'form-control' , autofocus: "" %>
+<%= text_field_tag :hostname, @hostname, class:'form-control' %>
+<%= hidden_field_tag 'id', @ci.id %>
+<%= button_tag(type: "submit", class: "btn btn-primary btn-xs center-block margin-botton") do %>
+Confirmar
+<% end %><% end %>
+<%= link_to acao_inventario_path(@ci.id,"Desalocar"), :data => {:confirm => "Confirma desalocar #{@hostname} ?"}, :class => "btn btn-danger btn-lg center-block margin-botton" do %>
+Desalocar/Func. Devolverá
+<% end %>
+<%= link_to acao_inventario_path(@ci.id,"Inventariar"), :data => {:confirm => "Confirma mudar status de inventario do #{@hostname} para 'ANALISAR' ?"}, :class => "btn btn-danger btn-lg center-block margin-botton" do
+ %>Não está com funcionário
+
+
+<% end %></div></div></div></div></div>

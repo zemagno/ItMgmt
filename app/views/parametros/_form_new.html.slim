@@ -14,7 +14,7 @@
         .form-group
           label[for="tipo"]
             | Parametro:
-          = f.text_field :tipo, :maxlength=>50,  class: "form-control"
+          = f.text_field :tipo, :maxlength=>50,  class: "form-control", autofocus: ""
         .form-group
           label[for="subtipo"]
             | Subtipo:
@@ -22,7 +22,7 @@
         .form-group
           label[for="valor"]
             | Valor
-          = f.text_area :valor, :cols => 200, :rows => 20,  class: "form-control", placeholder: "valores...", autofocus: ""
+          = f.text_area :valor, :cols => 200, :rows => 20,  class: "form-control", placeholder: "valores..."
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Parametro 
         = link_to 'Cancelar', parametros_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}

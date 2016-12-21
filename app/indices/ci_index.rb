@@ -16,10 +16,8 @@ ThinkingSphinx::Index.define :ci, :with => :real_time do
   indexes nice_status     , :as => :status, :type => :strings
   indexes nice_tipoci     , :as => :tipo, :type => :strings
   indexes nome_estado     , :as => :estado, :type => :strings
-  indexes nice_atributos
-
+  indexes nice_atributos  , :as => :atributos, :type => :strings
+  
   has :tipoci_id, :type => :integer
-  # has tipoci.id, :type => :integer
 
-  # group_by "cis.id"
 end

@@ -121,7 +121,7 @@ class DicdadosController < ApplicationController
   # DELETE /dicdados/1.xml
   def destroy
     if Atributo.esta_em_uso?(params[:id]) then
-      flash[:error] = "Nao eh possivel apagar esse Campo. Existem atributos de CI com valores"
+      flash[:error] = "Nao é possivel apagar esse Campo. Existem atributos de Ativos com esse campo"
 
     else
       @dicdado = Dicdado.find(params[:id])

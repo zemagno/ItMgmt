@@ -1,11 +1,10 @@
 module ApplicationHelper
 
-  # TODO Limpar esse metodo..
-  #def acerta_lista_email(lista,sufixo)
-  #    lista.gsub(/\s+/, "").split(",").compact.uniq.delete_if { |c| c == "" }.collect{ |s| s+sufixo  }.join(",")
-  #end
+  def title(page_title)
+    content_for :title, page_title.to_s
+  end
 
-  # TODO isso pode virar uma classe, como a ListaEmail dentro do services ?
+
   def docs_to_url(doc)
     @URLs = []
     if doc != nil then

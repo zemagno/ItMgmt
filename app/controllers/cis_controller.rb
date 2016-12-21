@@ -134,22 +134,20 @@ class CisController < ApplicationController
   def edit
     # @ci sendo carregado no filtro..
     @ci, @atributos = Ci.find_com_atributos(params[:id])
+    carrega_atributos2
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)
           Rails.logger.debug "Error[CI0001] - Usuario #{current_user.name} nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
-          puts "d"
           flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
-          puts "e"
           redirect_to "/cis"
         end
         carrega_agregadas
         begin # se nao tiver parametro com filtro de status, ele mantem todos os status possiveis.
-
           @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
           @statusci = @statusci.reject { |s| ! @st.include? s.status }
         rescue=> error
-      puts error.backtrace
+           Rails.logger.info "Info[CI0007] - CI:FiltroStatus nao esta customizado"
         end
       else
         Rails.logger.debug  "Error[CI0003] - CI #{[params[:id]]} Invalido"
@@ -302,6 +300,7 @@ class CisController < ApplicationController
   def new
     @ci = Ci.new
     carrega_agregadas
+    @tabs = "Principal,Caracteristicas".split(",").uniq
     @oldci = session[:oldCI]==nil ? nil : Ci.find(session[:oldCI])
   end
 
@@ -316,10 +315,11 @@ class CisController < ApplicationController
     end
     respond_to do |format|
       if @ci.save
-        flash[:Info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
+        flash[:info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
         format.html {redirect_to(:action => 'edit', :id => @ci.id) }
       else
         carrega_agregadas
+        carrega_atributos2
         format.html { render :action => "new" }
       end
     end

@@ -3,9 +3,8 @@ class CiMailer < ActionMailer::Base
 
   def enviar(template,_body,_subject,_to,_cc,_from)
     @obj = _body
-    _to = "magno@4mstech.com"
+     _to = "magno@4mstech.com"
     _cc = _to
-    _from = _to
     
     puts "*******************************************************************************"
     puts "to:#{_to} from:#{_from} cc:#{_cc} subject:#{_subject}"
@@ -21,8 +20,7 @@ class CiMailer < ActionMailer::Base
     attachments[_attachment.split("/").last] = File.read(_attachment)
     _to = "magno@4mstech.com"
     _cc = _to
-    _from = _to
-
+    
     puts "*******************************************************************************"
     puts "to:#{_to} from:#{_from} cc:#{_cc} subject:#{_subject}"
     puts "*******************************************************************************"

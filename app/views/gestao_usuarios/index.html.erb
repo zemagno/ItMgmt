@@ -12,6 +12,7 @@
 
 <b>
 <font color="red"><%= "ATENCAO: Funcionario Afastado !!" if @funcionario && @funcionario.afastado %></font>
+<font color="red"><%= "ATENCAO: Login Bloqueado. NAO CONCEDER ACESSO, LIBERAR SENHA, NADA !!" if @funcionario && @funcionario.loginBloqueado %></font>
 
 </br><%= "Login:  #{@usuario.login} - Nome: #{@nomecompleto}" %>
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
@@ -51,6 +52,8 @@
    <tr>
     <th>Estacao</th>
      <th>Descricao</th> 
+     <th>Hostname</th> 
+
     <th>Gestor</th>
     <th>CC/Projeto Debito</th>
     <th></th>
@@ -63,6 +66,7 @@
           <td><%= link_to estacao[:chave], ci_path(estacao[:chave]), :target => '_blank' %></td>
         <% end%> 
         <td><%= estacao[:detalhes] %></td>
+        <td><%= estacao[:hostname] %></td>
         <td><%= estacao[:gestor] %></td>
         <td><%= "#{estacao[:CCDebito]}/#{estacao[:ProjetoDebito]}" %></td>
         <% if estacao[:chave]!="Sem Estacao" %>

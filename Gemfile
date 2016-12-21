@@ -29,6 +29,8 @@ gem 'will_paginate' #, '~> 3.0'
 
 gem 'oauth' #, '~> 0.4.7' # exigido pelo JIRA, que agora esta dentro do lib
 
+gem 'libv8', '3.16.14.15'
+
 gem 'mysql2' #, '0.3.20'
 
 
@@ -97,5 +99,17 @@ group :test do
   gem 'rspec'
   gem 'mocha'
   gem 'rspec-expectations'
-    gem "selenium-webdriver"
+  gem "selenium-webdriver"
+end
+
+group :test do
+  gem "capybara"
+  gem "connection_pool"
+  gem "launchy"
+  gem "minitest-reporters"
+  gem "mocha"
+  gem "poltergeist"
+  gem "shoulda-context"
+  gem "shoulda-matchers", ">= 3.0.1"
+  gem "test_after_commit"
 end

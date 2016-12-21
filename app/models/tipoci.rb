@@ -21,6 +21,11 @@ class Tipoci < ActiveRecord::Base
   #		puts "#{tipo}:#{Owner}"
 
   #end
+
+  def self.esta_em_uso?(id)
+    Ci.where(:tipoci_id => id).exists?
+  end
+
   private
   def limpa_cache
     Rails.cache.delete_matched("ability*")

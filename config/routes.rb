@@ -9,6 +9,13 @@ ItMgmt::Application.routes.draw do
   # resources :comandos_automacaos
   resources :softwares
 
+  # resources :inventario
+  get "/inventario", to: "inventario#index", as: "inventario"
+  get "/inventario/:id", to: "inventario#show", as: "get_inventario"
+  get "/inventario/:id/:acao", to: "inventario#acao", as: "acao_inventario"
+  post "/inventario", to: "inventario#confirma", as: "confirmar_inventario"
+  
+
   
   get "Licencas/PorGestor/:id(/:versao)", to: "licencas#porGestor", as: "LicencasPorGestor" , :constraints => { :id => /[a-zA-z0-9.]*/ }
 
@@ -98,6 +105,7 @@ ItMgmt::Application.routes.draw do
   match '/tasks/:id/new_from_ci', to: 'tasks#new_from_ci', as: "tasks_new_from_ci", via: [:get, :post]
 
   resources :parametros #, :only => [:index,:edit,:update,:new]
+  match 'parametros/:id/duplicar', to: "parametros#duplicar", :as => :duplicar_parametro, via: [:get, :post]
 
   resources :dicdados
   match 'dicdados/:id/duplicar', to: "dicdados#duplicar", :as => :duplicar_dicdado, via: [:get, :post]
