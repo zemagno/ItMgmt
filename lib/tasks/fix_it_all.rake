@@ -3,17 +3,12 @@ namespace :fix_it_all do
   task :analisar => :environment  do
   end
   task :consertar => :environment  do
-  	puts "Limpando abilities...."
-  	Rails.cache.delete_matched("ability*")
+    puts "Limpando abilities...."
+    Rails.cache.delete_matched("ability*")
   end
-<<<<<<< HEAD
-  task :panic => :environment  do
-  	puts "Panic Mode..."
-  	exec 'redis-cli flushdb'
-=======
   
   task :panic => :environment  do
-  	puts "Panic Mode..."
+    puts "Panic Mode..."
     Rake::Task["fix_it_all:consertar"].invoke
     %{'redis-cli flushdb'}
     puts "Reindexando Sphinx. Sistema ficara instavel"
@@ -28,7 +23,6 @@ namespace :fix_it_all do
     Rake::Task["ts:regenerate"].invoke
     # TODO - parar todas as instancias de sidekiq 
     
->>>>>>> V3
   end
 
 

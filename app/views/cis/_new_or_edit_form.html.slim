@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 script
   | $( function() { $( "#datepicker" ).datepicker(); } );
 
->>>>>>> V5
 .container
   .row
     div
@@ -24,21 +21,6 @@ script
             .form-group.col-xs-4
               label[for="chave"]
                 | Chave:
-<<<<<<< HEAD
-              = f.text_field :chave, :maxlength=>20, class: "form-control", placeholder: "Defina uma chave única, sem espaços ou caracteres especiais"   
-            .form-group.col-xs-4
-              label[for="Owner"]
-                | Gestor:
-              = f.text_field :Owner, :maxlength=>50, class: "form-control", placeholder: "Login de rede do Gestor"
-            .form-group.col-xs-4
-              label[for="notificacao"]
-                | Usuarios:
-              = f.text_field :notificacao, :maxlength=>150, class: "form-control", placeholder: "Email ou login dos usuarios"
-            .form-group.col-xs-8
-              label[for="descricao"]
-                | Descricao:
-              = f.text_field :descricao, :maxlength=>250, class: "form-control", placeholder: "Descriçao desse CI"
-=======
               = f.text_field :chave, :maxlength=>50, class: "form-control", placeholder: "Defina uma chave única, sem espaços ou caracteres especiais"   ,autofocus: ""
             .row
             .form-group.col-xs-4
@@ -51,18 +33,12 @@ script
                 | Status:
               .input-container
                 = f.select :statusci_id, @statusci.collect { |c| [ c.status, c.id ] }, {}, { class: "form-control" }
->>>>>>> V5
             .form-group.col-xs-4
               label[for="localidade"]
                 | Localidade:
               .input-container
                 = f.select :site_id, @sites.collect { |c| [ c.nome, c.id ] }, {}, { class: "form-control" }
             .form-group.col-xs-12
-<<<<<<< HEAD
-              label[for="dataChange"]
-                | Data Última Alteração:
-              = f.text_field :dataChange, :id => "datepicker",  class: "form-control"
-=======
                 label[for="descricao"]
                   | Descricao:
                 = f.text_field :descricao, :maxlength=>250, class: "form-control", placeholder: "Descriçao desse CI"
@@ -95,7 +71,6 @@ script
               label[for="CustoMensal"]
                 | Custo Mensal para Cobrança:
               = f.text_field :CustoMensal , :disabled => ! (can? :manage, CanHelperFinanceiro), placeholder: "Custo Mensal (para provisão e/ou cobrança gerencial",  class: "form-control"
->>>>>>> V5
             .form-group.col-xs-4
               label[for="CustoMensalCapex"]
                 | Custo Mensal Capex:
@@ -104,24 +79,6 @@ script
               label[for="CustoMensalOpex"]
                 | Custo Mensal Opex:
               = f.text_field :CustoMensalOpex , :disabled => ! (can? :manage, CanHelperFinanceiro), placeholder: "Custo Mensal Opex, somente para informação",  class: "form-control"
-<<<<<<< HEAD
-            .form-group.col-xs-4
-              label[for="CustoMensal"]
-                | Custo Mensal para Cobrança:
-              = f.text_field :CustoMensal , :disabled => ! (can? :manage, CanHelperFinanceiro), placeholder: "Custo Mensal para Cobrança Gerencial",  class: "form-control"
-        .panel.panel-default 
-          .panel-heading
-            .h1 Caracteristicas
-          .panel-body
-            .row
-              .form-group.col-xs-12
-                label[for="chave"]
-                  | Chave:
-                = f.text_field :chave, :maxlength=>20, class: "form-control", placeholder: "Defina uma chave única, sem espaços ou caracteres especiais" 
-            .row      
-        button.btn.btn-primary.btn-md[type="submit"]
-          |  Salvar Campo 
-=======
             .row
             .form-group.col-xs-4
               label[for="CCDebito"]
@@ -160,6 +117,5 @@ script
         .row      
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Ativo 
->>>>>>> V5
         = link_to 'Cancelar', cis_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}
 

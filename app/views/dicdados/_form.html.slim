@@ -11,54 +11,6 @@
               - @dicdado.errors.full_messages.each do |msg|
                 li
                   = msg
-<<<<<<< HEAD
-        .panel.panel-default
-          .panel-heading
-            .h1 Campos do Ativo
-          .panel-body
-            .form-group.col-xs-4
-              label[for="tipoci_id"]
-                | Tipo do Ativo:  
-              .b
-              = f.select :tipoci_id, @tabs.collect { |c| [ c[1],c[0] ] }, {autofocus: ""} ,  {class: "form-control"}
-            .row
-            .form-group.col-xs-12
-              label[for="nome"]
-                | Nome:
-              = f.text_field :nome, :maxlength=>50, class: "form-control", placeholder: "Nome do campo a ser vizualizado na tela de ativos"
-            .form-group.col-xs-12
-              label[for="descricao"]
-                | PlaceHolder:
-              = f.text_field :descricao, :maxlength=>50,placeholder: "placeholder a ser mostrado nos campos da tela de edição de ativos",  class: "form-control"
-            .form-group.col-xs-12
-              label[for="apelido"]
-                | Apelido:
-              = f.text_field :apelido, :maxlength=>50,placeholder: "Apelido interno para parametrizacao",  class: "form-control"
-            .form-group.col-xs-12
-              label[for="valores"]
-                | Valores Possiveis:
-              = f.text_area :valores, :size => "150x6", placeholder: "Opcional: Valores possiveis para dropbox separados por ,",  class: "form-control"
-            .form-group.col-xs-12
-              label[for="ordem"]
-                | Ordem de Apresentacao na tela de ativos:
-              = f.text_field :ordem, :maxlength=>6, placeholder: "Ordem de apresentacao na tela de ativos",  class: "form-control"
-            .form-group.col-xs-12
-              label[for="regex"]
-                | Expressao Regular:
-              = f.text_field :regex, :maxlength=>200, placeholder: "Opcional: regex para validacao do campo",  class: "form-control"
-            .form-group.col-xs-12
-              label[for="mandatorio"]
-                | Campo é mandatório ?
-              = f.check_box :mandatorio
-            .form-group.col-xs-12
-              label[for="url"]
-                | URL:
-              = f.text_field :url, :maxlength=>100, placeholder: "Opcional: URL",  class: "form-control"
-            .form-group.col-xs-12
-              label[for="comentarios"]
-                | Comentarios:
-              = f.text_area :comentarios, :size => "150x6", placeholder: "Opcional: Comentarios internos",  class: "form-control"
-=======
         .form-group
           label[for="tipoci_id"]
             | Tipo do Ativo:  
@@ -104,7 +56,6 @@
           label[for="comentarios"]
             | Comentarios:
           = f.text_area :comentarios, :size => "150x6", placeholder: "Opcional: Comentarios internos",  class: "form-control"
->>>>>>> V5
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Campo 
         = link_to 'Cancelar', dicdados_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}

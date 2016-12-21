@@ -9,15 +9,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  # database: appi
-<<<<<<< HEAD
   database: itmgmt
-  # database: homes
-=======
-  # database: tasklist_development
-  # database: itmgmt
-  database: itmgmt
->>>>>>> V3
   # database: 4mstech
   pool: 10
   username: root

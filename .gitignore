@@ -23,16 +23,9 @@ config/local_env.yml
 getsql.sh
 /log
 /spec
-<<<<<<< HEAD
-/test
-=======
 /features
 /test
 /public/assets/**
-<<<<<<< HEAD
+*.lock
+*.old
 
->>>>>>> V3
-
-=======
-Gemfile.lock
->>>>>>> V5
