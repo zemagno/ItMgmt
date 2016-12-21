@@ -12,7 +12,7 @@
 
 <b>
 <font color="red"><%= "ATENCAO: Funcionario Afastado !!" if @funcionario && @funcionario.afastado %></font>
-<font color="red"><%= "ATENCAO: NAO CONCEDER ACESSO, LIBERAR SENHA, NADA !!" if @funcionario && @funcionario.suspenso %></font>
+<font color="red"><%= "ATENCAO: Login Bloqueado. NAO CONCEDER ACESSO, LIBERAR SENHA, NADA !!" if @funcionario && @funcionario.loginBloqueado %></font>
 
 </br><%= "Login:  #{@usuario.login} - Nome: #{@nomecompleto}" %>
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
@@ -67,7 +67,6 @@
         <% end%> 
         <td><%= estacao[:detalhes] %></td>
         <td><%= estacao[:hostname] %></td>
-
         <td><%= estacao[:gestor] %></td>
         <td><%= "#{estacao[:CCDebito]}/#{estacao[:ProjetoDebito]}" %></td>
         <% if estacao[:chave]!="Sem Estacao" %>

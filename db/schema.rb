@@ -366,7 +366,8 @@ ActiveRecord::Schema.define(version: 20161219193745) do
     t.boolean  "customPossuiVariasEstacoes"
     t.boolean  "customExternoComOffice365"
     t.string   "justificativaExtComOffice365", limit: 255
-    t.boolean  "suspenso"
+    t.boolean  "loginBloqueado"
+    t.string   "justificativaLoginBloqueado",  limit: 255
   end
 
   add_index "funcionarios", ["NomEmailGestorProfissional"], name: "index_funcionarios_on_NomEmailGestorProfissional", using: :btree

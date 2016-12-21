@@ -85,7 +85,29 @@
 <div class="field">
     <%= f.text_field :justificativaExtComOffice365, :size => 70 %>
 </div>
+<div class="spacer"></div>
+<label>Login Bloqueado ?
+<div class="spacer"></div>
+</label>
+<div class="field">
+  <% if can? :admin, :all  %>
+       <%= f.check_box :loginBloqueado %>
+   <% else %>
+       <%= f.check_box :loginBloqueado, :disabled => "disabled" %>
+    <% end %>
+</div>
+<div class="spacer"></div>
 
+<label>Justificativa para Login Bloqueado ?
+
+</label>
+<div class="field">
+    <% if can? :admin, :all  %>
+      <%= f.text_field :justificativaLoginBloqueado, :size => 70   %>
+    <% else %>
+      <%= f.text_field :justificativaLoginBloqueado, :size => 70 , :readonly => "true"  %>
+    <% end %>
+</div>
 
 <div class="spacer"></div>
 

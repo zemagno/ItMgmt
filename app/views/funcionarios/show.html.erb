@@ -25,6 +25,10 @@
 <br> 
 <b>Justificativa para Externo ter Office365 ou Ramal: </b> <%= @funcionario.justificativaExtComOffice365%> 
 <br>
+<b>Login Bloqueado: </b><%= @funcionario.loginBloqueado ? "Sim" : "Nao" %>
+<br> 
+<b>Justificativa para Login Bloqueado: </b> <%= @funcionario.justificativaLoginBloqueado%> 
+<br>
 
 <% @attrs.each do |attr| %>
 <b><%= attr[1] %> : </b><%= attr[2] ? "Sim" : "Nao" %>
