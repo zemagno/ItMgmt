@@ -26,5 +26,4 @@ getsql.sh
 /features
 /test
 /public/assets/**
-
-
+Gemfile.lock
