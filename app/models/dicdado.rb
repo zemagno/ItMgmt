@@ -1,7 +1,7 @@
 class Dicdado < ActiveRecord::Base
   belongs_to :tipoci
 
-  attr_accessible :nome, :ordem, :url, :tipoci_id, :descricao ,:valores ,:apelido  ,:tipo , :regex, :mandatorio  ,:tooltip     ,:comentarios
+  attr_accessible :nome, :ordem, :url, :tipoci_id, :descricao ,:valores ,:apelido  ,:tipo , :regex, :mandatorio  ,:tooltip     ,:comentarios, :tab
 
   default_scope { order('tipoci_id ASC, ordem ASC') }
 
@@ -9,6 +9,8 @@ class Dicdado < ActiveRecord::Base
   validates :tipoci_id, :presence => {                     :message => " eh mandatorio" }
   validates :apelido, :presence => {                       :message => I18n.t("errors.dicdado.apelido.presence") }
   validates :apelido, :format => { :with => /\A[a-zA-Z0-9]+\z/, :message => I18n.t("errors.dicdado.apelido.format") }
+  validates :nome, uniqueness: { scope: [:tipoci_id] , :message => I18n.t("errors.dicdado.nome.uniqueness") }
+
 
   self.per_page = 20
 

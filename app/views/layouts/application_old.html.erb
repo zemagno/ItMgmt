@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Gestão de Ativos</title>
+    <%= stylesheet_link_tag "jquery-ui.css" %>
+    <%= stylesheet_link_tag "chavecis.css" %>
+    <%= stylesheet_link_tag "CMDBstyle.css" %>
+    <%= stylesheet_link_tag "scaffold.css" %>
+    <%= stylesheet_link_tag "jquery-ui-timepicker-addon.css" %>
+    <%= stylesheet_link_tag "jquery.datetimepicker.css" %>
+    <%= javascript_include_tag "jquery", "jquery-ujs", "application" , "jquery.datetimepicker.js"%>
+    <%= javascript_include_tag "jquery.min.js", "jquery-ui.min.js"%>
+    <%= javascript_include_tag "utils.js" %>
+    <%= javascript_include_tag "jquery" %>
+    <%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.min.css" %>
+    <%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.min.js" %>
+<!--     <%= javascript_include_tag "ajax.js.coffee" %> # ERRO: esse ajax estava indo para todas as paginas...-->
+    <!-- %= javascript_include_tag "clipboard.min.js" %-->
+    
+    <%= csrf_meta_tag %>
+    <script type="text/javascript">
+    $(function() {
+    $('.datepick').each(function(){
+    $(this).datepicker({ dateFormat: "yy-mm-dd" });;
+    $(this).datepicker();
+    });
+    });
+    </script>
+  
+<% if Features.has? "suporte" %>    
+    <!-- Start of 4mstech Zendesk Widget script -->
+<script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(e){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("https://assets.zendesk.com/embeddable_framework/main.js","4mstech.zendesk.com");
+/*]]>*/</script>
+<% end %>
+<!-- End of 4mstech Zendesk Widget script -->
+
+
+
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="header-wrapper">
+        <div id="header">
+          <div id="logo">
+            <h3><%= link_to 'Gestão de Ativos' , "/" %></h3>
+          </div>
+          <div id="user_nav">
+            <% if current_user %>
+            Logado como <%= current_user.name %>!
+            <%= link_to "Deslogar", signout_path %>
+            <% else %>
+            <%= link_to "Se logar com Google", "/auth/google_oauth2" %>
+            <% end %>
+          </div>
+          
+          <% if current_user and ! current_user.is_a :usuario %>
+          <div id="menu">
+            <ul class="navbar-main">
+              <li><%= link_to 'Alertas', tasks_path if Features.has? "alertas" %></li>
+              <li><%= link_to 'Ativos', cis_path %>
+                <ul class="sub-menu">
+                  <li><%= link_to 'Listagem', cis_path %></li>
+                  <li><%= link_to 'Novo Ativo', new_ci_path %></li>
+                  
+                </ul>
+              </li>
+              <li><%= link_to 'Relatorios', cadrelatorios_path %></li>
+              
+              <% if can? :manage, :usuarios %>
+              <li><%= link_to 'Gestao de Usuarios', gestao_usuarios_path %></li>
+              <% end %>
+              <li><%= link_to 'Producao' %>
+                <ul class="sub-menu">
+                  <li><%= link_to 'Jobs Agendados', schedulers_path %></li>
+                  <li><%= link_to 'Jobs Executados', producaos_path %></li>
+                 </ul>
+                <li>
+                  <li><%= link_to 'Dashboards'   %>
+                    <ul class="sub-menu">
+                      <%= listDashboards.html_safe %>
+                    </ul>
+                  </li>
+                  <li><%= link_to 'Parametros', parametros_path %>
+                    <ul class="sub-menu">
+                      <li><%= link_to 'Parametros', parametros_path %></li>
+                      <li><%= link_to 'Sites', sites_path %></li>
+                      <li><%= link_to 'Usuarios', users_path %></li>
+                      <li><%= link_to 'Tipos de Ativos', tipocis_path %></li>
+                      <li><%= link_to 'Dicionario de dados', dicdados_path %></li>
+                      <li><%= link_to 'Status dos Ativos', "/statuscis" %></li>
+                      <% if can? :manage, TemplatesEmail %>
+                      <li><%= link_to 'Emails', templates_emails_path %></li>
+                      <li><%= link_to 'Templates de Emails', sql_templates_path %></li>
+                      <% end %>
+                    </ul>
+                  </li>
+                  <li><%= tela_ajuda %></li>
+                  <li><%= tela_ajuda_geral %></li>
+                  
+                </ul>
+              </div>
+            
+            </div>
+          </div>
+          <% end %>
+          <br>
+          <!-- end #header -->
+          <% if current_user %>
+          <div id="page">
+            <div id="page-bgtop">
+              <div >
+                <div class="notification"></div>
+                <% flash.each do |name, msg| %>
+                <%= content_tag :div, msg, id: "flash_#{name}" %>
+                <% end %>
+              </div>
+              
+              <div id="enviar_email"></div>
+              
+              <div id="page-dbgbtm">
+
+
+                <% if current_user.is_a :usuario %>
+                <style type="text/css">
+                body { background-color: #fff; color: #666;font-size: 100%;  font-family: arial, sans-serif; }
+                div.dialog {
+                    border: 1px solid black;
+                    background-color: lightblue;
+                    padding-top: 150px;
+                    padding-right: 30px;
+                    padding-bottom: 50px;
+                    padding-left: 80px;
+                }
+                h1 { font-size: 200%; color: #fff; text-align: left ;line-height: 1.5em; }
+              </style>
+              <div class="dialog">
+
+                  <h1>Bem vindo ao Sistema de Gestao de Ativos</h1>
+                  <p>Que bom... Voce já está logado. Porem, não tem acesso a nenhuma funcionalida. Ainda !!
+                  <p>Peça para o administrador lhe conceder acesso...</p>
+                </div>
+
+                <% else %> 
+                <%= yield %>
+                <% end %>
+                <div style="clear: both;"> </div>
+              </div>
+            </div>
+            <% else %> 
+              <style type="text/css">
+                body { background-color: #fff; color: #666;font-size: 100%;  font-family: arial, sans-serif; }
+                div.dialog {
+                    border: 1px solid black;
+                    background-color: lightblue;
+                    padding-top: 150px;
+                    padding-right: 30px;
+                    padding-bottom: 50px;
+                    padding-left: 80px;
+                }
+                h1 { font-size: 200%; color: #fff; text-align: left ;line-height: 1.5em; }
+              </style>
+              <div class="dialog">
+
+                  <h1>Bem vindo ao Sistema de Gestao de Ativos</h1>
+                  <p>Por favor, se logue com seu email do gmail ou gmail business.</p>
+                </div>
+
+            <% end %>
+          </div>
+          <!-- end #page -->
+        </div>
+      </body>
+    </html>

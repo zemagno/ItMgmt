@@ -1,7 +1,14 @@
-</br><%=title %><% docs_to_url(documentos).each do|url| %>
-     <% if ! url[1].blank? %>
-         <a href="javascript: void(0)" onclick="window.open('','').location.href='<%=url[1]%>'">[<%=url[0]%>]</a>
-    <%  else %> 
-         <a href="javascript: void(0)" onclick="window.open('','').location.href='<%=url[0]%>'">[Documento]</a>         
-     <% end %>
-<% end %> 
+<div class="row">
+	<div class="col-sm-2 itam_cis_title">
+		<%=title %>
+	</div>
+	<div class="col-sm-8 itam_cis_value"> 
+	    <% docs_to_url(documentos).each do|url| %>
+	    	<% if ! url[1].blank? %>
+	        	<a href="javascript: void(0)" onclick="window.open('','').location.href='<%=url[1]%>'" class="btn btn-primary btn-xs itam_btn_hyperlink_cis"><%=url[0]%></a>
+	    	<%  else %> 
+	        	<a href="javascript: void(0)" onclick="window.open('','').location.href='<%=url[0]%>'" class="btn btn-primary btn-xs itam_btn_hyperlink_cis">Documento</a>         
+	     	<% end %>
+		<% end %> 
+	</div> <!-- col-sm-6 -->
+</div> 

@@ -1,5 +1,6 @@
 module RelatoriosHelper
-	def genField(valor,field,i,fields) 
+	def genField(valor,field,i,fields)
+        res = "" 
         case field
         when "CIs"
             res = ""
@@ -22,15 +23,18 @@ module RelatoriosHelper
             res = valor
             #criar um template de email...colocar em banco de dados em memoria
             res  = "<a href=\"mailto:"+ListaEmail.acerta({listaEmails:valor,sufixo:CONFIG["mail"]["domain"]})+"?subject=Atencao&body="+URI.encode(fields.join("\n"))+"\">"+valor+"</a>"
-        when "Descricao" 
-            res  = content_tag('pre',valor)
+        # when "Descricao" 
+        #     res  = content_tag('pre',valor)
         else 
             res = valor
         end
         
         # 
-        res = "" unless res
-
+        if res 
+            res = res.strip
+        else
+            res = "" 
+        end
         res
 	end
 

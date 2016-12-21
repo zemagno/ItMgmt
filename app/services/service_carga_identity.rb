@@ -36,7 +36,7 @@ class ServiceCargaIdentity
         if !chave.blank?
           chave = chave.gsub("\t", "").strip.gsub(/@[^\s]+/, "")
 
-          idt = Identity.find_or_initialize_by_login(chave)
+          idt = Identity.find_or_initialize_by(login: chave)
           if idt.id.nil?
             total_created = total_created + 1
           else
@@ -58,7 +58,7 @@ class ServiceCargaIdentity
 
     detalhe << "Provider: Funcionario - "
     Funcionario.all.each do |f|
-      idt = Identity.find_or_initialize_by_login(f.Login)
+      idt = Identity.find_or_initialize_by(login: f.Login)
       if idt.id.nil?
         total_created = total_created + 1
       else

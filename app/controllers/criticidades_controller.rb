@@ -45,7 +45,7 @@ class CriticidadesController < ApplicationController
 
     respond_to do |format|
       if @criticidade.save
-        format.html { redirect_to(@criticidade, :notice => 'Criticidade was successfully created.') }
+        format.html { redirect_to(@criticidade, :notice => 'Criticidade foi criado com sucesso !') }
         format.xml  { render :xml => @criticidade, :status => :created, :location => @criticidade }
       else
         format.html { render :action => "new" }
@@ -61,7 +61,7 @@ class CriticidadesController < ApplicationController
 
     respond_to do |format|
       if @criticidade.update_attributes(params[:criticidade])
-        format.html { redirect_to(@criticidade, :notice => 'Criticidade was successfully updated.') }
+        format.html { redirect_to(@criticidade, :notice => 'Criticidade foi atualizado com sucesso !.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

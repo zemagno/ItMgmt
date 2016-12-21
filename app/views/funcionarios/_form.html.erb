@@ -1,7 +1,7 @@
 <%= form_for(@funcionario) do |f| %>
   <% if @funcionario.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@funcionario.errors.count, "error") %> prohibited this funcionario from being saved:</h2>
+      <h2><%= pluralize(@funcionario.errors.count, "erro") %> ao tentar salver os atributos do funcionario </h2>
 
       <ul>
       <% @funcionario.errors.full_messages.each do |msg| %>
@@ -34,7 +34,7 @@
 <div class="spacer"></div>
 
 <label>Sem Estacao ?
-<span class="small">Esse usuario nao usa estação BRQ? </span>
+<span class="small">Esse usuario nao usa estação da Empresa? </span>
 </label>
 <div class="field">
     <%= f.check_box :semEstacao %>
@@ -79,7 +79,7 @@
 
 <div class="spacer"></div>
 
-<label>Justificativa para Externo com Ramal ?
+<label>Justificativa para Externo com Ramal ou Office ?
 
 </label>
 <div class="field">

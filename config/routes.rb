@@ -88,6 +88,7 @@ ItMgmt::Application.routes.draw do
   resources :statuscis
 
   match 'relatorio/:id', to: "relatorio#index", as: "relatorio", via: [:get, :post]
+  match 'relatorio_publico/:id', to: "relatorio#index_publico", as: "relatorio_publico", via: [:get, :post]
   match 'email/:acao/:id', to: "email#enviar", via: [:get, :post]
   match 'email/enviar_email/:id', to: "email#enviar+email", via: [:get, :post]
 
@@ -99,10 +100,11 @@ ItMgmt::Application.routes.draw do
   resources :parametros #, :only => [:index,:edit,:update,:new]
 
   resources :dicdados
+  match 'dicdados/:id/duplicar', to: "dicdados#duplicar", :as => :duplicar_dicdado, via: [:get, :post]
 
 
   get 'cis/:id/email', to: "cis#email",  :as => :email
-  post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email
+  post 'cis/:id/email', to: "cis#enviar_email",  :as => :enviar_email  #, defaults: { format: 'js' }
   get "cis/:id/log", to: "cis#log", as: "log_ci"
   post 'cis/:id/log', to: "cis#register_log",  :as => :register_log
 
@@ -136,7 +138,7 @@ ItMgmt::Application.routes.draw do
   # match '/cis2', to: 'cis#index2'
 
 
-  get 'cis/search', to: "cis#search"
+  # get 'cis/search', to: "cis#search"
   get 'CMDB', to: "cis#index"
 
   resources :cis

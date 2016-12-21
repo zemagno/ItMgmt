@@ -1,0 +1,26 @@
+.container
+  .row
+    / p#notice
+    /   = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        |  Job: 
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Job
+            p.list-group-item-text
+              = @scheduler.job
+
+          .list-group-item
+            h4.list-group-item-heading
+              | Quando
+            p.list-group-item-text
+              = @scheduler.when
+          .list-group-item
+            h4.list-group-item-heading
+              | Ordem
+            p.list-group-item-text
+              = @scheduler.ordem          
+    = link_to 'Editar', edit_scheduler_path(@scheduler), :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Listagem', schedulers_path , :class => "btn btn-primary btn-md margin-left"

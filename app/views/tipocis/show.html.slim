@@ -1,0 +1,33 @@
+.container
+  .row
+    / p#notice
+    /   = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        h4  
+           = "Ativo tipo: #{@tipoci.tipo}"
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Descricao
+            p.list-group-item-text
+              = @tipoci.Descricao
+          .list-group-item
+            h4.list-group-item-heading
+              | Onwer
+            p.list-group-item-text
+              = @tipoci.Owner
+          .list-group-item
+            h4.list-group-item-heading
+              | Perfis Autorizados
+            p.list-group-item-text
+              = @tipoci.perfil
+          .list-group-item
+            h4.list-group-item-heading
+              | Tabs da tela de Ativo
+            p.list-group-item-text
+              = @tipoci.tab
+          
+    - if (can? :manage, Tipoci)
+      = link_to 'Editar', edit_tipoci_path(@tipoci), :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Listagem', tipocis_path , :class => "btn btn-primary btn-md margin-left"

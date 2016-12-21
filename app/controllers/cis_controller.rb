@@ -13,10 +13,8 @@ class CisController < ApplicationController
     self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
   end
 
-  respond_to :html, :xml, :json, :csv
+  respond_to :html, :xml, :json, :csv, :js
 
-
-# estava testanto renderizacao de todas as telas pois fiz upgrade para o 4.2
 
   # @layout 'application_novolyaout'
 
@@ -30,11 +28,12 @@ class CisController < ApplicationController
   # @sites
   # @tiposci
 
-  # TODO colocar carrega agregadas no before_ action/before_f ilter para alguns metodos abaixo..
+  # TODO colocar carrega agregadas no before_ action/before_filter para alguns metodos abaixo..
 
   def log
     id = params[:id]
     @ci = Ci.find(id)
+    carrega_atributos2
     @logs = @ci.log_ci
 
   end
@@ -56,11 +55,6 @@ class CisController < ApplicationController
     @sites = Site.all
     @tiposci = Tipoci.all
     @statusci = Statusci.all
-
-    # l =Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})
-    # a = JSON.parse l
-    # a.select { |x| x[0] == "estacao" }[0][1]
-
 
   end
 
@@ -108,10 +102,20 @@ class CisController < ApplicationController
     render :index and return
   end
 
+  def carrega_atributos2
+    if @ci
+      @tabs = "Principal,Caracteristicas,#{@ci.tipoci.tab}".split(",").uniq
+      @atributos2 = @ci.atributos2
+    else
+      @tabs = "Principal;Caracteristicas"
+      @atributos2 = []
+    end
+  end
+
   def show
     @ci, @atributos = Ci.find_com_atributos(params[:id])
-    # TODO - se nao achar CI, tela de erro
 
+    carrega_atributos2
 
     if @ci
       if ! finalAuth[:view].include? (@ci.tipoci_id)
@@ -122,7 +126,7 @@ class CisController < ApplicationController
       @search = session[:search_cis]
       cache(@ci)
     else
-      flash[:error] = "Error[CI0002] - CI #{[params[:id]]} Invalido"
+      flash[:error] = "Error[CI0002] - CI \"#{params[:id]}\" Inexistente"
       redirect_to "/cis"
     end
   end
@@ -133,22 +137,28 @@ class CisController < ApplicationController
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)
+          Rails.logger.debug "Error[CI0001] - Usuario #{current_user.name} nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
+          puts "d"
           flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
-          render :show
+          puts "e"
+          redirect_to "/cis"
         end
         carrega_agregadas
         begin # se nao tiver parametro com filtro de status, ele mantem todos os status possiveis.
 
           @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
-          @statusci.reject! { |s| ! @st.include? s.status }
-        rescue
+          @statusci = @statusci.reject { |s| ! @st.include? s.status }
+        rescue=> error
+      puts error.backtrace
         end
       else
+        Rails.logger.debug  "Error[CI0003] - CI #{[params[:id]]} Invalido"
         flash[:error] = "Error[CI0003] - CI #{[params[:id]]} Invalido"
         redirect_to "/cis"
       end
 
-    rescue
+    rescue => error
+      puts error.backtrace
       flash[:error] = "Error[CI0004] - CI #{[params[:id]]} Invalido"
       redirect_to "/cis"
       # TODO tenho que direcionar para pagina de erro.
@@ -216,6 +226,7 @@ class CisController < ApplicationController
     respond_to do |format|
       if @ci == nil then
         format.json { render :json => "inexistente"}
+        format.json { render :json => "inexistente"}
       else
         format.json { render :json => "existente"}
       end
@@ -233,62 +244,8 @@ class CisController < ApplicationController
   end
 
 
-  # def index2
-
-
-  #   @search = params[:search] || session[:search_cis]
-
-  #   @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
-  #   session[:search_cis] = @search
-  #   session[:oldCI] = nil
-  #   session[:view_default_ci] = @view_default_ci
-
-  #   begin
-  #     if @search.blank?
-
-  #       @cis = Ci.paginate(:page => params[:page])
-  #     elsif @search[0] =="%"
-  #       @cis = Ci.includes(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
-  #     else
-  #       @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
-  #       @cis.length
-  #       @cis.compact!
-  #     end
-  #   rescue
-  #     flash[:error] = "Error[DB0001] - Erro no mecanismo de busca. Listando tudo !"
-  #     @cis = Ci.paginate(:page => params[:page])
-  #   end
-
-  #   #if @cis.size==0 then
-  #   #    @cis = Ci.includes(:atributo).where("atributos.valor like ?", "%#{@search}%").paginate(:page => params[:page])
-  #   #end
-
-  #   # TODO filtro de tipos aqui...
-
-  #   # if (@cis.count == 1) && (params[:commit] == "Estou com sorte")
-  #   #   # @ci = @cis[0]
-  #   #   @ci, @atributos = Ci.find_com_atributos(@cis[0].id)
-  #   #   render :show and return
-  #   # end
-
-
-  #   #@fields =
-
-  #   # @fields = [["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],[:descricao,:tipo_ci,:nome_localidade,:Owner,:notificacao,:data_ultima_alteracao]]
-  #   @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
-  #   @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
-  #   cache_finalAuth = finalAuth[:view]
-  #   @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
-  #   respond_to do |format|
-  #     format.html { render :action => "index" ,:html => @cis }
-  #     format.xml { render :xml => @cis }
-  #     format.csv { render :action => "index" , :csv => to_csv("Cis",@fields,@cis) }
-  #   end
-  # end
-
   def index
-
-
+    puts "ops..vim para index"
     @search = params[:search] || session[:search_cis]
 
     @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
@@ -320,8 +277,14 @@ class CisController < ApplicationController
 
     Rails.logger.debug "[DEBUG]CisController:@view_default_ci: #{@view_default_ci}"
 
-    @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
+    begin
+      @fields = JSON.parse(Parametro.get(:tipo => "views_ci",:subtipo => @view_default_ci))
+    rescue
+      Rails.logger.error "[ERROR]CisController:index - CI0006 - Nao achei parametros [views_ci]"
+      @fields = JSON.parse('[["Descricao","Tipo","Localidade","Gestor","Usuario(s)","Ult ChgMgmt"],["descricao","tipo_ci","nome_localidade","Owner","notificacao","data_ultima_alteracao"]]')
+    end
     @views_ci = Parametro.list(:tipo => "views_ci").map { |i| i[1] }
+
     # cache_finalAuth = finalAuth[:view] # nao preciso pois o search ja esta com :with
     # @cis.reject! { |c| ! cache_finalAuth.include? (c.tipoci_id) }
 
@@ -353,6 +316,7 @@ class CisController < ApplicationController
     end
     respond_to do |format|
       if @ci.save
+        flash[:Info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
         format.html {redirect_to(:action => 'edit', :id => @ci.id) }
       else
         carrega_agregadas
@@ -372,6 +336,8 @@ class CisController < ApplicationController
         format.json { head :no_content }
       else
         @atributos = @ci.atributos
+        carrega_atributos2
+      
         carrega_agregadas
         format.html { render action: "edit" }
         format.json { render json: @ci.errors, status: :unprocessable_entity }
@@ -380,6 +346,7 @@ class CisController < ApplicationController
   end
 
   def search
+    Rails.logger.debug "[DEBUG] CisController::search - params: #{params}"
     @ci = Ci.find_by_chave(params[:search])
 
     if @ci == nil then
@@ -387,9 +354,11 @@ class CisController < ApplicationController
       # @ci = Ci.find(session[:oldCI])
       # @atributos = @ci.atributos
       @ci, @atributos = Ci.find_com_atributos(session[:oldCI])
+      carrega_atributos2
       redirect_to(@ci) and return
     end
     @atributos = @ci.atributos
+    carrega_atributos2
     cache(@ci)
     render :show
   end
@@ -453,6 +422,7 @@ class CisController < ApplicationController
 
   def gera_relaciomentos (direcao)
     @ci = Ci.find(params[:id])
+    carrega_atributos2
     if Rails.cache.exist?("#{direcao}-#{@ci.id}")
       @fila_resultado = JSON.load Rails.cache.read("#{direcao}-#{@ci.id}")
       @email_impactados = Rails.cache.read("#{direcao}-#{@ci.id}-email")
@@ -511,6 +481,7 @@ class CisController < ApplicationController
   def gera_relaciomentos_com_composto_de
     # TODO colocar cache no gera_relaciomentos_com_composto_de
     @ci = Ci.find(params[:id])
+    carrega_atributos2
     init_queue
 
     enqueue([@ci,0])
@@ -568,6 +539,7 @@ class CisController < ApplicationController
 
   def confirmar_eliminacao
     @ci, @atributos = Ci.find_com_atributos(params[:id])
+    carrega_atributos2
 
   end
 
@@ -649,9 +621,6 @@ class CisController < ApplicationController
     #redirect_to :controller => 'cis', :action => 'show', :id => params[:id],
   end
 
-
-
-
   def gera_novo_impactado
     ci = Ci.find(params[:idci])
     dep = Ci.find_by_chave(params[:inclusao][:impactado])
@@ -672,7 +641,6 @@ class CisController < ApplicationController
   end
 
   def dependentes
-
     @fila_dependentes = gera_relaciomentos(:dependentes)
     gera_grafico_relacionamento(params[:id],:dependentes)
     @imagem_dependentes = true
@@ -685,9 +653,6 @@ class CisController < ApplicationController
     @imagem_dependentes_all = true
     render :dependentes
   end
-
-
-
 
 
 end

@@ -1,0 +1,36 @@
+.container
+  .row
+    div
+      = form_for(@tipoci, :html => {:class => "panel-body #{controller.action_name}_tipoci"}) do |f|
+        - if @tipoci.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@tipoci.errors.count, "erro")
+              |  ao tentar salvar esse tipo de Ativo
+            ul
+              - @tipoci.errors.full_messages.each do |msg|
+                li
+                  = msg
+        .form-group
+          label[for="tipo"]
+            | Tipo do Ativo:
+          = f.text_field :tipo, :maxlength=>30,  class: "form-control", autofocus: ""       
+        .form-group
+          label[for="Descricao"]
+            | Descricao:
+          = f.text_field :Descricao, :maxlength=>50,  class: "form-control"        
+        .form-group
+          label[for="Owner"]
+            | Owner:
+          = f.text_field :Owner, :maxlength=>30,  class: "form-control"        
+        .form-group
+          label[for="perfil"]
+            | Perfis Autorizados:
+          = f.text_field :perfil, :maxlength=>200,  class: "form-control" , placeholder: "perfil perfil perfil[view] perfil" 
+        .form-group
+          label[for="Tabs"]
+            | Tabs da tela de Ativo:
+          = f.text_field :tab, :maxlength=>200,  class: "form-control", :pattern => "[a-zA-Z0-9,]*" , placeholder: "token,token,token (sem espacos ou caracter especiais)" 
+        button.btn.btn-primary.btn-md[type="submit"]
+          |  Salvar Tipo Ativo
+        = link_to 'Cancelar', tipocis_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}

@@ -1,0 +1,24 @@
+.container
+  .row
+    / p#notice
+    /   = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        h4  
+           = "Status: #{@statusci.status}"
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Icone
+            p.list-group-item-text
+              | <img src="/icons/
+              =@statusci.icon
+              | " alt=" " height="16" width="16">  
+          .list-group-item
+            h4.list-group-item-heading
+              | Parametro
+            p.list-group-item-text
+              = @statusci.parametro      
+    - if (can? :manage, Tipoci)
+      = link_to 'Editar', edit_statusci_path(@statusci), :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Listagem', statuscis_path , :class => "btn btn-primary btn-md margin-left"

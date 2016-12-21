@@ -1,0 +1,47 @@
+<% if can? :manage, :all %>
+  <%= link_to '[Relatorio]', edit_cadrelatorio_path(@relatorio) if ! @relatorio.nil? %>
+<% end %>
+
+<style>
+
+.box-alerta {
+  float:left;
+  /*background: #4f4f4f;*/
+  background: #a1a8b7;
+  border-radius:3px 3px 3px 3px;
+  box-shadow: 3px 3px 5px 0 #000;
+  color: #4c4c4c;
+  font-family:monospace;
+  /*font: "Roboto Slab"*/
+  padding: 0px 5px 0px 5px;
+
+}
+
+.box-alerta-critico { background: #f00 }
+
+.box-gmud  { background: #018c85 }
+
+.box-alerta { height: 200px; width: 300px; margin-top:10px; margin-left:10px}
+
+
+</style>
+
+<% @resultado.each do |fields| %>
+  <div class="box-alerta">
+    <% fields.each_with_index do |valor,i| %>
+      <%= @campos[i] %>:
+      <% puts @campos[i] %>
+      <% puts genField(valor,@campos[i],0,fields) %>
+      <% puts "-------------" %>
+      <%= genField(valor,@campos[i],0,fields).html_safe %> 
+      <br>
+    <% end %>
+  </div>
+
+
+
+<% end %>
+
+
+
+

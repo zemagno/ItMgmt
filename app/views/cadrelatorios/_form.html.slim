@@ -1,0 +1,49 @@
+.container
+  .row
+    div
+      = form_for(@cadrelatorio, :html => {:class => "panel-body #{controller.action_name}_user"}) do |f|
+        - if @cadrelatorio.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@cadrelatorio.errors.count, "erro")
+              |  ao tentar salvar esse Relatório:
+            ul
+              - @cadrelatorio.errors.full_messages.each do |msg|
+                li
+                  = msg
+        .form-group
+          label[for="nome"]
+            | Nome:
+          = f.text_field :nome, :maxlength=>40,  class: "form-control", autofocus: "", placeholder: "Identificador Unico sem espacos ou caracteres especiais"
+        .form-group
+          label[for="descricao"]
+            | Descricao:
+          = f.text_field :descricao, :maxlength=>100,  class: "form-control"        
+        .form-group
+          label[for="dashboard"]
+            | Dashboard:
+          = f.text_field :dashboard, :maxlength=>50,  class: "form-control"        
+        .form-group
+          label[for="ordem"]
+            | Ordem de Apresentação:
+          = f.text_field :ordem, :maxlength=>5,  class: "form-control"          
+        .form-group
+          label[for="categoria"]
+            | Categoria:
+          = f.text_field :categoria, :maxlength=>50,  class: "form-control", placeholder: "palavras para ajudar na pesquisa de relatorios"
+        .form-group
+          label[for="justificativa"]
+            | Justificativa:
+          = f.text_field :justificativa, :maxlength=>50,  class: "form-control", placeholder: "descricao da necessidade desse relatorio - uso interno, para revalidação eventual"
+        .form-group
+          label[for="solicitante"]
+            | Solicitante:
+          = f.text_field :solicitante, :maxlength=>50,  class: "form-control", placeholder: "quem pediu esse relatorio - uso interno, para revalidação eventual"
+        .form-group
+          label[for="consulta"]
+            | Consulta:
+          = f.text_area :consulta, :cols => 200, :rows => 20,  class: "form-control itam_edit_sql", placeholder: "Sql...."
+        button.btn.btn-primary.btn-md[type="submit"]
+          |  Salvar cadrelatorio 
+        = link_to 'Cancelar', cadrelatorios_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}
+

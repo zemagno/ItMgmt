@@ -1,36 +1,47 @@
-<h1>Relatorios Disponiveis</h1>
-<%= link_to '[Novo Relatorio]', new_cadrelatorio_path unless cannot? :manage, @Cadrelatorio %>
-<%= will_paginate @cadrelatorios %>
-<%= form_tag(cadrelatorios_path, :method => "get") do %>
- 
-  <%= text_field_tag(:search, @search, :size => 50) %>
-  <%= submit_tag("Filtrar") %>
-<% end %>
 
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Descricao</th>
-    <th>Dashboard</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @cadrelatorios.each do |cadrelatorio| %>
-  <tr>
-    <td><%= link_to cadrelatorio.nome, relatorio_path(cadrelatorio.nome) %></td>
-    <td><%= cadrelatorio.descricao %></td>
-    <td><%= cadrelatorio.dashboard %></td>
-    <% if can? :manage, @Cadrelatorio %>
-    <td><%= link_to 'Editar', edit_cadrelatorio_path(cadrelatorio) %></td>
-    <td><%= link_to 'Apagar', cadrelatorio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <div class="panel panel-default">
+    
+    <% if (can? :manage, Cadrelatorio ) %>
+    <div class="panel-heading">
+      <%= link_to 'Novo Relatorio', new_cadrelatorio_path, class: "btn btn-primary btn-xs" %>
+    </div>
     <% end %>
-  </tr>
-<% end %>
-</table>
+    <%= will_paginate @cadrelatorios %>
+    <%= form_tag(cadrelatorios_path, :method => "get", :class => "panel-body") do %>
+    
+    <%= text_field_tag(:search, @search, :size => 50) %>
+    <%= submit_tag("Filtrar") %>
+    <% end %>
+    <div class="panel-body">
+      <table id="coolTable" class="generalTable">
+        <thead>
+          <tr class="head">
+            <th>Nome</th>
+            <th>Descricao</th>
+            <th>Dashboard</th>
+            <% if can? :manage, Cadrelatorio %>
+            <th></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cadrelatorios.each do |cadrelatorio| %>
+          <tr>
+            <td><%= link_to cadrelatorio.nome, relatorio_path(cadrelatorio.nome) %></td>
+            <td><%= cadrelatorio.descricao %></td>
+            <td><%= cadrelatorio.dashboard %></td>
+            <% if (can? :manage, Cadrelatorio) %>
+            <td>
+              <%= link_to 'Editar', edit_cadrelatorio_path(cadrelatorio), class: "btn btn-primary btn-xs" %>
+              <%= link_to 'Duplicar', duplicar_relatorio_path(cadrelatorio), class: "btn btn-primary btn-xs" %>
+              <%= link_to 'Apagar', cadrelatorio,   class: "btn btn-danger btn-xs", method: :delete, data: { confirm: "Voce realmente deseja apagar o relatorio #{cadrelatorio.nome} ?" } %>
+            </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <br />
+      <%= will_paginate @cadrelatorios %>
 
-<br />
-
-<%= will_paginate @cadrelatorios %>
-
-<%= link_to '[Novo Relatorio]', new_cadrelatorio_path unless cannot? :manage, @Cadrelatorio %>
+    </div>

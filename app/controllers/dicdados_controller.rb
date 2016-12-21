@@ -6,6 +6,7 @@ class DicdadosController < ApplicationController
 
   def carrega_agregadas
     @tipocis = Tipoci.all
+    @tabs = @tipocis.map { |x| [x.id,x.tipo,x.tab] }
   end
 
   def index
@@ -20,7 +21,7 @@ class DicdadosController < ApplicationController
     rescue 
       flash[:error] = "Error[DB0001] - Search Engine com Problema"
       @dicdados = Dicdado.paginate(:page => params[:page])
- end
+    end
 
     
     session[:search_dicdados_tipoci] = @dicdados[0].tipoci_id unless @dicdados[0].nil?
@@ -63,14 +64,32 @@ class DicdadosController < ApplicationController
     carrega_agregadas
   end
 
+
+  def duplicar
+    begin
+      dicdado_orig = Dicdado.find(params[:id])
+      @dicdado = dicdado_orig.deep_clone
+      carrega_agregadas
+      respond_to do |format|
+        format.html { render :action => 'new' }
+      end
+    rescue Exception => error
+      puts error
+      puts error.backtrace
+      flash[:error] = "Error[DD0001] - Dicionario de ativos #{[params[:id]]} Invalido"
+      redirect_to "/dicdados" and return
+    end
+  end
+
   # POST /dicdados
   # POST /dicdados.xml
   def create
     @dicdado = Dicdado.new(params[:dicdado])
+    carrega_agregadas
 
     respond_to do |format|
       if @dicdado.save
-        format.html { redirect_to(@dicdado, :notice => 'Dicdado was successfully created.') }
+        format.html { redirect_to(@dicdado, :notice => 'Campo foi criado com sucesso !') }
         format.xml  { render :xml => @dicdado, :status => :created, :location => @dicdado }
       else
         carrega_agregadas
@@ -84,10 +103,11 @@ class DicdadosController < ApplicationController
   # PUT /dicdados/1.xml
   def update
     @dicdado = Dicdado.find(params[:id])
+    carrega_agregadas
 
     respond_to do |format|
       if @dicdado.update_attributes(params[:dicdado])
-        format.html { redirect_to(@dicdado, :notice => 'Dicdado was successfully updated.') }
+        format.html { redirect_to(@dicdado, :notice => 'Campo foi atualizado com sucesso !') }
         format.xml  { head :ok }
       else
         carrega_agregadas

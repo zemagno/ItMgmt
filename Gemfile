@@ -7,6 +7,11 @@ gem 'rails', '4.2.7'
 gem 'protected_attributes'
 gem 'responders' #, '~> 2.0'
 
+gem 'slim-rails'
+gem 'slim'
+
+
+
 group :test, :development do
   gem 'hirb'
 end
@@ -54,12 +59,15 @@ gem 'jquery-rails'
 gem "audited"
 
 gem 'rake' #, '10.4.2'
-# gem "therubyracer"
+
+gem "therubyracer" # para compilar javascript
+
 #gem "less-rails"
 #
 gem 'redis-rails' #,  '~> 3.2'
 
 gem 'sass-rails'
+gem 'coffee-rails' #, '~> 4.2'
 
 gem "nifty-generators", :group => :development
 

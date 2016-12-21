@@ -43,7 +43,7 @@ def self.go(configfile)
 		# if teste_mode
 		#    c = Ci.new
 		# else 
-		   c = Ci.find_or_initialize_by_chave(chave)
+		   c = Ci.find_or_initialize_by(chave: chave)
 		# end
 		if c.id.nil?
 			total_created = total_created + 1

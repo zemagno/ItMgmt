@@ -1,4 +1,5 @@
-<h1>Gestao de Usuario</h1>
+<div class="panel panel-default"> <div class="panel-body">
+  <h1>Gestao de Usuario</h1>
 
 
 <%= form_tag(gestao_usuarios_path, :method => "get") do %>
@@ -10,7 +11,7 @@
 
 
 <b>
-<font color="red"><%= "ATENCAO: Funcionario Afastado !!" if @funcionaro && @funcionario.afastado %></font>
+<font color="red"><%= "ATENCAO: Funcionario Afastado !!" if @funcionario && @funcionario.afastado %></font>
 
 </br><%= "Login:  #{@usuario.login} - Nome: #{@nomecompleto}" %>
 <% if (can? :manager, :usuarios) and (! @funcionario.nil?) %>
@@ -21,7 +22,7 @@
       <br><%= "Torre: #{@funcionario.NomeTipoCC}/#{@funcionario.DescCCTorre} - Local Trabalho(RM): #{@funcionario.NomeLocalTrabalho} - #{@funcionario.NomAlocacao}" %>
       <%= " - Posicao: #{@posicaoFacilities} "  %>   
       <br>Gestor Direto: <%= link_to(@funcionario.NomeGestor,"/GestaoUsuarios?search=#{@funcionario.gestor}") %></td>
-      <br>Ramais:<%= ramal_to_sip(@ramais).html_safe %> - <%= @funcionario.status %>
+      <br>Ramais:<%= ramal_to_sip(@ramais).html_safe %> - <span><%= @funcionario.status %></span>
 
       <%= link_to("[Enviar Email]", email_gestao_usuario_path(@usuario.login), :id => "enviar_email_ci", :remote => true) if ! @funcionario.demitido? %>
 
@@ -112,14 +113,12 @@
   <% @celulares.each do |celular| %>
       <tr>
         <td><%= link_to celular[:chave], ci_path(celular[:chave]), :target => '_blank' %></td>
-         <td><%= celular[:detalhes] %></td>
+        <td><%= celular[:detalhes] %></td>
         <td><%= celular[:gestor] %></td>
         <td><%= "#{celular[:CCDebito]}/#{celular[:ProjetoDebito]}" %></td>
         <td><%= link_to '[Termo Entrega]', imprimir_termo_entrega_path(@usuario.login,:celular,celular[:chave]) , :target => "_blank"%>
-        <%= link_to '[Termo Devolucao]', imprimir_termo_devolucao_path(@usuario.login,:celular,celular[:chave]) , :target => "_blank"%>
-        </td>
-        
-         
+            <%= link_to '[Termo Devolucao]', imprimir_termo_devolucao_path(@usuario.login,:celular,celular[:chave]) , :target => "_blank"%>
+        </td>                
       </tr>
   <% end %>
 </table>  
@@ -310,5 +309,6 @@
 <% end %> <!-- form -->
 <% end %> <!-- if @modo == alocar_licenca -->
 <% else %>
-  <br><b><p>Voce nao tem autorizacao para vizualizar...</b>
+  <br><b><p><!-- Voce nao tem autorizacao para vizualizar... --></b>
 <% end %>
+</div></div>

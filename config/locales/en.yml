@@ -16,6 +16,15 @@ en:
     site: 
       presence: "Nome do site é mandatorio"
       uniqueness: "Já existe site com esse nome"
+    statusci: 
+      presence: "Status do Ativo é mandatorio"
+      uniqueness: "Já existe um status com esse nome"    
+    tipoci: 
+      tipo:
+        presence: "Tipo do Ativo é mandatorio"
+        uniqueness: "Já existe um Tipo de Ativo com esse nome"
+      perfil:
+        format: "regex deve seguir o format \"perfil perfil[view] perfil[edit] \""
     cadrelatorio: 
       nome:
         presence: "Nome do relatório é mandatorio"
@@ -35,9 +44,17 @@ en:
     dicdado: 
       nome:
         presence: "Nome do campo é mandatorio"
+        uniqueness: "Já existe um campo com o mesmo nome para esse tipo de ativo"
       apelido:
         presence: "Apelido do campo é mandatorio"
         format: "Apelido deve conter somente caracteres alfanumericos" 
+      regex:
+        format: "regex deve seguir o format \"perfil perfil[view] perfil[edit] \""
+    parametro: 
+      tipo:
+        presence: "Parametro é mandatorio"
+      subtipo:
+        presence: "Subtipo é mandatorio"
   msg:
     statusci:
       updated: "Status foi atualizado com sucesso"

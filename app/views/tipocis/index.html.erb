@@ -1,35 +1,61 @@
-<h1>Tipos de Ativos</h1>
-
-<%= link_to '[Novo Tipo]', new_tipoci_path if (can? :manage, Tipoci) %>
-
-<table>
-  <tr>
-    <th>Tipo</th>
-    <th>Descricao</th>
-    <th>Owner</th>
-    <th>Perfis Autorizados</th>
-    <th></th>
-
-    <% if (can? :manage, Tipoci)  %>
-    <th></th>
-    <th></th>
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+      pageLength: 100,
+      pagingType: "full_numbers",
+      language: {
+        search: "Filtrar:"
+      }      
+    });
+});
+</script>
+<div id="content">
+  <div class="panel panel-default">
+    
+    <% if (can? :manage, Tipoci) %>
+      <div class="panel-heading">
+        <%= link_to 'Novo Tipo', new_tipoci_path , class: "btn btn-primary btn-xs" %>
+      </div>
     <% end %>
-  </tr>
+    <div class="panel-body">
+      <table  class="generalTable" id="coolTable" >
+        <thead>
+        <tr class="head">
+          <th>Tipo Ativo</th>
+          <th>Descricao</th>
+          <th>Owner</th>          
+          <th>Tabs</th>
+          <th>Perfis Autorizados</th>
+          <% if (can? :manage, Tipoci)  %>
+               <th></th>
+          <% end %>
+        </tr> 
+        </thead>
+        <tbody>
+        <% @tipocis.each do |tipoci| %>
+        <tr>
+          <td><%= link_to tipoci.tipo , tipoci_path(tipoci)%></td>
+          <td><%= tipoci.Descricao %></td>
+          <td><%= tipoci.Owner%></td>
+          <td><%= tipoci.tab%></td>
 
-<% @tipocis.each do |tipoci| %>
-  <tr>
-    <td><%= link_to tipoci.tipo , tipoci_path(tipoci)%></td>
-    <td><%= tipoci.Descricao %></td>
-    <td><%= tipoci.Owner%></td>
-    <td><%= tipoci.perfil%></td>
-       <% if (can? :manage, Tipoci)  %>
-    <td><%= link_to 'Editar', edit_tipoci_path(tipoci) %></td>
-    <td><%= link_to 'Apagar', tipoci, method: :delete, data: { confirm: 'Voce tem certeza ?' } %></td>
+          <td><%= tipoci.perfil%></td>
+          <% if (can? :manage, Tipoci)  %>
+            <td>
+                <%= link_to 'Editar', edit_tipoci_path(tipoci), class: "btn btn-primary btn-xs" %>
+                <%= link_to 'Apagar', tipoci, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja apagar o tipo de ativo #{tipoci.tipo} ?" } %>
+            </td>
+          <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+      </table>
+      <br />
+      <% if (can? :manage, Tipoci) %>
+      <div class="panel-heading">
+        <%= link_to 'Novo Tipo', new_tipoci_path , class: "btn btn-primary btn-xs" %>
+      </div>
     <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to '[Novo Tipo]', new_tipoci_path if (can? :manage, Tipoci) %>
+      </div> <!-- panel-body -->
+      </div> <!-- panel panel-default -->
+      </div> <!-- id="content" -->

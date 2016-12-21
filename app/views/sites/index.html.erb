@@ -1,31 +1,42 @@
-<h1>Sites</h1>
-<% if (can? :manage, Site)  %>
-<%= link_to '[Novo Site]', new_site_path %>
-<% end %>
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Estado</th>
-    <% if (can? :manage, Site)  %>
-    <th></th>
-    <th></th>
-        <% end %>
-  </tr>
-
-<% @sites.each do |site| %>
-  <tr>
-    <td><%= site.nome %></td>
-    <td><%= site.estado %></td>
-    <% if (can? :manage, Site)  %>
-    <td><%= link_to 'Editar', edit_site_path(site) %></td>
-    <td><%= link_to 'Apagar', site, data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<% if (can? :manage, Site)  %>
-<%= link_to '[Novo Site]', new_site_path %>
-<% end %>
+      <script type="text/javascript"> $(document).ready( function(){ $('#coolTable').DataTable({ pageLength: 100, "paging": false, pagingType: "full_numbers", language: { search: "Filtrar:" } }) }); </script>
+<div id="content">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <% if (can? :manage, Site)  %>
+      <%= link_to 'Novo Site', new_site_path, class: "btn btn-primary btn-xs"  %>
+      <% end %>
+    </div>
+    <div class="panel-body">
+      <table id="coolTable" class="generalTable">
+        <thead>
+          <tr class="head">
+            <th>Nome</th>
+            <th>Estado</th>
+            <% if (can? :manage, Site)  %>
+            <th></th>
+            
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sites.each do |site| %>
+            <tr>
+              <td><%= link_to(site.nome, site_path(site)) %></td>
+              <td><%= site.estado %></td>
+              <% if (can? :manage, Site)  %>
+              <td>
+                <%= link_to 'Editar', edit_site_path(site), class: "btn btn-primary btn-xs" %>
+                <%= link_to 'Apagar', site,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja apagar o site #{site.nome} ?"} , :method => :delete %>
+              </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="panel-heading">
+      <% if (can? :manage, Site)  %>
+      <%= link_to 'Novo Site', new_site_path, class: "btn btn-primary btn-xs" %>
+      <% end %>
+    </div>
+  </div>

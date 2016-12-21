@@ -1,0 +1,79 @@
+.container
+  .row
+    p#notice
+      = notice
+    .panel.panel-default.panel-primary
+      .panel-body.panel-primary
+        h4  
+           = "Campo: #{@dicdado.nome}"
+        .list-group
+          .list-group-item
+            h4.list-group-item-heading
+              | Tipo do Ativo
+            p.list-group-item-text
+              = @dicdado.nice_tipoci
+          .list-group-item
+            h4.list-group-item-heading
+              | Apelido
+            p.list-group-item-text
+              = @dicdado.apelido
+          .list-group-item
+            h4.list-group-item-heading
+              | Descricao/Placeholder
+            p.list-group-item-text
+              = @dicdado.descricao
+          .list-group-item
+            h4.list-group-item-heading
+              | Valores
+            p.list-group-item-text
+              = @dicdado.valores
+          .list-group-item
+            h4.list-group-item-heading
+              | Ordem de Apresentacao
+            p.list-group-item-text
+              = @dicdado.ordem         
+          .list-group-item
+            h4.list-group-item-heading
+              | Tab do formulario de ativos
+            p.list-group-item-text
+              = @dicdado.tab
+          .list-group-item
+            h4.list-group-item-heading
+              | Expressao Regular
+            p.list-group-item-text
+              = @dicdado.regex
+          .list-group-item
+            h4.list-group-item-heading
+              | Campo Mandatorio ? 
+            p.list-group-item-text
+              = @dicdado.mandatorio ? "Sim" : "Nao"           
+          .list-group-item
+            h4.list-group-item-heading
+              | URL  
+            p.list-group-item-text
+              = @dicdado.url          
+          .list-group-item
+            h4.list-group-item-heading
+              | Comentarios  
+            p.list-group-item-text
+              = @dicdado.comentarios
+    - if (can? :manage, Dicdado)
+      = link_to 'Editar', edit_dicdado_path(@dicdado), :class => "btn btn-primary btn-md margin-left"
+      = link_to 'Novo Campo', new_dicdado_path, class: "btn btn-primary btn-md margin-left" 
+      = link_to 'Duplicar', duplicar_dicdado_path(@dicdado), class: "btn btn-primary btn-md margin-left" 
+    = link_to 'Listagem', dicdados_path , :class => "btn btn-primary btn-md margin-left"
+
+
+
+/     <tr><td>Tipo de Ativo:</td><td><b><%= @dicdado.nice_tipoci %></b></td></tr>
+/ <tr><td>Campo:</td><td><b> <%= @dicdado.nome %></b></td></tr>
+/ <tr><td>Apelido:</td><td><b><%= @dicdado.apelido %></b></td></tr>
+/ <tr><td>Descricao:</td><td><b><%= @dicdado.descricao %></b></td></tr>
+/ <tr><td>Valores:</td><td><b><%= @dicdado.valores %></b></td></tr>
+/ <tr><td>Ordem de Apresentacao</td><td><b><%= @dicdado.ordem %></b></td></tr>
+/ <tr><td>regex:</td><td><b><%= @dicdado.regex %></b></td></tr>
+/ <tr><td>É Mandatorio:</td><td><b><%= @dicdado.mandatorio ? "Sim" : "Nao" %></b></td></tr>
+/ <tr><td>URL:</td><td><b><%= @dicdado.url %></b></td></tr>
+/ <tr><td>Ajuda:</td><td><b><%= @dicdado.tooltip %></b></td></tr>
+/ <tr><td>Comentario Interno:</td><td><b><%= @dicdado.comentarios %></b></td></tr>
+/ </table>

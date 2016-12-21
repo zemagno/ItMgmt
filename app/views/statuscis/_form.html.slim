@@ -1,0 +1,29 @@
+.container
+  .row
+    div
+      = form_for(@statusci, :html => {:class => "panel-body #{controller.action_name}_statusci"}) do |f|
+        - if @statusci.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@statusci.errors.count, "erro")
+              |  ao tentar salvar esse Status:
+            ul
+              - @statusci.errors.full_messages.each do |msg|
+                li
+                  = msg
+        .form-group
+          label[for="status"]
+            | Status:
+          = f.text_field :status, :maxlength=>20,  class: "form-control", autofocus: ""           
+        .form-group
+          label[for="icon"]
+            | Icone:
+          = f.text_field :icon, :maxlength=>200,  class: "form-control"
+        .form-group
+          label[for="parametro"]
+            | Parametros do Grafico de Dependentes:
+          = f.text_field :parametro, :maxlength=>200,  class: "form-control"        
+
+        button.btn.btn-primary.btn-md[type="submit"]
+          |  Salvar Tipo Ativo
+        = link_to 'Cancelar', statuscis_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}

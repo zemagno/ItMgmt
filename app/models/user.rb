@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
       user.provider = auth["provider"]
       user.uid = auth["uid"]
       user.name = auth["info"]["email"]
-      user.roles = "usuario"
+      user.roles = CONFIG["default_role"] || "usuario"
     end
   end
 

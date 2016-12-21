@@ -1,0 +1,27 @@
+.container
+  .row
+    div
+      = form_for(@site, :html => {:class => "panel-body #{controller.action_name}_site"}) do |f|
+        - if @site.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@site.errors.count, "erro")
+              |  ao tentar salvar esse site
+            ul
+              - @site.errors.full_messages.each do |msg|
+                li
+                  = msg
+        .form-group.col-xs-6
+          label[for="nome"]
+            | Site:
+          = f.text_field :nome, :maxlength=>30,  class: "form-control", autofocus: ""
+        .row
+        .form-group.col-xs-2
+          label[for="login"]
+            | Estado:
+          .br
+          = f.select :estado, (["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO"] ), {}, { class: "form-control" }
+        .row
+        button.btn.btn-primary.btn-md[type="submit"]
+          |  Salvar Site 
+        = link_to 'Cancelar', sites_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}

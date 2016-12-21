@@ -1,0 +1,29 @@
+.container
+  .row
+    div
+      = form_for(@parametro, :html => {:class => "panel-body #{controller.action_name}_user"}) do |f|
+        - if @parametro.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@parametro.errors.count, "erro")
+              |  ao tentar salvar esse Parametro:
+            ul
+              - @parametro.errors.full_messages.each do |msg|
+                li
+                  = msg
+        .form-group
+          label[for="tipo"]
+            | Parametro:
+          = f.text_field :tipo, :maxlength=>50,  class: "form-control", :readonly => "true"
+        .form-group
+          label[for="subtipo"]
+            | Subtipo:
+          = f.text_field :subtipo, :maxlength=>50,  class: "form-control", :readonly => "true"
+        .form-group
+          label[for="valor"]
+            | Valor
+          = f.text_area :valor, :cols => 200, :rows => 20,  class: "form-control", placeholder: "valores...", autofocus: ""
+        button.btn.btn-primary.btn-md[type="submit"]
+          |  Salvar Parametro 
+        = link_to 'Cancelar', parametros_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}
+

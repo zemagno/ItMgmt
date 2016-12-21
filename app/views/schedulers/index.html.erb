@@ -1,32 +1,52 @@
-<h1>Jobs Agendados</h1>
-<%= link_to '[Novo Job]', new_scheduler_path %>
-<table>
-  <tr>
-    <th>Ordem</th>
-    <th>Job</th>
-    <th>When</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-    
-  </tr>
-  <% @schedulers.each do |scheduler| %>
-  <tr>
-    <td><%= scheduler.ordem %></td>
-    <td><%= SchedulerGenField(scheduler.job) %></td>
-    <td><%= scheduler.when %></td>
-    
-<% if (can? :manage, Scheduler)  %>
-    <td><%= link_to 'Editar', edit_scheduler_path(scheduler) %></td>
-    <td><%= link_to 'Apagar', scheduler, method: :delete, data: { confirm: 'Tem Certeza?' } %></td>
-    <td><%= link_to 'Rodar', scheduler_run_path(scheduler) ,method: :post, data: { confirm: 'Confirma executar esse job agora ?' } %></td>
-    <td><%= tela_ajuda(scheduler.job) %></td>
-<% end %>
-
-
-  </tr>
-  <% end %>
-</table>
-<br />
-<%= link_to '[Novo Job]', new_scheduler_path %>
+<!-- <%= csrf_meta_tag %> -->
+<script type="text/javascript">
+$(document).ready( function(){
+$('#coolTable').DataTable({
+pageLength: 100,
+pagingType: "full_numbers",
+language: {
+search: "Filtrar:"
+}
+});
+});
+</script>
+<div id="content">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= link_to 'Novo Job', new_scheduler_path, class: "btn btn-primary btn-xs" %>
+    </div>
+    <div class="panel-body">
+      <table id="coolTable" class="generalTable"> <!-- class="generalTable" -->
+      <thead>
+        <tr class="head">
+          <th>Ordem</th>
+          <th>Job</th>
+          <th>Quando</th>
+          <% if (can? :manage, Scheduler)  %>
+          <th></th>
+          <% end %>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <% @schedulers.each do |scheduler| %>
+        <tr>
+          <td><%= scheduler.ordem %></td>
+          <td><%= SchedulerGenField(scheduler.job) %></td>
+          <td><%= scheduler.when %></td>
+          
+          <% if (can? :manage, Scheduler)  %>
+          <td>
+            <%= link_to 'Editar', edit_scheduler_path(scheduler), class: "btn btn-primary btn-xs" %>
+            <%= link_to 'Rodar', scheduler_run_path(scheduler) ,method: :post, data: { confirm: 'Confirma executar esse job agora ?' } , class: "btn btn-primary btn-xs"%>
+            <%= link_to 'Apagar', scheduler, method: :delete, data: { confirm: 'Tem certeza que deseja eliminar esse job ?' } , class: "btn btn-danger btn-xs"%>
+            <%= tela_ajuda(scheduler.job, "btn btn-success btn-xs")  %>
+          </td>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div><!--  panel-body -->
+</div>

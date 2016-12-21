@@ -1,8 +1,5 @@
+<!-- <%= csrf_meta_tag %> -->
 
-<%= javascript_include_tag "jquery" %>
-<%= stylesheet_link_tag "DataTables-1.10.5/media/css/jquery.dataTables.min.css" %>
-<%= javascript_include_tag "DataTables-1.10.5/media/js/jquery.dataTables.min.js" %>
-<%= csrf_meta_tag %>
 <script type="text/javascript">
 $(document).ready( function(){
     $('#coolTable').DataTable({
@@ -11,43 +8,53 @@ $(document).ready( function(){
       language: {
         search: "Filtrar:"
       }      
-    })
+    });
 });
 </script>
 
+<div id="content">
+  <div class="panel panel-default">
 
-<h1>Parametros</h1>
-<% if can? :admin, :all %>
-   <%= link_to "[Novo Parametro]", new_parametro_path %>
-<% end %>
-
-<table id="coolTable" class="display">
-<thead>
-  <tr>
-    <th>Tipo</th>
-    <th>Subtipo</th>
-    <th>Valor</th>
-    <th></th>
-   </tr>
-</thead>
-<tbody>
-<% @parametros.each do |parametro| %>
-  <tr>
-   <% if can? :admin, :all %>
-    <td><%= link_to parametro.tipo, parametro_path(parametro) %></td>
-   <% else %>
-    <td><%= parametro.tipo %></td>
-   <% end %> 
-    <td><%= parametro.subtipo %></td>
-    <td><%= parametro.valor[0,400] if ! parametro.valor.blank? %></td>
-    <td><%= link_to "Editar", edit_parametro_path(parametro) if can? :admin, :all %></td>
+    <% if can? :admin, :all %>
+      <div class="panel-heading">
+        <%= link_to "Novo Parametro", new_parametro_path, class: "btn btn-primary btn-xs" %>
+      </div>
+    <% end %>
+   
     
-  </tr>
-<% end %>
-</tbody>
-</table>
-
-<% if can? :admin, :all %>
-   <%= link_to "[Novo Parametro]", new_parametro_path %>
-<% end %>
-
+    <div class="panel-body">
+      <table id="coolTable" class="generalTable"> <!-- class="generalTable" -->
+        <thead>
+          <tr class="head">
+            <th>Parametro</th>
+            <th>Subtipo</th>
+            <th>Valor</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @parametros.each do |parametro| %>
+          <tr>
+            <% if can? :admin, :all %>
+            <td><%= link_to parametro.tipo, parametro_path(parametro) %></td>
+            <% else %>
+            <td><%= parametro.tipo %></td>
+            <% end %>
+            <td><%= parametro.subtipo %></td>
+            <td><%= parametro.valor[0,400] if ! parametro.valor.blank? %></td>
+            <td><%= link_to "Editar", edit_parametro_path(parametro), class: "btn btn-primary btn-xs" if can? :admin, :all %></td>
+            
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="panel-heading">
+      <% if can? :admin, :all %>
+      <%= link_to "Novo Parametro", new_parametro_path, class: "btn btn-primary btn-xs" %>
+      <% end %>
+    </div>
+  
+  </div>
+</div>

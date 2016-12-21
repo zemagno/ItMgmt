@@ -1,49 +1,39 @@
-<!--link rel="stylesheet" type="text/css" href="/stylesheets/CMDBstyle.css" media="all" /-->
-</br>
+<div class="panel panel-default">
+	<div class="panel-body">
 
-<!--%= link_to("[Anterior]", @ci.anterior,  :id => "SetaEsquerda") if @ci.anterior %-->  
-<!--%= link_to("[Proximo]", @ci.proximo, :id => "SetaDireita") if @ci.proximo %-->
-<!--%= link_to '[Retrocede Navegacao]', cis_sobe_path, :id => "SetaCima" %-->
-<!--%= link_to '[Avanca Navegacao]', cis_desce_path, :id => "SetaBaixo"%-->
+  <%= form_tag(cis_path, :method => "get") do %>
+     <%= text_field_tag(:search, @search, :size => 50) %>
+    <%= submit_tag("Procurar", class: "btn btn-primary btn-xs") %>
+    
+  <% end %>
 
-<%= form_tag(cis_path, :method => "get") do %>
-   <%= text_field_tag(:search, @search, :size => 50) %>
-  <%= submit_tag("Filtrar") %>
-  
-<% end %>
+  <div class="panel-body">
+  <%= render :partial => "menu_top"%>
+  </div>
 
-</br>
-<%= render :partial => "menu_top"%>
 
-</br>
-
-<% [:info, :error].each do |key| %>
-   <% if flash[key] %>
-   <div class="flash <%= key %>" id="flash">
-     <%= flash[key] %>
-   </div>
+  <% [:info, :error].each do |key| %>
+     <% if flash[key] %>
+     <div class="flash <%= key %>" id="flash">
+       <%= flash[key] %>
+     </div>
+     <% end %>
    <% end %>
- <% end %>
 
-<%= render :partial => 'edges', :locals => {:title => "Impactados", :cis => @ci.impactados } %>
+  <%= render :partial => 'edges', :locals => {:title => "Impactados", :cis => @ci.impactados } %>
 
-</br>
-<div id="stylized" class="myform">
-	<%= render :partial => "form" %>
+  </br>
+  <%= render :partial => "form" %>
   <%= render :partial => "menu_ci"%>
-</div>
 
-</br>
-<%= render :partial => "edges", :locals => {:title => "Dependentes",  :cis => @ci.dependentes } %>
-</br>
+  </br>
+  <%= render :partial => "edges", :locals => {:title => "Dependentes",  :cis => @ci.dependentes } %>
+  </br>
 
+  </br>
 
-<%= form_tag(cis_path, :method => "get") do %>
-  <%= text_field_tag(:search, @search, :size => 50) %>
-  <%= submit_tag("Filtrar") %>
-  
-<% end %>
-</br>
+  </div> <!-- panel-body -->
+</div> <!-- panel panel-default -->
 
 
 

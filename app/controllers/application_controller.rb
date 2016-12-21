@@ -1,6 +1,6 @@
-
 class ApplicationController < ActionController::Base
-protect_from_forgery with: :exception
+  layout 'application'     
+  protect_from_forgery with: :exception
 
   # rescue_from Exception, :with => :error_render_method
 
@@ -47,7 +47,12 @@ protect_from_forgery with: :exception
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    begin
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue Exception => error
+      Rails.logger.debug "[DEBUG] ApplicationControole::current_user: #{error}"
+      @current_user = nil
+    end
   end
 
   def finalAuth
