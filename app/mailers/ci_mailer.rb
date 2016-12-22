@@ -3,7 +3,7 @@ class CiMailer < ActionMailer::Base
 
   def enviar(template,_body,_subject,_to,_cc,_from)
     @obj = _body
-     _to = "magno@4mstech.com"
+     _to = "zemagno@gmail.com"
     _cc = _to
     
     puts "*******************************************************************************"
@@ -18,7 +18,7 @@ class CiMailer < ActionMailer::Base
     _from = CONFIG["SMTP"]["default_from"] if _from.blank?
     #TODO colocar teste de erro com _to, templates, from
     attachments[_attachment.split("/").last] = File.read(_attachment)
-    _to = "magno@4mstech.com"
+    _to = "zemagno@gmail.com"
     _cc = _to
     
     puts "*******************************************************************************"
