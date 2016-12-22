@@ -13,13 +13,13 @@
   </div>
 
 
-  <% [:info, :error].each do |key| %>
+<!--   <% [:info, :error].each do |key| %>
      <% if flash[key] %>
      <div class="flash <%= key %>" id="flash">
        <%= flash[key] %>
      </div>
      <% end %>
-   <% end %>
+   <% end %> -->
 
   <%= render :partial => 'edges', :locals => {:title => "Impactados", :cis => @ci.impactados } %>
 
