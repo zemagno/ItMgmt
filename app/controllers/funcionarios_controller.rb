@@ -37,6 +37,7 @@ class FuncionariosController  < InheritedResources::Base
   def equipe
     puts "FuncionariosController::equipe"
     f = Funcionario.find_by_Login(params[:id])
+    @funcionario = f
     @gestores = f.gestores
     @equipe = f.funcionarios
     @logins = f.funcionarios.map{ |x| x[0]}.join(",")

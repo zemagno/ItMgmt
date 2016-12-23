@@ -21,7 +21,7 @@
     <td><%= link_to note.notes[0,30], note %></td>
   
     <td><%= link_to 'Editar', edit_note_path(note) %></td>
-    <td><%= link_to 'Apagar', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Excluir', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

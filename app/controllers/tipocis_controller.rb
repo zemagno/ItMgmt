@@ -46,7 +46,7 @@ class TipocisController < ApplicationController
 
     respond_to do |format|
       if @tipoci.save
-        format.html { redirect_to @tipoci, notice: 'Tipoci foi criado com sucesso !' }
+        format.html { redirect_to @tipoci, notice: 'Tipo foi criado com sucesso !' }
         format.json { render json: @tipoci, status: :created, location: @tipoci }
       else
         format.html { render action: "new" }
@@ -62,7 +62,7 @@ class TipocisController < ApplicationController
 
     respond_to do |format|
       if @tipoci.update_attributes(params[:tipoci])
-        format.html { redirect_to @tipoci, notice: 'Tipoci foi atualizado com sucesso !.' }
+        format.html { redirect_to @tipoci, notice: 'Tipo foi atualizado com sucesso !' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -82,7 +82,7 @@ class TipocisController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to tipocis_url }
+      format.html { redirect_to tipocis_url,  notice: 'Tipo foi excluido com sucesso !' }
       format.json { head :no_content }
     end
   end

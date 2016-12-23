@@ -13,7 +13,7 @@
     <td><%= criticidade.name %></td>
     <td><%= link_to 'Vizualizar', criticidade %></td>
     <td><%= link_to 'Editar', edit_criticidade_path(criticidade) %></td>
-    <td><%= link_to 'Apagar', criticidade, data: { confirm: 'Voce tem certeza que deseja apagar esse item ?'} , :method => :delete %></td>
+    <td><%= link_to 'Excluir', criticidade, data: { confirm: 'Voce tem certeza que deseja excluir esse item ?'} , :method => :delete %></td>
   </tr>
 <% end %>
 </table>

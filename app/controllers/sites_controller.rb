@@ -65,7 +65,7 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.update_attributes(params[:site])
-        format.html { redirect_to(@site, :notice => 'Site foi atualizado com sucesso !.') }
+        format.html { redirect_to(@site, :notice => 'Site foi atualizado com sucesso !') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -81,7 +81,7 @@ class SitesController < ApplicationController
     @site.destroy
 
     respond_to do |format|
-      format.html { redirect_to(sites_url) }
+      format.html { redirect_to(sites_url, :notice => 'Site excluido com sucesso !') }
       format.xml  { head :ok }
     end
   end

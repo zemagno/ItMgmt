@@ -10,6 +10,24 @@ en:
       create: "Criar"
       update: "Salvar"
 
+# en:
+#   user:
+#     destroy:
+#       notice: "User account was successfully created."
+#   users:
+#     destroy:
+#       notice: "User account was successfully created."
+
+# flash:
+#     actions:
+#       create:
+#         notice: "{resource_name} was successfully created!!!"
+#       update:
+#         notice: "{resource_name} was successfully updated!!!"
+#       destroy:
+#         notice: "{resource_name} was successfully destroyed!!!"
+#         alert: "{resource_name} could not be destroyed"
+
 en:
   errors:
     format: "%{message}" 
