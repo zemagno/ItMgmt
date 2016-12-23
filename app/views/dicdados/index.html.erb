@@ -13,7 +13,7 @@
   <!-- <div class="panel-heading"><h1>Dicionario de Dados - Campos dos Ativos</h1></div> -->
 
   <%= form_tag(dicdados_path, :method => "get", :class => "panel-body") do %>
-  <%= text_field_tag(:search, @search, :size => 50) %>
+  <%= text_field_tag(:search, @search, :size => 50, :autofocus => true) %>
   <%= button_tag(type: "submit", class: "btn btn-primary btn-xs") { "Filtrar" }%>
   <%= link_to 'Novo Campo', new_dicdado_path, class: "btn btn-primary btn-xs" if (can? :manage, Dicdado) %>
   <% end %> <!-- form -->

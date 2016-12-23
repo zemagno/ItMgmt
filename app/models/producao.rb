@@ -1,7 +1,11 @@
 class Producao < ActiveRecord::Base
+  include ThinkingSphinx::Scopes
   attr_accessible :data, :detalhe, :id, :job, :status
 
-  default_scope { order('created_at DESC') }
+  default_scope { order('id DESC') }
+  # sphinx_scope(:latest_first) {
+  #   {:order => 'data DESC'}
+  # }
   after_save ThinkingSphinx::RealTime.callback_for(:producao)
 
   def self.dispatcherJob(_job)

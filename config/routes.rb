@@ -26,6 +26,7 @@ ItMgmt::Application.routes.draw do
 
   # post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento"
   resources :users , except: :new
+  get 'users_perfil', to: "users#show_perfil"
   resources :schedulers
   post "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
   resources :producaos , :only => [:index]
