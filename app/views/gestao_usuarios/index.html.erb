@@ -1,4 +1,8 @@
+<% if @funcionario.nil? %>
+<% title "GAM. Usuario: " %>
+<% else %>
 <% title "GAM. Usuario: #{@funcionario.Login}" %>
+<% end %>
 <div class="panel panel-default"> <div class="panel-body">
   <h1>Gestao de Usuario</h1>
 

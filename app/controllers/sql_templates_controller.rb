@@ -4,7 +4,7 @@ class SqlTemplatesController < InheritedResources::Base
 
   def templates_async
     arr = []
-    TemplatesEmail.where(sync: false).each do |t|
+    TemplatesEmail.where(tipo_envio: 0).each do |t|
       arr << "ci_mailer/#{t.template}"
     end
     arr
@@ -15,9 +15,7 @@ class SqlTemplatesController < InheritedResources::Base
       if params[:id] =~ /^[1-9]\d*$/
         @sql_template= SqlTemplate.find(params[:id])
       else
-        puts "1"
         @sql_template= SqlTemplate.find_by_path!("ci_mailer/#{params[:id]}")
-        puts "2"
       end
     rescue ActiveRecord::RecordNotFound
       # FIXME - colocar algo caso nao ache...redirect para index ?

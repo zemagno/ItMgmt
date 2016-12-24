@@ -9,9 +9,9 @@
         .list-group
           .list-group-item
             h4.list-group-item-heading
-              | Enviar Email
+              | Template
             p.list-group-item-text
-              = @templates_email.sync ? "via Browser" : "Direto" 
+              = @templates_email.template
           .list-group-item
             h4.list-group-item-heading
               | Tipo
@@ -24,9 +24,10 @@
               = @templates_email.subtipo
           .list-group-item
             h4.list-group-item-heading
-              | Template
+              | Enviar Email
             p.list-group-item-text
-              = @templates_email.template
+              = (@templates_email.tipo_envio==1) ? "via Browser" : "Direto" 
+
           
 
     = link_to 'Editar', edit_templates_email_path(@templates_email), :class => "btn btn-primary btn-md margin-left"

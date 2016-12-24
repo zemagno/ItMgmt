@@ -119,7 +119,7 @@ def enviar_email
     #aqui tem um problema...o controller que responde ao /email/template ja esta rodando numa nova tela...ele so responde um href.
     template_email = TemplatesEmail.find(params[:template_id])
 
-    if template_email.sync
+    if template_email.tipo_envio == 1
       @path = "/email/#{template_email.template}/#{params[:id]}"
       
       respond_to do |format|

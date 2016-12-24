@@ -1,0 +1,43 @@
+.container
+  .row
+    div
+      = form_for(@templates_email, :html => {:class => "panel-body #{controller.action_name}_user"}) do |f|
+        - if @templates_email.errors.any?
+          #error_explanation
+            h2
+              = pluralize(@templates_email.errors.count, "erro")
+              |  ao tentar salvar esse Email:
+            ul
+              - @templates_email.errors.full_messages.each do |msg|
+                li
+                  = msg
+        .form-group
+          label[for="nome"]
+            | Nome:
+          = f.text_field :nome, :maxlength=>50, class: "form-control", placeholder: "Descrição do template do email", autofocus: ""
+        .form-group
+          label[for="template"]
+            | Nome Interno do Template:
+          = f.text_field :template, :maxlength=>50, class: "form-control" 
+        .form-group
+          label[for="tipoci"]
+            | Tipo :  
+          = f.select :tipo, (["CI", "ALERTAS", "MAILING","GESTAO USUARIO","GESTAO LICENCA"]), {},  { class: "form-control" }
+        .form-group
+          label[for="subtipo"]
+            | Subtipo:
+          = f.text_field :subtipo, :maxlength=>50, placeholder: "servidor, contrato, link, etc",  class: "form-control"
+        .form-group
+          label[for="sync"]
+            | Metodo de Envio:
+          = f.select :tipo_envio, ([["Browser",1],["Direto",0]]),  {}, { id: :tipo_envio, class: "form-control" }
+        #template
+          label[for="subtipo"]
+            | HTML do Email:
+          br
+          textarea.form_control[name="html_email" cols="150" rows="30"]
+            = @html_email
+        button.btn.btn-primary.btn-md[type="submit"]
+          |  Salvar Campo 
+        = link_to 'Cancelar', templates_emails_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}
+

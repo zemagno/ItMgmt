@@ -1,7 +1,41 @@
-<% title "GAM. Email: #{@templates_email.nome}" %>
-<h1>Alterando Email</h1>
+<script type="text/javascript">
 
+function showOrHideTemplateEmail(id,_condition) {
+  if ( _condition == '0')
+      {
+        $(id).show();
+      }
+      else
+      {
+        $(id).hide();
+      }
+    }
+
+$(document).ready(function(){
+    $('#tipo_envio').on('change', function() {
+      showOrHideTemplateEmail("#template",this.value);
+    });
+});
+
+
+window.onload = function() {
+  showOrHideTemplateEmail("#template", $("#tipo_envio").val());
+};
+
+
+// $('#tipo_envio').on('change', function() {
+    //   if ( this.value == '0')
+    //   {
+    //     $("#template").show();
+    //   }
+    //   else
+    //   {
+    //     $("#template").hide();
+    //   }
+    // });
+
+</script>
+
+<% title "GAM. Email: #{@templates_email.nome}" %>
 <%= render 'form' %>
 
-
-<%= link_to '[Cancelar]', templates_emails_path %>

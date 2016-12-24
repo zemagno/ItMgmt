@@ -78,3 +78,7 @@ en:
     statusci:
       updated: "Status foi atualizado com sucesso"
       created: "Status foi criado com sucesso"
+  msg:
+    templates_email:
+      updated: "Template foi atualizado com sucesso"
+      created: "Template foi criado com sucesso"

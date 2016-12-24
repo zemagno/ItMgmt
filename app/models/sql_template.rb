@@ -67,4 +67,17 @@ class SqlTemplate < ActiveRecord::Base
 			end 
 		end
 	end
+
+	def self.create_or_update(template,body="")
+		novo = find_or_create_by(:path => "ci_mailer/#{template}")
+		# novo.pa = template
+		novo.body = body
+		novo.format = "html"
+		novo.locale = "en"
+		novo.handler = "erb"
+		novo.partial = 0
+		novo.save 
+		novo
+	end
+
 end

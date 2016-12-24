@@ -194,7 +194,7 @@ class CisController < ApplicationController
     #aqui tem um problema...o controller que responde ao /email/template ja esta rodando numa nova tela...ele so responde um href.
     template_email =TemplatesEmail.find(params[:template_id])
 
-    if template_email.sync
+    if (template_email.tipo_envio == 1)
       @path = "/email/#{template_email.template}/#{params[:id]}"
 
       respond_to do |format|
@@ -254,6 +254,7 @@ class CisController < ApplicationController
 
     begin
       if @search.blank?
+        @search = "" # title do index espera um @search
         Rails.logger.debug "[DEBUG]CisController:index procurando por tudo (sem parametro de search)"
         @cis = Ci.joins(:tipoci).paginate(:page => params[:page])
       elsif @search[0] =="%"

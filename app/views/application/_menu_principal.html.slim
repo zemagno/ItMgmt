@@ -68,10 +68,10 @@
                     - if can? :manage, TemplatesEmail                   
                       li
                         a[href="#"]
-                          = link_to 'Emails', templates_emails_path                  
-                      li
-                        a[href="#"]
-                          = link_to 'Templates de Emails', sql_templates_path
+                          = link_to 'Templates de Emails', templates_emails_path                  
+                      / li
+                      /   a[href="#"]
+                      /     = link_to 'Templates de Emails', sql_templates_path
                 - if Features.has? "help"
                   li.dropdown
                     a.dropdown-toggle[aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button"]

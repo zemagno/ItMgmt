@@ -48,6 +48,8 @@ module ItMgmt
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.i18n.available_locales = [:en, :"pt-BR"]
+
+    # ATENCAO: sql_template tem locale "en". Se alterar aqui, tem que alterar no table.
     config.i18n.default_locale = :"en"
     # config.i18n.default_locale = :"pt-BR"
     config.i18n.enforce_available_locales = false
