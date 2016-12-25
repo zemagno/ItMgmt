@@ -17,5 +17,13 @@ class User < ActiveRecord::Base
   def is_a (role)
   	return false if roles.nil?
     roles.include? role.to_s
-  end      
+  end     
+
+  after_save :limpa_cache
+
+  private
+    def limpa_cache
+      Rails.cache.delete_matched("ability*")
+    end 
+
 end

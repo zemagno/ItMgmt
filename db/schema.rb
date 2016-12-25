@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225143740) do
+ActiveRecord::Schema.define(version: 20161225151054) do
 
   create_table "MapeamentoLocalTrabalho", id: false, force: :cascade do |t|
     t.string  "NomSite",                limit: 30
@@ -938,6 +938,8 @@ ActiveRecord::Schema.define(version: 20161225143740) do
     t.datetime "updated_at",                                      null: false
     t.string   "roles",                  limit: 255
     t.string   "internal_login",         limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
