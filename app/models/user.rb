@@ -4,6 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  before_save :default_values
+
+  def default_values
+	  self.roles ||= CONFIG["default_role"] || "usuario"
+  end       
+
 
   def is_a (role)
   	return false if roles.nil?

@@ -139,8 +139,8 @@ class CisController < ApplicationController
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)
-          Rails.logger.debug "Error[CI0001] - Usuario #{current_user.email} nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
-          flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
+          Rails.logger.debug "Error[CI0001] - Usuario #{current_user.email} nao tem autorizacao para alterar CI do tipo #{@ci.tipoci.tipo}"
+          flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para alterar CI do tipo #{@ci.tipoci.tipo}"
           redirect_to "/cis"
         end
         carrega_agregadas

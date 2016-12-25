@@ -26,8 +26,8 @@ ItMgmt::Application.routes.draw do
   get "identities/:id", to: "identities#show", as: "identities" , :constraints => { :id => /.*/ }
 
   # post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento"
-  # resources :users , except: :new
-  # get 'users_perfil', to: "users#show_perfil"
+  resources :users , except: :new
+  get 'users_perfil', to: "users#show_perfil"
   resources :schedulers
   post "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
   resources :producaos , :only => [:index]
