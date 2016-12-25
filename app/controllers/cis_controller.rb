@@ -7,6 +7,7 @@ class CisController < ApplicationController
   include Queueable
   # authorize_resource #cancan
   # skip_authorize_resource :only => :index2
+  before_filter :authenticate_user!
 
   
   ActionController.add_renderer :csv do |csv, options|

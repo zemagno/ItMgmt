@@ -2,6 +2,8 @@ class SitesController < ApplicationController
 
   respond_to :html #, :json
   
+  before_filter :authenticate_user!
+  
   authorize_resource 
   def index
     puts "0"

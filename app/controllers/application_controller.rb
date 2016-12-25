@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   layout 'application'     
   protect_from_forgery with: :exception
+  # before_filter :authenticate_user!
 
   # rescue_from Exception, :with => :error_render_method
 
@@ -27,7 +28,7 @@ class ApplicationController < ActionController::Base
     payload[:remote_ip] = request.remote_ip
     payload[:uri] = request.url.gsub(/[^\s]+\?/,"")
     payload[:user_id] = if current_user
-      "#{current_user.name}[#{current_user.roles}]"
+      "#{current_user.email}[#{current_user.roles}]"
     else
       :guest
     end
@@ -46,14 +47,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_user
-    begin
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    rescue Exception => error
-      Rails.logger.debug "[DEBUG] ApplicationControole::current_user: #{error}"
-      @current_user = nil
-    end
-  end
+  # def current_user
+  # retirado por conta do devise...
+  #   begin
+  #     @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  #   rescue Exception => error
+  #     Rails.logger.debug "[DEBUG] ApplicationControole::current_user: #{error}"
+  #     @current_user = nil
+  #   end
+  # end
 
   def finalAuth
     finalauth = {}

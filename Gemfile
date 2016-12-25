@@ -16,6 +16,8 @@ group :test, :development do
   gem 'hirb'
 end
 
+gem 'devise'
+
 gem "lograge" # formatador de log
 gem 'logstash-event' # gerar formato do log compativel com logstash
 # gem 'bunny' #, '~> 1.7.0' # client do rabbitmq

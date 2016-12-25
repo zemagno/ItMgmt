@@ -23,10 +23,9 @@ telhtml
     = stylesheet_link_tag "itam.css"
     = csrf_meta_tag
   body.condtainer
-    - if current_user and ! current_user.is_a :usuario
+    - if user_signed_in? #true or (current_user and ! current_user.is_a :usuario)
         = render :partial => "menu_principal" 
         .painel
-            
             = render :partial => "mostra_erros"
             / para tela de cis e de gestao de usuario poder abrir o 'enviar email'
             .panel-body
@@ -37,9 +36,16 @@ telhtml
               img[src="/logo-64x64.jpg"]
               spam Sistema de Gestao de Ativos - 
               spam = "Ver: #{CONFIG['system_version']}" 
-    - if ! current_user
+    - if ! user_signed_in?
       div
-        = render :partial => "tela_login" 
-    - if current_user and current_user.is_a :usuario
+        p.notice
+          = notice
+        p.alert
+          = alert
+        = link_to "Sign up", new_user_registration_path 
+        = link_to "Login", new_user_session_path
+        = yield
+        /= render :partial => "tela_login" 
+    /- if current_user and current_user.is_a :usuario
         = render :partial => "splash"    
   

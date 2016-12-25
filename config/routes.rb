@@ -4,6 +4,7 @@ require "admin_constraint"
 ItMgmt::Application.routes.draw do
 
 
+  devise_for :users #, path_names: {sign_in: "login", sign_out: "logout"}
   resources :incidentes
   resources :grupos
   # resources :comandos_automacaos
@@ -25,8 +26,8 @@ ItMgmt::Application.routes.draw do
   get "identities/:id", to: "identities#show", as: "identities" , :constraints => { :id => /.*/ }
 
   # post "ws_register_desligamento", to: "log_desligamento#ws_register_desligamento"
-  resources :users , except: :new
-  get 'users_perfil', to: "users#show_perfil"
+  # resources :users , except: :new
+  # get 'users_perfil', to: "users#show_perfil"
   resources :schedulers
   post "schedulers/:id/run", to: "schedulers#run", as: "scheduler_run"
   resources :producaos , :only => [:index]
@@ -72,13 +73,9 @@ ItMgmt::Application.routes.draw do
 
   resources :sql_templates
 
-  root :to => "cis#index"
+  root "cis#index"
 
   mount Sidekiq::Web, at: '/sidekiq' #,  :constraints => AdminConstraint.new
-
-  # authenticate :user, lambda { |u| u.has_role? :admin } do
-  #   mount Sidekiq::Web => '/sidekiq'
-  # end
 
   resources :ramal, :only => [:index]
  
@@ -169,7 +166,7 @@ ItMgmt::Application.routes.draw do
   get '/422' => 'errors#server_error'         , :via => :all
   get '/500' => 'errors#internal_server_error', :via => :all
 
-  get '*a', :to => 'cis#index'
+  # get '*a', :to => 'cis#index'
 
 
 end
