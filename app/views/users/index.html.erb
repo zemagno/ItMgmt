@@ -1,0 +1,59 @@
+<% title "GAM. Usuarios." %>
+<!-- <%= csrf_meta_tag %> -->
+<script type="text/javascript">
+$(document).ready( function(){
+    $('#coolTable').DataTable({
+      pageLength: 100,
+      pagingType: "full_numbers",
+      language: { 
+          search: "Filtrar:" ,
+          infoFiltered: "(Total de _MAX_ registros)",
+          info:   "Mostrando do registro _START_ até _END_ de um total de  _TOTAL_ filtrados",
+          "lengthMenu":     "Mostrar _MENU_ registros",
+          "paginate": {
+              "first":      "Primeira",
+              "last":       "Última",
+              "next":       "Próxima",
+              "previous":   "Anterior"
+          },
+          "infoEmpty":      "Mostrando do registro 0 até 0 de um total de 0 registros",
+          "zeroRecords":    "Nenhum registro achado",
+          }   
+
+      
+    })
+});
+</script>
+<div id="content">
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<table class="generalTable" id="coolTable">
+				<thead>
+					<tr class="head">
+						<th>Usuário</th>
+						<th>Login</th>
+						<th>Perfil</th>
+						<% if (can? :manage, User) %>
+							<th></th>
+						<% end %>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+						<tr>
+							<td><%= link_to user.name, user_path(user) %></td>
+							<td><%= user.login %></td>
+							<td><%= user.roles %></td>
+							<% if (can? :manage, User) %>
+								<td>
+									<%= link_to 'Editar', edit_user_path(user),   class: "btn btn-primary btn-xs" %>
+									<%= link_to 'Excluir', user, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja excluir o usuario #{user.name} ?" } %>
+								</td>
+							<% end %>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
