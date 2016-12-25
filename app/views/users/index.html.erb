@@ -31,7 +31,7 @@ $(document).ready( function(){
 				<thead>
 					<tr class="head">
 						<th>Usuário</th>
-						<th>Login</th>
+						<th>Login Interno</th>
 						<th>Perfil</th>
 						<% if (can? :manage, User) %>
 							<th></th>
@@ -41,13 +41,13 @@ $(document).ready( function(){
 				<tbody>
 					<% @users.each do |user| %>
 						<tr>
-							<td><%= link_to user.name, user_path(user) %></td>
-							<td><%= user.login %></td>
+							<td><%= link_to user.email, user_path(user) %></td>
+							<td><%= user.internal_login %></td>
 							<td><%= user.roles %></td>
 							<% if (can? :manage, User) %>
 								<td>
 									<%= link_to 'Editar', edit_user_path(user),   class: "btn btn-primary btn-xs" %>
-									<%= link_to 'Excluir', user, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja excluir o usuario #{user.name} ?" } %>
+									<%= link_to 'Excluir', user, method: :delete,  class: "btn btn-danger btn-xs", data: { confirm: "Voce realmente deseja excluir o usuario #{user.email} ?" } %>
 								</td>
 							<% end %>
 						</tr>

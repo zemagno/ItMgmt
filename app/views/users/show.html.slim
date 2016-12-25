@@ -1,4 +1,4 @@
-- title "GAM. Usuario: #{@user.name}"
+- title "GAM. Usuario: #{@user.email}"
 .container
   .row
     / p#notice
@@ -6,7 +6,7 @@
     .panel.panel-default.panel-primary
       .panel-body.panel-primary
         h4 
-          = "Usuario: #{@user.name} "
+          = "Usuario: #{@user.email} "
         .list-group
           .list-group-item
             h4.list-group-item-heading
@@ -17,7 +17,7 @@
             h4.list-group-item-heading
               | Login Interno
             p.list-group-item-text
-              = @user.login
+              = @user.internal_login
     - if (can? :manage, User)
       = link_to 'Editar', edit_user_path(@user), :class => "btn btn-primary btn-md margin-left"
     = link_to 'Listagem', users_path , :class => "btn btn-primary btn-md margin-left"

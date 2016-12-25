@@ -62,8 +62,6 @@ class ApplicationController < ActionController::Base
     finalauth[:view] = []
     finalauth[:edit] = []
 
-    puts "session #{session[:user_id]}"
-    puts "current_user #{current_user} - #{current_user.id}"
     if current_user.id
 
       finalauth = Rails.cache.read("ability/#{current_user.id}") if current_user
