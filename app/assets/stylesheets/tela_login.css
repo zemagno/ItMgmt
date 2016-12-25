@@ -80,6 +80,14 @@ h4 {
  text-align: center;
 }
 
+h2 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+
 .form-control {
     border-radius: 10px;
 }

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
 
   def is_a (role)
+  	return false if roles.nil?
     roles.include? role.to_s
   end      
 end

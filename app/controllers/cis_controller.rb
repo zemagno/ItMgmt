@@ -42,7 +42,7 @@ class CisController < ApplicationController
   def register_log
     data = params[:data]
     id = params[:id]
-    log = LogCi.new(ci_id: params[:id], data: params[:data], userid: current_user.login || current_user.name , historico: params[:historico])
+    log = LogCi.new(ci_id: params[:id], data: params[:data], userid: current_user.email , historico: params[:historico])
     log.save!
 
     @ci = Ci.find(id)
@@ -139,7 +139,7 @@ class CisController < ApplicationController
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)
-          Rails.logger.debug "Error[CI0001] - Usuario #{current_user.name} nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
+          Rails.logger.debug "Error[CI0001] - Usuario #{current_user.email} nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
           flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para ver CI do tipo #{@ci.tipoci.tipo}"
           redirect_to "/cis"
         end

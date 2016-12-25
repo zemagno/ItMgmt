@@ -40,112 +40,113 @@ class Ability
 
     #
 
+    return if user.nil?
 
     
-    # can [:show, :index] , "tasks"
-    # can [:index], "relatorio" # autorizo o token especificamente. Nao existe model associado.
-    # # can [:index,:show], Ci
+    can [:show, :index] , "tasks"
+    can [:index], "relatorio" # autorizo o token especificamente. Nao existe model associado.
+    # can [:index,:show], Ci
 
-    # cannot :manage, Funcionario
-    # cannot :manage, CanHelperFinanceiro
-    # cannot :manage, CanHelperFinanceiroTi
+    cannot :manage, Funcionario
+    cannot :manage, CanHelperFinanceiro
+    cannot :manage, CanHelperFinanceiroTi
 
-    # cannot :manage, Scheduler
-    # cannot :manage, User
-    # cannot :manage, Audit
-    # cannot :manage, Grupo
-    # cannot :manage, Parametro
-    # cannot :manage, SqlTemplate
-    # cannot :manage, TemplatesEmail
-    # cannot :manage, Tipoci
-    # cannot :manage, Dicdado 
-    # cannot :manage, Cadrelatorio
+    cannot :manage, Scheduler
+    cannot :manage, User
+    cannot :manage, Audit
+    cannot :manage, Grupo
+    cannot :manage, Parametro
+    cannot :manage, SqlTemplate
+    cannot :manage, TemplatesEmail
+    cannot :manage, Tipoci
+    cannot :manage, Dicdado 
+    cannot :manage, Cadrelatorio
 
-    # # ATENCAO ---> SEMPRE DESAUTORIZAR NO SUPORTE !!!! OU inverter condicao
-
-
-    # if user and user.is_a :suporte
-    #   # can :manage, :all   # AROLDO
-    #   cannot :manage, Dicdado
-    #   cannot :manage, @Dicdado
-    #   cannot :manage, Cadrelatorio
-    #   cannot :manage, Cadrelatorio
-    #   can    :index, Cadrelatorio
-    #   can    :index, @Cadrelatorio
-    #   cannot :manage, Tipoci
-    #   cannot :manage, @Tipoci
-    #   cannot :manage, Statusci
-    #   cannot :manage, @Statusci
-    #   cannot :manage, SqlTemplate
-    #   cannot :manage, @SqlTemplate
-    #   cannot :manage, Mailing
-    #   cannot :manage, Scheduler
-    #   cannot :manage, Software
-    #   cannot :manage, CanHelperFinanceiro
-    #   cannot :manage, CanHelperFinanceiroTi
-    #   cannot :manage, CanHelperLicenciamento
-    #   cannot :manage, Parametro
-    #   can    :index,  Parametro
-    #   cannot :manage, Site
-    #   can    :index,  Site   
-    #   can    [:show, :index],  Tipoci
-    #   can    [:show, :index], Dicdado
-    #   can    :index, Software
-    #   cannot :manage, User
-    #   can    :index, User
-    #   can    :index, Grupo
-    #   can    [:show, :index], Statusci
-    #   can    :manage, :usuarios
-    #   can    :manage, Task
-    #   can    :manage, Note
-    #   can    :manage, "tasks"
-    #   can    :manage, Funcionario
-    #   can    :show, CanHelperLicenciamento
-    # end
-
-    # if user and user.is_a :producao
-    #   can :manage, Scheduler
-    #   can :manage, SqlTemplate
-    #   can :manage, TemplatesEmail
-    # end
-
-    # if user and user.is_a :financeiro
-    #   can :manage, CanHelperFinanceiro
-    # end
-
-    # if user and user.is_a :licenciamento
-    #   can :manage, CanHelperLicenciamento
-    # end
-
-    # if user and user.is_a :financeiroTI
-    #   can :manage, CanHelperFinanceiro
-    #   can :manage, CanHelperFinanceiroTi
-    # end
-    # if user and user.is_a :grupoAdmin
-    #   can :manage, Grupo
-    # end
-
-    # if user and user.is_a :compras
-    #   can :manage, Ci
-    #   can :index, Cadrelatorio
-    # end
-
-    # if user and user.is_a :admin
-    #   can :manage, :all
-    #   can :admin, :all
-    # end
-
-    # if user and user.is_a :mailing
-    #   can :manage, Mailing
-    # end
-
-    # if user and user.is_a :audit
-    #   #can :manage, @Audit
-    #   can :manage, Audit
-    # end
+    # ATENCAO ---> SEMPRE DESAUTORIZAR NO SUPORTE !!!! OU inverter condicao
 
 
-     # can :manage, :all
+    if user and user.is_a :suporte
+      # can :manage, :all   # AROLDO
+      cannot :manage, Dicdado
+      cannot :manage, @Dicdado
+      cannot :manage, Cadrelatorio
+      cannot :manage, Cadrelatorio
+      can    :index, Cadrelatorio
+      can    :index, @Cadrelatorio
+      cannot :manage, Tipoci
+      cannot :manage, @Tipoci
+      cannot :manage, Statusci
+      cannot :manage, @Statusci
+      cannot :manage, SqlTemplate
+      cannot :manage, @SqlTemplate
+      cannot :manage, Mailing
+      cannot :manage, Scheduler
+      cannot :manage, Software
+      cannot :manage, CanHelperFinanceiro
+      cannot :manage, CanHelperFinanceiroTi
+      cannot :manage, CanHelperLicenciamento
+      cannot :manage, Parametro
+      can    :index,  Parametro
+      cannot :manage, Site
+      can    :index,  Site   
+      can    [:show, :index],  Tipoci
+      can    [:show, :index], Dicdado
+      can    :index, Software
+      cannot :manage, User
+      can    :index, User
+      can    :index, Grupo
+      can    [:show, :index], Statusci
+      can    :manage, :usuarios
+      can    :manage, Task
+      can    :manage, Note
+      can    :manage, "tasks"
+      can    :manage, Funcionario
+      can    :show, CanHelperLicenciamento
+    end
+
+    if user and user.is_a :producao
+      can :manage, Scheduler
+      can :manage, SqlTemplate
+      can :manage, TemplatesEmail
+    end
+
+    if user and user.is_a :financeiro
+      can :manage, CanHelperFinanceiro
+    end
+
+    if user and user.is_a :licenciamento
+      can :manage, CanHelperLicenciamento
+    end
+
+    if user and user.is_a :financeiroTI
+      can :manage, CanHelperFinanceiro
+      can :manage, CanHelperFinanceiroTi
+    end
+    if user and user.is_a :grupoAdmin
+      can :manage, Grupo
+    end
+
+    if user and user.is_a :compras
+      can :manage, Ci
+      can :index, Cadrelatorio
+    end
+
+    if user and user.is_a :admin
+      can :manage, :all
+      can :admin, :all
+    end
+
+    if user and user.is_a :mailing
+      can :manage, Mailing
+    end
+
+    if user and user.is_a :audit
+      #can :manage, @Audit
+      can :manage, Audit
+    end
+
+
+    # can :manage, :all
 
 
   end

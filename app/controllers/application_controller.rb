@@ -62,10 +62,12 @@ class ApplicationController < ActionController::Base
     finalauth[:view] = []
     finalauth[:edit] = []
 
-    if session[:user_id]
+    puts "session #{session[:user_id]}"
+    puts "current_user #{current_user} - #{current_user.id}"
+    if current_user.id
 
-      finalauth = Rails.cache.read("ability/#{current_user.name}") if current_user
-      Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: current_user : #{current_user.name}"
+      finalauth = Rails.cache.read("ability/#{current_user.id}") if current_user
+      Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: current_user : #{current_user.id}"
       Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: finalauth: #{finalauth}"
       if finalauth.nil?
         finalauth = {}
@@ -79,9 +81,9 @@ class ApplicationController < ActionController::Base
         finalauthEdit = auth.reject { |a| (! a[1].blank?) && ! a[1].split(' ').map(&:strip).any? { |b| current_user.roles.include?(b.gsub("[edit]","")) } }.map { |x| x[0]}.sort
         finalauth[:view] = finalauthView
         finalauth[:edit] = finalauthEdit
-        Rails.cache.write("ability/#{current_user.name}",finalauth)
+        Rails.cache.write("ability/#{current_user.id}",finalauth)
         # puts "************************************************************************"
-        # puts "ability/#{current_user.name} --> #{finalauth}"
+        # puts "ability/#{current_user.id} --> #{finalauth}"
       end
     end
     Rails.logger.debug "[DEBUG]ApplicationController:finalAuth: return: auth  #{auth}"
