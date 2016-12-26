@@ -11,3 +11,6 @@ ItMgmt::Application.config.action_mailer.smtp_settings = {}
 "address port user_name password authentication enable_starttls_auto domain".split(" ").each do |config|
 	ItMgmt::Application.config.action_mailer.smtp_settings[config.to_sym] = CONFIG["smtp"][config]
 end
+Devise.setup do |config|
+	 config.mailer_sender = CONFIG['recovery_password_from']
+end
