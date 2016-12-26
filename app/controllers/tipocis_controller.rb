@@ -1,6 +1,7 @@
 class TipocisController < ApplicationController
   # GET /tipocis
   # GET /tipocis.json
+    before_filter :authenticate_user!
   authorize_resource 
   def index
     @tipocis = Tipoci.all

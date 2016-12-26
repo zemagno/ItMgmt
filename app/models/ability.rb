@@ -62,6 +62,7 @@ class Ability
     cannot :manage, Dicdado 
     cannot :manage, Cadrelatorio
 
+
     # ATENCAO ---> SEMPRE DESAUTORIZAR NO SUPORTE !!!! OU inverter condicao
 
 

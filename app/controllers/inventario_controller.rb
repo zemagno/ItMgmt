@@ -1,6 +1,7 @@
 class InventarioController < ApplicationController
 
   layout 'application_inventario'
+  
 
   # authorize_resource
 

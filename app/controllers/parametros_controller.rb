@@ -1,6 +1,7 @@
 class ParametrosController < ApplicationController
   # GET /parametros
   # GET /parametros.xml
+    before_filter :authenticate_user!
   authorize_resource
   def index
     @parametros = Parametro.all

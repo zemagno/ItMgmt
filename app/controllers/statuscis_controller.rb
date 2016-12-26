@@ -2,6 +2,7 @@ class StatuscisController < ApplicationController
   # GET /statuscis
   # GET /statuscis.json
   authorize_resource 
+    before_filter :authenticate_user!
   def index
     @statuscis = Statusci.all
 

@@ -1,5 +1,7 @@
 class AtributosController < ApplicationController
 
+  before_filter :authenticate_user!
+
 def index
    
     @search_atributo = params[:search_atributo] || session[:search_atributo]

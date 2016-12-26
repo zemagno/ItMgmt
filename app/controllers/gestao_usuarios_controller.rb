@@ -1,5 +1,5 @@
 class GestaoUsuariosController < ApplicationController
-
+  before_filter :authenticate_user!
 
 def load
   @erros = []

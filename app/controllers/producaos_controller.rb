@@ -1,5 +1,5 @@
 class ProducaosController < InheritedResources::Base
-
+  before_filter :authenticate_user!
   def index2
     @producaos = Producao.paginate(:page => params[:page])
 

@@ -2,6 +2,8 @@ require 'action_controller/metal/renderers'
 require 'csv'
 
 
+
+
 ActionController.add_renderer :csv do |csv, options|
   self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
 end
@@ -10,6 +12,8 @@ end
 class RelatorioController < ApplicationController
   # layout 'relatorio'
   #authorize_resource
+
+  before_filter :authenticate_user!s
 
   def to_xml (titulo, header, _fields)
     builder = Nokogiri::XML::Builder.new do |xml|

@@ -4,6 +4,8 @@ class CadrelatoriosController < ApplicationController
 
   before_action :carrega_agregadas
 
+  before_filter :authenticate_user!
+
   def carrega_agregadas
     Rails.logger.debug "[DEBUG] CadrelatoriosController: carrega_agregadas"
     @tiposci = Tipoci.all

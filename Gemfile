@@ -17,6 +17,7 @@ group :test, :development do
 end
 
 gem 'devise'
+# gem "devise-async"
 
 gem "lograge" # formatador de log
 gem 'logstash-event' # gerar formato do log compativel com logstash

@@ -1,6 +1,7 @@
 class FuncionariosController  < InheritedResources::Base
   # actions :index, :edit
   load_and_authorize_resource
+    before_filter :authenticate_user!s
 
   def load_custom_attributes
     puts "FuncionariosController::load_custom_attributes"

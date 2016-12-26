@@ -1,6 +1,7 @@
 class SqlTemplatesController < InheritedResources::Base
   before_action :default_mode
   authorize_resource
+  before_filter :authenticate_user!
 
   def templates_async
     arr = []

@@ -2,6 +2,7 @@ class DicdadosController < ApplicationController
   # GET /dicdados
   # GET /dicdados.xml
   authorize_resource
+    before_filter :authenticate_user!
   
 
   def carrega_agregadas

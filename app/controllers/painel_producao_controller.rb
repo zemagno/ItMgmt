@@ -1,5 +1,5 @@
 class PainelProducaoController < ApplicationController
-
+  before_filter :authenticate_user!
   def index
     @painel = []
     Cadrelatorio.where("dashboard like \"%#{params[:id]}%\"").each do |c|
