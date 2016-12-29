@@ -14,8 +14,11 @@
         .form-group
           label[for="tipoci_id"]
             | Tipo do Ativo:  
-          .bC
           = f.select :tipoci_id, @tabs.collect { |c| [ c[1],c[0] ] }, {},  { class: "form-control" , autofocus: ""}
+        / .form-group
+          label[for="tipoci_id"]
+            | Tab da Vizualização do Ativo:  
+          = f.select :tipoci_id, @tabs.collect { |c| c[2] }.uniq.compact.sort, {},  { class: "form-control" , autofocus: ""}
         .form-group
           label[for="nome"]
             | Nome:

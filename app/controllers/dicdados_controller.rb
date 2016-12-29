@@ -8,6 +8,11 @@ class DicdadosController < ApplicationController
   def carrega_agregadas
     @tipocis = Tipoci.all
     @tabs = @tipocis.map { |x| [x.id,x.tipo,x.tab] }
+    @tabs.each do |x|
+      x[2] = "" if x[2].nil?
+      x[2] = x[2].split(",")
+    end
+    # @tabs.map!{ |x| x[2] = "" if x[2].nil?}
   end
 
   def index

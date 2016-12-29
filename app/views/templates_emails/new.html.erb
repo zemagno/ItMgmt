@@ -1,3 +1,41 @@
+<script type="text/javascript">
+
+function showOrHideTemplateEmail(id,_condition) {
+  if ( _condition == '0')
+      {
+        $(id).show();
+      }
+      else
+      {
+        $(id).hide();
+      }
+    }
+
+$(document).ready(function(){
+    $('#tipo_envio').on('change', function() {
+      showOrHideTemplateEmail("#template",this.value);
+    });
+});
+
+
+window.onload = function() {
+  showOrHideTemplateEmail("#template", $("#tipo_envio").val());
+};
+
+
+// $('#tipo_envio').on('change', function() {
+    //   if ( this.value == '0')
+    //   {
+    //     $("#template").show();
+    //   }
+    //   else
+    //   {
+    //     $("#template").hide();
+    //   }
+    // });
+
+</script>
+
 <h1>Novo Email</h1>
 
 <%= render 'form' %>
