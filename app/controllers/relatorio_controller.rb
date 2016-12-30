@@ -13,7 +13,7 @@ class RelatorioController < ApplicationController
   # layout 'relatorio'
   #authorize_resource
 
-  before_filter :authenticate_user!s
+  before_filter :authenticate_user!
 
   def to_xml (titulo, header, _fields)
     builder = Nokogiri::XML::Builder.new do |xml|
