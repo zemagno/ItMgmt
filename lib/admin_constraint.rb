@@ -1,9 +1,16 @@
-# class AdminConstraint
-#   def matches?(request)
-#     # return false unless request.cookie_jar['user_credentials'].present?
-#     # user = User.find_by_persistence_token(request.cookie_jar['user_credentials'].split(':')[0])
-#     # user && user.admin?
-#   	# can? :manage, :user
-  	
-#   end
-# end
+class AdminConstraint
+    def initialize(action, resource)
+        @action = action
+        @resource = resource
+    end
+ 
+    def matches?(request)
+        if request.session['warden.user.user.key'].present?
+            current_user = User.find(request.session["warden.user.user.key"][0][0])
+            ability = Ability.new(current_user)
+            return ability.can?(@action, @resource)
+        else
+            return false
+        end
+    end
+end

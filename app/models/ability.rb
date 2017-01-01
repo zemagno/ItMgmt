@@ -135,6 +135,7 @@ class Ability
     if user and user.is_a :admin
       can :manage, :all
       can :admin, :all
+      can :manage, :sidekiq
     end
 
     if user and user.is_a :mailing

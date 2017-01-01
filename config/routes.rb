@@ -75,7 +75,7 @@ ItMgmt::Application.routes.draw do
 
   root "cis#index"
 
-  mount Sidekiq::Web, at: '/sidekiq' #,  :constraints => AdminConstraint.new
+  mount Sidekiq::Web, at: '/sidekiq' ,  :constraints => AdminConstraint.new(:manage, :sidekiq)
 
   resources :ramal, :only => [:index]
  
