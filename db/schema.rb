@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161225151054) do
+ActiveRecord::Schema.define(version: 20170102170755) do
 
   create_table "MapeamentoLocalTrabalho", id: false, force: :cascade do |t|
     t.string  "NomSite",                limit: 30
@@ -614,7 +614,7 @@ ActiveRecord::Schema.define(version: 20161225151054) do
   create_table "log_cis", force: :cascade do |t|
     t.integer  "ci_id",      limit: 4
     t.string   "userid",     limit: 255
-    t.date     "data"
+    t.datetime "data"
     t.string   "historico",  limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false

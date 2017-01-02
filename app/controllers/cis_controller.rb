@@ -48,6 +48,8 @@ class CisController < ApplicationController
     @ci = Ci.find(id)
     @logs = @ci.log_ci
 
+    carrega_atributos2
+
     render :log and return
 
   end
