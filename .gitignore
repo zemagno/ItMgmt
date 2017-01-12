@@ -28,4 +28,5 @@ getsql.sh
 /public/assets/**
 *.lock
 *.old
+*.out
 

@@ -82,12 +82,8 @@ class Ci < ActiveRecord::Base
 
   scope :por_tipo, lambda { |t| where("tipoci_id in (?)", t) }
   default_scope { order('chave ASC') }
-  #sphinx_scope order('chave ASC')
 
 
-  def teste
-
-  end
 
   def to_s
     "Chave:#{chave} : #{descricao} : Tipo: #{nice_tipoci} : Status:#{status} : Owner:#{self.Owner} : Usuario: #{notificacao} : Site: #{self.nome_localidade}"
@@ -247,7 +243,7 @@ class Ci < ActiveRecord::Base
     tipoci.dicdados.map { |x| @attr_existentes[x.id] = [x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab, x.bloqueado] }
 
     # populo o @attr_existentes com os valores dos atributos EXISTENTE na base de dados
-    atributo.map do |x|
+    atributo.includes(:dicdado).map do |x|
       
       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
       # entao eu crio esse atributo no hash
@@ -364,7 +360,7 @@ class Ci < ActiveRecord::Base
 
   def atualiza_statusci
     self.oldStatusci_id = self.statusci_id_was if self.statusci_id_changed?
-    # BRE SUSPENSO BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
+    BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
   end
 
   def post_create_processing

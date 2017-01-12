@@ -99,10 +99,16 @@ script
               = f.text_field :ProjetoCredito , placeholder: "Projeto para Debito Mensal",  class: "form-control"
             .row
             .form-group.col-xs-4
+              label[for="tipoCobranca"]
+                | Cobrar:  
+              .input-container
+                / = f.select :statusci_id, @statusci.collect { |c| [ c.status, c.id ] }, {}, { class: "form-control" }  
+                = f.select :tipoCobranca, Ci.tipoCobrancas, {}, {class: "form-control" , :disabled => ! (can? :manage, CanHelperFinanceiroTi) }          
+            .form-group.col-xs-4
               label[for="codigocobranca"]
                 | Codigo de Cobrança:
               = f.text_field :codigocobranca , placeholder: "Codigo adicional a ser utilizada na cobranca mensal",  class: "form-control",:disabled => ! (can? :manage, CanHelperFinanceiro)
-            .form-group.col-xs-8
+            .form-group.col-xs-4
               label[for="descricaocobranca"]
                 | Descrição da Cobrança:
               = f.text_field :descricaocobranca , placeholder: "Descrição a ser utilizada na cobrança mensal",  class: "form-control", :disabled => ! (can? :manage, CanHelperFinanceiro)
