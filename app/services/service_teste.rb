@@ -1,7 +1,7 @@
 class ServiceTeste
   def go
     ci = Ci.find(12236)
-    b =  '{ "fields" : { "tipoCobranca":"2", "Owner":"BRQA" , "notificacao":"eBRQ" , "statuci_id":"8"}}'
+    b =  '{ "fields" : { "tipoCobranca":"2", "Owner":"lixao" , "notificacao":"eBRQ" , "statusci_id":"8"}}'
     # b =  '{ "fields" : { "tipoCobranca" : 0}}'
     a = JSON.parse(b)
     a["fields"].each do |x|

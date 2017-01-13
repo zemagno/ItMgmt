@@ -262,7 +262,7 @@ class Ci < ActiveRecord::Base
 
   def limpa_atributos_outros_tipo
     Rails.logger.debug "[DEBUG] Ci.limpa_atributos_outros_tipo: id:[#{self.id}]:#{self.chave} tipoci_id:[#{tipoci_id}]"
-    atributo.each do |attr|
+    atributo.includes(:dicdado).each do |attr|
       if attr.dicdado.tipoci_id != tipoci_id
         Rails.logger.debug "[DEBUG]     apagando atributo:[#{attr.dicdado_id}]"
         attr.delete
@@ -308,12 +308,14 @@ class Ci < ActiveRecord::Base
       atr = Atributo.find_or_create_by(ci_id: id , dicdado_id: attr[0])
 
       begin #posso nao ter recebido parametro nenhum
-        atr.valor = novos_atributos[attr[1][0]]
-        atr.save
+        if atr.valor != novos_atributos[attr[1][0]]
+          atr.valor = novos_atributos[attr[1][0]]
+          atr.save
+          Rails.logger.debug "DEBUG[I00200] - apos salver um atributo [#{novos_atributos[attr[1][0]]}] #{id} - #{chave}"
+        end
       rescue
         # TODO Log
       end
-      Rails.logger.info "Info[I00200] - apos salver um atributo [#{novos_atributos[attr[1][0]]}] #{id} - #{chave} - #{nice_atributos}"
     end
 
     limpa_atributos_outros_tipo
@@ -359,6 +361,9 @@ class Ci < ActiveRecord::Base
   end
 
   def atualiza_statusci
+    puts "_______________________________________________________________"
+    puts "before save: atualiza_statusci [#{self.statusci_id_was}] -> [#{self.statusci_id}]"
+    puts "_______________________________________________________________"
     self.oldStatusci_id = self.statusci_id_was if self.statusci_id_changed?
     BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
   end

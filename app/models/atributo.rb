@@ -5,7 +5,7 @@ class Atributo < ActiveRecord::Base
   belongs_to :ci  ,   touch: true
   belongs_to :dicdado
 
-  after_commit :debug_atributo, ThinkingSphinx::RealTime.callback_for(:ci,[:ci])
+  after_commit  ThinkingSphinx::RealTime.callback_for(:ci,[:ci]) #, :debug_atributo
   #after_touch :clear_association_cache
 
   def self.esta_em_uso?(iddic)
@@ -28,7 +28,7 @@ class Atributo < ActiveRecord::Base
 
   private
   def debug_atributo
-     Rails.logger.info "Info[I00100] - after_update #{ci_id} - #{ci.chave} - #{ci.nice_atributos}"
+     Rails.logger.debug "Info[I00100] - after_update #{ci_id} - #{ci.chave} - #{ci.nice_atributos}"
   end
 
 end

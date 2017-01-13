@@ -22,6 +22,18 @@ class Bre
     ComandosAutomacao.create(:comando => "CriarEmailExterno", :target => "LINUX", :parametro => "#{_obj.chave},#{_obj.descricao}", :status => 0 )
   end
 
+  def aplicarParametros(_what,_obj)
+    acao = JSON.parse(Parametro.get({:tipo => "BRE", :subtipo => _what}))
+    Rails.logger.debug "[DEBUG]BRE:aplicarParametros: [#{acao}]"
+    acao["fields"].each do |x|
+      begin
+        _obj.send("#{x[0]}=", x[1])
+      rescue
+      end
+    end
+    # _obj.save!
+  end
+
   def confirmaCC(_obj)
     # esperar 1 hora, pois o primeiro save do CI nao tem os detalhes...
   end
