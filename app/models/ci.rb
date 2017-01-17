@@ -136,7 +136,7 @@ class Ci < ActiveRecord::Base
 
 
   def self.tipoCobrancas
-    [["Nao Cobrar", 0], ["Cobrar do Projeto", 1], ["Cobrar do Usuario", 2]]
+    [["Nao Cobrar", 0], ["Cobrar do Projeto", 1], ["Cobrar do Usuario", 2],["Cobranca Gerencial", 3]]
   end
 
 
@@ -148,6 +148,8 @@ class Ci < ActiveRecord::Base
       "Cobrar do Projeto (#{self.descricaocobranca}/#{self.codigocobranca})"
     when 2
       "Cobrar do Usuario"
+    when 3
+      "Cobranca Gerencial"
     else
       "Nao Cobrar"
     end

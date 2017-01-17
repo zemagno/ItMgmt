@@ -15,7 +15,7 @@ class ServiceCargaProjetos
     projetosRm.each do |p|
       projeto = ProjetosBrq.new
       columns.each  do |c|
-        projeto.send("#{c}=", p[c].force_encoding("ISO-8859-1").encode("UTF-8")) if (projeto.respond_to?(c) and p[c].is_a? String)
+        projeto.send("#{c}=", p[c]) if (projeto.respond_to?(c) and p[c].is_a? String)
         projeto.send("#{c}=", p[c]) if (projeto.respond_to?(c) and ! (p[c].is_a? String))
       end
       projeto.save!

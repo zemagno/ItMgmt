@@ -9,9 +9,9 @@ def go
 	if carga != 0 
 		MapaPosicao.delete_all
 	    MapaPosicaoRm.all.each do |m|
-		   m.NomSite = m.NomSite.force_encoding("ISO-8859-1").encode("UTF-8")
-		   m.NomAndarSite = m.NomAndarSite.force_encoding("ISO-8859-1").encode("UTF-8")
-		   m.NomTipoPosicao = m.NomTipoPosicao.force_encoding("ISO-8859-1").encode("UTF-8")
+		   # m.NomSite = m.NomSite.force_encoding("ISO-8859-1").encode("UTF-8")
+		   # m.NomAndarSite = m.NomAndarSite.force_encoding("ISO-8859-1").encode("UTF-8")
+		   # m.NomTipoPosicao = m.NomTipoPosicao.force_encoding("ISO-8859-1").encode("UTF-8")
 		   MapaPosicao.create(m.attributes)
 		   total = total + 1
 		end

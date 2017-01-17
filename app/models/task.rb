@@ -30,12 +30,8 @@ class Task < ActiveRecord::Base
 
 
 
-  def self.ativos
-    Task.find(:all, :order => "criticidade_id, created_at DESC", :conditions => "Ativo=1")
-  end
-
   def self.todos
-    Task.find(:all, :order => "created_at DESC")
+    Task.order("created_at DESC")
   end
 
   def self.abertas
@@ -47,7 +43,12 @@ class Task < ActiveRecord::Base
   end
 
   def self.publicas
-    Task.find(:all, :order => "criticidade_id, created_at DESC", :conditions => "Ativo=1 and publica=1")
+    Task.where("Ativo=1 and publica=1").order("criticidade_id, created_at DESC")
+  end
+
+
+  def self.ativos
+    Task.where("Ativo=1").order("criticidade_id, created_at DESC")
   end
 
   def nome_autor

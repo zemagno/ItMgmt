@@ -1,6 +1,6 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
-    execute %Q{ DROP table users if exists users ; }
+    execute %Q{ DROP table if exists users ; }
     create_table :users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""

@@ -24,10 +24,11 @@ $(document).ready( function(){
 <div class="panel panel-default">
    <% if ! @publico %>
       <div class="panel-heading">
-           <%= link_to 'Relatorios', cadrelatorios_path, class: "btn btn-primary btn-xs"  %>
            <% if can? :manage, :all %>
                <%= link_to 'Editar Relatorio', edit_cadrelatorio_path(@relatorio), class: "btn btn-primary btn-xs" if ! @relatorio.nil? %>
            <% end %>
+           <%= link_to 'Relatorios', cadrelatorios_path, class: "btn btn-primary btn-xs"  %>
+
            <%= link_to 'Link Relatorio Publico', relatorio_publico_path(@relatorio.nome), class: "btn btn-primary btn-xs" if (! @relatorio.nil?) && (current_user) %>
            Relatorio: <%= @NomeRelatorio %>
       </div>

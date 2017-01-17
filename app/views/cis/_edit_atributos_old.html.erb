@@ -1,0 +1,53 @@
+<% @atributos ||= [] %>
+<% @atributos.map do |dicdado,attr| %>
+
+
+  <!-- attr[0] nome e attr[1] - valor -->
+  <div class="spacer"></div>
+  <label><%= attr[0] %>
+  <span class="small"><%= attr[4]%></span>
+  </label>
+  
+  <% if ! attr[3].blank? %>
+ 
+         <!--se tem valores predefinidos, monto combobox , senao input normal-->
+         <select name="atributos[<%= attr[0]%>]">
+              <%= helper_gen_combobox(attr[3],attr[1]).html_safe %>
+         </select> 
+  <% elsif attr[6] && attr[6]=="checkbox" %>
+        <input name="atributos[<%= attr[0]%>]" 
+           type="checkbox"  
+           value="<%=attr[1]%>" 
+           <%= "checked" if attr[1]=="1" %> />
+  <% elsif attr[6] && attr[6]=="data" %>
+       <input name="atributos[<%= attr[0]%>]"
+          class="datepick"
+          value="<%=attr[1]%>" />
+
+  <% else %>
+        <input name="atributos[<%= attr[0]%>]" 
+           size="50" 
+           type="text" 
+           <%= attr[8] ? "required" : "" %> 
+           pattern="<%= attr[7].blank? ? "[\\s\\S]+" : attr[7] %>" 
+           value="<%=attr[1]%>" />
+           <%= attr[8] ? "Mandatorio" : "" %>
+  <% end %>
+  <% if !attr[9].blank? %>
+     <%= tooltip "(?)", { :tooltip => attr[9] }, :class => 'mytooltip' %>
+  <% end %>
+<% end %>
+
+
+
+<!-- 
+attr[0] = Nome
+attr[1] = valor
+attr[2] = URL
+attr[3] = Valores (combobos)
+attr[4] = descricao
+attr[5] = apelido
+attr[6] = tipo
+attr[7] = regex
+attr[8] = Mandatorio
+ -->
