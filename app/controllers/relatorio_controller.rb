@@ -13,7 +13,7 @@ class RelatorioController < ApplicationController
   # layout 'relatorio'
   #authorize_resource
 
-  before_filter :authenticate_user!
+    before_filter :authenticate_user!, :except => :index_publico
 
   def to_xml (titulo, header, _fields)
     builder = Nokogiri::XML::Builder.new do |xml|
@@ -53,7 +53,7 @@ class RelatorioController < ApplicationController
   def executa_relatorio
     begin
       regexParams = /\{([a-z]+)}/
-      authorize!(:index, "relatorio")
+
       @relatorio = Cadrelatorio.find_by_nome(params[:id])
       @relatorio.AtualizaEstatisticas
       sql = @relatorio.consulta
@@ -95,6 +95,7 @@ class RelatorioController < ApplicationController
 
 
   def index
+    authorize!(:index, "relatorio")
     executa_relatorio
     to_xml(params[:id],@campos,@resultado)
     @publico = false
