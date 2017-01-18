@@ -527,6 +527,7 @@ class CisController < ApplicationController
 
   def eliminar
     @ci = Ci.find(params[:idci])
+    carrega_atributos2
     if (params[:id]==params[:idci]) && (params['Digite ELIMINAR']==params['token_confirmacao'])
       chave = @ci.chave
       @ci.destroy

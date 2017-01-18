@@ -7,7 +7,7 @@
  <% end %>
 <div id="stylized" class="myform">
 
-<h1>Se voce deseja realmente apagar em definitivo o CI baixo, digite ELIMINAR<%=@ci.id%></h1>
+<h1>Se voce deseja realmente apagar em definitivo o CI baixo, digite <%=@ci.chave%></h1>
 
 <br>
 
@@ -15,7 +15,7 @@
 <%= form_tag(eliminar_ci_path, :method => "post") do %>
  
   <%= text_field_tag("Digite ELIMINAR", @confirmacao, :size => 50) %>
-  <%= hidden_field_tag 'token_confirmacao','ELIMINAR'+@ci.id.to_s%>
+  <%= hidden_field_tag 'token_confirmacao',@ci.chave.to_s%>
   <%= hidden_field_tag 'idci', @ci.id%>
   <%= submit_tag("Eliminar") %>
 <% end %>
