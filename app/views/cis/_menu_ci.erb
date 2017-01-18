@@ -32,7 +32,7 @@
 <% end %>
 
 <% if can? :manage, Audit %>
-   <a href="<%='/audits?&search=(@tipoci=ci @onde='+@ci.id.to_s+') | (@tipoci=atributo @relacionado='+@ci.id.to_s+')'%>" class="btn btn-primary btn-xs margin-botton" >Auditoria deste CI</a>
+   <a href="<%='/audits?&auditable_type=Ci&auditable_type_filho=Atributo&id='+@ci.id.to_s %>" class="btn btn-primary btn-xs margin-botton" >Auditoria deste CI</a>
 <% end %>
 <div id="enviar_email_ci_old"></div>
 
