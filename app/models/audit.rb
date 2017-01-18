@@ -10,7 +10,7 @@ class Audit < ActiveRecord::Base
   after_save ThinkingSphinx::RealTime.callback_for(:audit)
 
   def user_name
-     (user.blank? ? "Indefinido" : user.name)
+     (user.blank? ? "Indefinido" : user.internal_login)
   end
 
 end
