@@ -5,6 +5,7 @@ $(document).ready( function(){
     $('#coolTable').DataTable({
       pageLength: 100,
       pagingType: "full_numbers",
+      order: [[0,desc]],
        language: { 
           search: "Filtrar:" ,
           infoFiltered: "(Total de _MAX_ registros)",
@@ -46,7 +47,7 @@ $(document).ready( function(){
     <td><%= audit.created_at.in_time_zone("Brasilia").strftime("%Y/%m/%d-%H:%M") %></td>
     <td><%= audit.user_name %></td>
     <td><%= "#{audit.action}/#{audit.auditable_type}" %></td>
-    <td><%= content_tag('pre',audit.audited_changes) %></td>
+    <td><%= content_tag('pre',"#{audit.comment}\n#{audit.audited_changes}") %></td>
     <td><%= audit.remote_address %></td>
 
     

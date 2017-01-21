@@ -312,6 +312,7 @@ class Ci < ActiveRecord::Base
       begin #posso nao ter recebido parametro nenhum
         if atr.valor != novos_atributos[attr[1][0]]
           atr.valor = novos_atributos[attr[1][0]]
+          atr.audit_comment = attr[1][0]
           atr.save
           Rails.logger.debug "DEBUG[I00200] - apos salver um atributo [#{novos_atributos[attr[1][0]]}] #{id} - #{chave}"
         end
