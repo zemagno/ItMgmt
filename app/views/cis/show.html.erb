@@ -3,7 +3,7 @@
 	<div class="panel-body">
 
   <%= form_tag(cis_path, :method => "get") do %>
-     <%= text_field_tag(:search, @search, :size => 50) %>
+     <%= text_field_tag(:search_ci, @search_ci, :size => 50) %>
     <%= submit_tag("Procurar", class: "btn btn-primary btn-xs") %>
     
   <% end %>

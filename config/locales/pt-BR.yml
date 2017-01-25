@@ -62,6 +62,7 @@ en:
       updated: "Status foi atualizado com sucesso"
       created: "Status foi criado com sucesso"
 
+
 pt-BR:
   errors:
     format: "%{message}" 

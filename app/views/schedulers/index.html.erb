@@ -49,9 +49,9 @@ $('#coolTable').DataTable({
           <% if (can? :manage, Scheduler)  %>
           <td>
             <%= link_to 'Editar', edit_scheduler_path(scheduler), class: "btn btn-primary btn-xs" %>
-            <%= link_to 'Rodar', scheduler_run_path(scheduler) ,method: :post, data: { confirm: 'Confirma executar esse job agora ?' } , class: "btn btn-primary btn-xs"%>
+            <%= link_to 'Rodar', scheduler_run_path(scheduler) ,method: :post, data: { confirm: 'Confirma executar esse job agora ?' } , class: "btn btn-success btn-xs"%>
+            <%= tela_ajuda(scheduler.job, "btn btn-primary btn-xs")  %>
             <%= link_to 'Excluir', scheduler, method: :delete, data: { confirm: 'Tem certeza que deseja eliminar esse job ?' } , class: "btn btn-danger btn-xs"%>
-            <%= tela_ajuda(scheduler.job, "btn btn-success btn-xs")  %>
           </td>
         </td>
         <% end %>

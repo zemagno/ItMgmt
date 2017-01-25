@@ -380,3 +380,87 @@
 [2529] 17 Jan 21:52:30.837 * Saving the final RDB snapshot before exiting.
 [2529] 17 Jan 21:52:30.838 * DB saved on disk
 [2529] 17 Jan 21:52:30.838 # Redis is now ready to exit, bye bye...
+[1434] 24 Jan 22:10:42.005 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[1434] 24 Jan 22:10:42.007 * Max number of open files set to 10032
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.3 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 1434
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[1434] 24 Jan 22:10:42.011 # Server started, Redis version 2.8.3
+[1434] 24 Jan 22:10:42.012 * DB loaded from disk: 0.001 seconds
+[1434] 24 Jan 22:10:42.012 * The server is now ready to accept connections on port 6379
+nohup: redis-serve: No such file or directory
+[960] 24 Jan 22:14:01.972 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
+[960] 24 Jan 22:14:01.973 * Max number of open files set to 10032
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 2.8.3 (00000000/0) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 960
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+[960] 24 Jan 22:14:01.977 # Server started, Redis version 2.8.3
+[960] 24 Jan 22:14:01.992 * DB loaded from disk: 0.015 seconds
+[960] 24 Jan 22:14:01.992 * The server is now ready to accept connections on port 6379
+[960] 24 Jan 23:14:02.088 * 1 changes in 3600 seconds. Saving...
+[960] 24 Jan 23:14:02.089 * Background saving started by pid 1607
+[1607] 24 Jan 23:14:02.094 * DB saved on disk
+[960] 24 Jan 23:14:02.189 * Background saving terminated with success
+[960] 25 Jan 08:10:24.831 * 1 changes in 3600 seconds. Saving...
+[960] 25 Jan 08:10:24.831 * Background saving started by pid 2827
+[2827] 25 Jan 08:10:24.834 * DB saved on disk
+[960] 25 Jan 08:10:24.931 * Background saving terminated with success
+[960] 25 Jan 09:10:25.008 * 1 changes in 3600 seconds. Saving...
+[960] 25 Jan 09:10:25.011 * Background saving started by pid 2893
+[2893] 25 Jan 09:10:25.015 * DB saved on disk
+[960] 25 Jan 09:10:25.121 * Background saving terminated with success
+[960] 25 Jan 10:15:47.637 * 1 changes in 3600 seconds. Saving...
+[960] 25 Jan 10:15:47.637 * Background saving started by pid 3052
+[3052] 25 Jan 10:15:47.638 * DB saved on disk
+[960] 25 Jan 10:15:47.739 * Background saving terminated with success
+[960] 25 Jan 10:50:20.213 * 100 changes in 300 seconds. Saving...
+[960] 25 Jan 10:50:20.214 * Background saving started by pid 3495
+[3495] 25 Jan 10:50:20.215 * DB saved on disk
+[960] 25 Jan 10:50:20.315 * Background saving terminated with success
+[960] 25 Jan 11:50:21.019 * 1 changes in 3600 seconds. Saving...
+[960] 25 Jan 11:50:21.020 * Background saving started by pid 3582
+[3582] 25 Jan 11:50:21.022 * DB saved on disk
+[960] 25 Jan 11:50:21.122 * Background saving terminated with success
+[960] 25 Jan 12:50:22.050 * 1 changes in 3600 seconds. Saving...
+[960] 25 Jan 12:50:22.051 * Background saving started by pid 3761
+[3761] 25 Jan 12:50:22.054 * DB saved on disk
+[960] 25 Jan 12:50:22.159 * Background saving terminated with success
+[960] 25 Jan 14:04:44.227 * 1 changes in 3600 seconds. Saving...
+[960] 25 Jan 14:04:44.228 * Background saving started by pid 3936
+[3936] 25 Jan 14:04:44.230 * DB saved on disk
+[960] 25 Jan 14:04:44.332 * Background saving terminated with success
+[960 | signal handler] (1485363759) Received SIGTERM, scheduling shutdown...
+[960] 25 Jan 15:02:39.956 # User requested shutdown...
+[960] 25 Jan 15:02:39.956 * Saving the final RDB snapshot before exiting.
+[960] 25 Jan 15:02:39.961 * DB saved on disk
+[960] 25 Jan 15:02:39.961 # Redis is now ready to exit, bye bye...

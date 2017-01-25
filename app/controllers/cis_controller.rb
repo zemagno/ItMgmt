@@ -7,9 +7,12 @@ class CisController < ApplicationController
   include Queueable
   # authorize_resource #cancan
   # skip_authorize_resource :only => :index2
+
+ 
   before_filter :authenticate_user!
 
-  
+
+
   ActionController.add_renderer :csv do |csv, options|
     self.response_body = csv.respond_to?(:to_csv) ? csv.to_csv(options) : csv
   end
@@ -17,19 +20,16 @@ class CisController < ApplicationController
   respond_to :html, :xml, :json, :csv, :js
 
 
-  # @layout 'application_novolyaout'
-
-  # Variaveis geradas por esse controller
-  # @fila_impactados
-  # @fila_dependentes
-  # @imagem_impactados
-  # @imagem_dependentes
-  # @ci
-  # @atributos
-  # @sites
-  # @tiposci
-
-  # TODO colocar carrega agregadas no before_ action/before_filter para alguns metodos abaixo..
+  def carrega_atributos2
+    puts ">>>>>>>>>> carrega atributos2 #{@ci} - #{@ci.tipoci.tipo}"
+    if @ci
+      @tabs = "Principal,Caracteristicas,#{@ci.tipoci.tab}".split(",").uniq
+      @atributos2 = @ci.atributos2
+    else
+      @tabs = "Principal,Caracteristicas".split(",").uniq
+      @atributos2 = []
+    end
+  end
 
   def log
     id = params[:id]
@@ -105,15 +105,7 @@ class CisController < ApplicationController
     render :index and return
   end
 
-  def carrega_atributos2
-    if @ci
-      @tabs = "Principal,Caracteristicas,#{@ci.tipoci.tab}".split(",").uniq
-      @atributos2 = @ci.atributos2
-    else
-      @tabs = "Principal;Caracteristicas"
-      @atributos2 = []
-    end
-  end
+
 
   def show
     @ci, @atributos = Ci.find_com_atributos(params[:id])
@@ -126,7 +118,7 @@ class CisController < ApplicationController
         redirect_to "/cis"
 
       end
-      @search = session[:search_cis]
+      @search_ci = session[:search_ci]
       cache(@ci)
     else
       flash[:error] = "Error[CI0002] - CI \"#{params[:id]}\" Inexistente"
@@ -223,7 +215,7 @@ class CisController < ApplicationController
 
 
   def check_chave
-    @ci = Ci.find_by_chave(params[:search])
+    @ci = Ci.find_by_chave(params[:search_ci])
     respond_to do |format|
       if @ci == nil then
         format.json { render :json => "inexistente"}
@@ -247,26 +239,26 @@ class CisController < ApplicationController
 
   def index
     puts "ops..vim para index"
-    @search = params[:search] || session[:search_cis]
+    @search_ci = params[:search_ci] || session[:search_cis]
 
     @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
-    session[:search_cis] = @search
+    session[:search_cis] = @search_ci
     session[:oldCI] = nil
     session[:view_default_ci] = @view_default_ci
 
 
     begin
-      if @search.blank?
-        @search = "" # title do index espera um @search
+      if @search_ci.blank?
+        @search_ci = "" # title do index espera um @search
         Rails.logger.debug "[DEBUG]CisController:index procurando por tudo (sem parametro de search)"
         @cis = Ci.joins(:tipoci).paginate(:page => params[:page])
-      elsif @search[0] =="%"
+      elsif @search_ci[0] =="%"
         # TODO documentar isso ..
-        @cis = Ci.joins(:atributo).where("atributos.valor like ?", @search).paginate(:page => params[:page])
+        @cis = Ci.joins(:atributo).where("atributos.valor like ?", @search_ci).paginate(:page => params[:page])
       else
         # TODO colocar o finalAuth[view] nesse search.
-        Rails.logger.debug "[DEBUG]#{request.fullpath}: search : [#{@search}]"
-        @cis = Ci.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page] , :with => {
+        Rails.logger.debug "[DEBUG]#{request.fullpath}: search : [#{@search_ci}]"
+        @cis = Ci.search @search_ci, :match_mode => :boolean, :per_page => 20, :page => params[:page] , :with => {
           :tipoci_id => finalAuth[:view]
         }
         # @cis.length
@@ -304,7 +296,7 @@ class CisController < ApplicationController
   def new
     @ci = Ci.new
     carrega_agregadas
-    @tabs = "Principal,Caracteristicas".split(",").uniq
+    @tabs = ["Principal"]
     @oldci = session[:oldCI]==nil ? nil : Ci.find(session[:oldCI])
   end
 
@@ -319,11 +311,15 @@ class CisController < ApplicationController
     end
     respond_to do |format|
       if @ci.save
+        puts ">>> Salvei...vou editar..."
         flash[:info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
         format.html {redirect_to(:action => 'edit', :id => @ci.id) }
       else
+        puts ">>>> Nao salvei...volto para o new."
         carrega_agregadas
-        carrega_atributos2
+        @atributos2 = nil
+        @atributos = nil
+        @tabs = ["Principal"]
         format.html { render :action => "new" }
       end
     end
@@ -351,10 +347,10 @@ class CisController < ApplicationController
 
   def search
     Rails.logger.debug "[DEBUG] CisController::search - params: #{params}"
-    @ci = Ci.find_by_chave(params[:search])
+    @ci = Ci.find_by_chave(params[:search_ci])
 
     if @ci == nil then
-      flash[:error] = "CI: \"#{params[:search]}\" nao encontrado"
+      flash[:error] = "CI: \"#{params[:search_ci]}\" nao encontrado"
       # @ci = Ci.find(session[:oldCI])
       # @atributos = @ci.atributos
       @ci, @atributos = Ci.find_com_atributos(session[:oldCI])

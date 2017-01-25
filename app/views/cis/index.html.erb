@@ -1,4 +1,4 @@
-<% title "GAM. Ativos: [#{@search[0..15]}]" %>
+<% title "GAM. Ativos: [#{@search_ci[0..15]}]" %>
 <div class="panel panel-default">
   
   <div class="panel-heading">
@@ -7,7 +7,7 @@
   
   <%= form_tag(cis_path, :method => "get", :class => "panel-body") do %>
     <%= select_tag :view_default_ci, options_for_select(@views_ci, @view_default_ci), :onchange => "this.form.submit();"  %>
-    <%= text_field_tag(:search, @search, :size => 50, :autofocus => true ) %>
+    <%= text_field_tag(:search_ci, @search_ci, :size => 50, :autofocus => true ) %>
     <%= button_tag(type: "submit", class: "btn btn-primary btn-xs") do %>
     Procurar
     <% end %>

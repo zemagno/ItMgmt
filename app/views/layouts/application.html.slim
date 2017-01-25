@@ -22,8 +22,8 @@ telhtml
     /= javascript_include_tag "jquery.datetimepicker.js"
     = stylesheet_link_tag "itam.css"
     = csrf_meta_tag
-  body.condtainer
-    - if user_signed_in? #true or (current_user and ! current_user.is_a :usuario)
+  body
+    - if user_signed_in? && (! current_user.is_a :usuario)
         = render :partial => "menu_principal" 
         .painel
             = render :partial => "mostra_erros"
@@ -36,6 +36,19 @@ telhtml
               img[src="/logo-64x64.jpg"]
               spam Sistema de Gestao de Ativos - 
               spam = "Ver: #{CONFIG['system_version']}" 
+    - if user_signed_in? && (current_user.is_a :usuario)
+      div
+        = stylesheet_link_tag "tela_login.css"
+        .jumbotron.vertical-center
+          h1
+            | GAM - Sistema de Gestao de Ativos 
+          p
+            | Bem vindo ao sistema de Gestão de Ativos..
+          p
+            | Voce já está logado. Porem, não tem acesso a nenhuma funcionalida. Ainda !!
+          p
+            | Peça para o administrador lhe conceder acesso...</p>
+
     - if ! user_signed_in?
       div
         = stylesheet_link_tag "tela_login.css"

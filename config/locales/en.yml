@@ -82,3 +82,9 @@ en:
     templates_email:
       updated: "Template foi atualizado com sucesso"
       created: "Template foi criado com sucesso"
+  schedulers:
+    create:
+      notice: "aaa."
+  Scheduler:
+    create:
+      notice: "aaa."

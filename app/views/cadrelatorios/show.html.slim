@@ -44,6 +44,7 @@
             textarea.list-group-item-text.itam_edit_sql[readonly rows="20" style="min-width: 100%"]
               = @cadrelatorio.consulta
           
-    = link_to 'Resultado', relatorio_path(@cadrelatorio.nome) , :class => "btn btn-primary btn-md margin-left"
+    = link_to 'Resultado', relatorio_path(@cadrelatorio.nome) , :class => "btn btn-success btn-md margin-left"
     = link_to 'Editar', edit_cadrelatorio_path(@cadrelatorio), :class => "btn btn-primary btn-md margin-left"
     = link_to 'Relatorios', cadrelatorios_path , :class => "btn btn-primary btn-md margin-left"
+br    

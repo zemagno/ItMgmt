@@ -42,6 +42,7 @@ class EmailController < ApplicationController
           parametros[:ci_site] =ci.site.nome
           parametros[:email_impactados] = Rails.cache.read("impactados-#{ci.id}-email")
           parametros[:ci_customensal] =  ActionController::Base.helpers.number_to_currency(ci.CustoMensal)
+          parametros[:ci_nice_status] = ci.nice_status
           ci.atributos.keys.each do |k|
               # 5o atributo é o apelido
               parametros["ci_#{ci.atributos[k][5]}".downcase.to_sym] = ci.send("_#{ci.atributos[k][5]}") unless ci.atributos[k][5].blank?
@@ -49,10 +50,12 @@ class EmailController < ApplicationController
 
        #parametros = { ci_chave: ci.chave, ci_owner: ci.Owner, ci_notificacao: ci.notificacao, ci_descricao: ci.descricao, ci_site: ci.site.nome, email_impactados: Rails.cache.read("impactados-#{ci.id}-email") , ci_ccdebito: ci.CCDebito, ci_projetodebito: ci.ProjetoDebito, ci_cccredito: ci.CCCredito, ci_projetocredito: ci.ProjetoCredito}
           
+
+
        end
        puts "*********************************************************************************************************"
-          puts "Parametros #{parametros}"       
-          puts "*********************************************************************************************************"
+       puts "Parametros #{parametros}"       
+       puts "*********************************************************************************************************"
        @resposta = Hash.new
        [:to,:cc,:body,:subject,:bcc].each do |f|
           @resposta[f] = fill_in(Parametro.get(:tipo => template,:subtipo => f.to_s),parametros)

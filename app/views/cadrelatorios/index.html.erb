@@ -32,6 +32,7 @@
             <td><%= cadrelatorio.dashboard %></td>
             <% if (can? :manage, Cadrelatorio) %>
             <td>
+              <%= link_to 'Resultado', cadrelatorio_path(cadrelatorio.nome), class: "btn btn-success btn-xs" %>
               <%= link_to 'Editar', edit_cadrelatorio_path(cadrelatorio), class: "btn btn-primary btn-xs" %>
               <%= link_to 'Duplicar', duplicar_relatorio_path(cadrelatorio), class: "btn btn-primary btn-xs" %>
               <%= link_to 'Excluir', cadrelatorio,   class: "btn btn-danger btn-xs", method: :delete, data: { confirm: "Voce realmente deseja excluir o relatorio #{cadrelatorio.nome} ?" } %>

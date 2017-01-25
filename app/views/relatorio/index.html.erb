@@ -43,7 +43,7 @@ $(document).ready( function(){
       <thead>
         <tr class="head">
           <% @campos.each do |titulo| %>
-          <th><%= titulo %></th>
+          <th><%= titulo.gsub(/_/," ") %></th>
           <% end %>
         </tr>
       </thead>

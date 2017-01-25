@@ -97,6 +97,6 @@
               .itam-search-menu
                 = form_tag cis_path, class:'navbar-form navbar-right', method: :get do
                   .form-group
-                    = text_field_tag :search, @search, class:'form-control itam-search-menu-input', placeholder: 'procurar por um ativo...';
+                    = text_field_tag :search_ci, @search_ci, class:'form-control itam-search-menu-input', placeholder: 'procurar por um ativo...';
                   button.btn.btn-default[type="submit" name="commit"]
                     | Procurar
