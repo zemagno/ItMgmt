@@ -1,47 +1,54 @@
-<% if can? :manage, :all %>
-  <%= link_to '[Relatorio]', edit_cadrelatorio_path(@relatorio) if ! @relatorio.nil? %>
-<% end %>
-
 <style>
-
-.box-alerta {
+.box-normal {
   float:left;
-  /*background: #4f4f4f;*/
-  background: #a1a8b7;
+  background: #4f4f4f;
+  /*background: #a1a8b7;*/
   border-radius:3px 3px 3px 3px;
   box-shadow: 3px 3px 5px 0 #000;
-  color: #4c4c4c;
+  /*color: #4c4c4c;*/
+  color: white;
   font-family:monospace;
   /*font: "Roboto Slab"*/
   padding: 0px 5px 0px 5px;
-
 }
-
-.box-alerta-critico { background: #f00 }
-
-.box-gmud  { background: #018c85 }
-
-.box-alerta { height: 200px; width: 300px; margin-top:10px; margin-left:10px}
-
-
+.box-alerta-critico { 
+    background: #f00 
+}
+.box-alerta  { 
+    background: #018c85 
+}
+.box-normal { 
+  height: 200px; width: 400px; margin-top:10px; margin-left:10px
+}
 </style>
 
-<% @resultado.each do |fields| %>
-  <div class="box-alerta">
+<div class="panel panel-default">
+  <% if ! @publico %>
+      <div class="panel-heading">
+        <% if can? :manage, :all %>
+            <%= link_to 'Editar Relatorio', edit_cadrelatorio_path(@relatorio), class: "btn btn-primary btn-xs" if ! @relatorio.nil? %>
+        <% end %>
+        <%= link_to 'Relatorios', cadrelatorios_path, class: "btn btn-primary btn-xs"  %>
+        <%= link_to 'Link Relatorio Publico', relatorio_publico_path(@relatorio.nome), class: "btn btn-primary btn-xs" if (! @relatorio.nil?) && (current_user) %>
+        Relatorio: <%= @NomeRelatorio %>
+      </div>
+  <% else %>
+    <div class="panel-heading">
+       <h3><%= @NomeRelatorio %></h3>
+    </div>
+  <% end %> <!-- if publico -->
+  
+  <% @resultado.each do |fields| %>
+
+  <div class="<%= genBoxAlerta(fields[0])%>" >
     <% fields.each_with_index do |valor,i| %>
-      <%= @campos[i] %>:
-      <% puts @campos[i] %>
-      <% puts genField(valor,@campos[i],0,fields) %>
-      <% puts "-------------" %>
-      <%= genField(valor,@campos[i],0,fields).html_safe %> 
+      <% if ! (@campos[i] =~ /^\_\_./)%> 
+        <%= @campos[i] %>:
+        <%= genField(valor,@campos[i],0,fields).html_safe %>
+      <% end %>
       <br>
-    <% end %>
-  </div>
-
-
-
-<% end %>
-
-
-
-
+    <% end %> <!-- fields.each_with_index do --> 
+  </div> <!-- box-alerta -->
+  <% end %> <!-- @resultado.each do -->
+</div> <!-- class="panel panel-default" -->
+</div>

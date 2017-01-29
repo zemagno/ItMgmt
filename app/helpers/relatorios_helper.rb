@@ -38,6 +38,20 @@ module RelatoriosHelper
         res
 	end
 
+    def genBoxAlerta(painel)
+        res="box-normal box-alerta"
+        case painel
+        when "0" 
+            res="box-normal"
+        when "1" 
+            res="box-normal box-alerta"
+        when "2"
+            res="box-normal box-alerta-critico"
+        end
+        res
+
+    end
+
 end	
 #<a href="mailto:email@echoecho.com?body=Please send me a copy of your new program!">Send Email</a> 
 #URI.encode(@resposta[:body])

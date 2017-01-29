@@ -103,7 +103,13 @@ footer {
 
 }
 
-
+.itam_footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
 
 footer img {
     padding: 4px 4px 4px;

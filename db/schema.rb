@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170102170755) do
+ActiveRecord::Schema.define(version: 20170129104413) do
 
   create_table "MapeamentoLocalTrabalho", id: false, force: :cascade do |t|
     t.string  "NomSite",                limit: 30
@@ -117,6 +117,7 @@ ActiveRecord::Schema.define(version: 20170102170755) do
     t.integer  "ordem",         limit: 4,     default: 0
     t.string   "justificativa", limit: 255
     t.string   "solicitante",   limit: 255
+    t.integer  "tipoExibicao",  limit: 4
   end
 
   create_table "cadsurveys", force: :cascade do |t|
@@ -156,6 +157,17 @@ ActiveRecord::Schema.define(version: 20170102170755) do
 
   add_index "checklist_items", ["checklist_id"], name: "index_checklist_items_on_checklist_id", using: :btree
 
+  create_table "checklist_itemsNEW", force: :cascade do |t|
+    t.integer  "checklist_id",  limit: 4
+    t.string   "nome",          limit: 255
+    t.string   "executor",      limit: 255
+    t.integer  "tipo",          limit: 4
+    t.string   "cisImpactados", limit: 255
+    t.date     "dataExecucao"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "checklists", force: :cascade do |t|
     t.string   "title",            limit: 255
     t.text     "description",      limit: 65535
@@ -168,6 +180,18 @@ ActiveRecord::Schema.define(version: 20170102170755) do
     t.string   "state_flag",       limit: 15
     t.string   "jira_id",          limit: 50
     t.string   "default_executor", limit: 255
+  end
+
+  create_table "checklistsNEW", force: :cascade do |t|
+    t.string   "nome",       limit: 255
+    t.string   "titulo",     limit: 255
+    t.date     "dataInicio"
+    t.date     "dataFim"
+    t.integer  "status",     limit: 4,     default: 0, null: false
+    t.text     "docs",       limit: 65535
+    t.string   "lider",      limit: 255
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "cis", force: :cascade do |t|
@@ -204,6 +228,12 @@ ActiveRecord::Schema.define(version: 20170102170755) do
   add_index "cis", ["Owner"], name: "index_cis_on_Owner", using: :btree
   add_index "cis", ["chave"], name: "index_cis_on_chave", using: :btree
   add_index "cis", ["notificacao"], name: "index_cis_on_notificacao", using: :btree
+
+  create_table "cobrancamensalestacaoadicional", id: false, force: :cascade do |t|
+    t.string  "Usuario",   limit: 255
+    t.text    "Descricao", limit: 16777215
+    t.integer "Total",     limit: 8,        default: 0, null: false
+  end
 
   create_table "cobrancamensalusosoftware", id: false, force: :cascade do |t|
     t.string  "login",       limit: 255
@@ -683,6 +713,43 @@ ActiveRecord::Schema.define(version: 20170102170755) do
     t.string   "status",     limit: 255
   end
 
+  create_table "ocs_hardware", id: false, force: :cascade do |t|
+    t.integer "ID",             limit: 1, null: false
+    t.integer "DEVICEID",       limit: 1, null: false
+    t.integer "NAME",           limit: 1, null: false
+    t.integer "WORKGROUP",      limit: 1, null: false
+    t.integer "USERDOMAIN",     limit: 1, null: false
+    t.integer "OSNAME",         limit: 1, null: false
+    t.integer "OSVERSION",      limit: 1, null: false
+    t.integer "OSCOMMENTS",     limit: 1, null: false
+    t.integer "PROCESSORT",     limit: 1, null: false
+    t.integer "PROCESSORS",     limit: 1, null: false
+    t.integer "PROCESSORN",     limit: 1, null: false
+    t.integer "MEMORY",         limit: 1, null: false
+    t.integer "SWAP",           limit: 1, null: false
+    t.integer "IPADDR",         limit: 1, null: false
+    t.integer "DNS",            limit: 1, null: false
+    t.integer "DEFAULTGATEWAY", limit: 1, null: false
+    t.integer "ETIME",          limit: 1, null: false
+    t.integer "LASTDATE",       limit: 1, null: false
+    t.integer "LASTCOME",       limit: 1, null: false
+    t.integer "QUALITY",        limit: 1, null: false
+    t.integer "FIDELITY",       limit: 1, null: false
+    t.integer "USERID",         limit: 1, null: false
+    t.integer "TYPE",           limit: 1, null: false
+    t.integer "DESCRIPTION",    limit: 1, null: false
+    t.integer "WINCOMPANY",     limit: 1, null: false
+    t.integer "WINOWNER",       limit: 1, null: false
+    t.integer "WINPRODID",      limit: 1, null: false
+    t.integer "WINPRODKEY",     limit: 1, null: false
+    t.integer "USERAGENT",      limit: 1, null: false
+    t.integer "CHECKSUM",       limit: 1, null: false
+    t.integer "SSTATE",         limit: 1, null: false
+    t.integer "IPSRC",          limit: 1, null: false
+    t.integer "UUID",           limit: 1, null: false
+    t.integer "ARCH",           limit: 1, null: false
+  end
+
   create_table "parametros", force: :cascade do |t|
     t.string   "tipo",       limit: 255
     t.string   "subtipo",    limit: 255
@@ -760,6 +827,55 @@ ActiveRecord::Schema.define(version: 20170102170755) do
     t.datetime "updated_at",             null: false
     t.integer  "whenHour",   limit: 4
     t.string   "ordem",      limit: 255
+  end
+
+  create_table "sipfriends", id: false, force: :cascade do |t|
+    t.integer "id",               limit: 1, null: false
+    t.integer "name",             limit: 1, null: false
+    t.integer "accountcode",      limit: 1, null: false
+    t.integer "allow",            limit: 1, null: false
+    t.integer "amaflags",         limit: 1, null: false
+    t.integer "call-limit",       limit: 1, null: false
+    t.integer "callerid",         limit: 1, null: false
+    t.integer "callgroup",        limit: 1, null: false
+    t.integer "canreinvite",      limit: 1, null: false
+    t.integer "context",          limit: 1, null: false
+    t.integer "defaultip",        limit: 1, null: false
+    t.integer "deny",             limit: 1, null: false
+    t.integer "disallow",         limit: 1, null: false
+    t.integer "dtmfmode",         limit: 1, null: false
+    t.integer "fromdomain",       limit: 1, null: false
+    t.integer "fromuser",         limit: 1, null: false
+    t.integer "fullcontact",      limit: 1, null: false
+    t.integer "host",             limit: 1, null: false
+    t.integer "ignoreregexpire",  limit: 1, null: false
+    t.integer "insecure",         limit: 1, null: false
+    t.integer "ipaddr",           limit: 1, null: false
+    t.integer "language",         limit: 1, null: false
+    t.integer "mailbox",          limit: 1, null: false
+    t.integer "md5secret",        limit: 1, null: false
+    t.integer "musiconhold",      limit: 1, null: false
+    t.integer "nat",              limit: 1, null: false
+    t.integer "permit",           limit: 1, null: false
+    t.integer "pickupgroup",      limit: 1, null: false
+    t.integer "port",             limit: 1, null: false
+    t.integer "progressinband",   limit: 1, null: false
+    t.integer "promiscredir",     limit: 1, null: false
+    t.integer "qualify",          limit: 1, null: false
+    t.integer "regexten",         limit: 1, null: false
+    t.integer "regseconds",       limit: 1, null: false
+    t.integer "rpid",             limit: 1, null: false
+    t.integer "rtpholdtimeout",   limit: 1, null: false
+    t.integer "rtptimeout",       limit: 1, null: false
+    t.integer "secret",           limit: 1, null: false
+    t.integer "sendrpid",         limit: 1, null: false
+    t.integer "setvar",           limit: 1, null: false
+    t.integer "subscribecontext", limit: 1, null: false
+    t.integer "trustrpid",        limit: 1, null: false
+    t.integer "type",             limit: 1, null: false
+    t.integer "useclientcode",    limit: 1, null: false
+    t.integer "username",         limit: 1, null: false
+    t.integer "route",            limit: 1, null: false
   end
 
   create_table "sites", force: :cascade do |t|
@@ -946,6 +1062,16 @@ ActiveRecord::Schema.define(version: 20170102170755) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "usersold", force: :cascade do |t|
+    t.string   "provider",   limit: 255
+    t.string   "uid",        limit: 255
+    t.string   "name",       limit: 255
+    t.string   "roles",      limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "login",      limit: 255
+  end
+
   create_table "uso_licencas", force: :cascade do |t|
     t.string "Item",         limit: 45
     t.string "Descricao",    limit: 200
@@ -976,6 +1102,13 @@ ActiveRecord::Schema.define(version: 20170102170755) do
   end
 
   add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+
+  create_table "viewestacoesexcedentes", id: false, force: :cascade do |t|
+    t.string  "Usuario",            limit: 255
+    t.text    "Estacoes",           limit: 65535
+    t.integer "EstacoesExtras",     limit: 8,     default: 0, null: false
+    t.string  "QtdeEstacoesExtras", limit: 22
+  end
 
   create_table "viewrelatusuariocomvariasestacoes", id: false, force: :cascade do |t|
     t.string "Usuario",  limit: 255

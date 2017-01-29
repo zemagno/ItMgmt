@@ -8,6 +8,7 @@ class CadrelatoriosController < ApplicationController
 
   def carrega_agregadas
     Rails.logger.debug "[DEBUG] CadrelatoriosController: carrega_agregadas"
+    @tipoExibicoes = [[0,"Relatorio"],[1,"Painel 4 colunas"],[2,"Painel 6 colunas"],[3,"Painel 8 colunas"],[4,"Painel 10 colunas"]]
     @tiposci = Tipoci.all
   end
 
@@ -55,6 +56,7 @@ class CadrelatoriosController < ApplicationController
   # GET /cadrelatorios/1
   # GET /cadrelatorios/1.json
   def show
+    carrega_agregadas
     @cadrelatorio = Cadrelatorio.find_gen(params[:id])
     if @cadrelatorio.nil?
       flash[:error] = "Error[CR0001] - Relatorio #{[params[:id]]} Invalido"

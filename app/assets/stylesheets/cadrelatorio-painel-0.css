@@ -1,0 +1,16 @@
+.box-alerta {
+	float:left;
+	background: #4f4f4f;
+	border-radius:3px 3px 3px 3px;
+	box-shadow: 5px 5px 10px 0 #000;
+	color: white;
+	font-family:monospace;
+	padding: 0px 5px 0px 5px;
+
+}
+
+.box-alerta-critico { background: #f00 }
+
+.box-gmud  { background: #018c85 }
+
+.box-alerta { height: 100px; width: 200px; margin-top:10px; margin-left:10px}

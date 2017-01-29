@@ -20,6 +20,11 @@
               = @cadrelatorio.dashboard
           .list-group-item
             h4.list-group-item-heading
+              | Tipo Exibicao:
+            p.list-group-item-text
+              = @tipoExibicoes[@cadrelatorio.tipoExibicao][1]
+          .list-group-item
+            h4.list-group-item-heading
               | Ordem:
             p.list-group-item-text
               = @cadrelatorio.ordem          

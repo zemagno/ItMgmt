@@ -32,10 +32,10 @@ telhtml
               #enviar_email 
         
             = yield 
-            footer
-              img[src="/logo-64x64.jpg"]
-              spam Sistema de Gestao de Ativos - 
-              spam = "Ver: #{CONFIG['system_version']}" 
+            / footer
+            /   img[src="/logo-64x64.jpg"]
+            /   spam Sistema de Gestao de Ativos - 
+            /   spam = "Ver: #{CONFIG['system_version']}" 
     - if user_signed_in? && (current_user.is_a :usuario)
       div
         = stylesheet_link_tag "tela_login.css"

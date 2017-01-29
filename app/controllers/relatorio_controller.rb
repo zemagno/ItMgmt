@@ -100,7 +100,8 @@ class RelatorioController < ApplicationController
     to_xml(params[:id],@campos,@resultado)
     @publico = false
     respond_to do |format|
-      format.html
+      format.html { render "index"}
+      # format.html { render "index-cards"}
       format.xml  { render :xml => to_xml(params[:id],@campos,@resultado) }
       format.csv  { render :csv => to_csv(params[:id],@campos,@resultado) }
     end
