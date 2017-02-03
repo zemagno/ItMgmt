@@ -10,6 +10,7 @@ nohup.out
 /db/sphinx/**
 /tmp
 /apoio
+/templates
 .gitignore
 /db/sphinx/development/*
 /db/sphinx/development/**
