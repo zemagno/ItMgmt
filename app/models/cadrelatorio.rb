@@ -18,9 +18,13 @@ class Cadrelatorio < ActiveRecord::Base
   after_destroy :invalidate_caches
 
   def AtualizaEstatisticas
-    self.ultimoacesso = DateTime.now.to_date
-    self.qtdeacessos = self.qtdeacessos.to_i + 1
-    save!
+    begin
+      self.ultimoacesso = DateTime.now.to_date
+      self.qtdeacessos = self.qtdeacessos.to_i + 1
+      save!
+    rescue
+      Rails.logger.error "Error[CR0001] - Nao consegui atualizar estatisticas..."
+    end
   end
 
   # def getPainel
