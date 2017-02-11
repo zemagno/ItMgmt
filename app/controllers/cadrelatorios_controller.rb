@@ -8,7 +8,7 @@ class CadrelatoriosController < ApplicationController
 
   def carrega_agregadas
     Rails.logger.debug "[DEBUG] CadrelatoriosController: carrega_agregadas"
-    @tipoExibicoes = [[0,"Relatorio"],[1,"Painel 4 colunas"],[2,"Painel 6 colunas"],[3,"Painel 8 colunas"],[4,"Painel 10 colunas"]]
+    @tipoExibicoes = [[0,"Relatorio"],[1,"Painel 600px"],[2,"Painel 500px"],[3,"Painel 400px"],[4,"Painel 300px"],[5,"Painel 200px"],[6,"Painel 100px"]]
     @tiposci = Tipoci.all
   end
 

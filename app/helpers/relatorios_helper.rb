@@ -38,16 +38,17 @@ module RelatoriosHelper
         res
 	end
 
-    def genBoxAlerta(painel)
-        res="box-normal box-alerta"
+    def genBoxAlerta(painel,tipoPainel)
+        res="box-normal"
         case painel
         when "0" 
             res="box-normal"
         when "1" 
-            res="box-normal box-alerta"
+            res << " box-alerta"
         when "2"
-            res="box-normal box-alerta-critico"
+            res << " box-alerta-critico"
         end
+        res << " box-size-#{tipoPainel[1]}"
         res
 
     end

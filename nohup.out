@@ -504,3 +504,4 @@ nohup: redis-serve: No such file or directory
 [1396] 29 Jan 12:39:29.686 * Saving the final RDB snapshot before exiting.
 [1396] 29 Jan 12:39:29.687 * DB saved on disk
 [1396] 29 Jan 12:39:29.687 # Redis is now ready to exit, bye bye...
+[2272] 11 Feb 10:27:56.200 # Fatal error, can't open config file 'start'

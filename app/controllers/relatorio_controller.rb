@@ -53,9 +53,17 @@ class RelatorioController < ApplicationController
   def executa_relatorio
     begin
       regexParams = /\{([a-z]+)}/
+      @tipoExibicoes = [[0,0],[1,600],[2,500],[3,400],[4,300],[5,200],[6,100]]
+       # TODO jogar esse array para um helper..
 
       @relatorio = Cadrelatorio.find_by_nome(params[:id])
       @relatorio.AtualizaEstatisticas
+      puts "vou procurar @p"
+      @px = @tipoExibicoes[@relatorio.tipoExibicao]
+      puts "___________________________"
+      puts @px
+      puts "___________________________"
+
       sql = @relatorio.consulta
       sql.gsub!(regexParams) {|s| params[s[1..-2]]}
       # if sql.match(/{/)
@@ -87,7 +95,12 @@ class RelatorioController < ApplicationController
     to_xml(params[:id],@campos,@resultado)
     @publico = true
     respond_to do |format|
-      format.html { render :index, layout: 'relatorio'}
+      # format.html { render :index, layout: 'relatorio'}
+      if @px[0] == 0
+         format.html { render "index", layout: 'relatorio'}
+      else
+         format.html { render "index-cards", layout: 'relatorio'}
+      end
       format.xml { render :xml => to_xml(params[:id],@campos,@resultado) }
       format.csv { render :csv => to_csv(params[:id],@campos,@resultado) }
     end
@@ -99,9 +112,15 @@ class RelatorioController < ApplicationController
     executa_relatorio
     to_xml(params[:id],@campos,@resultado)
     @publico = false
+    puts "___________________________"
+    puts @px
+    puts "___________________________"
     respond_to do |format|
-      format.html { render "index"}
-      # format.html { render "index-cards"}
+      if @px[0] == 0
+         format.html { render "index"}
+      else
+         format.html { render "index-cards"}
+      end
       format.xml  { render :xml => to_xml(params[:id],@campos,@resultado) }
       format.csv  { render :csv => to_csv(params[:id],@campos,@resultado) }
     end
