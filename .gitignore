@@ -30,4 +30,4 @@ getsql.sh
 *.lock
 *.old
 *.out
-
+dump.rdb
