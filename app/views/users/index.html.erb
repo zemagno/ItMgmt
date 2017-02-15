@@ -33,6 +33,9 @@ $(document).ready( function(){
 						<th>Usuário</th>
 						<th>Login Interno</th>
 						<th>Perfil</th>
+						<th>Ultimo Login</th>
+						<th>Qtde de Logins</th>
+
 						<% if (can? :manage, User) %>
 							<th></th>
 						<% end %>
@@ -44,6 +47,8 @@ $(document).ready( function(){
 							<td><%= link_to user.email, user_path(user) %></td>
 							<td><%= user.internal_login %></td>
 							<td><%= user.roles %></td>
+							<td><%= nice_apresentacao_data(user.last_sign_in_at) %></td>
+							<td><%= user.sign_in_count %></td>
 							<% if (can? :manage, User) %>
 								<td>
 									<%= link_to 'Editar', edit_user_path(user),   class: "btn btn-primary btn-xs" %>
