@@ -5,6 +5,13 @@ module ApplicationHelper
   end
 
 
+  def nice_apresentacao_data(data, formato = "%Y/%m/%d-%H:%M")
+    _data = ""
+    unless data.blank?
+      _data = data.in_time_zone("Brasilia").strftime(formato)
+    end
+  end
+
   def docs_to_url(doc)
     @URLs = []
     if doc != nil then

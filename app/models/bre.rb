@@ -79,6 +79,7 @@ class Bre
   
     
     # params = Hash[JSON.parse Parametro.get(:tipo => "BRE", :subtipo => "Notificacao")]
+
     # if _obj.is_a? Ci 
     #    template_id = params[_obj.tipoci_id]
     #    template_id = params[0] if template_id.nil?
@@ -90,7 +91,7 @@ class Bre
     # end
     # job = JobEnviarEmail.criar(template_id, p.to_yaml)
 
-    puts "  Notificar alerta2: [#{_whom}] [#{_obj.class.name}] [#{_obj}"
+    # puts "  Notificar alerta2: [#{_whom}] [#{_obj.class.name}] [#{_obj}"
   end
 
   def quando(_action, _target, _domain, &block)

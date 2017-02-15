@@ -101,7 +101,7 @@ class GestaoUsuario
       detalhes << " - Cadeado " if x._cadeado.downcase == "sim"
 
 
-      {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:detalhes => detalhes, :hostname => x._hostname}
+      {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:detalhes => detalhes, :hostname => x._hostname, :tipoCobranca => x.nice_cobrar}
     end
 
     funcionario = Funcionario.find_by_Login(@login)

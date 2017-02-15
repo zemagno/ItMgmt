@@ -14,6 +14,15 @@ end
 
 bre.adicionaRegra "Manutencao Servidor" do
 	quando :mudar_status, :ci, "Servidor Virtual" do |servidor|
+   		# notificar "licenciamento", "Mudanca de status de licenca", licenca
+   		if servidor.statusci_id == 1 
+   			aplicarParametros "CobrarServidorVirtual",servidor
+   			notificar "financeiro","Criacao Servidor Virtual",servidor
+   		end
+   	end
+
+bre.adicionaRegra "Manutencao Servidor" do
+	quando :mudar_status, :ci, "Servidor Virtual" do |servidor|
    		if servidor.oldStatusci_id == 1 
 			# puts "BRE.adicionaregra -> CI mudou de status"
 			# notificar "DC", "Servidor Virtual: Mudanca de Status", servidor

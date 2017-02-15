@@ -16,7 +16,8 @@
           <th>Job</th>
           <th>Id</th>
           <th>Status</th>
-          <th>Data Execucao</th>
+          <th>Data Submissao</th>
+          <th>Data Termino</th>
           <th>Detalhe</th>
         </tr>
       </thead>
@@ -26,7 +27,8 @@
           <td><%= producao.job %></td>
           <td><%= producao.id %></td>
           <td><%= producao.status %></td>
-          <td><%= producao.data %></td>
+          <td><%= nice_apresentacao_data(producao.created_at,"%Y/%m/%d-%H:%M:%S") %></td>
+          <td><%= nice_apresentacao_data(producao.data,"%Y/%m/%d-%H:%M:%S") %></td>
           <td><%= print_nice_detalhe(producao.detalhe).html_safe %></td>
           
         </tr>

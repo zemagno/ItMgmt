@@ -73,7 +73,7 @@
         <td><%= estacao[:detalhes] %></td>
         <td><%= estacao[:hostname] %></td>
         <td><%= estacao[:gestor] %></td>
-        <td><%= "#{estacao[:CCDebito]}/#{estacao[:ProjetoDebito]}" %></td>
+        <td><%= "#{estacao[:CCDebito]}/#{estacao[:ProjetoDebito]}/#{estacao[:tipoCobranca]}" %></td>
         <% if estacao[:chave]!="Sem Estacao" %>
           <td><%= link_to '[Desalocar Estacao]', confirmar_desalocar_estacao_path(@usuario.login,estacao[:chave]) %>
           <%= link_to '[Termo Entrega]', imprimir_termo_entrega_path(@usuario.login,:estacao,estacao[:chave]) , :target => "_blank"%>

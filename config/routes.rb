@@ -141,6 +141,8 @@ ItMgmt::Application.routes.draw do
   match 'cis/checkChave', to: "cis#check_chave", via: [:get, :post]
 
   match 'cis/massiveupdate', to: "cis#massiveupdate", via: [:get, :post]
+
+  # get '/cis/:id', to: "cis#show", :constraints => { :id => /.*/ }
   # match '/cis2', to: 'cis#index2'
 
 

@@ -9,10 +9,10 @@ class ServiceCargaRm
     func= Funcionario.all
 
     antes = func.count * 1.0
-    carga = funcRm.count * 1.0
+    carga = 0
 
     funcRm.each do |f|
-
+      carga = carga + 1
       # f.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional.split.map(&:capitalize).join(' ')
       f.NomProfissional = f.NomProfissional.nil? ? "" : f.NomProfissional.split.map(&:capitalize).join(' ')
       f.NomEmailBRQ = f.NomEmailBRQ.nil? ? "" : f.NomEmailBRQ
