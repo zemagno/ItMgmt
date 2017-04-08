@@ -1,6 +1,6 @@
 bre = Bre.instance
 
-Rails.logger.info "[INFO] Registrando BRE..."
+Rails.logger.info "[INFO] Registrando BRE - Acesso Terceiros.."
 
 bre.adicionaRegra "Criacao Acesso Terceiro" do
 	quando :criar, :ci, "Acesso Terceiros" do |terceiro|

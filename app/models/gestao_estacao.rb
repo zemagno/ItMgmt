@@ -58,22 +58,38 @@ class GestaoEstacao
     end
   end
 
+  def self.getAtributosAlocarEstacao
+    begin
+       p = JSON.parse(Parametro.get(:tipo => "Alocar",:subtipo => "Estacao2"))
+    rescue
+       p = JSON.parse('{ "campos": "0","tipoci_id": 0,"statusci_id": "0" }')
+       p = JSON.parse('{ "campos": "316,317,318, 329,328,394, 320,321,322,393","tipoci_id": 46,"statusci_id": "8" }')
+    end
+    tipoci_id = p["tipoci_id"] || 0
+    status_possiveis = p["statusci_id"].split(",").map(&:to_i)
+    return p["campos"].split(",").map(&:to_i), tipoci_id, status_possiveis
+  end
+
   def self.Atributos
     c = Ci.new
-    c.tipoci_id=46
+    _attr,_tipoci_id,_status_possiveis = GestaoEstacao.getAtributosAlocarEstacao
+    c.tipoci_id=_tipoci_id
     atributos = c.atributos
-    p = Parametro.get(:tipo => "Alocar",:subtipo => "Estacao")
-    fields = p.split(",").map(&:to_i)
-    atributos.delete_if { |k,v| ! fields.include?(k) }
+    atributos.delete_if { |k,v| !  _attr.include?(k) }
     atributos
   end
 
+
+todo ==> fazer testes unitarios com atributos, getAtributosAlocarEstacao e AlocarEstacao
+ fazer teste com versao anterior, e com essa versao...
 
 
   def self.AlocarEstacao(attributes = {})
 
     estacao_disponivel = Ci.find_by_chave(attributes[:estacao])
-    if estacao_disponivel and estacao_disponivel.tipoci_id==46 and estacao_disponivel.statusci_id == 8
+    _attr,_tipoci_id,_status_possiveis = GestaoEstacao.getAtributosAlocarEstacao
+
+    if estacao_disponivel and estacao_disponivel.tipoci_id==_tipoci_id and _status_possiveis.include?(estacao_disponivel.statusci_id)
 
       estacao_disponivel.Owner = attributes[:gestor]
       estacao_disponivel.notificacao = attributes[:id]

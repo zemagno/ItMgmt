@@ -165,6 +165,12 @@ class Ci < ActiveRecord::Base
     cmd_expandido = _command.split(",").map { |x| x.split("=") }
 
     cis.each do |x|
+
+     # colocar begin rescue aqui e contado, com chaves nao atualizadas...
+     #  chaves estao no formato antigo...
+     #  colocar alias gestor e usuario para Owner e notificacao
+      
+
       cmd_expandido.each { |k, v| x.send("#{k}=", v) if x.respond_to?(k) }
       x.save!
     end
@@ -298,7 +304,7 @@ class Ci < ActiveRecord::Base
     #  2=>["Endereco", "Av Boa Vista"],
     #  1=>["Capacidade", "4mb"]}
     Rails.logger.debug "[DEBUG] - Vou iniciar atualizacaos dos atributos #{nice_atributos}"
-
+    
     attr_default = atributos
 
     Rails.logger.debug "[DEBUG] - Li Atributos"
@@ -356,19 +362,26 @@ class Ci < ActiveRecord::Base
 
   private
   def atualiza_chave
-    # puts "______________________________________________________________"
-    # puts "pos save #{self.chave} #{self.statusci_id} #{self.statusci_id_changed?} #{self.statusci_id_was}"
-    # puts "_______________________________________________________________"
+    Rails.logger.debug "_____________________________________________________________________________"
+    Rails.logger.debug "DEBUG:CI after Save:atualiza chave Vou iniciar: #{self.chave} #{self.statusci_id} #{self.statusci_id_changed?} #{self.statusci_id_was}"
+    Rails.logger.debug "_____________________________________________________________________________"
     nova_chave = self.chave.gsub "<ID>", id.to_s
     self.update_attributes(:chave => nova_chave) if self.chave != nova_chave
+    Rails.logger.debug "DEBUG:CI Pos Save______________________________________________________________"
+    Rails.logger.debug "DEBUG:CI Pos Save finalizei !!!"
+    Rails.logger.debug "DEBUG:CI Pos Save_______________________________________________________________"
   end
 
   def atualiza_statusci
-    puts "_______________________________________________________________"
-    puts "before save: atualiza_statusci [#{self.statusci_id_was}] -> [#{self.statusci_id}]"
-    puts "_______________________________________________________________"
+    Rails.logger.debug "_____________________________________________________________________________"
+    Rails.logger.debug "DEBUG:CI before Save:atualiza_statusci: atualiza_statusci [#{self.statusci_id_was}] -> [#{self.statusci_id}]"
+    Rails.logger.debug "_____________________________________________________________________________"
     self.oldStatusci_id = self.statusci_id_was if self.statusci_id_changed?
     BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
+    Rails.logger.debug "_____________________________________________________________________________"
+    Rails.logger.debug "DEBUG:CI before Save:Finalizei"
+    Rails.logger.debug "_____________________________________________________________________________"
+ 
   end
 
   def post_create_processing

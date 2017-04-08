@@ -23,14 +23,20 @@ class Bre
   end
 
   def aplicarParametros(_what,_obj)
-    acao = JSON.parse(Parametro.get({:tipo => "BRE", :subtipo => _what}))
-    Rails.logger.debug "[DEBUG]BRE:aplicarParametros: [#{acao}]"
-    acao["fields"].each do |x|
-      begin
-        _obj.send("#{x[0]}=", x[1])
-      rescue
+    # begin
+      acao = JSON.parse(Parametro.get({:tipo => "BRE", :subtipo => _what}))
+      Rails.logger.debug "[DEBUG]BRE:aplicarParametros: [#{acao}]"
+      acao["fields"].each do |x|
+        begin
+          Rails.logger.debug "[DEBUG]BRE - Vou aplicar parametro: #{x[0]}=#{x[1]}"
+          _obj.send("#{x[0]}=", x[1])
+        rescue
+          Rails.logger.debug "[DEBUG]BRE - Tentei aplicar e deu problema"
+        end
       end
-    end
+    # rescue
+    #     Rails.logger.error "Error[BRE0001] - Erro ao aplicar parametros: #{_what}"
+    # end
     # _obj.save!
   end
 
@@ -81,13 +87,13 @@ class Bre
     # params = Hash[JSON.parse Parametro.get(:tipo => "BRE", :subtipo => "Notificacao")]
 
     # if _obj.is_a? Ci 
-    #    template_id = params[_obj.tipoci_id]
-    #    template_id = params[0] if template_id.nil?
-    #    p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.chave}; #{_obj.descricao}"  ]
+    #    template_id = params["notificacao"][_obj.tipoci_id.to_s]
+    #    template_id = params["notificacao"]["default"] if template_id.nil?
+    #    p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "", :body => "Notificacao:; #{_oque}; #{_obj.chave}; #{_obj.descricao}"  ]
     # end
     # if _obj.is_a? Funcionario
     #   template_id = params[0]
-    #   p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "zemagno@gmail.com", :body => "Notificacao:; #{_oque}; #{_obj.Login}; #{_obj.NomProfissional}"  ]
+    #   p = Hash[ :to => _whom, :cc => "", :subject => "Notificacao: #{_oque}", :from => "", :body => "Notificacao:; #{_oque}; #{_obj.Login}; #{_obj.NomProfissional}"  ]
     # end
     # job = JobEnviarEmail.criar(template_id, p.to_yaml)
 

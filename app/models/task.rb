@@ -56,7 +56,7 @@ class Task < ActiveRecord::Base
   end
 
   def chave_ci
-    ci.blank? ? "" : ci.status
+    ci.blank? ? "" : ci.chave
   end
 
   def nome_cliente

@@ -118,7 +118,7 @@ class CisController < ApplicationController
         redirect_to "/cis"
 
       end
-      @search_ci = session[:search_ci]
+      @search_ci = params[:search_ci] || session[:search_cis]
       cache(@ci)
     else
       flash[:error] = "Error[CI0002] - CI \"#{params[:id]}\" Inexistente"
@@ -330,6 +330,7 @@ class CisController < ApplicationController
 
 
     respond_to do |format|
+      puts params
       if @ci.update_attributes(params[:ci])
         @ci.atributos = params[:atributos]
         format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }

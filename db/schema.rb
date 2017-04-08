@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170129104413) do
+ActiveRecord::Schema.define(version: 20170216090233) do
 
   create_table "MapeamentoLocalTrabalho", id: false, force: :cascade do |t|
     t.string  "NomSite",                limit: 30
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 20170129104413) do
   create_table "checklist_itemsNEW", force: :cascade do |t|
     t.integer  "checklist_id",  limit: 4
     t.string   "nome",          limit: 255
+    t.string   "herdado_de",    limit: 255
     t.string   "executor",      limit: 255
     t.integer  "tipo",          limit: 4
     t.string   "cisImpactados", limit: 255
@@ -192,6 +193,7 @@ ActiveRecord::Schema.define(version: 20170129104413) do
     t.string   "lider",      limit: 255
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.text     "herdados",   limit: 65535
   end
 
   create_table "cis", force: :cascade do |t|
@@ -393,7 +395,6 @@ ActiveRecord::Schema.define(version: 20170129104413) do
     t.boolean  "ramalSendoExterno"
     t.datetime "DataInicioAfastamento"
     t.datetime "DataFinalAfastamento"
-    t.boolean  "customPossuiVariasEstacoes"
     t.boolean  "customExternoComOffice365"
     t.string   "justificativaExtComOffice365", limit: 255
     t.boolean  "loginBloqueado"
