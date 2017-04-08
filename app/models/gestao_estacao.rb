@@ -80,11 +80,13 @@ class GestaoEstacao
   end
 
 
-todo ==> fazer testes unitarios com atributos, getAtributosAlocarEstacao e AlocarEstacao
- fazer teste com versao anterior, e com essa versao...
+# todo ==> fazer testes unitarios com atributos, getAtributosAlocarEstacao e AlocarEstacao
+#  fazer teste com versao anterior, e com essa versao...
 
 
   def self.AlocarEstacao(attributes = {})
+
+    # TODO refactoring --> mover toda atribuicao de param para uma classe especifica de gestao de ci...
 
     estacao_disponivel = Ci.find_by_chave(attributes[:estacao])
     _attr,_tipoci_id,_status_possiveis = GestaoEstacao.getAtributosAlocarEstacao

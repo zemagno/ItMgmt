@@ -75,8 +75,8 @@ class Ci < ActiveRecord::Base
   # validates :descricao, :presence => {:message => "Descrição é mandatoria"}
 
   after_save :atualiza_chave, ThinkingSphinx::RealTime.callback_for(:ci)
-  before_save :atualiza_statusci
-  after_create :post_create_processing
+  before_save :atualiza_statusci, :investiga_quem_chama
+  after_create :post_create_processing, :investiga_quem_chama
   after_destroy :post_destroy_processing
   # after_save
 
@@ -361,6 +361,15 @@ class Ci < ActiveRecord::Base
 
 
   private
+
+  def investiga_quem_chama
+
+    stack = caller
+    _caller = stack[stack.find_index {|x| x =~ /ItMgmt/}]
+
+    Rails.logger.debug "DEBUG: CI save/update caller => #{_caller}"
+  end
+
   def atualiza_chave
     Rails.logger.debug "_____________________________________________________________________________"
     Rails.logger.debug "DEBUG:CI after Save:atualiza chave Vou iniciar: #{self.chave} #{self.statusci_id} #{self.statusci_id_changed?} #{self.statusci_id_was}"
@@ -373,6 +382,7 @@ class Ci < ActiveRecord::Base
   end
 
   def atualiza_statusci
+    
     Rails.logger.debug "_____________________________________________________________________________"
     Rails.logger.debug "DEBUG:CI before Save:atualiza_statusci: atualiza_statusci [#{self.statusci_id_was}] -> [#{self.statusci_id}]"
     Rails.logger.debug "_____________________________________________________________________________"

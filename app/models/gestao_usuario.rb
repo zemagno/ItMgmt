@@ -64,7 +64,7 @@ class GestaoUsuario
       end
       @ramais.join(" / ")
     rescue
-        @ramais = "Erro: DB Ramais indisponivel"
+      @ramais = "Erro: DB Ramais indisponivel"
     end
 
   end
@@ -169,8 +169,8 @@ class GestaoUsuario
 
         ["Project","VSS","Visio","Office"].each do |l|
             if self.LicencasEmUso.count{ |x| /(^#{l}.*)/ === x[:chave] } >1
-                                                         distorcoes << "Usuario possui mais de uma licenca de #{l}"
-                                                         end
+               distorcoes << "Usuario possui mais de uma licenca de #{l}"
+                end
                                                          end
 
                                                          distorcoes << "Usuario nao eh mais funcionario. Liberar licencas" if (!self.Usuario.nil?) and (self.Usuario.demitido?) and (self.LicencasEmUso.count >0)
