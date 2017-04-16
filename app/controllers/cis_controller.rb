@@ -20,6 +20,8 @@ class CisController < ApplicationController
   respond_to :html, :xml, :json, :csv, :js
 
 
+  # TODO Refactoring - carrega atributos vai para um ServiceObject
+
   def carrega_atributos2
     puts ">>>>>>>>>> carrega atributos2 #{@ci} - #{@ci.tipoci.tipo}"
     if @ci
@@ -238,7 +240,7 @@ class CisController < ApplicationController
 
 
   def index
-    puts "ops..vim para index"
+    
     @search_ci = params[:search_ci] || session[:search_cis]
 
     @view_default_ci = params[:view_default_ci] || session[:view_default_ci] || "TI"
