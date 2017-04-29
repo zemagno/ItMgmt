@@ -1,11 +1,16 @@
 class Parametro < ActiveRecord::Base
 
-  attr_accessible :tipo, :subtipo, :valor
+  attr_accessible :tipo, :subtipo, :valor, :tipoValor
 
   validates :tipo, :presence =>  {    message: I18n.t("errors.parametro.tipo.presence")}
   validates :subtipo, :presence =>  {    message: I18n.t("errors.parametro.subtipo.presence")}
+  validate :parseValor
 
   default_scope { order('Tipo ASC') }
+
+  def self.tipoValor
+    [["String", 0], ["JSON", 1]]
+  end
 
   def self.get(options)
     Rails.logger.debug "[DEBUG]Parametro.get(#{options})"
@@ -27,6 +32,28 @@ class Parametro < ActiveRecord::Base
     Parametro.where(tipo: options[:tipo]).each  { |p| r << [p.tipo,p.subtipo,p.valor] }
     r
   end
+
+  def parseValor
+     puts "valor: #{valor}"
+     _valor = valor.strip
+     puts "_valor: #{_valor}"
+     
+     if tipoValor == 1 && _valor[0]=="{"
+        begin
+            JSON.parse(_valor).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+        rescue 
+            errors.add(:valor, "JSON invalido")
+        end
+      end
+    if tipoValor == 1 && _valor[0]=="["
+        begin
+            JSON.parse(_valor)
+        rescue 
+            errors.add(:valor, "JSON invalido")
+        end
+      end    
+  end
+
 
   # def ewal(parametro) # SEMUSO?
   #   eval(valor)

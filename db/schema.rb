@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423153803) do
+ActiveRecord::Schema.define(version: 20170429233217) do
 
   create_table "MapeamentoLocalTrabalho", id: false, force: :cascade do |t|
     t.string  "NomSite",                limit: 30
@@ -757,6 +757,7 @@ ActiveRecord::Schema.define(version: 20170423153803) do
     t.text     "valor",      limit: 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tipoValor",  limit: 4
   end
 
   create_table "producao_ads", force: :cascade do |t|

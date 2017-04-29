@@ -60,7 +60,7 @@ class GestaoEstacao
 
   def self.getAtributosAlocarEstacao
     begin
-       p = JSON.parse(Parametro.get(:tipo => "Alocar",:subtipo => "Estacao2"))
+       p = JSON.parse(Parametro.get(:tipo => "Alocar",:subtipo => "Estacao"))
     rescue
        p = JSON.parse('{ "campos": "0","tipoci_id": 0,"statusci_id": "0" }')
        p = JSON.parse('{ "campos": "316,317,318, 329,328,394, 320,321,322,393","tipoci_id": 46,"statusci_id": "8" }')

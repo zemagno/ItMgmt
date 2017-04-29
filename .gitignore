@@ -23,8 +23,6 @@ config/local_env.yml
 /JSON
 getsql.sh
 /log
-/spec
-/features
 /test
 /public/assets/**
 *.lock
