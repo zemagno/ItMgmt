@@ -13,6 +13,14 @@ class Parametro < ActiveRecord::Base
     p.blank? ? "" : p.valor
   end
 
+  def self.getJson(options)
+    begin
+       res = JSON.parse(self.get(options)).inject({}){|memo,(k,v)| memo[k.to_sym] = v; memo}
+    rescue 
+       res = {}
+    end 
+  end
+
   def self.list(options)
     Rails.logger.debug "[DEBUG]Parametro.list(#{options})"
     r = []

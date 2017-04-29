@@ -29,8 +29,8 @@ class GestaoLicenciamento
 
   # todos os softwares em uso por um usuario. Devolve array com nome dos sw
   def softwareEmUso
-    # @softwareEmUso = @softwareEmUso || InventarioSw.licencaEstacao(estacoesUsuario) # KPMG
-    @softwareEmUso = @softwareEmUso || Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 13).pluck(:descricao)
+    params=Parametro.getJson({:tipo => "Licencas", :subtipo => "ParametrosCobranca"})
+    @softwareEmUso = @softwareEmUso || Ci.where(notificacao: @login, statusci_id: 1, tipoci_id: 13, tipoCobranca: params[:statusCobranca]).pluck(:descricao)
   end
 
   def softwareEmUsoPorEstacao

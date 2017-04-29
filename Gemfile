@@ -5,10 +5,11 @@ source 'http://rubygems.org'
 gem 'railties'
 gem 'rails', '4.2.7'
 gem 'protected_attributes'
-gem 'responders' #, '~> 2.0'
+gem 'responders' #, '~> 2.0'w
 
-gem 'slim-rails'
-gem 'slim'
+
+gem 'slim-rails', '3.1.1'
+gem 'slim', '3.0.7'
 
 
 

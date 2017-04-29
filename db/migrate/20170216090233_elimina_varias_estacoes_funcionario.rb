@@ -5,7 +5,7 @@ class EliminaVariasEstacoesFuncionario < ActiveRecord::Migration
   end
 
   def self.up
-  	execute %Q{ drop view viewrelatusuariocomvariasestacoes; }
+  	execute %Q{ drop view if exists viewrelatusuariocomvariasestacoes ; }
     remove_column :funcionarios, :customPossuiVariasEstacoes
   	execute %Q{ create view viewrelatusuariocomvariasestacoes as 
   		        select 
