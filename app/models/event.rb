@@ -5,8 +5,13 @@ class Event < ActiveRecord::Base
 # TODO - colocar o nao processado aqui... e nao no bd
   def self.register(type, subtype,level, value)
   	Event.new(tipo: type, subtipo: subtype, nivel: level, valor: value).save!
-
   end
+
+
+  def self.subscribe
+  end
+
+  
 
   # define_index do
   #     indexes type

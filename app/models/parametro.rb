@@ -34,9 +34,8 @@ class Parametro < ActiveRecord::Base
   end
 
   def parseValor
-     puts "valor: #{valor}"
+    
      _valor = valor.strip
-     puts "_valor: #{_valor}"
      
      if tipoValor == 1 && _valor[0]=="{"
         begin

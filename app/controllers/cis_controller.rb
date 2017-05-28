@@ -314,8 +314,12 @@ class CisController < ApplicationController
     respond_to do |format|
       if @ci.save
         puts ">>> Salvei...vou editar..."
-        flash[:info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
-        format.html {redirect_to(:action => 'edit', :id => @ci.id) }
+        if @ci.atributos.length == 0 
+           format.html { redirect_to @ci, notice: 'Item foi salvo !! ' }
+        else
+           flash[:info] = "Ativo Salvo. Preencha os campos especificos desse tipo"
+           format.html {redirect_to(:action => 'edit', :id => @ci.id) }
+        end
       else
         puts ">>>> Nao salvei...volto para o new."
         carrega_agregadas

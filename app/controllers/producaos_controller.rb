@@ -16,7 +16,7 @@ class ProducaosController < InheritedResources::Base
       if @search.blank?
         @producaos = Producao.paginate(:page => params[:page])
       else
-        @producaos = Producao.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page]
+        @producaos = Producao.search @search, :match_mode => :boolean, :per_page => 20, :page => params[:page], :sort_mode => :extended , :order => "id DESC"
         @producaos.compact!
       end
     rescue  => error

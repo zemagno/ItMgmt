@@ -16,7 +16,17 @@ def load
     @mode = :login
     usr = TelRamalLogin.find_by_NumRamal(@login)
     if ! usr.nil?
-       @login = usr.IdtLogin.strip if ! usr.nil? 
+       @login = usr.IdtLogin.strip
+    else
+       @login = nil
+    end
+  end
+  # se for um CPF, recupero o @login
+  if @login =~ /^\d{11}$/
+    @mode = :login
+    usr = Funcionario.find_by_IdtCPF(@login)
+    if ! usr.nil?
+       @login = usr.Login.strip 
     else
        @login = nil
     end

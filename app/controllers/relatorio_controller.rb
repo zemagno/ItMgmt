@@ -75,12 +75,15 @@ class RelatorioController < ApplicationController
       #
       @NomeRelatorio = @relatorio.descricao
 
-
+      start = Time.now
       mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
       mysql_res = ActiveRecord::Base.connection.execute(sql)
+      finish = Time.now
+      Rails.logger.debug "[DEBUG]Relatorio.execucao: #{@relatorio.nome} - Exec time #{finish-start} segundos"
       @resultado = []
       mysql_res.each{ |res| @resultado << res }
       @campos = mysql_res.fields
+      puts "Tamanho do relatorio: #{Marshal::dump(@resultado).size}"
     rescue => error
       puts error.backtrace
       @resultado = [["Consulta com erro de SQL..."]]
@@ -126,6 +129,20 @@ class RelatorioController < ApplicationController
     end
   end
 end
+
+
+# @relatorio = Cadrelatorio.find(395)
+# sql = @relatorio.consulta
+# @NomeRelatorio = @relatorio.descricao
+# mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
+# mysql_res = ActiveRecord::Base.connection.execute(sql)
+# @resultado = []
+# mysql_res.each{ |res| @resultado << res }
+# @campos = mysql_res.fields
+# puts "Tamanho do relatorio: #{Marshal::dump(@resultado).size}"
+
+
+# Rails.cache.write("relatorio/projetos",@resultado)
 
 
 #require "Builder"

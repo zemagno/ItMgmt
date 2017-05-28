@@ -11,7 +11,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429233217) do
+ActiveRecord::Schema.define(version: 20170511012842) do
+
+  create_table "Funcionarios", primary_key: "Login", force: :cascade do |t|
+    t.integer  "NumMatrProfissional",          limit: 4
+    t.string   "NomProfissional",              limit: 255
+    t.date     "DtaAdmissao"
+    t.date     "DtaDemissao"
+    t.string   "NomEmailBRQ",                  limit: 50
+    t.string   "IdtCPF",                       limit: 20
+    t.string   "IdtRG",                        limit: 20
+    t.string   "IdtCodigoCentroCusto",         limit: 10
+    t.string   "NomCentroCusto",               limit: 255
+    t.string   "NomTipoCentroCusto",           limit: 255
+    t.string   "IdtCodigoSecao",               limit: 10
+    t.string   "NomLocalTrabalho",             limit: 255
+    t.string   "NomCidadeLocalTrabalho",       limit: 50
+    t.string   "IdtCentroCustoTorre",          limit: 10
+    t.string   "DscCentroCustoTorre",          limit: 50
+    t.string   "NomAlocacao",                  limit: 50
+    t.string   "ramal",                        limit: 255
+    t.string   "observacao",                   limit: 255
+    t.boolean  "semEstacao"
+    t.integer  "IdLocalTrabalho",              limit: 4
+    t.boolean  "cipa"
+    t.boolean  "brigadista"
+    t.boolean  "afastado"
+    t.date     "DtaRemocaoAcesso"
+    t.boolean  "FlgIndicaRetorno"
+    t.string   "NomGestorProfissional",        limit: 255
+    t.string   "NomEmailGestorProfissional",   limit: 30
+    t.string   "NomEstadoLocalTrabalho",       limit: 10
+    t.string   "DscCentroCustoBU",             limit: 50
+    t.string   "DscCentroCustoExecutivo",      limit: 50
+    t.string   "IdtCentroCustoBU",             limit: 30
+    t.string   "IdtCentroCustoExecutivo",      limit: 30
+    t.string   "NomEmailPessoal",              limit: 50
+    t.boolean  "ramalSendoExterno"
+    t.datetime "DataInicioAfastamento"
+    t.datetime "DataFinalAfastamento"
+    t.boolean  "customExternoComOffice365"
+    t.string   "justificativaExtComOffice365", limit: 255
+    t.boolean  "loginBloqueado"
+    t.string   "justificativaLoginBloqueado",  limit: 255
+    t.date     "DataInicioFerias"
+    t.date     "DataFimFerias"
+  end
+
+  add_index "funcionarios", ["IdtCPF"], name: "FuncCPF", using: :btree
+  add_index "funcionarios", ["NomEmailGestorProfissional"], name: "index_funcionarios_on_NomEmailGestorProfissional", using: :btree
+  add_index "funcionarios", ["NomProfissional"], name: "NomProffunc", using: :btree
 
   create_table "MapeamentoLocalTrabalho", id: false, force: :cascade do |t|
     t.string  "NomSite",                limit: 30
@@ -357,54 +406,6 @@ ActiveRecord::Schema.define(version: 20170429233217) do
     t.integer  "areafornecedor_id", limit: 4
     t.text     "enderecos",         limit: 65535
   end
-
-  create_table "funcionarios", primary_key: "Login", force: :cascade do |t|
-    t.integer  "NumMatrProfissional",          limit: 4
-    t.string   "NomProfissional",              limit: 255
-    t.date     "DtaAdmissao"
-    t.date     "DtaDemissao"
-    t.string   "NomEmailBRQ",                  limit: 50
-    t.string   "IdtCPF",                       limit: 20
-    t.string   "IdtRG",                        limit: 20
-    t.string   "IdtCodigoCentroCusto",         limit: 10
-    t.string   "NomCentroCusto",               limit: 255
-    t.string   "NomTipoCentroCusto",           limit: 255
-    t.string   "IdtCodigoSecao",               limit: 10
-    t.string   "NomLocalTrabalho",             limit: 255
-    t.string   "NomCidadeLocalTrabalho",       limit: 50
-    t.string   "IdtCentroCustoTorre",          limit: 10
-    t.string   "DscCentroCustoTorre",          limit: 50
-    t.string   "NomAlocacao",                  limit: 50
-    t.string   "ramal",                        limit: 255
-    t.string   "observacao",                   limit: 255
-    t.boolean  "semEstacao"
-    t.integer  "IdLocalTrabalho",              limit: 4
-    t.boolean  "cipa"
-    t.boolean  "brigadista"
-    t.boolean  "afastado"
-    t.date     "DtaRemocaoAcesso"
-    t.boolean  "FlgIndicaRetorno"
-    t.string   "NomGestorProfissional",        limit: 255
-    t.string   "NomEmailGestorProfissional",   limit: 30
-    t.string   "NomEstadoLocalTrabalho",       limit: 10
-    t.string   "DscCentroCustoBU",             limit: 50
-    t.string   "DscCentroCustoExecutivo",      limit: 50
-    t.string   "IdtCentroCustoBU",             limit: 30
-    t.string   "IdtCentroCustoExecutivo",      limit: 30
-    t.string   "NomEmailPessoal",              limit: 50
-    t.boolean  "ramalSendoExterno"
-    t.datetime "DataInicioAfastamento"
-    t.datetime "DataFinalAfastamento"
-    t.boolean  "customExternoComOffice365"
-    t.string   "justificativaExtComOffice365", limit: 255
-    t.boolean  "loginBloqueado"
-    t.string   "justificativaLoginBloqueado",  limit: 255
-    t.date     "DataInicioFerias"
-    t.date     "DataFimFerias"
-  end
-
-  add_index "funcionarios", ["NomEmailGestorProfissional"], name: "index_funcionarios_on_NomEmailGestorProfissional", using: :btree
-  add_index "funcionarios", ["NomProfissional"], name: "NomProffunc", using: :btree
 
   create_table "gestores", force: :cascade do |t|
     t.string   "LoginUsuario",     limit: 255

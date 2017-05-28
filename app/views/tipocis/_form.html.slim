@@ -30,7 +30,7 @@
         .form-group
           label[for="Tabs"]
             | Tabs da tela de Ativo:
-          = f.text_field :tab, :maxlength=>200,  class: "form-control", :pattern => "[a-zA-Z0-9,]*" , placeholder: "token,token,token (sem espacos ou caracter especiais)" 
+          = f.text_field :tab, :maxlength=>200,  class: "form-control", :pattern => "[a-zA-Z0-9\ç\ã\õ\á\é\ó\í,]*" , placeholder: "token,token,token (sem espacos ou caracter especiais)" 
         button.btn.btn-primary.btn-md[type="submit"]
           |  Salvar Tipo Ativo
         = link_to 'Cancelar', tipocis_path,  {:id => "Cancelar", :class => "btn btn-danger btn-md margin-left"}

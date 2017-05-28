@@ -12,7 +12,8 @@ class PainelProducaoController < ApplicationController
         mysql_res = ActiveRecord::Base.connection.execute("SET SESSION group_concat_max_len = 10000;")
         sql_res = ActiveRecord::Base.connection.execute(c.consulta)
         # Rails.logger.debug "[DEBUG]PainelProducaoController:index count=#{sql_res.count}"
-        @painel << [c.nome,c.descricao,sql_res.count] if (_scope=="ALL") || (sql_res.count>0)
+        total_record = sql_res.count
+        @painel << [c.nome,c.descricao,total_record] if (_scope=="ALL") || (total_record>0)
       rescue
         @painel << [c.nome,c.descricao,"Consulta com Erro"]
       end
