@@ -5,7 +5,7 @@ class Identity < ActiveRecord::Base
 
   def detalhes
     idts = []
-    ["AD","RM","O365","ZMail","Zimbra","Google"].each do |domain|
+    ["AD","RM","O365","ZMail","Zimbra","Google","VoIP"].each do |domain|
       self.attribute_names.each do |attr|
         idts << ["#{domain} #{$1}",self.attributes[attr]] if attr =~ /^#{domain}(\w+)$/
         # @idts << ["AD #{$1}",i.attributes[attr]] if attr =~ /^Google(\w+)$/

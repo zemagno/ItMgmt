@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511012842) do
+ActiveRecord::Schema.define(version: 20170603152419) do
 
   create_table "Funcionarios", primary_key: "Login", force: :cascade do |t|
     t.integer  "NumMatrProfissional",          limit: 4
@@ -487,6 +487,7 @@ ActiveRecord::Schema.define(version: 20170511012842) do
     t.string   "O365Sharepoint_Online",       limit: 50
     t.string   "O365Exchange_Online",         limit: 50
     t.text     "ADGrupos",                    limit: 65535
+    t.string   "VoIPPermissao",               limit: 255
   end
 
   add_index "identities", ["ADUser"], name: "index_identities_on_ADUser", using: :btree
