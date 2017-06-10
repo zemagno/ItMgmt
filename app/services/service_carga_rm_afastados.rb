@@ -14,7 +14,7 @@ class ServiceCargaRmAfastados
 
     funcAfastados.each do |f|
       func = Funcionario.find_by_Login(f.Login)
-      func.afastado = (DateTime.now <= f[0].DTFINAL) && (DateTime.now >= f[0].DTINICIO)
+      func.afastado = true # (DateTime.now <= f[0].DTFINAL) && (DateTime.now >= f[0].DTINICIO)
       func.DataInicioAfastamento = f.DTINICIO
       func.DataFinalAfastamento = f.DTFINAL
       func.save!

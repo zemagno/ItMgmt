@@ -16,7 +16,7 @@ class ServiceCargaFerias
       func = Funcionario.find_by_Login(f.IdtUsuario)
       func.DataInicioFerias = f.DataInicioFerias
       func.DataFimFerias = f.DataFimFerias
-      func.loginBloqueado = (DateTime.now <= f[0].DataFimFerias) && (DateTime.now >= f[0].DataInicioFerias)
+      func.loginBloqueado = true # (DateTime.now <= f[0].DataFimFerias) && (DateTime.now >= f[0].DataInicioFerias)
       func.justificativaLoginBloqueado = "Ferias"
       func.save!
       total = total + 1

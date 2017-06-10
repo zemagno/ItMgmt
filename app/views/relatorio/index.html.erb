@@ -43,7 +43,9 @@ $(document).ready( function(){
       <thead>
         <tr class="head">
           <% @campos.each do |titulo| %>
-          <th><%= titulo.gsub(/_/," ") %></th>
+            <% if ! (titulo =~ /^\_\_./)%> 
+              <th><%= titulo.gsub(/_/," ") %></th>
+            <% end %>
           <% end %>
         </tr>
       </thead>
@@ -51,7 +53,9 @@ $(document).ready( function(){
         <% @resultado.each do |fields| %>
         <tr>
           <% fields.each_with_index do |valor,i| %>
-          <td><%= genField(valor,@campos[i],0,fields).html_safe %></td>
+            <% if ! (@campos[i] =~ /^\_\_./)%> 
+               <td><%= genField(valor,@campos[i],0,fields).html_safe %></td>
+            <% end %>
           <% end %>
         </tr>
         <% end %>
