@@ -3,7 +3,7 @@
 Rails.logger.info "[INFO] Initializer:itam.rb ENV:#{Rails.env}"
 Rails.logger.info "[INFO] Initializer:itam.rb client#{CONFIG["client"]}"
 Rails.logger.info "[INFO] Initializer:itam.rb system_version:#{CONFIG["system_version"]}"
-Rails.logger.info "[INFO] Initializer:itam.rb tenant:#{CONFIG["tenant"]}"
+Rails.logger.info "[INFO] Initializer:itam.rb tenant:#{CONFIG["tenant"].to_s}"
 Rails.logger.info "[INFO] Initializer:itam.rb redis:#{CONFIG["redis_server"]}"
 
 

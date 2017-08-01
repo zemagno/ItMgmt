@@ -19,6 +19,7 @@ config/local_env.yml
 /config/itam**
 /.idea
 /carga
+/dump
 /CargaInventarios
 /JSON
 getsql.sh

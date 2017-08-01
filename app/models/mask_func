@@ -1,0 +1,3 @@
+class MaskFunc < ActiveRecord::Base
+	self.table_name =  "MaskFunc"
+end
