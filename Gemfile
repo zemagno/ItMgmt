@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 # gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 
 gem 'railties'
-gem 'rails', '4.2.8'
+gem 'rails', '4.2.9'
 gem 'protected_attributes'
 gem 'responders' #, '~> 2.0'w
 
