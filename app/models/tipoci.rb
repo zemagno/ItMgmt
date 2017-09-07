@@ -22,13 +22,38 @@ class Tipoci < ActiveRecord::Base
 
   #end
 
+  class Taby
+    def initialize(__tab)
+      @tab = __tab
+    end
+    def name
+      @tab
+    end
+    def id
+      @tab
+    end
+  end
+
+  def tabs
+    if !self.tab.blank? && self.tab.include?("Caracteristicas")
+      arr =  [] 
+    else
+     arr = [Taby.new("Caracteristicas")]
+    end
+    # arr = [Taby.new("Caracteristicas")]
+    self.tab.split(",").uniq.each { |label| arr << Taby.new(label) } if ! self.tab.nil?
+    arr
+  end
+
+
   def self.esta_em_uso?(id)
     Ci.where(:tipoci_id => id).exists?
   end
 
   private
   def limpa_cache
-    Rails.cache.delete_matched("ability*")
+    Rails.logger.debug "[DEBUG]Tipoci:after_save: limpando cache ability*"
+    Rails.cache.delete_matched("cache:ability*")
   end
 
 end

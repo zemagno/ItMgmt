@@ -53,7 +53,7 @@ $(document).ready( function(){
           <td><%= link_to tipoci.tipo , tipoci_path(tipoci)%></td>
           <td><%= tipoci.Descricao %></td>
           <td><%= tipoci.Owner%></td>
-          <td><%= tipoci.tab%></td>
+          <td><%= tipoci.tab.gsub("_"," ") if ! tipoci.tab.nil?%></td>
 
           <td><%= tipoci.perfil%></td>
           <% if (can? :manage, Tipoci)  %>

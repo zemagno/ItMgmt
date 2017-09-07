@@ -11,7 +11,12 @@ class Statusci < ActiveRecord::Base
   belongs_to :ci
 
   def self.cached_find(id)
-  	Rails.cache.fetch([name, id]) { find(id) }
+    begin
+  	  Rails.cache.fetch([name, id]) { find(id) }
+    rescue
+      Rails.logger.error "[ERROR] Statusci: Nao achei o status no cache, provavelmente porque o CI esta sem statusci_id"
+      Statusci.first
+    end
   end
 
   def flush_cache

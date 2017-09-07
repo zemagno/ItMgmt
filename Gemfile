@@ -11,6 +11,8 @@ gem 'responders' #, '~> 2.0'w
 gem 'slim-rails', '3.1.1'
 gem 'slim', '3.0.7'
 
+# gem 'application_insights' #app insights do Azure
+
 
 
 group :test, :development do
@@ -82,6 +84,7 @@ gem "awesome_print", require:"ap", :group => :development
 
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-google-oauth2', '0.2.6'
+gem 'omniauth-azure-activedirectory'
 gem 'cancan' ,  '~> 1.6'
 gem 'dalli', '2.7.4'   # cache no redis
 
@@ -114,6 +117,6 @@ group :test do
   gem "mocha"
   gem "poltergeist"
   gem "shoulda-context"
-  gem "shoulda-matchers", ">= 3.0.1"
+  gem "shoulda-matchers"
   gem "test_after_commit"
 end

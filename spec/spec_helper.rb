@@ -17,8 +17,12 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require 'capybara/rails'
+require 'rspec/rails'
+require 'capybara/rails/all'
 require 'capybara/rspec'
+
+
+
 include Capybara::DSL
 
 RSpec.configure do |config|

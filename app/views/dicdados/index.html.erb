@@ -29,6 +29,7 @@
           <th>Apelido</th>
           <th>Regex</th>
           <th>Mandatorio</th>
+          <th>Tab</th>
           <th>Ordem</th>
           <% if (can? :manage, Dicdado)  %>
             <th></th>
@@ -43,6 +44,7 @@
             <td><%= dicdado.apelido %></th>
             <td><%= dicdado.regex %></th>  
             <td><%= dicdado.mandatorio ? "Sim" : "" %></td>   
+            <td><%= dicdado.tab %></td>
             <td><%= dicdado.ordem %></td>
             <% if (can? :manage, Dicdado)  %>
               <td>

@@ -7,11 +7,11 @@ class DicdadosController < ApplicationController
 
   def carrega_agregadas
     @tipocis = Tipoci.all
-    @tabs = @tipocis.map { |x| [x.id,x.tipo,x.tab] }
-    @tabs.each do |x|
-      x[2] = "" if x[2].nil?
-      x[2] = x[2].split(",")
-    end
+    @tabs = @tipocis.map { |x| [x.id,x.tipo] }
+    # @tabs.each do |x|
+    #   x[2] = "" if x[2].nil?
+    #   x[2] = x[2].split(",")
+    # end
     # @tabs.map!{ |x| x[2] = "" if x[2].nil?}
   end
 
@@ -92,6 +92,7 @@ class DicdadosController < ApplicationController
   def create
     @dicdado = Dicdado.new(params[:dicdado])
     carrega_agregadas
+    session[:search_dicdados_tipoci] = @dicdado.tipoci_id unless @dicdado.nil?
 
     respond_to do |format|
       if @dicdado.save

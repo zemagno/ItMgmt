@@ -12,6 +12,8 @@
        url('../fonts/roboto-slab-v6-latin/roboto-slab-v6-latin-regular.svg#RobotoSlab') format('svg'); /* Legacy iOS */
 }
 
+
+
 .form-control::-webkit-input-placeholder {
 font-family: 'Times New Roman';
 color:#a8a8a8;

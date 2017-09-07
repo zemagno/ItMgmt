@@ -250,8 +250,14 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
   config.omniauth :google_oauth2, '642665161474-77n1nro9svgti6riderdgonc73jslr89.apps.googleusercontent.com','dmVX01n4ob6_Up7NMeUDy0s_', {}
+
+  #https://github.com/AzureAD/omniauth-azure-activedirectory
+
+  config.omniauth :azure_activedirectory, '8e175d20-2b9e-4a71-b30e-94990974ba5f', '4mstech.com'
   # config.nice_provider = {}
   # config.nice_provider[:google_oauth2] = "Google"
+  # config.nice_provider[:azureactivedirectory] = "Azure"
+
 
 
   # ==> Warden configuration

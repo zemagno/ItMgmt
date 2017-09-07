@@ -5,9 +5,9 @@
 			
 			<div class="panel-heading"> <!-- Imprimo os tabs  -->
 				<ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
-					<li class="active"><a href="#<%=@tabs[0]%>" data-toggle="tab"><%=@tabs[0]%></a></li>
+					<li class="active"><a href="#<%=@tabs[0]%>" data-toggle="tab"><%=@tabs[0].gsub("_"," ")%></a></li>
 					<% @tabs[1..-1].each do |t| %>
-						<li><a href="#<%=t%>" data-toggle="tab"><%= t%></a></li>
+						<li><a href="#<%=t%>" data-toggle="tab"><%= t.gsub("_"," ")%></a></li>
 					<% end %>
 				</ul>
 			</div>

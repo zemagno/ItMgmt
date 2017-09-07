@@ -13,7 +13,8 @@ class Ci < ActiveRecord::Base
 
   attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id
 
-
+  alias_attribute :gestor, :Owner
+  alias_attribute :usuarios, :notificacao
 
   belongs_to :site
   belongs_to :tipoci
@@ -166,10 +167,10 @@ class Ci < ActiveRecord::Base
 
     cis.each do |x|
 
-     # colocar begin rescue aqui e contado, com chaves nao atualizadas...
-     #  chaves estao no formato antigo...
-     #  colocar alias gestor e usuario para Owner e notificacao
-      
+      # colocar begin rescue aqui e contado, com chaves nao atualizadas...
+      #  chaves estao no formato antigo...
+      #  colocar alias gestor e usuario para Owner e notificacao
+
 
       cmd_expandido.each { |k, v| x.send("#{k}=", v) if x.respond_to?(k) }
       x.save!
@@ -220,7 +221,7 @@ class Ci < ActiveRecord::Base
 
     @attr_existentes2 = []
 
-    tipoci.dicdados.map { |x| @attr_existentes2 << [x.id,x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab.nil? ? "Caracteristicas" : x.tab, x.bloqueado] }
+    tipoci.dicdados.map { |x| @attr_existentes2 << [x.id,x.nome, nil, x.url, x.valores, x.descricao, x.apelido, x.tipo, x.regex, x.mandatorio, x.tooltip,x.tab.blank? ? "Caracteristicas" : x.tab, x.bloqueado] }
 
     atributo.map do |x|
       idx = @attr_existentes2.index { |elem| elem[0]==x.dicdado.id}
@@ -242,7 +243,7 @@ class Ci < ActiveRecord::Base
     Rails.logger.debug "[DEBUG] Ci.atributos: lendo atributos do db e montando hash"
 
     return @attr_existentes unless @attr_existentes.blank?
-    
+
     Rails.logger.debug "[DEBUG] Ci.atributos:  Nao estava no cache. Vou ler realmente do DB"
 
     @attr_existentes = Hash.new
@@ -252,7 +253,7 @@ class Ci < ActiveRecord::Base
 
     # populo o @attr_existentes com os valores dos atributos EXISTENTE na base de dados
     atributo.includes(:dicdado).map do |x|
-      
+
       # se CI mudou de tipo, podera ter algum atributo q nao foi carregdo a partir do tipoci.dicdado
       # entao eu crio esse atributo no hash
       #
@@ -304,7 +305,7 @@ class Ci < ActiveRecord::Base
     #  2=>["Endereco", "Av Boa Vista"],
     #  1=>["Capacidade", "4mb"]}
     Rails.logger.debug "[DEBUG] - Vou iniciar atualizacaos dos atributos #{nice_atributos}"
-    
+
     attr_default = atributos
 
     Rails.logger.debug "[DEBUG] - Li Atributos"
@@ -331,6 +332,21 @@ class Ci < ActiveRecord::Base
     Rails.logger.debug "[DEBUG] - Finalizei atualizacaos dos atributos #{nice_atributos}"
     # ThinkingSphinx::RealTime.callback_for(:ci,[:ci])
 
+  end
+
+  def updateJson(_json)
+    _json.each do |k,v|
+
+      send("#{k}=",v) if respond_to?(k) # && send(k).blank? fazia isso, pois era para o default, caso nao tivesse valor
+    end
+  end
+
+  def updateDefaultJson(_json) # atualiza somente os campos que nao tem valor... tem que ser chamado antes do save
+    _json.each do |k,v|
+      v = DateTime.now.strftime("%d/%m/%Y") if v=="[HOJE]"
+      puts ">>>>> #{v} <<<<<< "
+      send("#{k}=",v) if respond_to?(k) && send(k).blank? 
+    end
   end
 
   def anterior
@@ -363,11 +379,15 @@ class Ci < ActiveRecord::Base
   private
 
   def investiga_quem_chama
+    begin
+      stack = caller
+      _caller = stack[stack.find_index {|x| x =~ /ItMgmt/}]
 
-    stack = caller
-    _caller = stack[stack.find_index {|x| x =~ /ItMgmt/}]
+      Rails.logger.debug "DEBUG: CI save/update caller => #{_caller}"
+    rescue
+      Rails.logger.debug "DEBUG: Investiga_quem_chama nao rodou com sucesso"
+    end
 
-    Rails.logger.debug "DEBUG: CI save/update caller => #{_caller}"
   end
 
   def atualiza_chave
@@ -382,7 +402,7 @@ class Ci < ActiveRecord::Base
   end
 
   def atualiza_statusci
-    
+
     Rails.logger.debug "_____________________________________________________________________________"
     Rails.logger.debug "DEBUG:CI before Save:atualiza_statusci: atualiza_statusci [#{self.statusci_id_was}] -> [#{self.statusci_id}]"
     Rails.logger.debug "_____________________________________________________________________________"
@@ -391,14 +411,14 @@ class Ci < ActiveRecord::Base
     Rails.logger.debug "_____________________________________________________________________________"
     Rails.logger.debug "DEBUG:CI before Save:Finalizei"
     Rails.logger.debug "_____________________________________________________________________________"
- 
+
   end
 
   def post_create_processing
     # puts "_______________________________________________________________"
     # puts "pos save #{self.chave} #{self.statusci_id}"
     # puts "_______________________________________________________________"
-    
+
     # BRE SUSPENSO BreEvent.register(:criar,self)
 
   end

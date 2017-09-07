@@ -1,3 +1,4 @@
+= javascript_include_tag "tab_dicdados.js"
 .container
   .row
     div
@@ -15,10 +16,11 @@
           label[for="tipoci_id"]
             | Tipo do Ativo:  
           = f.select :tipoci_id, @tabs.collect { |c| [ c[1],c[0] ] }, {},  { class: "form-control" , autofocus: ""}
-        / .form-group
-          label[for="tipoci_id"]
-            | Tab da Vizualização do Ativo:  
-          = f.select :tipoci_id, @tabs.collect { |c| c[2] }.uniq.compact.sort, {},  { class: "form-control" , autofocus: ""}
+        
+        .form-group  
+          label[for="tab"]
+            | Tab
+          = f.grouped_collection_select :tab, Tipoci.order(:tipo), :tabs, :tipo, :id, :name, {include_blank: true} ,  { class: "form-control"}
         .form-group
           label[for="nome"]
             | Nome:

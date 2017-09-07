@@ -8,8 +8,12 @@ class Parametro < ActiveRecord::Base
 
   default_scope { order('Tipo ASC') }
 
-  def self.tipoValor
+  def self.listaTipoValor
     [["String", 0], ["JSON", 1]]
+  end
+
+  def niceTipoValor
+    Parametro.listaTipoValor[tipoValor][0]
   end
 
   def self.get(options)

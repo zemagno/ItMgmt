@@ -4,13 +4,16 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip,  :roles, :internal_login, :provider, :uid, :name, :password, :password_confirmation, :remember_me
 
+
   devise :database_authenticatable, :registerable, :confirmable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable ## :async
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
+         omniauth_providers: [:azureactivedirectory,:google_oauth2] ## :async
 
   before_save :default_values
 
   def default_values
 	  self.roles ||= CONFIG["default_role"] || "usuario"
+    self.roles = "admin" || self.roles if self.id==1
   end     
 
   def self.new_with_session(params, session)
@@ -52,7 +55,12 @@ end
 
   private
     def limpa_cache
-      Rails.cache.delete_matched("ability*")
+      Rails.cache.delete_matched("cache:ability*")
     end 
+
+  protected
+    def confirmation_required?
+      CONFIG["authentication"]["confirmable"]
+    end  
 
 end

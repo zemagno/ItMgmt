@@ -132,6 +132,7 @@ class CisController < ApplicationController
     # @ci sendo carregado no filtro..
     @ci, @atributos = Ci.find_com_atributos(params[:id])
     carrega_atributos2
+    carrega_agregadas
     begin
       if @ci
         if ! finalAuth[:edit].include? (@ci.tipoci_id)
@@ -139,7 +140,6 @@ class CisController < ApplicationController
           flash[:error] = "Error[CI0001] - Voce nao tem autorizacao para alterar CI do tipo #{@ci.tipoci.tipo}"
           redirect_to "/cis"
         end
-        carrega_agregadas
         begin # se nao tiver parametro com filtro de status, ele mantem todos os status possiveis.
           @st = JSON.parse(Parametro.get({:tipo => "CI", :subtipo => "FiltroStatus"})).select { |x| x[0] == @ci.tipoci.tipo }[0][1]
           @statusci = @statusci.reject { |s| ! @st.include? s.status }
@@ -160,6 +160,11 @@ class CisController < ApplicationController
 
     end
     #@ci.chave.gsub! '<ID>', @ci.id.to_s
+    puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    puts @tabs
+    puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    puts @atributos2
+    puts "++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
   end
 
   # cis#email

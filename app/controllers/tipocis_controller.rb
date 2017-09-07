@@ -38,12 +38,15 @@ class TipocisController < ApplicationController
   # GET /tipocis/1/edit
   def edit
     @tipoci = Tipoci.find(params[:id])
+    @tipoci.tab.gsub!("_"," ") if ! @tipoci.tab.nil?
   end
 
   # POST /tipocis
   # POST /tipocis.json
   def create
     @tipoci = Tipoci.new(params[:tipoci])
+
+
 
     respond_to do |format|
       if @tipoci.save
@@ -60,6 +63,8 @@ class TipocisController < ApplicationController
   # PUT /tipocis/1.json
   def update
     @tipoci = Tipoci.find(params[:id])
+    puts params[:tipoci][:tab]
+    params[:tipoci][:tab].gsub!(" ","_")
 
     respond_to do |format|
       if @tipoci.update_attributes(params[:tipoci])

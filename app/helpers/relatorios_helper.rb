@@ -11,7 +11,7 @@ module RelatoriosHelper
 
         when "SearchCIS"
             res = valor.blank? ? "" : link_to(valor,"/cis?search=#{valor}",:target => "_blank" )
-		when "CI" , "ID", "Chave"
+		when "CI" , "ID", "Chave", "Ativo"
             res = link_to valor, ci_path(valor) 
         when "Usuario" , "Login", "Gestor"
             res = (valor.blank? or ! Features.has?("gestaousuario")) ? valor : link_to(valor,"/GestaoUsuarios?search=#{valor}",:target => "_blank" ) 

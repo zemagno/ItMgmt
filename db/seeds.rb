@@ -14,8 +14,8 @@ ActiveRecord::Migration.execute %Q{ ALTER TABLE Tipocis AUTO_INCREMENT = 1 }
 
 Statusci.create([{:status => 'Ativo', :icon => "001_06.png" }, {:status => "Desativado", :icon => "001_05.png"}])
 Site.create([{:nome => "Brasil", :estado => "BR"}])
-Tipoci.create([{:tipo => "Contrato"}])
-Tipoci.create([{:tipo => "Fornecedor"}])
+# Tipoci.create([{:tipo => "Contrato"}])
+# Tipoci.create([{:tipo => "Fornecedor"}])
 
 Parametro.create({:tipo => "views_ci", :subtipo => "TI", :valor => '[["Descricao","Tipo","Localidade","Gestor","Usuario(s)"],["descricao","tipo_ci","nome_localidade","Owner","notificacao"]]'})
 Parametro.create({:tipo => "Config", :subtipo => "Logo", :valor => 'logo.png'})

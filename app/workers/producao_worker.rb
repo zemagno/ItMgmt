@@ -56,10 +56,8 @@ class ProducaoWorker
       status,detalhes = ServiceAlerta.new.go($1)
     end
 
-    puts "---------"
-    puts status
-    puts detalhes
-    puts "---------"
+
+
     job.finaliza(status, detalhes)
   end
 end

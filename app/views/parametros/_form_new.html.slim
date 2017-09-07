@@ -20,6 +20,11 @@
             | Subtipo:
           = f.text_field :subtipo, :maxlength=>50,  class: "form-control"
         .form-group
+              label[for="tipoValor"]
+                | Tipo Valor:  
+              .input-container
+                = f.select :tipoValor, Parametro.listaTipoValor, {}, {class: "form-control" }  
+        .form-group
           label[for="valor"]
             | Valor
           = f.text_area :valor, :cols => 200, :rows => 20,  class: "form-control", placeholder: "valores..."

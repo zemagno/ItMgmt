@@ -19,7 +19,7 @@
               = @parametro.subtipo
           .list-group-item
             h4.list-group-item-heading
-              | Valor
+              = "Valor (#{@parametro.niceTipoValor})"
             textarea.list-group-item-text[readonly rows="20" style="min-width: 100%"]
               = @parametro.valor
           

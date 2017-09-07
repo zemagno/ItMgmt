@@ -17,6 +17,7 @@ Bundler.require(*Rails.groups)
 # CONFIG = YAML.load_file("#{Rails.root.to_s}/config/itam.yml")[Rails.env]
 CONFIG = YAML.load_file("#{File.expand_path("../..",__FILE__)}/config/itam.yml")[Rails.env]
 
+
 module ItMgmt 
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

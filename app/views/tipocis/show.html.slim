@@ -27,7 +27,7 @@
             h4.list-group-item-heading
               | Tabs da tela de Ativo
             p.list-group-item-text
-              = @tipoci.tab
+              = @tipoci.tab.gsub("_"," ")
           
     - if (can? :manage, Tipoci)
       = link_to 'Editar', edit_tipoci_path(@tipoci), :class => "btn btn-primary btn-md margin-left"
