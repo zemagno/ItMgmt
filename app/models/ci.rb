@@ -11,7 +11,7 @@ class Ci < ActiveRecord::Base
   include Jiraable
   include Statusable # inserir o metodo .status e .status_icon
 
-  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id
+  attr_accessible :chave, :Owner, :notificacao, :descricao, :dataChange, :DocChange, :site_id, :tipoci_id, :url, :jira, :tipoCobranca, :statusci_id, :CustoMensal, :CCDebito, :ProjetoDebito, :CCCredito, :ProjetoCredito, :cobrar, :descricaocobranca, :codigocobranca, :provisionar, :CustoMensalOpex, :CustoMensalCapex, :oldStatusci_id, :gestor, :usuarios
 
   alias_attribute :gestor, :Owner
   alias_attribute :usuarios, :notificacao
@@ -378,6 +378,15 @@ class Ci < ActiveRecord::Base
 
   private
 
+
+  def postBRE(_action)
+
+    campos = self.changed
+    attrs = {}
+    campos.each { |campo| attrs[campo] = [self.send(campo),self.send("#{campo}_was")] }
+    JobAsync.add("Ci",_action,self.id,attrs)
+  end
+
   def investiga_quem_chama
     begin
       stack = caller
@@ -391,14 +400,8 @@ class Ci < ActiveRecord::Base
   end
 
   def atualiza_chave
-    Rails.logger.debug "_____________________________________________________________________________"
-    Rails.logger.debug "DEBUG:CI after Save:atualiza chave Vou iniciar: #{self.chave} #{self.statusci_id} #{self.statusci_id_changed?} #{self.statusci_id_was}"
-    Rails.logger.debug "_____________________________________________________________________________"
     nova_chave = self.chave.gsub "<ID>", id.to_s
     self.update_attributes(:chave => nova_chave) if self.chave != nova_chave
-    Rails.logger.debug "DEBUG:CI Pos Save______________________________________________________________"
-    Rails.logger.debug "DEBUG:CI Pos Save finalizei !!!"
-    Rails.logger.debug "DEBUG:CI Pos Save_______________________________________________________________"
   end
 
   def atualiza_statusci
@@ -406,8 +409,10 @@ class Ci < ActiveRecord::Base
     Rails.logger.debug "_____________________________________________________________________________"
     Rails.logger.debug "DEBUG:CI before Save:atualiza_statusci: atualiza_statusci [#{self.statusci_id_was}] -> [#{self.statusci_id}]"
     Rails.logger.debug "_____________________________________________________________________________"
-    self.oldStatusci_id = self.statusci_id_was if self.statusci_id_changed?
-    BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
+    # self.oldStatusci_id = self.statusci_id_was if self.statusci_id_changed?
+    # BreEvent.register(:mudar_status,self,self.statusci_id_was) if self.statusci_id_changed?
+    postBRE("updated") if self.changed? and ! self.new_record?
+
     Rails.logger.debug "_____________________________________________________________________________"
     Rails.logger.debug "DEBUG:CI before Save:Finalizei"
     Rails.logger.debug "_____________________________________________________________________________"
@@ -415,18 +420,20 @@ class Ci < ActiveRecord::Base
   end
 
   def post_create_processing
-    # puts "_______________________________________________________________"
-    # puts "pos save #{self.chave} #{self.statusci_id}"
-    # puts "_______________________________________________________________"
+    puts "_______________________________________________________________"
+    puts "pos save #{self.chave} #{self.statusci_id}"
+    puts "_______________________________________________________________"
+    postBRE("created")
 
     # BRE SUSPENSO BreEvent.register(:criar,self)
 
   end
 
   def post_destroy_processing
-    # puts "_______________________________________________________________"
-    # puts "pos destroy #{self.chave} #{self.statusci_id}"
-    # puts "_______________________________________________________________"
+    puts "_______________________________________________________________"
+    puts "pos destroy #{self.chave} #{self.statusci_id}"
+    puts "_______________________________________________________________"
+    postBRE("destroyed")
     # BRE SUSPENSO BreEvent.register(:eliminar,self)
 
   end

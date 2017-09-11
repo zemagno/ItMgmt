@@ -2,6 +2,7 @@ class JobsAsync < ActiveRecord::Migration
   def change
      create_table :job_asyncs do |t|
   	  t.string :tipo
+      t.string :action
   	  t.integer :record_id
       t.text :params, :limit => 4096
       t.integer :status, default: 0, null: false
