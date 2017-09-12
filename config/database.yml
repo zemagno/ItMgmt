@@ -5,18 +5,29 @@
 #
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
+#   database: itmgmtInstant
+#   # database: itmgmt
+#   # database: gam4m 
+#   pool: 10
+#   username: root
+#   password:
+#   socket: /tmp/mysql.sock
+
+
 development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  # database: itmgmtInstant
-  database: itmgmt
-  # database: gam4m 
+  database: itmgmtInstant
   pool: 10
   username: root
-  password:
-  socket: /tmp/mysql.sock
-
+  password: sWEll1620
+  host: 127.0.0.1
+  port: 3307 # porta do mapeamento docker
 
 instant:
   adapter: mysql2
