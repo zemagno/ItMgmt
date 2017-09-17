@@ -9,7 +9,7 @@
 #   adapter: mysql2
 #   encoding: utf8
 #   reconnect: false
-#   database: itmgmtInstant
+#   database: itmgmtFake #Instant
 #   # database: itmgmt
 #   # database: gam4m 
 #   pool: 10
@@ -22,7 +22,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: itmgmtInstant
+  database: itmgmt #Instant
   pool: 10
   username: root
   password: sWEll1620

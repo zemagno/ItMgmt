@@ -249,7 +249,11 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :google_oauth2, '642665161474-77n1nro9svgti6riderdgonc73jslr89.apps.googleusercontent.com','dmVX01n4ob6_Up7NMeUDy0s_', {}
+  #
+  # config.omniauth :google_oauth2, '642665161474-77n1nro9svgti6riderdgonc73jslr89.apps.googleusercontent.com','dmVX01n4ob6_Up7NMeUDy0s_', {}
+  
+  # zemagno@gmail.com
+  config.omniauth :google_oauth2, '729075180662-57ktjs268kvkpphcm85c5i3v52b6s3se.apps.googleusercontent.com','PLszjpeYCj1_SToKtVF2Y_7q', {}
 
   #https://github.com/AzureAD/omniauth-azure-activedirectory
 
