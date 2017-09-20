@@ -9,7 +9,7 @@ class Producao < ActiveRecord::Base
   after_save ThinkingSphinx::RealTime.callback_for(:producao)
 
   def self.dispatcherJob(_job)
-  	j = self.create(:job => _job.split("_").join(" "), :status => "Rodando...")
+  	j = self.create(:job => _job, :status => "Rodando...")
   	ProducaoWorker.perform_async(j.id)
   end
 
