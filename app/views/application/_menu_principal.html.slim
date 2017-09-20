@@ -22,7 +22,7 @@
                         = link_to 'Novo Ativo', new_ci_path
                 li
                   = link_to 'Relatorios', cadrelatorios_path
-                - if can? :manage, :usuarios
+                - if (Features.has? "gestaousuarios") && (can? :manage, :usuarios)
                   li 
                     = link_to 'Gestao de Usuarios', gestao_usuarios_path
                 li.dropdown
