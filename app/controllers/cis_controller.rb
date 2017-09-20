@@ -405,7 +405,6 @@ class CisController < ApplicationController
         nodes[@i.chave] = g.add_nodes(@i.chave, GraficoCmdb.TipoGraficoCI(@i,ci_path(@i)))
         if nivel <= nivel_max then
           @i.send(direcao).each do |ii|
-            #erro ??!?!?! nao testo a data de mudanca ???
             #TODO aqui tem um erro..eu adiciono sem testar data, sem usar o GraficoCmdb
             # eu desconfio que ele sempre aciona pelo add_nodes acima e nunca por esse.
             if ii.ativo?

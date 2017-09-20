@@ -5,8 +5,8 @@ class GraficoCmdb
     #colocar nice_tipoci em todos os nodes. TODO
 
 
-    if ci.dataChange and ci.dataChange.to_time >= 5.days.ago then
-      parametro = { :label => "#{ci.chave}\n#{ci.dataChange}", :color => "red"}
+    if ci.dataChange and ci.dataChange.to_time >= 7.days.ago then
+      parametro = { :label => "#{ci.chave}\n#{ci.dataChange}", :color => "red", :fillcolor => "yellow"}
     else
       parametro = { :label => "#{ci.chave}\n#{ci.nice_tipoci}"}
     end
