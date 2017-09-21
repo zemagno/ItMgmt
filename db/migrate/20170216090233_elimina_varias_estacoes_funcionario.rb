@@ -12,7 +12,7 @@ class EliminaVariasEstacoesFuncionario < ActiveRecord::Migration
     begin
       remove_column :funcionarios, :customPossuiVariasEstacoes
     rescue
-    ebd
+    end
   	# execute %Q{ create view viewrelatusuariocomvariasestacoes as 
   	# 	        select 
   	# 				notificacao AS Usuario,
