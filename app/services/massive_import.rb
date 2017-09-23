@@ -5,7 +5,6 @@ class MassiveImport
 
 
 def self.go(configfile)
-	# configfile  = "/Users/zemagno/Dropbox/dev/ror/ItMgmt/externos_bsb.csv"
 
 	total_replaced = 0
 	total_created = 0

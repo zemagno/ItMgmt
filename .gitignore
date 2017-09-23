@@ -9,6 +9,7 @@ nohup.out
 /id_rsa/*
 /db/sphinx/**
 /tmp
+/temp
 /apoio
 /templates
 .gitignore

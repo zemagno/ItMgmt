@@ -5,8 +5,8 @@ class CiMailer < ActionMailer::Base
     @obj = _body
     @body = _body
     _from = CONFIG["mail"]["default_from"] if _from.blank?
-     _to = "zemagno@gmail.com"
-    _cc = _to
+     # _to = "zemagno@gmail.com"
+    # _cc = _to
     
     puts "*******************************************************************************"
     puts "to:#{_to} from:#{_from} cc:#{_cc} subject:#{_subject}"
@@ -21,8 +21,8 @@ class CiMailer < ActionMailer::Base
     _from = CONFIG["mail"]["default_from"] if _from.blank?
     #TODO colocar teste de erro com _to, templates, from
     attachments[_attachment.split("/").last] = File.read(_attachment)
-    _to = "zemagno@gmail.com"
-    _cc = _to
+    # _to = "zemagno@gmail.com"
+    # _cc = _to
     
     puts "*******************************************************************************"
     puts "to:#{_to} from:#{_from} cc:#{_cc} subject:#{_subject}"
