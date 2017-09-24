@@ -18,7 +18,7 @@ development:
   username: root
   password: sWEll1620
   host: 127.0.0.1
-  port: 3307 # porta do mapeamento docker
+  port: 3306 # porta do mapeamento docker
 
 instant:
   adapter: mysql2
