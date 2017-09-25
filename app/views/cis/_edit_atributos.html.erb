@@ -20,13 +20,15 @@
             <% else %>
                <label>
             <% end %>
-                <%= attr[1] %></label>
+            
+            <%= attr[1] %></label>
         
             <% if ! attr[4].blank? %> <!-- se nao tiver valores no campo Valores Possivel, nao é combobox -->
               <br>
               <select name="atributos[<%= attr[1]%>]" 
                       class="form-control"
                       <%= attr[12] ? ' disabled="true"' : "" %>
+                      <%= attr[9] ? "required" : "" %> 
                       >
                       <%= helper_gen_combobox(attr[4],attr[2]).html_safe %>  
               </select> 

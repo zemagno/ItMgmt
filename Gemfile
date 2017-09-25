@@ -6,6 +6,7 @@ gem 'railties'
 gem 'rails', '4.2.9'
 gem 'protected_attributes'
 gem 'responders' #, '~> 2.0'w
+gem 'turnout'
 
 
 gem 'slim-rails', '3.1.1'
