@@ -2,10 +2,10 @@
 #   adapter: mysql2
 #   encoding: utf8
 #   reconnect: false
-#   database: itmgmt #Instant
+#   database: gamsephora #brq #Instant
 #   pool: 10
 #   username: root
-#   password: 
+#   password: sWEll1620
 #   host: 127.0.0.1
 #   port: 3306 # porta do mapeamento docker
 
@@ -13,12 +13,11 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: gam4m #Instant
+  database: itmgmtInstant
   pool: 10
   username: root
-  password: sWEll1620
-  host: 127.0.0.1
-  port: 3306 # porta do mapeamento docker
+  password:  
+  socket: /tmp/mysql.sock
 
 instant:
   adapter: mysql2

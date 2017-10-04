@@ -6,7 +6,7 @@
         <% end %>
     <% elsif provider==:azureactivedirectory %> 
         <% if CONFIG["authentication"]["azure"] %>
-         <%= link_to "Se logar com Azure", omniauth_authorize_path(resource_name, provider)  %><br />
+         <%= link_to "Se logar com Office365 ou Azure", omniauth_authorize_path(resource_name, provider)  %><br />
         <% end%> 
     <% else %>
 	    <%= link_to "Se logar com #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
