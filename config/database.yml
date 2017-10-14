@@ -2,7 +2,7 @@
 #   adapter: mysql2
 #   encoding: utf8
 #   reconnect: false
-#   database: gamsephora #brq #Instant
+#   database: gambrq #Instant sephora #
 #   pool: 10
 #   username: root
 #   password: sWEll1620
@@ -13,7 +13,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: gambrq
+  database: itmgmt
   pool: 10
   username: root
   password:  

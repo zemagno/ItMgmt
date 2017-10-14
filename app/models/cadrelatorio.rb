@@ -83,8 +83,12 @@ class Cadrelatorio < ActiveRecord::Base
 
   private
   def invalidate_caches
-    Rails.logger.debug "[DEBUG] Cadrelatorio.invalidate_caches"
-    # Rails.logger.debug "[DEBUG]     [@@dashboards]" if @@dashboards
-    @@dashboards = nil
+    puts self.dashboard
+    puts self.dashboard_was
+    if self.dashboard != self.dashboard_was
+      Rails.logger.debug "[DEBUG] Cadrelatorio.invalidate_caches"
+      # Rails.logger.debug "[DEBUG]     [@@dashboards]" if @@dashboards
+      @@dashboards = nil
+    end
   end
 end
