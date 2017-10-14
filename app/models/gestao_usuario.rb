@@ -90,8 +90,6 @@ class GestaoUsuario
 
   def Estacoes
 
-
-
     @estacoes ||= Ci.where(notificacao: @login, tipoci_id: 46, statusci_id: 1).map do |x|
       detalhes = ""
       detalhes << "#{x._tipo} " unless ! x._tipo.nil? && (x.descricao.downcase.include? x._tipo.downcase )
@@ -119,6 +117,16 @@ class GestaoUsuario
       detalhes << " IMEI:#{x._IMEI}" unless x._IMEI.blank?
       detalhes << " Modelo:#{x._Modelo}" unless x._Modelo.blank?
       {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentrega,  :dataDevolucao => x._dataliberacao, :status => "",:detalhes => detalhes, :obs => x._Obs }
+    end
+  end
+
+  def AparelhosVoip
+    @voip ||= Ci.where(notificacao: @login, tipoci_id: 66, statusci_id: 1).map do |x|
+      detalhes = "Aparelho VoIP "
+      detalhes << "#{x._fabricantevoip}" unless x._fabricantevoip.blank?
+      detalhes << " #{x._modelovoip}" unless x._modelovoip.blank?
+      detalhes << " SIP:#{x._sipvoip}" unless x._sipvoip.blank?
+      {:chave => x.chave, :descricao => x.descricao,:gestor => x.Owner, :CCDebito => x.CCDebito,  :ProjetoDebito => x.ProjetoDebito, :dataEntrega => x._dataentregavoip,  :dataDevolucao => x._datadevolucaovoip, :status => "",:detalhes => detalhes, :obs => x._Obs }
     end
   end
 

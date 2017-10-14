@@ -76,6 +76,7 @@ def load
     @placadados = @usuario.PlacaDados
     @monitores = @usuario.Monitores
     @ramais = @usuario.Ramais
+    @voip = @usuario.AparelhosVoip
     @posicaoFacilities = ""
     @posicaoFacilities << " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
     @erros.concat @usuario.DistorcoesUsoLicenca 
@@ -84,29 +85,6 @@ def load
 
 
 end
-
-# def loadOld
-#   @erros = []
-
-#   @login = params[:search] || session[:search_gestao_usuario]
-#   @usuario = GestaoUsuario.new(:login => @login)
-
-#   @funcionario = Funcionario.find_by_Login(@login)
-  
-#   session[:search_gestao_usuario] = @login 
-#   @nomecompleto = (@funcionario ) ? @funcionario.Nome : "Nao Identificado" 
-#   @licencas  = @usuario.LicencasEmUso
-#   @estacoes   = @usuario.Estacoes
-#   @celulares = @usuario.Celulares
-#   @placadados = @usuario.PlacaDados
-#   @monitores = @usuario.Monitores
-#   @ramais =@usuario.Ramais
-#   @posicaoFacilities = ""
-#   @posicaoFacilities << " #{@usuario.PosicaoFacilities.NomSite}-#{@usuario.PosicaoFacilities.NomAndarSite}-#{@usuario.PosicaoFacilities.NomPosicaoAndarSite}" if @usuario.PosicaoFacilities
-  
-#   @erros.concat @usuario.DistorcoesUsoLicenca 
-# end
-
 
 def email
     # so seleciono os templates do tipo de ci sendo visualizado
@@ -228,6 +206,13 @@ def carrega_ativos_termo
   if params[:tipo] == "monitor" || params[:tipo] == "__ALL__"
       
      @monitores.each do |x|
+        @ativos_termo << x if params[:tipo] == "__ALL__" || x[:chave] == params[:ativo]
+     end 
+  end
+
+  if params[:tipo] == "voip" || params[:tipo] == "__ALL__"
+      
+     @voip.each do |x|
         @ativos_termo << x if params[:tipo] == "__ALL__" || x[:chave] == params[:ativo]
      end 
   end
