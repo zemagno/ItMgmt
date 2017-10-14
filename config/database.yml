@@ -1,22 +1,23 @@
-# MySQL.  Versions 4.1 and 5.0 are recommended.
-#
-# Install the MySQL driver:
-#   gem install mysql2
-#
-# And be sure to use new-style password hashing:
-#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   reconnect: false
+#   database: gambrq #Instant sephora #
+#   pool: 10
+#   username: root
+#   password: sWEll1620
+#   host: 127.0.0.1
+#   port: 3306 # porta do mapeamento docker
+
 development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: itmgmtInstant
-  # database: itmgmt
-  # database: gam4m 
+  database: gambrq
   pool: 10
   username: root
-  password:
+  password:  
   socket: /tmp/mysql.sock
-
 
 instant:
   adapter: mysql2

@@ -5,7 +5,6 @@ class MassiveImport
 
 
 def self.go(configfile)
-	# configfile  = "/Users/zemagno/Dropbox/dev/ror/ItMgmt/externos_bsb.csv"
 
 	total_replaced = 0
 	total_created = 0
@@ -37,7 +36,7 @@ def self.go(configfile)
     end
     
 
-	dados = CSV.read(arquivo, headers: true)
+	dados = CSV.read(arquivo, {:headers => true, :col_sep => ',', :encoding => 'UTF-8'})
 	dados.each do |linha|
 		chave = linha[:chave.to_s].gsub("\t","").strip
 		# if teste_mode
@@ -52,11 +51,12 @@ def self.go(configfile)
 			puts "ANTES:  #{c}" if log
 		end
 
-		# tem que ficar antes para setar qual tipoci..
+		# seto os valores default. Tem que ficar antes da carga, para setar qual tipoci..
 		config["default"].each do |k,v|
-			 c.send("#{k}=",v)
+			 c.send("#{k}=",v) if (k =~ /^[a-zA-Z0-9][a-zA-Z0-9_]+$/) && c.respond_to?(k) 
 		end
 
+		# importo o que pertence ao CI basico (nao comeca com underscore)
 		dados.headers.each do |h|
 			c.send("#{h}=",linha[h].gsub("\t","").strip) if (h =~ /^[a-zA-Z0-9][a-zA-Z0-9_]+$/) && c.respond_to?(h) && ! linha[h].nil?
 		
@@ -70,12 +70,18 @@ def self.go(configfile)
 
 		puts "DEPOIS: #{c}" if log
 
-		c.save! if ! teste_mode
-
-		dados.headers.each do |h|
-			c.send("#{h}=",linha[h].gsub("\t","").strip) if (h =~ /^_([a-zA-Z0-9_]+)$/)  && c.respond_to?(h)  && ! linha[h].nil?
+		# importo o que pertence aos atributos (comeca com underscore)
+		if ! teste_mode
+			c.save
+			# seto os valores default dos atributos.
+			config["default"].each do |k,v|
+				c.send("#{k}=",v) if (k =~ /^_[a-zA-Z0-9][a-zA-Z0-9_]+$/) && c.respond_to?(k) 
+		    end
+			dados.headers.each do |h|
+				c.send("#{h}=",linha[h].gsub("\t","").strip) if (h =~ /^_([a-zA-Z0-9_]+)$/)  && c.respond_to?(h)  && ! linha[h].nil?
+			end
+			c.save
 		end
-		c.save! if ! teste_mode
 	end
 	puts "done"
 	puts "Total de registros criado #{total_created}"
