@@ -419,7 +419,7 @@ class Ci < ActiveRecord::Base
     # puts "pos save #{self.chave} #{self.statusci_id}"
     # puts "_______________________________________________________________"
 
-    # BRE SUSPENSO BreEvent.register(:criar,self)
+    BreEvent.register(:criar,self)
 
   end
 
@@ -427,7 +427,7 @@ class Ci < ActiveRecord::Base
     # puts "_______________________________________________________________"
     # puts "pos destroy #{self.chave} #{self.statusci_id}"
     # puts "_______________________________________________________________"
-    # BRE SUSPENSO BreEvent.register(:eliminar,self)
+    BreEvent.register(:eliminar,self)
 
   end
 

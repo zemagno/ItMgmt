@@ -24,8 +24,8 @@ class Bre
 
   def aplicarParametros(_what,_obj)
     # begin
-      acao = JSON.parse(Parametro.get({:tipo => "BRE", :subtipo => _what}))
-      Rails.logger.debug "[DEBUG]BRE:aplicarParametros: [#{acao}]"
+      acao = JSON.parse(Parametro.get({:tipo => 'BRE', :subtipo => _what}))
+      Rails.logger.debug "[DEBUG]BRE:aplicarParametros: [#{_what}]-[#{acao}]"
       acao["fields"].each do |x|
         begin
           Rails.logger.debug "[DEBUG]BRE - Vou aplicar parametro: #{x[0]}=#{x[1]}"

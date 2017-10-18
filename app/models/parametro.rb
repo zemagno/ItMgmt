@@ -38,10 +38,9 @@ class Parametro < ActiveRecord::Base
   end
 
   def parseValor
-    
-    valor ||= ""
-
-     _valor = valor.strip
+    _valor = valor
+    _valor ||= ""
+    _valor = _valor.strip
      
      if tipoValor == 1 && _valor[0]=="{"
         begin
