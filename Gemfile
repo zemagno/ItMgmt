@@ -14,6 +14,9 @@ gem 'slim', '3.0.7'
 # gem 'application_insights' #app insights do Azure
 
 
+group :development do
+  gem 'brakeman'
+end
 
 group :test, :development do
   gem 'hirb'
@@ -46,8 +49,11 @@ gem 'thin' # web server
 
 # gem 'foreman'
 
-gem 'nokogiri' , '1.6.6.2' # Nao mudar a versao dessa gem, pois da problema de compilacao (pelo menos no mac)
+gem 'license_finder', :group => :development
 
+gem 'nokogiri' , '1.7.2' # Nao mudar a versao dessa gem, pois da problema de compilacao (pelo menos no mac)
+
+gem 'rubyzip', '1.2.1'
 gem 'axlsx_rails' # gerador de Excel via nokogiri
 
 # gem 'pusher' # gem de notificacao no browser - pago
@@ -93,6 +99,9 @@ gem 'whenever', :require => false # crontab like
 gem 'sidekiq'
 gem 'sidekiq-failures'
 gem 'sinatra', require: false
+github 'sinatra/sinatra' do
+  gem 'rack-protection'
+end
 
 # gem 'quiet_assets' # suppresses output of asset requests
 

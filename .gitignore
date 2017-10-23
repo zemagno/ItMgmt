@@ -30,3 +30,4 @@ getsql.sh
 *.old
 *.out
 dump.rdb
+/codereview

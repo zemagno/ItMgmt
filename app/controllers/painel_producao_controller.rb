@@ -3,6 +3,7 @@ class PainelProducaoController < ApplicationController
   def index
     @painel = []
     Cadrelatorio.where("dashboard like \"%#{params[:id]}%\"").each do |c|
+    # Cadrelatorio.where("dashboard like %?%",params[:id]).each do |c|
       _scope = params[:scope] || "ALL"
       Rails.logger.debug "[DEBUG]PainelProducaoController:index params:#{params} - scope: #{_scope}"
       @nomePainel = params[:id]
