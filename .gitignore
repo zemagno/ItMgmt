@@ -18,6 +18,8 @@ nohup.out
 config/local_env.yml
 *.sql
 /config/itam**
+/config/database.yml
+/config/**sphinx**
 /.idea
 /carga
 /dump
@@ -31,3 +33,4 @@ getsql.sh
 *.old
 *.out
 dump.rdb
+/codereview

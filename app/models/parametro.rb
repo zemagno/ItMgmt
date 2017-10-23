@@ -41,6 +41,7 @@ class Parametro < ActiveRecord::Base
     _valor = valor
     _valor ||= ""
     _valor = _valor.strip
+
      
      if tipoValor == 1 && _valor[0]=="{"
         begin

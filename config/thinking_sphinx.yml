@@ -1,8 +1,2 @@
 development:
-  indices_location: /Users/magno/sphinx
-  log: /Users/magno/sphinx/log/development.searchd.log
-  query_log: /Users/magno/sphinx/log/development.searchd.query.log
-  pid_file: /Users/magno/sphinx/log/development.sphinx.pid
-  binlog_path: /Users/magno/sphinx/tmp/binlog/development
-  address: 127.0.0.1
   mysql41: 9312

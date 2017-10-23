@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917165327) do
+ActiveRecord::Schema.define(version: 20170907013311) do
 
   create_table "HostComKB4019472", id: false, force: :cascade do |t|
     t.integer "Hostname",    limit: 1, null: false
@@ -533,6 +533,7 @@ ActiveRecord::Schema.define(version: 20170917165327) do
   add_index "checklist_items", ["checklist_id"], name: "index_checklist_items_on_checklist_id", using: :btree
   add_index "checklist_items", ["parent_checklist_id"], name: "Index_1", using: :btree
 
+
   create_table "checklist_itemsNEW", force: :cascade do |t|
     t.integer  "checklist_id",  limit: 4
     t.string   "nome",          limit: 255
@@ -666,14 +667,8 @@ ActiveRecord::Schema.define(version: 20170917165327) do
     t.integer "Usuario",   limit: 1,              null: false
     t.string  "Descricao", limit: 44
     t.integer "Total",     limit: 4,  default: 0, null: false
-  end
 
-  create_table "cobrancamensalusosoftware", id: false, force: :cascade do |t|
-    t.string  "login",       limit: 255
-    t.text    "softwares",   limit: 65535
-    t.decimal "customensal",               precision: 32, scale: 2
-  end
-
+  
   create_table "comandos_automacaos", force: :cascade do |t|
     t.string   "comando",    limit: 30
     t.string   "parametro",  limit: 100
@@ -689,15 +684,6 @@ ActiveRecord::Schema.define(version: 20170917165327) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "alertacor",  limit: 255
-  end
-
-  create_table "custo_softwares", force: :cascade do |t|
-    t.string   "software",    limit: 255
-    t.string   "fabricante",  limit: 255
-    t.decimal  "custoMensal",             precision: 10
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "status",      limit: 4
   end
 
   create_table "custom_de_paras", force: :cascade do |t|
@@ -1071,6 +1057,7 @@ ActiveRecord::Schema.define(version: 20170917165327) do
 
   create_table "job_asyncs", force: :cascade do |t|
     t.string  "tipo",      limit: 255
+    t.string  "action",    limit: 255
     t.integer "record_id", limit: 4
     t.text    "params",    limit: 65535
     t.integer "status",    limit: 4,     default: 0, null: false
@@ -1369,6 +1356,15 @@ ActiveRecord::Schema.define(version: 20170917165327) do
     t.integer  "status",      limit: 4
   end
 
+  create_table "softwares", force: :cascade do |t|
+    t.string   "software",    limit: 255
+    t.string   "fabricante",  limit: 255
+    t.decimal  "custoMensal",             precision: 10
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.integer  "status",      limit: 4
+  end
+
   create_table "sql_templates", force: :cascade do |t|
     t.text     "body",       limit: 65535
     t.string   "path",       limit: 255
@@ -1500,16 +1496,6 @@ ActiveRecord::Schema.define(version: 20170917165327) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "usersold", force: :cascade do |t|
-    t.string   "provider",   limit: 255
-    t.string   "uid",        limit: 255
-    t.string   "name",       limit: 255
-    t.string   "roles",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.string   "login",      limit: 255
-  end
 
   create_table "uso_licencas", force: :cascade do |t|
     t.string "Item",         limit: 45
