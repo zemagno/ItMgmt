@@ -19,7 +19,9 @@ config/local_env.yml
 *.sql
 /config/itam**
 /config/database.yml
-/config/**sphinx**
+/config/config/thinking_sphinx.yml
+/config/development.sphinx.conf
+/config/production.sphinx.conf
 /.idea
 /carga
 /dump

@@ -54,7 +54,7 @@ gem 'license_finder', :group => :development
 
 gem 'nokogiri' , '1.7.2' # Nao mudar a versao dessa gem, pois da problema de compilacao (pelo menos no mac)
 
-gem 'rubyzip', '1.2.1'
+# gem 'rubyzip', '1.2.1'
 gem 'axlsx_rails' # gerador de Excel via nokogiri
 
 # gem 'pusher' # gem de notificacao no browser - pago
